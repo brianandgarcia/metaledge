@@ -1,0 +1,30 @@
+<ips:template parameters="$content" />
+<br>
+
+<section id='elSecurityCenter'>
+	<h2 class='acpBlock_title'>{lang="security_recommendations"}</h2>
+	{{if !empty( $content )}}
+	<br>
+		{{foreach $content as $key => $data}}
+			<div class='ipsAreaBackground_light ipsPad'>
+				<span class='ipsBadge ipsBadge_large ipsBadge_{{if $data['risk'] == 'high'}}negative{{elseif $data['risk'] == 'medium'}}intermediary{{else}}positive{{endif}}'>{lang="$data['risk']"}</span> <h3 class='ipsType_sectionHead'><strong>{lang="$data['title']"}</strong></h3>
+				{{if $data['description']}}
+					<p class='ipsType_medium'>
+						{lang="$data['description']"}
+					</p>
+				{{endif}}
+				{{if isset( $data['button'] )}}
+					<br>
+					<a href='{url="{$data['button']['action']}"}' class='ipsButton ipsButton_small ipsButton_normal'>{$data['button']['title']}</a>
+				{{endif}}
+			</div>
+			<br>
+		{{endforeach}}
+	{{else}}
+		<div class='ipsAreaBackground_light ipsPad'>
+			<p class='ipsType_medium'>
+				{lang="security_no_recommendations"}
+			</p>
+		</div>
+	{{endif}}
+</section>

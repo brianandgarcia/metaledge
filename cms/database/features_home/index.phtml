@@ -1,0 +1,22 @@
+<ips:template parameters="$database, $articles, $url, $pagination" original_group="category_articles" key="database_features_home_index" />
+<section class='ipsType_normal ipsType_richText ipsContained ipsType_break ipsSpacer_both'>
+	<div class="ipsGrid">
+		{{if count($articles)}}
+			{{foreach $articles as $id => $record}}
+			<div class='ipsGrid_span4'>
+				{template="entry" app="cms" location="database" group="features_home" params="$record, $database"}
+			</div>
+			{{endforeach}}
+		{{endif}}
+		</div>
+	</div>
+</section>
+{{if $database->use_categories}}
+<div class="ipsLayout_container">
+	<a href="{$url->setQueryString('show', 'categories')}" class="ipsButton ipsButton_medium ipsButton_fullWidth">SEE MORE FEATURES</a>
+</div>
+{{endif}}
+
+{{if $database->featured_settings['pagination'] and ( $pagination['pages'] > 1 )}}
+	{template="pagination" app="core" location="global" group="global" params="$url, $pagination['pages'], $pagination['page'], $database->featured_settings['perpage'], TRUE, 'page'"}
+{{endif}}

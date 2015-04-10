@@ -1,0 +1,43 @@
+.editor_dummy {
+	border: rgb(204, 204, 204) 1px solid;
+	margin: auto;
+}
+.editor_dummy_desktop {
+	width: 980px;
+}
+.editor_dummy_tablet {
+	width: 770px;
+}
+.editor_dummy_phone {
+	width: 320px;
+}
+.editor_dummy .dummy_toolbars {
+	background-color: rgb( 247, 247, 247 );
+}
+.editor_dummy .dummy_toolbars li {
+	display: inline;
+	float: left;
+}
+html[dir="rtl"] .editor_dummy .dummy_toolbars li {
+	float: right;
+}
+.editor_dummy .dummy_toolbar {
+	height: 40px;
+	margin: 0;
+	padding: 0;
+}
+.editor_dummy #dummy_contents {
+	background-color: white;
+	padding: 15px;
+}
+.editor_dummy #dummy_contents p {
+	padding: 5px;
+}
+.editor_dummy .cke_toolbar_separator {
+	margin-left: 3px;
+	margin-right: 3px;
+}
+
+.dummy_button {
+	z-index: 10000 !important;
+}

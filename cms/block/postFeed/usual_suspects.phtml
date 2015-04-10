@@ -1,0 +1,17 @@
+<ips:template parameters="$comments, $orientation='vertical'" original_group="postFeed" key="block_postFeed_usual_suspects" />
+{{if !empty( $comments ) }}
+<div class="metalEdge_usual-suspects">
+	<h3 class='ipsType_reset ipsWidget_title'>The Usual Suspects</h3>
+		<div class='ipsWidget_inner'>
+				{{foreach $comments as $comment}}
+				<div class="metalEdge_usual-suspects_inner">
+					<a href="{$comment->url()}" title='{lang="view_this_topic" sprintf="$comment->item()->title"}' class='ipsDataItem_title ipsType_break'>{lang="$comment->item()->title" wordbreak="true"}</a><br>
+					<div class='ipsType_textBlock ipsType_richText' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='{{if $orientation == 'vertical'}}10 lines{{else}}6 lines{{endif}}'>
+						{$comment->truncated( true )|raw}
+					</div>
+
+				</div>
+				{{endforeach}}
+		</div>
+</div>
+{{endif}}

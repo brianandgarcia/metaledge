@@ -1,0 +1,141 @@
+<ips:template parameters="$table, $headers, $rows" original_group="listing" key="database_listing_recordRow" />
+{{$rowIds = array();}}
+{{foreach $rows as $row}}
+	{{$idField = $row::$databaseColumnId;}}
+	{{$rowIds[] = $row->$idField;}}
+{{endforeach}}
+{{$iposted = ( $table AND method_exists( $table, 'container' ) AND $table->container() !== NULL ) ? $table->container()->contentPostedIn( null, $rowIds ) : array();}}
+{{$RecordsClass = '\\IPS\\cms\\Records' . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+{{$FieldsClass  = '\\IPS\\cms\\Fields'  . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+
+{{foreach $rows as $row}}
+	{{$idField = $row::$databaseColumnId;}}
+	<li class="ipsCms_recordRow ipsDataItem ipsDataItem_responsivePhoto {{if $row->unread()}}ipsDataItem_unread{{endif}} {{if method_exists( $row, 'tableClass' ) && $row->tableClass()}}ipsDataItem_{$row->tableClass()}{{endif}} {{if $row->hidden()}}ipsModerated{{endif}}" data-rowID='{$row->$idField}'>
+		{{if member.member_id}}
+			<div class='ipsDataItem_icon ipsPos_top'>
+				{{if $row->unread()}}
+					<a href='{$row->url( 'getNewComment' )}' title='{lang="first_unread_post"}' data-ipsTooltip>
+						<span class='ipsItemStatus'><i class="fa {{if in_array( $row->$idField, $iposted )}}fa-star{{else}}fa-circle{{endif}}"></i></span>
+					</a>
+				{{else}}
+					{{if in_array( $row->$idField, $iposted )}}
+						<span class='ipsItemStatus ipsItemStatus_read ipsItemStatus_posted'><i class="fa fa-star"></i></span>
+					{{else}}
+						&nbsp;
+					{{endif}}
+				{{endif}}
+			</div>
+		{{endif}}
+		<div class='ipsDataItem_main'>
+			<h4 class='ipsDataItem_title ipsType_break'>
+				{{if $row->locked()}}
+					<i class='fa fa-lock' data-ipsTooltip title='{lang="topic_locked"}'></i>
+				{{endif}}
+									
+				{{if $row->prefix()}}
+					{template="prefix" group="global" app="core" params="$row->prefix( TRUE ), $row->prefix()"}
+				{{endif}}
+				
+				<a href='{$row->url()}'>
+					{{if $row->_title}}{$row->_title}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
+				</a>
+			</h4>
+			{{if $row->isFutureDate() || $row->mapped('pinned') || $row->mapped('featured') || $row->hidden() === -1 || $row->hidden() === 1}}
+				<span class='ipsPos_right'>
+					{{if $row->isFutureDate()}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{$row->futureDateBlurb()}'><i class='fa fa-clock-o'></i></span>
+					{{elseif $row->hidden() === -1}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{$row->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
+					{{elseif $row->hidden() === 1}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>
+					{{endif}}							
+					{{if $row->mapped('pinned')}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="pinned"}'><i class='fa fa-thumb-tack'></i></span>
+					{{endif}}
+					{{if $row->mapped('featured')}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
+					{{endif}}
+				</span>
+			{{endif}}
+			{{if $row->commentPageCount() > 1}}
+				{$row->commentPagination( array(), 'miniPagination' )|raw}
+			{{endif}}
+			{{if $customFields = $FieldsClass::display( $row->fieldValues(), 'listing' ) and count( $customFields )}}
+				<div class='ipsDataItem_meta'>
+				{{foreach $customFields as $fieldId => $fieldValue}}
+					{{if $fieldValue}}
+						{$fieldValue|raw}
+					{{endif}}
+				{{endforeach}}
+				</div>
+			{{endif}}
+			<div class='ipsDataItem_meta'>
+				<p class='ipsType_reset ipsType_light'>{lang="byline" sprintf="$row->author()->name"}{datetime="$row->_publishDate"}</p>
+			</div>
+		</div>
+		<ul class='ipsDataItem_stats'>
+			{{foreach $row->stats(TRUE) as $k => $v}}
+				<li {{if in_array( $k, $row->hotStats )}}class="ipsDataItem_stats_hot" data-text='{lang="hot_item"}' data-ipsTooltip title='{lang="hot_item_desc"}'{{endif}}>
+					<span class='ipsDataItem_stats_number'>{$v}</span>
+					<span class='ipsDataItem_stats_type'>{lang="content_records_stat_{$k}" pluralize="$v"}</span>
+				</li>
+			{{endforeach}}
+		</ul>
+		<ul class='ipsDataItem_lastPoster ipsDataItem_withPhoto'>
+			<li>
+				{{if $row->mapped('num_comments')}}
+					{template="userPhoto" app="core" group="global" params="$row->lastCommenter(), 'tiny'"}
+				{{else}}
+					{template="userPhoto" app="core" group="global" params="$row->author(), 'tiny'"}
+				{{endif}}
+			</li>
+			{{if $row::database()->options['reviews']}}
+				<li>
+					{{if $row->mapped('num_comments')}}
+						{lang="cms_row_commented_by" htmlsprintf="$row->lastCommenter()->link(), \IPS\DateTime::ts( $row->mapped('last_comment') )->html()"}
+					{{else}}
+						{lang="cms_row_added_by" htmlsprintf="$row->author()->link(), \IPS\DateTime::ts( $row->mapped('date') )->html()"}
+					{{endif}}
+				</li>
+				
+				<li class="ipsType_light">
+					<ul class='ipsList_inline ipsList_noSpacing_left ipsClearfix ipsRating ipsRating_large'>
+						{{foreach range( 1, 5 ) as $i}}
+							<li class='{{if $row->record_rating >= $i}}ipsRating_on{{else}}ipsRating_off{{endif}}'>
+								<i class='fa fa-star'></i>
+							</li>
+						{{endforeach}}
+					</ul>
+					&nbsp;&nbsp;
+					<span class='ipsType_normal'>
+						{{if $row->record_reviews}}
+							<a href='{$row->url()->setQueryString( 'tab', 'reviews' )->setFragment('replies')}'>
+						{{endif}}
+						{lang="num_reviews" pluralize="$row->record_reviews"}
+						{{if $row->record_reviews}}
+							</a>
+						{{endif}}
+					</span>
+				</li>
+			{{else}}
+				<li>
+					{{if $row->mapped('num_comments')}}
+						{$row->lastCommenter()->link()|raw}
+					{{else}}
+						{$row->author()->link()|raw}
+					{{endif}}
+				</li>
+				<li class="ipsType_light">
+					<a href='{$row->url( 'getLastComment' )}' title='{lang="get_last_post"}' class='ipsType_blendLinks'>
+						{{if $row->mapped('last_comment')}}{datetime="$row->mapped('last_comment')"}{{else}}{datetime="$row->mapped('date')"}{{endif}}
+					</a>
+				</li>
+			{{endif}}
+		</ul>
+		{{if $table and $table->canModerate()}}
+			<div class='ipsDataItem_modCheck'>
+				<input type='checkbox' data-role='moderation' name="moderate[{$row->$idField}]" data-actions="{expression="implode( ' ', $table->multimodActions( $row ) )"}" data-state='{{if $row->tableStates()}}{$row->tableStates()}{{endif}}'>
+			</div>
+		{{endif}}
+	</li>
+{{endforeach}}

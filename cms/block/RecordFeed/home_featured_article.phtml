@@ -1,0 +1,25 @@
+<ips:template parameters="$database, $records, $orientation='vertical'" original_group="" key="block_RecordFeed_home_featured_article" />
+<div class="label interview-cat">Interviews</div>
+<div class="ipsGrid">
+{{if !empty( $records ) }}
+	{{$FieldsClass  = '\\IPS\\cms\\Fields'  . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+	{{$formattedFields = array();}}
+	{{foreach $records as $record}}
+		<div class="ipsGrid_span4">
+			<div class="metalEdge_featured-album">
+				<div class="metalEdge_overlay"></div>
+				<img src="{$record->record_image}" width="340" max-height="730" />
+				<!-- Meta -->
+				<div class="metalEdge_caption">
+					<a href="{$record->url()}" title='{lang="view_this_topic" sprintf="$record->title"}' class='ipsDataItem_title metalEdge_largeTitle ipsType_break'  data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='2 lines'><h2>{lang="$record->_title" wordbreak="true"}</h2></a>
+					<br><span class='metalEdge_featured-album_date'>{lang="byline_nodate" htmlsprintf="$record->author()->link()"} · {datetime="$record->mapped('date')"}</span>
+					<br>
+					<div class='ipsType_textBlock' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='5lines'>
+					{$record->truncated( true )|raw}
+					</div>
+				</div>
+			</div>
+		</div>
+	{{endforeach}}
+{{endif}}
+</div>

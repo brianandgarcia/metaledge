@@ -1,0 +1,11 @@
+<ips:template parameters="$item, $review" original_group="display" key="database_display_reviewContainer" />
+{{if $review->isIgnored()}}
+	<div class='ipsComment ipsComment_ignored ipsPad_half ipsType_light'>
+		{lang="ignoring_content" sprintf="$review->author()->name"}
+	</div>
+{{else}}
+	<article itemscope="" itemtype="http://schema.org/Comment" id="elComment_115" class="ipsComment ipsComment_parent ipsClearfix ipsClear {{if $review->hidden()}}ipsModerated{{endif}}">
+		<a id="review-{$review->id}"></a>
+		{template="review" location="database" group="display" app="cms" params="$item, $review, $item::$formLangPrefix . 'review', $item::$application, $item::$module"}
+	</article>
+{{endif}}

@@ -1,0 +1,90 @@
+<ips:template parameters="$url, $lang=NULL" />
+{{if \IPS\IN_DEV}}
+	<span id='acplsi_{expression="md5( $url )"}' data-ipsMenu data-ipsMenu-closeOnClick='false' class='ipsCursor_pointer'>
+		{{if isset( \IPS\Dispatcher::i()->searchKeywords[ $url ] )}}
+			<span class="ipsBadge ipsBadge_style1">
+				<i class="fa fa-search"></i> {expression="count( \IPS\Dispatcher::i()->searchKeywords[ $url ]['keywords'] )"}
+			</span>
+		{{else}}
+			<span class="ipsBadge ipsBadge_style1">
+				<i class="fa fa-search"></i> 0
+			</span>
+		{{endif}}
+	</span>
+	<div id='acplsi_{expression="md5( $url )"}_menu' class='ipsMenu ipsMenu_wide ipsHide' data-controller="core.admin.core.acpSearchKeywords" data-url="{expression="base64_encode( $url )"}" data-action="{url="app=core&module=system&controller=ajax&do=searchKeywords"}">
+		<div class="ipsMenu_headerBar">
+			<h4 class="ipsType_sectionHead"><i class='fa fa-cogs'></i> &nbsp;Developer Options</h4>
+		</div>
+		<div class='ipsPad'>
+			<ul class='ipsForm'>
+				<li class='ipsFieldRow ipsFieldRow_fullWidth ipsClearfix'>
+					<div class='ipsFieldRow_title'>
+						{lang="keywords_language"}
+					</div>
+					<div class='ipsFieldRow_content'>
+						<input type='text' data-role="lang_key" value="{{if isset( \IPS\Dispatcher::i()->searchKeywords[ $url ] )}}{expression="\IPS\Dispatcher::i()->searchKeywords[ $url ]['lang_key']"}{{elseif $lang}}{$lang}{{else}}menu__{expression="\IPS\Request::i()->app"}_{expression="\IPS\Request::i()->module"}_{expression="\IPS\Request::i()->controller"}{{endif}}">
+					</div>
+				</li>
+				<li class='ipsFieldRow ipsFieldRow_fullWidth ipsClearfix'>
+					<div class='ipsFieldRow_title'>
+						{lang="keywords_restriction"}
+					</div>
+					<div class='ipsFieldRow_content'>					
+						<select data-role="restriction">
+							{{$value = isset( \IPS\Dispatcher::i()->searchKeywords[ $url ] ) ? \IPS\Dispatcher::i()->searchKeywords[ $url ]['restriction'] : \IPS\Dispatcher::i()->menuRestriction;}}
+							{{foreach \IPS\Dispatcher::i()->moduleRestrictions as $k => $v}}
+								{{if is_array( $v )}}
+									<optgroup label="{lang="r__{$k}"}">
+										{{foreach $v as $_k => $_v}}
+											<option value='{$_k}' {{if $value == $_k}}selected{{endif}}>{lang="r__{$_v}"}</option>
+										{{endforeach}}
+									</optgroup>
+								{{else}}
+									<option value='{$k}' {{if $value == $k}}selected{{endif}}>{lang="$v"}</option>
+								{{endif}}
+							{{endforeach}}
+						</select>
+					</div>
+				</li>
+				<li class='ipsFieldRow ipsFieldRow_fullWidth ipsClearfix'>
+					<div class='ipsFieldRow_title'>
+						{lang="keywords_keywords"}
+					</div>
+					<div class='ipsFieldRow_content'>
+						<div class="ipsField_stack" data-ipsStack>
+							<ul class="ipsList_reset" data-role="stack">
+								{{if isset( \IPS\Dispatcher::i()->searchKeywords[ $url ] )}}
+									{{foreach \IPS\Dispatcher::i()->searchKeywords[ $url ]['keywords'] as $word}}
+										<li class='ipsField_stackItem' data-role="stackItem">
+											<span class="ipsField_stackDrag ipsDrag" data-action='stackDrag'>
+												<i class='fa fa-bars ipsDrag_dragHandle'></i>
+											</span>
+											<span class="ipsField_stackDelete ipsCursor_pointer" data-action="stackDelete">
+												<i class='fa fa-times'></i>
+											</span>
+											<div data-ipsStack-wrapper><input type='text' data-role="keywords" value="{$word}"></div>
+										</li>
+									{{endforeach}}
+								{{else}}
+									<li class='ipsField_stackItem' data-role="stackItem">
+										<span class="ipsField_stackDrag ipsDrag" data-action='stackDrag'>
+											<i class='fa fa-bars ipsDrag_dragHandle'></i>
+										</span>
+										<span class="ipsField_stackDelete ipsCursor_pointer" data-action="stackDelete">
+											<i class='fa fa-times'></i>
+										</span>
+										<div data-ipsStack-wrapper><input type='text' data-role="keywords"></div>
+									</li>
+								{{endif}}
+							</ul>
+							<button class="ipsField_stackAdd ipsButton ipsButton_light ipsButton_small" data-action="stackAdd" role="button"><i class='fa fa-plus-circle'></i>&nbsp; {lang="stack_add"}</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="ipsAreaBackground ipsClearfix ipsPad ipsType_center">
+			<button type="button" class="ipsButton ipsButton_primary ipsButton_normal" data-action="save">{lang="save"}</button>
+		</div>
+	</div>
+{{endif}}

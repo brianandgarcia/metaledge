@@ -1,0 +1,16 @@
+<ips:template parameters="$items" />
+<li data-action="back"><a href='#'>{lang="mobile_menu_back"}</a></li>
+{{foreach $items as $item}}
+	{{if $item->canView()}}
+		{{if $children = $item->children()}}
+			<li class='ipsDrawer_itemParent'>
+				<h4 class='ipsDrawer_title'><a href='#'>{$item->title()}</a></h4>
+				<ul class='ipsDrawer_list'>
+					{template="mobileNavigationChildren" app="core" group="global" params="$children"}
+				</ul>
+			</li>
+		{{else}}
+			<li><a href='{$item->link()}'>{$item->title()}</a></li>
+		{{endif}}
+	{{endif}}
+{{endforeach}}

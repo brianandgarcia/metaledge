@@ -1,0 +1,162 @@
+<ips:template parameters="$report,$comment,$item,$ref,$prevReport,$prevItem,$nextReport,$nextItem" />
+{{if $comment}}
+	{{$idField = $comment::$databaseColumnId;}}
+	{{$quoteData = json_encode( array( 'userid' => $comment->author()->member_id, 'username' => $comment->author()->name, 'timestamp' => $comment->mapped('date'), 'contentapp' => $item::$application, 'contenttype' => $item::$module, 'contentclass' => str_replace( '\\', '_', mb_substr( $comment::$itemClass, 4 ) ) ) );}}
+{{else}}
+	{{if $item}}
+		{{$class = get_class( $item );}}
+		{{$quoteData = json_encode( array( 'userid' => $item->author()->member_id, 'username' => $item->author()->name, 'timestamp' => $item->mapped('date'), 'contentapp' => $item::$application, 'contenttype' => $item::$module, 'contentclass' => str_replace( '\\', '_', mb_substr( get_class( $item ), 4 ) ) ) );}}
+	{{else}}
+		{{$quoteData = json_encode( array() );}}
+	{{endif}}
+{{endif}}
+<article class='ipsColumns ipsColumns_collapseTablet ipsClear ipsClearfix' data-controller="core.front.modcp.report">
+	<div class='ipsColumn ipsColumn_fluid ipsBox ipsPad' data-controller='core.front.core.comment' data-quoteData='{$quoteData}'>
+		{{if $comment}}
+			<div class="ipsClearfix" id='elReportComment'>
+				<h2 class="ipsType_sectionHead">
+					<a href='{$report->url()->setQueryString( 'action', 'find' )}' class='ipsType_blendLinks'>{$comment->item()->mapped('title')}</a>
+				</h2>
+				<br>
+				<a href='{$report->url()->setQueryString( array( 'action' => 'find', 'parent' => 1 ) )}' class='ipsType_normal ipsType_light'>
+					<i class='fa fa-{$comment::$icon}'></i> {lang="$comment::$title"}
+				</a>
+				<br><br>
+				<div class='ipsPost' data-role='commentContent'>
+					<div data-ipsTruncate data-ipsTruncate-type="hide" data-ipsTruncate-size="#elReportPanel" class='ipsType_richText ipsType_medium ipsContained' data-controller='core.front.core.lightboxedImages'>{$comment->content()|raw}</div>
+				</div>
+				<hr class='ipsHr'>
+				<ul class='ipsList_inline' data-role="commentControls">
+					{{if $comment->canEdit( \IPS\Member::loggedIn() )}}
+						<li><a href='{$comment->url('edit')}&_report={$report->id}' data-action='editComment'>{lang="edit"}</a></li>
+					{{endif}}
+					{{if $comment->canHide( \IPS\Member::loggedIn() )}}
+						<li><a href='{$comment->url('hide')->csrf()}&_report={$report->id}' data-action='hideComment' data-ipsDialog data-ipsDialog-title="{lang="hide"}">{lang="hide"}</a></li>
+					{{endif}}
+					{{if $comment->canDelete( \IPS\Member::loggedIn() )}}
+						<li><a href='{$comment->url('delete')->csrf()}&_report={$report->id}' data-action='deleteComment' data-showOnDelete="#elReportCommentDeleted" data-hideOnDelete="#elReportComment">{lang="delete"}</a></li>
+					{{endif}}
+					{{if $comment->item()->canDelete( \IPS\Member::loggedIn() )}}
+						<li><a href='{$item->url('moderate')->setQueryString( 'action', 'delete' )->csrf()}&_report={$report->id}' data-action='deleteComment' data-showOnDelete="#elReportCommentDeleted" data-hideOnDelete="#elReportComment">{lang="delete_thing" sprintf="\IPS\Member::loggedIn()->language()->addToStack( $item::$title )"}</a></li>
+					{{endif}}
+				</ul>
+			</div>
+		{{elseif $item}}
+			<div class="ipsClearfix" id='elReportComment'>
+				<h2 class="ipsType_sectionHead">
+					<a href='{$report->url()->setQueryString( 'action', 'find' )}' class='ipsType_blendLinks'>{$item->mapped('title')}</a>
+				</h2>
+				<br>
+				<a href='{$report->url()->setQueryString( array( 'action' => 'find' ) )}' class='ipsType_normal ipsType_light'>
+					<i class='fa fa-{$item::$icon}'></i> {lang="$item::$title"}
+				</a>
+				<br><br>
+				<div class='ipsPost' data-role='commentContent'>
+					<div data-ipsTruncate data-ipsTruncate-type="hide" data-ipsTruncate-size="#elReportPanel" class='ipsType_richText ipsType_medium ipsContained' data-controller='core.front.core.lightboxedImages'>{$item->content()|raw}</div>
+				</div>
+				<hr class='ipsHr'>
+				<ul class='ipsList_inline' data-role="commentControls">
+					{{if $item->canEdit( \IPS\Member::loggedIn() )}}
+						<li><a href='{$item->url('edit')}&_report={$report->id}' data-action='editComment'>{lang="edit"}</a></li>
+					{{endif}}
+					{{if $item->canHide( \IPS\Member::loggedIn() )}}
+						<li><a href='{$item->url('moderate')->setQueryString( 'action', 'hide' )->csrf()}&_report={$report->id}' data-action='hideComment' data-ipsDialog data-ipsDialog-title="{lang="hide"}">{lang="hide"}</a></li>
+					{{endif}}
+					{{if $item->canDelete( \IPS\Member::loggedIn() )}}
+						<li><a href='{$item->url('moderate')->setQueryString( 'action', 'delete' )->csrf()}&_report={$report->id}' data-action='deleteComment' data-showOnDelete="#elReportCommentDeleted" data-hideOnDelete="#elReportComment">{lang="delete"}</a></li>
+					{{endif}}
+				</ul>
+			</div>
+		{{endif}}
+		<div class="ipsType_center ipsType_large ipsEmpty {{if $comment or $item}}ipsHide{{endif}}" id='elReportCommentDeleted'>
+			<i class="fa fa-trash-o"></i>
+			<br>
+			{lang="content_deleted"}
+		</div>
+	</div>
+	<aside class='ipsColumn ipsColumn_veryWide'>
+		<div id="elReportSidebar">
+			<a href='#elReportItem{$report->id}_menu' id='elReportItem{$report->id}' class='ipsButton ipsButton_primary ipsButton_large ipsButton_fullWidth' data-ipsMenu data-ipsMenu-closeOnClick data-ipsTooltip data-ipsTooltip-label="{lang="change_report_status"}">
+				<span class="cReportIcon"><i class='{{if $report->status == 1}}fa fa-flag{{elseif $report->status == 2}}fa fa-exclamation-triangle{{else}}fa fa-check-circle{{endif}}' data-role="ipsMenu_selectedIcon"></i></span> &nbsp;<span data-role="ipsMenu_selectedText">{lang="report_status_{$report->status}"}</span> &nbsp;<i class='fa fa-caret-down'></i>
+			</a>
+			{template="reportToggle" group="modcp" params="$report, '', FALSE"}
+			<br>
+			<div id='elReportPanel' class='ipsBox'>
+				{template="reportPanel" group="modcp" params="$report,$comment,$ref"}
+			</div>
+		</div>
+	</aside>
+</article>
+<br>
+<nav class='ipsPager ipsGrid ipsClearFix ipsList_inline'>
+	<div class='ipsGrid_span6 ipsPager_prev'>
+		{{if $prevReport}}
+			<a href="{url="app=core&module=modcp&controller=modcp&tab=reports&action=view&id={$prevReport['id']}" seoTemplate="modcp_report"}" title='{lang="previous_report"}' rel='prev'>
+				<span class='ipsPager_type'>{lang="previous_report"}</span>
+				{{if $prevItem}}
+					<span class='ipsPager_title ipsType_break'>{lang="$prevItem->mapped('title')" wordbreak="true"}</span>
+				{{else}}
+					<span class='ipsPager_title'><em class="ipsType_light">{lang="content_deleted"}</em></span>
+				{{endif}}
+			</a>
+		{{endif}}
+	</div>
+	<div class='ipsGrid_span6 ipsType_right ipsPager_next'>
+		{{if $nextReport}}
+			<a href="{url="app=core&module=modcp&controller=modcp&tab=reports&action=view&id={$nextReport['id']}" seoTemplate="modcp_report"}" title='{lang="next_report"}' rel='next'>
+				<span class='ipsPager_type'>{lang="next_report"}</span>
+				{{if $nextItem}}
+					<span class='ipsPager_title ipsType_break'>{lang="$nextItem->mapped('title')" wordbreak="true"}</span>
+				{{else}}
+					<span class='ipsPager_title'><em class="ipsType_light">{lang="content_deleted"}</em></span>
+				{{endif}}
+			</a>
+		{{endif}}
+	</div>
+</nav>
+<section class='ipsBox'>
+	<h2 class="ipsType_sectionTitle ipsType_reset">{lang="report_user_reports" pluralize="count( $report->reports() )"}</h2>
+	<div data-role="commentFeed">
+		{{foreach $report->reports() as $r}}
+			<article itemscope itemtype="http://schema.org/Comment" id="elCommentMod_{$r['rid']}" class="ipsComment ipsComment_parent ipsClearfix ipsClear ">
+				<div class='ipsComment_content ipsType_medium'>
+					<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_mini'>
+						{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $r['report_by'] ), 'mini'"}
+						<div>
+							<h3 class='ipsComment_author ipsType_normal ipsType_blendLinks'>{member="link()" id="$r['report_by']" raw="true"}</h3>
+							<p class="ipsComment_meta ipsType_light ipsType_medium">
+								{lang="report_date_submitted"} {datetime="$r['date_reported']"}
+							</p>
+						</div>
+					</div>
+					<div class='ipsPad'>
+						<div class="ipsType_normal ipsType_richText ipsType_break ipsContained" data-controller='core.front.core.lightboxedImages'>
+							{{if $r['report']}}
+								{$r['report']|raw}
+							{{else}}
+								<p><em class="ipsType_light">{lang="report_no_message"}</em></p>
+							{{endif}}
+						</div>
+					</div>
+				</div>
+			</article>
+		{{endforeach}}
+	</ul>
+</section>
+	<br><br>
+<section class='ipsBox'>
+	<div data-controller='core.front.core.commentFeed' data-baseURL='{$report->url()}' {{if $report->isLastPage()}}data-lastPage{{endif}} data-feedID='report-{$report->id}'>
+		<h2 class="ipsType_sectionTitle ipsType_reset" data-role="comment_count" data-commentCountString="js_num_mod_comments">{lang="report_mod_comments" pluralize="count( $report->comments() )"}</h2>
+		<div data-role='commentFeed' data-controller='core.front.core.moderation'>
+			<form action="{$report->url()->setQueryString( 'action', 'multimodComment' )}" method="post" data-ipsPageAction data-role='moderationTools'>
+				{{foreach $report->comments() as $modcomment}}
+					{$modcomment->html()|raw}
+				{{endforeach}}
+				{template="commentMultimod" app="core" group="global" params="$report"}
+			</form>
+		</div>
+		<div data-role='replyArea' class='ipsPad_half'>
+			{$report->commentForm()|raw}
+		</div>
+	</div>
+</section>

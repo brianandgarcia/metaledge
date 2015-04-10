@@ -1,0 +1,7 @@
+<ips:template parameters="$id, $message, $extra='', $parse=TRUE" />
+<div class="ipsPad">
+	<p class="ipsType_normal">{{if $parse}}{lang="$message"}{{else}}{$message|raw}{{endif}}</p>
+</div>
+<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+	<a href="{url="app=core&module=support&controller=support&next={$id}&mr=0{$extra}"}" data-action="redirectContinue" class="ipsButton ipsButton_primary">{lang="problem_not_resolved"}</a>
+</div>

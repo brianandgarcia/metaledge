@@ -1,0 +1,9 @@
+<ips:template parameters="$name, $value" />
+{lang="after"}
+<input type="number" name="{$name}[0]" value="{$value[0]}" min="0" class="ipsField_short">
+<select name="{$name}[1]" class="ipsField_short">
+	<option value="0" {{if !$value[1]}}selected="selected"{{endif}}>{lang="approved_posts_comments"}</option>
+	<option value="1" {{if $value[1]}}selected="selected"{{endif}}>{lang="days_since_joining"}</option>
+</select>
+&nbsp; {lang="or"} &nbsp;
+<input type="checkbox" name="{$name}[3]" id='el{$name}_3' data-control="unlimited" {{if !$value[0]}}checked="checked"{{endif}}> <label for='el{$name}_3' class='ipsField_unlimited'>{lang="always"}</label>

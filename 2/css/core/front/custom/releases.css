@@ -1,0 +1,317 @@
+/** Reviews table **/
+.metalEdge_reviews .metalEdge_buttons
+{
+  padding-top: 10px;
+}
+
+.metalEdge_reviews .ipsButtonBar
+{
+  display: none;
+}
+
+.metalEdge_reviews .metalEdge_buttons a.ipsButton
+{
+  margin-left: 8px;
+}
+
+.metalEdge_reviews .ipsDataList[data-role="tableRows"]
+{
+  padding-top: 14px;
+}
+
+.metalEdge_reviews .metalEdge_date_buttons .ipsButton
+{
+    padding: 4px 8px;
+    margin-right: 24px;
+}
+
+.ipsCms_recordRow .ipsDataItem_main {
+  vertical-align: middle !important;
+  font-family: "Calluna", Georgia, serif;
+  font-size: 16px;
+}
+
+.ipsCms_recordRow .ipsDataItem_main .ipsType_medium {
+  color: #000;
+  font-size: 16px;
+  line-height: 34px;
+}
+
+.ipsCms_recordRow .ipsDataItem_main .ipsDataItem_title {
+  color: #f00;
+  font-size: 16px !important;
+  line-height: 34px;
+}
+
+/** Review rating badge **/
+.metalEdge_rating
+{
+  width: 24px;
+  height: 16px;
+  margin: 8px auto;
+  background-color: #ddd4d3;
+  font-size: 14px;
+  line-height: 16px;
+  display: block;
+  font-family: "proxima-nova-condensed", helvetica, arial;
+  text-align: center;
+  position: relative;
+}
+.metalEdge_rating:before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 8px solid #ddd4d3;
+}
+.metalEdge_rating:after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 8px solid #ddd4d3;
+}
+
+.metalEdge_rating.rating_10
+{
+  background-color: #349C0B;
+  color: #fff;
+}
+
+.metalEdge_rating.rating_10:before {
+  border-bottom-color:#349C0B;
+}
+
+.metalEdge_rating.rating_10:after {
+  border-top-color:#349C0B;
+}
+
+.metalEdge_rating.rating_9
+{
+  background-color: #53c722;
+  color: #fff;
+}
+
+.metalEdge_rating.rating_9:before {
+  border-bottom-color:#53c722;
+}
+
+.metalEdge_rating.rating_9:after {
+  border-top-color:#53c722;
+}
+
+.metalEdge_rating.rating_8
+{
+  background-color: #92c624;
+  color: #fff;
+}
+
+.metalEdge_rating.rating_8:before{
+  border-bottom-color:#92c624;
+}
+
+.metalEdge_rating.rating_8:after{
+  border-top-color:#92c624;
+}
+
+.metalEdge_rating.rating_7
+{
+  background-color: #c7d727;
+}
+
+.metalEdge_rating.rating_7:before {
+  border-bottom-color:#c7d727;
+}
+
+.metalEdge_rating.rating_7:after {
+  border-top-color:#c7d727;
+}
+
+.metalEdge_rating.rating_6
+{
+  background-color: #ece932;
+}
+
+.metalEdge_rating.rating_6:before {
+  border-bottom-color:#ece932;
+}
+
+.metalEdge_rating.rating_6:after {
+  border-top-color:#ece932;
+}
+
+.metalEdge_rating.rating_5
+{
+  background-color: #fbd429;
+}
+
+.metalEdge_rating.rating_5:before {
+  border-bottom-color:#fbd429;
+}
+
+.metalEdge_rating.rating_5:after {
+  border-top-color:#fbd429;
+}
+
+.metalEdge_rating.rating_4
+{
+  background-color: #fab123;
+}
+
+.metalEdge_rating.rating_4:before {
+  border-bottom-color:#fab123;
+}
+
+.metalEdge_rating.rating_4:after {
+  border-top-color:#fab123;
+}
+
+.metalEdge_rating.rating_3
+{
+  background-color: #f9811d;
+}
+
+.metalEdge_rating.rating_3:before {
+  border-bottom-color:#f9811d;
+}
+
+.metalEdge_rating.rating_3:after {
+  border-top-color:#f9811d;
+}
+
+.metalEdge_rating.rating_2
+{
+  background-color: #f95619;
+}
+
+.metalEdge_rating.rating_2:before {
+  border-bottom-color:#f95619;
+}
+
+.metalEdge_rating.rating_2:after {
+  border-top-color:#f95619;
+}
+
+.metalEdge_rating.rating_1
+{
+  background-color: #eb0020;
+}
+
+.metalEdge_rating.rating_1:before {
+  border-bottom-color:#eb0020;
+}
+
+.metalEdge_rating.rating_1:after {
+  border-top-color:#eb0020;
+}
+
+
+/** Review Display **/
+.metalEdge_review .metalEdge_header {
+
+    background-color: #fff;
+    margin-bottom: 24px;
+
+}
+
+.metalEdge_review .metalEdge_albumArt
+{
+  max-width: 320px;
+  width: 100%;
+  display: block;
+}
+
+.metalEdge_review .metalEdge_artColumn
+{
+
+}
+
+.metalEdge_review .metalEdge_metaColumn
+{
+  position: relative;
+
+}
+
+.metalEdge_review .metalEdge_reviewInfo {
+
+  border-left: 1px solid #ddd4d3;
+  min-height: 308px;
+  height: 100%;
+  padding: 24px;
+
+}
+
+.metalEdge_review .metalEdge_reviewBox .metalEdge_rating
+{
+  width: 50px;
+  height: 30px;
+  margin: 30px auto 54px;
+  font-size: 24px;
+  line-height: 30px;
+}
+.metalEdge_review .metalEdge_reviewBox .metalEdge_rating:before {
+  top: -15px;
+  border-left-width: 25px;
+  border-right-width: 25px;
+  border-bottom-width: 15px;
+}
+.metalEdge_review .metalEdge_reviewBox .metalEdge_rating:after {
+  bottom: -15px;
+  border-left-width: 25px;
+  border-right-width: 25px;
+  border-top-width: 15px;
+}
+
+.metalEdge_review .metalEdge_reviewInfo .ipsType_pageTitle {
+
+  font-size: 32px;
+  line-height: 1;
+  color: #000;
+
+}
+
+.metalEdge_review .metalEdge_reviewInfo .metalEdge_bandName {
+
+  font-size: 32px;
+  line-height: 1;
+  color: #f00;
+  margin: 0;
+  font-weight: normal;
+
+}
+
+.metalEdge_review .metalEdge_reviewSummary
+{
+  font-style: italic;
+  font-size: 1.2em;
+}
+
+.metalEdge_review .metalEdge_reviewBox .ipsButton_small {
+
+  display: block;
+  margin: 0 auto 12px;
+  padding: 0;
+  line-height: 1;
+
+}
+
+/* Buttons */
+.ipsButton.ipsButton_small.youtube {
+  color: #de114b;
+}
+
+.ipsButton.ipsButton_small.spotify {
+  color: #54b522;
+}
+
+.ipsButton.ipsButton_small.soundcloud {
+  color: #fd8300;
+}

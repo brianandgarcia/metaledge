@@ -1,0 +1,2 @@
+<ips:template parameters="$name, $value" />
+<input type="number" name="{$name}[posts]" value="{$value['posts']}" class="ipsField_short"> {lang="posts_in_the_last"} <input type="number" name="{$name}[minutes]" value="{$value['minutes']}" class="ipsField_short"> {lang="minutes"} {lang="or"} <input type="checkbox" name="{$name}[never]" id='el{$name}_never' data-control="unlimited" {{if !$value['posts']}}checked{{endif}}> <label for='el{$name}_never' class='ipsField_unlimited'>{lang="never"}</label>

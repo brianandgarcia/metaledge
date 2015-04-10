@@ -1,0 +1,48 @@
+html[dir="ltr"] body {
+	margin-right: 300px;
+}
+html[dir="rtl"] body {
+	margin-left: 300px;
+}
+
+#elMetaTagEditor {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	padding-bottom: 70px;
+	width: 300px;	
+	overflow: auto;
+}
+html[dir="ltr"] #elMetaTagEditor {
+	right: 0;
+}
+html[dir="rtl"] #elMetaTagEditor {
+	left: 0;
+}
+
+#elMetaTagEditor.ipsToolbox .ipsToolbox_sectionTitle {
+	margin: 0 -15px 15px;
+}	
+
+#elMetaTagEditor_tags > li {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 5px solid #000;
+}
+
+	#elMetaTagEditor_tags > li:last-child {
+		margin-bottom: 0;
+	}
+
+#elMetaTagEditor_submit {
+	position: fixed;
+	bottom: 0;
+	width: 300px;
+	background: #000;
+}
+html[dir="ltr"] #elMetaTagEditor_submit {
+	right: 0;
+}
+html[dir="rtl"] #elMetaTagEditor_submit {
+	left: 0;
+}

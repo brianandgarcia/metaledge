@@ -1,0 +1,34 @@
+<ips:template parameters="$baseUrl, $langPrefix, $headers, $mainColumn, $rootButtons, $rows, $sortBy, $sortDirection, $filters, $currentFilter, $pages, $currentPage, $noSort, $quickSearch, $advancedSearch, $classes, $widths" />
+<div id='elMessageSidebar' data-controller='core.front.messages.list, core.genericTable' data-baseurl="{url="{$baseUrl}"}">
+	<div class='ipsButtonBar ipsPad_half ipsClearfix'>
+		<span class='ipsType_sectionHead'>{lang="menu_messages"}</span>
+		<ul class='ipsButtonRow ipsClearfix ipsPos_right'>
+			<li>
+				<a href='#elSortByMenu_menu' id='elSortByMenu' data-ipsMenu data-ipsMenu-activeClass='ipsButtonRow_active' data-ipsMenu-selectable="radio">{lang="sort_by"} <i class='fa fa-caret-down'></i></a>
+				<ul class='ipsMenu ipsMenu_auto ipsMenu_withStem ipsMenu_selectable ipsHide' id='elSortByMenu_menu'>
+					{{foreach $headers as $k => $header}}
+						{{if in_array( $k, array( 'mt_last_post_time', 'mt_start_time', 'mt_replies' ) )}}
+							<li class='ipsMenu_item {{if $k == $sortBy}}ipsMenu_itemChecked{{endif}}' data-ipsMenuValue='recent'><a href='#'>{lang="{$langPrefix}{$header}"}</a></li>
+						{{endif}}
+					{{endforeach}}
+				</ul>
+			</li>
+			<li>
+				<a href='#elFilterMenu_menu' id='elFilterMenu' data-ipsMenu data-ipsMenu-activeClass='ipsButtonRow_active' data-ipsMenu-selectable="radio">{lang="filter_by"} <i class='fa fa-caret-down'></i></a>
+				<ul class='ipsMenu ipsMenu_auto ipsMenu_withStem ipsMenu_selectable ipsHide' id='elFilterMenu_menu'>
+					<li class='ipsMenu_item {{if !array_key_exists( $currentFilter, $filters )}}ipsMenu_itemChecked{{endif}}' data-ipsMenuValue='all'><a href='{url="{$baseUrl}&sortby={$sortBy}&sortdirection={$sortDirection}&page=1"}'>{lang="messenger_filter_all"}</a></li>
+					{{foreach $filters as $k => $q}}
+						<li class='ipsMenu_item {{if $k === $currentFilter}}ipsMenu_itemChecked{{endif}}' data-ipsMenuValue='others'><a href='{url="{$baseUrl}&filter={$k}&sortby={$sortBy}&sortdirection={$sortDirection}&page=1"}'>{lang="$k"}</a></li>
+					{{endforeach}}					
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id='elMessageList' class='ipsClear'>
+		<div>
+			<ol class='ipsDataList' data-role='messageList'>
+				{template="messageListRows" app="core" group="messaging" params="$rows, $mainColumn, $rootButtons, $headers, $langPrefix"}
+			</ol>
+		</div>
+	</div>
+</div>

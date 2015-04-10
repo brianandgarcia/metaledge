@@ -1,0 +1,37 @@
+<ips:template parameters="$theme, $templateNames, $current" />
+<ul class='cTemplateList ipsList_reset' data-type='{$current['type']}'>
+	{{foreach $templateNames as $app => $data}}
+	<li {{if $app == $current['app']}}class="cTemplateList_activeBranch"{{else}}class="cTemplateList_inactiveBranch"{{endif}} data-app="{$app}">
+		<a href='{url="app=core&module=customization&controller=themes&do=templates&id={$theme->_id}&t_type={$current['type']}&t_app={$app}"}' data-action="toggleBranch">{$app}</a>
+		<ul class='ipsList_reset'>
+		{{foreach $templateNames[$app] as $location => $data}}
+			<li {{if $location == $current['location']}}class="cTemplateList_activeBranch"{{else}}class="cTemplateList_inactiveBranch"{{endif}} data-location="{$location}">
+				<a href='{url="app=core&module=customization&controller=themes&do=templates&id={$theme->_id}&t_type={$current['type']}&t_app={$app}&t_location={$location}"}' data-action="toggleBranch">{$location}</a>
+				<ul class='ipsList_reset'>
+				{{foreach $templateNames[$app][$location] as $group => $data}}
+					{{if $current['type'] == 'css' AND $group == '.'}}
+						{{foreach $data as $id => $css}}
+							<li {{if $css['css_name'] == $current['template'] && !\IPS\Request::i()->isAjax()}}class="cTemplateList_activeNode"{{endif}}>
+								<a data-type="{$current['type']}" href='{url="app=core&module=customization&controller=themes&do=templates&id={$theme->_id}&t_type={$current['type']}&t_app={$app}&t_location={$location}&t_group={$group}&t_name="}{expression="urlencode($css['css_name'])"}' data-action="openFile" data-name="{$css['css_name']}" data-inherited-value="{$css['InheritedValue']}" data-key="{$css['jsDataKey']}" data-itemID='{$css['css_id']}'>{$css['css_name']}</a>
+							</li>
+						{{endforeach}}
+					{{else}}
+					<li {{if $location == $current['location'] AND $group == $current['group']}}class="cTemplateList_activeBranch"{{else}}class="cTemplateList_inactiveBranch"{{endif}} data-group="{$group}">
+						<a href='{url="app=core&module=customization&controller=themes&do=templates&id={$theme->_id}&t_type={$current['type']}&t_app={$app}&t_location={$location}&t_group={$group}"}' data-action="toggleBranch">{$group}</a>
+						<ul class='ipsList_reset'>
+						{{foreach $templateNames[$app][$location][$group] as $name => $data}}
+							<li {{if $name == $current['template'] && !\IPS\Request::i()->isAjax()}}class="cTemplateList_activeNode"{{endif}}>
+								<a data-type="{$current['type']}" href='{url="app=core&module=customization&controller=themes&do=templates&id={$theme->_id}&t_type={$current['type']}&t_app={$app}&t_location={$location}&t_group={$group}&t_name="}{expression="urlencode($name)"}' data-action="openFile" data-name="{$name}" data-inherited-value="{$data['InheritedValue']}" data-key="{$data['jsDataKey']}" data-itemID='{{if $current['type'] == 'css'}}{$data['css_id']}{{else}}{$data['template_id']}{{endif}}'>{$name}</a>
+							</li>
+						{{endforeach}}
+						</ul>
+					</li>
+					{{endif}}
+				{{endforeach}}
+				</ul>
+			</li>
+		{{endforeach}}
+		</ul>
+	</li>
+	{{endforeach}}
+</ul>

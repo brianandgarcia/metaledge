@@ -1,0 +1,124 @@
+
+
+/*.ipsApp .ipsPost_wrap {
+	padding-left: 0;
+	margin-bottom: 30px;
+}
+
+	.ipsPost_wrap.ipsPost_lastPost {
+		border-bottom: 0;
+	}
+
+.ipsPost_ignored {
+	border-top: 4px solid #f6f6f6;
+	border-bottom: 4px solid #f6f6f6;
+}
+
+.ipsPost {
+	font-size: 14px;
+	line-height: 1.7;
+	background: #fff;
+}
+
+	.ipsPost_posted {
+		font-size: 13px;
+		color: #c4c4c4;
+		margin-bottom: 5px;
+	}
+
+		.ipsPost_posted .ipsBadge {
+			vertical-align: middle;
+		}
+
+	.ipsPost_controls {
+		font-size: 13px;
+		margin-top: 10px;
+	}
+
+	.ipsPost_controls li {
+		display: inline-block;
+		float: right;
+		margin: 0 0 0 20px;
+		line-height: 28px;
+	}
+
+		.ipsPost_controls .ipsPos_left {
+			float: left;
+			margin-left: 0;
+		}
+
+	.ipsPost_controls a {
+		text-decoration: none;
+		{prefix="transition" value="all 0.5s linear"}
+	}
+
+		.ipsPost_controls a.ipsButton:not( .ipsButton_simple ){
+			color: #fff;
+		}
+
+	.ipsPost_ignored > .ipsPost {
+		margin-left: 200px;
+	}
+
+.ipsPost .ipsImage {
+	margin: 0 5px 10px 0;
+}
+
+.ipsAuthorPane {
+	text-align: center;
+	padding: 15px 10px;
+}
+
+	.ipsAuthorPane h3 {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+
+		.ipsAuthorPane h3 a {
+			color: #2f2f2f;
+			text-decoration: none;
+		}
+
+	.ipsAuthorPane_info {
+		margin-top: 8px;
+	}
+
+
+.ipsApp .ipsPost_wrap.ipsPost_topicView.ipsPost_bestAnswer {
+	background: #7a8871;
+	font-size: 15px;
+}
+	
+	.ipsPost_bestAnswer .ipsPost {
+		background: #fff;
+	}
+
+	.ipsPost_bestAnswer .ipsPost:before {
+		width: 0;
+		height: 0;
+		position: absolute;
+		display: block;
+		content: "";
+		border-width: 15px;
+		border-style: solid;
+		left: -30px;
+		top: 15px;
+		border-color: transparent #fcfffa transparent transparent;
+	}
+
+.ipsPost_bestAnswer_check {
+	font-size: 50px;
+	color: #fff;
+	display:block;
+}
+
+.ipsPost_bestAnswerTitle {
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 24px;
+	color: #355416;
+}
+
+.ipsPost_bestAnswer .ipsAuthorPane h3 a {
+	color: #fff;
+}*/

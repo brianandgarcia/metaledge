@@ -1,0 +1,49 @@
+<ips:template parameters="$url,$title,$root,$rootParent,$rows,$rootButtons=array(),$lockParents=FALSE,$protectRoots=FALSE,$searchable=FALSE" />
+
+{{if $rootButtons}}
+	<div class='ipsClearfix'>
+		{template="buttons" params="$rootButtons, $url" group="global" app="core"}
+	</div>
+{{endif}}
+
+{{if ( $searchable && !empty( $rows ) ) or ( request.root and !request.noshowroot )}}
+<div class='acpBlock'>	
+	<div class='acpWidgetToolbar ipsPad ipsAreaBackground_dark ipsClearfix ipsClear'>
+		{{if $searchable && !empty( $rows )}}
+			<input type='text' class='ipsPos_right ipsField_short acpTable_search ipsJS_show' id='tree_search' placeholder="{lang="search_prefix_nofield"}">
+		{{endif}}
+		{{if ( request.root and !request.noshowroot )}}
+			<a href='{$url}' class='ipsButton ipsButton_light ipsButton_verySmall'><i class='fa fa-angle-double-left'></i> &nbsp;{lang="$title"}</a>
+			{{if $rootParent !== NULL}}
+				{{if is_object( $rootParent )}}
+					<a href='{$url->setQueryString( array( 'root' => $rootParent->_id ) )}' class='ipsButton ipsButton_light ipsButton_verySmall'><i class='fa fa-angle-left'></i> {$rootParent->_title}</a>
+				{{else}}
+					<a href='{$url->setQueryString( array( 'root' => $rootParent ) )}' class='ipsButton ipsButton_light ipsButton_verySmall'><i class='fa fa-angle-left'></i></a>
+				{{endif}}
+			{{endif}}
+		{{endif}}
+	</div>
+</div>
+{{endif}}
+<div class='ipsTree_wrapper' data-ipsTree {{if $lockParents}}data-ipsTree-lockParents{{endif}} {{if $protectRoots}}data-ipsTree-protectRoots{{endif}} data-ipsTree-url='{{if request.root}}{$url->setQueryString( array( 'root' => \IPS\Request::i()->root ) )}{{else}}{$url}{{endif}}' data-ipsTree-searchable='#tree_search'>
+	{$root|raw}
+	{{if empty( $rows )}}
+		<div class='ipsType_light ipsPad'>
+			{lang="no_results"}
+		</div>
+	{{else}}
+		<form accept-charset='utf-8' action="{$url->setQueryString( array( 'root' => \IPS\Request::i()->root ?: 0, 'do' => 'reorder' ) )}" method="post" data-role="treeListing">
+			<div class='ipsTree_rows'>
+				{template="rows" group="trees" app="core" params="$rows, md5(uniqid()), true"}
+			</div>
+			<noscript>
+				<div class='ipsBlock_actionbar clearfix'>
+					<button class="left">{lang="reorder"}</button>
+				</div>
+			</noscript>
+		</form>
+		{{if $searchable}}
+			<div data-role="treeResults"></div>
+		{{endif}}
+	{{endif}}
+</div>

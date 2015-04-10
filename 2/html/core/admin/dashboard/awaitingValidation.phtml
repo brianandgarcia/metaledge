@@ -1,0 +1,29 @@
+<ips:template parameters="$users" />
+{{if !empty( $users )}}
+	<ul class='ipsDataList ipsSpacer_bottom' itemscope itemtype="http://schema.org/ItemList" data-controller='core.admin.dashboard.validation'>
+		{{foreach $users as $user }}
+			<li class='ipsDataItem' data-role='userAwaitingValidation' itemprop="itemListElement">
+				<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_mini ipsClearfix'>
+					{template="userPhoto" app="core" group="global" params="$user, 'mini'"}
+					<div>
+						<ul class='ipsButton_split ipsPos_right ipsSpacer_top ipsSpacer_half' data-role='validateToggles'>
+							<li><a href='{url="app=core&module=members&controller=members&do=approve&id={$user->member_id}"}' data-action='approve' class='ipsButton ipsButton_verySmall ipsButton_positive'>{lang="approve"}</a></li>
+							<li><a href='{url="app=core&module=members&controller=members&do=ban&id={$user->member_id}"}' data-action='ban' class='ipsButton ipsButton_verySmall ipsButton_negative'>{lang="ban"}</a></li>
+						</ul>
+
+						<h4 class='ipsType_reset ipsType_large'><strong><a href='{$user->url()}' title='{lang="profile_view_profile"}' data-role="userName">{$user->name}</a></strong> &nbsp;&nbsp;<span class='ipsType_light ipsType_unbold ipsType_normal'>({$user->email})</span></h4>
+						<ul class='ipsList_inline ipsType_medium'>
+							<li><strong>{lang="ip_address"}:</strong> {$user->ip_address}</li>
+							<li><strong>{lang="block_awaiting_registered"}:</strong> {datetime="$user->joined"}</li>
+						</ul>
+					</div>
+				</div>
+			</li>
+		{{endforeach}}
+	</ul>
+	<a href="{url="app=core&module=members&controller=members&filter=members_filter_validating"}" class='ipsButton ipsButton_verySmall ipsButton_light'>{lang="block_awaiting_validation_all"}</a>
+{{else}}
+	<div class='ipsType_medium ipsType_light ipsType_center'>
+		{lang="none_awaiting_validation"}
+	</div>
+{{endif}}

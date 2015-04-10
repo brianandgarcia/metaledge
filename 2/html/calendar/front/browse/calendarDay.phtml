@@ -1,0 +1,105 @@
+<ips:template parameters="$calendars, $date, $featured, $birthdays, $events, $tomorrow, $yesterday, $today, $thisCalendar, $jump" />
+
+<div class='ipsGrid ipsGrid_collapsePhone ipsPager cCalendarNav ipsSpacer_bottom' data-ipsSticky data-ipsSticky-disableIn='phone'>
+	<div class='ipsGrid_span3 ipsType_left ipsPager_prev'>
+		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$yesterday->year}&m={$yesterday->mon}&d={$yesterday->mday}" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$yesterday->year}&m={$yesterday->mon}&d={$yesterday->mday}" seoTemplate="calendar_day"}{{endif}}" title='{lang="cal_month_day" sprintf="$yesterday->monthName, $yesterday->mday, $yesterday->year"}' rel='prev' data-action='changeView'>
+			<span class='ipsPager_type ipsType_normal'>{lang="prev_day"}</span>
+			<span class='ipsPager_title ipsType_light'>{lang="cal_month_day" sprintf="$yesterday->monthName, $yesterday->mday, $yesterday->year"}</span>
+		</a>
+	</div>
+	<div class='ipsGrid_span6 ipsType_center ipsPad cCalendarNav' data-role='calendarNav'>
+		<h1 class='ipsType_pageTitle ipsType_center'>{lang="cal_month_day" sprintf="$date->monthName, $date->mday, $date->year"}</h1>
+		<ul class='ipsButton_split ipsType_noBreak'>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=month&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calmonth" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=month&y={$date->year}&m={$date->mon}" seoTemplate="calendar_month"}{{endif}}' title='{lang="cal_month_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="month"}</a></li>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=week&id={$thisCalendar->_id}&w={$date->year}-{$date->mon}-{$date->mday}" seoTemplate="calendar_calweek" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=week&w={$date->year}-{$date->mon}-{$date->mday}" seoTemplate="calendar_week"}{{endif}}' title='{lang="cal_week_title" sprintf="$date->firstDayOfWeek('monthNameShort'), $date->firstDayOfWeek('mday'), $date->firstDayOfWeek('year'), $date->lastDayOfWeek('monthNameShort'),	$date->lastDayOfWeek('mday'), $date->lastDayOfWeek('year')"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="week"}</a></li>
+			<li><a href='#' class='ipsButton ipsButton_primary ipsButton_verySmall' title='{lang="cal_month_day" sprintf="$date->monthName, $date->mday, $date->year"}' data-action='changeView'>{lang="day"}</a></li>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=stream&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calstream" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=stream&y={$date->year}&m={$date->mon}" seoTemplate="calendar_stream"}{{endif}}' title='{lang="cal_month_stream_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'><span class='ipsResponsive_hidePhone ipsResponsive_inline'>{lang="event_stream"}</span><span class='ipsResponsive_showPhone ipsResponsive_inline'>{lang="event_stream_short"}</span></a></li>
+		</ul>
+	</div>
+	<div class='ipsGrid_span3 ipsType_right ipsPager_next'>
+		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$tomorrow->year}&m={$tomorrow->mon}&d={$tomorrow->mday}" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$tomorrow->year}&m={$tomorrow->mon}&d={$tomorrow->mday}" seoTemplate="calendar_day"}{{endif}}" title='{lang="cal_month_day" sprintf="$tomorrow->monthName, $tomorrow->mday, $tomorrow->year"}' rel='next' data-action='changeView'>
+			<span class='ipsPager_type ipsType_normal'>{lang="next_day"}</span>
+			<span class='ipsPager_title ipsType_light'>{lang="cal_month_day" sprintf="$tomorrow->monthName, $tomorrow->mday, $tomorrow->year"}</span>
+		</a>
+	</div>
+</div>
+
+{{if count( $birthdays )}}
+<div class='ipsColumns'>
+	<div class='ipsColumn ipsColumn_fluid'>
+{{endif}}
+<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="events_happening_today"}</h2>
+{{if $events['count'] > 0}}
+	<ol class='cCalendarDay ipsDataList ipsSpacer_bottom'>
+		{{if isset( $events['allDay'] ) && count( $events['allDay'] )}}
+			<li class='ipsDataItem cCalendarDay_allDay'>
+				<div class='ipsDataItem_generic ipsDataItem_size5 cCalendarDay_hour cCalendarDay_allDay ipsAreaBackground ipsPad'>
+					<h2 class='ipsType_reset'>{lang="day_view_all_day"}</h2>
+				</div>
+				<div class='ipsDataItem_main ipsAreaBackground_light ipsPad'>
+					<div class='cCalendarDay_eventList' data-ipsPatchwork data-ipsPatchwork-minColSize='300' data-ipsPatchwork-maxColSize='500'>
+						<div data-role='patchworkList'>
+							{{foreach $events['allDay'] as $event}}
+								<div data-role='patchworkItem'>
+									{template="eventBlock" app="calendar" group="view" params="$event, $date, true"}
+								</div>
+							{{endforeach}}
+						</div>
+					</div>
+				</div>
+			</li>
+		{{endif}}
+
+		{{foreach $events as $hour => $hourEvents}}
+			{{if count( $hourEvents ) && $hour !== 'allDay' && $hour !== 'count'}}
+				<li class='ipsDataItem'>
+					<div class='ipsDataItem_generic ipsDataItem_size5 cCalendarDay_hour ipsAreaBackground ipsPad'>
+						<h2 class='ipsType_reset'>
+							{{if \IPS\calendar\Date::usesAmPm()}}
+								{expression="\IPS\calendar\Date::getTwelveHour( $hour )"}<br><span>{expression="\IPS\calendar\Date::getAmPm( $hour )"}</span>
+							{{else}}
+								{$hour}<br><span>:00</span>
+							{{endif}}
+						</h2>
+					</div>
+					<div class='ipsDataItem_main ipsAreaBackground_light ipsPad'>
+						<div class='cCalendarDay_eventList' data-ipsPatchwork data-ipsPatchwork-minColSize='300' data-ipsPatchwork-maxColSize='500'>
+							<div data-role='patchworkList'>
+								{{foreach $hourEvents as $idx => $event}}
+									<div data-role='patchworkItem'>
+										{template="eventBlock" app="calendar" group="view" params="$event, $date, true"}
+									</div>
+								{{endforeach}}
+							</div>
+						</div>
+					</div>
+				</li>
+			{{endif}}
+		{{endforeach}}
+	</ol>
+{{else}}
+	<div class='ipsPad ipsAreaBackground ipsSpacer_bottom'><span class='ipsType_light ipsType_large'>{lang="no_events_today"}</span></div>
+{{endif}}
+
+{{if count( $birthdays ) }}
+	</div>
+	<div class='ipsColumn ipsColumn_medium'>
+		{{foreach $birthdays AS $birthday}}
+			<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="birthdays_today" pluralize="count( $birthday )"}</h2>
+			<ul class='ipsDataList ipsDataList_reducedSpacing'>
+				{{foreach $birthday AS $member}}
+					<li class='ipsDataItem'>
+						<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny'>
+							{template="userPhoto" app="core" group="global" params="$member, 'tiny'"}
+							<div>
+								{$member->link()|raw}<br>
+								{lang="member_age" sprintf="$member->age"}
+							</div>
+						</div>
+					</li>
+				{{endforeach}}
+			</ul>
+		{{endforeach}}
+	</div>
+</div>
+{{endif}}

@@ -1,0 +1,5 @@
+<ips:template parameters="$table, $headers, $rows" />
+{{foreach $rows as $row}}
+	{{$item = call_user_func( array( $row['class'], 'load' ), $row['id'] );}}
+	{template="rows" group="tables" params="$table, $headers, array( $item )"}
+{{endforeach}}

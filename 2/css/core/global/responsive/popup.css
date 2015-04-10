@@ -1,0 +1,52 @@
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	.ipsDialog > div {
+		width: 100%;
+		margin: 0;
+	}
+
+	.ipsDialog.ipsDialog_fixed > div {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin-top: 0;
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.ipsAlert {
+		width: 96%;
+		top: 20px;
+		text-align: center;
+	}
+	html[dir="ltr"] .ipsAlert {
+		margin-left: -48%;
+	}
+	html[dir="rtl"] .ipsAlert {
+		margin-right: -48%;
+	}
+
+	.ipsAlert_icon {
+		float: none;
+	}
+
+	.ipsAlert_icon + .ipsAlert_msg {
+		margin: 10px 0 20px !important;
+	}
+
+	.ipsAlert .ipsToolList li {
+		margin-bottom: 20px;
+	}
+
+	.ipsAlert .ipsToolList li:last-child {
+		margin-bottom: 0;
+	}
+
+	.ipsHovercard.ipsHovercard_stemLeft { margin-left: 0; }
+	.ipsHovercard.ipsHovercard_stemRight { margin-left: 0; }
+}

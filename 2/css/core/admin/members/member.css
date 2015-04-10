@@ -1,0 +1,48 @@
+.editMemberPhoto {
+	margin: 15px auto;
+	width: 65%;
+	text-align: right;
+}
+html[dir="rtl"] .editMemberPhoto {
+	text-align: left;
+}
+
+.editMemberPhoto .ipsControlStrip {
+	float: right;
+	opacity: 1;
+	position: relative;
+	bottom: 22px;
+}
+html[dir="rtl"] .editMemberPhoto .ipsControlStrip {
+	float: left;
+}
+
+.memberSidebarInfo {
+	margin: 15px;
+	padding: 10px;
+	border: 1px solid #B3C2D2;
+}
+
+.memberSidebarInfo dt {
+	float:left; 
+	width: 60%;
+	font-weight: bold;
+}
+html[dir="rtl"] .memberSidebarInfo dt {
+	float: right;
+}
+
+#elEditMemberHeader {
+	position: relative;
+}
+
+#elEditPhoto {
+	position: absolute;
+	bottom: 10px;
+}
+html[dir="ltr"] #elEditPhoto {
+	left: 25px;
+}
+html[dir="rtl"] #elEditPhoto {
+	right: 25px;
+}

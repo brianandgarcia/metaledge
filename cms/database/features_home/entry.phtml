@@ -1,0 +1,28 @@
+<ips:template parameters="$record, $database" original_group="category_articles" key="database_features_home_entry" />
+<article class='{{if $record->hidden()}}ipsModerated{{endif}} metalEdge_features_dblock'>
+
+	<div>
+		<img class="ipsImage" src="{$record->customFieldDisplayByKey('cover-image')|raw}" width="336" height="200" alt='{lang="$record->_title"}'>
+	</div>
+
+	<section class="ipsPad">
+
+	<header class='ipsSpacer_bottom'>
+		<div> 
+			<h2 class='ipsType_pageTitle'>
+				{{if $record->prefix()}}
+				{template="prefix" group="global" app="core" params="$record->prefix( TRUE ), $record->prefix()"}
+				{{endif}}
+				<a href="{$record->url()}" title='{lang="read_more_about" sprintf="$record->_title"}' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='2 lines'>
+					{lang="$record->_title"}
+				</a>
+			</h2>
+			<p class='ipsType_light ipsType_reset author'>
+				{lang="cms_byline" htmlsprintf="$record->author()->link(), $record->container()->url(), $record->container()->_title"}
+				<!-- <a href='{$record->url()}#comments' title='{lang="view_comments"}'><i class='fa fa-comment'></i> {lang="num_comments" pluralize="$record->record_comments"}</a> -->
+			</p>
+		</div>
+	</header>
+	</section>
+
+</article>

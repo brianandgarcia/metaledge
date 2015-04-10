@@ -1,0 +1,97 @@
+<ips:template parameters="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL" />
+<hr class='ipsHr'>
+<form accept-charset='utf-8' class="ipsForm ipsForm_vertical" method='post' action='{$action}' data-ipsForm data-controller='core.front.search.filters' id='elSearchFilters'>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+	<ul class='ipsList_reset cSearchFilters'>
+		{{foreach $elements as $collection}}
+			{{foreach $collection as $fieldName => $input}}
+				{{if !in_array( $fieldName, array( 'searchType' ) ) AND !is_string( $input ) }}
+					{{if $input instanceof \IPS\Helpers\Form\Date}}
+						<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+							<input type="date" data-control="date" placeholder="{lang="jump_to_placeholder"}" name='{$input->name}' id='{$input->htmlId}'>
+						</li>
+					{{elseif $input->name == 'eitherTermsOrTags' and \IPS\Request::i()->type === 'core_members'}}
+						<li class='ipsFieldRow ipsFieldRow_fullWidth {{if $collection['tags'] && !$collection['tags']->value}}ipsJS_hide{{endif}}' id='elRadio_eitherTermsOrTags'>
+							<ul class='ipsList_reset'>
+								<li class='ipsType_medium'><input type='radio' name='eitherTermsOrTags' value='or' {{if $input->value == 'or'}}checked{{endif}} id='{$input->id}_or'> <label for='{$input->id}_or'>{lang="termsortags_or_desc"}</label></li>
+								<li class='ipsType_medium'><input type='radio' name='eitherTermsOrTags' value='and' {{if $input->value == 'and'}}checked{{endif}} id='{$input->id}_and'> <label for='{$input->id}_and'>{lang="termsortags_and_desc"}</label></li>
+							</ul>
+						</li>
+					{{elseif in_array( $input->name, array( 'startDate', 'updatedDate' ) )}}
+						{{if $input->name === 'updatedDate' and \IPS\Request::i()->type === 'core_members'}}
+							{{continue;}}
+						{{endif}}
+						<li class='ipsFieldRow' id='elCustomDateChoices_{$input->name}'>
+							<label class="ipsFieldRow_label" for="author">
+								<a href='#' class='ipsType_medium ipsPos_right ipsType_unbold' id='elCustomDate_{$input->name}Custom' data-ipsMenu data-ipsMenu-appendTo='#elSearchFilters' data-ipsMenu-closeOnClick='false'>{lang="custom"}</a>
+								{lang="$input->name"}
+							</label>
+							<div class='ipsSideMenu ipsSideMenu_withRadios' data-ipsSideMenu id='elCustomDateChoices_{$input->name}_sideMenu'>
+								<h3 class='ipsSideMenu_mainTitle ipsAreaBackground_reset ipsType_medium'>
+									<a href='#elCustomDateChoices_{$input->name}_sideMenu' class='ipsPad_double' data-action='openSideMenu'><i class='fa fa-bars'></i> &nbsp;{lang="$input->name"}&nbsp;<i class='fa fa-caret-down'></i></a>
+								</h3>
+								<ol class='ipsSideMenu_list'>
+									{{foreach $input->options['options'] as $k => $v}}
+										<li class='ipsSideMenu_item {{if $input->value == $k}}ipsSideMenu_itemActive{{endif}} {{if $k === 'custom'}}ipsJS_hide{{endif}}' data-ipsMenuValue="{$k}">
+											<input type='radio' name='{$input->name}' value='{$k}' {{if $input->value == $k}}checked{{endif}} class='ipsJS_hide'>
+											<a href='#'>
+												{lang="search_{$k}"}
+												{{if $k === 'custom'}}
+													<br><span class='ipsType_reset ipsType_small ipsType_light ipsHide' data-role="datePreview"></span>
+												{{endif}}
+											</a>
+										</li>
+									{{endforeach}}
+									{{if $input->value === 'custom'}}
+										<li class="ipsSideMenu_item ipsSideMenu_itemActive" data-ipsmenuvalue="custom">
+											<input type="radio" name="{$input->name}" value="custom" class='ipsJS_hide'>
+											<a href="#">
+												{lang="search_custom"}
+												<br><span class="ipsType_reset ipsType_small ipsType_light ipsHide" data-role="datePreview" style="display:inline">
+													{{$k = $input->name === 'startDate' ? 'start' : 'updated';$afterKey = "{$k}_after"; $beforeKey = "{$k}_before";}}
+													{{if request.$beforeKey and request.$afterKey}}
+														{lang="search_betweenXandX" sprintf="\IPS\DateTime::ts(\IPS\Request::i()->$beforeKey)->localeDate(),\IPS\DateTime::ts(\IPS\Request::i()->$afterKey)->localeDate()"}
+													{{elseif request.$beforeKey}}
+														{lang="search_beforeX" sprintf="\IPS\DateTime::ts(\IPS\Request::i()->$beforeKey)->localeDate()"}
+													{{elseif request.$afterKey}}
+														{lang="search_afterX" sprintf="\IPS\DateTime::ts(\IPS\Request::i()->$afterKey)->localeDate()"}
+													{{endif}}
+												</span>
+											</a>
+										</li>
+									{{endif}}
+								</ol>
+							</div>
+						</li>
+					{{elseif in_array( $input->name, array( 'startDateCustom', 'updatedDateCustom' ) )}}
+						<div id='elCustomDate_{$input->name}_menu' class='ipsMenu ipsMenu_normal ipsHide' data-dateType='{$input->name}' data-controller='core.front.search.date'>
+							<div class='ipsPad'>
+								<span class='ipsType_normal ipsType_light'>{lang="between"}</span><br>
+								<input type='date' name='{$input->name}[start]' data-control='date' data-role='start' value='{$input->value['start']}'><br>
+								<span class='ipsType_normal ipsType_light'>{lang="and"}</span><br>
+								<input type='date' name='{$input->name}[end]' data-control='date' data-role='end' value='{$input->value['end']}'>
+								<hr class='ipsHr'>
+								<button type='button' class='ipsButton ipsButton_primary ipsButton_small ipsButton_fullWidth' data-action='ok'>OK</button>
+							</div>
+						</div>
+						<noscript>
+							{$input->html()|raw}
+						</noscript>
+					{{elseif $input instanceof \IPS\Helpers\Form\Node and ( !request.type or $input->htmlId !== \IPS\Request::i()->type . '_node' )}}
+						<!-- hidden until the filter is chosen -->
+					{{elseif $input->name === 'q' or ( \IPS\Request::i()->type !== 'core_members' and mb_strpos( $input->name, 'core_pfield_' ) !== 0 )}}						
+						{$input->rowHtml($form)|raw}
+					{{elseif ( mb_strpos( $input->name, 'core_pfield_' ) === 0 or $input->name == 'group' ) AND \IPS\Request::i()->type == 'core_members' }}
+						{$input->rowHtml($form)|raw}
+					{{endif}}
+				{{endif}}
+			{{endforeach}}
+		{{endforeach}}
+	</ul>
+	<div id='elSearchUpdate' data-ipsSticky data-ipsSticky-stickTo='bottom' data-ipsSticky-width="#elSearch_sidebar">
+		<button type="submit" class="ipsButton ipsButton_large ipsButton_primary ipsButton_fullWidth" id='elSearchButton' disabled><i class='fa fa-refresh'></i> &nbsp;{lang="update_results"}</button>
+	</div>
+</form>

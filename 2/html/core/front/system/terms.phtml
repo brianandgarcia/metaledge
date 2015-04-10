@@ -1,0 +1,7 @@
+<ips:template parameters="" />
+{{if !\IPS\Request::i()->isAjax()}}
+	{template="pageHeader" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('reg_terms')"}
+{{endif}}
+<div class='ipsType_normal ipsType_richText ipsPad'>
+	{lang="reg_rules_value"}
+</div>

@@ -1,0 +1,142 @@
+<ips:template parameters="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL" />
+
+{template="pageHeader" group="global" app="core" params="\IPS\Member::loggedIn()->language()->addToStack('advanced_search')"}
+{{if $form->error}}
+	<div class="ipsMessage ipsMessage_error">
+		{$form->error}
+	</div>
+{{endif}}
+<form accept-charset='utf-8' class="ipsForm ipsForm_horizontal ipsForm_fullWidth ipsBox" method='post' action='{$action}' data-ipsForm data-controller='core.front.search.filters' id='elAdvancedSearch'>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+
+	<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="search_parameters"}</h2>
+	<div class='ipsPad'>
+		<ul class='ipsList_reset ipsPad ipsAreaBackground_light'>
+			{{foreach $elements as $collection}}
+				{{foreach $collection as $fieldName => $input}}
+					{{if !is_string( $input ) AND in_array( $input->name, array( 'searchType' ) )}}
+						<li class='ipsFieldRow ipsClearfix' id='elSearchContentType'>
+							<span class='ipsFieldRow_label'>{lang="$input->name"}</span>
+							<div class='ipsFieldRow_content'>
+								{{$idx = 0;}}
+								{{$showAsGrid = ( count( $input->options['options'] ) > 3 ) ? true : false;}}
+
+								{{foreach $input->options['options'] as $option => $text}}
+									{{if $option == 'all'}}
+										{{continue;}}
+									{{endif}}
+
+									{{if $showAsGrid && $idx % 2 == 0}}
+										<div class='ipsGrid ipsGrid_collapsePhone'>
+									{{endif}}
+									{{if $showAsGrid}}
+										<div class='ipsGrid_span6'>
+									{{endif}}
+											<input type='radio' value='{$option}' name='{$input->name}' id='{expression="$input->id ?: $input->name . $option"}' {{if $input->value == $option}}checked{{endif}} {{if isset( $input->options['toggles'][ $option ] ) and !empty( $input->options['toggles'][ $option ] )}}data-control="toggle" data-toggles="{expression="implode( ',', $input->options['toggles'][ $option ] )"}"{{endif}}> &nbsp;<label for='{expression="$input->id ?: $input->name . $option"}'>{lang="$text"}</label>
+									{{if $showAsGrid}}
+										</div>
+									{{endif}}
+									{{if $showAsGrid && ( $idx % 2 != 0 || $idx == ( count( $input->options['options'] ) - 1 ) )}}
+										</div>
+									{{endif}}
+									{{$idx++;}}
+								{{endforeach}}
+							</div>
+						</li>
+					{{endif}}
+				{{endforeach}}
+			{{endforeach}}
+		</ul>
+		<br>
+		<ul class='ipsList_reset ipsPad ipsAreaBackground_light'>
+			{{foreach $elements as $collection}}
+				{{foreach $collection as $fieldName => $input}}
+					{{if !is_string( $input ) AND in_array( $input->name, array( 'q', 'tags', 'eitherTermsOrTags', 'author' ) )}}
+						{{if $input->name == 'eitherTermsOrTags'}}
+							<li class='ipsFieldRow ipsClearfix' id="{$input->htmlId}">
+								<span class='ipsFieldRow_label'>{lang="$input->name"}</span>
+								<div class='ipsFieldRow_content'>
+									<ul class='ipsList_inline' role="radiogroup">
+										<li class='ipsType_noBreak'>
+											<input type='radio' name='{$input->name}' value='or' id='{$input->id}_or' {{if $input->value == 'or'}}checked{{endif}}> &nbsp;<label for='{$input->id}_or'>{lang="termsortags_or_desc"}</label>
+										</li>
+										<li class='ipsType_noBreak'>
+											<input type='radio' name='{$input->name}' value='both' id='{$input->id}_both' {{if $input->value == 'and'}}checked{{endif}}> &nbsp;<label for='{$input->id}_both'>{lang="termsortags_and_desc"}</label>
+										</li>
+									</ul>
+								</div>
+							</li>
+						{{else}}
+							{$input->rowHtml($form)|raw}
+						{{endif}}
+					{{endif}}
+				{{endforeach}}
+			{{endforeach}}
+		</ul>
+		<br>
+		<div id='elAdvancedSearch_dateFilters'>
+			<ul class='ipsList_reset ipsPad ipsAreaBackground_light'>
+				{{foreach $elements as $collection}}
+					{{foreach $collection as $fieldName => $input}}
+						{{if !is_string( $input ) AND in_array( $input->name, array( 'startDate', 'updatedDate' ) )}}
+							<li class='ipsFieldRow ipsClearfix' id="{$input->htmlId}">
+								<span class='ipsFieldRow_label'>{lang="$input->name"}</span>
+								<div class='ipsFieldRow_content'>
+									<select name='{$input->name}'>
+										{{foreach $input->options['options'] as $key => $text}}
+											<option value='{$key}' {{if isset( $input->options['toggles'][ $key ][0] )}}data-control="toggle" data-toggles="{$input->options['toggles'][ $key ][0]}"{{endif}}>{lang="search_{$key}"}</option>
+										{{endforeach}}
+									</select>
+									{{if isset( $collection[ $fieldName . 'Custom'] )}}
+										<div class='cAdvancedSearchDate ipsJS_hide' id='elCustomDate_{$input->name}'>
+											{$collection[ $fieldName . 'Custom']->html()|raw}
+										</div>
+									{{endif}}
+								</div>
+							</li>
+						{{endif}}
+					{{endforeach}}
+				{{endforeach}}
+			</ul>
+			<br>
+		</div>
+		<div class='ipsPad ipsAreaBackground_light ipsFieldRow' id='elAdvancedSearch_appFilters'>
+			<div class='ipsFieldRow_content'>
+			</div>
+			<ul class='ipsList_reset'>
+				{{foreach $elements as $collection}}
+					{{foreach $collection as $fieldName => $input}}
+						{{if !is_string( $input ) AND $input->name == 'joinedDate'}}
+							<li class='ipsFieldRow ipsClearfix' id="{$input->htmlId}">
+								<span class='ipsFieldRow_label'>{lang="$input->name"}</span>
+								<div class='ipsFieldRow_content'>
+									<select name='{$input->name}'>
+										{{foreach $input->options['options'] as $key => $text}}
+											<option value='{$key}' {{if isset( $input->options['toggles'][ $key ][0] )}}data-control="toggle" data-toggles="{$input->options['toggles'][ $key ][0]}"{{endif}}>{lang="search_{$key}"}</option>
+										{{endforeach}}
+									</select>
+									{{if isset( $collection[ $fieldName . 'Custom'] )}}
+										<div class='cAdvancedSearchDate ipsJS_hide' id='elCustomDate_joinedDate'>
+											{$collection[ $fieldName . 'Custom']->html()|raw}
+										</div>
+									{{endif}}
+								</div>
+							</li>
+						{{elseif is_string( $input ) }}
+							{$input|raw}
+						{{elseif !in_array( $input->name, array( 'q', 'tags', 'searchType', 'eitherTermsOrTags', 'author', 'startDate', 'updatedDate', 'startDateCustom', 'updatedDateCustom', 'joinedDate', 'joinedDateCustom' ) )}}
+							{$input->rowHtml($form)|raw}
+						{{endif}}
+					{{endforeach}}
+				{{endforeach}}
+				<li class='ipsHide'></li>
+			</ul>
+		</div>
+	</div>
+	<div class='ipsAreaBackground ipsType_center ipsPad'>
+		<button type="submit" class="ipsButton ipsButton_large ipsButton_primary" id='elSearchButton'>{lang="search_community"}</button>
+	</div>
+</form>

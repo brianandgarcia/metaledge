@@ -1,0 +1,33 @@
+.cSearchResults .ipsDataItem {
+	border-bottom-width: 0;
+	border-top-width: 3px;
+}
+
+.cSearchFilters .ipsFieldRow {
+	border-bottom: 2px solid #ebebeb;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+	.cSearchFilters .ipsFieldRow .ipsFieldRow_label {
+		padding-top: 0;
+	}
+
+#elSearchUpdate.ipsSticky {
+	padding: 15px;
+	margin: 0 -15px;
+}
+
+/* Advanced search */
+#elSearchContentType .ipsFieldRow_content {
+	padding-top: 5px;
+	width: 350px;
+}
+
+#elAdvancedSearch li.ipsFieldRow {
+	max-width: 800px;
+}
+
+.cAdvancedSearchDate {
+	margin-top: 5px;
+}

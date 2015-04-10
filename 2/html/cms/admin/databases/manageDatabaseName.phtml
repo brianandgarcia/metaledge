@@ -1,0 +1,7 @@
+<ips:template parameters="$database, $row, $page" />
+{{;}}
+<strong>{$database->_title}</strong>
+{{if $page}}
+	<a class="ipsPos_right ipsBadge ipsBadge_style1" href="{$page->url()}" target="_blank">{lang="cms_db_used_on_page" sprintf="$page->_title"}</a>
+{{endif}}
+<p class='ipsType_light'>{$database->_description}</p>

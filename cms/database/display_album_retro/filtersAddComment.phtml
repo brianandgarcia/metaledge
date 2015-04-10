@@ -1,0 +1,6 @@
+<ips:template parameters="$rows" original_group="display" key="database_display_album_retro_filtersAddComment" />
+<p>
+	{{foreach $rows as $line}}
+		<p>{$line|raw}</p>
+	{{endforeach}}
+</p>

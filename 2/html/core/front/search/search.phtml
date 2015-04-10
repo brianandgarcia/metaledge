@@ -1,0 +1,37 @@
+<ips:template parameters="$term, $title, $results, $pagination, $baseUrl, $types, $filters" />
+
+<div class='ipsResponsive_hidePhone ipsResponsive_block'>
+	{template="pageHeader" group="global" app="core" params="\IPS\Member::loggedIn()->language()->addToStack('search_the_community')"}
+</div>
+
+<div class="ipsColumns ipsColumns_collapsePhone" data-ipsFilterBar data-ipsFilterBar-on='phone' data-ipsFilterBar-default='filterContent' data-controller='core.front.search.main' data-baseURL='{url="app=core&module=search&controller=search" seoTemplate="search"}'>
+	<div class="ipsColumn ipsColumn_wide"  data-role='filterBar'>
+		<h2 class='ipsType_sectionTitle ipsType_reset ipsResponsive_showPhone ipsResponsive_block'>{lang="search_filters"}</h2>
+		<div class='ipsPad ipsAreaBackground_light ipsFieldRow' id="elSearch_sidebar">
+			<label class="ipsFieldRow_label" for="author">
+				{lang="searchType"}
+			</label>
+			<div class='ipsSideMenu' data-ipsSideMenu id='elSearch_appFilter'>
+				<h3 class='ipsSideMenu_mainTitle ipsAreaBackground_reset ipsType_medium'>
+					<a href='#elSearch_appFilter' class='ipsPad_double' data-action='openSideMenu'><i class='fa fa-bars'></i> &nbsp;{lang="searchType"}&nbsp;<i class='fa fa-caret-down'></i></a>
+				</h3>
+				<ul class='ipsSideMenu_list ipsSideMenu_withRadios ipsType_normal'>
+					<li class='ipsSideMenu_item {{if !request.type}}ipsSideMenu_itemActive{{endif}}' data-ipsMenuValue=''>
+						<a href='{$baseUrl->stripQueryString( 'type' )}' title="{lang="search_everything"}">{lang="search_everything"}</a>
+					</li>
+					{{foreach $types as $k => $class}}
+						<li class='ipsSideMenu_item {{if request.type == $k}}ipsSideMenu_itemActive{{endif}}' data-ipsMenuValue='{$k}'>
+							<a href='{$baseUrl->setQueryString( array( 'type' => $k, 'page' => NULL ) )}' title="{lang="search_results_title_term_area" sprintf="$term, mb_strtolower( \IPS\Member::loggedIn()->language()->addToStack( $k . '_pl' ) )"}">{lang="{$k}_pl"}</a>
+						</li>
+					{{endforeach}}
+				</ul>
+			</div>
+			<div data-role='searchFilters'>
+				{$filters|raw}
+			</div>
+		</div>
+	</div>
+	<div id="elSearch_main" class="ipsColumn ipsColumn_fluid" data-role='filterContent'>
+		{template="results" group="search" params="$term, $title, $results, $pagination, $baseUrl"}
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<ips:template parameters="$elements, $modOptions" />
+
+<div class='ipsPad ipsAreaBackground_light'>
+	<h3 class='ipsType_sectionHead'>{lang="topic_moderator_options"}</h3>
+	<ul class='ipsForm ipsForm_vertical ipsSpacer_top'>
+		{{foreach $elements as $collection}}
+			{{foreach $collection as $inputName => $input}}
+				{{if in_array( $inputName, $modOptions )}}
+					{{if $inputName == 'topic_open_time' or $inputName == 'topic_close_time'}}
+						<li class='ipsFieldRow ipsClearfix'>
+							<label class="ipsFieldRow_label" for="{$input->name}">{lang="$input->name"}</label>
+							<ul class='ipsFieldRow_content ipsList_reset cCreateTopic_date'>
+								<li>
+									<i class='fa fa-calendar'></i>
+									<input type="date" name="{$input->name}" class="ipsField_short" data-control="date" placeholder='{expression="mb_strtoupper( str_replace( 'y', 'yy', \IPS\Member::loggedIn()->language()->preferredDateFormat() ) )"}' value="{{if $input->value instanceof \IPS\DateTime}}{$input->value->format('Y-m-d')}{{else}}{$input->value}{{endif}}" data-preferredFormat="{{if $input->value instanceof \IPS\DateTime}}{$input->value->localeDate()}{{else}}{$input->value}{{endif}}">
+								</li>
+								<li>
+									<i class='fa fa-clock-o'></i>
+									<input name="{$input->name}_time" type="time" size="12" class="ipsField_short" placeholder="HH:MM" step="60" min="00:00" value="{{if $input->value instanceof \IPS\DateTime}}{$input->value->format('H:i')}{{endif}}">
+								</li>
+							</ul>
+						</li>
+					{{else}}
+						{$input|raw}
+					{{endif}}
+				{{endif}}
+			{{endforeach}}
+		{{endforeach}}
+	</ul>
+</div>

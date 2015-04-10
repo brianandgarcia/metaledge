@@ -1,0 +1,14 @@
+<ips:template parameters="$idx, $data, $orientation='vertical'" />
+<li class='ipsDataItem'>
+	{{if $orientation == 'vertical'}}
+		<div class='ipsDataItem_icon ipsPos_middle ipsType_center ipsType_large ipsType_light'><strong>{expression="$idx + 1"}</strong></div>
+	{{endif}}
+	<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny'>
+		{template="userPhoto" app="core" group="global" params="$data['member'], 'tiny'"}
+		<div>
+			{$data['member']->link()|raw}
+			<br>
+			<a href='{url="app=core&module=members&controller=profile&id={$data['member']->member_id}&do=reputation" seoTemplate="profile_reputation" seoTitle="$data['member']->members_seo_name"}' title="{lang="reputation_badge_tooltip_period"}" data-ipsTooltip class='ipsRepBadge {{if $data['rep'] > 0}}ipsRepBadge_positive{{elseif $data['rep'] < 0}}ipsRepBadge_negative{{else}}ipsRepBadge_neutral{{endif}}'><i class='fa {{if $data['rep'] > 0}}fa-plus-circle{{elseif $data['rep'] < 0}}fa-minus-circle{{else}}fa-circle-o{{endif}}'></i> {$data['rep']}</a>
+		</div>
+	</div>
+</li>

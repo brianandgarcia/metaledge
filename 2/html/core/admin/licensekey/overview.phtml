@@ -1,0 +1,85 @@
+<ips:template parameters="$licenseData" />
+<div class="ipsPad ipsAreaBackground_light">
+	{{if $licenseData['expires']}}
+		<span class="ipsBadge ipsBadge_medium ipsBadge_{{if strtotime( $licenseData['expires'] ) > time()}}positive{{else}}negative{{endif}} ipsPos_right">
+			{lang="license_expires"}{datetime="strtotime( $licenseData['expires'] )"}
+		</span>
+	{{endif}}
+	
+	<h3 class='ipsType_sectionHead'>
+		{{if $licenseData['cloud']}}
+			{{if $licenseData['edition']}}
+				{lang="license_name_cloud_edition" sprintf="$licenseData['edition']"}
+			{{else}}
+				{lang="license_name_cloud"}
+			{{endif}}
+		{{else}}
+			{{if $licenseData['edition']}}
+				{lang="license_name_license_edition" sprintf="$licenseData['edition']"}
+			{{else}}
+				{lang="license_name_license"}
+			{{endif}}
+		{{endif}}
+		<br>
+		{expression="substr_replace( $licenseData['key'], '**********', -10 )"}
+	</h3>
+	
+	<p class='ipsType_light'>
+		{lang="license_url" sprintf="$licenseData['url']"}
+		{{if $licenseData['test_url']}}
+			<br>
+			{lang="license_test_url" sprintf="$licenseData['test_url']"}
+		{{endif}}
+	</p>
+</div>
+<br>
+<div class="ipsPad ipsAreaBackground_light">
+	<h3 class="ipsType_sectionHead">{lang="licensekey_benefits_head"}</h3><br>
+	<br>
+	<ul class="ipsDataList ipsDataList_reducedSpacing">
+		{{foreach array( 'forums', 'calendar', 'blog', 'gallery', 'downloads', 'cms', 'nexus', 'spam', 'copyright' ) as $k}}
+			{{if $k !== 'copyright' or ( isset( $licenseData['products'][ $k ] ) and $licenseData['products'][ $k ] )}}
+				<li class="ipsDataItem">
+					<div class="ipsDataItem_icon">
+						{{if isset( $licenseData['products'][ $k ] ) and $licenseData['products'][ $k ]}}
+							{{if $k == 'spam' and strtotime( $licenseData['expires'] ) < time()}}
+								<i class="ipsType_large fa fa-exclamation-triangle"></i>
+							{{else}}
+								<i class="ipsType_large fa fa-check"></i>
+							{{endif}}
+						{{else}}
+							<i class="ipsType_large fa fa-times"></i>
+						{{endif}}
+					</div>
+					<div class="ipsDataItem_main">
+						<h4 class="ipsDataItem_title">{lang="license_benefit_$k"}</h4>
+					</div>
+				</li>
+			{{endif}}
+		{{endforeach}}
+		<li class="ipsDataItem">
+			<div class="ipsDataItem_icon">
+				{{if strtotime( $licenseData['expires'] ) > time()}}
+					<i class="ipsType_large fa fa-info-circle"></i>
+				{{else}}
+					<i class="ipsType_large fa fa-exclamation-triangle"></i>
+				{{endif}}
+			</div>
+			<div class="ipsDataItem_main">
+				<h4 class="ipsDataItem_title">{lang="license_benefit_chat" sprintf="$licenseData['chat_limit']"}</h4>
+			</div>
+		</li>
+		<li class="ipsDataItem">
+			<div class="ipsDataItem_icon">
+				{{if strtotime( $licenseData['expires'] ) > time()}}
+					<i class="ipsType_large fa fa-info-circle"></i>
+				{{else}}
+					<i class="ipsType_large fa fa-exclamation-triangle"></i>
+				{{endif}}
+			</div>
+			<div class="ipsDataItem_main">
+				<h4 class="ipsDataItem_title">{lang="license_benefit_support" sprintf="$licenseData['support']"}</h4>
+			</div>
+		</li>
+	</ul>
+</div>

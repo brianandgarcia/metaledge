@@ -1,0 +1,6 @@
+/* ----- */
+.ipsTemplate_box {
+	max-height: 300px;
+	overflow: auto;
+	border: 1px solid #ededed;
+}

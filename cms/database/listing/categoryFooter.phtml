@@ -1,0 +1,22 @@
+<ips:template parameters="$category, $table, $activeFilters" original_group="listing" key="database_listing_categoryFooter" />
+
+{{if ! \IPS\Request::i()->isAjax() AND ! isset( \IPS\Request::i()->advancedSearchForm ) AND $category->show_records}}
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both ipsResponsive_showPhone ipsResponsive_block">
+		{{if $category->can('add')}}
+			<li class='ipsToolList_primaryAction'>
+				<a class="ipsButton ipsButton_medium ipsButton_important ipsButton_fullWidth" href="{$category->url()->setQueryString( array( 'do' => 'form', 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId ) )}">{lang="cms_add_new_record_button" sprintf="\IPS\cms\Databases::load( $category->database_id )->recordWord( 1 )"}</a>
+			</li>
+		{{endif}}
+		{{if \IPS\Member::loggedIn()->member_id}}
+			<li>
+				<a class="ipsButton ipsButton_medium ipsButton_fullWidth ipsButton_link" href="{$category->url()->setQueryString( 'do', 'markRead' )->csrf()}"><i class="fa fa-check"></i> {lang="cms_mark_read"}</a>
+			</li>
+		{{endif}}
+	</ul>
+{{endif}}
+
+{{if !\IPS\Request::i()->advancedSearchForm}}
+	<div class="ipsResponsive_showPhone ipsResponsive_block ipsSpacer ipsSpacer_both ipsClearfix">
+		{template="follow" app="core" group="global" params="'cms','categories' . $category->database_id, $category->_id, \IPS\cms\Records::containerFollowerCount( $category )"}
+	</div>
+{{endif}}

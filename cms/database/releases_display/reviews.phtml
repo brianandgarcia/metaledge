@@ -1,0 +1,63 @@
+<ips:template parameters="$record" original_group="releases_display" key="database_releases_display_reviews" />
+<div data-controller='core.front.core.commentFeed' data-commentsType='reviews' data-baseURL='{$record->url()}' {{if $record->isLastPage('reviews')}}data-lastPage{{endif}} data-feedID='file-{$record->id}-reviews'>
+	{{if $record->canReview()}}
+		{{if $record->locked()}}
+			<strong class='ipsType_warning'><i class='fa fa-info-circle'></i> {lang="item_locked_can_review"}</strong>
+		{{endif}}
+		<div id='elFileReviewForm'>
+			{$record->reviewForm()|raw}
+		</div>
+	{{else}}
+		{{if $record->locked()}}
+			{template="commentUnavailable" group="forms" location="front" app="core" params="'item_locked_cannot_comment'"}
+		{{elseif \IPS\Member::loggedin()->restrict_post}}
+			{template="commentUnavailable" group="forms" location="front" app="core" params="'restricted_cannot_comment', \IPS\Member::loggedIn()->warnings(5,NULL,'rpa'), \IPS\Member::loggedIn()->restrict_post"}
+		{{elseif $record->hasReviewed()}}
+			<!-- Already reviewed -->
+		{{elseif \IPS\Member::loggedIn()->restrict_post}}
+			{template="reviewUnavailable" group="forms" location="front" app="core" params="'restricted_cannot_comment'"}
+		{{elseif \IPS\Member::loggedIn()->members_bitoptions['unacknowledged_warnings']}}
+			{template="reviewUnavailable" group="forms" location="front" app="core" params="'unacknowledged_warning_cannot_post', \IPS\Member::loggedIn()->warnings( 1, FALSE )"}
+		{{endif}}
+	{{endif}}
+	{{if count( $record->reviews() )}}
+		<div class="ipsClearfix ipsSpacer_both">
+			{{if $record->reviewPageCount() > 1}}
+				<div class="ipsPos_left ipsResponsive_noFloat">
+					{$record->reviewPagination( array( 'tab', 'sort' ) )|raw}
+				</div>
+			{{endif}}
+			<div class="ipsClearfix ipsPos_right ipsResponsive_hidePhone">
+				<ul class="ipsButtonRow ipsClearfix">
+					<li data-action="tableFilter">
+						<a href="{$record->url()->setQueryString( array( 'd' => $record::$customDatabaseId, 'tab' => 'reviews', 'page' => 1, 'sort' => 'helpful' ) )}" class="{{if !isset( request.sort ) or request.sort != 'newest'}}ipsButtonRow_active{{endif}}" data-action="filterClick">{lang="most_helpful"}</a>
+					</li>
+					<li data-action="tableFilter">
+						<a href="{$record->url()->setQueryString( array( 'd' => $record::$customDatabaseId, 'tab' => 'reviews', 'page' => 1, 'sort' => 'newest' ) )}" class="{{if isset( request.sort ) and request.sort == 'newest'}}ipsButtonRow_active{{endif}}" data-action="filterClick">{lang="newest"}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div data-role='commentFeed' data-controller='core.front.core.moderation'>
+			<form action="{$record->url()->setQueryString( 'do', 'multimodReview' )}" method="post" data-ipsPageAction data-role='moderationTools'>
+				{{$reviewCount=0; $timeLastRead = $record->timeLastRead(); $lined = FALSE;}}
+				{{foreach $record->reviews() as $review}}
+					{{if !$lined and $timeLastRead and $timeLastRead->getTimestamp() < $review->mapped('date')}}
+						{{if $lined = TRUE and $reviewCount}}
+							<hr class="ipsCommentUnreadSeperator">
+						{{endif}}
+					{{endif}}
+					{{$reviewCount++;}}
+					{$review->html()|raw}
+				{{endforeach}}
+				{template="commentMultimod" app="core" group="global" params="$record, 'review'"}
+			</form>
+		</div>
+		{{if $record->reviewPageCount() > 1}}
+			<div>
+				{$record->reviewPagination( array( 'tab', 'sort' ) )|raw}
+			</div>
+		{{endif}}
+	{{endif}}
+</div>

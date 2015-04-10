@@ -1,0 +1,36 @@
+<ips:template parameters="$lastUpdated, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $formClass='', $attributes=array(), $sidebar=array(), $form=NULL" />
+<div data-controller='core.admin.dashboard.adminNotes'>
+	<form id='admin_notes' accept-charset='utf-8' action="{$action}" method="post" data-ipsForm class="{$formClass}" {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}}>
+		<input type="hidden" name="{$id}_submitted" value="1">
+		{{foreach $hiddenValues as $k => $v}}
+			<input type="hidden" name="{$k}" value="{$v}">
+		{{endforeach}}
+
+
+		{{foreach $elements as $collection}}
+			{{foreach $collection as $input}}
+				{$input->html()|raw}
+			{{endforeach}}
+		{{endforeach}}
+
+		<div class='ipsClearfix ipsType_light ipsType_medium'>
+			<div class='ipsPad_half ipsPos_right'>
+				<input type='submit' class='ipsButton ipsButton_alternate' value="{lang="save"}">
+			</div>
+			<div class='ipsPad_half ipsPos_left'>
+				<span data-role='notesLoading' class='ipsHide'>
+					<i class='icon-spinner2 ipsLoading_tinyIcon'></i> {lang="saving"}&nbsp;&nbsp;
+				</span>
+
+					<h3 class='ipsType_minorHeading'>{lang="admin_notes_last_update"}</h3>
+					<span data-role='notesInfo' class='ipsType_medium'>
+						{{if $lastUpdated}}
+						{$lastUpdated}
+						{{else}}
+						{lang="never"}
+						{{endif}}
+					</span>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,18 @@
+/* Features Page */
+.metealEdge_features-display .ipsType_pageTitle {
+	font: normal 48px / 65px "Calluna";
+}
+.metalEdge_features_dblock {
+	background: #FFF;
+	min-height: 325px;
+	margin-bottom: 25px;
+}
+	.metalEdge_features_dblock .ipsPad {
+		padding: 0 10px 1px;
+	}
+	.metalEdge_features_dblock h2 {
+		font-size: 24px;
+	}
+	.metalEdge_features_dblock .ipsType_pageTitle {
+		margin: 10px 0 0;
+	}

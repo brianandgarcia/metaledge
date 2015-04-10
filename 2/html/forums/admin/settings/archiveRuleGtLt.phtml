@@ -1,0 +1,6 @@
+<ips:template parameters="$name, $value" />
+<select name="{$name}[0]">
+	<option value=">" {{if $value[0] == '>'}}selected{{endif}}>{lang="greater_than"}</option>
+	<option value="<" {{if $value[0] == '<'}}selected{{endif}}>{lang="less_than"}</option>
+</select>
+<input type="number" name="{$name}[1]" value="{$value[1]}" id='el{$name}_1' class="ipsField_short"> {lang="or"} <input type="checkbox" name="{$name}[2]" data-control="unlimited" {{if $value[2]}}checked{{endif}}> <label for='el{$name}_1' class='ipsField_unlimited'>{{if mb_strpos( $name, 'not' )}}{lang="no_restriction"}{{else}}{lang="any_time"}{{endif}}</label>

@@ -1,0 +1,37 @@
+<ips:template parameters="$stats, $orientation='vertical'" />
+<h3 class='ipsType_reset ipsWidget_title'>{lang="block_forumStatistics"}</h3>
+<div class='ipsWidget_inner'>
+	{{if $orientation == 'vertical'}}
+		<div class='ipsPad_half'>
+			<table class='ipsDataList'>
+				<tr class='ipsDataItem'>
+					<td class='ipsDataItem_main ipsPos_middle'>
+						<strong>{lang="total_topics"}</strong>
+					</td>
+					<td class='ipsDataItem_stats ipsDataItem_statsLarge'>
+						<span class='ipsDataItem_stats_number'>{number="$stats['total_topics']"}</span>
+					</td>
+				</tr>
+				<tr class='ipsDataItem'>
+					<td class='ipsDataItem_main ipsPos_middle'>
+						<strong>{lang="total_posts"}</strong>
+					</td>
+					<td class='ipsDataItem_stats ipsDataItem_statsLarge'>
+						<span class='ipsDataItem_stats_number'>{number="$stats['total_posts']"}</span>
+					</td>
+				</tr>
+			</table>
+		</div>
+	{{else}}
+		<div class='ipsGrid ipsGrid_collapsePhone ipsWidget_stats'>
+			<div class='ipsGrid_span6 ipsType_center'>
+				<span class='ipsType_large ipsWidget_statsCount'>{number="$stats['total_topics']"}</span><br>
+				<span class='ipsType_light ipsType_medium'>{lang="total_topics"}</span>
+			</div>
+			<div class='ipsGrid_span6 ipsType_center'>
+				<span class='ipsType_large ipsWidget_statsCount'>{number="$stats['total_posts']"}</span><br>
+				<span class='ipsType_light ipsType_medium'>{lang="total_posts"}</span>
+			</div>
+		</div>
+	{{endif}}
+</div>

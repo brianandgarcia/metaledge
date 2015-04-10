@@ -1,0 +1,66 @@
+<ips:template parameters="$chart, $html" />
+<div class='ipsChart' data-controller='core.admin.core.dynamicChart' data-chart-url='{$chart->baseURL}' data-chart-identifier='{$chart->identifier}' data-chart-type="{$chart->type}" data-chart-timescale="{$chart->timescale}">
+	<div class='ipsPad ipsAreaBackground ipsClearfix'>
+		{{if $chart->title}}
+			<h2 class='ipsType_sectionHead'>{$chart->title}</h2>
+		{{endif}}
+		<ul class='ipsList_inline'>
+			<li data-role="groupingButtons">
+				<span class="ipsButton_split ipsClearfix">
+					{{foreach array( 'daily', 'weekly', 'monthly' ) as $k}}
+						<a class='ipsButton ipsButton_verySmall {{if $chart->type == 'Table'}}ipsButton_disabled ipsButton_veryLight{{else}}{{if $chart->timescale == $k}}ipsButton_primary{{else}}ipsButton_veryLight{{endif}}{{endif}}' href="{$chart->url->setQueryString( array( 'timescale' => array( $chart->identifier => $k ), 'noheader' => 1 ) )}" data-timescale="{$k}" {{if $chart->timescale == $k}}data-selected{{endif}}>{lang="stats_date_group_$k"}</a>
+					{{endforeach}}
+				</span>
+			</li>
+			<li class="ipsClearfix">
+				<a data-action='chartDate' data-ipsMenu data-ipsMenu-closeOnClick='false' id='el{$chart->identifier}Date' href="#" class="ipsButton ipsButton_verySmall ipsButton_veryLight"><i class='fa fa-calendar'></i> &nbsp;{lang="stats_date_range"} <i class='fa fa-caret-down'></i></a>
+				<div id='el{$chart->identifier}Date_menu' class='ipsMenu ipsMenu_normal ipsHide ipsPad'>
+					<form accept-charset='utf-8' action="{$chart->url}" method="post" data-role="dateForm" data-ipsForm>
+						{template="date" group="forms" location="global" app="core" params="'start', $chart->start ? $chart->start->localeDate() : NULL, FALSE, NULL, NULL, FALSE, FALSE, NULL, NULL, array(), TRUE, 'ipsField_fullWidth', \IPS\Member::loggedIn()->language()->addToStack('stats_start_date')"}
+						<br><br>
+						{template="date" group="forms" location="global" app="core" params="'end', $chart->start ? $chart->start->localeDate() : NULL, FALSE, NULL, NULL, FALSE, FALSE, NULL, NULL, array(), TRUE, 'ipsField_fullWidth', \IPS\Member::loggedIn()->language()->addToStack('stats_end_date')"}
+						<br><br>
+						<button type="submit" class="ipsButton ipsButton_primary ipsButton_fullWidth" data-role="updateDate">{lang="submit"}</button>
+					</form>
+				</div>
+			</li>
+			{{if count( $chart->availableFilters ) > 0}}
+				<li>
+					<a data-action="chartFilter" data-ipsMenu data-ipsMenu-selectable data-ipsMenu-closeOnClick='false' id='el{$chart->identifier}Filter' href="#" class="ipsButton ipsButton_verySmall ipsButton_veryLight"><i class='fa fa-filter'></i> &nbsp;{lang="stats_chart_filters"} <i class='fa fa-caret-down'></i></a>
+					<ul id='el{$chart->identifier}Filter_menu' class='ipsMenu ipsMenu_selectable ipsMenu_auto ipsHide' data-role='filterMenu'>
+						{{foreach $chart->availableFilters as $f => $name}}
+							<li class='ipsMenu_item {{if in_array( $f, $chart->currentFilters )}}ipsMenu_itemChecked{{endif}}' data-ipsMenuValue='{$f}'><a href="{$chart->flipUrlFilter( $f )}">{$name}</a></li>
+						{{endforeach}}
+					</ul>
+				</li>
+			{{endif}}
+			{{if count( $chart->availableTypes ) > 1}}
+				<li class='ipsPos_right'>
+					<span class="ipsButton_split ipsClearfix">
+						{{foreach $chart->availableTypes as $t}}
+							<a class='ipsButton ipsButton_verySmall {{if $chart->type == $t}}ipsButton_primary{{else}}ipsButton_veryLight{{endif}}' href="{$chart->url->setQueryString( array( 'type' => array( $chart->identifier => $t ), 'noheader' => 1 ) )}" data-ipsTooltip title='{lang="chart_{$t}"}' data-type='{$t}' {{if $chart->type == $t}}data-selected{{endif}}>
+								{{if $t === 'Table'}}
+									<i class="fa fa-table"></i>
+								{{elseif $t === 'LineChart'}}
+									<i class="fa fa-line-chart"></i>
+								{{elseif $t === 'ColumnChart'}}
+									<i class="fa fa-bar-chart"></i>
+								{{elseif $t === 'BarChart'}}
+									<i class="fa fa-bar-chart fa-rotate-90"></i>
+								{{elseif $t === 'PieChart'}}
+									<i class="fa fa-pie-chart"></i>
+								{{elseif $t === 'GeoChart'}}
+									<i class="fa fa-globe"></i>
+								{{endif}}
+							</a>
+						{{endforeach}}
+					</span>
+				</li>
+			{{endif}}
+		</ul>
+		
+	</div>
+	<div class='ipsChart_chart ipsPad' data-role="chart">
+		{$html|raw}
+	</div>
+</div>

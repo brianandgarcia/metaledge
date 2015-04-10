@@ -1,0 +1,8 @@
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	.ipsControlStrip {
+		float: none;
+	}
+	
+}

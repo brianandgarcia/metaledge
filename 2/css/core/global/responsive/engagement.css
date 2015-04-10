@@ -1,0 +1,43 @@
+/* BOTH */
+@media screen and (max-width: 979px) {
+	.ipsLikeRep {
+		margin-bottom: 10px;
+	}
+}
+
+/* TABLETS */
+@media screen and (max-width: 979px) {
+	html[dir="ltr"] .ipsFollow {
+		float: right;
+	}
+	html[dir="rtl"] .ipsFollow {
+		float: left;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+	
+	.ipsFollow {
+		width: 100%;
+		float: none !important;
+	}
+
+	.ipsFollow > a, .ipsFollow > span, .ipsFollow > a > span {
+		display: table-cell !important;
+	}
+
+	.ipsFollow > a:not( .ipsCommentCount ), .ipsFollow > span:not( .ipsCommentCount ), .ipsFollow > a > span:not( .ipsCommentCount ) {
+		width: 100%;
+	}
+
+	/*.ipsFollow,
+	.ipsFollow > a:not( .ipsCommentCount ), .ipsFollow > span:not( .ipsCommentCount ), .ipsFollow > a > span:not( .ipsCommentCount ) {
+		width: 100%;
+	}
+
+	.ipsFollow .ipsCommentCount {
+		float: right;
+		top: 2px;
+	}*/
+}

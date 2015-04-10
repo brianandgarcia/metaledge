@@ -1,0 +1,130 @@
+/* BOTH */
+@media screen and (max-width: 979px) {
+	.cAuthorPane {
+		margin-bottom: 0 !important;
+	}
+
+	.cTopicList .cBestAnswerIndicator {
+		width: 28px;
+		height: 28px;
+		line-height: 28px;
+		font-size: 15px;
+	}
+
+	.cTopicList .ipsDataItem_icon {
+		min-width: 25px;
+	}
+
+	html[dir="ltr"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main, 
+	html[dir="ltr"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main + .ipsDataItem_stats {
+		margin-left: 30px;
+	}
+	html[dir="rtl"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main, 
+	html[dir="rtl"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main + .ipsDataItem_stats {
+		margin-right: 30px;
+	}
+}
+
+/* TABLETS */
+@media screen and (min-width: 768px) and (max-width: 979px) {
+	.cForumQuestion .ipsDataItem_main {
+		width: 100%;
+	}
+
+	.cForumQuestion .ipsDataItem_main,
+	.cForumQuestion .cForumQuestion_stat {
+		display: table-cell;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	html[dir="ltr"] .cPost .ipsComment_content {
+		padding-left: 7px;
+	}
+	html[dir="rtl"] .cPost .ipsComment_content {
+		padding-right: 7px;
+	}
+	
+	.cPost .cAuthorPane + .ipsColumn {
+		margin-bottom: 0;
+	}
+
+	.cPost .ipsComment_meta {
+		border-bottom: 1px solid rgba(0,0,0,0.1);
+	}
+
+	html[dir="ltr"] .cTopic .ipsComment.ipsComment_ignored {
+		padding-left: 7px;
+	}
+	html[dir="rtl"] .cTopic .ipsComment.ipsComment_ignored {
+		padding-right: 7px;
+	}
+
+	.cAuthorPane_photo .ipsUserPhoto {
+		margin-top: 15px;
+	}
+	html[dir="ltr"] .cAuthorPane_photo .ipsUserPhoto {
+		margin-left: 7px;
+	}
+	html[dir="rtl"] .cAuthorPane_photo .ipsUserPhoto {
+		margin-right: 7px;
+	}
+
+	/* Forum view */
+	.cForumRow .ipsItemStatus_custom {
+		max-width: 26px;
+	}
+
+	html[dir="ltr"] .cForumQuestions.cTopicList .ipsDataItem_main {
+		margin-left: 40px;
+	}
+	html[dir="rtl"] .cForumQuestions.cTopicList .ipsDataItem_main {
+		margin-right: 40px;
+	}
+
+	.cForumQuestions.cTopicList .cForumQuestion_stat {
+		display: inline-block !important;
+	}
+
+	.cForumQuestions .cForumQuestion .cForumQuestion_stat,
+	.cForumQuestions .cForumQuestion .cForumQuestion_stat span:first-child {
+		display: inline-block;
+		min-width: 0;
+		color: inherit;
+	}
+
+		.cForumQuestions .cForumQuestion .cForumQuestion_stat span {
+			font-size: 13px;
+			color: inherit;
+			font-weight: bold;
+		}
+
+		html[dir="ltr"] .cForumQuestions .cForumQuestion .ipsDataItem_modCheck,
+		html[dir="ltr"] .cForumQuestions .cForumQuestion .ipsDataItem_main + .cForumQuestion_stat {
+			margin-left: 40px;
+		}
+		html[dir="rtl"] .cForumQuestions .cForumQuestion .ipsDataItem_modCheck,
+		html[dir="rtl"] .cForumQuestions .cForumQuestion .ipsDataItem_main + .cForumQuestion_stat {
+			margin-right: 40px;
+		}
+
+			.cForumQuestions .cForumQuestion .cForumQuestion_stat + .ipsDataItem_modCheck {
+				position: absolute;
+				top: 50px;
+			} 
+			html[dir="ltr"] .cForumQuestions .cForumQuestion .cForumQuestion_stat + .ipsDataItem_modCheck {
+				left: -18px;
+			}
+			html[dir="rtl"] .cForumQuestions .cForumQuestion .cForumQuestion_stat + .ipsDataItem_modCheck {
+				right: -18px;
+			}
+
+			html[dir="ltr"] .cForumQuestions .cForumQuestion .cForumQuestion_stat + .cForumQuestion_stat {
+				margin-left: 10px;
+			}
+			html[dir="rtl"] .cForumQuestions .cForumQuestion .cForumQuestion_stat + .cForumQuestion_stat {
+				margin-right: 10px;
+			}
+}

@@ -1,0 +1,12 @@
+<ips:template parameters="$form" />
+{{if !\IPS\Request::i()->isAjax()}}
+	{template="pageHeader" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('contact')"}
+{{else}}
+<div class='ipsPad'>
+{{endif}}
+<div class='ipsType_normal ipsType_richText'>
+	{$form|raw}
+</div>
+{{if \IPS\Request::i()->isAjax()}}
+</div>
+{{endif}}

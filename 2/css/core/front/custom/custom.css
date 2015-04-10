@@ -1,0 +1,276 @@
+/**
+ * This file is for your custom CSS.
+ * This file is not modified or overwritten during upgrades
+ */
+body {
+    background: #f1e6e5;
+    font: normal 16px / 24px 'Calluna';
+}
+
+a {
+    color: #ff0000;
+}
+
+.ipsLayout_container {
+    max-width: 1100px;
+}
+
+#ipsLayout_mainArea,
+#ipsLayout_sidebar,
+.ipsBox:not( .ipsBox_transparent ),
+.ipsType_sectionTitle,
+.ipsAreaBackground {
+    background: transparent;
+}
+
+#ipsLayout_contentWrapper {
+    max-width: 1100px;
+    margin: auto;
+}
+
+#ipsLayout_contentArea {
+    border: 0;
+}
+
+.ipsBox {
+    border: 0;
+}
+
+.ipsType_normal {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.ipsType_pageTitle {
+
+    color: #000;
+    font: normal 32px / 32px "Calluna";
+    padding-left: 0;
+
+}
+
+.ipsType_sectionTitle {
+    color: #000;
+    font: normal 24px / 24px "Calluna";
+    padding-left: 0;
+}
+
+.ipsPageHeader h1 {
+    font: normal 48px / 48px "Calluna";
+    color: #000;
+}
+
+.ipsDataItem {
+    border: 0;
+}
+.ipsWidget.ipsWidget_vertical .ipsWidget_inner {
+    background: #e7dcdb;
+}
+
+.ipsDataList.ipsDataList_reducedSpacing .ipsDataItem .ipsDataItem_main {
+    vertical-align: middle;
+}
+
+#ipsLayout_header > header {
+    background: #ca0000;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    margin-bottom: 5px;
+    height: 72px;
+    line-height: 70px;
+}
+#ipsLayout_mainNav {
+    margin: 0;
+    width: 100%;
+    margin-top: 28px;
+}
+#elUserNav {
+    margin-top: 26px;
+}
+#elUserNav.cSignedIn {
+    margin: 0;
+}
+[data-pagecontroller="register"] #ipsLayout_mainNav {
+    margin-top: 0;
+}
+#ipsLayout_mainNav a {
+    color: #FFF;
+    font: normal 14px "proxima-nova-condensed";
+    text-transform: uppercase;
+    opacity: 1;
+    text-shadow: none;
+    padding: 0 6px;
+}
+
+#elLogo {
+    float: left;
+}
+
+.ipsAreaBackground.ipsPad {
+    padding: 0;
+}
+
+
+div#elSearchNavContainer {
+    padding-left: 240px;
+    width: 75%;
+}
+
+#elSearch {
+    margin: 21px 0;
+    display: none; /* Until I set up a click/reveal style - MH */
+}
+
+#elUserNav {
+    top: 0;
+    font-family: "proxima-nova-condensed";
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 70px;
+}
+
+.ipsApp .ipsSubNavigation {
+    background: transparent;
+    border-bottom: 1px solid red;
+}
+
+#ipsLayout_mainArea {
+    padding: 15px 15px 15px 0;
+}
+
+#ipsLayout_sidebar {
+    padding: 15px 0 15px;
+    margin-left: 15px;
+}
+
+#elHeaderSubLinks, .ipsBreadcrumb > ul li {
+
+    text-transform: uppercase;
+    font: bold 16px / 16px "proxima-nova-condensed";
+    text-shadow: none;
+
+}
+
+.ipsBreadcrumb > ul li {
+
+    height: auto;
+
+}
+
+#elHeaderSubLinks a, .ipsBreadcrumb > ul a {
+
+    color: black;
+
+}
+
+.cForumList {
+    margin-right: 15px;
+}
+
+.ipsWidget.ipsWidget_vertical .ipsWidget_title {
+    font-family: "proxima-nova-condensed";
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+.ipsDataItem {
+    border-color: #d9c9c8;
+}
+
+.ipsItemStatus:not( .ipsItemStatus_large ) {
+    color: #c8b9b8;
+}
+.ipsButtonBar {
+    background: #e7dcdb;
+}
+
+html[dir="ltr"] .ipsButtonRow li:first-child > a, .ipsButtonRow li:first-child > span {
+    background: #FFF;
+    color: #444;
+}
+
+.ipsApp .ipsButton.ipsButton_small {
+    font-family: "proxima-nova-condensed", Helvetica, Arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #f00;
+    background-color: transparent;
+    border: transparent;
+
+}
+
+.ipsApp .ipsButton.ipsButton_small:hover {
+    color: #000;
+}
+
+.ipsCommentCount {
+    background: #FFF;
+}
+
+html[dir="ltr"] .ipsCommentCount:after {
+    border-color: transparent #FFF transparent transparent;
+}
+
+.ipsDataList_readStatus .ipsDataItem:not( .ipsDataItem_unread ):not( .ipsDataItem_selected ) {
+    background: transparent;
+}
+
+.cPost {
+    background: #FFF !important;
+}
+
+.ipsLikeRep {
+    background: none;
+}
+/* Pages */
+
+/* Typography */
+a.metalEdge_largeTitle {
+    line-height: 38px;
+}
+
+.cCmsCategoryFeaturedEntry {
+    border-bottom: 1px solid #e7dcdb;
+}
+
+hr.ipsHr {
+    border-color: #e7dcdb;
+}
+
+
+/* Events */
+.cCalendarWeek > li {
+    margin-bottom: 0;
+    border-bottom: 1px solid #f1e6e5;
+}
+.cCalendarWeek_day {
+    font: bold 16px / 18px "proxima-nova-condensed";
+}
+.ipsCarousel_item .cCalendarBlock {
+    background: #FFF;
+}
+
+
+/* Registeration Form */
+[data-role="registerForm"] .ipsForm {
+    max-width: 600px;
+    margin: auto;
+}
+
+.cCommunityHome {
+    margin-top: 28px;
+}
+
+[data-pagecontroller="login"] .ipsForm {
+    max-width: 350px;
+    margin: auto;
+}
+[data-pagecontroller="login"] .cCommunityHome {
+    margin-top: 0;
+}
+/* Calendar */
+

@@ -1,0 +1,16 @@
+<ips:template parameters="$items, $title, $orientation='vertical'" />
+{{if !empty( $items ) }}
+	<h3 class='ipsWidget_title ipsType_reset'>{$title}</h3>
+		<div class='ipsPad_half ipsWidget_inner'>
+			<ul class='ipsDataList ipsDataList_reducedSpacing'>
+				{{foreach $items as $item}}
+					<li class='ipsDataItem'>
+						<div class='ipsDataItem_main'>
+							<a href="{$item['link']}" target="_blank" class='ipsDataItem_title ipsType_break'>{wordbreak="$item['title']"}</a><br>
+							<span class='ipsType_light ipsType_small'>{datetime="$item['date']"}</span>
+						</div>
+					</li>
+				{{endforeach}}
+			</ul>
+		</div>
+{{endif}}

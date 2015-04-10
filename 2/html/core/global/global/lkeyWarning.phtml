@@ -1,0 +1,12 @@
+<ips:template parameters="" />
+{{if $lkeyWarning = \IPS\Output::i()->licenseKeyWarning()}}
+	{{if $lkeyWarning == 'none'}}
+		<div class="ipsMessage ipsMessage_error" id='elLicenseKey'>
+			{lang="license_error_none"}
+		</div>
+	{{elseif $lkeyWarning == 'expired'}}
+		<div class="ipsMessage ipsMessage_warning" id='elLicenseKey'>
+			{lang="license_error_expired"}
+		</div>
+	{{endif}}
+{{endif}}

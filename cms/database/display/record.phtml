@@ -1,0 +1,187 @@
+<ips:template parameters="$record, $commentsAndReviews, $updateForm=NULL, $nextUnread=NULL" original_group="display" key="database_display_record" />
+{{$FieldsClass  = '\\IPS\\cms\\Fields'  . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+<div class="ipsGrid metalEdge_features-display">
+	<div class="ipsGrid_span9">
+		<div class='ipsClearfix'>
+			{{if $record->record_image}}
+				<div >
+					<img class="ipsImage" src="{$record->record_image}">
+				</div>
+			{{endif}}
+			<div>
+				<h1 class='ipsType_pageTitle ipsType_break'>
+					{{if $record->prefix()}}
+						{template="prefix" group="global" app="core" params="$record->prefix( TRUE ), $record->prefix()"}
+					{{endif}}
+					{{if $record->locked()}}<i class='fa fa-lock'></i> {{endif}}{lang="$record->_title" wordbreak="true"}
+					{{if $record->isFutureDate() || $record->mapped('pinned') || $record->mapped('featured') || $record->hidden() === -1 || $record->hidden() === 1}}
+						{{if $record->isFutureDate()}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_warning" data-ipsTooltip title='{$record->futureDateBlurb()}'><i class='fa fa-clock-o'></i></span>
+						{{elseif $record->hidden() === -1}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_warning" data-ipsTooltip title='{$record->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
+						{{elseif $record->hidden() === 1}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>
+						{{endif}}
+						{{if $record->mapped('pinned')}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_positive" data-ipsTooltip title='{lang="pinned"}'><i class='fa fa-thumb-tack'></i></span>
+						{{endif}}
+						{{if $record->mapped('featured')}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
+						{{endif}}
+					{{endif}}
+					<!-- <div class='ipsPos_right ipsResponsive_noFloat ipsResponsive_hidePhone'>
+						{template="follow" app="core" group="global" params="'cms', 'records'.$record::$customDatabaseId, $record->primary_id_field, $record->followers()->count( TRUE )"}
+					</div> -->
+				</h1>
+				{{if $record::database()->options['reviews']}}
+					<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+						<meta itemprop='ratingValue' content='{$record->averageReviewRating()}'>
+						<meta itemprop='reviewCount' content='{$record->record_reviews}'>
+						{template="rating" group="global" location="front" app="core" params="'large', $record->averageReviewRating()"}&nbsp;&nbsp; <span class='ipsType_normal ipsType_light'>({lang="num_reviews" pluralize="$record->record_reviews"})</span>
+					</span>
+				{{elseif $record->container()->allow_rating}}
+					<div>{$record->rating()|raw}</div>
+				{{endif}}
+
+				<div class='ipsClearfix ipsSpacer_bottom'>
+					<div>
+						<p class='ipsType_reset ipsType_large ipsType_blendLinks'>
+							{lang="content_record_started_by" htmlsprintf="$record->author()->link()"},
+							<span class='ipsType_light ipsType_medium ipsType_reset'>
+								{datetime="$record->record_publish_date"}
+								{{if $record->editLine()}}
+									({lang="edited_lc"})
+								{{endif}}
+							</span>
+						</p>
+						{{if $customFields = $FieldsClass::display( $record->fieldValues(), 'display' ) and count( $customFields )}}
+						<ul class='ipsList_inline'>
+						{{foreach $customFields as $fieldId => $fieldValue}}
+							{{if $fieldValue}}
+								{$fieldValue|raw}
+							{{endif}}
+						{{endforeach}}
+						</ul>
+						{{endif}}
+					</div>
+				</div>	
+
+				{{if count( $record->tags() )}}		
+					{template="tags" group="global" app="core" params="$record->tags()"}
+				{{endif}}	
+			</div>
+		</div>
+<div class='cTopic'>
+	<section class='ipsType_richText ipsType_normal ipsType_break ipsContained'>
+
+		{$record->_content|raw}
+		
+		{{if $record->editLine()}}
+			{$record->editLine()|raw}
+		{{endif}}
+			
+		{{if $record instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
+			<div class='ipsPos_right'>
+				{template="reputation" app="core" group="global" params="$record"}
+			</div>
+		{{endif}}
+		{{if $record->isFutureDate() or $record->canPin() or $record->canUnpin() or $record->canFeature() or $record->canUnfeature() or $record->canHide() or $record->canUnhide() or $record->canMove() or $record->canLock() or $record->canUnlock() or $record->canDelete()}}
+			<a href='#elentryActions_menu' id='elentryActions' class='ipsButton ipsButton_light ipsButton_verySmall' data-ipsMenu>{lang="content_record_actions" sprintf="$record::database()->recordWord( 1, TRUE )"} <i class='fa fa-caret-down'></i></a>
+			<ul id='elentryActions_menu' class='ipsMenu ipsMenu_auto ipsHide'>
+				{{if $record->isFutureDate() and $record::canFuturePublish( NULL, $record->container() )}}
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'publish' ) )}' data-confirm title='{lang="publish_now"}'>{lang="publish"}</a></li>
+				{{endif}}
+				{{if $record->canFeature()}}
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'feature' ) )}' title='{lang="feature_title"}'>{lang="feature"}</a></li>
+				{{endif}}
+				{{if $record->canUnfeature()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'unfeature' ) )}' title='{lang="unfeature_title"}'>{lang="unfeature"}</a></li>
+				{{endif}}
+				{{if $record->canPin()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'pin' ) )}' title='{lang="pin_title"}'>{lang="pin"}</a></li>
+				{{endif}}
+				{{if $record->canUnpin()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'unpin' ) )}' title='{lang="unpin_title"}'>{lang="unpin"}</a></li>
+				{{endif}}
+				{{if $record->canHide()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'hide' ) )}' title='{lang="hide_title"}' data-ipsDialog data-ipsDialog-title="{lang="hide"}">{lang="hide"}</a></li>
+				{{endif}}
+				{{if $record->canUnhide()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'unhide' ) )}' title='{{if $record->hidden() === 1}}{lang="approve_title"}{{else}}{lang="unhide_title"}{{endif}}'>{{if $record->hidden() === 1}}{lang="approve"}{{else}}{lang="unhide"}{{endif}}</a></li>
+				{{endif}}
+				{{if $record->canLock()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'lock' ) )}' title='{lang="lock_title"}'>{lang="lock"}</a></li>
+				{{endif}}
+				{{if $record->canUnlock()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'unlock' ) )}' title='{lang="unlock_title"}'>{lang="unlock"}</a></li>
+				{{endif}}
+				{{if $record->canMove()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('move')->csrf()}' data-ipsDialog data-ipsDialog-title="{lang="move"}"  title='{lang="move_title"}'>{lang="move"}</a></li>
+				{{endif}}
+				{{if $record->canDelete()}}				
+					<li class='ipsMenu_item'><a href='{$record->url('moderate')->csrf()->setQueryString( array( 'action' => 'delete' ) )}' data-confirm  title='{lang="delete_title"}'>{lang="delete"}</a></li>
+				{{endif}}
+			</ul>
+		{{endif}}
+		{{if $record->canEdit()}}
+			&nbsp;&nbsp;<a href='{$record->url('edit')->csrf()}' title='{lang="edit_title"}'>{lang="edit"}</a>
+		{{endif}}
+		{{if !\IPS\Member::loggedIn()->group['gbw_no_report'] }}
+			&nbsp;&nbsp;<a href='{$record->url('report')}' data-ipsDialog data-ipsDialog-size='medium' data-ipsDialog-title="{lang="report_entry"}" data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="report_submit_success"}" title="{lang="content_record_report" sprintf="$record::database()->recordWord( 1, TRUE )"}">{lang="content_record_report" sprintf="$record::database()->recordWord( 1, TRUE )"}</a>
+		{{endif}}
+		{{if $record->canManageRevisions()}}
+			&nbsp;&nbsp;<a href='{$record->url('revisions')}' data-ipsDialog data-ipsDialog-title="{lang="content_view_revisions"}" title="{lang="content_view_revisions"}">{lang="content_view_revisions"}</a>
+		{{endif}}
+		{{if !$record->container()->disable_sharelinks}}
+			<hr class='ipsHr'>
+			{template="sharelinks" app="core" group="global" params="$record"}
+		{{endif}}
+	</section>
+
+	<br />
+	{{if $commentsAndReviews}}
+		<a id="replies"></a>
+		<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="user_feedback"}</h2>
+		{$commentsAndReviews|raw}
+	{{endif}}
+
+	<br>
+	{{if $updateForm}}
+		<div class='ipsAreaBackground_light ipsPad'>
+			<h2 class='ipsType_sectionHead'>{lang="cms_front_update_fields" sprintf="$record::database()->recordWord( 1 )"}</h2>
+			<ul class='ipsForm ipsForm_vertical'>
+				{$updateForm|raw}
+			</ul>
+		</div>
+	{{endif}}
+</div>
+
+<div class='ipsGrid ipsGrid_collapsePhone ipsPager ipsClearfix ipsSpacer_top'>
+	<div class="ipsGrid_span6 ipsType_left ipsPager_prev">
+		{{if $record::database()->use_categories and 1==2}}
+			<a href="{$record->container()->url()}" title="{lang="cms_back_to_category_with_title" sprintf="$record->container()->_title"}" rel="up">
+				<span class="ipsPager_type">{lang="cms_back_to_category" sprintf="$record::database()->recordWord( 1 )"}</span>
+				<span class="ipsPager_title ipsType_light ipsType_break">{lang="$record->container()->_title" wordbreak="true"}</span>
+			</a>
+		{{else}}
+			{{$page = \IPS\cms\Pages\Page::$currentPage;}}
+			<a href="{$page->url()}" title="{lang="cms_back_to_category_with_title" sprintf="$page->_title"}" rel="up">
+				<span class="ipsPager_type">{lang="cms_back_to_category" sprintf="$record::database()->recordWord( 1 )"}</span>
+				<span class="ipsPager_title ipsType_light ipsType_break">{lang="page_title" wordbreak="true"}</span>
+			</a>
+		{{endif}}
+	</div>
+	{{if $nextUnread !== NULL}}
+		<div class='ipsGrid_span6 ipsType_right ipsPager_next'>
+			<a href="{$nextUnread->url()->setQueryString( array( 'do' => 'getNewComment' ) )}" title='{lang="cms_view_next_unread_title" sprintf="$record::database()->recordWord( 1 )"}' rel='next'>
+				<span class="ipsPager_type">{lang="cms_next_unread_title" sprintf="$record::database()->recordWord( 1 )"}</span>
+				<span class="ipsPager_title ipsType_light ipsType_break">{$nextUnread->mapped('title')}</span>
+			</a>
+		</div>
+	{{endif}}
+</div>
+	</div>
+<div class="ipsGrid_span3">
+	test
+</div>
+</div>

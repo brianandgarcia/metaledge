@@ -1,0 +1,45 @@
+<ips:template parameters="$item" />
+<li class="ipsDataItem">
+	<div class='ipsDataItem_icon ipsType_center ipsPos_top ipsResponsive_hidePhone'>
+		{template="userPhoto" group="global" app="core" params="$item->author(), 'tiny'"}
+		<br><br>
+		<i class="fa fa-{$item::$icon} ipsType_large ipsType_light" title="{lang="$item::$title"}" data-ipsTooltip></i>
+	</div>
+	<div class='ipsDataItem_main'>
+		<div class='ipsType_break ipsContained cSearchResultHighlight'>
+			<h4 class='ipsType_sectionHead ipsContained'>
+				{{if $item->prefix()}}
+					{template="prefix" group="global" app="core" params="$item->prefix( TRUE ), $item->prefix()"}
+				{{endif}}
+				<a href='{$item->url()}' class='ipsType_blendLinks'>{$item->mapped('title')}</a>
+				{{if $container = $item->containerWrapper()}}
+					<span class="ipsType_medium">{lang="in"} <a href="{$container->url()}">{$container->_title}</a></span>
+				{{endif}}
+				{{if $item->mapped('pinned') || $item->mapped('featured') || $item->hidden() === -1 || $item->hidden() === 1}}
+					<span>
+						{{if $item->hidden() === -1}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{$item->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
+						{{elseif $item->hidden() === 1}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>
+						{{endif}}							
+						{{if $item->mapped('pinned')}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="pinned"}'><i class='fa fa-thumb-tack'></i></span>
+						{{endif}}
+						{{if $item->mapped('featured')}}
+							<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
+						{{endif}}
+					</span>
+				{{endif}}
+			</h4>
+			{{if count( $item->tags() )}}
+				{template="tags" group="global" app="core" params="$item->tags(), true, true"}
+				<br>
+			{{endif}}
+			<span class='ipsType_medium ipsType_light ipsType_blendLinks'>{lang="search_posted_by" sprintf="ucfirst( \IPS\Member::loggedIn()->language()->get( '__indefart_' . $item::$title ) )" htmlsprintf="$item->author()->link()"} {datetime="$item->mapped('date')"}</span>
+		</div>
+		<div class="cSearchResultHighlight">
+			{{$app = $item::$application;}}
+			{template="snippet" group="global" app="$app" params="$item, 'search'"}
+		</div>
+	</div>
+</li>

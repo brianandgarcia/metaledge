@@ -1,0 +1,8 @@
+<ips:template parameters="" />
+{template="pageHeader" if="!\IPS\Request::i()->isAjax()" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('privacy')"}
+<div class='ipsType_normal ipsType_richText ipsPad ipsBox'>
+	{lang="privacy_text_value"}
+	{{if \IPS\Settings::i()->site_address}}
+		<p>{setting="board_name"}, {address="\IPS\Settings::i()->site_address"}</p>
+	{{endif}}
+</div>

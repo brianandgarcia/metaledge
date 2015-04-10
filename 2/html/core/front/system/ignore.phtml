@@ -1,0 +1,12 @@
+<ips:template parameters="$form, $table" />
+{template="pageHeader" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('ignored_users'), \IPS\Member::loggedIn()->language()->addToStack('ignored_users_blurb')"}
+<div data-controller='core.front.ignore.new'>
+	<div class='ipsAreaBackground ipsPad'>
+		<h2 class='ipsType_sectionHead'>{lang="ignored_users_add"}</h2>
+		<p class='ipsType_reset'>{lang="ignored_users_add_desc"}</p>
+		<br>
+		{$form|raw}
+	</div>
+	<br>
+	{$table|raw}
+</div>

@@ -1,0 +1,108 @@
+.ipsControlStrip {
+	border: 1px solid rgba(0,0,0,0.1);
+	display: inline-block;
+	border-radius: 4px;
+	opacity: 0.8;
+	float: right;
+	{prefix="transition" value="0.2s all linear"}
+}
+html[dir="rtl"] .ipsControlStrip {
+	float: left;
+}
+
+.ipsControlStrip li {
+	display: inline-block;
+	float: left;
+}
+html[dir="rtl"] .ipsControlStrip li {
+	float: right;
+}
+
+.ipsControlStrip a {
+	display: block;
+	background: rgb(252,252,252);
+	background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(244,244,244,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(244,244,244,1)));
+	background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%,rgba(244,244,244,1) 100%);
+	background: -o-linear-gradient(top, rgba(252,252,252,1) 0%,rgba(244,244,244,1) 100%);
+	background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%,rgba(244,244,244,1) 100%);
+	background: linear-gradient(to bottom, rgba(252,252,252,1) 0%,rgba(244,244,244,1) 100%);
+	color: #000;
+	width: 30px;
+	height: 24px;
+	text-align: center;
+}
+html[dir="ltr"] .ipsControlStrip a {
+	border-left: 1px solid rgba(0,0,0,0.1);
+}
+html[dir="rtl"] .ipsControlStrip a {
+	border-right: 1px solid rgba(0,0,0,0.1);
+}
+
+	.ipsControlStrip a:active {
+		background: rgb(244,244,244);
+		background: -moz-linear-gradient(top, rgba(244,244,244,1) 0%, rgba(252,252,252,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(244,244,244,1)), color-stop(100%,rgba(252,252,252,1)));
+		background: -webkit-linear-gradient(top, rgba(244,244,244,1) 0%,rgba(252,252,252,1) 100%);
+		background: -o-linear-gradient(top, rgba(244,244,244,1) 0%,rgba(252,252,252,1) 100%);
+		background: -ms-linear-gradient(top, rgba(244,244,244,1) 0%,rgba(252,252,252,1) 100%);
+		background: linear-gradient(to bottom, rgba(244,244,244,1) 0%,rgba(252,252,252,1) 100%);
+		box-shadow: 0px 1px 2px rgba(0,0,0,0.4) inset;
+	}
+
+.ipsControlStrip .ipsControlStrip_icon {
+	font-size: 18px;
+	line-height: 24px;
+	display: inline-block;
+}
+
+.ipsControlStrip .ipsControlStrip_item {
+	display: none;
+}
+
+html[dir="ltr"] .ipsControlStrip li:first-child a {
+	border-radius: 3px 0 0 3px;
+	border-left: 0;
+}
+html[dir="rtl"] .ipsControlStrip li:first-child a {
+	border-radius: 0 3px 3px 0;
+	border-right: 0;
+}
+
+html[dir="ltr"] .ipsControlStrip li:last-child a {
+	border-radius: 0 3px 3px 0;
+}
+html[dir="rtl"] .ipsControlStrip li:last-child a {
+	border-radius: 3px 0 0 3px;
+}
+
+/* Relationships with other css modules */
+.ipsTable tr .ipsControlStrip a, .ipsTree_row .ipsControlStrip a {
+	opacity: 0.7;
+}
+
+.ipsTable tr:hover .ipsControlStrip a, .ipsTree_row:hover .ipsControlStrip a {
+	opacity: 1;
+}
+
+/* Show text option */
+.ipsControlStrip.ipsControlStrip_showText a {
+	width: auto;
+	padding: 0 7px;
+}
+
+.ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_icon {
+	vertical-align: middle;
+}
+
+.ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_item {
+	display: inline-block;
+	font-size: 12px;
+}
+
+html[dir="ltr"] .ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_item {
+	margin-left: 3px;
+}
+html[dir="rtl"] .ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_item {
+	margin-right: 3px;
+}

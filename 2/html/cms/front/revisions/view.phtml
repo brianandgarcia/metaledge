@@ -1,0 +1,79 @@
+<ips:template parameters="$record, $revision, $conflicts, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $formClass='', $attributes=array(), $sidebar=''" />
+<div class="ipsPageHeader ipsClearfix ipsSpacer_bottom">
+	<h1 class="ipsType_pageTitle">{lang="content_record_revision_title" sprintf="\IPS\DateTime::ts($revision->date)->relative(), $record->_title"}</h1>
+</div>
+<hr class='ipsHr'>
+<br />
+<form accept-charset='utf-8' action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} data-ipsForm class="{$formClass}" {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}}>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		{{if is_array($v)}}
+			{{foreach $v as $_v}}
+				<input type="hidden" name="{$k}[]" value="{$_v}">
+			{{endforeach}}
+		{{else}}
+			<input type="hidden" name="{$k}" value="{$v}">
+		{{endif}}
+	{{endforeach}}
+	<ol class='ipsList_reset cForumList'>
+		{{foreach $conflicts as $key => $data}}
+		<li class='cForumRow'>
+			<h2 class="ipsType_sectionTitle ipsType_reset ipsType_blendLinks">
+				{$data['field']->_title}
+			</h2>
+			<ol class='ipsDataList ipsDataList_large' id='elTable_{$record->_id}' data-role="tableRows">
+				<li class="ipsDataItem">
+				{{if isset( $data['diff'])}}
+					<div class="ipsDataItem_main">
+						<table class="ipsTable diff restrict_height">
+							<tr>
+								<th><span data-conflict-id="{$key}" data-conflict-name="old">{lang="content_record_revision_title_revision"}</span></th>
+								<th><span data-conflict-id="{$key}" data-conflict-name="new">{lang="content_record_revision_title_record"} </span></th>
+							</tr>
+						</table>
+						<div data-conflict-id="{$key}">
+						{$data['diff']|raw}
+						</div>
+						<div class="ipsAreaBackground_light ipsPad">
+							<div class='ipsGrid'>
+								<div class='ipsGrid_span6'>
+									<span class='ipsButton ipsButton_primary' data-conflict-name="old">
+										{{foreach $elements as $collection}}
+											{{foreach $collection as $name => $input}}
+												{{if $name == 'conflict_' . $data['field']->id}}
+													<input id='elField_{$name}' type="radio" name="{$name}" value="old" checked="checked" />
+												{{endif}}
+											{{endforeach}}
+										{{endforeach}}
+										<strong>{lang="content_conflict_use_this_revision"}</strong>
+									</span>
+								</div>
+								<div class='ipsGrid_span6'>
+									<span class='ipsButton ipsButton_primary' data-conflict-name="new">
+										{{foreach $elements as $collection}}
+											{{foreach $collection as $name => $input}}
+												{{if $name == 'conflict_' . $data['field']->id}}
+													<input id='elField_{$name}'  type="radio" name="{$name}" value="new" />
+												{{endif}}
+											{{endforeach}}
+										{{endforeach}}
+										<strong>{lang="content_conflict_use_this_record"}</strong>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				{{else}}
+					<div class="ipsDataItem_main">
+						{$data['revision']|raw}
+					</div>
+				{{endif}}
+				</li>
+			</ol>
+		</li>
+		{{endforeach}}
+	</ol>	
+	<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+		{expression="implode( '', $actionButtons)" raw="true"}
+	</div>
+</form>

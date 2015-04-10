@@ -1,0 +1,115 @@
+<ips:template parameters="$table, $headers, $rows" />
+{{$rowIds = array();}}
+{{foreach $rows as $row}}
+	{{$idField = $row::$databaseColumnId;}}
+	{{$rowIds[] = $row->$idField;}}
+{{endforeach}}
+{{$iposted = ( method_exists( $table, 'container' ) AND $table->container() !== NULL ) ? $table->container()->contentPostedIn( null, $rowIds ) : array();}}
+{{if count( $rows )}}
+	{{foreach $rows as $row}}
+	{{$idField = $row::$databaseColumnId;}}
+		{{if $row->mapped('moved_to')}}
+			{{if $movedTo = $row->movedTo()}}
+				<li class="ipsDataItem">
+					<div class='ipsDataItem_icon ipsType_center ipsType_noBreak'>
+						<i class="fa fa-arrow-left ipsType_large"></i>
+					</div>
+					<div class='ipsDataItem_main'>
+						<h4 class='ipsDataItem_title ipsType_break'>
+							<em><a href='{$movedTo->url()}' title='{lang="go_to_new_location"}'>{lang="$row->mapped('title')" wordbreak="true"}</a></em>
+						</h4>
+						<div class='ipsDataItem_meta'>
+							<p class='ipsType_reset ipsType_light ipsType_blendLinks'>{lang="question_moved_to" sprintf="$movedTo->container()->url(), $movedTo->container()->_title"}</p>
+						</div>
+					</div>
+					{{if $table->canModerate()}}
+						<div class='ipsDataItem_modCheck'>
+							<input type='checkbox' data-role='moderation' name="moderate[{$row->$idField}]" data-actions="{expression="implode( ' ', $table->multimodActions( $row ) )"}" data-state='{{if $row->mapped('pinned')}}pinned{{endif}} {{if $row->mapped('featured')}}featured{{endif}}'>
+						</div>
+					{{endif}}
+				</li>
+			{{endif}}
+		{{else}}
+			<li class="ipsDataItem {{if $row->unread()}}ipsDataItem_unread{{endif}} {{if method_exists( $row, 'tableClass' ) && $row->tableClass()}}ipsDataItem_{$row->tableClass()}{{endif}} {{if $row->hidden()}}ipsModerated{{endif}} cForumQuestion" data-rowID='{$row->$idField}'>
+				<div class='ipsDataItem_icon'>
+					{{if $row->topic_answered_pid}}
+						<span title='{lang="answered"}' class='cBestAnswerIndicator' data-ipsTooltip>
+							<i class='fa fa-check'></i>
+						</span>
+					{{else}}
+						<span title='{lang="awaiting_answer"}' class='cBestAnswerIndicator cBestAnswerIndicator_off' data-ipsTooltip>
+							<i class='fa fa-question'></i>
+						</span>
+					{{endif}}
+				</div>
+				<div class='ipsDataItem_main'>
+					{{if $row->mapped('pinned') || $row->mapped('featured') || $row->hidden() === -1 || $row->hidden() === 1}}
+						<span class='ipsPos_right'>
+							{{if $row->hidden() === -1}}
+								<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{$row->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
+							{{elseif $row->hidden() === 1}}
+								<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>
+							{{endif}}							
+							{{if $row->mapped('pinned')}}
+								<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="pinned"}'><i class='fa fa-thumb-tack'></i></span>
+							{{endif}}
+							{{if $row->mapped('featured')}}
+								<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
+							{{endif}}
+						</span>
+					{{endif}}
+					<h4 class='ipsDataItem_title ipsType_break'>
+						{{if $row->locked()}}
+							<i class='fa fa-lock' data-ipsTooltip title='{lang="topic_locked"}'></i>
+						{{endif}}
+						{{if $row->unread()}}
+							<a href='{$row->url( 'getNewComment' )}' title='{lang="first_unread_post"}' data-ipsTooltip>
+								<span class='ipsItemStatus'><i class="fa {{if in_array( $row->$idField, $iposted )}}fa-star{{else}}fa-circle{{endif}}"></i></span>
+							</a>
+						{{else}}
+							{{if in_array( $row->$idField, $iposted )}}
+								<span class='ipsItemStatus ipsItemStatus_read ipsItemStatus_posted'><i class="fa fa-star"></i></span>
+							{{endif}}
+						{{endif}}
+
+						{{if $row->prefix()}}
+							{template="prefix" group="global" app="core" params="$row->prefix( TRUE ), $row->prefix()"}
+						{{endif}}
+						
+						<a href='{$row->url()}' {{if $row->tableHoverUrl and $row->canView()}}data-ipsHover data-ipsHover-target='{$row->url()->setQueryString('preview', 1)}' data-ipsHover-timeout='1.5'{{endif}}>
+							{{if $row->mapped('title')}}{lang="$row->mapped('title')" wordbreak="true"}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
+						</a>
+					</h4>
+					<div class='ipsDataItem_meta'>
+						<p class='ipsType_reset ipsType_normal ipsType_light ipsType_blendLinks'>
+							{lang="ask_byline" htmlsprintf="$row->author()->link(), \IPS\DateTime::ts( $row->start_date )->html()"}
+							{{if \IPS\Request::i()->controller != 'forums'}}
+								{lang="in"} <a href="{$row->container()->url()}">{$row->container()->_title}</a>
+							{{endif}}
+						</p>
+					</div>
+					{{if count( $row->tags() )}}
+						<p>{template="tags" group="global" app="core" params="$row->tags()"}</p>
+					{{endif}}
+				</div>
+				<div class='ipsDataItem_generic ipsDataItem_size2 ipsType_center cForumQuestion_stat'>
+					<span>{{if $row->question_rating}}{$row->question_rating}{{else}}0{{endif}}</span>
+					<span class='ipsType_light'>{lang="votes_no_number" pluralize="$row->question_rating"}</span>
+				</div>
+				<div class='ipsDataItem_generic ipsDataItem_size2 ipsType_center cForumQuestion_stat'>
+					{{foreach $row->stats(FALSE) AS $k => $v}}
+						{{if $k == 'comments'}}
+							<span>{$v}</span>
+							<span class='ipsType_light'>{lang="answers_no_number" pluralize="$v"}</span>
+						{{endif}}
+					{{endforeach}}
+				</div>
+				{{if $table->canModerate()}}
+					<div class='ipsDataItem_modCheck'>
+						<input type='checkbox' data-role='moderation' name="moderate[{$row->$idField}]" data-actions="{expression="implode( ' ', $table->multimodActions( $row ) )"}" data-state='{{if $row->tableStates()}}{$row->tableStates()}{{endif}}'>
+					</div>
+				{{endif}}
+			</li>
+		{{endif}}
+	{{endforeach}}
+{{endif}}

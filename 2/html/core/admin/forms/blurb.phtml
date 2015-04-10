@@ -1,0 +1,4 @@
+<ips:template parameters="$lang, $parse=TRUE, $background=FALSE" />
+<div class="ipsPad ipsType_normal {{if $background}}ipsAreaBackground_light{{endif}}">
+	{{if $parse}}{lang="$lang"}{{else}}{$lang|raw}{{endif}}
+</div>

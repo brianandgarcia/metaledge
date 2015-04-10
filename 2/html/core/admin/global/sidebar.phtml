@@ -1,0 +1,19 @@
+<ips:template parameters="$items, $activeItem" />
+<ul class="ipsList_reset">
+	{{foreach $items as $appAndModule => $moduleItems}}
+		<li class='{{if count( $moduleItems ) > 1}}has_sub{{endif}} {{if $appAndModule == $activeItem}}active{{endif}}'>
+			{{if count( $moduleItems ) > 1}}
+				{lang="menu__{$appAndModule}"}
+				<ul class="ipsList_reset">
+					{{foreach $moduleItems as $key => $url}}
+						<li><a href='{url="$url"}'>{lang="menu__{$appAndModule}_{$key}"}</a></li>
+					{{endforeach}}
+				</ul>
+			{{else}}
+				{{foreach $moduleItems as $key => $url}}
+					<a href='{url="$url"}'>{lang="menu__{$appAndModule}_{$key}"}</a>
+				{{endforeach}}
+			{{endif}}
+		</li>
+	{{endforeach}}
+</ul>

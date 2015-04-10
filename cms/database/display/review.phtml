@@ -1,0 +1,121 @@
+<ips:template parameters="$item, $review, $editorName, $app, $type" original_group="display" key="database_display_review" />
+<div id='review-{$review->id}' data-controller='core.front.core.comment' data-commentApp='{$app}' data-commentType='{$type}-review' data-commentID="{$review->id}" data-quoteData='{expression="json_encode( array('userid' => $review->author()->member_id, 'username' => $review->author()->name, 'timestamp' => $review->mapped('date'), 'contentapp' => $app, 'contenttype' => $type, 'contentid' => $item->id, 'contentcommentid' => $review->id) )"}' class='ipsComment_content ipsType_medium' itemprop='review' itemscope itemtype="http://schema.org/Review">
+	<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_small ipsPhotoPanel_notPhone'>
+		{template="userPhoto" app="core" group="global" params="$review->author(), 'small', $review->warningRef(), 'ipsPos_left'"}
+		<div>
+			<p class='ipsPos_right ipsType_reset ipsType_blendLinks'>
+				<a href='{$review->item()->url()->setQueryString( array( 'do' => 'findReview', 'review' => $review->id ) )}' data-ipsTooltip title='{lang="share_this_review"}' data-ipsMenu data-ipsMenu-closeOnClick='false' id='elShareComment_{$review->id}'><i class='fa fa-share-alt'></i></a>
+				{{if count( $item->reviewMultimodActions() )}}
+					<input type="checkbox" name="multimod[{$review->id}]" value="1" data-role="moderation" data-actions="{{if $review->hidden() === -1 AND $review->canUnhide()}}unhide{{elseif $review->hidden() === 1 AND $review->canUnhide()}}approve{{elseif $review->canHide()}}hide{{endif}} {{if $review->canDelete()}}delete{{endif}}">
+				{{endif}}
+			</p>
+			<h3 class="ipsComment_author ipsType_blendLinks">
+				<strong class='ipsType_normal' itemprop='author'>{template="userLink" app="core" group="global" params="$review->author(), $review->warningRef()"}</strong>
+				{template="reputationBadge" group="global" app="core" params="$review->author()"}
+			</h3>
+			<p class="ipsComment_meta ipsType_medium ipsType_light">
+				<meta itemprop='datePublished' content='{expression="\IPS\DateTime::ts( $review->mapped('date') )->format( 'Y-m-d' )"}'>{datetime="$review->mapped('date')"}
+				{{if $review->editLine()}}
+					&middot; {$review->editLine()|raw}
+				{{endif}}
+				{{if $review->hidden()}}
+					&middot; {$review->hiddenBlurb()}
+				{{endif}}
+				{{if $review->hidden() !== 1 and $review instanceof \IPS\Content\ReportCenter and !\IPS\Member::loggedIn()->group['gbw_no_report'] }}
+					&middot; <a href='{$review->url('report')}' data-ipsDialog data-ipsDialog-remoteSubmit data-ipsDialog-size='medium' data-ipsDialog-flashMessage='{lang="report_submit_success"}' data-ipsDialog-title="{lang="report"}" data-action='reportComment' title='{lang="report"}'>{lang="report"}</a>
+				{{endif}}
+			</p>
+			<ul class='ipsList_inline ipsClearfix ipsRating ipsRating_large' itemprop='reviewRating' itemscope itemtype='http://schema.org/Rating'>
+				<meta itemprop='worstRating' content='1'>
+				<meta itemprop='bestRating' content='{expression="intval(\IPS\Settings::i()->reviews_rating_out_of)"}'>
+				{{foreach range( 1, intval( \IPS\Settings::i()->reviews_rating_out_of ) ) as $i}}
+					<li class='{{if $review->mapped('rating') >= $i}}ipsRating_on{{else}}ipsRating_off{{endif}}'>
+						{{if $review->mapped('rating') === $i}}<span itemprop='ratingValue' class='ipsHide'>{$i}</span>{{endif}}
+						<i class='fa fa-star'></i>
+					</li>
+				{{endforeach}}
+			</ul>&nbsp;&nbsp; {{if $review->mapped('votes_total')}}<strong class='ipsType_medium'>{$review->helpfulLine()|raw}</strong><br>{{endif}}
+		</div>
+	</div>
+	<div class='ipsPad'>
+		<div id="review-{$review->id}" data-role="commentContent" class="ipsType_richText ipsType_break ipsContained" itemprop="reviewBody" data-controller='core.front.core.lightboxedImages'>
+			{$review->content()|raw}
+		</div>
+
+		{{if $review->hidden() !== 1}}
+			{{if member.member_id and ( !$review->mapped('votes_data') or !array_key_exists( member.member_id, json_decode( $review->mapped('votes_data'), TRUE ) ) ) and $review->author()->member_id != \IPS\Member::loggedIn()->member_id}}
+				<span class='ipsType_medium'><strong>{lang="did_you_find_this_helpful"}</strong> &nbsp;&nbsp;&nbsp;<a href='{$review->url('rate')->setQueryString( 'helpful', TRUE )->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_light' data-action="rateReview"><i class='fa fa-check'></i> {lang="yes"}</a> <a href='{$review->url('rate')->setQueryString( 'helpful', FALSE )->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_light' data-action="rateReview"><i class='fa fa-times'></i> {lang="no"}</a></span>
+				<br class='ipsClear'>
+			{{endif}}
+			
+			{{if $review instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
+				{template="reputation" group="global" app="core" params="$review, 'ipsPos_right ipsResponsive_noFloat'"}
+			{{endif}}
+		{{endif}}
+
+		{{if ( member.member_id and ( !$review->mapped('votes_data') or !array_key_exists( member.member_id, json_decode( $review->mapped('votes_data'), TRUE ) ) ) ) || $review->canEdit() || $review->canDelete() || $review->canHide() || $review->canUnhide()}}
+			{{if $review->canEdit() || $review->canDelete() || $review->canHide() || $review->canUnhide()}}
+				<ul class='ipsComment_controls ipsClearfix' data-role="commentControls">
+					{{if $review->hidden() === 1 && ( $review->canUnhide() || $review->canDelete() )}}
+						{{if $review->canUnhide()}}
+							<li><a href='{$review->url('unhide')->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_positive'><i class='fa fa-check'></i> {lang="approve"}</a></li>
+						{{endif}}
+						{{if $review->canDelete()}}
+							<li><a href='{$review->url('delete')->csrf()}' data-confirm data-action='deleteComment' data-updateOnDelete="#commentCount" class='ipsButton ipsButton_verySmall ipsButton_negative'><i class='fa fa-times'></i> {lang="delete"}</a></li>
+						{{endif}}
+						{{if $review->canEdit() || $review->canSplit()}}
+							<li>
+								<a href='#elControls_{$review->id}_menu' id='elControls_{$review->id}' data-ipsMenu data-ipsMenu-appendTo='#comment-{$review->id}_wrap'>{lang="options"} &nbsp;<i class='fa fa-caret-down'></i></a>
+								<ul id='elControls_{$review->id}_menu' class='ipsMenu ipsMenu_narrow ipsHide'>
+									{{if $review->canEdit()}}
+										{{if $review->mapped('first') and $review->item()->canEdit()}}
+											<li class='ipsMenu_item'><a href='{$review->item()->url()->setQueryString( 'do', 'edit' )}'>{lang="edit"}</a></li>
+										{{else}}
+											<li class='ipsMenu_item'><a href='{$review->url('edit')}' data-action='editComment'>{lang="edit"}</a></li>
+										{{endif}}
+									{{endif}}
+									{{if $review->canSplit()}}
+										<li class='ipsMenu_item'><a href='{$review->url('split')}' data-action='splitComment' data-ipsDialog data-ipsDialog-title="{lang="split_to_new" sprintf="\IPS\Member::loggedIn()->language()->addToStack( $item::$title )"}">{lang="split"}</a></li>
+									{{endif}}
+								</ul>
+							</li>
+						{{endif}}
+					{{else}}
+						{{if $review->canEdit()}}
+							<li><a href='{$review->url('edit')}' data-action='editComment'>{lang="edit"}</a></li>
+						{{endif}}	
+						{{if $review->canDelete() || $review->canHide() || $review->canUnhide()}}
+							<li>
+								<a href='#elControls_review{$review->id}_menu' id='elControls_review{$review->id}' data-ipsMenu data-ipsMenu-appendTo='#review-{$review->id}_wrap'>{lang="options"} &nbsp;<i class='fa fa-caret-down'></i></a>
+								<ul id='elControls_review{$review->id}_menu' class='ipsMenu ipsMenu_narrow ipsHide'>
+									{{if $review instanceof \IPS\Content\Hideable}}
+										{{if !$review->hidden() and $review->canHide()}}
+											<li class='ipsMenu_item'><a href='{$review->url('hide')->csrf()}' data-ipsDialog data-ipsDialog-title="{lang="hide"}">{lang="hide"}</a></li>
+										{{elseif $review->hidden() and $review->canUnhide()}}
+											<li class='ipsMenu_item'><a href='{$review->url('unhide')->csrf()}'>{lang="unhide"}</a></li>
+										{{endif}}
+									{{endif}}
+									{{if $review->canDelete()}}
+										<li class='ipsMenu_item'><a href='{$review->url('delete')->csrf()}' data-confirm data-action='deleteComment' data-updateOnDelete="#reviewCount">{lang="delete"}</a></li>
+									{{endif}}
+								</ul>
+							</li>
+						{{endif}}
+					{{endif}}
+					<li class='ipsHide' data-role='commentLoading'>
+						<img src='{resource="loaders/tiny_loading.gif" app="core" location="front"}' alt='{lang="loading"}'>
+					</li>
+				</ul>
+			{{endif}}
+		{{endif}}
+	</div>
+	
+	<div class='ipsMenu ipsMenu_wide ipsHide cPostShareMenu' id='elShareComment_{$review->id}_menu'>
+		<div class='ipsPad'>
+			<h4 class='ipsType_sectionHead'>{lang="share_this_review"}</h4>
+			<hr class='ipsHr'>
+			<h5 class='ipsType_normal ipsType_reset'>{lang="link_to_review"}</h5>
+			<input type='text' value='{$review->item()->url()->setQueryString( array( 'do' => 'findReview', 'review' => $review->id ) )}' class='ipsField_fullWidth'>
+		</div>
+	</div>
+</div>

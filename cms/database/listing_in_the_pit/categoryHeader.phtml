@@ -1,0 +1,44 @@
+<ips:template parameters="$category, $table, $activeFilters" original_group="listing" key="database_listing_in_the_pit_categoryHeader" />
+
+{{if !\IPS\Request::i()->advancedSearchForm}}
+	<div class="ipsPageHeader ipsClearfix ipsSpacer_bottom">
+		<div class='ipsPos_right ipsResponsive_noFloat'>
+			{template="follow" app="core" group="global" params="'cms','categories' . $category->database_id, $category->_id, \IPS\cms\Records::containerFollowerCount( $category )"}
+		</div>
+		<h1 class="ipsType_pageTitle">{$category->_title}</h1>
+	</div>
+	<div class='ipsType_richText ipsType_medium'>
+		{$category->_description|raw}
+	</div>
+	<hr class='ipsHr'>
+{{endif}}
+
+{{if $category->hasChildren() AND ! isset( \IPS\Request::i()->advancedSearchForm )}}
+	<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="content_categories_title"}</h2>
+	<ol class="ipsDataList">
+		{{foreach $category->children() as $cat}}
+			{template="categoryRow" group="category_in_the_pit" location="database" app="cms" params="$cat"}
+		{{endforeach}}
+	</ol>
+	<br>
+{{endif}}
+
+{{if ! \IPS\Request::i()->isAjax() AND ! isset( \IPS\Request::i()->advancedSearchForm )}}
+<ul class="ipsToolList ipsToolList_horizontal ipsClearfix">
+	{{if $category->can('add')}}
+		<li class='ipsToolList_primaryAction'>
+			<a class="ipsButton ipsButton_medium ipsButton_important ipsButton_fullWidth" href="{$category->url()->setQueryString( array( 'do' => 'form', 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId ) )}">{lang="cms_add_new_record_button" sprintf="\IPS\cms\Databases::load( $category->database_id )->recordWord( 1 )"}</a>
+		</li>
+	{{endif}}
+	{{if \IPS\Member::loggedIn()->member_id}}
+		<li>
+			<a class="ipsButton ipsButton_medium ipsButton_fullWidth ipsButton_link" href="{$category->url()->setQueryString( 'do', 'markRead' )->csrf()}"><i class="fa fa-check"></i> {lang="cms_mark_read"}</a>
+		</li>
+	{{endif}}
+</ul>
+<br>
+{{endif}}
+
+{{if count( $activeFilters )  AND ! isset( \IPS\Request::i()->advancedSearchForm )}}
+	{template="filterMessage" group="listing_in_the_pit" location="database" app="cms" params="$activeFilters, $category"}
+{{endif}}

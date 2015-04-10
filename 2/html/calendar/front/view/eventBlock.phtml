@@ -1,0 +1,62 @@
+<ips:template parameters="$event, $date, $truncate=FALSE, $map=array( 300, 200 )" />
+{{$coverPhoto = $event->coverPhoto();}}
+<div class='cCalendarBlock ipsAreaBackground_reset ipsBox'>
+	<div class='ipsPageHead_special' data-controller='core.front.core.coverPhoto' data-coverOffset='{$coverPhoto->offset}'>
+		{{if $coverPhoto->file}}
+			<div class='ipsCoverPhoto_container'>
+				<img src='{$coverPhoto->file}' class='ipsCoverPhoto_photo'>
+			</div>
+		{{endif}}
+	</div>
+	<div class='ipsColumns'>
+		<div class='ipsColumn ipsColumn_fluid'>
+			<h2 class='ipsType_pageTitle'><a href='{$event->url()}' title='{$event->title}'>{truncate="$event->title" length="26"}</a></h2>
+		</div>
+	</div>
+	<div class='ipsPad ipsClearfix'>
+		<h3 class='ipsType_reset'>
+			{{if $event->nextOccurrence( $date, 'startDate' )}}
+				{$event->nextOccurrence( $date, 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $date, 'startDate' )->localeTime( FALSE )} {{endif}}
+				{{if $event->nextOccurrence( $event->nextOccurrence( $date, 'startDate' ) ?: $date, 'endDate' ) }}
+					- {$event->nextOccurrence( $event->nextOccurrence( $date, 'startDate' ) ?: $date, 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $event->nextOccurrence( $date, 'startDate' ) ?: $date, 'endDate' )->localeTime( FALSE )}{{endif}}
+				{{endif}}
+			{{else}}
+				{$event->lastOccurrence( 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'startDate' )->localeTime( FALSE )} {{endif}}
+				{{if $event->lastOccurrence( 'endDate' ) }}
+					- {$event->lastOccurrence( 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'endDate' )->localeTime( FALSE )}{{endif}}
+				{{endif}}
+			{{endif}}
+		</h3>
+		{{if $event->recurring}}<p class='ipsType_reset ipsType_normal ipsType_light'>{$event->_recurring_text}</p><br>{{endif}}
+		<div class='ipsType_richText ipsType_medium' {{if ( \IPS\Request::i()->isAjax() or $truncate ) && $event->content}}data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='5 lines'{{endif}}>
+			{{if $event->content}}
+				{{if \IPS\Request::i()->isAjax() or $truncate}}
+					{$event->truncated()|raw}
+				{{else}}
+					{$event->content|raw}
+				{{endif}}
+			{{endif}}
+		</div>
+		{{if $map !== FALSE AND $event->map( $map[0], $map[1] )}}
+			<div class='ipsAreaBackground_light cCalendarBlock_map ipsPad_half'>
+				{$event->map( $map[0], $map[1] )|raw}
+			</div>
+		{{endif}}
+		<br>
+		<a href='{$event->container()->url()}' class='ipsPos_right ipsResponsive_noFloat cEvents_event cEvents_eventSmall cEvents_style{$event->container()->id}'>{$event->container()->_title}</a>
+		{{if $event->container()->allow_comments}}<a href='{$event->url()->setQueryString( 'tab', 'comments' )}' class='ipsType_medium ipsType_noBreak'>{lang="event_comment_count" pluralize="$event->comments"}</a>{{endif}}
+		{{if $event->container()->allow_comments AND $event->container()->allow_reviews}}&middot;{{endif}}
+		{{if $event->container()->allow_reviews}}<a href='{$event->url()->setQueryString( 'tab', 'reviews' )}' class='ipsType_medium ipsType_noBreak'>{lang="event_review_count" pluralize="$event->reviews"}</a>{{endif}}
+		{{if $event->rsvp }}
+			<hr class='ipsHr'>
+			<h4 class='ipsType_reset'><strong>{lang="event_rsvp_attendees_list" pluralize="$event->attendeeCount( \IPS\calendar\Event::RSVP_YES )"}</strong></h4>
+			{{if count( $event->attendees( \IPS\calendar\Event::RSVP_YES, 5 ) )}}
+				<ul class='ipsList_inline ipsList_noSpacing ipsSpacer_top ipsSpacer_half'>
+					{{foreach $event->attendees( \IPS\calendar\Event::RSVP_YES, 5 ) as $attendee}}
+						<li>{template="userPhoto" app="core" group="global" params="$attendee, 'tiny'"}</li>
+					{{endforeach}}
+				</ul>
+			{{endif}}
+		{{endif}}
+	</div>
+</div>

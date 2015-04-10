@@ -1,0 +1,22 @@
+<ips:template parameters="$blockHtml, $info" />
+<li data-widgetKey='{$info['key']}' data-widgetName='{$info['name']}'>
+	<div class='ipsAreaBackground_light acpWidget_item'>
+		<h2 class='ipsType_sectionTitle ipsType_reset ipsTruncate ipsTruncate_line'>
+			<ul class='ipsList_reset ipsList_inline acpWidget_tools'>
+				<li>
+					<noscript>
+						<input type='text' value='{{if isset($info['position'])}}{$info['position']}{{else}}0{{endif}}' class='acpWidget_manualReorder'>
+					</noscript>
+					<a href='#' class='acpWidget_reorder ipsJS_show ipsCursor_drag' data-ipsTooltip title='{lang="reorder_widget"}'><i class='fa fa-bars'></i></a>
+				</li>
+				<li>
+					<a href='#' class='acpWidget_close' data-ipsTooltip title='{lang="close_widget"}'><i class='fa fa-times'></i></a>
+				</li>
+			</ul>
+			{lang="block_{$info['key']}"}
+		</h2>
+		<div class='ipsPad' data-role="widgetContent">
+			{$blockHtml|raw}
+		</div>
+	</div>
+</li>

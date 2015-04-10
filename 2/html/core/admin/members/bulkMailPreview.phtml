@@ -1,0 +1,56 @@
+<ips:template parameters="$mail, $members, $count" />
+<div class='acpBlock'>
+	<div class='ipsTabs ipsClearfix ipsJS_show acpFormTabBar' id='tabs_bulkmail' data-ipsTabBar data-ipsTabBar-contentArea='#ipsTabs_content_bulkmail'>
+		<a href='#tabs_bulkmail' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+		<ul role='tablist'>
+			<li role='presentation'>
+				<a href='#ipsTabs_tabs_bulkmail_bulkmail_tab_overview_panel' id='bulkmail_tab_overview' class="ipsTabs_item ipsTabs_activeItem">
+					{lang="bm_send_overview"}
+				</a>
+			</li>
+			<li role='presentation'>
+				<a href='#ipsTabs_tabs_bulkmail_bulkmail_tab_memberlist_panel' id='bulkmail_tab_memberlist' class="ipsTabs_item">
+					{lang="bm_send_recipients" sprintf="$count"}
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div id='ipsTabs_content_bulkmail' class='acpFormTabContent'>
+		<div id='ipsTabs_tabs_bulkmail_bulkmail_tab_overview_panel' class="ipsTabs_panel" aria-labelledby="bulkmail_tab_overview" aria-hidden="false">
+			<ul class='ipsForm ipsForm_horizontal'>
+				<li class='ipsJS_hide'>{lang="bm_send_overview"}</li>
+				<li class='ipsFieldRow ipsPad_half ipsClearfix'>
+					<div class='ipsFieldRow_title'>
+						{lang="mail_subject"}
+					</div>
+					<div class='ipsFieldRow_content'>
+						{$mail->subject}
+					</div>
+				</li>
+				<li class='ipsFieldRow ipsPad_half ipsClearfix'>
+					<div class='ipsFieldRow_title'>
+						{lang="mail_body"}
+					</div>
+					<div class='ipsFieldRow_content'>
+						<iframe seamless src='{url="app=core&module=bulkmail&controller=bulkmail&do=iframePreview&id=" base="admin"}{$mail->id}' width='100%' height='350'></iframe>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id='ipsTabs_tabs_bulkmail_bulkmail_tab_memberlist_panel' class="ipsTabs_panel" aria-labelledby="bulkmail_tab_memberlist" aria-hidden="false">
+			<div class='ipsJS_hide'>{lang="bm_send_recipients" sprintf="$count"}</div>
+			<div class='ipsGrid ipsGrid_collapsePhone'>
+				{{foreach $members as $_index => $member}}
+					<div class='ipsGrid_span3 ipsPad'>
+						<a href='{url="app=core&module=members&controller=profile&id={$member['member_id']}" base="front" seoTitles="$member['members_seo_name']" seoTemplate="profile"}'>{$member['name']}</a>
+						<span class='ipsType_light'>({$member['email']})</span>
+					</div>
+					{{if $_index > 0 AND ( $_index + 1 ) % 4 == 0}}</div><div class='ipsGrid ipsGrid_collapsePhone'>{{endif}}
+				{{endforeach}}
+			</div>
+		</div>
+	</div>
+	<div class="ipsAreaBackground ipsClearfix ipsPad ipsType_center">
+		<a href='{url="app=core&module=bulkmail&controller=bulkmail&do=send&id="}{$mail->id}' class='ipsButton ipsButton_primary'>{lang="proceed"}</a>
+	</div>
+</div>

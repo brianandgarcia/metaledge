@@ -1,0 +1,6 @@
+<ips:template parameters="$name, $value" />
+<input type='text' name="{$name}" value="{expression="implode( ',', $value )"}" data-ipsAutocomplete>
+<noscript>
+	<br>
+	<span class="ipsFieldRow_desc">{lang="tags_no_js"}</span>
+</noscript>

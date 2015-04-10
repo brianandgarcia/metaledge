@@ -1,0 +1,66 @@
+<ips:template parameters="$forum, $table" />
+
+{{if !\IPS\Request::i()->advancedSearchForm}}
+	{{$followerCount = \IPS\forums\Topic::containerFollowerCount( $forum );}}
+	<div class="ipsPageHeader ipsClearfix">
+		<header class='ipsSpacer_bottom'>
+			<h1 class="ipsType_pageTitle">{$forum->_title}</h1>
+			{{if $forum->sub_can_post}}
+				<div class='ipsPos_right ipsResponsive_noFloat ipsResponsive_hidePhone'>
+					{template="follow" app="core" group="global" params="'forums','forum', $forum->_id, $followerCount"}
+				</div>
+			{{endif}}
+
+			{{if $forum->show_rules == 1}}
+				<hr class='ipsHr'>
+				<a href="#elForumRules" class='ipsJS_show ipsType_normal' data-ipsDialog data-ipsDialog-title="{lang="forums_forum_{$forum->id}_rulestitle"}" data-ipsDialog-content="#elForumRules">{lang="forums_forum_{$forum->id}_rulestitle"}</a>
+				<div id='elForumRules' class='ipsAreaBackground_light ipsPad ipsJS_hide'>
+					<div class='ipsType_richText ipsType_medium'>{lang="forums_forum_{$forum->id}_rules"}</div>
+				</div>
+			{{elseif $forum->show_rules == 2}}
+				<hr class='ipsHr'>
+				<strong class='ipsType_normal'>{lang="forums_forum_{$forum->id}_rulestitle"}</strong>
+				<div class='ipsType_richText ipsType_normal ipsSpacer_top'>{lang="forums_forum_{$forum->id}_rules"}</div>
+			{{elseif $forum->description}}
+				<div class='ipsType_richText ipsType_normal ipsSpacer_top'>
+					{$forum->description|raw}
+				</div>
+			{{endif}}
+		</header>
+
+		{{if $forum->children()}}
+			<div class='ipsList_reset cForumList ipsBox ipsSpacer_bottom' data-controller='forums.front.forum.forumList' data-baseURL=''>
+				<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="subforums_header"}</h2>
+				{{if theme.forum_layout === 'grid'}}
+					<div class='ipsAreaBackground ipsPad' data-role="forums" data-ipsPatchwork data-ipsPatchwork-minColSize='300' data-ipsPatchwork-maxColSize='400'>
+						<div data-role='patchworkList'>
+							{{foreach $forum->children( 'view' ) as $childforum}}
+								{template="forumGridItem" group="index" app="forums" params="$childforum"}
+							{{endforeach}}
+						</div>
+					</div>
+				{{else}}
+					<ol class="ipsDataList ipsDataList_large ipsDataList_zebra ipsAreaBackground_reset">
+						{{foreach $forum->children( 'view' ) as $childforum}}
+							{template="forumRow" group="index" app="forums" params="$childforum, TRUE"}
+						{{endforeach}}
+					</ol>
+				{{endif}}				
+			</div>
+		{{endif}}
+	</div>
+{{endif}}
+<div data-controller='forums.front.forum.forumPage'>
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both ipsResponsive_hidePhone">
+		{template="forumButtons" group="forums" params="$forum"}
+	</ul>
+	{$table|raw}
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both ipsResponsive_showPhone ipsResponsive_block">
+		{template="forumButtons" group="forums" params="$forum"}
+	</ul>
+</div>
+{{if !\IPS\Request::i()->advancedSearchForm && $forum->sub_can_post}}
+	<div class='ipsResponsive_showPhone ipsResponsive_block ipsSpacer ipsSpacer_both'>
+		{template="follow" app="core" group="global" params="'forums','forum', $forum->_id, $followerCount"}
+	</div>
+{{endif}}

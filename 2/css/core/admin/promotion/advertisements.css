@@ -1,0 +1,20 @@
+.ipsAdvertisement img {
+	max-width: 300px;
+	max-height: 100px;
+}
+
+.ipsAdvertisementPreview {
+	border: 0px;
+}
+
+.ipsAdvertisement .ipsAdvertisement_large,
+.ipsAdvertisement .ipsAdvertisement_medium,
+.ipsAdvertisement .ipsAdvertisement_small {
+	display: block !important;
+	background: transparent !important;
+	margin: 0 !important;
+}
+
+.ipsAdvertisement_tag {
+	display: none !important;
+}

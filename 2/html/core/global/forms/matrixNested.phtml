@@ -1,0 +1,19 @@
+<ips:template parameters="$id, $headers, $rows, $action, $hiddenValues, $actionButtons, $langPrefix, $widths=array(), $manageable=TRUE, $checkAlls=array(), $checkAllRows" />
+<div data-ipsMatrix data-ipsMatrix-manageable='{{if $manageable}}true{{else}}false{{endif}}'>
+	{{foreach $rows as $rowId => $row}}
+		<input type='hidden' name='{$id}_matrixRows[{$rowId}]' data-matrixrowid='{$rowId}' value='1'>
+	{{endforeach}}
+	{{if $manageable}}
+		<div class='ipsClearfix'>
+			<div class="ipsJS_show">
+				{template="buttons" group="global" app="core" location="admin" params="array( 'add' => array( 'link' => \IPS\Http\Url::internal( '#' ), 'icon' => 'plus', 'title' => 'add_button', 'class' => 'matrixAdd', 'data' => array( 'matrixID' => $id ) ) )"}
+			</div>
+			<noscript>
+				{lang="delete"}
+			</noscript>
+		</div>
+	{{endif}}
+	<table class='ipsTable ipsMatrix ipsClear ipsTable_responsive' role='grid' data-matrixID='{$id}'>
+		{template="matrixRows" group="forms" app="core" location="global" params="$headers, $rows, $langPrefix, $manageable, $widths, $checkAlls, $checkAllRows"}
+	</table>	
+</div>

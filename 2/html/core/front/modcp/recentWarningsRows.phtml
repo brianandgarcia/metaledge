@@ -1,0 +1,79 @@
+<ips:template parameters="$table, $headers, $rows" />
+{{if empty( $rows )}}
+	<tr>
+		<td colspan="4">
+			<div class='ipsPad_double ipsType_light'>
+				{lang="no_results"}
+			</div>
+		</td>
+	</tr>
+{{else}}
+	{{foreach $rows as $warning}}
+		<li class='ipsDataItem'>
+			<div class='ipsDataItem_icon ipsPos_top'>
+				{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $warning->member ), 'tiny'"}
+			</div>
+			<div class='ipsDataItem_main'>
+				<h3 class='ipsType_sectionHead'>
+					<a href="{$warning->url()}" data-ipsDialog data-ipsDialog-size='narrow' class="ipsPos_left ipsType_blendLinks" data-ipsTooltip title='{lang="wan_action_points" pluralize="$warning->points"}'>
+						<span class="ipsPoints ipsPoints_small">{$warning->points}</span> {lang="core_warn_reason_{$warning->reason}"}
+					</a>
+				</h3>
+				<p class='ipsType_medium ipsType_reset'><strong>{lang="user_warned_by" htmlsprintf="\IPS\Member::load( $warning->member )->link(), \IPS\Member::load( $warning->moderator )->link()"}</strong> &nbsp;&nbsp;<span class='ipsType_light ipsType_noBreak'>{datetime="$warning->date"}</span></p>
+
+				{{if \IPS\Settings::i()->warnings_acknowledge}}
+					<span class='ipsType_medium ipsType_noBreak'>
+						{{if $warning->acknowledged}}
+							<strong class='ipsType_success'><i class='fa fa-check-circle'></i> {lang="warning_acknowledged"}</strong>
+						{{else}}
+							<span class='ipsType_light'>{lang="warning_not_acknowledged"}</span>
+						{{endif}}
+					</span>
+				{{endif}}
+				{{if $warning->note_mods}}
+					<div class='ipsSpacer_top ipsType_richText ipsType_medium ipsContained ipsType_break' data-ipsTruncate data-ipsTruncate-size='4 lines' data-ipsTruncate-type='remove'>
+						{$warning->note_mods|raw}
+					</div>
+				{{endif}}
+			</div>
+			<!--<ul class='ipsDataItem_lastPoster ipsDataItem_withPhoto'>
+				<li>
+					{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $warning->moderator ), 'mini'"}
+				</li>
+				<li>
+					<h3 class='ipsType_minorHeading'>Warned by</h3>
+					{template="userLink" app="core" group="global" params="\IPS\Member::load( $warning->moderator )"}
+				</li>
+				<li class="ipsType_light">
+					{datetime="$warning->date"}
+				</li>
+			</ul>-->
+		</li>
+
+		<!--<tr>
+			<td>
+				{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $warning->member ), 'tiny'"}
+				{template="userLink" app="core" group="global" params="\IPS\Member::load( $warning->member )"}
+			</td>
+			<td class="ipsDataItem_size1">
+				<div class='ipsDataItem_generic ipsDataItem_size1 ipsType_center'>
+					<a href="{$warning->url()}" data-ipsDialog data-ipsDialog-size='narrow' class="ipsType_blendLinks" data-ipsTooltip title='{lang="wan_action_points" pluralize="$warning->points"}'>
+						<span class="ipsPoints">{$warning->points}</span>
+					</a>
+				</div>
+			</td>
+			<td>
+				<div class='ipsPos_left'>
+					<a href="{$warning->url()}" data-ipsDialog data-ipsDialog-showFrom='#elWarningOverview_{$warning->id}' data-ipsDialog-size='narrow' class="ipsType_blendLinks" title=''>
+						<h4 class="ipsDataItem_title">{lang="core_warn_reason_{$warning->reason}"}</h4>
+					</a>
+				</div>
+			</td>
+			<td>
+				{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $warning->moderator ), 'tiny'"}
+				{template="userLink" app="core" group="global" params="\IPS\Member::load( $warning->moderator )"}
+			</td>
+			<td>{datetime="$warning->date"}</td>
+		</tr>-->
+	{{endforeach}}
+{{endif}}

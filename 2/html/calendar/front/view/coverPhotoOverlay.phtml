@@ -1,0 +1,42 @@
+<ips:template parameters="$event" />
+<div class='cEvent_details'>
+	<h1 class='ipsType_pageTitle ipsTruncate ipsTruncate_line'>
+		{{if $event->prefix()}}
+			{template="prefix" group="global" app="core" params="$event->prefix( TRUE ), $event->prefix()"}
+		{{endif}}
+
+		{{if $event->locked()}}<i class='fa fa-lock'></i> {{endif}}<span itemprop='name'>{$event->title}</span>
+		{{if $event->mapped('pinned') || $event->mapped('featured') || $event->hidden() === -1 || $event->hidden() === 1}}
+			{{if $event->hidden() === -1}}
+				<span class="ipsBadge ipsBadge_icon ipsBadge_warning" data-ipsTooltip title='{$event->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
+			{{elseif $event->hidden() === 1}}
+				<span class="ipsBadge ipsBadge_icon ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>
+			{{endif}}
+			{{if $event->mapped('pinned')}}
+				<span class="ipsBadge ipsBadge_icon ipsBadge_positive" data-ipsTooltip title='{lang="pinned"}'><i class='fa fa-thumb-tack'></i></span>
+			{{endif}}
+			{{if $event->mapped('featured')}}
+				<span class="ipsBadge ipsBadge_icon ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
+			{{endif}}
+		{{endif}}
+	</h1>
+	<p class='ipsType_normal ipsType_reset'>
+		<time itemprop='startDate' content='{expression="$event->_start_date->format( 'Y-m-d' )"}'>
+			{{if $event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )}}
+				{$event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )->calendarDate()}{{if !$event->all_day}}, {$event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )->localeTime( FALSE )} {{endif}}
+			{{else}}
+				{$event->lastOccurrence( 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'startDate' )->localeTime( FALSE )} {{endif}}
+			{{endif}}
+		</time>
+		{{if $event->_end_date}}
+			&nbsp;&nbsp;<i class='fa fa-arrow-circle-right ipsType_large ipsType_light'></i>&nbsp;&nbsp;
+			<time itemprop='endDate' content='{expression="$event->_end_date->format( 'Y-m-d' )"}'>
+				{{if $event->nextOccurrence( $event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' ) ?: \IPS\calendar\Date::getDate(), 'endDate' )}}
+					{$event->nextOccurrence( $event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' ) ?: \IPS\calendar\Date::getDate(), 'endDate' )->calendarDate()}{{if !$event->all_day}}, {$event->nextOccurrence( $event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' ) ?: \IPS\calendar\Date::getDate(), 'endDate' )->localeTime( FALSE )}{{endif}}
+				{{else}}
+					{$event->lastOccurrence( 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'endDate' )->localeTime( FALSE )}{{endif}}
+				{{endif}}
+			</time>
+		{{endif}}
+	</p>
+</div>

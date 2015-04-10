@@ -1,0 +1,53 @@
+<ips:template parameters="$skinSet, $diff" />
+<p class="ipsMessage ipsMessage_info">{lang="core_theme_set_diff_desc" sprintf="$skinSet->name"}</p>
+<div class="acpBlock">
+	{{foreach $diff['templates'] as $app => $appData}}
+		{{foreach $appData as $location => $locationData}}
+			{{foreach $locationData as $group => $groupData}}
+				{{foreach $groupData as $name => $template}}
+					<div class="acpBlock_title">
+						{$template['template_app']}/{$template['template_location']}/{$template['template_group']}/{$template['template_name']}
+						{{if $template['added'] === true}}
+						<span class='ipsBadge ipsBadge_positive'>{lang="core_theme_set_template_new"}<span>
+						{{endif}}
+						{{if $template['deleted'] === true}}
+						<span class='ipsBadge ipsBadge_warning'>{lang="core_theme_set_template_deleted"}<span>
+						{{endif}}
+					</div>
+					{{if isset($template['oldHumanVersion']) AND isset($template['newHumanVersion'])}}
+						<table class="ipsTable diff restrict_height">
+						<tr>
+							<th><span>{$template['oldHumanVersion']}</span></th>
+							<th><span>{$template['newHumanVersion']}</span></th>
+						</tr>
+						</table>
+					{{endif}}
+					<div>
+						{$template['diff']|raw}
+					</div>
+				{{endforeach}}
+			{{endforeach}}
+		{{endforeach}}
+	{{endforeach}}
+	
+	{{foreach $diff['css'] as $app => $appData}}
+		{{foreach $appData as $location => $locationData}}
+			{{foreach $locationData as $group => $pathData}}
+				{{foreach $pathData as $name => $css}}
+					<div class="acpBlock_title">
+					{$css['css_app']}/{$css['css_location']}/{$css['css_path']}/{$css['css_name']}
+					{{if $css['added'] === true}}
+						<span class='ipsBadge ipsBadge_positive'>{lang="core_theme_set_css_new"}<span>
+						{{endif}}
+						{{if $css['deleted'] === true}}
+						<span class='ipsBadge ipsBadge_warning'>{lang="core_theme_set_css_deleted"}<span>
+						{{endif}}	
+					</div>
+					<div>
+						{$css['diff']|raw}
+					</div>
+				{{endforeach}}
+			{{endforeach}}
+		{{endforeach}}
+	{{endforeach}}
+</div>

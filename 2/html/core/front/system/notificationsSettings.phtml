@@ -1,0 +1,61 @@
+<ips:template parameters="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar" />
+{template="pageHeader" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('notification_options'), \IPS\Member::loggedIn()->language()->addToStack('notification_options_blurb')"}
+<form accept-charset='utf-8' action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}} data-ipsForm>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+		
+	<div class='ipsBox'>
+		<ul class="ipsPad ipsForm ipsForm_vertical">
+			{{foreach $elements as $collection}}
+				{{foreach $collection as $input}}
+
+					{{if !( $input instanceof \IPS\Helpers\Form\Matrix )}}
+						<li class='ipsFieldRow ipsFieldRow_checkbox' {{if $input->htmlId}}id="{$input->htmlId}"{{endif}}>
+							{{if $input instanceof \IPS\Helpers\Form\CheckboxSet or $input instanceof \IPS\Helpers\Form\Radio}}
+								<strong class='ipsType_normal'>{lang="$input->name"}</strong>
+							{{endif}}
+
+							{$input->html()|raw}
+
+							{{if !( $input instanceof \IPS\Helpers\Form\CheckboxSet ) && !( $input instanceof \IPS\Helpers\Form\Radio )}}
+							<div class="ipsFieldRow_content">
+								<{{if $input instanceof \IPS\Helpers\Form\Checkbox}}label for="check_{$input->htmlId}"{{else}}span{{endif}} class="ipsType_normal">{lang="$input->name"}</{{if $input instanceof \IPS\Helpers\Form\Checkbox}}label{{else}}span{{endif}}>
+								{{if \IPS\Member::loggedIn()->language()->checkKeyExists("{$input->name}_desc") }}
+									<br>
+									<span class='ipsFieldRow_desc'>{lang="{$input->name}_desc"}</span>
+								{{endif}}
+							</div>
+							{{endif}}
+						</li>					
+					{{endif}}
+				{{endforeach}}
+			{{endforeach}}
+		</ul>
+		<div class='ipsAreaBackground ipsPad ipsType_center'>
+			{{foreach $actionButtons as $button}}
+				{$button|raw}
+			{{endforeach}}
+		</div>
+	</div>
+	<br>
+	{{foreach $elements as $collection}}
+		{{foreach $collection as $input}}
+			{{if $input instanceof \IPS\Helpers\Form\Matrix}}
+				<br>
+				<div class='ipsBox'>
+					{$input->nested()|raw}
+					<div class='ipsAreaBackground ipsPad ipsType_center'>
+						{{foreach $actionButtons as $button}}
+							{$button|raw}
+						{{endforeach}}
+					</div>
+				</div>
+			{{endif}}
+		{{endforeach}}
+	{{endforeach}}
+
+	<br>
+	
+</form>

@@ -1,0 +1,44 @@
+html[dir="ltr"] #elModCPContent {
+	padding-left: 15px;
+}
+html[dir="rtl"] #elModCPContent {
+	padding-right: 15px;
+}
+
+html[dir="ltr"] #elReportSidebar {
+	margin-left: 15px;
+}
+html[dir="rtl"] #elReportSidebar {
+	margin-right: 15px;
+}
+
+#elApprovalToolbar {
+	width: auto;
+}
+
+#elModCPSearchIcon {
+	position: absolute;
+	font-size: 20px;
+	top: 23px;
+	left: 25px;
+}
+html[dir="ltr"] #elModCPSearchIcon {
+	left: 25px;
+}
+html[dir="rtl"] #elModCPSearchIcon {
+	right: 25px;
+}
+
+#elModCPMemberSearch {
+	position: relative;
+}
+	
+	#elModCPMemberSearch #elInput_modcp_member_find_wrapper {
+		width: 100%;
+		max-width: 100%;
+	}
+
+#elModCPApprovalSplash {
+	max-width: 500px;
+	margin: 0 auto;
+}

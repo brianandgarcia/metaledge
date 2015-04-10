@@ -1,0 +1,34 @@
+<ips:template parameters="$form, $login" />
+
+<section class='ipsPad'>
+	<br>
+	<h1 class='ipsType_veryLarge ipsType_center ipsType_reset'>{lang='sign_up'}</h1>
+	<p class='ipsType_large ipsType_center ipsType_light'>{lang="existing_user"} <a href='{url="app=core&module=system&controller=login" seoTemplate="login"}'>{lang="sign_in_short"}</a>.</p>
+	<br>
+
+	<div data-role='registerForm'>
+		<div class='ipsColumns ipsColumns_collapseTablet'>
+			<div class='ipsColumn ipsColumn_fluid'>
+				<div class='ipsBox ipsPad'>
+					{$form|raw}
+				</div>
+			</div>
+			{{if count ( $login->forms( FALSE, TRUE ) ) > 1}}
+				<div class='ipsColumn ipsColumn_wide' id='elRegisterSocial'>
+					<div class='ipsBox ipsPad'>
+						<h2 class='ipsType_sectionHead'>{lang='reg_start_faster'}</h2>
+						<p class='ipsType_normal ipsType_reset ipsType_light'>{lang='reg_connect'}</p>
+						<br>
+						{{foreach $login->forms( FALSE, TRUE ) as $k => $form}}
+							{{if $k !== '_standard'}}
+								<div class='ipsPad_half ipsType_center'>
+									{$form|raw}
+								</div>
+							{{endif}}
+						{{endforeach}}
+					</div>
+				</div>
+			{{endif}}
+		</div>
+	</div>
+</section>

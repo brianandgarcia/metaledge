@@ -1,0 +1,13 @@
+<ips:template parameters="$position='left'" />
+{{if \IPS\Output::i()->sidebar['enabled'] && ( ( isset( \IPS\Output::i()->sidebar['contextual'] ) && trim( \IPS\Output::i()->sidebar['contextual'] ) !== '' ) || ( isset( \IPS\Output::i()->sidebar['widgets']['sidebar'] ) && count( \IPS\Output::i()->sidebar['widgets']['sidebar'] ) ) || ( \IPS\Dispatcher::i()->application instanceof \IPS\Application AND \IPS\Dispatcher::i()->application->canManageWidgets() ) )}}
+	<div id='ipsLayout_sidebar' class='ipsLayout_sidebar{$position} {{if !( isset( \IPS\Output::i()->sidebar['contextual'] ) && trim( \IPS\Output::i()->sidebar['contextual'] ) !== '' ) && ( !isset( \IPS\Output::i()->sidebar['widgets']['sidebar'] ) || !count( \IPS\Output::i()->sidebar['widgets']['sidebar'] ) ) && \IPS\Dispatcher::i()->application->canManageWidgets()}}ipsLayout_sidebarUnused{{endif}}' data-controller='core.front.widgets.sidebar'>
+		{{if isset( \IPS\Output::i()->sidebar['contextual'] ) && trim( \IPS\Output::i()->sidebar['contextual'] ) !== ''}}
+			<aside id="elContextualTools" class='ipsClearfix' {{if isset( \IPS\Output::i()->sidebar['sticky'] )}}data-ipsSticky{{endif}}>
+				{expression="\IPS\Output::i()->sidebar['contextual']" raw="true"}
+			</aside>
+		{{endif}}
+		{template="widgetContainer" group="global" app="core" params="'sidebar', 'vertical'"}
+		<br><br>
+		{advertisement="ad_sidebar"}
+	</div>
+{{endif}}

@@ -1,0 +1,64 @@
+<ips:template parameters="$data" />
+<div class="cHookEditor_sidebar ipsScrollbar ipsSideMenu">
+		{{foreach $data as $className => $constructs}}
+			<h3 class='ipsType_reset ipsAreaBackground ipsPad_half'>{$className}</h3>
+			<br>
+			{{if isset( $constructs['properties'] )}}
+				<h4 class='ipsSideMenu_title'>{lang="plugin_hook_properties"}</h4>
+				<ul class="ipsSideMenu_list">
+					{{foreach $constructs['properties'] as $property}}
+						<li class="ipsSideMenu_item" data-signature='{$property->signature}' data-codeToInject='{$property->codeToInject}'>
+							<a href='#'>
+							{{if $property->isPublic()}}
+								<i class="fa fa-circle-o" title="public"></i>
+							{{else}}
+								<i class="fa fa-circle" title="protected"></i>
+							{{endif}}
+							{{if $property->isStatic()}}
+								static
+							{{endif}}
+							${$property->getName()}
+							</a>
+						</li>
+					{{endforeach}}
+				</ul>
+			{{endif}}
+			{{if isset( $constructs['methods'] )}}
+				<h4 class='ipsSideMenu_title'>{lang="plugin_hook_methods"}</h4>
+				<ul class="ipsSideMenu_list">
+					{{foreach $constructs['methods'] as $method}}
+						<li class="ipsSideMenu_item" data-signature='{$method->signature}' data-codeToInject='{$method->codeToInject}'>
+							<a href='#'>
+							{{if $method->isPublic()}}
+								<i class="fa fa-circle-o" title="public"></i>
+							{{else}}
+								<i class="fa fa-circle" title="protected"></i>
+							{{endif}}
+							{{if $method->isFinal()}}
+								final
+							{{endif}}
+							{{if $method->isStatic()}}
+								static
+							{{endif}}
+							{{if $method->isAbstract()}}
+								abstract
+							{{endif}}
+							{{if !$method->getNumberOfParameters()}}
+								{$method->getName()}()
+							{{else}}
+								{{if !$method->getNumberOfRequiredParameters()}}
+									{$method->getName()}( {$method->getNumberOfParameters()} )
+								{{elseif $method->getNumberOfParameters() != $method->getNumberOfRequiredParameters()}}
+									{$method->getName()}( {$method->getNumberOfRequiredParameters()} [, {expression="$method->getNumberOfParameters() - $method->getNumberOfRequiredParameters()"} ] )
+								{{else}}
+									{$method->getName()}( [ {$method->getNumberOfParameters()} ] )
+								{{endif}}
+							{{endif}}
+							</a>
+						</li>
+					{{endforeach}}
+				</ul>
+			{{endif}}
+		{{endforeach}}
+	</ul>
+</div>

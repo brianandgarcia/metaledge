@@ -1,0 +1,35 @@
+<ips:template parameters="$database, $records, $orientation='vertical'" original_group="" key="block_on_the_charts_block_1131" />
+{{$FieldsClass  = '\\IPS\\cms\\Fields'  . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+{{if !empty( $records ) }}
+	<h3 class='ipsWidget_title ipsType_reset'>On the Charts</h3>
+		<div class='ipsPad_half ipsWidget_inner'>
+			<ul class='ipsDataList ipsDataList_reducedSpacing'>
+				{{foreach $records as $row}}
+					{{if $customFields = $FieldsClass::display( $row->fieldValues(), 'listing' ) and count( $customFields )}}
+						{{foreach $customFields as $fieldId => $fieldValue}}
+							{{$formattedFields[ $fieldId ] = $fieldValue;}}
+						{{endforeach}}
+					{{endif}}
+
+					{{$idField = $row::$databaseColumnId;}}
+					<li class="ipsCms_recordRow ipsDataItem ipsDataItem_responsivePhoto" data-rowID='{$row->$idField}'>
+						<div class='ipsDataItem_icon ipsPos_top'>
+							<!-- Rating -->
+							<span class="metalEdge_rating rating_{$row->averageReviewRating()}">{$row->averageReviewRating()}</span>
+						</div>
+						<div class='ipsDataItem_main'>
+							<h4 class='ipsDataItem_title ipsType_break'>
+								<a href='{$row->url()}'>
+									{{if $row->_title}}{$row->_title}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
+								</a>
+							</h4>
+							<!-- Artist -->
+							<br> <span class='ipsType_medium ipsType_light'>{$formattedFields[7]}</span>
+
+						</div>
+					</li>
+				{{endforeach}}
+			</ul>
+		</div>
+		<a href="{$row->container()->url()}" class="ipsPos_center ipsButton ipsButton_light ipsButton_small">Check Out More Releases</a>
+{{endif}}

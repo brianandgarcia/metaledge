@@ -1,0 +1,20 @@
+<ips:template parameters="$topics, $orientation='vertical'" original_group="latestTopics" key="block_latestTopics_current_chatter" />
+{{if !empty( $topics ) }}
+<div class="current_chatter">
+	<h3 class='ipsType_reset'>Current Chatter</h3>
+	<div class='ipsPad ipsWidget_inner'>
+		<ul class='ipsDataList ipsDataList_reducedSpacing'>
+			{{foreach $topics as $topic}}
+				<li class='ipsDataItem'>
+					<div class='ipsDataItem_main'>
+						<a href="{$topic->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$topic->title"}' class='ipsDataItem_title ipsType_break'>{lang="$topic->title" wordbreak="true"}</a><br>
+						<span>{lang="byline_nodate" htmlsprintf="$topic->author()->link()"}</span>
+					</div>
+				</li>
+			{{endforeach}}
+		</ul>
+	</div>
+	<a href="{$topic->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$topic->title"}'>View All</a>
+</div>
+{{endif}}
+	

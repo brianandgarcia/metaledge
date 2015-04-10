@@ -1,0 +1,13 @@
+<ips:template parameters="$warning" />
+{template="pageHeader" params="\IPS\Member::loggedIn()->language()->addToStack('revoke_this_warning')" group="global" app="core" location="front"}
+
+<div class='ipsAreaBackground_light ipsPad'>
+	<p class='ipsType_large'>
+		{lang="warning_revoke_blurb"}
+	</p>
+	<br>
+	<ul class='ipsList_inline'>
+		<li><a href='{$warning->url('delete')->setQueryString('undo', 1)->csrf()}' class='ipsButton ipsButton_primary ipsButton_small'>{lang="warning_revoke_undo"}</a></li>
+		<li><a href='{$warning->url('delete')->setQueryString('undo', 0)->csrf()}' class='ipsButton ipsButton_primary ipsButton_small'>{lang="delete"}</a></li>
+	</ul>
+</div>

@@ -1,0 +1,18 @@
+/* BOTH */
+@media screen and (max-width: 979px) {
+	.ipsApp #elLogin_forms .ipsType_pageTitle .fa {
+		font-size: 20px;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+	.ipsApp#elLogin {
+		padding-top: 10px;
+	}
+
+	.ipsApp #elLogin_box {
+		width: auto;
+		margin: 7px;
+	}
+}

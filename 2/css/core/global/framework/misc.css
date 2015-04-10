@@ -1,0 +1,1337 @@
+/* Miscellanious styles */
+
+/* ======================================================== */
+/* BOX STYLES */
+.ipsBox {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #f2f2f2;
+	border-radius: 3px;
+}
+
+	.ipsBox:not( .ipsBox_transparent ) {
+		background-color: #fff;
+	}
+
+	.ipsBox.ipsModerated {
+		border-color: #ede4e4;
+	}
+
+/* ======================================================== */
+/* PAGE HEADER AREA*/
+.ipsPageHeader {
+	background: transparent;
+	border-bottom: 0;
+	/*margin-bottom: 15px;*/
+	position: relative;
+}
+	
+	.ipsPageHeader h1 {
+		display: inline-block;
+	}
+
+	.ipsPageHeader .ipsPageHeader_info, .ipsPageHeader_info p:first-child {
+		margin: 5px 0;
+	}
+
+	.ipsPageHeader .ipsFollow {
+		margin-top: 0;
+	}
+
+/* ======================================================== */
+/* JS STUFF */
+/* Used when JS is disabled and element set to show when JS enabled */
+.ipsJS_none .ipsJS_show {
+	display: none;
+}
+
+.ipsJS_has .ipsJS_hide {
+	display: none;
+}
+
+/* ======================================================== */
+/* MISC COLORS */
+.ipsAreaBackground {
+	background: {theme="area_background"};
+}
+
+.ipsAreaBackground_light {
+	background: {theme="area_background_light"};
+}
+
+.ipsAreaBackground_reset {
+	background: {theme="area_background_reset"};
+}
+
+.ipsAreaBackground_dark {
+	background: {theme="area_background_dark"};
+	color: #fff;
+}
+
+	.ipsAreaBackground_dark a {
+		color: #fff;
+	}
+
+.ipsAreaBackground_positive {
+	background: #5f7a47;
+	color: #fff;
+}
+
+.ipsAreaBackground_negative {
+	background: #8c3737;
+	color: #fff;
+}
+	
+	.ipsAreaBackground_positive .ipsType_sectionHead,
+	.ipsAreaBackground_positive .ipsType_sectionTitle,
+	.ipsAreaBackground_negative .ipsType_sectionHead,
+	.ipsAreaBackground_negative .ipsType_sectionTitle {
+		color: #fff;
+	}
+
+.ipsAreaBackground_rounded {
+	border-radius: 3px;
+}
+
+/* ======================================================== */
+/* USER PHOTOS */
+.ipsUserPhoto {
+	background: #fff;
+	vertical-align: middle;
+	display: inline-block;
+	line-height: 1px;
+	position: relative;
+	margin: 2px;
+	{{if theme.rounded_photos}}
+		border-radius: 150px;
+	{{else}}
+		border-radius: 2px;
+	{{endif}}
+}
+
+	.ipsUserPhoto:after {
+		content: '';
+		display: block;
+		position: absolute;
+		left: -1px;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		width: auto !important;
+		height: auto !important;
+		border: 1px solid #fff;
+		box-shadow: 0px 0px 0px 1px #e2e2e2;
+	}
+
+	.ipsUserPhoto_tiny img, img.ipsUserPhoto_tiny, .ipsUserPhoto_tiny:after {
+		width: 34px;
+		height: 34px;
+		{{if theme.rounded_photos}}
+			border-radius: 17px;
+		{{endif}}
+	}
+
+	.ipsUserPhoto_mini img, img.ipsUserPhoto_mini, .ipsUserPhoto_mini:after {
+		width: 44px;
+		height: 44px;
+		{{if theme.rounded_photos}}
+			border-radius: 22px;
+		{{endif}}
+	}
+
+	.ipsUserPhoto_small img, img.ipsUserPhoto_small, .ipsUserPhoto_small:after {
+		width: 54px;
+		height: 54px;
+		{{if theme.rounded_photos}}
+			border-radius: 27px;
+		{{endif}}
+	}
+
+	.ipsUserPhoto_medium img, img.ipsUserPhoto_medium, .ipsUserPhoto_medium:after {
+		width: 75px;
+		height: 75px;
+		{{if theme.rounded_photos}}
+			border-radius: 38px;
+		{{endif}}
+	}
+
+	.ipsUserPhoto_large img, img.ipsUserPhoto_large, .ipsUserPhoto_large:after {
+		width: 90px;
+		height: 90px;
+		{{if theme.rounded_photos}}
+			border-radius: 45px;
+		{{endif}}
+	}
+	
+	.ipsUserPhoto_xlarge img, img.ipsUserPhoto_xlarge, .ipsUserPhoto_xlarge:after {
+		width: 120px;
+		height: 120px;
+		{{if theme.rounded_photos}}
+			border-radius: 60px;
+		{{endif}}
+	}
+
+/* ======================================================== */
+/* PHOTO PANELS */
+/* Photo panels are used to show a user photo on the left, with content aligned next to it */
+.ipsPhotoPanel > .ipsUserPhoto {
+	float: left;
+	line-height: 0;
+}
+html[dir="rtl"] .ipsPhotoPanel > .ipsUserPhoto {
+	float: right;
+}
+
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_tiny > div {
+		margin-left: 45px;
+	}
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_tiny > div {
+		margin-right: 45px;
+	}
+
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_mini > div {
+		margin-left: 55px;
+	}
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_mini > div {
+		margin-right: 55px;
+	}
+
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_small > div {
+		margin-left: 65px;
+	}
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_small > div {
+		margin-right: 65px;
+	}
+
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_medium > div {
+		margin-left: 90px;
+	}
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_medium > div {
+		margin-right: 90px;
+	}
+
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_large > div {
+		margin-left: 105px;
+	}
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_large > div {
+		margin-right: 105px;
+	}
+
+	.ipsPhotoPanel .ipsType_sectionHead {
+		line-height: 1.3;
+	}
+
+/* ======================================================== */
+/* IMAGES & THUMBNAILS */
+.ipsImage {
+	max-width: 100%; /* makes them responsive */
+	max-height: 100%;
+}
+
+.ipsImage_thumbnailed {
+	border: 1px solid #E2E2E2;
+	padding: 1px;
+}
+
+/* A resized image */
+.ipsThumb {
+	border: 1px solid #E2E2E2;
+}
+	
+	span.ipsThumb, a.ipsThumb {
+		display: block;
+	}
+
+	.ipsThumb_bg {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		background-color: #ebebeb;
+	}
+
+		.ipsThumb_bg img {
+			display: none;
+		}
+
+	.ipsThumb_large {
+		max-width: 175px;
+		max-height: 175px;
+	}
+
+		.ipsThumb_bg.ipsThumb_large {
+			width: 175px;
+			height: 175px;
+		}
+
+	.ipsThumb_medium {
+		max-width: 125px;
+		max-height: 125px;
+	}
+
+		.ipsThumb_bg.ipsThumb_medium {
+			width: 125px;
+			height: 125px;
+		}
+
+	.ipsThumb_small {
+		max-width: 75px;
+		max-height: 75px;
+	}
+
+		.ipsThumb_bg.ipsThumb_small {
+			width: 75px;
+			height: 75px;
+		}
+
+	.ipsThumb_tiny {
+		max-width: 40px;
+		max-height: 40px;
+	}
+
+		.ipsThumb_bg.ipsThumb_tiny {
+			width: 40px;
+			height: 40px;
+		}
+
+/* A 'missing thumb' element, used where a preview isn't available */
+.ipsNoThumb {
+	background: #262e33;
+	text-align: center;
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+
+	.ipsNoThumb:after {
+		content: '\\f030';
+		font-family: 'FontAwesome';
+		font-size: 30px;
+		color: rgba(255,255,255,0.075);
+		position: absolute;
+		top: 50%;
+		margin-top: -10px;
+		left: 0;
+		right: 0;
+		text-align: center;
+	}
+
+	.ipsNoThumb_video:after {
+		content: '\\f008';
+	}
+
+	.ipsNoThumb_product:after {
+		content: '\\f1b2';
+	}
+
+	.ipsNoThumb_gift:after {
+		content: '\\f06b';
+	}
+
+/* Aims to fix responsiveness in Firefox & IE */
+.ipsContained {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+/* ======================================================== */
+/* HORIZONTAL RULE */
+hr.ipsHr {
+	margin: 15px 0;
+	height: 0;
+	padding: 0;
+	border-width: 2px 0 0 0;
+	border-style: solid;
+	border-color: #ebebeb;
+}
+	
+	.ipsAreaBackground_dark hr.ipsHr {
+		border-color: rgba(255,255,255,0.1);
+	}
+
+	hr.ipsHr.ipsHr_thick {
+		border-width: 10px 0 0 0;
+		border-color: #394248;
+	}
+
+	hr.ipsHr.ipsHr_small {
+		margin: 7px 0;
+	}
+
+/* ======================================================== */
+/* LOADING THROBBERS */
+@-webkit-keyframes spinner {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); }
+}
+@keyframes spinner {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); }
+}
+
+.ipsLoading {
+	position: relative;
+}
+
+.ipsLoading:before {
+	font-family: 'icomoon';
+	content: '\\e97b';
+	display: block;
+	color: #444;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -25px;
+	margin-left: -25px;
+	font-size: 50px;
+	line-height: 1 !important;
+	-webkit-animation: spinner 0.75s infinite linear;
+	animation: spinner 0.75s infinite linear;
+}
+
+.ipsLoading.ipsLoading_small:before {
+	font-size: 23px;
+	margin-top: -12px;
+	margin-left: -12px;
+	color: #222;
+}
+
+.ipsLoading.ipsLoading_tiny:before {
+	font-size: 16px;
+	margin-top: -8px;
+	margin-left: -8px;
+	color: #222;
+}
+
+.ipsLoading.ipsLoading_dark:before {
+	color: #fff;
+}
+
+/* Tiny spinner used in an <i> tag */
+.ipsLoading_tinyIcon {
+	width: 16px;
+	height: 16px;
+	font-size: 17px;
+	display: inline-block;
+}
+
+/* ======================================================== */
+/* POSITIONING, CLEARING, HIDING */
+.ipsPad, .ipsApp ul.ipsPad, .ipsApp ol.ipsPad { padding: 15px; }
+.ipsPad_double, .ipsApp ul.ipsPad_double, .ipsApp ol.ipsPad_double { padding: 30px; }
+.ipsPad_half, .ipsApp ul.ipsPad_half, .ipsApp ol.ipsPad_half { padding: 7px; }
+.ipsPad_top { padding-top: 7px; }
+.ipsPad_bottom { padding-bottom: 7px;}
+
+.ipsPos_left { float: left; }
+html[dir="rtl"] .ipsPos_left { float: right; }
+.ipsPos_right { float: right; }
+html[dir="rtl"] .ipsPos_right { float: left; }
+.ipsPos_center { margin: 0 auto; }
+.ipsPos_middle { vertical-align: middle; }
+.ipsPos_top { vertical-align: top; }
+
+.ipsClear {	clear: both; }
+
+.ipsClearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.ipsOverflow {
+	width: 100%;
+	overflow: auto;
+}
+
+.ipsApp .ipsHide { 
+	display: none;
+}
+
+.ipsFaded {
+	opacity: 0.4;
+}
+	
+	.ipsFaded_unavailable {
+		pointer-events: none;
+	}
+	
+	.ipsFaded.ipsFaded_more {
+		opacity: 0.25;
+	}
+
+	.ipsFaded_withHover {
+		{prefix="transition" value="0.2s all linear"}
+	}
+
+	.ipsFaded_withHover:hover, .ipsFaded_withHover:hover .ipsFaded, .ipsFaded.ipsFaded_cancel {
+		opacity: 1;
+	}
+
+/* ======================================================== */
+/* LISTS */
+.ipsList_inline,
+.ipsList_reset {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+html[dir="ltr"] .ipsList_leftAlign {
+	padding-left: 20px;
+}
+html[dir="rtl"] .ipsList_leftAlign {
+	padding-right: 20px;
+}
+
+.ipsList_inline > li {
+	display: inline-block;
+	vertical-align: middle;
+}
+html[dir="ltr"] .ipsList_inline > li {
+	margin-right: 15px;
+}
+html[dir="rtl"] .ipsList_inline > li {
+	margin-left: 15px;
+}
+
+	html[dir="ltr"] .ipsList_inline > li:last-child,
+	html[dir="ltr"] .ipsList_inline.ipsList_noSpacing > li {
+		margin-right: 0;
+	}
+	html[dir="rtl"] .ipsList_inline > li:last-child,
+	html[dir="rtl"] .ipsList_inline.ipsList_noSpacing > li {
+		margin-left: 0;
+	}
+	
+	html[dir="ltr"] .ipsList_inline.ipsList_noSpacing_left > li {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .ipsList_inline.ipsList_noSpacing_left > li {
+		margin-right: 0;
+	}
+	
+	html[dir="ltr"] .ipsList_inline > li.ipsPos_right:not( .ipsResponsive_noFloat ) {
+		margin-right: 0;
+		margin-left: 15px;
+	}
+	html[dir="rtl"] .ipsList_inline > li.ipsPos_right:not( .ipsResponsive_noFloat ) {
+		margin-left: 0;
+		margin-right: 15px;
+	}
+
+.ipsList_inline.ipsList_csv li a:after {
+	content: ',';
+}
+
+.ipsList_inline.ipsList_csv li:last-child a:after {
+	content: '';
+}
+
+.ipsList_bullets {
+	list-style-type: disc;
+	margin: 0 0 0 16px;
+	padding: 0;
+}
+html[dir="rtl"] .ipsList_bullets {
+	margin: 0 16px 0 0;
+}
+
+.ipsShareIcon {
+	width: 16px;
+	height: 16px;
+	background-image: url( {resource="icon_share.png" app="core" location="front"} );
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	opacity: 0.5;
+}
+
+	.ipsShareIcon:hover {
+		opacity: 1;
+	}
+
+/* ======================================================== */
+/* ONLINE/OFFLINE */
+.ipsOnlineStatus, .ipsOnlineStatus_online {
+	color: #249168;
+}
+
+.ipsOnlineStatus_offline {
+	color: #c7c7c7;
+}
+
+.ipsOnlineStatus_away {
+	color: #bd9e22;
+}
+
+.ipsOnlineStatus_busy {
+	color: #a03223;
+}
+
+/* ======================================================== */
+/* CURSORS */
+.ipsCursor_locked {
+	cursor: not-allowed;
+}
+
+.ipsCursor_drag {
+	cursor: move;
+}
+
+.ipsCursor_default {
+	cursor: default;
+}
+
+.ipsCursor_pointer {
+	cursor: pointer;
+}
+
+.ipsCursor_help {
+	cursor: help;
+}
+
+/* ======================================================== */
+/* CONTEXTUAL TOOLS */
+.ipsToolList {
+	width: 100%;
+	padding: 0;
+	list-style: none;
+	margin: 0;
+}
+	
+	.ipsToolList.ipsToolList_vertical > li {
+		margin-bottom: 15px;
+	}
+
+		.ipsToolList.ipsToolList_vertical > li:last-child {
+			margin-bottom: 0;
+		}
+
+
+	html[dir="ltr"] .ipsToolList.ipsToolList_horizontal > li,
+	html[dir="ltr"] .ipsToolList.ipsToolList_horizontal > li.ipsPos_right {
+		float: right;
+		margin-left: 10px;
+	}
+
+		html[dir="ltr"] .ipsToolList.ipsToolList_horizontal > li.ipsPos_left {
+			float: left;
+			margin: 7px 10px 0 0;
+		}
+
+		html[dir="ltr"] .ipsToolList.ipsToolList_horizontal.ipsPos_left > li {
+			float: left;
+			margin-left: 0;
+		}
+		
+	html[dir="rtl"] .ipsToolList.ipsToolList_horizontal > li,
+	html[dir="rtl"] .ipsToolList.ipsToolList_horizontal > li.ipsPos_right {
+		float: left;
+		margin-right: 10px;
+	}
+
+		html[dir="rtl"] .ipsToolList.ipsToolList_horizontal > li.ipsPos_left {
+			float: right;
+			margin: 7px 0 0 10px;
+		}
+
+		html[dir="rtl"] .ipsToolList.ipsToolList_horizontal.ipsPos_left > li {
+			float: right;
+			margin-right: 0;
+		}
+
+	.ipsToolList.ipsToolList_horizontal > li.ipsToolList_primaryAction .ipsButton:not( .ipsButton_link ) {
+		min-width: 200px;
+	}
+
+/* ======================================================== */
+/* MODERATION STYLES */
+.ipsModerated {
+	background: {theme="moderated"};
+	color: {theme="moderated_text"};
+}
+
+	.ipsModerated a {
+		color: {theme="moderated_text"};
+	}
+
+	.ipsModerated .ipsType_light {
+		color: {theme="moderated_text_light"};
+	}
+
+/* ======================================================== */
+/* STEP BAR */
+.ipsStepBar {
+	background: #f7f7f7;
+	width: 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+	.ipsStepBar > li {
+		float: left;
+		position: relative;
+		line-height: 1.3;
+	}
+	html[dir="rtl"] .ipsStepBar > li {
+		float: right;
+	}
+
+	.ipsStepBar > .ipsStep > a, .ipsStepBar > .ipsStep > span {
+		padding: 11px 33px 11px 18px;
+		background-color: #f0f0f0;
+		background-image: url( {resource="wizard_step_large.png" app="core" location="front"} );
+		background-repeat: no-repeat;
+		background-position: bottom right;
+		background-size: 200% 200%;
+		height: 55px;
+		min-height: 35px;
+		display: inline-block;
+		position: relative;
+		min-width: 115px;
+	}
+	html[dir="rtl"] .ipsStepBar > .ipsStep > a, html[dir="rtl"] .ipsStepBar > .ipsStep > span {
+		padding: 11px 18px 11px 33px;
+		background-image: url( {resource="wizard_step_large_rtl.png" app="core" location="front"} );
+		background-position: bottom left;
+	}
+
+	.ipsStepBar > .ipsStep.ipsStep_active > a, .ipsStepBar > .ipsStep.ipsStep_active > span {
+		background-position: top right;
+		color: #fff;
+	}
+	html[dir="rtl"] .ipsStepBar > .ipsStep.ipsStep_active > a, html[dir="rtl"] .ipsStepBar > .ipsStep.ipsStep_active > span {
+		background-position: top left;
+	}
+
+	.ipsStepBar > .ipsStep + .ipsStep.ipsStep_active:after {
+		background-size: 23px 100%;
+		background-repeat: no-repeat;
+		width: 23px;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		content: '';
+		display: inline-block;
+	}
+	html[dir="ltr"] .ipsStepBar > .ipsStep + .ipsStep.ipsStep_active:after {
+		background-image: url( {resource="wizard_step_extra.png" app="core" location="front"} );
+		left: -23px;
+	}
+	html[dir="rtl"] .ipsStepBar > .ipsStep + .ipsStep.ipsStep_active:after {
+		background-image: url( {resource="wizard_step_extra_rtl.png" app="core" location="front"} );
+		right: -23px;
+	}
+
+.ipsStep_title {
+	display: block;
+}
+
+.ipsStep_desc {
+	font-size: 11px;
+}
+
+.ipsPageHead_special {
+	border-radius: 4px 4px 0px 0px;
+	padding: 15px;
+	color: #fff;
+	position: relative;
+	background-color: {theme="profile_header"};
+}
+
+/* ======================================================== */
+/* COMMENT & NOTIFICATION INDICATORS */
+.ipsCommentCount {
+	padding: 5px 10px;
+	border-radius: 3px;
+	background: #ececec;
+	display: inline-block;
+	font-size: 12px;
+	text-transform: uppercase;
+	position: relative;
+	text-align: center;
+	line-height: 15px;
+	color: #333;
+	margin-bottom: 3px;
+}
+html[dir="ltr"] .ipsCommentCount {
+	margin-left: 6px;
+}
+html[dir="rtl"] .ipsCommentCount {
+	margin-right: 6px;
+}
+
+	.ipsCommentCount strong {
+		font-size: 15px;
+		display: block;
+		/*color: #fff;*/
+		font-weight: normal;
+	}
+
+	.ipsCommentCount:after {
+		position: absolute;
+		top: 50%;
+		margin-top: -8px;
+		content: "";
+		display: block;
+		width: 0;
+		height: 0;
+		border-width: 8px 6px;
+		border-style: solid;
+	}
+	html[dir="ltr"] .ipsCommentCount:after {
+		left: -11px;
+		border-color: transparent #ececec transparent transparent;
+	}
+	html[dir="rtl"] .ipsCommentCount:after {
+		right: -11px;
+		border-color: transparent transparent transparent #ececec;
+	}
+
+	.ipsCommentCount_hot {
+		background: #da8619;
+		color: #fff;
+	}
+
+		.ipsCommentCount_hot:after {
+			border-color: transparent #da8619 transparent transparent;
+		}
+		html[dir="rtl"].ipsCommentCount_hot:after {
+			border-color: transparent transparent transparent #da8619;
+		}
+
+	.ipsSideMenu_item a .ipsCommentCount {
+		margin-top: -4px;
+	}
+
+.ipsApp .ipsNotificationCount {
+	position: absolute;
+	top: -10px;
+	font-size: 11px;
+	color: #fff;
+	background: #a9334e;
+	display: inline-block;
+	text-indent: 0%;
+	line-height: 18px;
+	padding: 0 6px;
+	border-radius: 8px;
+	z-index: 2;
+}
+html[dir="ltr"] .ipsApp .ipsNotificationCount {
+	right: -10px;
+}
+html[dir="rtl"] .ipsApp .ipsNotificationCount {
+	left: -10px;
+}
+
+	.ipsApp .ipsNotificationCount.ipsHide {
+		display: none;
+	}
+
+/* ======================================================== */
+/* CHARTS */
+.ipsChart {
+	border-width: 0 4px 4px 4px;
+	border-style: solid;
+	border-color: #ebebeb;
+}
+
+	.ipsChart .ipsChart_chart {
+		overflow: hidden;
+	}
+
+	.ipsChart .ipsButtonRow li > a:not( .ipsButtonRow_active ) {
+		background: #fff;
+		color: #6f6f6f;
+	}
+
+	.ipsChart .ipsType_sectionHead {
+		margin-bottom: 15px;
+	}
+
+/* ======================================================== */
+/* ACCESSIBILITY STUFF */
+#ipsAccessibility_border {
+	width: 0;
+	height: 300px;
+}
+html[dir="ltr"] #ipsAccessibility_border {
+	border-left: 3px solid #d91f4b;
+}
+html[dir="rtl"] #ipsAccessibility_border {
+	border-right: 3px solid #d91f4b;
+}
+
+#ipsAccessibility_arrow {
+	width: 0;
+	height: 0;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent transparent transparent red;
+}
+
+/* ======================================================== */
+/* STICKY ELEMENTS */
+/* Used in conjunction with the sticky widget to make elements stay on screen */
+.ipsSticky {
+	background: #fff;
+	/*box-shadow: 0px 0px 35px rgba(0,0,0,0.05);*/
+}
+
+	.ipsSticky.ipsSticky_bottom:before,
+	.ipsSticky.ipsSticky_top:before {
+		content: '';
+		display: block;
+		position: absolute;
+		height: 6px;
+		left: 0;
+		right: 0;
+		
+	}
+
+	.ipsSticky.ipsSticky_top {
+		border-bottom: 1px solid rgba(0,0,0,0.05);
+	}
+	.ipsSticky.ipsSticky_top:before {
+		bottom: -6px;
+		background: -moz-linear-gradient(top, rgba(0,0,0,0.075) 0%, rgba(0,0,0,0) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.075)), color-stop(100%,rgba(0,0,0,0)));
+		background: -webkit-linear-gradient(top, rgba(0,0,0,0.075) 0%,rgba(0,0,0,0) 100%);
+		background: -o-linear-gradient(top, rgba(0,0,0,0.075) 0%,rgba(0,0,0,0) 100%);
+		background: -ms-linear-gradient(top, rgba(0,0,0,0.075) 0%,rgba(0,0,0,0) 100%);
+		background: linear-gradient(to bottom, rgba(0,0,0,0.075) 0%,rgba(0,0,0,0) 100%);
+		pointer-events: none;
+	}
+
+	.ipsSticky.ipsSticky_bottom:before {
+		top: -30px;
+		height: 30px;
+		background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1)));
+		background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		background: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		pointer-events: none;
+	}
+
+	.ipsSticky.ipsSticky_noFade:before {
+		display: none;
+	}
+
+/* ======================================================== */
+/* CUSTOM SCROLLBARS (webkit only for now) */
+.ipsScrollbar::-webkit-scrollbar { 
+	width: 8px;
+	height: 8px;
+}
+
+.ipsScrollbar::-webkit-scrollbar-thumb { 
+	background-color: rgba(0,0,0,0.4);
+	border-radius: 3px;
+}
+
+.ipsScrollbar::-webkit-scrollbar-track-piece { 
+	background-color: rgba(0,0,0,0.05);
+}
+
+/* ======================================================== */
+/* MULTIQUOTE ELEMENT */
+#ipsMultiQuoter {
+	position: fixed;
+	bottom: 20px;
+	background: #333333;
+	padding: 15px;
+	border-radius: 3px;
+	z-index: 5000;
+	box-shadow: 0px 15px 110px rgba(0,0,0,0.2);
+}
+html[dir="ltr"] #ipsMultiQuoter {
+	right: 20px;
+}
+html[dir="rtl"] #ipsMultiQuoter {
+	left: 20px;
+}
+
+	#ipsMultiQuoter a {
+		color: #fff;
+	}
+
+/* ======================================================== */
+/* EMPTINESS */
+.ipsEmpty {
+	padding: 30px 0 0;
+	font-size: 22px;
+	color: #e5e5e5;
+}
+
+.ipsEmpty i {
+	font-size: 120px;
+	margin-bottom: 15px;
+}
+
+/* ======================================================== */
+/* CALENDAR DATES */
+.ipsCalendarDate {
+	width: 40px;
+	display: block;
+	border: 1px solid rgba(0,0,0,0.2);
+	background: #fafafa;
+	padding: 4px 0;
+	border-radius: 3px;
+	overflow: hidden;
+}
+	
+	.ipsWidget .ipsCalendarDate {
+		background: #fff;
+	}
+	
+	.ipsCalendarDate > span {
+		display: block;
+		text-align: center;
+	}
+
+	.ipsCalendarDate_month {
+		color: #a93848;
+		text-transform: uppercase;
+		font-size: 10px;
+		line-height: 1;
+		font-weight: bold;
+	}
+
+	.ipsCalendarDate_date {
+		font-size: 20px;
+		line-height: 20px;
+	}
+
+	.ipsCalendarDate.ipsCalendarDate_large {
+		width: 80px;
+	}
+
+	.ipsCalendarDate.ipsCalendarDate_large .ipsCalendarDate_month {
+		font-size: 20px;
+		font-weight: 500;
+	}
+
+	.ipsCalendarDate.ipsCalendarDate_large .ipsCalendarDate_date {
+		font-size: 40px;
+		line-height: 42px;
+		font-weight: 300;
+	}
+
+/* ======================================================== */
+/* CAROUSELS */
+.ipsCarousel {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	/*padding: 4px 0;*/
+}
+
+	html[dir="ltr"] .ipsCarousel:not( [data-ipsCarousel-fullSizeItems] ) .ipsCarousel_item {
+		margin-right: 15px;
+	}
+	html[dir="rtl"] .ipsCarousel:not( [data-ipsCarousel-fullSizeItems] ) .ipsCarousel_item {
+		margin-left: 15px;
+	}
+
+		html[dir="ltr"] .ipsCarousel .ipsCarousel_item:last-child {
+			margin-right: 0;
+		}
+		html[dir="rtl"] .ipsCarousel .ipsCarousel_item:last-child {
+			margin-left: 0;
+		}
+
+	.ipsCarousel .ipsCarousel_nav {
+		position: absolute;
+		top: 50%;
+		margin-top: -20px;
+		background: #fff;
+		color: #323232;
+		width: 30px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		font-size: 18px;
+		box-shadow: 0px 2px 1px rgba(0,0,0,0.1);
+		opacity: 0.4;
+	}
+
+		html[dir="ltr"] .ipsCarousel .ipsCarousel_nav[data-action='prev'] {
+			left: 0;
+		}
+		html[dir="ltr"] .ipsCarousel .ipsCarousel_nav[data-action='next'] {
+			right: 0;
+		}
+		html[dir="rtl"] .ipsCarousel .ipsCarousel_nav[data-action='prev'] {
+			right: 0;
+		}
+		html[dir="rtl"] .ipsCarousel .ipsCarousel_nav[data-action='next'] {
+			left: 0;
+		}
+
+		.ipsCarousel:hover .ipsCarousel_nav {
+			opacity: 1;
+		}
+
+	.ipsCarousel > [data-role="carouselItems"] {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		width: 15000px;
+		position: absolute;
+	}
+
+	html[dir="ltr"] .ipsCarousel > [data-role="carouselItems"] > .ipsCarousel_item {
+		float: left;
+	}
+	html[dir="rtl"] .ipsCarousel > [data-role="carouselItems"] > .ipsCarousel_item {
+		float: right;
+	}
+
+	.ipsCarousel_shadow {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 20px;
+		display: block;
+		pointer-events: none;
+	}
+
+		html[dir="ltr"] .ipsCarousel_shadowLeft {
+			left: 0;
+			background: -moz-linear-gradient(left, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.04) 76%, rgba(0,0,0,0) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.25)), color-stop(76%,rgba(0,0,0,0.04)), color-stop(100%,rgba(0,0,0,0)));
+			background: -webkit-linear-gradient(left, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+			background: -o-linear-gradient(left, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+			background: -ms-linear-gradient(left, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+			background: linear-gradient(to right, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+		}
+		html[dir="rtl"] .ipsCarousel_shadowLeft {
+			right: 0;
+			background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.04) 24%, rgba(0,0,0,0.25) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(24%,rgba(0,0,0,0.04)), color-stop(100%,rgba(0,0,0,0.25)));
+			background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+			background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+			background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+			background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+		}
+
+		html[dir="ltr"] .ipsCarousel_shadowRight {
+			right: 0;
+			background: -moz-linear-gradient(left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.04) 24%, rgba(0,0,0,0.25) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(24%,rgba(0,0,0,0.04)), color-stop(100%,rgba(0,0,0,0.25)));
+			background: -webkit-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+			background: -o-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+			background: -ms-linear-gradient(left, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+			background: linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,0.04) 24%,rgba(0,0,0,0.25) 100%);
+		}
+		html[dir="rtl"] .ipsCarousel_shadowRight {
+			left: 0;
+			background: -moz-linear-gradient(left, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.04) 76%, rgba(0,0,0,0) 100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.25)), color-stop(76%,rgba(0,0,0,0.04)), color-stop(100%,rgba(0,0,0,0)));
+			background: -webkit-linear-gradient(left, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+			background: -o-linear-gradient(left, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+			background: -ms-linear-gradient(left, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+			background: linear-gradient(to right, rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.04) 76%,rgba(0,0,0,0) 100%);
+		}
+
+	.ipsJS_none .ipsCarousel {
+		min-height: 200px;
+	}
+
+	.ipsJS_none .ipsCarousel > [data-role="carouselItems"] {
+		width: auto;
+		position: static;
+	}
+
+	.ipsJS_none .ipsCarousel .ipsCarousel_nav,
+	.ipsJS_none .ipsCarousel_shadow {
+		display: none;
+	}
+
+/* ======================================================== */
+/* PROGRESS BAR */
+@-webkit-keyframes progress-bar-stripes {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
+@-moz-keyframes progress-bar-stripes {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
+@-ms-keyframes progress-bar-stripes {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
+@-o-keyframes progress-bar-stripes {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+@keyframes progress-bar-stripes {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
+}
+
+.ipsProgressBar {
+	width: 50%;
+	margin: auto;
+	height: 26px;
+	overflow: hidden;
+	background: rgb(156,156,156);
+	background: -moz-linear-gradient(top, rgba(156,156,156,1) 0%, rgba(180,180,180,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(156,156,156,1)), color-stop(100%,rgba(180,180,180,1)));
+	background: -webkit-linear-gradient(top, rgba(156,156,156,1) 0%,rgba(180,180,180,1) 100%);
+	background: -o-linear-gradient(top, rgba(156,156,156,1) 0%,rgba(180,180,180,1) 100%);
+	background: -ms-linear-gradient(top, rgba(156,156,156,1) 0%,rgba(180,180,180,1) 100%);
+	background: linear-gradient(to bottom, rgba(156,156,156,1) 0%,rgba(180,180,180,1) 100%);
+	border-radius: 4px;
+	box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+	
+	.ipsProgressBar.ipsProgressBar_small {
+		height: 18px;
+	}
+
+		.ipsProgressBar.ipsProgressBar_small .ipsProgressBar_progress {
+			line-height: 18px;
+			font-size: 10px;
+		}
+
+	.ipsProgressBar.ipsProgressBar_fullWidth {
+		width: 100%;
+	}
+
+	.ipsProgressBar.ipsProgressBar_animated .ipsProgressBar_progress {
+		background-color: #5490c0;
+		background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+		background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+		background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+		background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+		background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+		background-size: 40px 40px;
+		{prefix="animation" value="progress-bar-stripes 2s linear infinite"}
+	}
+
+.ipsProgressBar_progress {
+	float: left;
+	width: 0;
+	height: 100%;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+	background: #5490c0;
+	position: relative;
+	white-space: nowrap;
+	line-height: 26px;
+    padding-left: 6px;
+}
+html[dir="rtl"] .ipsProgressBar_progress {
+	float: right;
+    padding-right: 6px;
+}
+	
+	.ipsProgressBar_warning .ipsProgressBar_progress {
+		background: #c05454;
+	}
+
+	html[dir="ltr"] .ipsProgressBar > span:first-child {
+		padding-left: 7px;
+	}
+	html[dir="rtl"] .ipsProgressBar > span:first-child {
+		padding-right: 7px;
+	}
+
+	.ipsProgressBar_progress[data-progress]:after {
+		position: absolute;
+		top: 0;
+		line-height: 32px;
+		color: #fff;
+		content: attr(data-progress);
+		display: block;
+		font-weight: bold;
+	}
+	html[dir="ltr"] .ipsProgressBar_progress[data-progress]:after {
+		right: 5px;
+	}
+	html[dir="rtl"] .ipsProgressBar_progress[data-progress]:after {
+		left: 5px;
+	}
+
+/* ======================================================== */
+/* COVER PHOTOS */
+.ipsCoverPhoto {
+	position: relative;
+	text-shadow: 1px 1px 1px #111, 0px 0px 10px rgba(0,0,0,0.7);
+}
+	
+	.ipsCoverPhoto .ipsType_pageTitle {
+		font-weight: 400;
+	}
+
+	.ipsCoverPhoto_container {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		overflow: hidden;
+		text-align: left;
+
+	}
+
+		.ipsCoverPhoto_container:after {
+			position: absolute;
+			height: 50%;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			display: block;
+			content: '';
+			pointer-events: none;
+			background: -moz-linear-gradient(top, rgba(51,51,51,0) 0%, rgba(34,34,34,0.9) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,51,51,0)), color-stop(100%,rgba(34,34,34,0.9)));
+			background: -webkit-linear-gradient(top, rgba(51,51,51,0) 0%,rgba(34,34,34,0.9) 100%);
+			background: -o-linear-gradient(top, rgba(51,51,51,0) 0%,rgba(34,34,34,0.9) 100%);
+			background: -ms-linear-gradient(top, rgba(51,51,51,0) 0%,rgba(34,34,34,0.9) 100%);
+			background: linear-gradient(to bottom, rgba(51,51,51,0) 0%,rgba(34,34,34,0.9) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00333333', endColorstr='#333333',GradientType=0 );
+		}
+
+	.ipsCoverPhoto_photo {
+		width: 100%;
+	}
+
+	.ipsCoverPhoto_container [data-role="coverPhotoControls"] {
+		position: absolute;
+		top: 10px;
+	}
+	html[dir="ltr"] .ipsCoverPhoto_container [data-role="coverPhotoControls"] {
+		right: 10px;
+	}
+	html[dir="rtl"] .ipsCoverPhoto_container [data-role="coverPhotoControls"] {
+		left: 10px;
+	}
+
+	.ipsCoverPhoto_button {
+		position: absolute;
+		top: 10px;
+	}
+	html[dir="ltr"] .ipsCoverPhoto_button {
+		right: 10px;
+	}
+	html[dir="rtl"] .ipsCoverPhoto_button {
+		left: 10px;
+	}

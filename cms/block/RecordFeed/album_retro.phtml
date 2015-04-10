@@ -1,0 +1,40 @@
+<ips:template parameters="$database, $records, $orientation='vertical'" original_group="RecordFeed" key="block_RecordFeed_album_retro" />
+{{if !empty( $records ) }}
+	{{foreach $records as $record}}
+		<div class='ipsGrid'>
+			<div class='metalEdge_album-retro-feed Metalitem Metalitem-large'>
+				<div class='ipsPos_left metalEdge_album ipsPad'>
+					<h3>{lang="$record->_title" wordbreak="true"}</h3>
+					 <a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$record->title"}' class='ipsDataItem_title ipsType_break'>{$record->customFieldDisplayByKey('album-retrospective-album')|raw}</a>
+					 {{if $record->record_image}}
+	                  <div class="ipsCms_record_image">
+	                      <img class="ipsImage" src="{$record->record_image}">
+	                  </div>
+					  {{endif}}
+					  <br>
+					  <a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$record->title"}' class='ipsType_break read'>Read the article</a>
+				</div>
+				{{$forumId = $record->container()->forum_forum;}}
+				{{$posts = \IPS\forums\Topic\Post::getItemsWithPermission( array( array('forum_id=?', intval($forumId) ) ), 'post_date desc', array( 0, 8 ) );}}
+				{{if $posts}}
+					{{foreach $posts as $post}}
+						<div class="metalEdge_box ipsPad Metalitem">
+							<span class='ipsType_light'>{$post->author()->link()|raw}</span>
+							<div class='ipsType_textBlock ipsType_richText' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='10 lines'>
+								{$post->truncated( true )|raw}
+							</div>
+							{{if $last->_id == $post->_id }}
+								<!-- I am the last post -->
+								<div class="reply-buttons">
+									<a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}">Reply</a>
+									<a href="#">Share</a>
+								</div>
+							{{endif}}
+						</div>
+					{{endforeach}}
+				{{endif}}
+
+			</div>
+		</div>
+	{{endforeach}}
+{{endif}}

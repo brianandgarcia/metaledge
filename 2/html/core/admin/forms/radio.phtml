@@ -1,0 +1,21 @@
+<ips:template parameters="$name, $value, $required, $options, $disabled=FALSE, $toggles=array(), $descriptions=array(), $userSuppliedInput=''" />
+<ul class="ipsField_fieldList" role="radiogroup">
+{{foreach $options as $k => $v}}
+	<li>
+		<input type="radio" role="radio" id='elField_{$name}' name="{$name}" value="{$k}" {{if (string) $value == (string) $k or ( isset( $userSuppliedInput ) and !in_array( $value, array_keys( $options ) ) and $k == $userSuppliedInput )}}checked aria-checked='true'{{endif}} {{if $required === TRUE}}required aria-required='true'{{endif}} {{if $disabled}}disabled aria-disabled='true'{{endif}} {{if isset( $toggles[ $k ] ) and !empty( $toggles[ $k ] )}}data-control="toggle" data-toggles="{expression="implode( ',', $toggles[ $k ] )"}" aria-controls="{expression="implode( ',', $toggles[ $k ] )"}"{{endif}} aria-labelledby='elField_{$name}_label'>
+		
+		<div class='ipsField_fieldList_content'>
+			<label for='elField_{$name}' id='elField_{$name}_label'>{$v|raw}</label>
+			{{if isset( $descriptions[ $k ] )}}
+				<br>
+				<span class='ipsFieldRow_desc'>
+					{$descriptions[ $k ]|raw}
+				</span>
+			{{endif}}
+			{{if !empty( $userSuppliedInput )}}
+				<input type='text' name='{$userSuppliedInput}_{$name}' value="{{if !in_array( $value, array_keys( $options ) )}}{$value}{{endif}}" id='{$userSuppliedInput}_{expression="preg_replace('/[^a-zA-Z0-9\-_]/', '_', $name)"}'>
+			{{endif}}
+		</label>
+	</li>
+{{endforeach}}
+</ul>

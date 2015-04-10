@@ -1,0 +1,11 @@
+/* Styles that fix the mess IE causes */
+
+/* misc.css */
+.ipsList_inline li { 
+	zoom: 1 !important; 
+	display: inline !important; 
+}
+
+.ipsClearfix { 
+	height: 1% !important;
+}

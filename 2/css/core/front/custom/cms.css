@@ -1,0 +1,408 @@
+.metalEdge_box
+{
+  background-color: #f9f9f9 !important;
+}
+
+.metalEdge_box h3
+{
+  margin-top: 0px;
+  font-family: "Calluna";
+}
+
+.metalEdge_box.metalEdge_adUnit_dummy
+{
+  background: #ddd4d3 !important;
+  text-align: center;
+  margin: 25px 0;
+  padding: 15px 0;
+  border-radius: 0 !important;
+}
+
+/** Homepage **/
+a.metalEdge_largeTitle
+{
+  font-size: 32px;
+  color: #000;
+}
+
+.metalEdge_featuredCover
+{
+  height: 300px;
+}
+
+.metalEdge_coverImage
+{
+  background-size: cover;
+}
+
+.metalEdge_feature4Block .metalEdge_box {
+  margin-bottom: 25px;
+}
+
+.album-area {
+  background: url(/themes/2/images/home-bg.jpg) no-repeat top center;
+  background-size: cover;
+  min-height: 980px;
+  padding-top: 25px;
+}
+/* Featured Album Area */
+.metalEdge_featured-album {
+  color: #FFF;
+  min-height: 650px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+  .metalEdge_featured-album img {
+    position: absolute;
+    z-index: 10;
+  }
+  .metalEdge_featured-album p {
+    font-size: 16px;
+  }
+.metalEdge_featured-album .metalEdge_caption {
+  position: absolute;
+  bottom: 20px;
+  max-width: 320px;
+  margin-left: 15px;
+  z-index: 1000;
+}
+.metalEdge_overlay {
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.01) 1%, rgba(0,0,0,0.48) 48%, rgba(0,0,0,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(1%,rgba(255,255,255,0.01)), color-stop(48%,rgba(0,0,0,0.48)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.01) 1%,rgba(0,0,0,0.48) 48%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.01) 1%,rgba(0,0,0,0.48) 48%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.01) 1%,rgba(0,0,0,0.48) 48%,rgba(0,0,0,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.01) 1%,rgba(0,0,0,0.48) 48%,rgba(0,0,0,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.metalEdge_featured-album h2 {
+  font: normal 32px / 36px 'Calluna';
+  color: #FFF;
+  margin: 0;
+}
+.metalEdge_featured-album_date {
+  color: #FFF;
+  font: normal 14px 'proxima-nova-condensed';
+  margin-bottom: 10px;
+  display: block;
+  text-transform: uppercase;
+}
+/* Featured 4 block */
+.metalEdge_feature4Block .metalEdge_featuredCover
+{
+  height: 200px;
+  margin: -15px;
+}
+
+.metalEdge_feature4Block a.metalEdge_largeTitle
+{
+  color: #000;
+  font: normal 24px / 28px 'Calluna';
+  margin: 8px 0 0;
+}
+.metalEdge_feature4Block .metalEdge_box {
+  min-height: 310px;
+}
+.feature4Block_info {
+  color: #000;
+  font: bold 14px "proxima-nova-condensed";
+  text-transform: uppercase;
+  display: block;
+}
+.metalEdge_feature4Block_ad {
+  text-align: center;
+  background: #ddd4d3 !important;
+}
+  .metalEdge_feature4Block_ad a {
+    display: block;
+  }
+
+/* Current Chatter */
+.current_chatter {
+  text-align: center;
+  background: #FFF;
+  padding: 25px 0;
+}
+  .current_chatter h3 {
+    font: normal 20px 'Calluna';
+  }
+  .current_chatter .ipsDataItem {
+    border: 0;
+  }
+  .current_chatter .ipsDataItem_title {
+    font: normal 18px / 24px 'Calluna';
+    color: #000;
+  }
+  .current_chatter span {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    font-family: 'proxima-nova-condensed';
+  }
+
+/* The Usual Suspects */
+.metalEdge_usual-suspects {
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  columns: 2;
+}
+.metalEdge_usual-suspects_inner {
+  -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
+               break-inside: avoid;
+}
+.metalEdge_usual-suspects h3 {
+  font: normal 24px 'Calluna';
+  color: red;
+}
+
+.metalEdge_usual-suspects_inner {
+  margin: 10px 0 30px;
+}
+
+.metalEdge_usual-suspects .ipsDataItem_title {
+  font: normal 14px 'proxima-nova-condensed';
+  text-transform: uppercase;
+  color: black;
+}
+.metalEdge_usual-suspects .ipsDataItem {
+  border: 0;
+}
+
+.metalEdge_usual-suspects .ipsType_textBlock {
+  font-size: 24px;
+  line-height: 30px;
+  color: #000;
+  font-style: italic;
+}
+/* MetalEdge Live Events */
+.metalEdge_live-feed {
+  margin: 25px 0;
+  text-align: center;
+}
+
+.metalEdge_live-feed .metalComments {
+  font-family: 'proxima-nova-condensed';
+  text-transform: uppercase;
+  color: #ff0000;
+  font-size: 14px;
+}
+
+.metalEdge_live-feed a {
+  font-size: 18px;
+  color: #222;
+}
+
+.metalEdge_live-feed .metalDate {
+  font-family: 'proxima-nova-condensed';
+  text-transform: uppercase;
+  color: #000;
+  font-size: 14px;
+}
+
+/* Home Pinned Releases */
+.metalEdge-pinned_releases {
+  margin: 25px 0;
+  display: block;
+  clear: both;
+  text-align: center;
+}
+.metalEdge-pinned_releases .metalEdge_box {
+  height: 770px;
+  padding-top: 25px;
+}
+.metalEdge-pinned_releases .metalEdge_rating {
+  width: 115px;
+  height: 68px;
+  margin: 8px auto;
+  background-color: #ddd4d3;
+  font-size: 90px;
+  line-height: 46px;
+  display: block;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  margin-top: -51px;
+  color: #FFF;
+  line-height: 70px;
+}
+.metalEdge-pinned_releases .info {
+  padding-top: 40px;
+}
+.metalEdge-pinned_releases .metalEdge_rating:before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 56px solid transparent;
+  border-right: 59px solid transparent;
+  border-bottom: 30px solid #ddd4d3;
+  line-height: 96px;
+}
+.metalEdge-pinned_releases .metalEdge_rating:after {
+  border-left: 56px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 30px solid #ddd4d3;
+  bottom: -30px;
+}
+
+/* Album Retrofeed */
+.metalEdge_album-retro-feed {
+
+}
+.metalEdge_album-retro-feed .metalEdge_box {
+  background: #f1e6e5 !important;
+}
+.Metalitem {
+  width: 250px;
+  margin-bottom: 25px;
+}
+.Metalitem-large {
+  width: 500px;
+  height: 500px;
+}
+.metalEdge_album-retro-feed .metalEdge_album { 
+  width: 500px;
+  text-align: center;
+  background: #FFF;
+}
+.metalEdge_album-retro-feed .ipsDataItem_title {
+  font: normal 32px 'Calluna';
+}
+.metalEdge_album-retro-feed h3 {
+  font: normal 32px 'Calluna';
+  margin: 0;
+  color: #000;
+}
+.metalEdge_album-retro-feed .read {
+  font: normal 14px 'proxima-nova-condensed';
+  text-transform: uppercase;
+  color: red;
+}
+.metalEdge_album-retro-feed .reply-buttons {
+  background: #FF0000;
+  margin: 15px -15px -16px;
+  padding: 5px 0;
+}
+.metalEdge_album-retro-feed .reply-buttons a {
+  color: #FFF;
+  font: normal 12px "proxima-nova-condensed";
+  text-transform: uppercase;
+  padding: 10px 45px;
+  display: inline-block;
+}
+/* Through the Grapevine */
+.metalEdge_grapevine h2 {
+  color: red;
+  text-transform: uppercase;
+  font: normal 24px 'Calluna';
+}
+.metalEdge_grapevine h3 {
+  color: red;
+  text-transform: uppercase;
+  font: normal 14px 'proxima-nova-condensed';
+}
+.metalEdge_grapevine .ipsDataItem_title {
+  color: black;
+  text-transform: uppercase;
+  font: normal 14px 'proxima-nova-condensed';
+}
+
+/* Home Archive */
+.metalEdge_home-archive {
+  margin: 50px 0;
+}
+
+.metalEdge_home-archive_overlay {
+  position: absolute;
+  background: rgba(115, 52, 168, 0.9);
+  height: 630px;
+  width: 705px;
+  z-index: 0;
+}
+.metalEdge_home-archive_ad {
+  background: #ddd4d3;
+  text-align: center;
+}
+.metalEdge_home-archive_info {
+  position: absolute;
+  z-index: 10;
+  color: #FFF;
+  text-align: center;
+  font-size: 36px;
+  width: 705px;
+  top: 200px;
+}
+/* Home Reviews */
+.metalEdge_reviews {
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Non Pinned Releases */
+.metalEdge_non-releases {
+  margin-top: 10px;
+}
+
+.metalEdge_non-releases .metalEdge_rating {
+  width: 60px;
+  height: 45px;
+  margin: -20px auto 25px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 48px;
+}
+
+.metalEdge_non-releases .metalEdge_rating:before {
+content: "";
+position: absolute;
+top: -16px;
+left: 0;
+width: 0;
+height: 0;
+border-left: 31px solid transparent;
+border-right: 29px solid transparent;
+border-bottom: 16px solid #ddd4d3;
+}
+
+.metalEdge_non-releases .metalEdge_rating:after {
+content: "";
+position: absolute;
+bottom: -13px;
+left: 0;
+width: 0;
+height: 0;
+border-left: 30px solid transparent;
+border-right: 30px solid transparent;
+border-top: 13px solid #ddd4d3;
+}
+
+/* Category Labels */
+.label {
+  padding: 3px 8px;
+  font: normal 12px 'proxima-nova-condensed';
+  text-transform: uppercase;
+  color: #000;
+  text-align: center;
+  width: auto;
+  position: absolute;
+  left: 15px;
+}
+.interview-cat {
+  background: #ffde00;
+  display: inline-block;
+  z-index: 1000;
+}
+
+#ipsLayout_header nav a.active {
+  background: transparent;
+}

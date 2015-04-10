@@ -1,0 +1,16 @@
+<ips:template parameters="$events, $today, $orientation='vertical'" original_group="upcomingEvents" key="block_upcomingEvents_home_event_stream" />
+<div class="ipsGrid metalEdge_live-feed">
+	{{foreach $events as $event}}
+		<div class="metalEdge_box ipsGrid_span4">
+			<img src="{$event->coverPhoto()->file->url|raw}" width="100%" height="200px" />
+			<div class="ipsPad">
+				<div class="metalDate">{$event->nextOccurrence( $today, 'startDate' )->calendarDate()}</div>
+				<a href="{$event->url()}" title='{lang="view_this_event" sprintf="$event->title"}'>{lang="$event->title" wordbreak="true"}</a>
+				{{if $event->container()->allow_comments}}
+						<div class="metalComments" data-ipsTooltip title='{lang="replies_number" pluralize="$event->comments"}'>{expression="$event->comments"} Comments</div>
+				{{endif}}
+			</div>
+		</div>
+	{{endforeach}}
+</div>
+ 

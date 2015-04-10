@@ -1,0 +1,98 @@
+<ips:template parameters="$title,$html,$location=array()" />
+<!DOCTYPE html>
+<html lang="{expression="mb_substr( \IPS\Member::loggedIn()->language()->short, 0, 2 )"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
+	<head>
+		<title>{expression="output.getTitle( $title )"}</title>
+		{template="includeMeta" app="core" group="global" location="global" params=""}
+		{template="includeCSS" app="core" group="global" location="global" params=""}
+		{template="includeJS" app="core" group="global" location="global" params=""}
+		{template="favico" app="core" group="global" location="front" params=""}
+		{{if settings.ipbseo_ga_enabled}}
+			{setting="ipseo_ga"}
+		{{endif}}
+
+        <script src="//use.typekit.net/scf5tsy.js"></script>
+		<script>try{Typekit.load();}catch(e){}</script>
+
+		<script type="text/javascript" src="http://metaledge.invisionpower-staging.com/themes/2/js/isotope.pkgd.min.js"></script>
+
+		<script type='text/javascript'>
+		(function (d, t) {
+		  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+		  bh.type = 'text/javascript';
+		  bh.src = '//www.bugherd.com/sidebarv2.js?apikey=zc9nmqhcpaqzf6twuvukbw';
+		  s.parentNode.insertBefore(bh, s);
+		  })(document, 'script');
+		</script>
+
+	</head>
+	<body class='ipsApp ipsApp_front ipsJS_none ipsClearfix{{foreach output.bodyClasses as $class}} {$class}{{endforeach}}' {{if output.globalControllers}}data-controller='{expression="implode( ',', output.globalControllers )"}'{{endif}} {{if isset( output.inlineMessage )}}data-message="{expression="output.inlineMessage"}"{{endif}} data-pageApp='{$location['app']}' data-pageLocation='front' data-pageModule='{$location['module']}' data-pageController='{$location['controller']}'>
+		<a href='#elContent' class='ipsHide' title='{lang="jump_to_content_desc"}' accesskey='m'>{lang="jump_to_content"}</a>
+		{template="offlineMessage" if="!settings.site_online && \IPS\Member::loggedIn()->group['g_access_offline']" app="core" group="global" params=""}
+		<div id='ipsLayout_header' class='ipsClearfix'>
+
+			<header>
+				<div class='ipsLayout_container'>
+					{template="logo" app="core" group="global" params=""}
+                    {template="navBar" app="core" group="global" params=""}
+                    {template="userBar" app="core" group="global" params=""}
+				</div>
+			</header>
+		</div>
+		<main role='main' id='ipsLayout_body'>
+			<div id='ipsLayout_contentArea'>
+				<div id='elHeaderNavigation' class='ipsSubNavigation ipsLayout_container'>
+					<!-- {template="utilitiesMenu" app="core" group="global" params=""} -->
+					{template="breadcrumb" app="core" group="global" params=""}
+				</div>
+				<div id='ipsLayout_contentWrapper'>
+					{template="sidebar" if="theme.sidebar_position == 'left'" app="core" group="global" params="'left'"}
+					<div id='ipsLayout_mainArea'>
+						<a id='elContent'></a>
+						{advertisement="ad_global_header"}
+						{template="acknowledgeWarning" if="\IPS\Member::loggedIn()->members_bitoptions['unacknowledged_warnings']" params="\IPS\Member::loggedIn()->warnings( 1, FALSE )" group="global" app="core"}
+						{template="widgetContainer" group="global" app="core" params="'header', 'horizontal'"}
+						{$html|raw}
+						{template="widgetContainer" group="global" app="core" params="'footer', 'horizontal'"}
+						{advertisement="ad_global_footer"}
+					</div>
+					{template="sidebar" if="theme.sidebar_position == 'right'" app="core" group="global" params="'right'"}
+				</div>
+				<div class="ipsLayout_container">
+					<div id='elFooterNavigation' class='ipsSubNavigation'>
+						{template="rssMenu" app="core" group="global" params=""}
+						{template="breadcrumb" app="core" group="global" params=""}
+					</div>
+				</div>
+			</div>
+			{template="inlineMessage" if="member.msg_show_notification and $conversation = \IPS\core\Messenger\Conversation::latestUnreadConversation()" app="core" group="global" params="$conversation->comments( 1, NULL, 'date', 'desc' )"}
+		</main>
+		<footer id='ipsLayout_footer' class='ipsClearfix'>
+			<div class='ipsLayout_container'>
+				{template="footer" app="core" group="global" params=""}
+			</div>
+		</footer>
+		{template="mobileNavigation" if="theme.responsive" app="core" group="global" params=""}
+		{template="viglink" if="settings.viglink_enabled" app="core" group="global" params=""}
+		{template="metaTagEditor" if="member.isAdmin() and isset( $_SESSION['live_meta_tags'] ) and $_SESSION['live_meta_tags']" app="core" group="global" params=""}
+		{template="queryLog" if="\IPS\QUERY_LOG" group="global" app="core"}
+		{expression="output.endBodyCode" raw="true"}
+
+		<script>
+			  $(function() {
+					var container = $('#metalEdge-album-area .ipsGrid');
+					// init
+					container.isotope({
+					  // options
+					  itemSelector: '.Metalitem',
+					  layoutMode: 'masonry',
+					  masonry: {
+					  	columnWidth: 60,
+					  	gutter: 5
+					  }
+					});
+			    
+			  });
+		</script>
+	</body>
+</html>

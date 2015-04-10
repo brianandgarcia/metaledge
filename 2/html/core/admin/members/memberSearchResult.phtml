@@ -1,0 +1,10 @@
+<ips:template parameters="$member" />
+<div class="clearfix clickable">
+	<div class="left">
+		{template="userPhoto" app="core" group="global" params="$member, 'medium'"}
+	</div>
+	<div class="left ipsMemberData">
+		{$member->group['prefix']|raw}{$member->name}{$member->group['suffix']|raw}<br>
+		<span class="ipsType_light">{$member->email}</span>
+	</div>
+</div>

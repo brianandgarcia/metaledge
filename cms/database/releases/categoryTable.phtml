@@ -1,0 +1,68 @@
+<ips:template parameters="$table, $headers, $rows, $quickSearch" original_group="listing" key="database_releases_categoryTable" />
+<div class="ipsGrid">
+	<div class="ipsGrid_span9">
+		<div class='ipsBox metalEdge_reviews'  data-baseurl='{$table->baseUrl}' data-resort='{$table->resortKey}' data-controller='core.global.core.table{{if $table->canModerate()}},core.front.core.moderation{{endif}}'>
+		    <div class="metalEdge_date_buttons">
+		        <a href="#" class="ipsPos_left ipsButton ipsButton_light">Date #1</a>
+		        <a href="#" class="ipsPos_left ipsButton ipsButton_light">Date #2</a>
+		        <a href="#" class="ipsPos_left ipsButton ipsButton_normal">Date #3</a>
+		        <a href="#" class="ipsPos_left ipsButton ipsButton_light">Date #3</a>
+		      </div>
+		  	<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+		        {{if $table->pages > 1}}
+		            <div data-role="tablePagination">
+		                {template="pagination" group="global" app="core" location="global" params="$table->baseUrl, $table->pages, $table->page, $table->limit"}
+		            </div>
+		        {{endif}}
+		    </div>
+		
+		            {{if ! count($rows)}}
+		                <div class="ipsBox ipsPad">
+		                    {lang="cms_no_records_to_show" sprintf="\IPS\cms\Databases::load( \IPS\cms\Databases\Dispatcher::i()->databaseId )->recordWord()"}
+		                </div>
+		            {{else}}
+		                <ol class='ipsDataList ipsDataList_readStatus ipsClear cForumTopicTable {{foreach $table->classes as $class}}{$class} {{endforeach}}' id='elTable_{$table->uniqueId}' data-role="tableRows">
+		                    {template="$table->rowsTemplate[1]" params="$table, $headers, $rows" object="$table->rowsTemplate[0]"}
+		                </ol>
+		            {{endif}}
+		
+		
+		
+		    {{if $table->pages > 1}}
+		        <div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+		            <div data-role="tablePagination">
+		                {template="pagination" group="global" app="core" location="global" params="$table->baseUrl, $table->pages, $table->page, $table->limit, TRUE, $table->getPaginationKey()"}
+		            </div>
+		        </div>
+		    {{endif}}
+		</div>
+		{{if ! \IPS\Request::i()->isAjax() AND ! isset( \IPS\Request::i()->advancedSearchForm )}}
+		{{$catClass = '\IPS\cms\Categories' . \IPS\cms\Databases\Dispatcher::i()->databaseId; $category = $catClass::load( \IPS\cms\Databases\Dispatcher::i()->categoryId );}}
+		<ul class="ipsToolList ipsToolList_horizontal ipsClearfix">
+			{{if $category->can('add')}}
+				<li class='ipsToolList_primaryAction'>
+					<a class="ipsButton ipsButton_link ipsButton_important ipsButton_fullWidth" href="{$category->url()->setQueryString( array( 'do' => 'form', 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId ) )}">{lang="cms_add_new_record_button" sprintf="\IPS\cms\Databases::load( $category->database_id )->recordWord( 1 )"}</a>
+				</li>
+			{{endif}}
+		</ul>
+		<br>
+		{{endif}}
+	</div>
+	<div class="ipsGrid_span3">
+		<div class='ipsBox metalEdge_box ipsPad'>
+			<h3>Listening Party</h3>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+		<br>
+		<div class='ipsBox metalEdge_box metalEdge_adUnit_dummy'>
+			Ad unit
+		</div>
+	</div>
+</div>

@@ -1,0 +1,1382 @@
+.ipsApp select {
+	border: 1px solid #b3b3b3;
+	border-radius: 3px;
+	padding: 4px;
+	background: rgb(255,255,255);
+	font-size: 13px !important;
+	position: relative;	
+}
+	
+	.ipsApp select::-ms-expand {
+		display: none;
+	}
+
+	.ipsApp select:not( [multiple] ) {
+		-webkit-appearance: button;
+		height: 33px;
+		background-image: url( {resource="select_dropdown.png" app="core" location="global"} ), -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown.png" app="core" location="global"} ), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(242,242,242,1)));
+		background-image: url( {resource="select_dropdown.png" app="core" location="global"} ), -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown.png" app="core" location="global"} ), -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown.png" app="core" location="global"} ), -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown.png" app="core" location="global"} ), linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-position: right center;
+		background-size: 18px 9px, 100% 100%;
+		background-repeat: no-repeat, repeat;
+		cursor: pointer;
+		padding: 7px 30px 7px 7px;
+		/* Workaround for firefox */
+		-moz-appearance: none;
+		text-indent: 0.01px;
+		text-overflow: '';
+	}
+	html[dir="rtl"] .ipsApp select:not( [multiple] ) {
+		background-image: url( {resource="select_dropdown_rtl.png" app="core" location="global"} ), -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown_rtl.png" app="core" location="global"} ), -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(242,242,242,1)));
+		background-image: url( {resource="select_dropdown_rtl.png" app="core" location="global"} ), -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown_rtl.png" app="core" location="global"} ), -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown_rtl.png" app="core" location="global"} ), -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-image: url( {resource="select_dropdown_rtl.png" app="core" location="global"} ), linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+		background-position: left center;
+		padding: 7px 7px 7px 30px;
+	}
+
+	.ipsApp select[disabled] {
+		opacity: 0.6;
+		pointer-events: none;
+	}
+
+	.ipsApp select:not( [multiple] ):after {
+		top: 0;
+		width: 30px;
+		height: 30px;
+		content: '';
+		display: block;
+	}
+	html[dir="ltr"] .ipsApp select:not( [multiple] ):after {
+		right: 0;
+	}
+	html[dir="rtl"] .ipsApp select:not( [multiple] ):after {
+		left: 0;
+	}
+
+/* Override the default webkit appearance of time/date fields */
+input[type="datetime"], input[type="datetime-local"], input[type="date"],
+input[type="month"], input[type="time"], input[type="week"] {
+	-webkit-appearance: none;
+	min-height: 32px;
+}
+
+ul.ipsForm, ol.ipsForm {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ipsForm[data-role="advancedSearch"] {
+	margin-top: 15px;
+	padding-bottom: 15px;
+}
+
+.ipsFieldRow:not( :last-child ) {
+	margin-bottom: 15px;
+}
+
+	.ipsFieldRow_noLabel > label,
+	.ipsFieldRow_noLabel > .ipsFieldRow_content > label {
+		display: none;
+	}
+
+.ipsFieldRow_searchResult {
+	background-color: #f2e6d4;
+	border: 1px solid #d1aa6e;
+}
+
+	.ipsFieldRow.ipsFieldRow_searchResult .ipsFieldRow_desc {
+		color: #ad884e;
+	}
+
+/* CHECKBOX FIELDS */
+/* For single checkboxes, and inline checkboxes */
+.ipsFieldRow_checkbox {
+	margin-bottom: 5px;
+}
+	
+	.ipsFieldRow_checkbox + .ipsFieldRow:not( .ipsFieldRow_checkbox ) {
+		margin-top: 15px;
+	}
+
+	.ipsFieldRow_checkbox input[type="checkbox"],
+	.ipsFieldRow_checkbox input[type="radio"] {
+		float: left;
+		margin-top: 5px;
+	}
+	html[dir="rtl"] .ipsFieldRow_checkbox input[type="checkbox"],
+	html[dir="rtl"] .ipsFieldRow_checkbox input[type="radio"] {
+		float: right;
+	}
+
+	html[dir="ltr"] .ipsFieldRow_checkbox .ipsFieldRow_content {
+		margin-left: 22px;
+	}
+	html[dir="rtl"] .ipsFieldRow_checkbox .ipsFieldRow_content {
+		margin-right: 22px;
+	}
+
+	.ipsFieldRow_checkbox label {
+		display: block;
+	}
+
+	.ipsFieldRow_inlineCheckbox {
+		margin-top: 6px;
+		display: inline-block;
+	}
+	html[dir="ltr"] .ipsFieldRow_inlineCheckbox {
+		margin-right: 15px;
+	}
+	html[dir="rtl"] .ipsFieldRow_inlineCheckbox {
+		margin-left: 15px;
+	}
+
+		html[dir="ltr"] .ipsFieldRow_inlineCheckbox input[type="checkbox"],
+		html[dir="ltr"] .ipsFieldRow_inlineCheckbox input[type="radio"],
+		html[dir="ltr"] .ipsToggle {
+			margin-right: 3px;
+		}
+		html[dir="rtl"] .ipsFieldRow_inlineCheckbox input[type="checkbox"],
+		html[dir="rtl"] .ipsFieldRow_inlineCheckbox input[type="radio"],
+		html[dir="rtl"] .ipsToggle {
+			margin-left: 3px;
+		}
+
+/* FIELD LISTS (for stacks of radios/checkboxes) */
+.ipsField_fieldList {
+	list-style: none;
+	margin: 0;
+	padding: 7px 0 0 0;
+}
+
+.ipsField_fieldList > li {
+	margin-bottom: 10px;
+}
+
+	.ipsField_fieldList > li:last-child {
+		margin-bottom: 0px;
+	}
+
+.ipsField_fieldList input[type="radio"], .ipsField_fieldList input[type="checkbox"] {
+	float: left;
+	margin-top: 5px;
+}
+html[dir="rtl"] .ipsField_fieldList input[type="radio"],
+html[dir="rtl"] .ipsField_fieldList input[type="checkbox"] {
+	float: right;
+}
+
+html[dir="ltr"] .ipsField_fieldList_content {
+	margin-left: 22px;
+}
+html[dir="rtl"] .ipsField_fieldList_content {
+	margin-right: 22px;
+}
+
+/* FULL WIDTH FIELDS */
+.ipsApp .ipsFieldRow_fullWidth input[type="text"],
+.ipsApp .ipsForm_fullWidth .ipsFieldRow input[type="text"],
+.ipsApp .ipsFieldRow_fullWidth input[type="email"],
+.ipsApp .ipsForm_fullWidth .ipsFieldRow input[type="email"],
+.ipsApp .ipsFieldRow_fullWidth input[type="password"], 
+.ipsApp .ipsForm_fullWidth .ipsFieldRow input[type="password"], 
+.ipsApp .ipsFieldRow_fullWidth input[type="submit"], 
+.ipsApp .ipsForm_fullWidth .ipsFieldRow input[type="submit"], 
+.ipsApp .ipsFieldRow_fullWidth select, 
+.ipsApp .ipsForm_fullWidth .ipsFieldRow select, 
+.ipsApp .ipsFieldRow_fullWidth button,
+.ipsApp .ipsForm_fullWidth .ipsFieldRow button, 
+.ipsApp .ipsFieldRow_fullWidth textarea,
+.ipsApp .ipsForm_fullWidth .ipsFieldRow textarea,
+.ipsApp .ipsFieldRow_fullWidth .ipsField_autocomplete,
+.ipsApp .ipsForm_fullWidth .ipsFieldRow .ipsField_autocomplete,
+.ipsApp .ipsFieldRow_fullWidth .ipsSelectTree,
+.ipsApp .ipsForm_fullWidth .ipsFieldRow .ipsSelectTree,
+.ipsApp input.ipsField_fullWidth, .ipsApp textarea.ipsField_fullWidth,
+.ipsApp .ipsField_autocomplete.ipsField_fullWidth, .ipsApp select.ipsField_fullWidth {
+	width: 100%;
+	max-width: 100% !important;
+}
+
+/* FORM TYPOGRAPHY */
+.ipsFieldRow_desc {
+	font-size: 12px;
+	color: #777777;
+	margin-top: 3px;
+	display: inline-block;
+}
+
+.ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_label,
+.ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_title {
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 5px;
+	display: inline-block;
+	padding-top: 5px;
+}
+
+.ipsApp .ipsField_primary,
+.ipsApp .ipsField_primary.ipsField_autocomplete input,
+.ipsApp .ipsFieldRow_primary input {
+	font-size: 18px;
+}
+
+.ipsFieldRow_required {
+	font-size: 10px;
+	text-transform: uppercase;
+	color: #c02222;
+	font-weight: normal;
+}
+html[dir="ltr"] .ipsFieldRow_required {
+	margin-left: 10px;
+}
+html[dir="rtl"] .ipsFieldRow_required {
+	margin-right: 10px;
+}
+
+/* HORIZONTAL FORMS */
+/* i.e. titles beside fields */
+/*.ipsForm_horizontal {
+	padding-bottom: 20px;
+}*/	
+
+.ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label,
+.ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+	width: 185px;
+	line-height: 1.3;
+	font-size: 14px;
+	font-weight: bold;
+}
+html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label,
+html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+	float: left;
+	padding-right: 15px;
+	text-align: right;
+}
+html[dir="rtl"] .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label,
+html[dir="rtl"] .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+	float: right;
+	padding-left: 15px;
+	text-align: left;
+}
+
+.ipsForm.ipsForm_horizontal .ipsFieldRow.ipsFieldRow_shortTitle > .ipsFieldRow_title {
+	width: 85px;
+}
+
+html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-left: 185px;
+}
+html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow.ipsFieldRow_shortTitle:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-left: 95px;
+}
+html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow_checkbox {
+	margin-left: 185px;
+}
+html[dir="rtl"] .ipsForm_horizontal .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-right: 185px;
+}
+html[dir="rtl"] .ipsForm_horizontal .ipsFieldRow.ipsFieldRow_shortTitle:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-right: 95px;
+}
+html[dir="rtl"] .ipsForm_horizontal .ipsFieldRow_checkbox {
+	margin-right: 185px;
+}
+
+.ipsForm_horizontal .ipsFieldRow_required {
+	font-size: 0;
+	margin: 0;
+}
+
+	.ipsForm_horizontal .ipsFieldRow_required:before {
+		content: '*';
+		display: inline;
+		color: #c02222;
+		font-size: 16px;
+	}
+
+.ipsForm_horizontal .ipsFieldRow_textValue .ipsFieldRow_content {
+	padding-top: 7px;
+}
+
+.ipsForm_horizontal .ipsFieldRow_content .ipsRating {
+	margin-top: 3px;
+}
+
+/* VERTICAL FORMS */
+/* i.e. titles above fields; overwrites horizontal rules */
+.ipsForm_vertical .ipsFieldRow > .ipsFieldRow_label,
+.ipsForm_vertical .ipsFieldRow > .ipsFieldRow_title {
+	float: none;
+	width: 100%;
+	text-align: left;
+}
+html[dir="rtl"] .ipsForm_vertical .ipsFieldRow > .ipsFieldRow_label,
+html[dir="rtl"] .ipsForm_vertical .ipsFieldRow > .ipsFieldRow_title {
+	text-align: right;
+}
+
+html[dir="ltr"] .ipsForm_vertical .ipsFieldRow {
+	margin-left: 0px;
+}
+html[dir="rtl"] .ipsForm_vertical .ipsFieldRow {
+	margin-right: 0px;
+}
+
+/* FIELD GROUPS */
+.ipsForm_group {
+	margin-bottom: 15px;
+	padding-top: 15px;
+	border: 0;
+	border-bottom: 1px solid #f0f0f0;
+}
+	
+	.ipsForm_group > .ipsForm_groupTitle {
+		float: left;
+		font-size: 16px;
+		font-weight: 500;
+		margin: 0;
+	}
+	html[dir="rtl"] .ipsForm_group > .ipsForm_groupTitle {
+		float: right;
+	}
+
+	.ipsForm_group > .ipsForm_groupContent {
+		list-style: none;
+	}
+	html[dir="ltr"] .ipsForm_group > .ipsForm_groupContent {
+		margin: 0 0 0 175px;
+		padding: 0 0 0 15px;
+		border-left: 1px solid #f6f6f6;
+	}
+	html[dir="rtl"] .ipsForm_group > .ipsForm_groupContent {
+		margin: 0 175px 0 0;
+		padding: 0 15px 0 0 ;
+		border-right: 1px solid #f6f6f6;
+	}
+
+.ipsForm .ipsForm_group:last-child {
+	border-bottom: 0;
+}
+
+/* ELEMENT STYLES */
+.ipsApp label:not( .ipsField_unlimited ), .ipsApp input, .ipsApp button, .ipsApp select, .ipsApp textarea {
+	font-size: 14px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	vertical-align: middle;
+}
+
+.ipsApp .ipsField_autocomplete {
+	position: relative;
+	outline: 0;
+	display: inline-block;
+}
+html[dir="ltr"] .ipsApp .ipsField_autocomplete {
+	padding-right: 35px;
+}
+html[dir="rtl"] .ipsApp .ipsField_autocomplete {
+	padding-left: 35px;
+}
+	.ipsApp .ipsField_autocomplete input[type="text"] {
+		border: 0;
+		border-radius: 0px;
+		padding: 0;
+		background: transparent;
+		width: 20px;
+		max-width: 100%;
+		box-shadow: none;
+	}
+
+		.ipsApp .ipsField_autocomplete input[type="text"]:focus {
+			outline: 0;
+			box-shadow: none;
+		}
+
+	.ipsApp .ipsField_autocomplete.ipsField_autocompleteDisabled {
+		pointer-events: none;
+	}
+		
+		.ipsApp .ipsField_autocomplete.ipsField_autocompleteDisabled .cToken {
+			opacity: 0.6;
+		}
+
+	html[dir="ltr"] .ipsApp .ipsField_autocomplete_loading {
+		position: absolute;
+		right: 10px;
+	}
+	html[dir="rtl"] .ipsApp .ipsField_autocomplete_loading {
+		position: absolute;
+		left: 10px;
+	}
+
+	.ipsApp .ipsField_autocomplete [data-action='addToken'] {
+		font-size: 13px;
+	}
+
+.ipsApp input[type="color"] {
+	min-width: 50px;
+}
+
+.ipsApp .ipsField_autocomplete, .ipsApp textarea, .ipsApp input[type="text"], .ipsApp input[type="password"],
+.ipsApp input[type="datetime"], .ipsApp input[type="datetime-local"], .ipsApp input[type="date"],
+.ipsApp input[type="month"], .ipsApp input[type="time"], .ipsApp input[type="week"], 
+.ipsApp input[type="number"], .ipsApp input[type="email"], .ipsApp input[type="url"],
+.ipsApp input[type="search"], .ipsApp input[type="tel"] {
+ 	background-color: #ffffff;
+ 	border-width: 1px;
+ 	border-style: solid;
+ 	border-color: #a6a6a6 #d9d9d9 #d9d9d9 #a6a6a6;
+	border-radius: 3px;
+	width: 100%;
+	max-width: 350px;
+	padding: 7px;
+}
+html[dir="rtl"] .ipsApp .ipsField_autocomplete,
+html[dir="rtl"] .ipsApp textarea,
+html[dir="rtl"] .ipsApp input[type="text"],
+html[dir="rtl"] .ipsApp input[type="password"],
+html[dir="rtl"] .ipsApp input[type="datetime"],
+html[dir="rtl"] .ipsApp input[type="datetime-local"],
+html[dir="rtl"] .ipsApp input[type="date"],
+html[dir="rtl"] .ipsApp input[type="month"],
+html[dir="rtl"] .ipsApp input[type="time"],
+html[dir="rtl"] .ipsApp input[type="week"], 
+html[dir="rtl"] .ipsApp input[type="number"],
+html[dir="rtl"] .ipsApp input[type="email"],
+html[dir="rtl"] .ipsApp input[type="url"],
+html[dir="rtl"] .ipsApp input[type="search"],
+html[dir="rtl"] .ipsApp input[type="tel"] {
+	border-color: #a6a6a6 #a6a6a6 #d9d9d9 #d9d9d9;
+}
+
+.CodeMirror {
+	border-width: 1px;
+	border-style: solid;
+ 	border-color: #a6a6a6 #d9d9d9 #d9d9d9 #a6a6a6;
+	border-radius: 3px;
+	cursor: text;
+	direction: ltr;
+}
+html[dir="rtl"] .CodeMirror {
+	border-color: #a6a6a6 #a6a6a6 #d9d9d9 #d9d9d9;
+}
+
+.ipsApp textarea.ipsField_short, .ipsApp input[type="text"].ipsField_short, .ipsApp input[type="password"].ipsField_short,
+.ipsApp input[type="datetime"].ipsField_short, .ipsApp input[type="datetime-local"].ipsField_short, .ipsApp input[type="date"].ipsField_short,
+.ipsApp input[type="month"].ipsField_short, .ipsApp input[type="time"].ipsField_short, .ipsApp input[type="week"].ipsField_short, 
+.ipsApp input[type="number"].ipsField_short, .ipsApp input[type="email"].ipsField_short, .ipsApp input[type="url"].ipsField_short,
+.ipsApp input[type="search"].ipsField_short, .ipsApp input[type="tel"].ipsField_short, .ipsApp input[type="color"].ipsField_short, .ipsApp select.ipsField_short {
+	max-width: 200px;
+	width: auto;
+}
+
+.ipsApp textarea.ipsField_medium, .ipsApp input[type="text"].ipsField_medium, .ipsApp input[type="password"].ipsField_medium,
+.ipsApp input[type="datetime"].ipsField_medium, .ipsApp input[type="datetime-local"].ipsField_medium, .ipsApp input[type="date"].ipsField_medium,
+.ipsApp input[type="month"].ipsField_medium, .ipsApp input[type="time"].ipsField_medium, .ipsApp input[type="week"].ipsField_medium, 
+.ipsApp input[type="number"].ipsField_medium, .ipsApp input[type="email"].ipsField_medium, .ipsApp input[type="url"].ipsField_medium,
+.ipsApp input[type="search"].ipsField_medium, .ipsApp input[type="tel"].ipsField_medium, .ipsApp input[type="color"].ipsField_medium, .ipsApp select.ipsField_medium {
+	width: 270px;
+	width: auto;
+}
+
+.ipsApp textarea.ipsField_tiny, .ipsApp input[type="text"].ipsField_tiny, .ipsApp input[type="password"].ipsField_tiny,
+.ipsApp input[type="datetime"].ipsField_tiny, .ipsApp input[type="datetime-local"].ipsField_tiny, .ipsApp input[type="date"].ipsField_tiny,
+.ipsApp input[type="month"].ipsField_tiny, .ipsApp input[type="time"].ipsField_tiny, .ipsApp input[type="week"].ipsField_tiny, 
+.ipsApp input[type="number"].ipsField_tiny, .ipsApp input[type="email"].ipsField_tiny, .ipsApp input[type="url"].ipsField_tiny,
+.ipsApp input[type="search"].ipsField_tiny, .ipsApp input[type="tel"].ipsField_tiny, .ipsApp input[type="color"].ipsField_tiny, .ipsApp select.ipsField_tiny {
+	max-width: 60px;
+	width: auto;
+}
+
+	.ipsApp select.ipsField_short, .ipsApp select.ipsField_medium, .ipsApp select.ipsField_tiny {
+		text-overflow: ellipsis;
+	}
+
+.ipsApp textarea:focus, .ipsApp input[type="text"]:focus, .ipsApp input[type="password"]:focus,
+.ipsApp input[type="datetime"]:focus, .ipsApp input[type="datetime-local"]:focus,
+.ipsApp input[type="date"]:focus, .ipsApp input[type="month"]:focus, .ipsApp input[type="time"]:focus,
+.ipsApp input[type="week"]:focus, .ipsApp input[type="number"]:focus, .ipsApp input[type="email"]:focus,
+.ipsApp input[type="url"]:focus, .ipsApp input[type="search"]:focus, .ipsApp input[type="tel"]:focus,
+.ipsApp input[type="color"]:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	outline: 0;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.075), 0px 1px 5px rgba(82,168,236,0.6) inset ;
+}
+
+.ipsApp textarea[disabled], .ipsApp input[type="text"][disabled], .ipsApp input[type="password"][disabled],
+.ipsApp input[type="datetime"][disabled], .ipsApp input[type="datetime-local"][disabled],
+.ipsApp input[type="date"][disabled], .ipsApp input[type="month"][disabled], .ipsApp input[type="time"][disabled],
+.ipsApp input[type="week"][disabled], .ipsApp input[type="number"][disabled], .ipsApp input[type="email"][disabled],
+.ipsApp input[type="url"][disabled], .ipsApp input[type="search"][disabled], .ipsApp input[type="tel"][disabled],
+.ipsApp input[type="color"][disabled] {
+	background: #f7f7f7;
+	opacity: 0.7;
+}
+
+.ipsApp .ipsToggle:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	outline: 0;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.075), 0px 1px 5px rgba(82,168,236,0.6);
+}
+
+.ipsFieldRow_content [data-role="prefixRow"] {
+	margin-top: 5px;
+}
+
+.ipsApp textarea {
+	height: auto;
+	max-width: 100%;
+}
+
+/*.ipsFieldRow_content select {
+	margin-top: 6px;
+}*/
+
+.ipsFieldRow .ipsFieldRow_icon {
+	position: relative;
+}
+
+	html[dir="ltr"] .ipsFieldRow .ipsFieldRow_icon input[type="text"] {
+		padding-left: 35px;
+	}
+	html[dir="rtl"] .ipsFieldRow .ipsFieldRow_icon input[type="text"] {
+		padding-right: 35px;
+	}
+
+	.ipsFieldRow .ipsFieldRow_icon:after {
+		font-family: 'FontAwesome';
+		font-size: 16px;
+		position: absolute;
+		top: 3px;
+		color: #404040;
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+	}
+	html[dir="ltr"] .ipsFieldRow .ipsFieldRow_icon:after {
+		left: 3px;
+	}
+	html[dir="rtl"] .ipsFieldRow .ipsFieldRow_icon:after {
+		right: 3px;
+	}
+
+		.ipsFieldRow .ipsFieldRow_icon[data-icon="search"] {
+			content: "\\f002";
+		}
+
+	.ipsFieldRow.ipsFieldRow_primary .ipsFieldRow_icon:after {
+		font-size: 18px;
+		top: 0;
+	}
+	html[dir="ltr"] .ipsFieldRow.ipsFieldRow_primary .ipsFieldRow_icon:after {
+		left: 10px;
+	}
+	html[dir="rtl"] .ipsFieldRow.ipsFieldRow_primary .ipsFieldRow_icon:after {
+		right: 10px;
+	}
+
+.ipsApp .ipsField_loading {
+	background-image: url( {resource="loaders/tiny_loading.gif" app="core" location="front"} );
+	background-size: 14px 14px;
+	background-repeat: no-repeat;
+	background-position: right 5px center;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+	.ipsApp .ipsField_loading {
+		background-image: url( {resource="loaders/tiny_loading@2x.gif" app="core" location="front"} );
+	}
+}
+
+html[dir="rtl"] .ipsApp .ipsField_loading {
+	background-position: left 5px center;
+}
+
+.ipsFieldRow_section {
+	background: #f9f9f9;
+	color: #333;
+	padding: 15px;
+	font-size: 16px;
+}
+
+/* VALIDATION */
+.ipsApp input.ipsField_error, .ipsFieldRow_error textarea:not( .ipsFieldRow_errorExclude ), .ipsFieldRow_error input[type="text"]:not( .ipsFieldRow_errorExclude ),
+.ipsFieldRow_error input[type="password"]:not( .ipsFieldRow_errorExclude ), .ipsFieldRow_error input[type="datetime"]:not( .ipsFieldRow_errorExclude ),
+.ipsFieldRow_error input[type="datetime-local"]:not( .ipsFieldRow_errorExclude ), .ipsFieldRow_error input[type="date"]:not( .ipsFieldRow_errorExclude ),
+.ipsFieldRow_error input[type="month"]:not( .ipsFieldRow_errorExclude ), .ipsFieldRow_error input[type="time"]:not( .ipsFieldRow_errorExclude ),
+.ipsFieldRow_error input[type="week"]:not( .ipsFieldRow_errorExclude ), .ipsFieldRow_error input[type="number"]:not( .ipsFieldRow_errorExclude ),
+.ipsFieldRow_error input[type="email"]:not( .ipsFieldRow_errorExclude ), .ipsFieldRow_error input[type="url"]:not( .ipsFieldRow_errorExclude ),
+.ipsFieldRow_error input[type="search"]:not( .ipsFieldRow_errorExclude ), .ipsFieldRow_error input[type="tel"]:not( .ipsFieldRow_errorExclude ),
+.ipsFieldRow_error input[type="color"]:not( .ipsFieldRow_errorExclude ) {
+	background: #f8e6e9;
+	border-color: #ba7b84;
+}
+
+.ipsApp input.ipsField_success, .ipsApp textarea.ipsField_success, .ipsFieldRow_success textarea, .ipsFieldRow_success input[type="text"], .ipsFieldRow_success input[type="password"],
+.ipsFieldRow_success input[type="datetime"], .ipsFieldRow_success input[type="datetime-local"],
+.ipsFieldRow_success input[type="date"], .ipsFieldRow_success input[type="month"], .ipsFieldRow_success input[type="time"],
+.ipsFieldRow_success input[type="week"], .ipsFieldRow_success input[type="number"], .ipsFieldRow_success input[type="email"],
+.ipsFieldRow_success input[type="url"], .ipsFieldRow_success input[type="search"], .ipsFieldRow_success input[type="tel"],
+.ipsFieldRow_error input[type="color"] {
+	background: #ebf2e5;
+	border-color: #4a7c20;
+}
+
+/* Monospace textarea */
+textarea.ipsField_codeInput {
+	font-family: "Courier New", Courier, monospace;
+}
+
+input[type="text"].ipsField_tinyText {
+	font-size: 11px;
+	padding: 4px;
+}
+
+/* TOGGLES */
+input[type="checkbox"]:disabled + .ipsToggle {
+	opacity: 0.4;
+	cursor: default !important;
+}
+
+	input[type="checkbox"]:disabled + .ipsToggle:not( [data-ipsTooltip] ) {
+		pointer-events: none;
+	}
+
+.ipsToggle {
+	width: 50px;
+	background: red;
+	display: inline-block;
+	height: 22px;
+	line-height: 22px;
+	border-radius: 2px;
+	position: relative;
+	box-shadow: 0px 0px 1px rgba(0,0,0,0.2) inset;
+	border: 1px solid rgba(0,0,0,0.3);
+	overflow: hidden;
+	vertical-align: middle;
+	cursor: pointer;
+	{prefix="transition" value="all 0.3s linear"}
+}
+	
+	.ipsToggle.ipsToggle_off {
+		background: #c2c2c2;
+	}
+
+	.ipsToggle.ipsToggle_on {
+		background: #679b35;
+	}
+
+	.ipsToggle input {
+		opacity: 0.001;
+	}
+
+	.ipsToggle span {
+		background: #f5f5f5;
+		border-radius: 2px;
+		height: 18px;
+		width: 18px;
+		top: 1px;
+		text-indent: 100%;
+		white-space: nowrap;
+		box-shadow: 0px 0px 1px rgba(0,0,0,0.5);
+		display: block;
+		position: absolute;
+		pointer-events: none;
+		{prefix="transition" value="all 0.2s linear"}
+	}	
+
+		html[dir="ltr"] .ipsToggle.ipsToggle_on span,
+		html[dir="ltr"] .ipsToggle.ipsToggle_off:active span {
+			right: 1px;
+		}
+		html[dir="rtl"] .ipsToggle.ipsToggle_on span,
+		html[dir="rtl"] .ipsToggle.ipsToggle_off:active span {
+			left: 1px;
+		}
+
+		html[dir="ltr"] .ipsToggle.ipsToggle_off span,
+		html[dir="ltr"] .ipsToggle.ipsToggle_on:active span {
+			right: 29px;
+		}
+		html[dir="rtl"] .ipsToggle.ipsToggle_off span,
+		html[dir="rtl"] .ipsToggle.ipsToggle_on:active span {
+			left: 29px;
+		}
+
+	.ipsToggle span:before {
+		content: '\\f0c9';
+		font-family: 'FontAwesome';
+		font-size: 10px;
+		line-height: 20px;
+		display: block;
+		position: absolute;
+		width: 18px;
+		height: 18px;
+		top: 0;
+		color: rgba(0,0,0,0.2);		
+	}
+	html[dir="ltr"] .ipsToggle span:before {
+		left: -14px;
+	}
+	html[dir="rtl"] .ipsToggle span:before {
+		right: -14px;
+	}
+
+	.ipsToggle span:after {
+		content: '\\f00c';
+		font-family: 'FontAwesome';
+		font-size: 12px;
+		text-transform: uppercase;
+		display: block;
+		color: #fff;
+		position: absolute;
+		top: 0px;
+		line-height: 18px;
+		text-shadow: 0px 0px 1px rgba(0,0,0,0.5);
+	}
+	html[dir="ltr"] .ipsToggle span:after {
+		left: -38px;
+	}
+	html[dir="rtl"] .ipsToggle span:after {
+		right: -38px;
+	}
+
+		.ipsToggle.ipsToggle_off span:after {
+			content: '\\f00d';
+		}
+		html[dir="ltr"] .ipsToggle.ipsToggle_off span:after {
+			left: 10px;
+		}
+		html[dir="rtl"] .ipsToggle.ipsToggle_off span:after {
+			right: 10px;
+		}
+		
+/* No, no, no, no, yes */
+.ipsField_yesNo {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+html[dir="ltr"] .ipsField_yesNo li {
+	float: left;
+}
+html[dir="rtl"] .ipsField_yesNo li {
+	float: right;
+}
+
+.ipsField_yesNo input[type="radio"] {
+	display: none;
+}
+
+.ipsField_yesNo label {
+	display: block;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	width: 40px;
+	background: #f2f2f2;
+	overflow: hidden;
+	text-indent: 100%;
+	whitespace: no-wrap;
+	cursor: pointer;
+	position: relative;
+	{prefix="transition" value="0.2s all linear"}
+}
+
+	.ipsField_yesNo label:after {
+		color: #d5d5d5;		
+		font-family: "FontAwesome";
+		position: absolute;
+		top: 0;
+		text-indent: 0;
+		font-size: 18px;
+	}
+	html[dir="ltr"] .ipsField_yesNo label:after {
+		left: 50%;
+	}
+	html[dir="rtl"] .ipsField_yesNo label:after {
+		right: 50%;
+	}
+
+		.ipsField_yesNo .ipsField_yesNo_yes label:after {
+			content: "\\f00c";
+		}
+		html[dir="ltr"] .ipsField_yesNo .ipsField_yesNo_yes label:after {
+			margin-left: -9px;
+		}
+		html[dir="rtl"] .ipsField_yesNo .ipsField_yesNo_yes label:after {
+			margin-right: -9px;
+		}
+
+			.ipsField_yesNo .ipsField_yesNo_yes input[type="radio"]:checked + label {
+				background: #68a72f;
+			}
+
+		.ipsField_yesNo .ipsField_yesNo_no label:after {
+			content: "\\f00d";
+		}
+		html[dir="ltr"] .ipsField_yesNo .ipsField_yesNo_no label:after {
+			margin-left: -7px;
+		}
+		html[dir="rtl"] .ipsField_yesNo .ipsField_yesNo_no label:after {
+			margin-right: -7px;
+		}
+
+			.ipsField_yesNo .ipsField_yesNo_no input[type="radio"]:checked + label {
+				background: #a72f35;
+			}
+
+.ipsField_yesNo li:first-child label {
+	border-radius: 3px 0 0 3px;
+}
+html[dir="rtl"] .ipsField_yesNo li:first-child label {
+	border-radius: 0 3px 3px 0;
+}
+
+.ipsField_yesNo li:last-child label {
+	border-radius: 0 3px 3px 0;
+}
+html[dir="rtl"] .ipsField_yesNo li:last-child label {
+	border-radius: 3px 0 0 3px;
+}
+
+.ipsField_yesNo input[type="radio"]:checked + label:after {
+	color: #fff;
+}
+
+.ipsField_yesNo.ipsField_yesNo_disabled {
+	opacity: 0.5;
+}
+
+/* TRANSLATABLE */
+.ipsField_translatable li {
+	margin-bottom: 5px;
+	position: relative;
+}
+
+.ipsField_translatable li span.ipsFlag {
+	display: inline-block;
+	position: absolute;
+	top: 9px;
+}
+html[dir="ltr"] .ipsField_translatable li span.ipsFlag {
+	left: 8px;
+}
+html[dir="rtl"] .ipsField_translatable li span.ipsFlag {
+	right: 8px;
+}
+
+	.ipsField_translatable li p.ipsFlagEditor span.ipsFlag{
+		top: 4px;
+	}
+
+html[dir="ltr"] .ipsField_translatable li .ipsFlag + input[type="text"],
+html[dir="ltr"] .ipsField_translatable li .ipsFlag + input[type="password"] {
+	padding-left: 30px;
+}
+html[dir="rtl"] .ipsField_translatable li .ipsFlag + input[type="text"],
+html[dir="rtl"] .ipsField_translatable li .ipsFlag + input[type="password"] {
+	padding-right: 30px;
+}
+
+.ipsField_translatable li .ipsFlag + span.ipsFlagLabel {
+	font-weight: bold;
+}
+html[dir="ltr"] .ipsField_translatable li .ipsFlag + span.ipsFlagLabel {
+	margin-left: 30px;
+}
+html[dir="rtl"] .ipsField_translatable li .ipsFlag + span.ipsFlagLabel {
+	margin-right: 30px;
+}
+
+/* STACK */
+.ipsFieldRow:not( .ipsFieldRow_fullWidth ) .ipsField_stack { 
+	max-width: 350px;
+}
+
+.ipsField_stackItem {
+	margin-bottom: 5px;
+	position: relative;
+	padding-left: 32px;
+}
+
+.ipsField_stackItem .ipsField_stackDrag,
+.ipsField_stackItem .ipsField_stackDelete {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	line-height: 34px;
+	top: 0;
+	text-align: center;
+}
+
+html[dir="ltr"] .ipsField_stackItem .ipsField_stackDrag {
+	left: 0;
+}
+html[dir="rtl"] .ipsField_stackItem .ipsField_stackDrag {
+	right: 0;
+}
+
+	.ipsField_stackItem .ipsDrag_dragHandle {
+		opacity: 0.2;
+	}
+
+html[dir="ltr"] .ipsField_stackDelete {
+	right: 0;
+}
+html[dir="rtl"] .ipsField_stackDelete {
+	left: 0;
+}
+
+.ipsField_stackItem input[type="text"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="url"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="tel"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="email"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="number"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="search"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="password"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="datetime"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="datetime-local"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="date"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="week"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="month"]:not(.ipsField_stackItemNoMargin),
+.ipsField_stackItem input[type="time"]:not(.ipsField_stackItemNoMargin) {
+	margin-left: -32px;
+	padding-left: 32px;
+}
+
+	html[dir="ltr"] .ipsField_stackItem input:not([type="text"], [type="url"], [type="tel"], [type="email"], [type="number"], [type="search"], [type="password"],
+		[type="datetime"], [type="datetime-local"], [type="date"], [type="week"], [type="month"], [type="time"]), 
+	html[dir="ltr"] .ipsField_stackItem select,
+	html[dir="ltr"] .ipsField_stackItem textarea {
+		margin-left: 36px;
+	}
+	html[dir="rtl"] .ipsField_stackItem input:not([type="text"], [type="url"], [type="tel"], [type="email"], [type="number"], [type="search"], [type="password"],
+		[type="datetime"], [type="datetime-local"], [type="date"], [type="week"], [type="month"], [type="time"]), 
+	html[dir="rtl"] .ipsField_stackItem select,
+	html[dir="rtl"] .ipsField_stackItem textarea {
+		margin-right: 36px;
+	}
+
+	/* Key value pairs */
+	html[dir="ltr"] .ipsField_stackItem_keyValue span input[type="text"] {
+		margin-left: 0px;
+		padding-left: 6px;
+	}
+	html[dir="rtl"] .ipsField_stackItem_keyValue span input[type="text"] {
+		margin-right: 0px;
+		padding-right: 6px;
+	}
+	
+	.ipsField_stackItem_keyValue
+	{
+		padding-top: 8px;
+	}
+	html[dir="ltr"] .ipsField_stackItem_keyValue
+	{
+		margin-left: 36px;
+	}
+	html[dir="ltr"] .ipsField_stackItem_keyValue
+	{
+		margin-right: 36px;
+	}
+	
+/* ATTACHMENTS */
+.ipsField_uploader {
+	border: 1px solid #efefef;
+	border-bottom: 1px solid #dedede;
+	box-shadow: 0px 1px 0px rgba(255,255,255,1) inset;
+	background: #f6f6f6;
+	padding: 15px;
+	text-shadow: 0px 1px 0px #fff;
+	position: relative;
+}
+
+	.ipsField_uploader .ipsField_uploader_icon {
+		font-size: 36px;
+		vertical-align: middle;
+		{prefix="transition" value="all 0.2s linear"}
+	}
+	html[dir="ltr"] .ipsField_uploader .ipsField_uploader_icon {
+		margin-right: 10px;
+		float: left;
+	}
+	html[dir="rtl"] .ipsField_uploader .ipsField_uploader_icon {
+		margin-left: 10px;
+		float: right;
+	}
+
+		.ipsField_uploader:hover .ipsField_uploader_icon {
+			{prefix="transform" value="scale(1.3)"}
+		}
+
+	.ipsField_uploader .ipsField_uploader_msg span {
+		font-size: 14px;
+		font-weight: bold;
+		display: block;
+	}
+
+		.ipsField_uploader .ipsField_uploader_msg span + span {
+			opacity: 0.7;
+			font-weight: normal;
+			font-size: 12px;
+		}
+
+.ipsAttachments_list {
+	border: 1px solid #efefef;
+}
+
+	.ipsAttachments_list > li {
+		padding: 15px;
+		background: #fcfcfc;
+		border-bottom: 1px solid #efefef;
+	}
+
+		.ipsAttachments_list > li:last-child {
+			border-bottom: 0;
+		}
+
+.ipsAttachment_name {
+	font-weight: bold;
+}
+
+.ipsAttachment_size {
+	opacity: 0.7;
+	font-size: 12px;
+}
+
+.ipsAttachments_tools {
+	opacity: 0;
+	{prefix="transition" value="0.5s all linear"}
+}
+
+	.ipsAttachments_list > li:hover .ipsAttachments_tools {
+		opacity: 0.4;
+	}
+
+	.ipsAttachments_list > li .ipsAttachments_tools:hover {
+		opacity: 1;
+	}
+
+.ipsAttachment_progress {
+	border: 1px solid #dedede;
+	height: 12px;
+	border-radius: 10px;
+	width: 150px;
+	display: inline-block;
+	background: #fff;
+}
+
+	.ipsAttachment_progress > span {
+		background: #151515;
+		width: 0%;
+		display: block;
+		height: 10px;
+		border-radius: 10px;
+	}
+
+	.ipsImageAttach .ipsAttachment_progress {
+		width: 70%;
+		position: absolute;
+		top: 45%;
+	}
+	html[dir="ltr"] .ipsImageAttach .ipsAttachment_progress {
+		margin-left: -35%;
+	}
+	html[dir="rtl"] .ipsImageAttach .ipsAttachment_progress {
+		margin-right: -35%;
+	}
+
+.ipsField_uploader + .ipsAttachments_list {
+	border-top: 0;
+}
+html[dir="ltr"] .ipsField_uploader + .ipsAttachments_list {
+	margin-left: 10px;
+}
+html[dir="rtl"] .ipsField_uploader + .ipsAttachments_list {
+	margin-right: 10px;
+}
+
+.ipsAttachment_supportDrag {
+	display: none;
+}
+
+/* AUTOCOMPLETE TOKENS */
+.cToken {
+	height: 22px;
+	line-height: 22px;
+	background: #5490c0;
+	color: #fff;
+	display: inline-block;
+	font-size: 13px;
+	border-radius: 12px;
+	padding: 0 10px;
+	cursor: pointer;
+	margin: 1px 5px 1px 0 !important;
+	max-width: 100%;
+	overflow: hidden;
+}
+html[dir="rtl"] .cToken {
+	margin: 1px 0 1px 5px !important;
+}
+
+.cToken.cToken_selected {
+	background: #3a5a78;
+}
+
+/* SELECT TREE */
+.ipsSelectTree {
+	min-height: 32px;
+	border: 1px solid #b3b3b3;
+	width: 100%;
+	max-width: 350px;
+	border-radius: 3px;
+	padding: 7px 25px 5px 7px;
+	position: relative;
+	background: rgb(255,255,255);
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(242,242,242,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(242,242,242,1)));
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(242,242,242,1) 100%);
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+html[dir="rtl"] .ipsSelectTree {
+	padding: 7px 7px 5px 25px;
+}
+	
+	.ipsSelectTree.ipsSelectTree_disabled, .ipsSelectTree.ipsSelectTree_disabled .ipsSelectTree_expand {
+		opacity: 0.6;
+		pointer-events: none;
+	}
+
+	.ipsSelectTree_active {
+		border-bottom: 0;
+		border-radius: 3px 3px 0 0;
+		border-color: rgba(82, 168, 236, 0.8);
+	}	
+
+	.ipsSelectTree_expand {
+		position: absolute;
+		top: -1px;
+		bottom: -1px;
+		line-height: 32px;
+		border-radius: 0 3px 3px 0;
+		width: 26px;
+		text-align: center;
+		color: #333;
+	}
+	html[dir="ltr"] .ipsSelectTree_expand {
+		right: -1px;
+	}
+	html[dir="rtl"] .ipsSelectTree_expand {
+		left: -1px;
+	}
+		
+	.ipsSelectTree [data-role="tokenList"] li {
+		line-height: 1;
+	}
+	html[dir="ltr"] .ipsSelectTree [data-role="tokenList"] li {
+		margin-right: 5px;
+	}
+	html[dir="rtl"] .ipsSelectTree [data-role="tokenList"] li {
+		margin-left: 5px;
+	}
+
+		.ipsSelectTree [data-role="tokenList"] .cToken {
+			background: #5490c0;
+			color: #fff;
+			margin-bottom: 4px;
+		}
+
+.ipsSelectTree_nodes {
+	position: absolute;
+	top: 100%;
+	margin: -4px 0 0 -1px;
+	max-width: 500px;
+	border: 1px solid rgba(82, 168, 236, 0.8);
+	border-top: 0;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	padding: 7px;
+	background: rgb(242,242,242);
+}
+html[dir="rtl"] .ipsSelectTree_nodes {
+	margin: -4px -1px 0 0;
+}
+	
+	.ipsSelectTree_nodes [data-role="nodeList"] {
+		background: #fff;
+		border: 1px solid rgba(0,0,0,0.1);
+		max-height: 300px;
+		overflow: auto;
+	}
+
+		.ipsSelectTree_nodes [data-role="nodeList"] li {
+			position: relative;
+			border-bottom: 1px solid rgba(0,0,0,0.05);
+		}	
+
+			.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item {
+				padding: 7px 4px 7px 22px;
+			}
+			html[dir="rtl"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item {
+				padding: 7px 22px 7px 4px;
+			}
+
+				.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item.ipsSelectTree_withChildren {
+					padding: 7px 4px;
+				}
+
+				.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item:not( .ipsSelectTree_itemDisabled ):hover {
+					background: #ebf4f9;
+				}
+
+					.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item:not( .ipsSelectTree_itemDisabled ).ipsSelectTree_selected:hover {
+						background: #333333;
+					}
+
+			.ipsSelectTree_nodes [data-role="nodeList"] li [data-role="childWrapper"] {
+				border-top: 1px solid rgba(0,0,0,0.05);
+			}
+			html[dir="ltr"] .ipsSelectTree_nodes [data-role="nodeList"] li [data-role="childWrapper"] {
+				margin-left: 15px;
+				border-left: 1px dotted rgba(0,0,0,0.2);
+			}
+			html[dir="rtl"] .ipsSelectTree_nodes [data-role="nodeList"] li [data-role="childWrapper"] {
+				margin-right: 15px;
+				border-right: 1px dotted rgba(0,0,0,0.2);
+			}
+
+			.ipsSelectTree_nodes [data-role="nodeList"] li:last-child {
+				border: 0;
+			}
+
+			.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_toggle {
+				width: 16px;
+				height: 19px;
+				display: inline-block;
+				color: inherit;
+				position: relative;
+				vertical-align: middle;
+				float: left;
+			}
+			html[dir="rtl"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_toggle {
+				float: right;
+			}
+
+				.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_toggle + [data-role="nodeTitle"] {
+					display: block;
+				}
+				html[dir="ltr"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_toggle + [data-role="nodeTitle"] {
+					margin-left: 20px;
+				}
+				html[dir="rtl"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_toggle + [data-role="nodeTitle"] {
+					margin-right: 20px;
+				}
+
+				.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item > .ipsSelectTree_toggle:before {
+					text-align: center;
+					font-size: 11px;
+					display: block;
+					width: 20px;
+					height: 19px;
+					position: absolute;
+					top: 0;
+					content: '\\f04b';
+					font-family: 'FontAwesome';
+				}
+				html[dir="ltr"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item > .ipsSelectTree_toggle:before {
+					left: 0;
+				}
+				html[dir="rtl"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item > .ipsSelectTree_toggle:before {
+					right: 0;
+				}
+
+					.ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item.ipsSelectTree_itemOpen > .ipsSelectTree_toggle:before {
+						{prefix="transform" value="rotate(90deg)"}
+					}
+					html[dir="ltr"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item.ipsSelectTree_itemOpen > .ipsSelectTree_toggle:before {
+						left: -2px;
+					}
+					html[dir="rtl"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item.ipsSelectTree_itemOpen > .ipsSelectTree_toggle:before {
+						right: -2px;
+					}
+
+.ipsSelectTree_selected {
+	background: #474747;
+	color: #fff;
+}
+	
+	.ipsSelectTree_selected:after {
+		content: '\\f00c';
+		font-family: 'FontAwesome';
+		position: absolute;
+		top: 7px;
+		color: #fff;
+	}
+	html[dir="ltr"] .ipsSelectTree_selected:after {
+		right: 7px;
+	}
+	html[dir="rtl"] .ipsSelectTree_selected:after {
+		left: 7px;
+	}
+
+.ipsSelectTree_itemDisabled > [data-role="nodeTitle"] {
+	color: #a6a6a6;
+	cursor: default;
+}
+
+.ipsSelectTree_placeholder {
+	color: #909090;
+}
+
+.ipsSelectTree_search {
+	margin-top: 7px;
+	position: relative;
+}
+
+	.ipsApp .ipsSelectTree_search input {
+		border: 1px solid rgba(0,0,0,0.3);
+		font-size: 12px;
+	}
+	html[dir="ltr"] .ipsApp .ipsSelectTree_search input {
+		padding-left: 26px;
+	}
+	html[dir="rtl"] .ipsApp .ipsSelectTree_search input {
+		padding-right: 26px;
+	}
+
+	.ipsSelectTree_search:after {
+		content: '\\f002';
+		font-family: "FontAwesome";
+		position: absolute;
+		top: 7px;
+	}
+	html[dir="ltr"] .ipsSelectTree_search:after {
+		left: 7px;
+	}
+	html[dir="rtl"] .ipsSelectTree_search:after {
+		right: 7px;
+	}
+
+/* HIDDEN LABELS */
+.ipsForm_noLabels .ipsFieldRow_label, .ipsForm_noLabels .ipsFieldRow_title,
+.ipsForm_noLabels .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_label, .ipsForm_noLabels .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_title {
+	display: none;
+}
+
+input.ipsField_vle {
+	color: black;
+	font-weight: normal;
+}

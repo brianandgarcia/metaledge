@@ -1,0 +1,48 @@
+<ips:template parameters="$widget, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL" />
+<form accept-charset='utf-8' class="ipsForm ipsForm_vertical" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}} data-ipsForm>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+	{{if $uploadField}}
+		<input type="hidden" name="MAX_FILE_SIZE" value="{$uploadField}">
+		<input type="hidden" name="plupload" value="{expression="md5( uniqid() )"}">
+	{{endif}}
+	<div class='ipsMenu_headerBar'>
+		<h4 class='ipsType_sectionHead'>{lang="editBlockSettings"}</h4>
+	</div>
+	{{if $widget->menuStyle === 'modal'}}
+		<div class='ipsPad'>
+			<ul class='ipsList_reset'>
+				{{foreach $elements as $collection}}
+					{{foreach $collection as $input}}
+						{{if is_object( $input ) }}
+							{$input->rowHtml($form)|raw}
+						{{else}}
+							{$input|raw}
+						{{endif}}
+					{{endforeach}}
+				{{endforeach}}
+			</ul>
+		</div>
+	{{else}}
+		<div class='ipsMenu_innerContent ipsPad'>
+			<ul class='ipsList_reset'>
+				{{foreach $elements as $collection}}
+					{{foreach $collection as $input}}
+						{{if is_object( $input ) }}
+							{$input->rowHtml($form)|raw}
+						{{else}}
+							{$input|raw}
+						{{endif}}
+					{{endforeach}}
+				{{endforeach}}
+			</ul>
+		</div>
+	{{endif}}
+	<div class='ipsMenu_footerBar ipsType_center'>
+		{{foreach $actionButtons as $button}}
+			{$button|raw}
+		{{endforeach}}
+	</div>
+</form>

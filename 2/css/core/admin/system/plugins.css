@@ -1,0 +1,77 @@
+#elSkinHookEditor > .ipsColumns,
+#elCodeHookEditor > .ipsColumns {
+	min-height: 700px;
+}
+
+.cHookEditor_sidebar {
+	background: white;
+	height: 720px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+	.cHookEditor_sidebar li {
+		cursor: pointer;
+	}
+	
+.cHookEditor_activeTemplate {
+	background-color: #748391;
+	color: #fff;
+}
+
+html[dir="ltr"] .cHookEditor_content {
+	margin-left: 7px;
+}
+html[dir="rtl"] .cHookEditor_content {
+	margin-right: 7px;
+}
+
+	.cHookEditor_content .acpFormTabContent {
+		border: 0;
+		padding: 15px;
+	}
+
+	.cHookEditor_content .ipsTabs_item {
+		max-width: 250px !important;
+	}
+
+.cHookEditor_content > .acpBlock {
+	background: #fff;
+}
+
+#elHookEditor .CodeMirror {
+	height: 700px;
+}
+
+.cHookEditor_tree {
+	padding: 0 15px 15px 15px;
+	line-height: 1.6;
+	font-size: 11px;
+	font-family: 'monaco', 'courier new', monospace;
+}
+
+.cHookEditor_tree > ul {
+	padding: 0;
+}
+
+.cHookEditor_tree ul {
+	list-style: none;
+}
+
+.cHookEditor_tree span {
+	display: inline-block;
+}
+
+/*.cHookEditor_tree span[data-selectable] {
+	background: #eef5eb;
+}*/
+
+
+.cHookEditor_tree span[data-selectable]:hover {
+	background: #f9f7d2;
+	cursor: pointer;
+}
+
+.cHookEditor_tree span[data-unselectable] {
+	opacity: 0.4;
+}

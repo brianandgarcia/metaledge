@@ -1,0 +1,22 @@
+<ips:template parameters="$row, $title" />
+{$title}
+{{if $row['record_future_date'] or $row['record_approved'] === -1 or $row['record_approved'] === 0 or $row['record_pinned'] === 1 or $row['record_featured'] === 1}}
+	<span class='ipsPos_right'>
+	{{if $row['record_future_date']}}
+		{{$time  = \IPS\DateTime::ts( $row['record_publish_date'] );}}
+		<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{lang="content_future_date_blurb" sprintf="$time->localeDate(), $time->localeTime()"}'><i class='fa fa-clock-o'></i></span>
+	{{endif}}
+	{{if $row['record_approved'] === -1}}
+		<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning"><i class='fa fa-eye-slash'></i></span>
+	{{endif}}
+	{{if $row['record_approved'] === 0}}
+		<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip><i class='fa fa-warning'></i></span>
+	{{endif}}
+	{{if $row['record_pinned'] === 1}}
+		<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="pinned"}'><i class='fa fa-thumb-tack'></i></span>
+	{{endif}}
+	{{if $row['record_featured'] === 1}}
+		<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
+	{{endif}}
+	</span>
+{{endif}}

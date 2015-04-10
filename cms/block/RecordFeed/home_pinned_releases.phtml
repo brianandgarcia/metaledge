@@ -1,0 +1,26 @@
+<ips:template parameters="$database, $records, $orientation='vertical'" original_group="" key="block_RecordFeed_home_pinned_releases" />
+{{if !empty( $records ) }}
+<div class="ipsGrid metalEdge-pinned_releases">
+	{{foreach $records as $row}}
+	<div class="ipsGrid_span6 metalEdge_box">
+          <div class="ipsCms_record_image">
+              <img class="ipsImage" src="{$row->customFieldDisplayByKey('releases-album-art', 'display')|raw}" height="475" width="475">
+          </div>
+          <div class="ipsPad">
+               <span class="metalEdge_rating rating_{$row->averageReviewRating()}">{$row->averageReviewRating()}</span>
+               <div class="info">
+                    <a href="{$row->url()}">{$row->_title}</a>
+                    <br>
+                    {$row->customFieldDisplayByKey('artist')|raw}
+                    <br>
+                    {$row->customFieldDisplayByKey('review-summary')|raw}
+                    <br> By {$row->author()->link()|raw}
+               </div>
+          </div>
+          <div class="metalEdge_spotify">
+               {$row->customFieldDisplayByKey('url-spotify')|raw}
+          </div>
+	</div>
+	{{endforeach}}
+</div>
+{{endif}}

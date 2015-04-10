@@ -1,0 +1,14 @@
+<ips:template parameters="$page, $widgets" original_group="page_builder" key="page_page_builder_three_columns" />
+<div id="elCmsPageWrap" class='ipsBox' data-pageid="{$page->id}">
+	<div class='ipsGrid'>
+		<div class='ipsGrid_span6'>
+			{template="widgetContainer" group="pages" app="cms" params="'col1', $widgets, 'horizontal'"}
+		</div>
+		<div class='ipsGrid_span6'>
+			{template="widgetContainer" group="pages" app="cms" params="'col2', $widgets, 'horizontal'"}
+		</div>
+		<div class='ipsGrid_span6'>
+			{template="widgetContainer" group="pages" app="cms" params="'col3', $widgets, 'horizontal'"}
+		</div>
+	</div>
+</div>

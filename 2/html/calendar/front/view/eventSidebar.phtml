@@ -1,0 +1,93 @@
+<ips:template parameters="$event, $attendees, $tabId=''" />
+
+{{if $event->map( 250, 250 )}}
+	<div class='ipsPad_half ipsType_center ipsAreaBackground'>
+		{$event->map( 250, 250 )|raw}
+	</div>
+	<br>
+{{endif}}
+
+{{if $event->rsvp }}
+	{template="rsvpControls" group="view" params="$event, $attendees"}
+	<br>
+
+	<div class='ipsBox'>
+		<h3 class='ipsType_reset ipsType_sectionHead ipsHide'>{lang="event_rsvp_attendees"}</h3>
+		<div class='ipsTabs ipsTabs_small ipsClearfix' id='elAttendees{$tabId}' data-ipsTabBar data-ipsTabBar-stretch data-ipsTabBar-contentArea='#elAttendees{$tabId}_content'>
+			<a href='#elAttendees{$tabId}' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+			<ul role="tablist">
+				<li role="presentation">
+					<a href='#ipsTabs_elAttendees{$tabId}_elGoing_panel' id='elGoing' class='ipsTabs_item ipsTabs_activeItem ipsType_center' aria-selected='true'>{lang="rsvp_attendees"} {{if count($attendees[1])}}({expression="count($attendees[1])"}){{endif}}</a>
+				</li>
+				{{if $event->rsvp_limit == -1}}
+					<li role="presentation">
+						<a href='#ipsTabs_elAttendees{$tabId}_elMaybe_panel' id='elMaybe' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="rsvp_maybe_event"} {{if count($attendees[2])}}({expression="count($attendees[2])"}){{endif}}</a>
+					</li>	
+				{{endif}}	
+				<li role="presentation">
+					<a href='#ipsTabs_elAttendees{$tabId}_elNotGoing_panel' id='elNotGoing' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="rsvp_notgoing_event"} {{if count($attendees[0])}}({expression="count($attendees[0])"}){{endif}}</a>
+				</li>
+			</ul>
+		</div>
+		<div id='elAttendees{$tabId}_content' class='ipsTabs_panels'>
+			<div id="ipsTabs_elAttendees{$tabId}_elGoing_panel" class='ipsTabs_panel ipsAreaBackground_reset ipsPad'>
+				{{if count($attendees[1]) }}
+					<ul class='ipsGrid ipsList_reset'>
+						{{foreach $attendees[1] as $attendee}}
+							<li class='ipsGrid_span3' itemprop='attendee' itemscope itemtype="http://schema.org/Person">
+	 							<a href='{$attendee->url()}' itemprop='url' title="{$attendee->name}" data-ipsTooltip>
+	 								<img src='{$attendee->photo}' class='ipsUserPhoto ipsUserPhoto_mini' alt='' itemprop='image'>
+	 								<span class='ipsHide' itemprop='name'>{$attendee->name}</span>
+	 							</a>
+	 						</li>
+						{{endforeach}}
+					</ul>
+				{{else}}
+					<p class='ipsType_light ipsPad ipsType_center'>
+						{lang="no_rsvps_yet"}
+					</p>
+				{{endif}}
+			</div>
+			{{if $event->rsvp_limit == -1}}
+				<div id="ipsTabs_elAttendees{$tabId}_elMaybe_panel" class='ipsTabs_panel ipsAreaBackground_reset ipsPad'>
+					{{if count($attendees[2]) }}
+						<ul class='ipsGrid ipsList_reset'>
+							{{foreach $attendees[2] as $attendee}}
+								<li class='ipsGrid_span3' itemprop='attendee' itemscope itemtype="http://schema.org/Person">
+		 							<a href='{$attendee->url()}' itemprop='url' title="{$attendee->name}" data-ipsTooltip>
+		 								<img src='{$attendee->photo}' class='ipsUserPhoto ipsUserPhoto_mini' alt='' itemprop='image'>
+		 								<span class='ipsHide' itemprop='name'>{$attendee->name}</span>
+		 							</a>
+		 						</li>
+							{{endforeach}}
+						</ul>
+					{{else}}
+						<p class='ipsType_light ipsPad ipsType_center'>{lang="no_maybe_rsvps_yet"}</p>
+					{{endif}}
+				</div>
+			{{endif}}
+			<div id="ipsTabs_elAttendees{$tabId}_elNotGoing_panel" class='ipsTabs_panel ipsAreaBackground_reset ipsPad'>
+				{{if count($attendees[0]) }}
+					<ul class='ipsGrid ipsList_reset'>
+						{{foreach $attendees[0] as $attendee}}
+							<li class='ipsGrid_span3' itemprop='attendee' itemscope itemtype="http://schema.org/Person">
+	 							<a href='{$attendee->url()}' itemprop='url' title="{$attendee->name}" data-ipsTooltip>
+	 								<img src='{$attendee->photo}' class='ipsUserPhoto ipsUserPhoto_mini' alt='' itemprop='image'>
+	 								<span class='ipsHide' itemprop='name'>{$attendee->name}</span>
+	 							</a>
+	 						</li>
+						{{endforeach}}
+					</ul>
+				{{else}}
+					<p class='ipsType_light ipsPad ipsType_center'>{lang="no_decline_rsvps_yet"}</p>
+				{{endif}}
+			</div>
+
+			{{if count($attendees[0]) OR count($attendees[1]) OR count($attendees[2]) }}
+				<div class='ipsPad_half ipsType_center ipsType_medium ipsAreaBackground_light'>
+					<a href='{$event->url('downloadRsvp')}' class=''><i class='fa fa-arrow-circle-o-down'></i> {lang="rsvp_download"}</a>
+				</div>
+			{{endif}}
+		</div>
+	</div>
+{{endif}}

@@ -1,0 +1,95 @@
+<ips:template parameters="$skinSet, $conflicts, $templates, $css, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $formClass='', $attributes=array(), $sidebar=''" />
+<form accept-charset='utf-8' data-controller='core.admin.templates.conflict' data-normalURL="{url="app=core&module=customization&controller=skins&id={$skinSet->_id}"}" data-ajaxURL="{url="app=core&module=customization&controller=ajax&id={$skinSet->_id}"}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} data-ipsForm class="{$formClass}" {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}}>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+
+	<p class="ipsMessage ipsMessage_error">{lang="theme_conflict_message"}</p>
+	
+	<div class="acpBlock">
+		{{foreach $conflicts['template'] as $key => $data}}
+		<div class="acpBlock_title">{$data['conflict_app']}/{$data['conflict_location']}/{$data['conflict_path']}/{$data['conflict_name']}</div>
+		<table class="ipsTable diff restrict_height">
+			<tr>
+				<th><span data-conflict-id="{$data['conflict_id']}" data-conflict-name="old">{lang="theme_conflict_old_version"}</span></th>
+				<th><span data-conflict-id="{$data['conflict_id']}" data-conflict-name="new">{lang="theme_conflict_new_version"} </span></th>
+			</tr>
+		</table>
+		<div data-conflict-id="{$data['conflict_id']}">
+		{$data['diff']|raw}
+		</div>
+		<div class="ipsAreaBackground_light ipsPad">
+			<div class='ipsGrid'>
+				<div class='ipsGrid_span6'>
+					<span class='ipsButton ipsButton_primary' data-conflict-name="old">
+						{{foreach $elements as $collection}}
+							{{foreach $collection as $name => $input}}
+								{{if $name == 'conflict_' . $data['conflict_id']}}
+									<input id='elField_{$name}' type="radio" name="{$name}" value="old" checked="checked" />
+								{{endif}}
+							{{endforeach}}
+						{{endforeach}}
+						<strong>{lang="theme_conflict_use_this"}</strong>
+					</span>
+				</div>
+				<div class='ipsGrid_span6'>
+					<span class='ipsButton ipsButton_primary' data-conflict-name="new">
+						{{foreach $elements as $collection}}
+							{{foreach $collection as $name => $input}}
+								{{if $name == 'conflict_' . $data['conflict_id']}}
+									<input id='elField_{$name}'  type="radio" name="{$name}" value="new" />
+								{{endif}}
+							{{endforeach}}
+						{{endforeach}}
+						<strong>{lang="theme_conflict_use_this"}</strong>
+					</span>
+				</div>
+			</div>
+		</div>
+		{{endforeach}}
+		{{foreach $conflicts['css'] as $key => $data}}
+		<div class="acpBlock_title">{$data['conflict_app']}/{$data['conflict_location']}/{$data['conflict_path']}/{$data['conflict_name']}</div>
+		<table class="ipsTable diff restrict_height">
+			<tr>
+				<th><span data-conflict-id="{$data['conflict_id']}" data-conflict-name="old">{lang="theme_conflict_old_version"}</span></th>
+				<th><span data-conflict-id="{$data['conflict_id']}" data-conflict-name="new">{lang="theme_conflict_new_version"} </span></th>
+			</tr>
+		</table>
+		<div data-conflict-id="{$data['conflict_id']}">
+		{$data['diff']|raw}
+		</div>
+		<div class="ipsAreaBackground_light ipsPad">
+			<div class='ipsGrid'>
+				<div class='ipsGrid_span6'>
+					<span class='ipsButton ipsButton_primary' data-conflict-name="old">
+						{{foreach $elements as $collection}}
+							{{foreach $collection as $name => $input}}
+								{{if $name == 'conflict_' . $data['conflict_id']}}
+									<input id='elField_{$name}' type="radio" name="{$name}" value="old" checked="checked" />
+								{{endif}}
+							{{endforeach}}
+						{{endforeach}}
+						<strong>{lang="theme_conflict_use_this"}</strong>
+					</span>
+				</div>
+				<div class='ipsGrid_span6'>
+					<span class='ipsButton ipsButton_primary' data-conflict-name="new">
+						{{foreach $elements as $collection}}
+							{{foreach $collection as $name => $input}}
+								{{if $name == 'conflict_' . $data['conflict_id']}}
+									<input id='elField_{$name}'  type="radio" name="{$name}" value="new" />
+								{{endif}}
+							{{endforeach}}
+						{{endforeach}}
+						<strong>{lang="theme_conflict_use_this"}</strong>
+					</span>
+				</div>
+			</div>
+		</div>
+		{{endforeach}}
+	</div>
+	<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+		{expression="implode( '', $actionButtons)" raw="true"}
+	</div>
+</form>

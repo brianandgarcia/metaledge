@@ -1,0 +1,71 @@
+<ips:template parameters="$table, $headers, $rows" original_group="listing" key="database_releases_recordRow" />
+{{$RecordsClass = '\\IPS\\cms\\Records' . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+{{$FieldsClass  = '\\IPS\\cms\\Fields'  . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+{{$formattedFields = array();}}
+{{foreach $rows as $row}}
+	{{if $customFields = $FieldsClass::display( $row->fieldValues(), 'listing' ) and count( $customFields )}}
+		{{foreach $customFields as $fieldId => $fieldValue}}
+			{{$formattedFields[ $fieldId ] = $fieldValue;}}
+		{{endforeach}}
+	{{endif}}
+
+	{{$idField = $row::$databaseColumnId;}}
+	<li class="ipsCms_recordRow ipsDataItem ipsDataItem_responsivePhoto" data-rowID='{$row->$idField}'>
+		<div class='ipsDataItem_icon ipsPos_top'>
+			<!-- Rating -->
+			<span class="metalEdge_rating rating_{$row->averageReviewRating()}">{$row->averageReviewRating()}</span>
+		</div>
+		<div class='ipsDataItem_main'>
+			<div class="ipsPos_right metalEdge_buttons">
+				<!--{{$listenUrl = NULL;}}
+				{{foreach array( 'url-soundcloud', 'url-spotify', 'url-youtube' ) as $service}}
+					{{if $row->customFieldDisplayByKey($service, 'listing')}}
+						{{$listenUrl = $row->customFieldDisplayByKey($service, 'listing'); break;}}
+					{{endif}}
+				{{endforeach}}
+				{{if $listenUrl}}
+					<a href="{$listenUrl}" class="ipsButton ipsButton_light ipsButton_small">Listen</a>
+				{{endif}}-->
+
+				<!-- All the players! -->
+               {{if $row->customFieldDisplayByKey('url-spotify')}}
+                  <a class="spotify ipsButton ipsButton_light ipsButton_small" href="{$row->customFieldDisplayByKey('url-spotify', 'listing')|raw}">Spotify</a>
+               {{endif}}
+
+               {{if $row->customFieldDisplayByKey('url-youtube')}}
+                 <a class="youtube ipsButton ipsButton_light ipsButton_small" href="{$row->customFieldDisplayByKey('url-youtube', 'listing')|raw}">YouTube</a>
+               {{endif}}
+
+               {{if $row->customFieldDisplayByKey('url-soundcloud')}}
+                  <a class="soundcloud ipsButton ipsButton_light ipsButton_small" href="{$row->customFieldDisplayByKey('url-soundcloud', 'listing')|raw}">Soundcloud</a>
+               {{endif}}
+
+			</div>
+
+			<span class='ipsType_medium ipsType_light'>{$row->customFieldDisplayByKey('artist')|raw}</span>
+			<h4 class='ipsDataItem_title ipsType_break'>
+				<a href='{$row->url()}'>
+					{{if $row->_title}}{$row->_title}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
+				</a>
+			</h4>
+			<!-- {{if $row->isFutureDate() || $row->mapped('pinned') || $row->mapped('featured') || $row->hidden() === -1 || $row->hidden() === 1}}
+				<span class='ipsPos_right'>
+					{{if $row->isFutureDate()}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{$row->futureDateBlurb()}'><i class='fa fa-clock-o'></i></span>
+					{{elseif $row->hidden() === -1}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{$row->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
+					{{elseif $row->hidden() === 1}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>
+					{{endif}}
+					{{if $row->mapped('pinned')}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="pinned"}'><i class='fa fa-thumb-tack'></i></span>
+					{{endif}}
+					{{if $row->mapped('featured')}}
+						<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
+					{{endif}}
+				</span>
+			{{endif}} -->
+			<!-- Artist -->
+		</div>
+	</li>
+{{endforeach}}

@@ -1,0 +1,5 @@
+<ips:template parameters="$form, $forum, $title" />
+
+{template="pageHeader" if="!\IPS\Request::i()->isAjax()" group="global" app="core" params="\IPS\Member::loggedIn()->language()->addToStack( $title )"}
+
+{$form|raw}

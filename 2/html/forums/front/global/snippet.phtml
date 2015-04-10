@@ -1,0 +1,28 @@
+<ips:template parameters="$activity, $type='activity'" />
+{{if $activity instanceof \IPS\forums\Topic}}
+	<div class='cSearchActivity_info ipsContained'>
+		{{if $type != 'search'}}<a href='{$activity->url()}' class='ipsType_normal ipsType_break'>{$activity->mapped('title')}</a>{{endif}}
+		{{if mb_strlen( trim( $activity->truncated() ) ) }}
+			<div class='ipsType_medium ipsType_richText ipsContained {{if $type != 'search'}}ipsSpacer_both{{else}}ipsSpacer_bottom{{endif}} ipsSpacer_half' data-ipsTruncate data-ipsTruncate-size='3 lines' data-ipsTruncate-type='remove'>
+				{$activity->truncated()|raw}
+			</div>
+		{{endif}}
+		<ul class='ipsList_inline ipsType_light'>
+			<li>{lang="replies_number" pluralize="$activity->posts-1"}</li>
+			<li>{lang="num_views_with_number" pluralize="$activity->mapped('views')"}</li>
+		</ul>
+	</div>
+{{else}}
+	{{if mb_strlen( trim( strip_tags( $activity->truncated() ) ) ) }}
+		<div class='cSearchActivity_info ipsContained'>
+			<div class='ipsType_medium ipsType_richText ipsContained ipsSpacer_bottom ipsSpacer_half' data-ipsTruncate data-ipsTruncate-size='3 lines' data-ipsTruncate-type='remove'>
+				{$activity->truncated()|raw}
+			</div>
+			{{if $type != 'search' and $activity instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
+				<ul class='ipsList_inline ipsType_light'>
+					<li>{template="reputationMini" group="global" app="core" params="$activity, '', NULL, TRUE"}</li>
+				</ul>
+			{{endif}}
+		</div>
+	{{endif}}
+{{endif}}

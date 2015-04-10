@@ -1,0 +1,14 @@
+<ips:template parameters="$lang, $id=NULL, $css='', $parse=FALSE" />
+<li{{if $id !== NULL}} id="{$id}"{{endif}}>
+	{{if $css}}
+		{template="message" app="core" group="global" location="admin" params="$lang, $css, NULL, $parse"}
+	{{else}}
+		<div class="ipsPad">
+			{{if $parse}}
+				{lang="$lang"}
+			{{else}}
+				{$lang|raw}
+			{{endif}}
+		</div>
+	{{endif}}
+</li>

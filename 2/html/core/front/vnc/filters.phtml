@@ -1,0 +1,78 @@
+<ips:template parameters="$baseUrl, $contentTypes, $nodeSelect, $nodeTitle" />
+<div class='ipsResponsive_showPhone ipsResponsive_block ipsClearfix ipsType_reset ipsPad_half'>
+	<h2 class='ipsType_sectionHead ipsPos_left'>Filters</h2>
+	<a href='#' data-action='filterBarSwitch' data-switchTo='filterContent' class='ipsPos_right ipsButton ipsButton_verySmall ipsButton_light'><i class='fa fa-navicon'></i> &nbsp;{lang="vnc_results"} <i class='fa fa-caret-right'></i></a>&nbsp;&nbsp;
+</div>
+
+<ul class='ipsForm ipsForm_vertical ipsList_reset'>
+	<li class='ipsFieldRow ipsFieldRow_fullWidth ipsPad'>
+		<label class="ipsFieldRow_label ipsResponsive_hidePhone">
+			{lang="vnc_content_type"}
+		</label>
+		<div class='ipsSideMenu' data-ipsSideMenu id='elSearch_appFilter'>
+			<h3 class='ipsSideMenu_mainTitle ipsAreaBackground_reset ipsType_medium'>
+				<a href='#elSearch_appFilter' class='ipsPad_double' data-action='openSideMenu'><i class='fa fa-bars'></i> &nbsp;{lang="vnc_content_type"}&nbsp;<i class='fa fa-caret-down'></i></a>
+			</h3>
+			<ul class='ipsSideMenu_list ipsSideMenu_withRadios ipsType_normal'>
+				<li class='ipsSideMenu_item {{if !\IPS\Request::i()->type}}ipsSideMenu_itemActive{{endif}}'>
+					<a href='{$baseUrl->stripQueryString( 'type' )->stripQueryString( 'nodes' )}' data-action="filterResults">
+						{lang="all_new_content"}
+					</a>
+				</li>
+				{{foreach $contentTypes as $key => $class}}
+					<li class='ipsSideMenu_item {{if \IPS\Request::i()->type == $key}}ipsSideMenu_itemActive{{endif}}'>
+						<a href='{$baseUrl->setQueryString( array( 'type' => $key ) )->stripQueryString( 'nodes' )}' data-action="filterResults">
+							{lang="{$key}_pl"}
+						</a>
+					</li>
+				{{endforeach}}
+			</ul>
+		</div>
+	</li>
+	{{if $nodeSelect}}
+	<li class='ipsFieldRow ipsFieldRow_fullWidth ipsPad'>
+		<label class="ipsFieldRow_label">
+			{lang="vnc_filter_by" sprintf="$nodeTitle"}
+		</label>
+		<form action="{$baseUrl}" method="post" data-role="containerFilter">
+			{$nodeSelect->html()|raw}
+			<noscript>
+				<input type="submit" class="ipsButton ipsButton_secondary" value="{lang="update_results"}">
+			</noscript>
+		</form>
+	</li>
+	{{endif}}
+	<li class='ipsFieldRow ipsFieldRow_fullWidth ipsPad'>
+		<label class="ipsFieldRow_label ipsResponsive_hidePhone">
+			{lang="vnc_filters"}
+		</label>
+		<div class='ipsSideMenu' data-ipsSideMenu id='elVNC_filters'>
+			<h3 class='ipsSideMenu_mainTitle ipsAreaBackground_reset ipsType_medium'>
+				<a href='#elVNC_filters' class='ipsPad_double' data-action='openSideMenu'><i class='fa fa-bars'></i> &nbsp;{lang="vnc_filters"}&nbsp;<i class='fa fa-caret-down'></i></a>
+			</h3>
+			<ul class='ipsSideMenu_list ipsSideMenu_withChecks ipsType_normal'>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->onlyUnread}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'onlyUnread' => \IPS\Request::i()->onlyUnread ? 0 : 1 ) )}' data-action="filterResults">{lang="only_items_not_read"}</a></li>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->onlyFollowed}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'onlyFollowed' => \IPS\Request::i()->onlyFollowed ? 0 : 1 ) )}' data-action="filterResults"> {lang="only_items_i_follow"}</a></li>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->onlyParticipated}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'onlyParticipated' => \IPS\Request::i()->onlyParticipated ? 0 : 1 ) )}' data-action="filterResults"> {lang="only_items_i_posted"}</a></li>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->onlyStarted}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'onlyStarted' => \IPS\Request::i()->onlyStarted ? 0 : 1 ) )}' data-action="filterResults"> {lang="only_items_i_started"}</a></li>
+			</ul>
+		</div>
+	</li>
+	<li class='ipsFieldRow ipsFieldRow_fullWidth ipsPad'>
+		<label class="ipsFieldRow_label ipsResponsive_hidePhone">
+			{lang="vnc_time_period"} 
+		</label>
+		<div class='ipsSideMenu' data-ipsSideMenu id='elVNC_time'>
+			<h3 class='ipsSideMenu_mainTitle ipsAreaBackground_reset ipsType_medium'>
+				<a href='#elVNC_time' class='ipsPad_double' data-action='openSideMenu'><i class='fa fa-bars'></i> &nbsp;{lang="vnc_time_period"}&nbsp;<i class='fa fa-caret-down'></i></a>
+			</h3>
+			<ul class='ipsSideMenu_list ipsSideMenu_withRadios ipsType_normal' role="radiogroup">
+				<li class='ipsSideMenu_item {{if !\IPS\Request::i()->vncTimePeriod}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->stripQueryString( 'vncTimePeriod' )->stripQueryString( 'vncTime' )}' data-action="filterResults">{lang="vnc_lastvisit"}</a></li>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->vncTimePeriod == 'all'}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'vncTimePeriod' => 'all' ))->stripQueryString( 'vncTime' )}' data-action="filterResults">{lang="vnc_view_alltime"}</a></li>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->vncTimePeriod == 'day'}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'vncTimePeriod' => 'day' ))->stripQueryString( 'vncTime' )}' data-action="filterResults">{lang="vnc_view_daily"}</a></li>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->vncTimePeriod == 'week'}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'vncTimePeriod' => 'week' ))->stripQueryString( 'vncTime' )}' data-action="filterResults">{lang="vnc_view_weekly"}</a></li>
+				<li class='ipsSideMenu_item {{if \IPS\Request::i()->vncTimePeriod == 'month'}}ipsSideMenu_itemActive{{endif}}'><a href='{$baseUrl->setQueryString( array( 'vncTimePeriod' => 'month' ))->stripQueryString( 'vncTime' )}' data-action="filterResults">{lang="vnc_view_monthly"}</a></li>
+			</ul>
+		</div>
+	</li>
+</ul>

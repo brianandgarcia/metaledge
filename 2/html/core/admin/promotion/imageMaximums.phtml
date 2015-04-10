@@ -1,0 +1,11 @@
+<ips:template parameters="$name, $value, $type" />
+{lang="ad_after"}
+<input type="number" name="{$name}[value]" id="{$name}_v" {{if $value === -1}}value='' data-jsdisable="true"{{else}}value="{$value}"{{endif}} class="ipsField_short" data-decpoint="{expression="\IPS\Member::loggedIn()->language()->locale['decimal_point']"}" data-thousandsseparator="{expression="\IPS\Member::loggedIn()->language()->locale['thousands_sep']"}" size="5">
+<select name='{$name}[type]' id='{$name}_t'>
+	<option value='c' {{if $type == 'c'}}selected{{endif}}>{lang="ad_max_clicks"}</option>
+	<option value='i' {{if $type == 'i'}}selected{{endif}}>{lang="ad_max_impressions"}</option>
+</select>
+&nbsp;
+{lang="or"}
+&nbsp;
+<input type="checkbox" role='checkbox' data-control="unlimited" name="{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}" id='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}-unlimitedCheck' value="-1" {{if -1 === $value}}checked aria-checked='true'{{endif}} aria-labelledby='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}_label'> <label for='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}-unlimitedCheck' class='ipsField_unlimited' id='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}_label'>{lang="never"}</label>

@@ -1,0 +1,17 @@
+<ips:template parameters="$baseUrl, $contentTypes, $table, $timePeriod, $interval, $start, $end, $nodeSelect, $nodeTitle" />
+{template="pageHeader" group="global" app="core" params="\IPS\Member::loggedIn()->language()->addToStack('new_content')"}
+
+<div data-controller='core.front.vnc.main'>
+	<div class="ipsColumns ipsColumns_collapseTablet" data-ipsFilterBar data-ipsFilterBar-on='phone' data-ipsFilterBar-default='filterContent'>
+		<div class="ipsColumn ipsColumn_wide" data-role='filterBar'>
+			<div id="elVNC_sidebar" data-role='vncSidebar' class='ipsAreaBackground_light'>
+				{template="filters" group="vnc" params="$baseUrl, $contentTypes, $nodeSelect, $nodeTitle"}
+			</div>
+		</div>
+		<div id="elVNC_main" class="ipsColumn ipsColumn_fluid" data-role='filterContent'>
+			<div data-role='vncContent'>
+				{template="results" group="vnc" params="$baseUrl, $table, $timePeriod, $interval, $start, $end"}
+			</div>
+		</div>
+	</div>	
+</div>
