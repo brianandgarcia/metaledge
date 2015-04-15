@@ -1,0 +1,70 @@
+<ips:template parameters="$update, $cols, $blocks, $info, $bulletins" />
+
+<div data-controller='core.admin.dashboard.main'>
+
+	{{if count($update)}}
+		<div class='ipsAreaBackground_light ipsPad ipsPhotoPanel ipsPhotoPanel_small ipsPhotoPanel_notPhone' id='acpNewVersion'>
+			<i class='fa fa-info-circle ipsPos_left ipsResponsive_hidePhone'></i>
+			<div>
+				<h2 class='ipsType_sectionHead'><strong>{lang="dashboard_version_head"}</strong></h2>
+				<p class='ipsType_normal ipsType_reset'>{lang="dashboard_version_info" sprintf="$update['version']"}</p>
+				<br>
+				<a href='{url="app=core&module=overview&controller=dashboard&do=upgrade"}' class='ipsButton ipsButton_primary ipsButton_small'>{lang="download"}</a>
+				<a href='{$update['updateurl']}' target="_blank" class='ipsButton ipsButton_alternate ipsButton_small'>{lang="dashboard_version_moreinfo"}</a>
+			</div>
+		</div>
+		<br>
+	{{endif}}
+	
+	{{if count($bulletins)}}
+		{{foreach $bulletins as $bulletin}}
+			<div class='ipsAreaBackground_light ipsPad ipsPhotoPanel ipsPhotoPanel_small ipsPhotoPanel_notPhone' id='acpNewVersion'>
+				<i class='fa fa-info-circle ipsPos_left ipsResponsive_hidePhone'></i>
+				<div>
+					<h2 class='ipsType_sectionHead'><strong>{$bulletin['title']}</strong></h2>
+					<div class='ipsType_normal ipsType_reset'>{$bulletin['description']|raw}</div>
+					<br>
+					<a href='{$bulletin['link']}' class='ipsButton ipsButton_primary ipsButton_small'>{lang="dashboard_version_moreinfo"} &nbsp;<i class='fa fa-chevron-right'></i></a>
+				</div>
+			</div>
+			<br>
+		{{endforeach}}
+	{{endif}}
+	
+	{{$unusedBlocks = 0;}}
+	{{foreach $info as $block}}
+		{{if !isset($blocks[ $block['key'] ]) }}
+			{{$unusedBlocks++;}}
+		{{endif}}
+	{{endforeach}}
+
+	{template="buttons" params="array( 'add' => array( 'icon' => 'plus', 'title' => 'add_button', 'link' => \IPS\Http\Url::internal( '#elAddWidgets_button_menu' ), 'id' => 'elAddWidgets', 'dropdown' => true, 'class' => ( $unusedBlocks > 0 ? '' : 'ipsButton_disabled' ), 'data' => array( 'ipsMenu' => true )  ) )" group="global" app="core"}
+	<ul id='elAddWidgets_button_menu' class='ipsMenu ipsMenu_auto ipsHide'>
+		{{foreach $info as $block}}
+			<li class='ipsMenu_item {{if isset($blocks[ $block['key'] ]) }}ipsHide{{endif}}' data-ipsMenuValue='{$block['key']}' data-widgetName='{$block['name']}'>
+				<a href='#'>{$block['name']}</a>
+			</li>
+		{{endforeach}}
+	</ul>
+
+	<div class='ipsGrid ipsGrid_collapseTablet'>
+		<div class='ipsGrid_span8' data-role="mainerColumn">
+			<ol class='ipsList_reset' data-role="mainColumn">
+				{{foreach $cols['main'] as $cellKey}}
+					{{if array_key_exists( $cellKey, $blocks ) and isset($info[ $cellKey ])}}
+						{template="widgetWrapper" group="dashboard" app="core" params="$blocks[ $cellKey ], $info[ $cellKey ]"}
+					{{endif}}
+				{{endforeach}}
+			</ol>
+		</div>
+		<div class='ipsGrid_span4 acpWidget_sidebar'>
+			<ol class='ipsList_reset' data-role="sideColumn">
+				{{foreach $cols['side'] as $cellKey}}
+					{{if array_key_exists( $cellKey, $blocks ) and isset($info[ $cellKey ])}}
+						{template="widgetWrapper" group="dashboard" app="core" params="$blocks[ $cellKey ], $info[ $cellKey ]"}
+					{{endif}}
+				{{endforeach}}
+			</ol>
+		</div>
+	</div>
+</div>

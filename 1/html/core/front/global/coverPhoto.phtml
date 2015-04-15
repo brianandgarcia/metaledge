@@ -1,0 +1,31 @@
+<ips:template parameters="$url, $coverPhoto" />
+<div class='ipsPageHead_special ipsCoverPhoto' data-controller='core.front.core.coverPhoto' data-url="{$url->csrf()}" data-coverOffset='{$coverPhoto->offset}'>
+	{{if $coverPhoto->file}}
+		<div class='ipsCoverPhoto_container'>
+			<img src='{$coverPhoto->file}' class='ipsCoverPhoto_photo' alt=''>
+		</div>
+	{{endif}}
+	{{if $coverPhoto->editable}}
+		<a href='#elEditPhoto_menu' data-hideOnCoverEdit class='ipsCoverPhoto_button ipsPos_right ipsButton ipsButton_verySmall ipsButton_narrow ipsButton_overlaid' data-ipsMenu id='elEditPhoto' data-role='coverPhotoOptions'>{lang="cover_photo_button"} <i class='fa fa-caret-down'></i></a>
+	{{endif}}
+	<div class='ipsColumns ipsColumns_collapsePhone' data-hideOnCoverEdit>
+		<div class='ipsColumn ipsColumn_fluid'>
+			{{if $coverPhoto->editable}}
+				<ul class='ipsMenu ipsMenu_auto ipsHide' id='elEditPhoto_menu'>
+					{{if $coverPhoto->file}}
+						<li class='ipsMenu_item'>
+							<a href='{$url->setQueryString( 'do', 'coverPhotoRemove' )->csrf()}' data-action='removeCoverPhoto'>{lang="cover_photo_remove"}</a>
+						</li>
+						<li class='ipsMenu_item ipsHide'>
+							<a href='#' data-action='positionCoverPhoto'>{lang="cover_photo_reposition"}</a>
+						</li>
+					{{endif}}
+					<li class='ipsMenu_item'>
+						<a href='{$url->setQueryString( 'do', 'coverPhotoUpload' )}' data-ipsDialog data-ipsDialog-title="{lang="cover_photo_add"}">{lang="cover_photo_add"}</a>
+					</li>
+				</ul>
+			{{endif}}
+			{$coverPhoto->overlay|raw}
+		</div>
+	</div>
+</div>

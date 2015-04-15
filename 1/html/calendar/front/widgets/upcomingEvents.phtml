@@ -1,0 +1,65 @@
+<ips:template parameters="$events, $today, $orientation='vertical'" />
+<h3 class='ipsType_reset ipsWidget_title'>{lang="block_upcomingEvents"}</h3>
+<div class='ipsWidget_inner'>
+	{{if $orientation == 'vertical'}}
+		<div class='ipsPad_half'>
+	{{endif}}
+	{{if !empty( $events ) }}
+		<ul class='ipsDataList ipsDataList_reducedSpacing'>
+			{{foreach $events as $event}}
+				<li class='ipsDataItem'>
+					<div class='ipsDataItem_icon cCalendar_date_overlay'>
+						<time datetime='{$event->nextOccurrence( $today, 'startDate' )->mysqlDatetime()}' class='ipsCalendarDate'>
+							<span class='ipsCalendarDate_month'>{$event->nextOccurrence( $today, 'startDate' )->monthNameShort}</span>
+							<span class='ipsCalendarDate_date'>{$event->nextOccurrence( $today, 'startDate' )->mday}</span>
+						</time>
+					</div>
+					<div class='ipsDataItem_main ipsType_break'>
+						{{if $event->container()->allow_comments && $orientation == 'vertical'}}
+							<div class="ipsCommentCount ipsPos_right {{if $event->comments === 0}}ipsFaded{{endif}}" data-ipsTooltip title='{lang="replies_number" pluralize="$event->comments"}'>{expression="$event->comments"}</div>
+						{{endif}}
+						{{if $event->unread()}}<span class="ipsItemStatus ipsItemStatus_tiny"><i class="fa fa-circle"></i></span> <strong>{{endif}}<a href="{$event->url()}" title='{lang="view_this_event" sprintf="$event->title"}'>{lang="$event->title" wordbreak="true"}</a>{{if $event->unread()}}</strong>{{endif}}<br>
+						<strong class='ipsType_small'>
+							{{if $event->nextOccurrence( $today, 'startDate' )}}
+								{$event->nextOccurrence( $today, 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $today, 'startDate' )->localeTime( FALSE )} {{endif}}
+								{{if $event->nextOccurrence( $event->nextOccurrence( $today, 'startDate' ) ?: $today, 'endDate' ) }}
+									{{if $orientation == 'vertical'}}<br>{{endif}}
+									<span class='ipsType_light ipsType_unbold'>{lang="until"}</span>{{if $orientation == 'vertical'}}<br>{{endif}}
+									{$event->nextOccurrence( $event->nextOccurrence( $today, 'startDate' ) ?: $today, 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $event->nextOccurrence( $today, 'startDate' ) ?: $today, 'endDate' )->localeTime( FALSE )}{{endif}}
+								{{endif}}
+							{{else}}
+								{$event->lastOccurrence( 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'startDate' )->localeTime( FALSE )} {{endif}}
+								{{if $event->lastOccurrence( 'endDate' ) }}
+									{{if $orientation == 'vertical'}}<br>{{endif}}
+									<span class='ipsType_light ipsType_unbold'>{lang="until"}</span>{{if $orientation == 'vertical'}}<br>{{endif}}
+									{$event->lastOccurrence( 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'endDate' )->localeTime( FALSE )}{{endif}}
+								{{endif}}
+							{{endif}}
+						</strong>
+						<br>
+						{{if $event->container()->allow_comments && $orientation == 'horizontal'}}
+							<span class="{{if $event->comments === 0}}ipsFaded{{endif}}" data-ipsTooltip title='{lang="replies_number" pluralize="$event->comments"}'><i class='fa fa-comment'></i> {expression="$event->comments"}</span>&nbsp;&nbsp;
+						{{endif}}
+						{{if $event->rsvp}}
+							{{$attendees = $event->attendees();}}
+							<i class='fa fa-user'></i> {lang="x_users_going" pluralize="count( $attendees[1] )"}
+							{{if isset( $attendees[1][ \IPS\Member::loggedIn()->member_id ] )}}
+								{{if $orientation == 'vertical'}}<br>{{else}}&nbsp;&nbsp;{{endif}}<strong class='ipsType_success'><i class='fa fa-check-circle'></i> {lang="you_are_going"}</strong>
+							{{endif}}
+						{{endif}}
+						{{if $orientation == 'horizontal'}}
+							<div class='ipsType_medium ipsType_richText' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='2 lines'>
+								{$event->truncated()|raw}
+							</div>
+						{{endif}}
+					</div>
+				</li>
+			{{endforeach}}
+		</ul>
+	{{else}}
+		<div class='ipsType_light ipsPad_half ipsType_center ipsType_uppercase'>{lang="no_upcoming_events"}</div>
+	{{endif}}
+	{{if $orientation == 'vertical'}}
+		</div>
+	{{endif}}
+</div>

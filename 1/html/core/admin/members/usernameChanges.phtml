@@ -1,0 +1,14 @@
+<ips:template parameters="$name, $value" />
+<div>
+	<label><input type='checkbox' name="{$name}[canchange]" value="1" data-control="toggle" data-toggles="group_un_perms" {{if $value[0]}}checked="checked"{{endif}}> {lang="group_allow_username_changes"}</label>
+</div>
+<br>
+<div id="group_un_perms">
+	<div data-role="unlimitedCatch">
+		{lang="after"} <input type="number" class="ipsField_tiny" value="{$value[1]}" name="{$name}[1]" min="0"> <select name="{$name}[2]" class="ipsField_short"><option value="0" {{if !$value[2]}}selected="selected"{{endif}}>{lang="approved_posts_comments"}</option><option value="1" {{if $value[2]}}selected="selected"{{endif}}>{lang="days_since_joining"}</option></select>  &nbsp; {lang="or"} &nbsp; <input type='checkbox' name="{$name}[always]" id='el{$name}_always' data-control="unlimited" {{if !$value[1]}}checked="checked"{{endif}}> <label for='el{$name}_always' class='ipsField_unlimited'>{lang="always"}</label>
+	</div>
+	<br>
+	<div data-role="unlimitedCatch">
+		{lang="can_change_username"} <input type="number" class="ipsField_tiny" value="{$value[0]}" name="{$name}[0]"> {lang="times_every"} <input type="number" name="{$name}[3]" class="ipsField_tiny" value="{$value[3]}" min="0"> {lang="days"} &nbsp; {lang="or"} &nbsp; <input type='checkbox' name="{$name}[unlimited]" id='el{$name}_unlimited' value="1" data-control="unlimited" {{if $value[0] == -1}}checked="checked"{{endif}}> <label for='el{$name}_unlimited' class='ipsField_unlimited'>{lang="unlimited"}</label>
+	</div>
+</div>

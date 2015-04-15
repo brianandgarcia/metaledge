@@ -1,0 +1,24 @@
+<ips:template parameters="" />
+<meta charset="utf-8">
+{{if theme.responsive}}
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+{{endif}}
+{{if !isset( \IPS\Output::i()->metaTags['og:image'] ) and \IPS\Theme::i()->logo_sharer }}
+	<meta property="og:image" content="{theme="logo_sharer"}">
+{{endif}}
+{{foreach \IPS\Output::i()->metaTags as $name => $content}}
+	{{if $name != 'title'}}
+		{{if is_array( $content ) }}
+			{{foreach $content as $_value }}
+				<meta {{if mb_substr( $name, 0, 3 ) === 'og:'}}property{{else}}name{{endif}}="{$name}" content="{$_value}">
+			{{endforeach}}
+		{{else}}
+			<meta {{if mb_substr( $name, 0, 3 ) === 'og:'}}property{{else}}name{{endif}}="{$name}" content="{$content}">
+		{{endif}}
+	{{endif}}
+{{endforeach}}
+{{foreach \IPS\Output::i()->linkTags as $type => $href}}<link rel="{$type}" href="{expression="$href"}" />{{endforeach}}
+{{foreach \IPS\Output::i()->rssFeeds as $title => $url}}<link rel="alternate" type="application/rss+xml" title="{lang="$title"}" href="{$url}" />{{endforeach}}
+{{if \IPS\Output::i()->base}}
+	<base target="{expression="\IPS\Output::i()->base"}">
+{{endif}}

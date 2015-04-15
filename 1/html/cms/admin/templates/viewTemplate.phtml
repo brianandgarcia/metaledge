@@ -1,0 +1,7 @@
+<ips:template parameters="$template" />
+<div class='ipsPad'>
+	<strong>{lang="content_template_editor_fields_params"}:</strong> <span class='ipsType_monospace'>{$template['template_params']}</span>
+	<pre data-controller='core.global.editor.customtags' class='ipsType_monospace ipsTemplate_box' data-control="codemirror" data-mode="htmlmixed">
+		{$template['template_content']}
+	</pre>
+</div>

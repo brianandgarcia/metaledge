@@ -1,0 +1,159 @@
+.cStatusUpdates .ipsComment {
+	border-top: 0;
+	padding: 0;
+	margin-bottom: 20px;
+	border-bottom: 0;
+}
+	
+	.cStatusUpdates .ipsComment.ipsModerated {
+		background: transparent !important;
+	}
+
+		.cStatusUpdates .ipsComment.ipsModerated .ipsComment_content {
+			padding-top: 15px;
+			padding-bottom: 15px;
+			background: {theme="moderated"} !important;
+		}
+
+	html[dir="ltr"] .cStatusUpdates .ipsComment.ipsComment_ignored {
+		padding-left: 45px;
+	}
+	html[dir="rtl"] .cStatusUpdates .ipsComment.ipsComment_ignored {
+		padding-right: 45px;
+	}
+	
+	.cStatusUpdates .ipsComment:not( [data-role="replyComment"] ) {
+		background: transparent;
+	}
+
+	.cStatusUpdates .ipsComment.ipsComment_parent {
+		margin-bottom: 30px;
+	}
+
+	.cStatusUpdates .ipsComment[data-role="replyComment"] {
+		padding: 15px;
+		margin: 0;
+	}
+
+		html[dir="ltr"] .cStatusUpdates .ipsComment[data-role="replyComment"] {
+			margin-left: -15px;
+		}
+		html[dir="rtl"] .cStatusUpdates .ipsComment[data-role="replyComment"] {
+			margin-right: -15px;
+		}
+
+		.cStatusUpdates .ipsComment[data-role="replyComment"] .ipsMessage {
+			margin-bottom: 10px;
+		}
+
+		.cStatusUpdates .ipsComment[data-role="replyComment"] .ipsUserPhoto img {
+			width: 34px;
+			height: 34px;
+			border-radius: 17px;
+		}
+
+		.cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComposeArea_editor {
+			padding: 2px;
+		}
+		html[dir="ltr"] .cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComposeArea_editor {
+			margin-left: 45px;
+		}
+		html[dir="rtl"] .cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComposeArea_editor {
+			margin-right: 45px;
+		}
+
+			.cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComposeArea_editor:before {
+				display: none;
+			}
+
+		html[dir="ltr"] .cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComment_content {
+			margin-left: 0;
+		}
+		html[dir="rtl"] .cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComment_content {
+			margin-right: 0;
+		}
+
+		.cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComposeArea_dummy {
+			padding: 7px;
+			font-size: 13px;
+		}
+
+	.cStatusUpdates .ipsComment .ipsComposeArea {
+		margin: 0;
+	}
+
+	.cStatusUpdates .ipsComment .ipsType_richText {
+		margin-top: 0;
+	}
+
+.cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content {
+	background: #f6f6f6;
+	padding: 15px 15px 20px;
+}
+html[dir="ltr"] .cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content {
+	margin-left: 75px;
+}
+html[dir="rtl"] .cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content {
+	margin-right: 75px;
+}
+
+.cStatusUpdates .ipsComment_subComments {
+	padding: 15px 15px 0;
+}
+html[dir="ltr"] .cStatusUpdates .ipsComment_subComments {
+	margin-left: 75px;
+}
+html[dir="rtl"] .cStatusUpdates .ipsComment_subComments {
+	margin-left: 75px;
+}
+
+.cStatusUpdates .ipsComment[data-action="loadPreviousComments"] {
+	margin-bottom: 25px;
+}
+
+.cStatusTools {
+	margin-top: 10px;
+}
+
+/* Bubble arrows */
+.cStatusUpdates .ipsComment.ipsComment_parent > .ipsComment_content:before,
+.cStatusUpdates .ipsComment:not( .ipsModerated ).ipsComment_hasChildren > .ipsComment_content:after {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-width: 15px;
+	border-style: solid;
+}
+
+	.cStatusUpdates .ipsComment.ipsComment_parent > .ipsComment_content:before {
+		top: 15px;
+	}
+	html[dir="ltr"] .cStatusUpdates .ipsComment.ipsComment_parent > .ipsComment_content:before {
+		right: 100%;
+		border-color: transparent #f6f6f6 transparent transparent;
+	}
+	html[dir="rtl"] .cStatusUpdates .ipsComment.ipsComment_parent > .ipsComment_content:before {
+		left: 100%;
+		border-color: transparent transparent transparent #f6f6f6;
+	}
+
+		.cStatusUpdates .ipsComment.ipsModerated.ipsComment_parent > .ipsComment_content:before {
+			border-color: transparent {theme="moderated"} transparent transparent;
+		}
+		
+	.cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content:after {
+		bottom: 0;
+		border-color: transparent transparent #fff transparent;
+	}
+	html[dir="ltr"] .cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content:after {
+		left: 35px;
+	}
+	html[dir="rtl"] .cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content:after {
+		right: 35px;
+	}
+
+.cStatusUpdates .ipsEmpty {
+	padding: 30px 0 0;
+}

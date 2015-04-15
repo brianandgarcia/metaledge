@@ -1,0 +1,43 @@
+<ips:template parameters="$statuses, $count, $form, $member" />
+
+{{if $member->pp_setting_count_comments}}
+	<h2 class='ipsType_pageTitle {{if !isset( \IPS\Request::i()->status )}}ipsSpacer_top{{endif}}'>
+		{{if isset( \IPS\Request::i()->status )}}
+			{lang="viewing_single_status"}
+		{{else}}
+			{lang="status_feed"}
+		{{endif}}
+		{{if \IPS\Member::loggedIn()->modPermission('can_modify_profiles') or ( \IPS\Member::loggedIn()->member_id == $member->member_id and $member->group['g_edit_profile'] )}}<a href='{url="app=core&module=members&controller=profile&do=statuses&id=$member->member_id&state=0" seoTemplate="profile" seoTitle="$member->members_seo_name" csrf="true"}' class='ipsType_light ipsPos_right ipsType_normal ipsFaded ipsFaded_more ipsFaded_withHover' data-ipsTooltip title='{lang="hide_status_updates"}' data-action='disable'><i class='fa fa-times'></i></a>{{endif}}
+	</h2>
+
+	{{if isset( \IPS\Request::i()->status )}}
+		<p class='ipsType_reset ipsType_normal ipsSpacer_bottom'>
+			<a href='{$member->url()->setQueryString( 'tab', 'statuses' )}'><i class='fa fa-caret-left'></i> {lang="see_all_statuses_by_x" sprintf="$member->name"}</a>
+		</p>
+	{{endif}}
+
+	<div data-controller='core.front.profile.statusFeed' class='cStatusUpdates ipsSpacer_top'>
+		{{if \IPS\core\Statuses\Status::canCreate( \IPS\Member::loggedIn() ) AND $form !== NULL}}
+			<div class='ipsComposeArea ipsComposeArea_withPhoto ipsClearfix ipsSpacer_top' data-role='newStatus'>
+				<div class='ipsPos_left ipsResponsive_hidePhone ipsResponsive_block'>{template="userPhoto" app="core" group="global" params="\IPS\Member::loggedIn(), 'small'"}</div>
+				<div class='ipsComposeArea_editor'>
+					{$form|raw}
+				</div>
+			</div>
+			<br>
+		{{endif}}
+		{template="pagination" group="global" app="core" location="global" params="\IPS\Http\Url::internal( 'app=core&module=members&controller=profile&id=' . $member->member_id . '&tab=statuses', NULL, 'profile', $member->members_seo_name ), ceil( $count / 25 ), \IPS\Request::i()->statusPage ?: 1, 25, TRUE, 'statusPage'"}
+		{{if $count > 25}}
+		<br><br>
+		{{endif}}
+		<ol class='ipsType_normal ipsList_reset' data-role='commentFeed'>
+			{{foreach $statuses as $status}}
+				{template="statusContainer" app="core" group="profile" params="$status"}
+			{{endforeach}}
+		</ol>
+		{template="pagination" group="global" app="core" location="global" params="\IPS\Http\Url::internal( 'app=core&module=members&controller=profile&id=' . $member->member_id. '&tab=statuses', NULL, 'profile', $member->members_seo_name ), ceil( $count / 25 ), \IPS\Request::i()->statusPage ?: 1, 25, TRUE, 'statusPage'"}
+	</div>
+{{else}}
+	<h2 class='ipsType_pageTitle'>{lang="status_feed"}</h2>
+	<p class='ipsType_light ipsType_medium'>{lang="disabled_status_updates"} <a href='{url="app=core&module=members&controller=profile&do=statuses&id=$member->member_id&state=1" seoTemplate="profile" seoTitle="$member->members_seo_name" csrf="true"}' data-action='enable'>{lang="enable_status_updates"}</a></p>
+{{endif}}

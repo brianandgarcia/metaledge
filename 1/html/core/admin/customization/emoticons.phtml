@@ -1,0 +1,36 @@
+<ips:template parameters="$sets" />
+<form accept-charset='utf-8' action="{url="app=core&module=editor&controller=emoticons&do=edit"}" method="post" data-controller="core.admin.customization.emoticons" id="emoticonsManagement">
+	{{foreach $sets as $setKey => $emoticons}}
+		<input type="hidden" name="emo[][__set__]" value="{$setKey}">
+		<h2 class='acpBlock_title acpBlock_titleDark ipsClear'>
+			<span class='ipsPos_right ipsType_blendLinks'><a href="{url="app=core&module=editor&controller=emoticons&do=editTitle&key=$setKey"}" data-ipsDialog data-ipsDialog-title="{lang="emoticons_edit_groupname"}"><i class='fa fa-edit'></i></a></span>
+			{lang="$setKey"}
+		</h2>
+		<ul class='ipsList_reset ipsGrid ipsGrid_collapsePhone ipsPad ipsAreaBackground_light' data-role="emoticonsList" data-emoticonGroup="{$setKey}" data-ipsGrid data-ipsGrid-equalHeights='all' data-ipsGrid-minItemSize='175' data-ipsGrid-maxItemSize='300'>
+			{{foreach $emoticons as $emo}}
+				<li id="emo_{$emo['id']}" data-emoticonID='{$emo['id']}' class='ipsGrid_span3'>
+					<div class='ipsBox cEmoticons_box'>
+						<div class='ipsPad_half'>
+							{{if \IPS\Member::loggedIn()->hasAcpRestriction( 'core', 'editor', 'emoticons_delete' )}}
+								<a href='{url="app=core&module=editor&controller=emoticons&do=delete&id="}{$emo['id']}' data-delete data-deleterow="#emo_{$emo['id']}">&times;</a>
+							{{endif}}
+							<img src="{$emo['image']}" alt='' class='ipsImage'>
+						</div>						
+						<div class='cEmoticons_input ipsAreaBackground_light ipsPad_half'>
+							<input value="{$emo['typed']}" name="emo[{$emo['id']}][name]">
+							<noscript>
+								<br>
+								<input type="number" value="{$emo['emo_position']}" name="emo[{$emo['id']}][order]">
+							</noscript>
+						</div>
+					</div>
+				</li>
+			{{endforeach}}
+		</ul>
+	{{endforeach}}
+	{{if \IPS\Member::loggedIn()->hasAcpRestriction( 'core', 'editor', 'emoticons_edit' )}}
+		<div class="ipsAreaBackground ipsClear ipsClearfix ipsPad ipsType_center">		
+			<button class='ipsButton ipsButton_primary'>{lang="save"}</button>
+		</div>
+	{{endif}}
+</form>

@@ -1,0 +1,152 @@
+/* Tables; used primarily in AdminCP */
+.ipsTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.ipsTable th {
+	text-align: left;
+	background: #f3f3f3;
+	padding: 15px 10px;
+	font-size: 13px;
+}
+html[dir="rtl"] .ipsTable th {
+	text-align: right;
+}
+	
+	.ipsTable th a {
+		color: inherit;
+	}
+	
+.ipsTable th, .ipsTable td {
+	vertical-align: middle;
+}
+
+.ipsTable td {
+	padding: 7px;
+	border-bottom: 1px solid rgba(0,0,0,0.01);
+}
+
+.ipsTable_zebra tbody tr:nth-child( even ):not(.ipsTable_highlight) {
+	background: #f9f9f9;
+}
+
+	.ipsTable_zebra tbody tr:nth-child( even ):not(.ipsTable_highlight) td {
+		border-bottom: 1px solid rgba(0,0,0,0.025);
+	}
+	
+.ipsTable_highlight {
+	background: #f2eae2;
+}
+
+	.ipsTable_highlight .ipsCommentCount {
+		background-color: #e2d6ca;
+	}
+
+	html[dir="ltr"] .ipsTable_highlight .ipsCommentCount:after {
+		border-color: transparent #e2d6ca transparent transparent;
+	}
+	html[dir="rtl"] .ipsTable_highlight .ipsCommentCount:after {
+		border-color: transparent transparent transparent #e2d6ca;
+	}
+
+/* Column sizes */
+.ipsTable td.ipsTable_icon {
+	width: 65px;
+	text-align: center;
+}
+
+.ipsTable td.ipsTable_controls {
+	width: 120px;
+}
+
+/* Sortables */
+.ipsTable_sortable {
+	position: relative;
+}
+
+.ipsTable_sortable:hover {
+	background: rgba(0,0,0,0.06);
+	cursor: pointer;
+}
+
+	.ipsTable_sortable:hover:after {
+		opacity: 0.3;
+	}
+
+.ipsTable_sortable a {
+	display: block;
+	position: relative;
+}
+
+.ipsTable_sortIcon {
+	display: block;
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+}
+html[dir="ltr"] .ipsTable_sortIcon {
+	right: 0;
+}
+html[dir="rtl"] .ipsTable_sortIcon {
+	right: auto;
+	left: 0;
+}
+
+.ipsTable_sortable .ipsTable_sortIcon:after {
+	font-family: 'FontAwesome';
+	display: block;
+	color: #000;
+	opacity: 0.15;
+}
+
+.ipsTable_sortable.ipsTable_sortableDesc .ipsTable_sortIcon:after {
+	content: '\\f0d7';
+}
+
+.ipsTable_sortable.ipsTable_sortableAsc .ipsTable_sortIcon:after {
+	content: '\\f0d8';
+}
+
+.ipsTable_sortable.ipsTable_sortableActive {
+	background: #4791c4;
+	color: #fff;
+}
+
+	.ipsTable_sortable.ipsTable_sortableActive .ipsTable_sortIcon:after {
+		color: #fff;
+		opacity: 1;
+	}
+
+/* Matrices */
+.ipsTable.ipsMatrix thead th {
+	background: #262e33;
+	color: #fff;
+	text-align: center;
+}
+
+.ipsTable.ipsMatrix .ipsMatrix_subHeader {
+	background: #f9f9f9;
+	color: #333;
+	padding: 15px;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.ipsTable.ipsMatrix td {
+	padding: 15px;
+}
+
+.ipsTable.ipsMatrix .ipsMatrix_error {
+	background: #f9eef1;
+}
+
+.ipsTable.ipsMatrix .ipsButton[data-action] {
+	line-height: 18px;
+	padding: 0 5px;
+	font-size: 10px;
+}
+
+.ipsTable.ipsMatrix .ipsMatrix_highlighted {
+	background: #faf8e7;
+}

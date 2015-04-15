@@ -1,0 +1,41 @@
+/* Toolboxes are side panels, used for things like sidebar manager and easy mode themes */
+.ipsApp .ipsToolbox {
+	background: #212223;
+}
+	
+	.ipsApp .ipsToolbox a:not( .ipsButton ) {
+		color: #a8bed5;
+	}
+	.ipsApp .ipsToolbox .ipsToolbox_title {
+		color: #fff;
+		margin-bottom: 15px;
+	}
+
+	.ipsApp .ipsToolbox .ipsToolbox_sectionTitle {
+		background: #000;
+		color: #dfdfdf;
+		padding: 10px 15px;
+		font-weight: normal;
+	}
+
+	.ipsApp .ipsToolbox input, .ipsApp .ipsToolbox select,
+	.ipsApp .ipsToolbox textarea {
+		background-color: rgba(255,255,255,0.1);
+		border: 1px solid rgba(0,0,0,0.6);
+		color: #fff;
+	}
+
+	.ipsApp .ipsToolbox input:focus, .ipsApp .ipsToolbox textarea:focus {
+		background: rgba(255,255,255,0.2);
+	}
+
+	.ipsApp .ipsToolbox select {
+		background: rgba(0,0,0,0.6);
+		width: 100%;
+		max-width: 350px;
+	}
+
+	.ipsApp .ipsToolbox input[type=number] {
+		width: 100%;
+		max-width: 350px;
+	}

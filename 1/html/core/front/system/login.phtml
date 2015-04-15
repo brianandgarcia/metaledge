@@ -1,0 +1,42 @@
+<ips:template parameters="$forms, $error" />
+{{if !\IPS\Request::i()->isAjax()}}
+	<div class=''>
+		<br>
+		<h1 class='ipsType_reset ipsType_veryLarge ipsType_center'>{lang='sign_in_short'}</h1>
+		<p class='ipsType_large ipsType_center ipsType_light'>{lang="dont_have_an_account"} <a href='{url="app=core&module=system&controller=register" seoTemplate="register"}'>{lang="sign_up"}</a>.</p>
+		<br>
+{{endif}}
+
+	<div class='ipsColumns ipsColumns_collapsePhone'>
+		<div class='ipsColumn ipsColumn_fluid ipsBox'>
+			<div class='ipsPad'>
+				{{if $error !== NULL}}
+					{template="message" group="global" location="global" params="$error, 'error'"}
+					<br>
+				{{endif}}
+				{{foreach $forms as $k => $form}}
+					{{if $k === '_standard'}}
+						{$form|raw}
+					{{endif}}
+				{{endforeach}}
+			</div>
+		</div>
+		{{if count ( $forms ) > 1}}
+			<div class='ipsColumn ipsColumn_veryWide ipsBox'>
+				<div class='ipsPad'>
+					<h2 class='ipsType_sectionHead'>{lang='sign_in_faster'}</h2>
+					<p class='ipsType_normal ipsType_reset ipsType_light'>{lang='sign_in_connect'}</p>
+					<br>
+					{{foreach $forms as $k => $form}}
+						{{if $k !== '_standard'}}
+							<div class='ipsPad_half'>{$form|raw}</div>
+						{{endif}}
+					{{endforeach}}
+				</div>
+			</div>
+		{{endif}}
+	</div>
+	
+{{if !\IPS\Request::i()->isAjax()}}
+</div>
+{{endif}}

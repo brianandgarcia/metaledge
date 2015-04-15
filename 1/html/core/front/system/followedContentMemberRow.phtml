@@ -1,0 +1,4 @@
+<ips:template parameters="$table, $headers, $members" />
+{{if !empty($members) }}
+	{template="tableRow" group="profile" app="core" params="$table, $headers, $members"}
+{{endif}}

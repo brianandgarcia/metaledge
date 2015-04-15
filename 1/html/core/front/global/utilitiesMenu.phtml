@@ -1,0 +1,27 @@
+<ips:template parameters=" " />
+<div id='elHeaderSubLinks' class='ipsPos_right'>
+	<ul class='ipsList_inline'>
+		{{if \IPS\Member::loggedIn()->member_id}}
+			<li><a data-action="markSiteRead" data-controller="core.front.core.markRead" href='{url="app=core&module=system&controller=markread" seoTemplate="mark_site_as_read" csrf="true"}'><i class='fa fa-check'></i> {lang="mark_site_read"}</a></li>
+			{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'search' ) )}}
+				<li><a href='{url="app=core&module=system&controller=vnc" seoTemplate="vnc"}' accesskey='2'><i class='fa fa-star'></i> {lang="new_content"}</a></li>
+			{{endif}}
+		{{endif}}
+		<li>
+			<a href='#elNavMore_menu' id='elNavMore' data-ipsMenu data-ipsMenu-appendTo='#elHeaderSubLinks' data-ipsMenu-align-center>{lang="more"} <i class='fa fa-caret-down'></i></a>
+		</li>
+	</ul>
+	<ul id='elNavMore_menu' class='ipsMenu ipsHide'>
+		<li class='ipsMenu_item'><a href='{url="app=core&module=activity&controller=activity" seoTemplate="activity"}'>{lang="activity_stream"}</a></li>
+		{{if \IPS\Settings::i()->gl_type != "none"}}
+			<li class='ipsMenu_item'><a href='{{if \IPS\Settings::i()->gl_type == "internal"}}{url="app=core&module=system&controller=guidelines" seoTemplate="guidelines"}{{else}}{setting="gl_link"}{{endif}}'>{lang="guidelines"}</a></li>
+		{{endif}}
+		<li class='ipsMenu_item'><a href='{url="app=core&module=members&controller=directory" seoTemplate="staffdirectory"}'>{lang="staff"}</a></li>
+		{{if \IPS\Settings::i()->profile_comments AND \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'status' ) )}}
+			<li class='ipsMenu_item'><a href='{url="app=core&module=status&controller=feed" seoTemplate="status"}'>{lang="status_updates"}</a></li>
+		{{endif}}
+		{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'online' ) )}}
+			<li class='ipsMenu_item'><a href='{url="app=core&module=online&controller=online" seoTemplate="online"}'>{lang="online_users"}</a></li>
+		{{endif}}
+	</ul>
+</div>

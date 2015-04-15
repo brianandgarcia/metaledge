@@ -1,0 +1,49 @@
+<ips:template parameters="$menu, $currentTab" />
+<ul id='acpAppList' class='ipsList_reset' data-controller='core.admin.core.nav'>
+	{{foreach $menu['tabs'] as $tab => $items}}
+		<li class='{{if $tab === $currentTab}}acpAppList_active{{endif}}' data-tab="tab_{$tab}">
+			<a href='{url="{$menu['defaults'][$tab]}"}'>
+				<span class='acpAppList_icon'><i class='fa fa-{lang="menutab__{$tab}_icon"}'></i></span>
+				<span class='acpAppList_app'>{lang="menutab__{$tab}"}</span>
+			</a>
+			<ul class='ipsList_reset ipsScrollbar'>
+				{{foreach $items as $appAndModule => $item}}
+					{{if count( $item ) > 1}}
+						<li data-menuKey='{$appAndModule}'>
+							<h3>{lang="menu__{$appAndModule}"}</h3>
+							<ul class='ipsList_reset'>
+								{{foreach $item as $key => $url}}
+									<li>
+										{{if $badgeNumber = \IPS\Application::load( mb_substr( $appAndModule, 0, mb_strpos( $appAndModule, '_' ) ) )->acpMenuNumber( $url )}}
+											<a href='{url="$url"}'>
+												{lang="menu__{$appAndModule}_{$key}"}
+												<span class='ipsBadge ipsBadge_style1'>{$badgeNumber}</span>
+											</a>
+										{{else}}
+											<a href='{url="$url"}'>{lang="menu__{$appAndModule}_{$key}"}</a>
+										{{endif}}
+									</li>
+								{{endforeach}}
+							</ul>
+						</li>
+					{{else}}
+						<li data-menuKey='{$appAndModule}'>
+							<h3>{lang="menu__{$appAndModule}"}</h3>
+							<ul class='ipsList_reset'>
+								{{foreach $item as $key => $url}}
+									<li>
+										<a href='{url="$url"}'>{lang="menu__{$appAndModule}_{$key}"}</a>
+									</li>
+								{{endforeach}}
+							</ul>
+						</li>
+					{{endif}}
+				{{endforeach}}
+			</ul>
+		</li>
+	{{endforeach}}
+	<li id='elReorderAppMenu'>
+		<a href='#' data-action='reorder'><i class='fa fa-bars'></i> {lang="reorder_menu"}</a>
+		<a href='#' data-action='saveOrder' class='ipsButton ipsButton_important ipsButton_verySmall ipsButton_fullWidth ipsHide'><i class='fa fa-check'></i> {lang="save_reorder_menu"}</a>
+	</li>
+</ul>

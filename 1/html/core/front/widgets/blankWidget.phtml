@@ -1,0 +1,8 @@
+<ips:template parameters="$widget" />
+<div class="ipsWidgetBlank">
+	{{if method_exists( $widget, 'configuration' ) AND $widget->configuration( $form ) !== NULL}}
+		{lang="widget_blank_or_no_context"}
+	{{else}}
+		{lang="widget_blank_or_no_context_no_config"}
+	{{endif}}
+</div>

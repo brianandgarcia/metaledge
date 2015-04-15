@@ -1,0 +1,8 @@
+<ips:template parameters="$app, $area, $id, $count" />
+
+<div data-followApp='{$app}' data-followArea='{$area}' data-followID='{$id}' data-controller='core.front.core.followButton'>
+	{{if !member.member_id}}
+		<span class='ipsType_light ipsType_blendLinks ipsResponsive_hidePhone ipsResponsive_inline'><i class='fa fa-info-circle'></i> <a href='{url="app=core&module=system&controller=login" seoTemplate="login"}' title='{lang="sign_in_title"}'>{lang="follow_sign_in"}</a>&nbsp;&nbsp;</span>
+	{{endif}}
+	{template="followButton" group="global" app="core" params="$app, $area, $id, $count"}
+</div>

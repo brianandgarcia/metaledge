@@ -1,0 +1,115 @@
+<ips:template parameters="" />
+
+<style type='text/css'>
+	h1 {
+		font-size: 28pt;
+		text-align: center;
+		line-height: 1;
+		margin: 0;
+	}
+
+	h2 {
+		font-size: 16pt;
+		text-align: center;
+		line-height: 1;
+		margin: 0;
+	}
+
+	table th {
+		width: 25%;
+		text-align: right;
+	}
+
+	table td.hr {
+		border-bottom: 1px solid #9c9c9c;
+	}
+
+	p {
+		font-size: 11pt;
+	}
+</style>
+
+<div>
+	<h1>{setting="board_name"}</h1>
+	<h2>{lang="coppa_form"}</h2>
+	<br>
+
+	{lang="coppa_form_intro" sprintf="\IPS\Settings::i()->board_name"}
+	
+	<table border="0" cellpadding="3">
+		<tr>
+			<th><b>{lang="coppa_form_child_name"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<th><b>{lang="coppa_form_child_email"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+	</table>
+	
+	{lang="coppa_form_disclaimer"}
+	
+	<div></div>
+	<div></div>
+
+	<table border="0" cellpadding="3">
+		<tr>
+			<th><b>{lang="coppa_form_name"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<th><b>{lang="coppa_form_relation"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<th><b>{lang="coppa_form_email"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<th><b>{lang="coppa_form_phone"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<th><b>{lang="coppa_form_sig"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<th><b>{lang="coppa_form_date"}</b> </th>
+			<td class="hr">&nbsp;</td>
+		</tr>
+	</table>
+
+	<div></div>
+
+	{{if \IPS\Settings::i()->privacy_type != "none"}}
+		<p>{lang="coppa_form_privacy"} {{if \IPS\Settings::i()->privacy_type == "internal"}}{url="app=core&module=system&controller=privacy" seoTemplate="privacy"}{{else}}{setting="privacy_link"}{{endif}}</p>
+		<div></div>
+	{{endif}}
+	{{if \IPS\Settings::i()->coppa_address}}
+		<p>{lang="coppa_form_mail"} {address="\IPS\Settings::i()->coppa_address"}</p>
+	{{endif}}
+	{{if \IPS\Settings::i()->coppa_fax}}
+		<p>{{if \IPS\Settings::i()->coppa_address and \IPS\Settings::i()->coppa_fax}}{lang="or"} {{endif}}{lang="coppa_form_fax"} {setting="coppa_fax"}</p>
+	{{endif}}
+</div>

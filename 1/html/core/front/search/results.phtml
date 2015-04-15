@@ -1,0 +1,27 @@
+<ips:template parameters="$term, $title, $results, $pagination, $baseUrl" />
+<p class='ipsResponsive_showPhone ipsResponsive_block'>
+	<a href='#' data-action='filterBarSwitch' data-switchTo='filterBar' class='ipsButton ipsButton_verySmall ipsButton_light'><i class='fa fa-caret-left'></i> <i class='fa fa-navicon'></i> &nbsp;{lang="search_filters"}</a>
+</p>
+
+{{if !$term and request.type !== 'core_members'}}
+	<div class='ipsType_center ipsPad ipsBox'>
+		<p class='ipsType_center ipsType_large ipsType_light'>{lang="no_search_term"}</p>
+	</div>
+{{else}}
+	<h1 class='ipsType_sectionHead'>{$title}</h1>
+	<p class='ipsType_reset ipsType_light'>{lang="search_found" pluralize="$results->count( TRUE )"}</p>
+	<br>
+	{{if count( $results ) > 0}}
+		{{$term = str_replace('"', '', $term );}}
+		<div data-controller='core.front.search.results' data-term="{$term}" data-role="resultsArea">
+			<div class='ipsBox'>
+				<p class='ipsType_sectionTitle ipsType_reset'>{lang="search_results"}</p>
+				{template="resultStream" group="search" params="$results, $pagination, $baseUrl"}
+			</div>
+		</div>
+	{{else}}
+		<div class='ipsType_center ipsPad ipsBox'>
+			<p class='ipsType_center ipsType_large ipsType_light'>{lang="no_search_results"}</p>
+		</div>	
+	{{endif}}
+{{endif}}

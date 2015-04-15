@@ -1,0 +1,78 @@
+<ips:template parameters="$config, $dummy" />
+
+<noscript>
+	<p class="ipsMessage ipsMessage_error">{lang="editor_no_js"}</p>
+</noscript>
+
+<div class="ipsJS_show" data-controller="core.admin.customization.editorToolbars" data-url="{url="app=core&module=editor&controller=toolbar"}">
+	<div class="acpBlock">
+		<div class='ipsTabs ipsClearfix ipsJS_show acpFormTabBar' id='editor_tabbar' data-ipsTabBar data-ipsTabBar-contentArea='#editor_panels' data-ipsTabBar-updateURL='false'>
+			<ul role='tablist'>
+				<li role='presentation'><a href='#' class='ipsTabs_item ipsTabs_activeItem' id='desktop_tab'>{lang="device_desktop"}</a></li>
+				<li role='presentation'><a href='#' class='ipsTabs_item' id='tablet_tab'>{lang="device_tablet"}</a></li>
+				<li role='presentation'><a href='#' class='ipsTabs_item' id='phone_tab'>{lang="device_phone"}</a></li>
+			</ul>
+		</div>
+		<div id='editor_panels'>
+			{{foreach array( 'desktop', 'tablet', 'phone' ) as $key}}
+				<div id='ipsTabs_editor_tabbar_{$key}_tab_panel' data-role="devicePanel" data-deviceKey="{$key}" class='ipsTabs_panel acpFormTabContent'>
+					<ul class='ipsToolList ipsToolList_horizontal ipsClearfix'>
+						<li>
+							<a class='ipsButton ipsButton_normal ipsButton_fullWidth' href="#" class="editor_toolbarAddToolbar" data-action="addToolbar" data-deviceKey="{$key}"><i class='fa fa-plus'></i> {lang="theme_editor_add_toolbar"}</a>
+						</li>
+						<li>
+							<a class='ipsButton ipsButton_normal ipsButton_fullWidth' href="#" class="editor_toolbarAddSeperator" data-action="addSep" data-deviceKey="{$key}"><i class='fa fa-plus'></i> {lang="theme_editor_add_separator"}</a>
+						</li>
+					</ul>
+					<div class='ipsPad'>
+						<h2 class='ipsClear ipsType_sectionHead'>{lang="editor"}</h2>
+						<p class='ipsType_light'>{lang="editor_toolbar_desc"}</p>
+			
+						<br>
+						<div class='editor_dummy editor_dummy_{$key}' data-role="dummyEditor" data-deviceKey="{$key}" id='editor_dummy'>
+							<div class="dummy_toolbars" id="{$key}_editor_toolbars">
+								{{if empty( $config[ $key ] )}}
+									<ul class="dummy_toolbar clearfix" data-role="dummyToolbar"></ul>
+								{{else}}
+									{{foreach $config[ $key ] as $row}}
+										{{if isset( $row['name'] )}}
+											<ul class="dummy_toolbar clearfix" data-role="dummyToolbar">
+												{{if ( is_array( $row['items'] ))}}
+													{{foreach $row['items'] as $item}}
+														{{if $item === '-'}}
+															<li><span class="cke_toolbar_separator"></span></li>
+														{{else}}
+															<li id='{$key}_editorButton_{$item}'></li>
+														{{endif}}
+													{{endforeach}}
+												{{endif}}
+											</ul>
+										{{endif}}
+									{{endforeach}}
+								{{endif}}
+							</div>
+							<div id="dummy_contents">
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel urna ut leo dignissim auctor ut eget quam. Nullam ac gravida leo. Vestibulum accumsan vulputate lorem nec faucibus. Quisque vitae fringilla orci. Cras est lectus, sollicitudin a bibendum eget, sodales luctus eros. Nam nec erat ac nulla placerat elementum et non sem. Etiam a augue eu arcu tincidunt convallis. Pellentesque volutpat facilisis enim nec aliquet. Integer eu luctus est. Integer nec elit at urna auctor molestie. Vivamus facilisis, elit at molestie tristique, orci augue malesuada magna, at molestie nunc libero ut ante. Fusce feugiat suscipit accumsan.</p>
+								<p>Phasellus vel dolor condimentum arcu pellentesque faucibus a rutrum enim. Aliquam nec sem dolor, vel molestie nunc. Donec ac leo urna, vitae adipiscing sapien. Etiam nec elit neque. Suspendisse venenatis eros et ante dictum in adipiscing neque iaculis. Mauris at tellus neque. Phasellus pharetra lectus at quam convallis placerat.</p>
+							</div>
+						</div>
+						<br><br>
+						<h2 class='ipsClear ipsType_sectionHead'>{lang="editor_unused"}</h2>
+						<p class='ipsType_light'>{lang="editor_unused_desc"}</p>
+						<br>
+
+						<div class="editor_dummy">
+							<div class="dummy_toolbars clearfix">
+								<ul class="dummy_toolbar clearfix editor_unusedButtons" id="{$key}_editor_unusedButtons" data-role="dummyToolbar"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{endforeach}}
+		</div>
+	</div>
+</div>
+
+<div class="ipsHide">
+	{$dummy->html()|raw}
+</div>

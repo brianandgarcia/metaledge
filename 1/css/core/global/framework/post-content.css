@@ -1,0 +1,360 @@
+/* Post content styles: quotes, spoilers, other formatting */
+/* We recommend you don't change these too much; users expect certain styles to look a certain way */
+/* Plus changes here won't be reflected inside the editor itself */
+
+/* Links inside [color] tags */
+span[style^="color"] a { 
+	color: inherit; 
+}
+
+strong.ipsStyle	{
+	font-weight: bold !important; 
+}
+
+em.ipsStyle	{
+	font-style: italic !important; 
+}
+
+span.ipsStyle_underline {
+ 	text-decoration: underline !important; 
+}
+
+acronym.ipsStyle, abbr.ipsStyle {
+ 	border-bottom: 1px dotted #000; 
+}
+
+span.ipsStyle_center, div.ipsStyle_center, p.ipsStyle_center {
+	text-align: center;
+	display: block; 
+}
+
+span.ipsStyle_left, div.ipsStyle_left, p.ipsStyle_left {
+	text-align: left;
+	display: block; 
+}
+
+span.ipsStyle_right, div.ipsStyle_right, p.ipsStyle_right {
+	text-align: right;
+	display: block; 
+}
+
+html[dir="ltr"] div.ipsStyle_indent {
+	margin-left: 50px; 
+}
+html[dir="rtl"] div.ipsStyle_indent {
+	margin-left: 50px; 
+}
+
+del.ipsStyle {
+	text-decoration: line-through !important; 
+}
+
+span.ipsStyle_hr {
+ 	width:100%;
+ 	display: block;
+ 	border-top: 2px solid #777; 
+ 	height: 4px; 
+}
+
+.ipsStyle_spoiler, .ipsStyle_spoilerFancy_inner {
+	position: relative;
+	padding: 10px;
+	min-height: 32px;
+	max-width: 100%;
+	background: #e5e5e5 !important;
+	color: #353535 !important;
+	clear: both;
+	{prefix="transition" value="0.2s all linear"}
+}
+	
+	.ipsStyle_spoiler a {
+		color: #363636 !important;
+	}
+
+	.ipsStyle_spoiler:hover,
+	.ipsStyle_spoiler:focus {
+		background: transparent !important;
+		color: #000 !important;
+	}
+
+		.ipsStyle_spoiler:hover a,
+		.ipsStyle_spoiler:focus a {
+			color: #000;
+			text-decoration: underline;
+		}
+
+	.ipsStyle_spoilerFancy {
+		background: #fafafa;
+		position: relative;
+		padding: 0;
+		height: 32px;
+		overflow: hidden;
+	}
+
+		.ipsStyle_spoilerFancy > .ipsStyle_spoilerFancy > .ipsStyle_spoilerFancy {
+			padding: 10px 0; /* Prevent absurd spacing */
+		}
+
+		.ipsStyle_spoilerFancy > p:last-of-type {
+			margin-bottom: 0;
+		}
+
+	.ipsStyle_spoilerFancy_inner, .ipsStyle_spoilerFancy_text {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: 0;
+		border-radius: 3px;
+	}
+
+	.ipsStyle_spoilerFancy_text {
+		text-align: left;
+		padding: 0 10px;
+		margin-top: 5px;
+		color: #353535;
+		font-size: 14px;
+		cursor: pointer;
+	}
+	html[dir="rtl"] .ipsStyle_spoilerFancy_text {
+		text-align: right;
+	}
+
+		.ipsStyle_spoilerFancy_text .ipsButton {
+			line-height: 16px;
+		}
+		html[dir="ltr"] .ipsStyle_spoilerFancy_text .ipsButton {
+			margin-right: 5px;
+		}
+		html[dir="rtl"] .ipsStyle_spoilerFancy_text .ipsButton {
+			margin-left: 5px;
+		}
+
+	.ipsStyle_spoilerFancy_open {
+		padding: 42px 10px 10px 10px !important;
+		height: auto;
+		max-height: 100%;
+		overflow: visible;
+	}
+
+		.ipsStyle_spoilerFancy_open .ipsStyle_spoilerFancy_inner {
+			border-radius: 3px 3px 0 0;
+		}
+
+		.ipsStyle_spoilerFancy_open .ipsStyle_spoilerFancy_inner, 
+		.ipsStyle_spoilerFancy_open .ipsStyle_spoilerFancy_text {
+			height: 34px;
+		}
+
+.ipsCode {
+	background: #fafafa;
+	padding: 15px !important;
+	border: 0 !important;
+	border-left: 4px solid #e0e0e0 !important;
+	clear: both;
+}
+
+html[dir="rtl"] pre.prettyprint {
+	direction: ltr;
+}
+
+.ipsType_richText blockquote {
+	margin: 0px 0 30px 0;
+	padding: 0;
+}
+
+blockquote.ipsQuote {
+	margin: 0;
+	border-width: 1px 1px 1px 2px;
+	border-color: #ededed #e8e8e8 #dbdbdb #666666;
+	border-style: solid;
+	position: relative;
+	font-size: 13px;
+	background: #fbfbfb;
+	color: #595959;
+	clear: both;
+	padding-top: 35px;
+}
+.ipsJS_none blockquote.ipsQuote {
+	padding-top: 12px;
+}
+blockquote.ipsQuote > p:last-child {
+	margin-bottom: 12px;
+}
+
+html[dir="ltr"] blockquote.ipsQuote { 
+	padding-left: 15px;
+}
+html[dir="rtl"] blockquote.ipsQuote { 
+	border-width: 1px 2px 1px 1px;
+	border-color: #ededed #666666 #dbdbdb #e8e8e8;
+	padding-right: 15px;
+}
+
+	blockquote.ipsQuote:after {
+		content: "\\00a0";
+		display: block;
+		overflow: hidden;
+		height: 0;
+	}
+
+blockquote.ipsQuote div.ipsQuote_citation {
+	content: attr(data-cite);
+	background: #f3f3f3;
+	padding: 5px 15px;
+	color: #222;
+	font-weight: bold;
+	font-size: 13px;
+	display: block;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+html[dir="ltr"] blockquote.ipsQuote div.ipsQuote_citation {
+	left: 0;
+}
+html[dir="ltr"] blockquote.ipsQuote div.ipsQuote_citation {
+	right: 0;
+}
+
+blockquote.ipsQuote div.ipsQuote_citation a {
+	color: #222;
+}
+
+blockquote.ipsQuote div.ipsQuote_citation .fa {
+	line-height: 23px;
+	opacity: 0;
+	{prefix="transition" value="all 0.3s linear"}
+}
+
+	blockquote.ipsQuote div.ipsQuote_citation:hover .fa {
+		opacity: 1;
+	}
+
+blockquote.ipsQuote blockquote.ipsQuote {
+	margin: 15px 5px 15px 15px;
+	background: #fff;
+}
+html[dir="rtl"] blockquote.ipsQuote blockquote.ipsQuote {
+	margin: 15px 15px 15px 5px;
+}
+
+.ipsQuote_citation [data-action='toggleQuote'] {
+	vertical-align: middle;
+	font-family: 'FontAwesome';
+	font-size: 16px;
+	margin-top: -4px;
+}
+
+.ipsQuote_citation.ipsQuote_closed [data-action='toggleQuote']:before {
+	content: "\\f138";
+}
+html[dir="rtl"] .ipsQuote_citation.ipsQuote_closed [data-action='toggleQuote']:before {
+	content: "\\f137";
+}
+
+.ipsQuote_citation.ipsQuote_open [data-action='toggleQuote']:before {
+	content: "\\f13a";
+	color: #bdbdbd;
+}
+
+/* Embedded content */
+iframe[data-embedContent] {
+	width: 100%;
+	min-height: 130px;
+	margin: 10px 0;
+	border: 1px solid rgba(0,0,0,0.1);
+	position: relative;
+	background-color: #fcfcfc;
+	background-image: url( {resource="loaders/large_loading.gif" app="core" location="front"} );
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 40px 40px;
+}
+
+	.ipsEmbedded_image, .ipsEmbedded_image a  {
+		width: 110px;
+		height: 110px;
+	}
+
+	.ipsEmbedded_image a {
+		display: block;
+	}
+	
+		.ipsEmbedded_withImage .ipsEmbedded_image {
+			position: absolute;
+			top: 10px;
+			border: 3px solid #fff;
+		}
+		html[dir="ltr"] .ipsEmbedded_withImage .ipsEmbedded_image {
+			left: 10px;
+		}
+		html[dir="rtl"] .ipsEmbedded_withImage .ipsEmbedded_image {
+			right: 10px;
+		}
+
+	.ipsEmbedded_headerArea {
+		background: #efefef;
+		border-bottom: 1px solid rgba(0,0,0,0.055);
+		padding: 10px;
+		line-height: 1;
+		font-size: 16px;
+	}
+
+		.ipsEmbedded_headerArea .ipsEmbedded_type {
+			font-size: 12px;
+		} 
+
+	.ipsEmbedded .ipsType_medium, .ipsEmbedded .ipsType_small {
+		line-height: 1.3;
+	}
+
+	.ipsEmbedded_content {
+		padding: 9px 7px 7px;
+		background-color: #fcfcfc;
+	}
+
+	.ipsEmbedded_stats {
+		margin-top: 9px;
+		padding: 7px 0;
+		border-top: 1px solid rgba(0,0,0,0.05);
+	}
+
+	.ipsEmbedded .ipsUserPhoto_tiny img {
+		width: 30px;
+		height: 30px;
+	}
+
+	html[dir="ltr"] .ipsEmbedded_withImage .ipsEmbedded_headerArea,
+	html[dir="ltr"] .ipsEmbedded_withImage .ipsEmbedded_content {
+		padding-left: 130px;
+	}
+	html[dir="rtl"] .ipsEmbedded_withImage .ipsEmbedded_headerArea,
+	html[dir="rtl"] .ipsEmbedded_withImage .ipsEmbedded_content {
+		padding-right: 130px;
+	}
+
+	.ipsEmbedded_error {
+		text-align: center;
+		padding-top: 50px;
+		font-size: 12px;
+		color: rgba(0,0,0,0.3);
+	}
+	
+.ipsEmbeddedVideo {
+	float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+}
+
+.ipsEmbeddedVideo iframe {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

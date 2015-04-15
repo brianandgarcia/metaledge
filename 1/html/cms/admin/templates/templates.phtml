@@ -1,0 +1,101 @@
+<ips:template parameters="$templates, $current, $request" />
+
+<form accept-charset='utf-8' action="{url="app=cms&module=pages&controller=templates&do=save"}" method="POST" id="editorForm">
+	<input type="hidden" name="t_location" value="{$current->location}">
+	<input type="hidden" name="t_key" value="{$current->key}">
+	<input type="hidden" name="t_id" value="{$current->id}">
+	
+	<div class='ipsAreaBackground ipsPad' id='elTemplateEditor' data-controller='cms.admin.templates.main' data-normalURL="{url="app=cms&module=pages&controller=templates"}" data-ajaxURL="{url="app=cms&module=pages&controller=ajax"}">
+		<div class='ipsColumns'>
+			<div class='ipsColumn ipsColumn_wide' data-role="fileList" data-controller='cms.admin.templates.fileList'>
+				<ul class='ipsList_inline ipsClearfix'>
+					<li><a href='#elTemplateEditor_newItemMenu_menu' id='elTemplateEditor_newItemMenu' class='ipsButton ipsButton_normal ipsButton_small' data-ipsMenu>{lang="theme_template_new"} &nbsp;<i class='fa fa-caret-down'></i></a></li>
+				</ul>
+				<ul id='elTemplateEditor_newItemMenu_menu' role='menu' class='ipsMenu ipsMenu_auto ipsMenu_withStem ipsHide'>
+					<li class='ipsMenu_item'><a role='menuitem' href='{url="app=cms&module=pages&controller=templates&do=addTemplate&type=block"}' data-ipsDialog data-ipsDialog-forceReload data-ipsDialog-title='{lang="content_template_add_template_block_title"}'>{lang="content_template_add_template_block"}</a></li>
+					<li class='ipsMenu_item'><a role='menuitem' href='{url="app=cms&module=pages&controller=templates&do=addTemplate&type=page"}' data-ipsDialog data-ipsDialog-forceReload data-ipsDialog-title='{lang="content_template_add_template_page_title""}'>{lang="content_template_add_template_page"}</a></li>
+					<li class='ipsMenu_item'><a role='menuitem' href='{url="app=cms&module=pages&controller=templates&do=addTemplate&type=database"}' data-ipsDialog data-ipsDialog-forceReload data-ipsDialog-title='{lang="content_template_add_template_database_title""}'>{lang="content_template_add_template_database"}</a></li>
+					<li class='ipsMenu_item'><a role='menuitem' href='{url="app=cms&module=pages&controller=templates&do=addTemplate&type=css"}' data-ipsDialog data-ipsDialog-forceReload data-ipsDialog-title='{lang="content_template_add_template_css_title""}'>{lang="content_template_add_template_css"}</a></li>
+					<li class='ipsMenu_item'><a role='menuitem' href='{url="app=cms&module=pages&controller=templates&do=addTemplate&type=js"}' data-ipsDialog data-ipsDialog-forceReload data-ipsDialog-title='{lang="content_template_add_template_js_title""}'>{lang="content_template_add_template_js"}</a></li>
+				</ul>
+				<div class='ipsAreaBackground_reset'>
+					<ul class='ipsTabs ipsClearfix' id='elTemplateEditor_typeTabs' data-ipsTabBar data-ipsTabBar-contentArea='#elTemplateEditor_fileList' data-ipsTabBar-updateURL='false'>
+						<li><a href='{url="app=cms&module=pages&controller=templates&do=manage&t_type=templates"}' class='ipsTabs_item {{if $current->type == 'templates'}}ipsTabs_activeItem{{endif}}' data-tabURL='{url="app=cms&module=pages&controller=ajax&do=loadMenu&t_type=templates"}' data-type='templates'>{lang="theme_html"}</a></li>
+						<li><a href='{url="app=cms&module=pages&controller=templates&do=manage&t_type=css"}' class='ipsTabs_item {{if $current->type == 'css'}}ipsTabs_activeItem{{endif}}' data-tabURL='{url="app=cms&module=pages&controller=ajax&do=loadMenu&t_type=css"}' data-type='css'>{lang="theme_css"}</a></li>
+						<li><a href='{url="app=cms&module=pages&controller=templates&do=manage&t_type=js"}' class='ipsTabs_item {{if $current->type == 'js'}}ipsTabs_activeItem{{endif}}' data-tabURL='{url="app=cms&module=pages&controller=ajax&do=loadMenu&t_type=js"}' data-type='css'>{lang="theme_js"}</a></li>
+					</ul>
+					<section id='elTemplateEditor_fileList'>
+						{template="menu" params="$templates, $current, $request" app="cms" location="admin" group="templates"}
+					</section>
+				</div>
+			</div>
+			<div class='ipsColumn ipsColumn_fluid'  data-controller='cms.admin.templates.fileEditor'>
+				<ul class='ipsList_inline ipsClearfix' id='elTemplateEditor_panelToolbar'>
+					<li class='ipsPos_right'>
+						<a href='#' id='elTemplateEditor_variables' class='ipsButton ipsButton_veryLight ipsButton_small' data-ipsDialog data-ipsDialog-title='{lang="content_template_editor_fields_title"}' data-ipsDialog-content="#elTemplateEditor_attributesDialog" data-ipsDialog-size='narrow'>{lang="theme_attributes"}</a>
+					</li>
+					<li class='ipsPos_right'>
+						<a href='{url="app=cms&module=pages&controller=templates&do=deleteTemplate&t_location={$current->location}&t_id={$current->id}"}' class='ipsButton ipsButton_veryLight ipsButton_small {{if $current->user_edited == 'original'}}ipsButton_disabled{{endif}}' data-action="revert">{{if ! $current->user_edited}}{lang="delete"}{{else}}{lang="revert"}{{endif}}</a>
+					</li>
+					<li>
+						<button type='submit' class='ipsButton ipsButton_primary ipsButton_small' data-action="save">{lang="save"}</button>
+					</li>					
+					<li>
+						<span data-role='loading' class='ipsHide'><i class='icon-spinner2 ipsLoading_tinyIcon'></i>  &nbsp;{lang="loading"}</span>
+					</li>
+				</ul>
+				<br>
+				<div id='elTemplateEditor_outerPanelWrap'>
+					<div id='elTemplateEditor_panelWrap'>
+						<ul id='elTemplateEditor_tabbar' class='ipsTabs ipsClearfix' data-ipsTabBar data-ipsTabBar-contentArea='#elTemplateEditor_panels'>
+							<li data-fileid='{$current->key}' data-type="{$current->type}" data-location='{$current->location}' data-group="{$current->group}">
+								<a href='#' class='ipsTabs_item' id='tab_{$current->key}'>{$current->title} <span data-action='closeTab'><i class='fa fa-times'></i></span></a>
+							</li>
+						</ul>
+						<section data-role="templatePanelWrap" id='elTemplateEditor_panels' data-haseditor="{{if $current->id}}true{{else}}false{{endif}}">
+							{template="editor" params="$templates, $current" app="cms" location="admin" group="templates"}
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<ul class='ipsList_inline ipsType_light ipsType_small'>
+			<li class='cTemplateState_changed'> {lang="content_templates_modified"}</li>
+			<li class='cTemplateState_custom'> {lang="content_templates_custom"}</li>
+		</ul>
+		<div id='elTemplateEditor_attributesDialog' class='ipsHide'>
+			<div data-controller='cms.admin.templates.variablesDialog'>
+				<div class='ipsPad'>
+					<p class='ipsType_textBlock' id='elTemplateEditor_attributes_title'>
+						{lang="content_template_editor_fields_params"}
+					</p>
+					<input class='ipsField_fullWidth' data-role='variables' placeholder="&#36;foo=''">
+					<p class='ipsType_textBlock' id='elTemplateEditor_title_title'>
+						{lang="content_template_editor_fields_title"}
+					</p>
+					<input class='ipsField_fullWidth' data-role='title'>
+					<p class='ipsType_textBlock' id='elTemplateEditor_group_title'>
+						{lang="content_template_editor_fields_container"}
+					</p>
+					{{foreach array('block','page', 'database') as $type }}
+						<select id="elContainer_{$type}_hidden" class='ipsHide' name="group" data-role="group" data-container-type="{$type}">
+						{{foreach \IPS\cms\Templates::getGroups( $type ) as $groupName}}
+							<option value="{$groupName}">{expression="\IPS\cms\Templates::readableGroupName( $groupName )"}</option>
+						{{endforeach}}
+						</select>
+					{{endforeach}}
+					<p class='ipsType_textBlock ipsHide'>
+						{lang="content_template_editor_fields_desc"}
+					</p>
+					<textarea class='ipsHide ipsField_fullWidth' data-role='description'></textarea>
+					<input type='hidden' name='_variables_fileid' value=''>
+					<input type='hidden' name='_variables_location' value=''>
+				</div>
+				<div class='ipsPad ipsAreaBackground ipsType_right'>
+					<input type='submit' class='ipsButton ipsButton_primary' value='{lang="save"}'>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

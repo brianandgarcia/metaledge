@@ -1,0 +1,19 @@
+<ips:template parameters="$table, $popularQuestions, $newQuestions, $featuredTopic, $forum" />
+
+{{if $popularQuestions}}
+	<section class='ipsBox ipsSpacer_bottom ipsSpacer_double'>
+		<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="popular_questions_title"}</h2>
+		{{if count( $popularQuestions )}}
+			<ol class='ipsDataList ipsDataList_readStatus ipsClear cForumTopicTable' id='elTable_' data-role="tableRows">
+				{{foreach $popularQuestions as $question}}
+					{template="popularQuestionRow" params="$question, $forum" group="forums"}
+				{{endforeach}}
+			</ol>
+		{{else}}
+			<div class='ipsType_center ipsType_light'>
+				<p class='ipsType_large'>{lang="no_popular_questions"}</p>
+			</div>
+		{{endif}}
+	</section>
+{{endif}}
+{$table|raw}

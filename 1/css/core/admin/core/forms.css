@@ -1,0 +1,52 @@
+.ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label,
+.ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+	width: 340px;
+}
+
+html[dir="ltr"] .ipsForm_horizontal .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-left: 345px;
+}
+html[dir="rtl"] .ipsForm_horizontal .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-right: 345px;
+}
+
+html[dir="ltr"] .ipsForm_vertical .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-left: 0px;
+}
+html[dir="rtl"] .ipsForm_vertical .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+	margin-right: 0px;
+}
+
+.ipsWidthHeight {
+	background: white;
+	border: black dashed 1px;
+	margin-bottom: 10px;
+}
+/* jQuery UI doesn't support resizing RTL */
+html[dir="rtl"] .ipsWidthHeight {
+	display: none;
+}
+
+.ui-icon-gripsmall-diagonal-se {
+	background: url( {resource="resizable.png" app="core" location="global"} );
+}
+
+.ui-resizable {
+	position: relative;
+}
+.ui-resizable-handle {
+	position: absolute;
+	font-size: 0.1px;
+	display: block;
+}
+.ui-resizable-se {
+	cursor: nwse-resize;
+	width: 12px;
+	height: 12px;
+	right: 0px;
+	bottom: 0px;
+}
+
+a.matrixDelete {
+	cursor: pointer;
+}

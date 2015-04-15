@@ -1,0 +1,83 @@
+body#elLogin {
+	background: #394248;
+}
+
+#elLogin_box {
+	width: 500px;
+	margin: 10% auto 0;
+	box-shadow: 0px 2px 45px rgba(0,0,0,0.3);
+	background: #1f282d;
+	border-radius: 3px;
+}
+#ipsTabs_elLogin_tabs_handler__standard_panel {
+	background: inherit;
+}
+
+#elLogin_box > .ipsColumns {
+	min-height: 250px;
+}
+
+#elLogin_tabs {
+	background: #25282b;
+	padding: 0;
+}
+	
+	#elLogin_tabs ul a {
+		display: block;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		color: #96b0c8;
+		font-size: 22px;
+		text-align: center;
+		position: relative;
+		{prefix="transition" value="0.2s all linear"}
+	}
+
+		#elLogin_tabs ul li:first-child a {
+			border-radius: 0 3px 0 0;
+		}
+
+		#elLogin_tabs ul a:hover {
+			color: #fff;
+		}
+
+	#elLogin_tabs .elLogin_tabsActive {
+		background: #4791c4;
+		color: #fff;
+	}
+
+		#elLogin_tabs .elLogin_tabsActive:before {
+			content: '';
+			display: block;
+			border-width: 8px;
+			border-style: solid;
+			position: absolute;
+			top: 50%;
+			margin-top: -8px;
+		}
+		html[dir="ltr"] #elLogin_tabs .elLogin_tabsActive:before {
+			border-color: transparent transparent transparent #f9f9f9;
+			left: 0;
+		}
+		html[dir="rtl"] #elLogin_tabs .elLogin_tabsActive:before {
+			border-color: transparent #f9f9f9 transparent transparent;
+			right: 0;
+		}
+
+
+#elLogin_forms {
+	background: #f9f9f9;
+	border-radius: 3px 0 0 3px;
+}
+html[dir="rtl"] #elLogin_forms {
+	border-radius: 0 3px 3px 0;
+}
+
+	#elLogin_forms .ipsType_pageTitle .fa {
+		font-size: 28px;
+	}
+	
+.elLogin_single #elLogin_forms {
+	border-radius: 3px;
+}

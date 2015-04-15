@@ -1,0 +1,16 @@
+/* PHONES */
+@media screen and (max-width: 767px) {
+	
+	.ipsButtonBar [data-role='tablePagination'] {
+		clear: both;
+	}
+
+	.ipsButtonBar .ipsPagination {
+		margin-bottom: 0;
+	}
+	
+	.ipsButtonBar .ipsButtonRow + [data-role='tablePagination'] .ipsPagination {
+		margin-top: 33px;
+	}
+
+}

@@ -1,0 +1,37 @@
+/* Styles that fix the mess IE causes */
+
+/* misc.css */
+.ipsSubNavigation li { 
+	display: inline !important; 
+}
+
+.ipsClearfix { 
+	*zoom: 1;
+}
+
+/* Pagination */
+.ipsButtonBar .ipsPagination .ipsPagination_page a,
+.ipsButtonBar .ipsPagination .ipsPagination_next a,
+.ipsButtonBar .ipsPagination .ipsPagination_prev a,
+.ipsButtonBar .ipsPagination .ipsPagination_first a,
+.ipsButtonBar .ipsPagination .ipsPagination_last a,
+.ipsButtonBar .ipsButtonRow li > a, 
+.ipsButtonBar .ipsButtonRow li > span {
+	color: #000 !important;
+}
+
+#elSearchNavContainer {
+	height: 46px !important;
+}
+
+#ipsLayout_header nav a.active {
+	background: #000 !important;
+}
+
+#elWidgetControls {
+	display: none !important;
+}
+
+#elUserNav li {
+	display: inline-block !important;
+}

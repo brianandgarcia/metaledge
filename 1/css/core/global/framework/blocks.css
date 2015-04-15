@@ -1,0 +1,111 @@
+/* Blocks - styles for various widgets */
+
+.ipsWidget {
+	position: relative;
+	padding: 0;
+	background: #fff;
+}
+
+.ipsWidget.ipsWidget_vertical {
+	margin-top: 15px;
+}
+	
+	.ipsWidget.ipsWidget_vertical .ipsWidget_title {
+		padding: 7px 10px;
+		margin: 0;
+		font-size: 13px;
+		font-weight: 400;
+		position: relative;
+		color: #fff;
+		background: {theme="widget_title_bar"};
+		-webkit-font-smoothing: antialiased;
+	}
+
+	.ipsWidget.ipsWidget_vertical .ipsWidget_inner {
+		background: #fff;
+		color: #575757;
+	}
+
+.ipsWidget.ipsWidget_horizontal {
+	padding: 10px;
+}
+
+	.ipsWidget.ipsWidget_horizontal + .ipsWidget {
+		margin-top: 10px;
+	}
+
+		.ipsWidget.ipsWidget_horizontal .ipsWidget_title {
+			font-size: 16px;
+			font-weight: 500;
+			margin-bottom: 10px;
+		}
+
+	.ipsWidget.ipsWidget_vertical .ipsWidget_inner {
+		color: #575757;
+	}
+
+	.ipsWidget.ipsWidget_horizontal .ipsTabs {
+		margin: 15px -5px 0 -5px;
+	}
+	
+		.ipsWidget.ipsWidget_horizontal .ipsTabs_panel {
+			background: #fff;
+			margin: 0 -5px -5px -5px;
+		}
+
+html[dir="ltr"] .ipsWidget_columns > [class*="ipsGrid"] {
+	border-right: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 0;
+	padding-right: 10px;
+}
+html[dir="rtl"] .ipsWidget_columns > [class*="ipsGrid"] {
+	border-left: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 0;
+	padding-left: 10px;
+}
+
+	html[dir="ltr"] .ipsWidget_columns > [class*="ipsGrid"]:last-child {
+		border-right: 0;
+	}
+	html[dir="rtl"] .ipsWidget_columns > [class*="ipsGrid"]:last-child {
+		border-left: 0;
+	}
+
+.ipsWidget_horizontal .ipsWidget_statsCount {
+	font-size: 22px;
+	line-height: 32px !important;
+	font-weight: 300;
+}
+
+.ipsWidget_horizontal .ipsWidget_stats {
+	margin-top: 15px;
+}
+
+.ipsWidget .ipsTabs_small {
+	padding: 0;
+	background: transparent;
+}
+
+.ipsWidget .ipsDataItem_title {
+	font-size: 13px;
+}
+
+.ipsWidget.ipsWidget_primary {
+	background: #262e33;
+}
+
+	.ipsWidget.ipsWidget_primary h3 {
+		color: #fff;
+	}
+
+html[dir="ltr"] .ipsWidget_latestItem {
+	margin-left: 85px;
+}
+html[dir="rtl"] .ipsWidget_latestItem {
+	margin-right: 85px;
+}
+
+.ipsWidgetBlank {
+	margin-top: 16px;
+	padding-top: 30px;
+}

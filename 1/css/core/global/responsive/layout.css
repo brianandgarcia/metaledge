@@ -1,0 +1,160 @@
+/* TABLETS */
+@media screen and (min-width: 768px) and (max-width: 979px) {
+
+	/* Fixed column sizing */
+	.ipsColumns.ipsColumns_collapseTablet {
+		width: 100%;
+		display: block;
+	}
+	html[dir="ltr"] .ipsColumns.ipsColumns_collapseTablet {
+		padding-right: 0;
+	}
+	html[dir="rtl"] .ipsColumns.ipsColumns_collapseTablet {
+		padding-left: 0;
+	}
+
+	.ipsColumns.ipsColumns_collapseTablet > .ipsColumn:not( .ipsHide ) {
+		display: block;
+		position: relative;
+		margin: 15px 0;
+		width: 100%;
+	}
+
+	.ipsLayout_contentSection {
+		padding: 15px;
+	}
+
+	.ipsGrid.ipsGrid_collapseTablet > [class*="ipsGrid_span"] {
+		width: 100%;
+	}
+	html[dir="ltr"] .ipsGrid.ipsGrid_collapseTablet > [class*="ipsGrid_span"] {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .ipsGrid.ipsGrid_collapseTablet > [class*="ipsGrid_span"] {
+		margin-right: 0;
+	}
+}
+
+/* BOTH */
+@media screen and (max-width: 979px) {
+
+	#ipsLayout_mainArea > .ipsPageHeader:first-child {
+		padding: 7px 0;
+		margin-top: -5px;
+	}
+
+	#elHeaderSubLinks {
+		display: none;
+	}
+	
+	.ipsLayout_container {
+		padding: 0 15px;
+	}
+
+	{{if !theme.sidebar_responsive}}
+		#ipsLayout_sidebar {
+			display: none;
+		}
+	{{else}}
+		#ipsLayout_mainArea {
+			margin-bottom: 0 !important;
+		}
+
+		#ipsLayout_sidebar {
+			background: #fff;
+			padding: 25px 10px 10px 10px;
+			max-width: 100% !important;
+			min-width: 0 !important;
+			display: block;
+		}
+	{{endif}}
+
+	#ipsLayout_body {
+		padding: 0;
+		max-width: 100%;
+		margin: 0;
+	}
+	
+	#ipsLayout_header > header {
+		margin-bottom: 0 !important;
+	}
+
+	#ipsLayout_mainArea {
+		border-radius: 0 !important;
+		margin-bottom: 10px;
+	}
+
+	/* Nav hidden */
+	#ipsLayout_mainNav {
+		display: none;
+		float: none !important;
+		clear: both;
+	}
+
+		#ipsLayout_mainNav li {
+			display: block;
+			line-height: 40px;
+		}
+
+		#ipsLayout_mainNav li a {
+			font-size: 13px;
+		}
+
+			html[dir="ltr"] #ipsLayout_mainNav li a.active {
+				margin-right: -20px;
+			}
+			html[dir="rtl"] #ipsLayout_mainNav li a.active {
+				margin-left: -20px;
+			}
+
+	#ipsLayout_contentArea,
+	#ipsLayout_mainArea {
+		display: block;
+		border: 0;
+	}
+
+	#elFooterNavigation {
+		display: none;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+	#ipsLayout_mainArea {
+		padding: 10px;
+	}
+
+	/* Fixed column sizing */
+	.ipsColumns.ipsColumns_collapseTablet:not( .ipsHide ),
+	.ipsColumns.ipsColumns_collapsePhone:not( .ipsHide ) {
+		width: 100%;
+		display: block;
+		padding-right: 0;
+	}
+
+	.ipsColumns.ipsColumns_collapseTablet > .ipsColumn:not( .ipsHide ),
+	.ipsColumns.ipsColumns_collapsePhone > .ipsColumn:not( .ipsHide ) {
+		display: block;
+		position: relative;
+		width: 100%;
+		margin: 0 0 15px 0;
+		padding: 0;
+	}
+
+	.ipsLayout_contentSection {
+		padding: 5px;
+	}
+
+	.ipsGrid.ipsGrid_collapseTablet > [class*="ipsGrid_span"],
+	.ipsGrid.ipsGrid_collapsePhone > [class*="ipsGrid_span"] {
+		width: 100%;
+	}
+	html[dir="ltr"] .ipsGrid.ipsGrid_collapseTablet > [class*="ipsGrid_span"],
+	html[dir="ltr"] .ipsGrid.ipsGrid_collapsePhone > [class*="ipsGrid_span"] {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .ipsGrid.ipsGrid_collapseTablet > [class*="ipsGrid_span"],
+	html[dir="rtl"] .ipsGrid.ipsGrid_collapsePhone > [class*="ipsGrid_span"] {
+		margin-right: 0;
+	}
+}

@@ -1,0 +1,20 @@
+<ips:template parameters="$logins" />
+{{if count( $logins )}}
+	<ul class='ipsDataList ipsDataList_reducedSpacing' itemscope itemtype="http://schema.org/ItemList">
+	{{foreach $logins as $login }}
+		<li class='ipsDataItem' itemprop="itemListElement">
+			<div class='ipsDataItem_main'>
+		<h4 class='ipsDataItem_title'>{$login['admin_username']}</h4>
+		<p class='ipsDataItem_meta'>
+			{datetime="$login['admin_time']"}
+		</p>
+	</div>
+		</li>
+	{{endforeach}}
+	</ul>
+	<a href="{url="app=core&module=staff&controller=admin&do=loginLogs&filter=adminloginlogs_unsuccessful"}">{lang="block_failed_logins_all"}</a>
+{{else}}
+	<div class='ipsType_medium ipsType_light ipsType_center'>
+		{lang="no_failed_logins"}
+	</div>
+{{endif}}

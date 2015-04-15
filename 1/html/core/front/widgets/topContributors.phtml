@@ -1,0 +1,140 @@
+<ips:template parameters="$week, $month, $year, $all, $orientation='vertical'" />
+<h3 class='ipsType_reset ipsWidget_title'>{lang="block_topContributors"}</h3>
+
+{{if $orientation == 'vertical'}}
+	<div class='ipsTabs ipsTabs_small ipsClearfix' id='elTopContributors' data-ipsTabBar data-ipsTabBar-stretch data-ipsTabBar-contentArea='#elTopContributors_content'>
+		<a href='#elTopContributors' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+		<ul role="tablist">
+			<li role="presentation">
+				<a href='#ipsTabs_elTopContributors_el_topContributorsWeek_panel' id='el_topContributorsWeek' class='ipsTabs_item ipsTabs_activeItem ipsType_center' aria-selected='true'>{lang="week"}</a>
+			</li>
+			<li role="presentation">
+				<a href='#ipsTabs_elTopContributors_el_topContributorsMonth_panel' id='el_topContributorsMonth' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="month"}</a>
+			</li>		
+			<li role="presentation">
+				<a href='#ipsTabs_elTopContributors_el_topContributorsYear_panel' id='el_topContributorsYear' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="year"}</a>
+			</li>
+			<li role="presentation">
+				<a href='#ipsTabs_elTopContributors_el_topContributorsAll_panel' id='el_topContributorsAll' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="alltime"}</a>
+			</li>
+		</ul>
+	</div>
+
+	<section id='elTopContributors_content' class='ipsWidget_inner'>
+		<div id="ipsTabs_elTopContributors_el_topContributorsWeek_panel" class='ipsTabs_panel'>
+			{{if count( $week )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $week as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset'>{lang="top_contributors_empty__week"}</p>
+				</div>
+			{{endif}}
+		</div>
+		<div id="ipsTabs_elTopContributors_el_topContributorsMonth_panel" class='ipsTabs_panel'>
+			{{if count( $month )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $month as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset'>{lang="top_contributors_empty__month"}</p>
+				</div>
+			{{endif}}
+		</div>
+		<div id="ipsTabs_elTopContributors_el_topContributorsYear_panel" class='ipsTabs_panel'>
+			{{if count( $year )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $year as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset'>{lang="top_contributors_empty__year"}</p>
+				</div>
+			{{endif}}
+		</div>
+		<div id="ipsTabs_elTopContributors_el_topContributorsAll_panel" class='ipsTabs_panel'>
+			{{if count( $all )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $all as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset'>{lang="top_contributors_empty__all"}</p>
+				</div>
+			{{endif}}
+		</div>
+	</section>
+{{else}}
+	<div class='ipsGrid ipsGrid_collapsePhone ipsWidget_columns'>
+		<div class='ipsGrid_span3'>
+			<h4 class='ipsType_sectionHead ipsType_normal'>{lang="week"}</h4>
+
+			{{if count( $week )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $week as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset ipsType_left ipsType_light'>{lang="top_contributors_empty__week"}</p>
+				</div>
+			{{endif}}
+		</div>
+		<div class='ipsGrid_span3'>
+			<h4 class='ipsType_sectionHead ipsType_normal'>{lang="month"}</h4>
+
+			{{if count( $month )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $month as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset ipsType_left ipsType_light'>{lang="top_contributors_empty__month"}</p>
+				</div>
+			{{endif}}
+		</div>
+		<div class='ipsGrid_span3'>
+			<h4 class='ipsType_sectionHead ipsType_normal'>{lang="year"}</h4>
+
+			{{if count( $year )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $year as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset ipsType_left ipsType_light'>{lang="top_contributors_empty__year"}</p>
+				</div>
+			{{endif}}
+		</div>
+		<div class='ipsGrid_span3'>
+			<h4 class='ipsType_sectionHead ipsType_normal'>{lang="alltime"}</h4>
+
+			{{if count( $all )}}
+				<ol class='ipsDataList ipsDataList_reducedSpacing cTopContributors'>
+					{{foreach $all as $idx => $data}}
+						{template="topContributorRow" group="widgets" app="core" params="$idx, $data, $orientation"}
+					{{endforeach}}
+				</ol>
+			{{else}}
+				<div class='ipsPad'>
+					<p class='ipsType_reset ipsType_left ipsType_light'>{lang="top_contributors_empty__all"}</p>
+				</div>
+			{{endif}}
+		</div>
+	</div>
+{{endif}}

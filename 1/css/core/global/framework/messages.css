@@ -1,0 +1,129 @@
+/* Messages: to give the user information, warnings etc. */
+/* ======================================================== */
+/* BASE */
+.ipsMessage {
+	padding: 15px 15px 15px 45px;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 10px;
+	color: #fff;
+}
+html[dir="rtl"] .ipsMessage {
+	padding: 15px 45px 15px 15px;
+}
+
+	.ipsMessage:before {
+		font-family: 'FontAwesome';
+		position: absolute;
+		top: 15px;
+		font-size: 20px;
+	}
+	html[dir="ltr"] .ipsMessage:before {
+		left: 15px;
+	}
+	html[dir="rtl"] .ipsMessage:before {
+		right: 15px;
+	}
+
+	.ipsMessage a {
+		color: #fff;
+		border-bottom: 1px dotted #fff;
+	}
+
+	.ipsMessage_title {
+		margin: 0;
+		padding: 0;
+		font-size: 16px;
+		line-height: 1;
+		margin-bottom: 5px;
+	}
+	
+	.ipsMessage a.ipsButton {
+		margin-top: -5px;
+	}
+	
+/* Styles a code displayed in some messages */
+.ipsMessage_code {
+	padding: 7px;
+	display: inline-block;
+	background: rgba(0,0,0,0.2);
+	border-radius: 3px;
+	margin-top: -7px;
+	color: rgba(255,255,255,0.8);
+}
+html[dir="rtl"] .ipsMessage_code {
+	float: left;
+	margin-right: -7px;
+}
+html[dir="rtl"] .ipsMessage_code {
+	float: left;
+	margin-left: -7px;
+}
+
+/* ======================================================== */
+/* ERROR */
+.ipsMessage_error {
+	background: #b52b38;
+}
+
+	.ipsMessage_error:before {
+		content: '\f06a';
+	}
+
+/* ======================================================== */
+/* SUCCESS */
+.ipsMessage_success {
+	background: #dbe2c9;
+	color: #556b45;
+}
+
+	.ipsMessage_success:before {
+		content: '\f00c';
+	}
+
+	.ipsMessage_success.ipsMessage a:not(.ipsButton) {
+		color: #556b45;
+		border-bottom: 1px dotted #556b45;
+	}
+
+/* ======================================================== */
+/* WARNING */
+.ipsMessage_warning {
+	background: #ede6e0;
+	color: #564a3f;
+}
+
+	.ipsMessage_warning:before {
+		content: '\f071';
+	}
+
+	.ipsMessage_warning.ipsMessage a:not(.ipsButton) {
+		color: #564a3f;
+		border-bottom: 1px dotted #564a3f;
+	}
+
+/* ======================================================== */
+/* INFO */
+.ipsMessage_info, .ipsMessage_information {
+	background: #5e707d;
+}
+
+	.ipsMessage_info:before, .ipsMessage_information:before {
+		content: '\f05a';
+	}
+
+/* ======================================================== */
+/* OTHER */
+.ipsMessage_general {
+	background: #ebebeb;
+	color: #333;
+}
+
+	.ipsMessage_general:before {
+		content: '\f05a';
+	}
+
+	.ipsMessage_general.ipsMessage a:not(.ipsButton) {
+		color: #333;
+		border-bottom: 1px dotted #333;
+	}

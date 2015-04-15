@@ -1,0 +1,7 @@
+<ips:template parameters="$guidelines" />
+{{if !\IPS\Request::i()->isAjax()}}
+	{template="pageHeader" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('guidelines')"}
+{{endif}}
+<div class='ipsType_normal ipsType_richText ipsPad ipsBox'>
+	{lang="guidelines_value"}
+</div>

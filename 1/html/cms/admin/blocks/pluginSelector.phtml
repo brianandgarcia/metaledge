@@ -1,0 +1,54 @@
+<ips:template parameters="$plugins, $id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $formClass='', $attributes=array(), $sidebar=''" />
+<div class='acpBlock'>
+	<form accept-charset='utf-8' action="{$action}" method="post">
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+	{{if $uploadField}}
+		<input type="hidden" name="MAX_FILE_SIZE" value="{$uploadField}">
+	{{endif}}
+
+	<div class='ipsPad ipsAreaBackground_dark ipsClearfix ipsClear'>{lang="content_block_plugin_select"}</div>
+	<div class='acpFormTabContent'>
+		<div class="ipsTabs_panel">
+			<ul class='ipsForm ipsForm_horizontal'>
+				{{foreach $plugins as $app => $data}}
+					{{foreach $data as $key => $obj}}
+						<li class='ipsFieldRow ipsPad_half ipsClearfix'>
+							<div class='ipsFieldRow_title'>
+								{$obj->title}
+								<span class='ipsBadge {{if $obj->type === 'feed'}}ipsBadge_style2{{else}}ipsBadge_style7{{endif}}'>{lang='content_block_type_{$obj->type}'}</span>
+							</div>
+							<div class='ipsFieldRow_content'>
+								<input id='elField_block_plugin' type="radio" role="radio" name="block_plugin" value="{$app}__{$obj->key}" />
+								<span class='ipsFieldRow_desc'>
+									{$obj->description|raw}
+								</span>
+							</div>
+						</li>
+						{{if $obj->type === 'feed'}}
+							{{foreach $obj->contentTypes as $key => $lang }}
+								<li class='ipsFieldRow ipsPad_half ipsClearfix'>
+									<div class='ipsFieldRow_title'>
+										&nbsp;
+									</div>
+									<div class='ipsFieldRow_content'>
+										<input id='elField_block_plugin' type="radio" role="radio" name="contentType_{$app}__{$obj->key}" value="$key" /> {$lang}
+										<span class='ipsFieldRow_desc'>
+											@todo this should be hidden until parent radio selected
+										</span>
+									</div>
+								</li>
+							{{endforeach}}
+						{{endif}}
+					{{endforeach}}
+				{{endforeach}}
+			</ul>
+		</div>
+		<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+			{template="button" app="core" location="global" group="forms" params="'next', 'submit', null, 'ipsButton ipsButton_primary'"}
+		</div>
+	</div>
+	</form>
+</div>

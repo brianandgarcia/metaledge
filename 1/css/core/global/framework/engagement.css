@@ -1,0 +1,324 @@
+/* Engagement: styles for various features that generall fall under user engagement */
+/* ======================================================== */
+/* LIKE & REP BUTTONS */
+.ipsLikeRep {
+	background: #f0f0f0;
+	border-radius: 2px;
+	padding: 3px;
+	line-height: 16px;
+	display: inline-block;
+	position: relative;
+}
+
+	.ipsLikeRep:before {
+		content: '';
+		display: block;
+		border-style: solid;
+		border-width: 6px;
+		border-color: transparent transparent #f0f0f0 transparent;
+		position: absolute;
+		top: -12px;
+	}
+	html[dir="ltr"] .ipsLikeRep:before {
+		left: 10px;
+	}
+	html[dir="rtl"] .ipsLikeRep:before {
+		right: 10px;
+	}
+
+.ipsLikeRep .ipsButton, .ipsReputation_count {
+	line-height: 20px;
+	padding: 0 7px;
+	font-size: 11px;
+}
+	
+	html[dir="ltr"] .ipsLikeRep .ipsLike_contents + .ipsButton {
+		margin-left: 5px;
+	}
+	html[dir="rtl"] .ipsLikeRep .ipsLike_contents + .ipsButton {
+		margin-right: 5px;
+	}
+	
+	.ipsLikeRep .ipsButton_like {
+		line-height: 18px;
+		border: 0;
+	}
+
+	html[dir="ltr"] .ipsButton.ipsButton_like .fa {
+		margin-right: 5px;
+	}
+	html[dir="rtl"] .ipsButton.ipsButton_like .fa {
+		margin-left: 5px;
+	}
+
+.ipsButton.ipsButton_likeOff {
+	background: #fff;
+	color: #333;
+}
+
+.ipsButton.ipsButton_repUp, .ipsButton.ipsButton_repDown {
+	color: #fff;
+}
+
+.ipsButton.ipsButton_repUp {
+	background: #5f7a47;
+}
+
+.ipsButton.ipsButton_repDown {
+	background: #a72f35;
+}
+
+.ipsButton.ipsButton_rep, .ipsReputation_count {
+	line-height: 20px;
+}
+
+.ipsLike_contents {
+	font-size: 11px;
+}
+html[dir="ltr"] .ipsLike_contents {
+	margin-left: 5px;
+}
+html[dir="rtl"] .ipsLike_contents {
+	margin-right: 5px;
+}
+
+.ipsReputation_count {
+	background: #fff;
+	display: inline-block;
+	position: relative;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 3px;
+	border: 1px solid rgba(0,0,0,0.1);
+}
+		
+	.ipsRep_mini .ipsReputation_count {
+		font-weight: normal;
+	}
+	
+	.ipsReputation_count.ipsType_positive {
+		background: #ebf2e5;
+	}
+
+	.ipsReputation_count.ipsType_negative {
+		background: #efdedf;
+	}
+
+.ipsLikeRep [data-action="giveReputation"] + .ipsReputation_count {
+	font-size: 11px;
+	line-height: 20px;
+}
+html[dir="ltr"] .ipsLikeRep [data-action="giveReputation"] + .ipsReputation_count {
+	margin-left: 10px;
+}
+html[dir="rtl"] .ipsLikeRep [data-action="giveReputation"] + .ipsReputation_count {
+	margin-right: 10px;
+}
+
+.ipsLikeRep [data-action="giveReputation"] + .ipsReputation_count:before {
+	content: '';
+	display: block;
+	width: 1px;
+	height: 100%;
+	position: absolute;
+	background: rgba(0,0,0,0.1);
+	top: 0;
+}
+html[dir="ltr"] .ipsLikeRep [data-action="giveReputation"] + .ipsReputation_count:before {
+	left: -8px;
+}
+html[dir="rtl"] .ipsLikeRep [data-action="giveReputation"] + .ipsReputation_count:before {
+	right: -8px;
+}
+
+/* ======================================================== */
+/* MINI LIKE/REP */
+.ipsRep_mini .ipsLikeRep {
+	background: transparent;
+	border-radius: 0;
+	padding: 0;
+}
+
+	.ipsLikeRep:before {
+		display: none;
+	}
+
+.ipsRep_mini .ipsReputation_count {
+	background: transparent;
+	border-radius: 0;
+	border: 0;
+	padding: 0;
+}
+
+.ipsRep_mini .ipsButton.ipsButton_rep, .ipsReputation_count {
+	line-height: 18px;
+}
+
+/* ======================================================== */
+/* FOLLOW/LIKE */
+.ipsFollow {
+	display: inline-block;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+html[dir="ltr"] .ipsFollow {
+	padding-right: 0 !important;
+}
+html[dir="rtl"] .ipsFollow {
+	padding-left: 0 !important;
+}
+
+	.ipsFollow > a:not( .ipsCommentCount ),
+	.ipsFollow > span:not( .ipsCommentCount ),
+	.ipsFollow > a > span:not( .ipsCommentCount ) {
+		display: inline-block;
+		line-height: 28px;
+		position: relative;
+	}
+	html[dir="ltr"] .ipsFollow > a:not( .ipsCommentCount ),
+	html[dir="ltr"] .ipsFollow > span:not( .ipsCommentCount ),
+	html[dir="ltr"] .ipsFollow > a > span:not( .ipsCommentCount ) {
+		left: -15px;
+		padding-left: 15px;
+	}
+	html[dir="rtl"] .ipsFollow > a:not( .ipsCommentCount ),
+	html[dir="rtl"] .ipsFollow > span:not( .ipsCommentCount ),
+	html[dir="rtl"] .ipsFollow > a > span:not( .ipsCommentCount ) {
+		right: -15px;
+		padding-right: 15px;
+	}
+
+	.ipsFollow .ipsCommentCount {
+		margin: 0 2px 0 0;
+		background: #fff;
+		color: #333;
+		text-shadow: none !important;
+		line-height: 13px;
+		font-size: 10px;
+	}
+
+		.ipsFollow > a > span.ipsCommentCount {
+			margin: 0 -14px 0 14px;
+		}
+		html[dir="rtl"] .ipsFollow > a > span.ipsCommentCount {
+			margin: 0 14px 0 -14px;
+		}
+
+			html[dir="ltr"] .ipsFollow > a > span + span.ipsCommentCount {
+				margin-left: 0;
+			}
+			html[dir="rtl"] .ipsFollow > a > span + span.ipsCommentCount {
+				margin-right: 0;
+			}
+		
+		html[dir="ltr"] .ipsFollow .ipsCommentCount:after {
+			border-color: transparent #fff transparent transparent;
+		}
+		html[dir="rtl"] .ipsFollow .ipsCommentCount:after {
+			border-color: transparent transparent transparent #fff;
+		}
+		
+.ipsFollowerList {
+	max-height: 300px;
+	overflow: auto;
+}
+
+/* ======================================================== */
+/* RATINGS */
+.ipsRating {
+	font-size: 14px;
+	line-height: 1;
+	display: inline-block;
+}
+
+	html[dir="ltr"] .ipsList_inline.ipsRating > li {
+		margin-right: 0;
+	}
+	html[dir="rtl"] .ipsList_inline.ipsRating > li {
+		margin-left: 0;
+	}
+
+	/* Sizes */
+	.ipsRating.ipsRating_small {
+		font-size: 11px;
+	}
+
+	.ipsRating.ipsRating_large {
+		font-size: 16px;
+		margin-top: 5px;
+	}
+
+	.ipsRating.ipsRating_veryLarge {
+		font-size: 20px;
+	}
+
+	.ipsRating + span {
+		margin-left: 10px;
+	}
+
+	.ipsRating + span:empty {
+		margin-left: 0;
+	}
+
+/* Specific to the widget version */
+html[dir="ltr"] [data-ipsRating] > .ipsRating {
+	float: left;
+}
+html[dir="rtl"] [data-ipsRating] > .ipsRating {
+	float: right;
+}
+
+html[dir="ltr"] [data-ipsRating] > .ipsRating > li {
+	padding-right: 3px;
+	float: left;
+}
+html[dir="rtl"] [data-ipsRating] > .ipsRating > li {
+	padding-left: 3px;
+	float: right;
+}
+
+.ipsRating.ipsRating_loading {
+	opacity: 0.6;
+}
+
+/* COLORS */
+.ipsRating .ipsRating_on .fa-star {
+	color: {theme="rating_on"};
+}
+
+.ipsRating .ipsRating_off .fa-star-o,
+.ipsRating .ipsRating_off .fa-star {
+	color: #b3b3b3;
+}
+
+.ipsRating > .ipsRating_hover .fa-star {
+	color: {theme="rating_hover"};
+}
+
+/* ======================================================== */
+/* SHARE LINKS */
+.ipsShare_facebook {
+	border:none;
+	overflow:hidden;
+	height:20px;
+	width: 48px;
+}
+
+/* ======================================================== */
+/* PIP PIP */
+.ipsPip {
+	font-size: 10px;
+	color: #5a5a5a;
+	display: inline-block;
+}
+html[dir="ltr"] .ipsPip {
+	margin-right: 2px;
+}
+html[dir="rtl"] .ipsPip {
+	margin-left: 2px;
+}
+
+	.ipsPip:before {
+		content: '\f111';
+		font-family: 'FontAwesome';
+	}

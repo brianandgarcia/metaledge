@@ -1,0 +1,186 @@
+/* Pagination control */
+/* ======================================================== */
+.ipsPagination {
+	padding: 0px 10px 0px 0;  
+	margin: 0;
+	border-radius: 30px;
+	display: inline-block;
+	line-height: 26px;
+	font-size: 11px;
+	-webkit-font-smoothing: antialiased;
+}
+html[dir="rtl"] .ipsPagination {
+	padding: 0px 0 0px 10px;  
+}
+
+	.ipsPagination > li, .ipsPagination a {
+		display: inline-block;
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.ipsPagination .ipsPagination_page a,
+	.ipsPagination .ipsPagination_next a,
+	.ipsPagination .ipsPagination_prev a,
+	.ipsPagination .ipsPagination_first a,
+	.ipsPagination .ipsPagination_last a {
+		padding: 0 10px;
+		border-radius: 2px;
+		font-weight: bold;
+		text-align: center;
+		background: #f0f0f0;
+		color: #414141;
+		vertical-align: middle;
+	}
+
+		.ipsPagination .ipsPagination_page.ipsPagination_active a {
+			background: #323232;
+			color: #fff;
+			border-color: #323232;
+			box-shadow: none;
+			text-shadow: none;
+		}
+
+	.ipsPagination .ipsPagination_page a {
+		text-shadow: 0px 1px 0px rgba(255,255,255,0.6);
+	}
+
+	.ipsPagination .ipsPagination_first a,
+	.ipsPagination .ipsPagination_last a, 
+	.ipsPagination .ipsPagination_next a,
+	.ipsPagination .ipsPagination_prev a {
+		font-size: 10px;
+		text-transform: uppercase;
+		{prefix="transition" value="all 0.3s linear"}
+	}
+
+	.ipsPagination:hover a {
+		opacity: 1;
+	}
+
+	html[dir="ltr"] .ipsPagination .ipsPagination_pageJump {
+		margin-left: 15px;
+	}
+	html[dir="rtl"] .ipsPagination .ipsPagination_pageJump {
+		margin-right: 15px;
+	}
+
+	.ipsPagination .ipsPagination_pageJump a {
+		color: #787878;
+		font-size: 11px;
+	}
+
+/* ======================================================== */
+/* Mini pagination control, used inline in tables */
+.ipsPagination.ipsPagination_mini {
+	display: inline;
+	line-height: 16px;
+	opacity: 0.3;
+	{prefix="transition" value="all 0.3s linear"}
+}
+html[dir="ltr"] .ipsPagination.ipsPagination_mini {
+	margin-left: 5px;
+}
+html[dir="rtl"] .ipsPagination.ipsPagination_mini {
+	margin-right: 5px;
+}
+	
+	.ipsPagination.ipsPagination_mini:hover,
+	.ipsDataItem:hover .ipsPagination_mini {
+		opacity: 1;
+	}
+
+	.ipsPagination.ipsPagination_mini a {
+		background: rgba(0,0,0,0.05);
+		padding: 0 4px;
+		color: #333;
+		border-radius: 2px;
+	}
+
+/* ======================================================== */
+/* PAGER CONTROL */
+/* Used to indicate the user can go backwards or forwards to other pages */
+.ipsPager .ipsPager_next a,
+.ipsPager .ipsPager_prev a {
+	display: block;
+	position: relative;
+	padding: 15px;
+}
+
+	.ipsPager.ipsPager_small .ipsPager_next a,
+	.ipsPager.ipsPager_small .ipsPager_prev a {
+		padding: 0;
+	}
+
+.ipsPager .ipsPager_next a:after,
+.ipsPager .ipsPager_prev a:after {
+	content: '\f105';
+	font-family: 'FontAwesome';
+	font-size: 45px;
+	position: absolute;
+	top: 23px;
+	color: #404040;
+	{prefix="transition" value="all 0.2s linear"}
+}
+
+	.ipsPager.ipsPager_small .ipsPager_next a:after,
+	.ipsPager.ipsPager_small .ipsPager_prev a:after {
+		top: 7px;
+	}
+
+html[dir="ltr"] .ipsPager .ipsPager_next a,
+html[dir="rtl"] .ipsPager .ipsPager_prev a {
+	padding-right: 45px;
+}
+	
+	html[dir="ltr"] .ipsPager.ipsPager_small .ipsPager_next a,
+	html[dir="rtl"] .ipsPager.ipsPager_small .ipsPager_prev a {
+		padding-right: 30px;
+	}
+
+html[dir="ltr"] .ipsPager .ipsPager_prev a,
+html[dir="rtl"] .ipsPager .ipsPager_next a {
+	padding-left: 45px;
+}
+
+	html[dir="ltr"] .ipsPager.ipsPager_small .ipsPager_prev a,
+	html[dir="rtl"] .ipsPager.ipsPager_small .ipsPager_next a {
+		padding-left: 30px;
+	}
+
+	html[dir="ltr"] .ipsPager .ipsPager_next a:after,
+	html[dir="rtl"] .ipsPager .ipsPager_prev a:after {
+		content: '\f105';
+		right: 15px;
+	}
+
+		html[dir="ltr"] .ipsPager.ipsPager_small .ipsPager_next a:after,
+		html[dir="rtl"] .ipsPager.ipsPager_small .ipsPager_prev a:after {
+			right: 0;
+		}
+
+	html[dir="ltr"] .ipsPager .ipsPager_prev a:after,
+	html[dir="rtl"] .ipsPager .ipsPager_next a:after {
+		content: '\f104';
+		left: 15px;
+	}
+
+		html[dir="rtl"] .ipsPager.ipsPager_small .ipsPager_next a:after,
+		html[dir="ltr"] .ipsPager.ipsPager_small .ipsPager_prev a:after {
+			left: 0;
+		}
+
+.ipsPager_type {
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: bold;
+	color: #404040;
+}
+
+.ipsPager_title, .ipsPager_type {
+	display: block;
+	height: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}

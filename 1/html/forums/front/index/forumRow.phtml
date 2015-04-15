@@ -1,0 +1,101 @@
+<ips:template parameters="$forum, $isSubForum=FALSE, $table=NULL" />
+{{if $forum->can('view')}}
+	<li class="ipsDataItem ipsDataItem_responsivePhoto {{if \IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsDataItem_unread{{endif}} ipsClearfix" data-forumID="{$forum->_id}">
+		<div class="ipsDataItem_icon ipsDataItem_category">
+			{{if !$forum->redirect_on}}
+			{{if \IPS\forums\Topic::containerUnread( $forum ) AND \IPS\Member::loggedIn()->member_id}}<a href="{{if $isSubForum}}{$forum->url()->setQueryString( array( 'do' => 'markRead', 'return' => $forum->parent_id ) )->csrf()}{{else}}{$forum->url()->setQueryString( 'do', 'markRead' )->csrf()}{{endif}}" data-action='markAsRead' title='{lang="mark_forum_read"}' data-ipsTooltip>{{endif}}
+			{{endif}}
+				{{if $forum->icon}}
+					<img src="{$forum->icon}" class='ipsItemStatus ipsItemStatus_custom {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+				{{else}}
+					<span class='ipsItemStatus ipsItemStatus_large {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+						{{if $forum->redirect_on}}
+							<i class='fa fa-arrow-right'></i>
+						{{elseif $forum->forums_bitoptions['bw_enable_answers']}}
+							<i class='fa fa-question'></i>
+						{{elseif $forum->password}}
+							{{if $forum->loggedInMemberHasPasswordAccess()}}
+								<i class='fa fa-unlock'></i>
+							{{else}}
+								<i class='fa fa-lock'></i>
+							{{endif}}
+						{{else}}
+							<i class="fa fa-comments"></i>
+						{{endif}}
+					</span>
+				{{endif}}
+			{{if !$forum->redirect_on and \IPS\forums\Topic::containerUnread( $forum ) AND \IPS\Member::loggedIn()->member_id}}
+			</a>
+			{{endif}}
+		</div>
+		<div class="ipsDataItem_main">
+			<h4 class="ipsDataItem_title ipsType_large">
+				{{if $forum->password && !$forum->loggedInMemberHasPasswordAccess()}}
+					<a href="{$forum->url()->setQueryString( 'passForm', '1' )}" data-ipsDialog data-ipsDialog-size='narrow' data-ipsDialog-title='{lang="forum_requires_password"}'>{$forum->_title}</a>
+				{{else}}
+					<a href="{$forum->url()}">{$forum->_title}</a>
+				{{endif}}
+				{{if $forum->redirect_on}}
+					&nbsp;&nbsp;<span class='ipsType_light ipsType_medium'>({lang="redirect_hits" pluralize="\IPS\Member::loggedIn()->language()->formatNumber( $forum->redirect_hits )"})</span>
+				{{endif}}
+			</h4>
+			{{if $forum->hasChildren()}}
+				<ul class="ipsDataItem_subList ipsList_inline">
+					{{foreach $forum->children() as $subforum}}
+						<li class="{{if \IPS\forums\Topic::containerUnread( $subforum )}}ipsDataItem_unread{{endif}}">
+							{{if \IPS\forums\Topic::containerUnread( $subforum )}}
+								<span class='ipsItemStatus ipsItemStatus_tiny {{if !\IPS\forums\Topic::containerUnread( $subforum ) && !$subforum->redirect_on}}ipsItemStatus_read{{endif}}'> 
+									<i class="fa fa-circle"></i>
+								</span>
+							{{endif}}
+							<a href="{$subforum->url()}">{$subforum->_title}</a>
+						</li>
+					{{endforeach}}
+				</ul>
+			{{endif}}
+			{{if $forum->description}}
+				<div class="ipsDataItem_meta ipsType_richText">{$forum->description|raw}</div>
+			{{endif}}
+		</div>
+		{{if !$forum->redirect_on}}
+			<div class="ipsDataItem_stats ipsDataItem_statsLarge">
+				<dl>
+					{{$count = \IPS\forums\Topic::contentCount( $forum, TRUE );}}
+					<dt class="ipsDataItem_stats_number">{expression="\IPS\Member::loggedIn()->language()->formatNumber( $count )"}</dt>
+					<dd class="ipsDataItem_stats_type ipsType_light">{lang="posts_no_number" pluralize="$count"}</dd>
+				</dl>
+				{{if \IPS\forums\Topic::modPermission( 'unhide', NULL, $forum ) AND ( $forum->queued_topics OR $forum->queued_posts )}}
+					<strong class='ipsType_warning ipsType_medium'>
+						<i class='fa fa-warning'></i>
+						{{if $forum->queued_topics}}
+							<a href='{$forum->url()->setQueryString( array( 'advanced_search_submitted' => 1, 'topic_type' => 'queued_topics' ) )->csrf()}' data-ipsTooltip title='{lang="queued_topics_badge" pluralize="$forum->queued_topics"}' class='ipsType_blendLinks'>{$forum->queued_topics}</a>
+						{{else}}
+							<span class='ipsType_light'>0</span>
+						{{endif}}
+						/
+						{{if $forum->queued_posts}}
+							<a href='{$forum->url()->setQueryString( array( 'advanced_search_submitted' => 1, 'topic_type' => 'queued_posts' ) )->csrf()}' data-ipsTooltip title='{lang="queued_posts_badge" pluralize="$forum->queued_posts"}' class='ipsType_blendLinks'>{$forum->queued_posts}</a>
+						{{else}}
+							<span class='ipsType_light'>0</span>
+						{{endif}}
+					</strong>					
+				{{endif}}
+			</div>
+			<ul class="ipsDataItem_lastPoster ipsDataItem_withPhoto">
+				{{if $lastPost = $forum->lastPost()}}
+					<li>{template="userPhoto" app="core" group="global" params="$lastPost['author'], 'tiny'"}</li>
+					<li><a href="{$lastPost['topic_url']->setQueryString( 'do', 'getNewComment' )}" class='ipsType_break ipsContained' title='{$lastPost['topic_title']}'>{truncate="$lastPost['topic_title']" length="30"}</a></li>
+					<li>{lang="byline_nodate" htmlsprintf="$lastPost['author']->link()"}</li>
+					<li class="ipsType_light"><a href='{$lastPost['topic_url']->setQueryString( 'do', 'getLastComment' )}' title='{lang="get_last_post"}' class='ipsType_blendLinks'>{datetime="$lastPost['date']"}</a></li>
+				{{else}}
+					<li class='ipsType_light ipsResponsive_showDesktop'>{{if $forum->password}}{lang="no_forum_posts_password"}{{else}}{lang="no_forum_posts"}{{endif}}</li>
+				{{endif}}
+			</ul>	
+		{{endif}}
+		{{if $table and $table->canModerate()}}
+			<div class='ipsDataItem_modCheck'>
+				<input type='checkbox' data-role='moderation' name="moderate[{$forum->_id}]" data-actions="{expression="implode( ' ', $table->multimodActions( $forum ) )"}" data-state=''>
+			</div>
+		{{endif}}
+	</li>
+{{endif}}

@@ -1,0 +1,151 @@
+.ipsTree {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ipsTree_row {
+	display: table;
+	width: 100%;
+}
+
+.ipsTree_row > div {
+	display: table-cell;
+}
+
+.ipsTree_row:hover .ipsControlStrip {
+	opacity: 1;
+}
+
+html[dir="ltr"] .ipsTree_loadingRow {
+	background: #fff url( {resource="tiny_loading.gif" location="admin" app="core"} ) no-repeat 5px 10px;
+	padding: 10px 10px 10px 30px;
+}
+html[dir="rtl"] .ipsTree_loadingRow {
+	background: #fff url( {resource="tiny_loading.gif" location="admin" app="core"} ) no-repeat right 5px top 10px;
+	padding: 10px 30px 10px 10px;
+}
+
+/* Cell types */
+.ipsTree_drag {
+	min-width: 30px;
+	text-align: center;
+}
+
+	.ipsTree_drag .ipsTree_dragHandle {
+		opacity: 0.2;
+	}
+
+.ipsTree_controls {
+	width: 110px;
+	min-width: 110px;
+	vertical-align: top;
+	padding-top: 12px;
+}
+html[dir="ltr"] .ipsTree_controls {
+	padding-right: 10px;
+}
+html[dir="rtl"] .ipsTree_controls {
+	padding-left: 10px;
+}
+	
+	.ipsTree_controls .ipsControlStrip {
+		float: right;
+	}
+	html[dir="rtl"] .ipsTree_controls .ipsControlStrip {
+		float: left;
+	}
+
+.ipsTree_rowData {
+	width: 100%;
+	padding: 15px 10px;
+	position: relative;
+}
+
+/* Stack styles */
+.ipsTree_rowData h4 {
+	margin: 0;
+}
+
+.ipsTree_parent.ipsTree_row:hover > div {
+	background: rgba(0,0,0,0.03);
+	cursor: pointer;
+}
+
+html[dir="ltr"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData {
+	padding-left: 25px;
+}
+html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData {
+	padding-right: 25px;
+}
+
+	.ipsTree_parent.ipsTree_row > .ipsTree_rowData h4 {
+		font-weight: bold;
+		font-size: 14px;
+		position: relative;
+		display: inline-block;
+	}
+
+		.ipsJS_has .ipsTree_parent.ipsTree_row > .ipsTree_rowData h4 a {
+			color: inherit;
+		}
+
+	.ipsTree_parent.ipsTree_row > .ipsTree_rowData h4:before {
+		position: absolute;
+		top: 0;
+		content: '\\f04b';
+		font-family: 'FontAwesome';
+		font-size: 11px;
+		text-align: center;
+		display: block;
+		opacity: 0.8;
+		{prefix="transition" value="0.2s all linear"}
+	}
+	html[dir="ltr"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData h4:before {
+		left: -20px;
+	}
+	html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData h4:before {
+		right: -20px;
+	}
+
+		.ipsTree_parent.ipsTree_row > .ipsTree_rowData h4:before {
+			{prefix="transform" value="rotate(0deg)"}
+		}
+		html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData h4:before {
+			{prefix="transform" value="rotate(180deg)"}
+		}
+
+		.ipsTree_parent.ipsTree_open.ipsTree_row > .ipsTree_rowData h4:before {
+			{prefix="transform" value="rotate(90deg)"}
+			opacity: 1;
+		}
+		html[dir="rtl"] .ipsTree_parent.ipsTree_open.ipsTree_row > .ipsTree_rowData h4:before {
+			{prefix="transform" value="rotate(90deg)"}
+			opacity: 1;
+		}
+
+.ipsTree_row {
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.ipsTree_row.ipsTree_parent {
+	background: #f3f3f3;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.ipsTree_row + [data-role="nodeWrapper"] > .ipsTree .ipsTree_row {
+	background: #fafafa;
+	border-bottom: 1px solid #ececec;
+}
+
+.ipsTree_row + [data-role="nodeWrapper"] > .ipsTree .ipsTree_row + [data-role="nodeWrapper"] > .ipsTree .ipsTree_row {
+	background: #fff;
+	border-bottom: 1px solid #f4f4f4;
+}
+
+html[dir="ltr"] .ipsTree .ipsTree {
+	margin-left: 15px;
+}
+html[dir="rtl"] .ipsTree .ipsTree {
+	margin-right: 15px;
+}

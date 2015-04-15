@@ -1,0 +1,56 @@
+<ips:template parameters="$status" />
+				<li data-controller='core.front.profile.status' class="ipsComment ipsComment_parent ipsComment_hasChildren ipsClearfix{{if $status->hidden()}} ipsModerated{{endif}}" data-statusid="{$status->id}">
+					<a id='status-{$status->id}'></a>
+					{template="userPhoto" app="core" group="global" params="$status->author(), 'small'"}
+					<div class="ipsComment_content ipsFaded_withHover">
+						<h3 class="ipsComment_author ipsType_normal"><strong>{template="userLink" app="core" group="global" location="front" params="$status->author()"}</strong>{{if $status->member_id != $status->author()->member_id}} &raquo; <strong>{member="link()" id="$status->member_id" raw="true"}</strong>{{endif}}</h3>
+						<div class='ipsType_richText ipsContained'>
+							{$status->content|raw}
+						</div>
+						<ul class="ipsList_inline ipsType_medium cStatusTools">
+							<li>{{if $status->locked()}}<i class='fa fa-lock'></i>{{endif}} <a class="ipsType_light" href='{$status->url()}'>{datetime="$status->date"}</a></li>
+							<li>
+								{{if $status instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
+									{template="reputationMini" group="global" app="core" params="$status"}
+								{{endif}}
+							</li>
+							{{if $status->canDelete() || $status->canLock() || $status->canUnlock() || $status->canHide() || $status->canUnhide()}}
+								<li>
+									<a href='#elStatus_{$status->id}_menu' data-ipsMenu data-ipsMenu-activeClass='ipsFaded_cancel' id='elStatus_{$status->id}' class='ipsFaded ipsFaded_more'>{lang="options"} <i class='fa fa-caret-down'></i></a>
+									<ul class='ipsMenu ipsMenu_narrow ipsHide' id='elStatus_{$status->id}_menu'>
+										{{if !$status->locked() and $status->canLock()}}
+											<li class='ipsMenu_item'><a href="{$status->url('moderate')->setQueryString( 'action', 'lock' )->csrf()}">{lang="lock"}</a></li>
+										{{elseif $status->locked() and $status->canUnlock()}}
+											<li class='ipsMenu_item'><a href="{$status->url('moderate')->setQueryString( 'action', 'unlock' )->csrf()}">{lang="unlock"}</a></li>
+										{{endif}}
+										{{if !$status->hidden() and $status->canHide()}}
+											<li class='ipsMenu_item'><a href='{$status->url('moderate')->setQueryString( 'action', 'hide' )->csrf()}'">{lang="hide"}</a></li>
+										{{elseif $status->hidden() and $status->canUnhide()}}
+											<li class='ipsMenu_item'><a href='{$status->url('moderate')->setQueryString( 'action', 'unhide' )->csrf()}'>{lang="unhide"}</a></li>
+										{{endif}}
+										{{if $status->canDelete()}}
+											<li class='ipsMenu_item'><a data-confirm href="{$status->url('moderate')->setQueryString( 'action', 'delete' )->csrf()}">{lang="delete"}</a></li>
+										{{endif}}
+									</ul>
+								</li>
+							{{endif}}
+							{{if !\IPS\Member::loggedIn()->group['gbw_no_report'] and !$status->hidden()}}
+								<li><a href='{$status->url('report')}' data-ipsDialog data-ipsDialog-size='medium' data-ipsDialog-title="{lang="report"}" data-action='reportStatus' title='{lang="report_content"}' class='ipsFaded ipsFaded_more'>{lang="status_report"}</a></li>
+							{{endif}}							
+						</ul>
+					</div>
+					{{if !$status->hidden() && ( count( $status->comments() ) ||  \IPS\core\Statuses\Status::canCreate( \IPS\Member::loggedIn() ) ) }}
+						<div class='ipsComment_feed ipsComment_subComments ipsType_medium'>
+							<ol class="ipsList_reset" data-role='statusComments' data-currentPage='{expression="\IPS\Request::i()->page ? intval( \IPS\Request::i()->page ) : 1"}'>
+								{template="statusReplies" group="profile" params="$status"}
+							</ol>
+							{{if \IPS\core\Statuses\Status::canCreate( \IPS\Member::loggedIn() )}}
+								<div class="ipsComment ipsFieldRow_fullWidth ipsAreaBackground_light ipsPad" data-role="replyComment">
+									<div class="ipsComment_content ipsContained">
+										{$status->commentForm()|raw}
+									</div>
+								</div>
+							{{endif}}
+						</div>
+					{{endif}}	
+				</li>

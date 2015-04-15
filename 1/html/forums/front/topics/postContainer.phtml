@@ -1,0 +1,50 @@
+<ips:template parameters="$item, $comment, $votes=array(), $otherClasses=''" />
+{{$idField = $comment::$databaseColumnId;}}
+{{$itemClassSafe = str_replace( '\\', '_', mb_substr( $comment::$itemClass, 4 ) );}}
+{{if $comment->isIgnored()}}
+	<div class='ipsComment ipsComment_ignored ipsType_light' id='elIgnoreComment_{$comment->$idField}' data-ignoreCommentID='elComment_{$comment->$idField}' data-ignoreUserID='{$comment->author()->member_id}'>
+		{lang="ignoring_content" sprintf="$comment->author()->name"} <a href='#elIgnoreComment_{$comment->$idField}_menu' data-ipsMenu data-ipsMenu-menuID='elIgnoreComment_{$comment->$idField}_menu' data-ipsMenu-appendTo='#elIgnoreComment_{$comment->$idField}' data-action="ignoreOptions" title='{lang="see_post_ignore_options"}' class='ipsType_blendLinks'>{lang="options"} <i class='fa fa-caret-down'></i></a>
+		<ul class='ipsMenu ipsHide' id='elIgnoreComment_{$comment->$idField}_menu'>
+			<li class='ipsMenu_item ipsJS_show' data-ipsMenuValue='showPost'><a href='#'>{lang="show_this_post"}</a></li>
+			<li class='ipsMenu_sep ipsJS_show'><hr></li>
+			<li class='ipsMenu_item' data-ipsMenuValue='stopIgnoring'><a href='{url="app=core&module=system&controller=ignore&do=remove&id={$comment->author()->member_id}" seoTemplate="ignore"}'>{lang="stop_ignoring_posts_by" sprintf="$comment->author()->name"}</a></li>
+			<li class='ipsMenu_item'><a href='{url="app=core&module=members&controller=ignore" seoTemplate="ignore"}'>{lang="change_ignore_preferences"}</a></li>
+		</ul>
+	</div>
+{{endif}}
+
+<a id='comment-{$comment->$idField}'></a>
+<article itemscope itemtype="http://schema.org/Comment" id='elComment_{$comment->$idField}' class='cPost ipsBox {{if $otherClasses}}{$otherClasses}{{endif}} ipsComment {{if settings.reputation_highlight and $comment->reputation() >= settings.reputation_highlight}}ipsComment_popular{{endif}} ipsComment_parent ipsClearfix ipsClear ipsColumns ipsColumns_noSpacing ipsColumns_collapsePhone {{if $comment->isIgnored()}}ipsHide{{endif}} {{if $comment->hidden()}}ipsModerated{{endif}}'>
+	{{if $item->isQuestion() and !$comment->new_topic}}
+		{template="postRating" group="topics" app="forums" params="$item, $comment, $votes"}
+	{{endif}}
+	<aside class='ipsComment_author cAuthorPane ipsAreaBackground_light ipsColumn ipsColumn_medium'>
+		<h3 class='ipsType_sectionHead cAuthorPane_author ipsType_blendLinks ipsType_break' itemprop="creator" itemscope="" itemtype="http://schema.org/Person"><strong>{$comment->author()->link( $comment->warningRef() )|raw}</strong> <span class='ipsResponsive_showPhone ipsResponsive_inline'>{template="reputationBadge" group="global" app="core" params="$comment->author()"}</span></h3>
+		<ul class='cAuthorPane_info ipsList_reset'>
+			{{if $comment->author()->member_title && $comment->author()->member_id}}
+				<li class='ipsResponsive_hidePhone'>{$comment->author()->member_title}</li>
+			{{elseif $comment->author()->rank['title'] && $comment->author()->member_id}}
+				<li class='ipsResponsive_hidePhone'>{$comment->author()->rank['title']}</li>
+			{{endif}}
+			<li class='cAuthorPane_photo'>
+				{template="userPhoto" app="core" group="global" params="$comment->author(), 'large', $comment->warningRef()"}
+			</li>
+			<li>{expression="\IPS\Member\Group::load( $comment->author()->member_group_id )->formattedName" raw="true"}</li>
+			{{if $comment->author()->member_id}}
+				<li class='ipsResponsive_hidePhone'>{template="reputationBadge" group="global" app="core" params="$comment->author()"}</li>
+				<li class='ipsType_light'>{lang="member_post_count" pluralize="$comment->author()->member_posts"}</li>
+				{{if $comment->author()->reputationImage()}}
+					<li class='ipsPad_half ipsResponsive_hidePhone'>
+						<img src='{$comment->author()->reputationImage()}' title='{{if $comment->author()->reputation()}}{$comment->author()->reputation()}{{endif}}' alt=''>
+					</li>
+				{{endif}}
+			{{endif}}
+			{{if \IPS\Member\Group::load( $comment->author()->member_group_id )->g_icon }}
+				<li><img src='{$comment->author()->group['g_icon']}' alt=''></li>
+			{{endif}}
+		</ul>
+	</aside>
+	<div class='ipsColumn ipsColumn_fluid'>
+		{template="post" group="topics" app="forums" params="$item, $comment, $item::$formLangPrefix . 'comment', $item::$application, $item::$module, $itemClassSafe"}
+	</div>
+</article>

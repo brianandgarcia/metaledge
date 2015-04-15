@@ -1,0 +1,2 @@
+<ips:template parameters="$version, $url, $released='', $blank=TRUE" />
+<a href='{$url}' class="ipsType_blendLinks"{{if $blank}}target='_blank'{{endif}} data-ipstooltip title='{{if $released}}{lang="new_version_tip_date" sprintf="$version,$released"}{{else}}{lang="new_version_tip" sprintf="$version"}{{endif}}'>{lang="new_version_available"}</a>

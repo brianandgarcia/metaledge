@@ -1,0 +1,12 @@
+<ips:template parameters="$baseUrl, $pages, $comments, $activePage=1, $perPage=3, $direction='prev'" />
+{{if $pages > 1}}
+	{{if $direction == 'prev' && $activePage != $pages && !( $activePage > $pages )}}
+		<li class="ipsComment ipsClearfix cStatusUpdates_pagination">
+			<a href="{$baseUrl->setQueryString( 'page', $activePage + 1 )}" data-action="loadPreviousComments"><i class="fa fa-angle-up"></i> {lang="show_prev_comments"} &nbsp;<span class="ipsType_light">{lang="x_more" sprintf="$comments - ( $activePage * $perPage )"}</span></a>
+		</li>
+	{{elseif $direction == 'next' && $activePage > 1}}
+		<li class="ipsComment ipsClearfix cStatusUpdates_pagination">
+			<a href="{$baseUrl->setQueryString( 'page', $activePage - 1 )}" data-action="loadNextComments"><i class="fa fa-angle-down"></i> {lang="show_next_comments"} &nbsp;<span class="ipsType_light">{lang="x_more" sprintf="( $activePage - 1 ) * $perPage"}</span></a>
+		</li>
+	{{endif}}
+{{endif}}

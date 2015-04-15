@@ -1,0 +1,30 @@
+<ips:template parameters="$member, $signature" />
+{{if !\IPS\Member::loggedIn()->isIgnoring( $member, 'signatures' )}}
+	<div data-role="memberSignature">
+		<hr class='ipsHr'>
+
+		{{if member.member_id}}
+			{{$uniqid = md5( uniqid() );}}
+			<div class='ipsPos_right'>
+				<a href='#elSigIgnore{$uniqid}_menu' data-memberID="{$member->member_id}" id='elSigIgnore{$uniqid}' data-role='signatureOptions' data-ipsMenu class='ipsFaded ipsFaded_more ipsFaded_withHover ipsType_light' data-ipsTooltip title='{lang="edit_signature_options"}'>
+					<i class='fa fa-times'></i> <i class='fa fa-caret-down'></i>
+				</a>
+
+				<ul class='ipsMenu ipsMenu_medium ipsHide' id='elSigIgnore{$uniqid}_menu'>
+					{{if member.member_id != $member->member_id}}
+						<li class='ipsMenu_item' data-ipsMenuValue='oneSignature'>
+							<a href='{url="app=core&module=members&controller=ignore&member_id={$member->member_id}" seoTemplate="ignore"}'>{lang="hide_members_signature" sprintf="$member->name"}</a>
+						</li>
+					{{endif}}
+					<li class='ipsMenu_item' data-ipsMenuValue='allSignatures'>
+						<a href='{url="app=core&module=system&controller=settings&do=toggleSigs" seoTemplate="settings" csrf="true"}'>{lang="hide_all_signatures"}</a>
+					</li>
+				</ul>
+			</div>
+		{{endif}}
+
+		<div class='ipsType_light ipsType_richText' data-controller='core.front.core.lightboxedImages'>
+			{$signature|raw}
+		</div>
+	</div>
+{{endif}}

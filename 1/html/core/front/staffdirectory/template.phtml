@@ -1,0 +1,20 @@
+<ips:template parameters="$groups, $userIsStaff=FALSE" />
+{{if $userIsStaff }}
+	<a href="{url="app=core&module=members&controller=directory&do=form" seotemplate="staffdirectory"}" class='ipsPos_right ipsButton ipsButton_small ipsButton_important' data-ipsDialog data-ipsDialog-title='{lang="leader_edit_mine"}'><i class='fa fa-pencil'></i> &nbsp;{lang="leader_edit_mine"}</a>
+{{endif}}
+<h1 class='ipsType_pageTitle'>
+	{lang="staff_directory"}
+</h1>
+<br><br>
+
+{{foreach $groups as $group}}
+	{{if count( $group->members() )}}
+		<section class='ipsBox cStaffDirectory'>
+			<h2 class='ipsType_sectionTitle ipsType_reset'>{$group->_title}</h2>
+			<div class='ipsPad_half'>
+				{template="$group->template" app="core" group="staffdirectory" location="front" params="$group->members()"}
+			</div>
+		</section>
+		<br>
+	{{endif}}
+{{endforeach}}

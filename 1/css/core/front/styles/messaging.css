@@ -1,0 +1,144 @@
+#elMessageSidebar {
+	/*border-left: 3px solid #ebebeb;*/
+	position: relative;
+	/*overflow: hidden;*/
+}
+
+	#elMessageList  {
+		/*overflow-y: hidden;*/
+		overflow-y: auto;
+		max-height: 500px;
+		min-height: 500px;
+	}
+
+	#elMessageSidebar > .slimScrollDiv {
+		clear: both;
+	}
+
+html[dir="ltr"] #elMessageSidebar .ipsCommentCount {
+	float: right;
+	margin-right: -45px;
+}
+html[dir="rtl"] #elMessageSidebar .ipsCommentCount {
+	float: left;
+	margin-left: -45px;
+}
+
+html[dir="ltr"] #elMessageSidebar .ipsDataItem_main {
+	padding-right: 50px;
+}
+html[dir="rtl"] #elMessageSidebar .ipsDataItem_main {
+	padding-left: 50px;
+}
+
+#elMessageSidebar .cMessageTitle {
+	display: inline-block;
+	font-weight: bold;
+}
+
+#elMessageSidebar [data-role="messageSearch"] {
+	position: relative;
+}
+
+	#elMessageSidebar [data-action="messageSearchCancel"] {
+		position: absolute;
+		top: 0;
+		text-align: center;
+		line-height: 32px;
+		color: inherit;
+		height: 32px;
+		width: 32px;
+		font-size: 16px;
+	}
+	html[dir="ltr"] #elMessageSidebar [data-action="messageSearchCancel"] {
+		right: 0;
+	}
+	html[dir="rtl"] #elMessageSidebar [data-action="messageSearchCancel"] {
+		left: 0;
+	}
+
+html[dir="ltr"] #elMessageViewer {
+	padding-left: 7px;
+}
+html[dir="rtl"] #elMessageViewer {
+	padding-right: 7px;
+}
+
+.cMessage {
+	border-bottom: 2px solid #fff;
+}
+html[dir="ltr"] .cMessage {
+	border-right: 3px solid transparent;
+}
+html[dir="rtl"] .cMessage {
+	border-left: 3px solid transparent;
+}
+
+.cMessage_active {
+	background: {theme="selected"} !important;
+	position: relative;
+}
+
+.cMessageParticipants {
+	font-size: 10px;
+	color: #acacac;
+}
+
+.cMessage_members {
+	margin-top: 10px;
+	line-height: 16px;
+	position: relative;
+}
+	
+	.cMessage_members .ipsField_autocomplete {
+		margin-bottom: 10px;
+	}
+	
+	.cMessage_members > ol > li {
+		border-radius: 2px;
+	}
+	html[dir="ltr"] .cMessage_members > ol > li {
+		border-right: 2px solid #f0f0f0;
+		padding-right: 15px;
+		margin: 7px 15px 7px 0;
+	}
+	html[dir="rtl"] .cMessage_members > ol > li {
+		border-left: 2px solid #f0f0f0;
+		padding-left: 15px;
+		margin: 7px 0 7px 15px;
+	}
+		
+		.cMessage_members > ol {
+			padding-bottom: 0;
+		}
+
+		html[dir="ltr"] .cMessage_members > ol > li:last-child {
+			border-right: 0;
+		}
+		html[dir="rtl"] .cMessage_members > ol > li:last-child {
+			border-left: 0;
+		}
+
+.cMessage_leftConvo {
+	opacity: 0.5;
+}
+
+.cMessage_noSelect {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+#elAddParticipants {
+	width: 28px;
+	height: 28px;
+	line-height: 28px;
+	border-radius: 15px;
+	text-align: center;
+	padding: 0;
+	border: 0;
+}
+
+	#elAddParticipants a {
+		color: inherit;
+	}

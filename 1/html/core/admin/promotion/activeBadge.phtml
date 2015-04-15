@@ -1,0 +1,17 @@
+<ips:template parameters="$id, $text, $currentStatus" />
+{{if $currentStatus === -1}}
+	<span class='ipsBadge ipsBadge_negative'>{lang="$text"}</span>
+{{else}}
+	<span data-ipsStatusToggle>
+		<a href="{url="app=core&module=promotion&controller=advertisements&do=toggle&id=$id&status=0"}" data-ipsTooltip title="{lang="set_inactive"}" {{if $currentStatus !== 1}}class='ipsHide'{{endif}} data-state="enabled">
+			<span class='ipsBadge ipsBadge_positive'>
+				{lang="enabled"}
+			</span>
+		</a>
+		<a href="{url="app=core&module=promotion&controller=advertisements&do=toggle&id=$id&status=1"}" data-ipsTooltip title="{lang="set_active"}" {{if $currentStatus !== 0}}class='ipsHide'{{endif}} data-state="disabled">
+			<span class='ipsBadge ipsBadge_negative'>
+				{lang="disabled"}
+			</span>
+		</a>
+	</span>
+{{endif}}

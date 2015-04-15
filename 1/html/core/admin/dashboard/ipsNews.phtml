@@ -1,0 +1,14 @@
+<ips:template parameters="$news" />
+<ul class="ipsDataList ipsDataList_reducedSpacing">
+	{{if isset($news) }}
+	{{foreach $news as $article}}
+		<li class="ipsDataItem">
+			<span class="ipsDataItem_generic">
+				<a href="{$article['link']}" target="_blank">{$article['title']}</a>
+			</span>
+		</li>
+	{{endforeach}}
+	{{else}}
+	{lang="ipsnews_error_generic"}
+	{{endif}}
+</ul>

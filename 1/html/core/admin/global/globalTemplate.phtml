@@ -1,0 +1,157 @@
+<ips:template parameters="$title,$html,$location=array()" />
+<!DOCTYPE html>
+<html lang="{expression="mb_substr( \IPS\Member::loggedIn()->language()->short, 0, 2 )"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
+	<head>
+		<meta charset="utf-8">
+		<title>{$title}</title>
+		{template="includeCSS" app="core" group="global" location="global" params=""}
+		{template="includeJS" app="core" group="global" location="global" params=""}
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body data-baseurl="{setting="base_url"}" class='ipsApp ipsApp_admin ipsJS_none' data-controller="{expression="implode( ',', \IPS\Output::i()->globalControllers )"}" {{if isset( output.inlineMessage )}}data-message="{expression="output.inlineMessage"}"{{endif}} data-pageApp='{$location['app']}' data-pageLocation='admin' data-pageModule='{$location['module']}' data-pageController='{$location['controller']}'>
+		<a href='#content' id='acpJumpToContent'>{lang="jump_to_content"}</a>
+		<div id='ipsLayout_header' class='ipsClearfix' role='banner' data-controller='core.admin.core.mobileNav'>
+			<header>
+				<a href='{url="&"}' id='elSiteTitle'><span id='elLogo'><img src='{resource="logo.png" app="core" location="admin"}' alt=''></span> IPS Community Suite</a>
+				<ul class='ipsList_inline ipsType_light ipsResponsive_hidePhone'>
+					<li class='ipsResponsive_showDesktop ipsResponsive_inline'>
+						<a href='#elAdminUser_menu' id='elAdminUser' data-ipsMenu>
+							{lang="logged_in_as" sprintf="\IPS\Member::loggedIn()->name"} &nbsp;<i class='fa fa-caret-down'></i>
+						</a>
+					</li>
+					<li><a href='../' target='_blank'><i class='fa fa-home'></i> {lang="site"}</a></li>
+				</ul>
+				<ul id='elMobileNav' class='ipsList_inline ipsResponsive_hideDesktop ipsResponsive_block'>
+					<li class='ipsJS_show'>
+						<a href='#' class='ipsResponsive_showPhone ipsResponsive_block' data-action="mobileSearch"><i class='fa fa-search'></i></a>
+					</li>
+					<li data-ipsDrawer data-ipsDrawer-drawerElem='#elMobileDrawer' title='{lang="admincp_menu"}'>
+						<a href='#'><i class='fa fa-align-justify'></i></a>
+					</li>
+				</ul>
+			</header>
+			<div class='ipsPad_half ipsJS_show' id='acpLiveSearch'>
+				<input type='text' class='' id='acpSearchKeyword' placeholder='{lang="search_admincp"}'>
+			</div>
+		</div>
+		<ul id='elAdminUser_menu' class='ipsMenu ipsMenu_narrow ipsHide'>
+			<li class='ipsMenu_item'><a href='{url="app=core&module=members&controller=members&do=adminDetails"}' data-ipsDialog data-ipsDialog-url='{url="app=core&module=members&controller=members&do=adminDetails"}' data-ipsDialog-title='{lang="change_details"}' data-ipsDialog-size='narrow'><i class='fa fa-pencil'></i>&nbsp; {lang="change_details"}</a></li>
+			{{if count( \IPS\Lang::languages() ) > 1}}
+				<li class='ipsMenu_item ipsMenu_subItems'>
+					<a href='#elNavLang_menu' id='elNavLang'><i class='fa fa-globe'></i>&nbsp; {lang='acp_language'}</a>
+					<ul id='elNavLang_menu' class='ipsMenu ipsMenu_selectable ipsHide'>
+					{{foreach \IPS\Lang::languages() as $id => $lang }}
+						<li class='ipsMenu_item{{if \IPS\Member::loggedIn()->acp_language == $id || ( $lang->default && \IPS\Member::loggedIn()->acp_language === 0 )}} ipsMenu_itemChecked{{endif}}'>
+							<a href='{url="app=core&module=system&controller=language&id=$id" csrf="true"}'>{{if $lang->get__icon()}}<i class='{$lang->get__icon()}'></i> {{endif}}{$lang->title} {{if $lang->default}}{lang="default"}{{endif}}</a>
+						</li>
+					{{endforeach}}
+					</ul>
+				</li>
+			{{endif}}
+			{{if count( \IPS\Theme::themes() ) > 1}}
+				<li class='ipsMenu_item ipsMenu_subItems'>
+					<a href='#elNavTheme_menu' id='elNavTheme'><i class='fa fa-leaf'></i>&nbsp; {lang='acp_skin'}</a>
+					<ul id='elNavTheme_menu' class='ipsMenu ipsMenu_selectable ipsHide'>
+					{{foreach \IPS\Theme::themes() as $id => $set }}
+						{{if $set->canAccess()}}
+							<li class='ipsMenu_item{{if \IPS\Member::loggedIn()->acp_skin == $id || ($set->is_default && \IPS\Member::loggedIn()->acp_skin === 0 )}} ipsMenu_itemChecked{{endif}}'>
+								<a href='{url="app=core&module=system&controller=theme&id=$id" csrf="true"}'>{lang="$set->_title"} {{if $set->is_default}}{lang="default"}{{endif}}</a>
+							</li>
+						{{endif}}
+					{{endforeach}}
+					</ul>
+				</li>
+			{{endif}}
+			<li class='ipsMenu_sep'><hr></li>
+			<li class='ipsMenu_item'><a href='{url="app=core&module=system&controller=login&do=logout"}'><i class='fa fa-power-off'></i>&nbsp; {lang="sign_out"}</a></li>
+		</ul>
+		<a id='content'></a>
+		<main class='ipsColumns ipsColumns_noSpacing' id='acpMainLayout'>
+			<nav class='ipsColumn ipsColumn_veryWide ipsResponsive_hidePhone' id='acpAppMenu'>
+				{{if isset( \IPS\Output::i()->sidebar['appmenu'] )}}{expression="\IPS\Output::i()->sidebar['appmenu']" raw="true"}{{endif}}
+			</nav>
+			<div class='ipsColumn ipsColumn_fluid' id='acpMainArea'>
+				{template="lkeyWarning" app="core" group="global" location="global" params=""}
+				{{if !in_array( 'acpHeader', \IPS\Output::i()->hiddenElements)}}
+					<div id='acpPageHeader'>
+						{{if count( \IPS\Output::i()->breadcrumb )}}
+							<nav class='ipsBreadcrumb ipsSubNavigation'>
+								<ul id='breadcrumb' itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+									{{$i = 0;}}
+									{{foreach \IPS\Output::i()->breadcrumb as $k => $b}}
+										<li>
+											{{if $b[0] === NULL}}
+												{lang="$b[1]"}
+											{{else}}
+												<a href='{$b[0]}' itemprop="url">
+													<span itemprop="title">{lang="$b[1]"} {{if ( $i + 1 != count( \IPS\Output::i()->breadcrumb ) )}}<i class='fa fa-angle-right'></i>{{endif}}</span>
+												</a>
+											{{endif}}
+										</li>
+										{{$i++;}}
+									{{endforeach}}
+								</ul>
+							</nav>
+						{{endif}}
+						<h1 class='ipsType_pageTitle'>
+							{$title}
+							{{if \IPS\Output::i()->editUrl}}
+								<a href="{expression="\IPS\Output::i()->editUrl"}" class="ipsType_medium" data-ipsDialog data-ipsDialog-title="{lang="edit"}"><i class="fa fa-pencil"></i></a>
+							{{endif}}
+							{{if \IPS\IN_DEV}}
+								{template="searchKeywords" group="global" app="core" params="'app=' . \IPS\Request::i()->app . '&module=' . \IPS\Request::i()->module . '&controller=' . \IPS\Request::i()->controller . ( ( isset( \IPS\Request::i()->do ) and \IPS\Request::i()->do != 'do' ) ? ( '&do=' . \IPS\Request::i()->do ) : '' )"}
+							{{endif}}
+						</h1>
+					</div>
+					{{if isset(\IPS\Output::i()->sidebar['actions'])}}
+						<div class='acpToolbar ipsClearfix'>
+							{template="pageButtons" app="core" group="global" location="admin" params="\IPS\Output::i()->sidebar['actions']"}
+						</div>
+					{{endif}}
+				{{endif}}
+				<div id='acpContent'>
+					{{if \IPS\Output::i()->inlineMessage}}
+						<noscript>
+							<div class="ipsMessage ipsMessage_information ipsMessageInABottle">
+								{lang="\IPS\Output::i()->inlineMessage"}
+							</div>
+						</noscript>
+					{{endif}}
+
+					{{if !\IPS\Output::i()->responsive}}
+						<div class='ipsResponsive_showPhone ipsResponsive_block ipsType_center'>
+							<i class='ipsType_huge fa fa-tablet'></i><br>
+							<h2 class='ipsType_sectionHead'>{lang="not_mobile"}</h2>
+							<br><br>
+							<p class='ipsType_normal'>
+								{lang="not_mobile_desc"}
+							</p>
+						</div>
+						<div class='ipsResponsive_hidePhone'>
+							{$html|raw}
+						</div>
+					{{else}}
+						{$html|raw}
+					{{endif}}
+				</div>
+			</div>
+		</main>
+		<div id='acpLiveSearchResults' class='ipsHide' data-controller='core.admin.core.liveSearch'>
+			<div class='ipsColumns ipsColumns_noSpacing ipsColumns_collapsePhone'>
+				<div class='ipsColumn ipsColumn_medium' data-role="searchMenu">
+					<div data-ipsSideMenu data-ipsSideMenu-type='radio'>
+						<ul class="ipsSideMenu_list">
+							{{foreach \IPS\Application::allExtensions( 'core', 'LiveSearch', TRUE, 'core', 'Settings' ) as $key => $extension}}
+								{{if $extension->hasAccess()}}
+									<li class="ipsSideMenu_item" data-ipsMenuValue='{$key}'><a href="#">{lang="acp_search_title_{$key}"} <span data-role="resultCount" class='ipsSideMenu_itemCount'>0</span></a></li>
+								{{endif}}
+							{{endforeach}}
+						</ul>
+					</div>
+				</div>
+				<div class='ipsColumn ipsColumn_fluid ipsPad ipsScrollbar' data-role="searchResults"></div>
+			</div>
+		</div>
+		{{if isset( \IPS\Output::i()->sidebar['mobilenav'] )}}{expression="\IPS\Output::i()->sidebar['mobilenav']" raw="true"}{{endif}}
+	</body>
+</html>

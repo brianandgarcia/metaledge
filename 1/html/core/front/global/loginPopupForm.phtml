@@ -1,0 +1,30 @@
+<ips:template parameters="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL" />
+<form accept-charset='utf-8' class="ipsPad ipsForm ipsForm_vertical" method='post' action='{$action}' data-ipsValidation novalidate>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+	<h4 class="ipsType_sectionHead">{lang="login"}</h4>
+	<br><br>
+	<ul class='ipsList_reset'>
+		{{foreach $elements as $collection}}
+			{{foreach $collection as $input}}
+				{{if $input instanceof \IPS\Helpers\Form\Text}}
+					<li class="ipsFieldRow ipsFieldRow_noLabel ipsFieldRow_fullWidth">
+						<input type="{$input->formType}" required placeholder="{lang="$input->name"}" name='{$input->name}' id='{$input->htmlId}'>
+					</li>
+				{{else}}
+					{$input->rowHtml($form)|raw}
+				{{endif}}
+			{{endforeach}}
+		{{endforeach}}
+		<li class="ipsFieldRow ipsFieldRow_fullWidth">
+			<br>
+			<button type="submit" class="ipsButton ipsButton_primary ipsButton_small" id="elSignIn_submit">{lang="login"}</button>
+			<br>
+			<p class="ipsType_right ipsType_small">
+				<a href='{url="app=core&module=system&controller=lostpass" seoTemplate="lostpassword"}' data-ipsDialog data-ipsDialog-title='{lang="forgotten_password"}'>{lang="forgotten_password"}</a>
+			</p>
+		</li>
+	</ul>
+</form>

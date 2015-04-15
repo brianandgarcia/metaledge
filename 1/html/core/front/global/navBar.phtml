@@ -1,0 +1,64 @@
+<ips:template parameters=" " />
+<nav class='ipsLayout_container'>
+	<div class='ipsClearfix' id='elSearchNavContainer'>
+		{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'search' ) ) AND !in_array('ipsLayout_minimal', \IPS\Output::i()->bodyClasses )}}
+			<div id='elSearch' class='ipsPos_right' data-controller='core.front.core.quickSearch'>
+				<form accept-charset='utf-8' action='{url="app=core&module=search&controller=search" seoTemplate="search"}' method='post'>
+					<a href='#' id='elSearchFilter' data-ipsMenu data-ipsMenu-selectable='radio' data-ipsMenu-appendTo='#elSearch' class="ipsHide">
+						<span data-role='searchingIn'>
+							{lang="search_everything"}
+						</span>
+						<i class='fa fa-caret-down'></i>
+					</a>
+					<ul id='elSearchFilter_menu' class='ipsMenu ipsMenu_selectable ipsMenu_narrow ipsHide'>
+						<li class='ipsMenu_item ipsMenu_itemChecked' data-ipsMenuValue='all'>
+							<a href='{url="app=core&module=search&controller=search&do=search" csrf="1"}' title='{lang="search_everything"}'>{lang="search_everything"}</a>
+						</li>
+						<li class='ipsMenu_sep'><hr></li>
+						{{if count( output.contextualSearchOptions )}}
+							{{foreach output.contextualSearchOptions as $name => $data}}
+								<li class='ipsMenu_item' data-ipsMenuValue='{expression="json_encode( $data )"}' data-options='{expression="json_encode( $data )"}'>
+									<a href='#'>{$name}</a>
+								</li>
+							{{endforeach}}
+							<li class='ipsMenu_sep'><hr></li>
+						{{endif}}
+						<li data-role='globalSearchMenuOptions'></li>
+						<li class='ipsMenu_item ipsMenu_itemNonSelect'>
+							<a href='{url="app=core&module=search&controller=search" seoTemplate="search"}' accesskey='4'><i class='fa fa-cog'></i> {lang="advanced_search"}</a>
+						</li>
+					</ul>
+					<input type='search' id='elSearchField' placeholder='{lang="search_placeholder"}' name='term'>
+					<button type='submit'><i class='fa fa-search'></i></button>
+				</form>
+			</div>
+		{{endif}}
+		<ul id='ipsLayout_mainNav' class='ipsPos_left'>
+			{{if !in_array('ipsLayout_minimal', \IPS\Output::i()->bodyClasses )}}
+				{{if \IPS\Settings::i()->show_home_link}}
+					<li><a href='{setting="home_url"}'>{setting="home_name"}</a></li>
+				{{endif}}
+				{{foreach \IPS\Application::allExtensions( 'core', 'FrontNavigation' ) as $id => $nav}}
+					{{if $nav->canView()}}
+						<li>
+							<a id="elNavigation_app_{expression="strtok( $id, '_')"}" href='{$nav->link()}' {{if $nav->active()}}class='active'{{endif}} {{if $children = $nav->children()}}data-ipsMenu{{endif}}>
+								{$nav->title()}
+								{{if $children}}
+									&nbsp;<i class='fa fa-caret-down'></i>
+								{{endif}}
+							</a>
+						</li>
+						{{if $children}}
+							<ul id="elNavigation_app_{expression="strtok( $id, '_')"}_menu" class="ipsMenu ipsMenu_auto ipsHide">
+								{template="navBarChildren" app="core" group="global" params="$children"}
+							</ul>
+						{{endif}}
+					{{endif}}
+				{{endforeach}}
+			{{endif}}
+			{{if member.group['g_view_board']}}
+				<li class='ipsHide cCommunityHome'><a href='{setting="base_url"}' title='{lang="go_community_home"}'><i class='fa fa-angle-left'></i> {lang="community_home"}</a></li>
+			{{endif}}
+		</ul>
+	</div>
+</nav>

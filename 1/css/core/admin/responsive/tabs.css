@@ -1,0 +1,36 @@
+@media screen and (max-width: 767px) {
+
+	.ipsApp_admin .ipsTabs {
+		border-top: 0px;
+		margin: 0 0 0;
+		background: #e0e0e0;
+		padding: 4px 4px 0 4px;
+	}
+
+		.ipsApp_admin .ipsTabs .ipsTabs_activeItem {
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+	.ipsApp_admin .ipsTabs_item {
+		border-top: 0;
+	}
+	html[dir="ltr"] .ipsApp_admin .ipsTabs_item {
+		border-right: 0;
+	}
+	html[dir="rtl"] .ipsApp_admin .ipsTabs_item {
+		border-left: 0;
+	}
+
+	.ipsApp_admin .acpFormTabContent {
+		border: 4px solid #e0e0e0;
+		border-top: 0;
+		background: #fff;
+		padding: 10px;
+	}
+
+	.acpFormTabBar .ipsTabs_item:not( .ipsTabs_activeItem ) {
+		color: #333;
+	}
+
+}

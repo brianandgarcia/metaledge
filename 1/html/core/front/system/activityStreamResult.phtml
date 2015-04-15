@@ -1,0 +1,35 @@
+<ips:template parameters="$activity" />
+{{$activityClass = get_class( $activity );}}
+{{$activityParts = explode( '\\', $activityClass );}}
+{{$application = $activityParts[1];}}
+
+<li class='ipsDataItem'>
+	<div class='ipsDataItem_icon ipsType_center ipsPos_top ipsResponsive_hidePhone'>
+		{template="userPhoto" group="global" app="core" params="$activity->author(), 'tiny'"}
+		<br><br>
+		<i class="fa fa-{$activityClass::$icon} ipsType_large ipsType_light" title="{lang="$activityClass::$title"}" data-ipsTooltip></i>
+	</div>
+	<div class='ipsDataItem_main'>
+		<p class='ipsType_reset ipsType_break ipsContained ipsType_normal'>
+			<strong class='ipsType_normal'>
+				{{if $activity instanceof \IPS\Content\Comment or $activity instanceof \IPS\Content\Review}}
+					{{if $activity->isFirst()}}
+						{{$activityItemClass = $activity::$itemClass;}}
+						{lang="user_own_activity_item" sprintf="$activity->item()->author()->name, $activity->item()->indefiniteArticle()"} <a href='{$activity->item()->container()->url()}'>{$activity->item()->container()->_title}</a>
+					{{else}}
+						{lang="user_own_activity_comment" sprintf="$activity->author()->name" htmlsprintf="'<a href=\'' . $activity->url() . '\'>' . $activity->indefiniteArticle() . '</a>'"} <a href='{$activity->item()->url()}'>{$activity->item()->mapped('title')}</a>
+					{{endif}}
+				{{else}}
+					{lang="user_own_activity_item" sprintf="$activity->author()->name, $activity->indefiniteArticle()"} <a href='{$activity->container()->url()}'>{$activity->container()->_title}</a>
+				{{endif}}
+			</strong>
+			&nbsp;&nbsp;
+			<span class='ipsType_light ipsType_noBreak'>{datetime="$activity->mapped('date')"}</span>
+		</p>
+		{{if ( $activity instanceof \IPS\Content\Comment or $activity instanceof \IPS\Content\Review ) and $activity->isFirst()}}
+			{template="snippet" group="global" app="$application" params="$activity->item()"}
+		{{else}}
+			{template="snippet" group="global" app="$application" params="$activity"}
+		{{endif}}
+	</div>
+</li>

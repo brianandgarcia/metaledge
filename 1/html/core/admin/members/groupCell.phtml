@@ -1,0 +1,6 @@
+<ips:template parameters="$group, $secondaryGroups" />
+{$group}
+{{if count( $secondaryGroups )}}
+	<br>
+	<span class='ipsType_light ipsType_small'>{lang="secondary_groups"}: {expression="\IPS\Member::loggedIn()->language()->formatList( $secondaryGroups )"}</span>
+{{endif}} 

@@ -1,0 +1,32 @@
+<ips:template parameters="$title, $message, $code, $backtrace" />
+
+<section id='elError' class='ipsType_center'>
+	<div class='ipsAreaBackground_light ipsPad'>
+		<i class='fa fa-exclamation-circle ipsType_huge'></i>
+		<p class='ipsType_reset ipsType_light ipsType_large'>
+			{lang="something_went_wrong"}
+		</p>
+		<p id='elErrorMessage'>
+			{$message|raw}
+		</p>
+		<p class='ipsType_light ipsType_reset ipsType_normal'>
+			{lang="error_page_code"} <strong>{$code}</strong>
+		</p>
+	</div>
+	
+	<p class='ipsType_light ipsType_large'>
+		<a href='{url="app=core&module=contact&controller=contact" seoTemplate="contact"}' title='{lang="contact_admin"}'>
+			{lang="contact_admin"}
+		</a>
+	</p>
+	{{if !member.member_id}}
+		<br>
+		<a href='{url="app=core&module=system&controller=login" seoTemplate="login"}' class='ipsButton ipsButton_normal ipsButton_medium' title='{lang="sign_in"}'>
+			{lang="sign_in"}
+		</a>
+	{{endif}}
+</section>
+{{if $backtrace}}
+	<br><hr class='ipsHr'><br>
+	<pre>{$backtrace}</pre>
+{{endif}}

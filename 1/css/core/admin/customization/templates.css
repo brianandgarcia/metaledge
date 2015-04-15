@@ -1,0 +1,198 @@
+/* ----- */
+
+html[dir="ltr"] #elTemplateEditor_panelWrap,
+html[dir="ltr"] #elTemplateEditor_panelToolbar {
+	margin-left: 15px;
+}
+html[dir="rtl"] #elTemplateEditor_panelWrap,
+html[dir="rtl"] #elTemplateEditor_panelToolbar {
+	margin-right: 15px;
+}
+
+#elTemplateEditor .ipsTabs {
+	background: #f7f7f7;
+	padding: 0;
+}
+
+#elTemplateEditor [data-role="templateToolbar"] {
+	margin-bottom: 15px;
+}
+
+#elTemplateEditor_panelWrap {
+	position: absolute;
+	top: 0px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+#elTemplateEditor_outerPanelWrap {
+	position: relative;
+	height: 590px;
+}
+
+#elTemplateEditor [data-role="templatePanelWrap"] {
+	width: 100%;
+	background-color: #fff;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+	#elTemplateEditor [data-role="templatePanelWrap"] textarea {
+		height: 550px;
+	}
+
+#elTemplateEditor [data-action="closeTab"] {
+	font-size: 12px;
+	color: #b4b4b4;
+	margin: 0 0px 0 3px;
+}
+html[dir="rtl"] #elTemplateEditor [data-action="closeTab"] {
+	margin: 0 3px 0 0px;
+}
+
+	#elTemplateEditor [data-action="closeTab"]:hover,
+	#elTemplateEditor [data-state="unsaved"] [data-action="closeTab"] {
+		color: #333;
+	}
+
+/* FILE LISTING STYLES */
+#elTemplateEditor_fileList {
+	height: 550px;
+	overflow: auto;
+}
+
+#elTemplateEditor [data-role="fileList"] .ipsTabs {
+	margin-top: 15px;
+}
+
+#elTemplateEditor [data-role="fileList"] .ipsTabs_item {
+	width: 50%;
+	text-align: center;
+}
+
+.cTemplateList a {
+	padding: 5px 0;
+	display: block;
+	position: relative;
+	color: #333;
+}
+
+.cTemplateList li.cTemplateList_inactiveBranch > a:before,
+.cTemplateList li.cTemplateList_activeBranch > a:before {
+	font-family: 'FontAwesome';
+	display: inline-block;
+	margin-right: 7px;
+	line-height: 6px;
+	font-size: 14px;
+}
+	html[dir="ltr"] .cTemplateList li.cTemplateList_inactiveBranch > a:before {
+		content: '\\f0da';
+	}
+	html[dir="rtl"] .cTemplateList li.cTemplateList_inactiveBranch > a:before {
+		content: '\\f0d9';
+	}
+
+	.cTemplateList li.cTemplateList_activeBranch > a:before {
+		content: '\\f0d7';
+	}
+
+.cTemplateList li.cTemplateList_inactiveBranch > ul {
+	display: none;
+}
+
+html[dir="ltr"] .cTemplateList li a {
+	padding-left: 15px;
+}
+html[dir="rtl"] .cTemplateList li a {
+	padding-right: 15px;
+}
+
+html[dir="ltr"] .cTemplateList li li a {
+	padding-left: 30px;
+}
+html[dir="rtl"] .cTemplateList li li a {
+	padding-right: 30px;
+}
+
+	html[dir="ltr"] .cTemplateList li li li a {
+		padding-left: 45px;
+	}
+	html[dir="rtl"] .cTemplateList li li li a {
+		padding-right: 45px;
+	}
+
+		html[dir="ltr"] .cTemplateList li li li li a {
+			padding-left: 70px;
+		}
+		html[dir="rtl"] .cTemplateList li li li li a {
+			padding-right: 70px;
+		}
+
+.cTemplateList li.cTemplateList_activeNode > a {
+	background: #748391;
+	color: #fff;
+}
+
+.cTemplateList li:not( .cTemplateList_activeNode ) > a:hover {
+	background: #fafafa;
+}
+
+/* INHERITED VALUES */
+a[data-inherited-value]:after {
+	position: absolute;
+	margin-top: 2px;
+}
+html[dir="ltr"] a[data-inherited-value]:after {
+	right: 5px;
+}
+html[dir="rtl"] a[data-inherited-value]:after {
+	left: 5px;
+}
+
+li[class^="cTemplateState_"]:before {
+	display: inline-block;
+	color: #fff !important;
+}
+
+a[data-inherited-value]:after, li[class^="cTemplateState_"]:before {
+	font-size: 9px;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-family: monospace;
+	padding: 0 5px;
+	color: #b3b3b3;
+	line-height: 14px;
+	border-radius: 10px;
+	opacity: 0.1;
+	{prefix="transition" value="0.4s all linear"}
+}
+
+a[data-inherited-value="original"]:after {
+	display: none;
+}
+
+	.cTemplateList:hover a[data-inherited-value]:after, li[class^="cTemplateState_"]:before {
+		opacity: 1;
+	}
+
+.cTemplateList a[data-inherited-value="custom"]:after, .cTemplateState_custom:before {
+	content: 'C';
+	background: #c9c030;
+	color: #fff;
+}
+
+.cTemplateList a[data-inherited-value="inherit"]:after, .cTemplateState_inherit:before {
+	content: 'I';
+	background: #83b256;
+	color: #fff;
+}
+
+.cTemplateList a[data-inherited-value="changed"]:after, .cTemplateState_changed:before {
+	content: 'M';
+	background: #c93054;
+	color: #fff;
+}

@@ -1,0 +1,5 @@
+<ips:template parameters="$author, $url=''" />
+{{if $url}}
+	{{$author = "<a href='{$url}' target='_blank'>{$author}</a>";}}
+{{endif}}
+{lang="theme_by" htmlsprintf="$author"}

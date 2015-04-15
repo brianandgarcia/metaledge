@@ -1,0 +1,54 @@
+<ips:template parameters="$event" />
+<div data-controller='core.front.core.commentFeed' data-baseURL='{$event->url()}' {{if $event->isLastPage('reviews')}}data-lastPage{{endif}} data-feedID='event-{$event->id}-reviews'>
+	{{if $event->canReview()}}
+		{{if $event->locked()}}
+			<strong class='ipsType_warning'><i class='fa fa-info-circle'></i> {lang="item_locked_can_review"}</strong>
+		{{endif}}
+		<div id='elEventReviewForm'>
+			{$event->reviewForm()|raw}
+		</div>
+	{{else}}
+		{{if $event->locked()}}
+			{template="commentUnavailable" group="forms" location="front" app="core" params="'item_locked_cannot_comment'"}
+		{{elseif \IPS\Member::loggedin()->restrict_post}}
+			{template="commentUnavailable" group="forms" location="front" app="core" params="'restricted_cannot_comment', \IPS\Member::loggedIn()->restrict_post"}
+		{{endif}}
+	{{endif}}
+	{{if count( $event->reviews() )}}
+		<div class="ipsClearfix">
+			{{if $event->reviewPageCount() > 1}}
+				<div class="ipsPos_left">
+					{$event->reviewPagination( array( 'tab', 'sort' ) )|raw}
+				</div>
+			{{endif}}
+			<div class="ipsClearfix ipsResponsive_showDesktop ipsPos_right">
+				<ul class="ipsButtonRow ipsPos_left ipsClearfix">
+					<li data-action="tableFilter" data-filter="helpful">
+						<a href="{$event->url()->setQueryString( array( 'tab' => 'reviews', 'page' => 1, 'sort' => 'helpful' ) )}" class="{{if !isset( request.sort ) or request.sort != 'newest'}}ipsButtonRow_active{{endif}}" data-action="filterClick">{lang="most_helpful"}</a>
+					</li>
+					<li data-action="tableFilter" data-filter="newest">
+						<a href="{$event->url()->setQueryString( array( 'tab' => 'reviews', 'page' => 1, 'sort' => 'newest' ) )}" class="{{if isset( request.sort ) and request.sort == 'newest'}}ipsButtonRow_active{{endif}}" data-action="filterClick">{lang="newest"}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<br>
+		<div data-role='commentFeed' data-controller='core.front.core.moderation'>
+			<form action="{$event->url()->setQueryString( 'do', 'multimodReview' )}" method="post" data-ipsPageAction data-role='moderationTools'>
+				{{$reviewCount=0; $firstUnread = $event->firstUnreadReview();}}
+				{{foreach $event->reviews() as $review}}
+					{{if $reviewCount and $firstUnread and $firstUnread == $comment}}
+						<hr class="ipsCommentUnreadSeperator">
+					{{endif}}
+					{{$reviewCount++;}}
+					{$review->html()|raw}
+				{{endforeach}}
+				{template="commentMultimod" app="core" group="global" params="$event, 'review'"}
+			</form>
+		</div>
+		{{if $event->reviewPageCount() > 1}}
+			<hr class='ipsHr'>
+			{$event->reviewPagination( array( 'tab', 'sort' ) )|raw}
+		{{endif}}
+	{{endif}}
+</div>

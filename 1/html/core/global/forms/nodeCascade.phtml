@@ -1,0 +1,51 @@
+<ips:template parameters="$nodes, $results=FALSE, $permCheck=NULL, $subnodes=TRUE, $togglePerm=NULL, $toggleIds=array(), $disabledCallback=NULL, $autoPopulate=FALSE, $children=NULL, $nodeClass=NULL, $where=NULL, $disabledArray=array(), $noParentNodesTitle=NULL, $noParentNodes=array()" />
+{{if empty( $nodes )}}
+	<p class='ipsPad_half ipsType_reset ipsType_light'>{lang="no_results"}</p>
+{{else}}
+	<ul class='ipsList_reset'>
+		{{foreach $nodes as $node}}
+			<li>
+				{{if ( $permCheck === NULL or $node->can( $permCheck ) ) and ( $disabledCallback === NULL or call_user_func( $disabledCallback, $node ) ) and !in_array( $node->_id, $disabledArray )}}
+					<div data-action="nodeSelect" class='ipsSelectTree_item {{if $node->hasChildren( NULL, NULL, $subnodes, $where )}}ipsSelectTree_withChildren{{endif}} {{if $autoPopulate AND isset( $children[ $node->_id ] )}}ipsSelectTree_itemOpen{{endif}}' data-id="{$node->_id}{{if $nodeClass and !( $node instanceof $nodeClass )}}.s{{endif}}" data-breadcrumb='{expression="json_encode( array_values( array_map( function( $val ){ return isset( $val::$titleLangPrefix ) ? \IPS\Member::loggedIn()->language()->addToStack( $val::$titleLangPrefix . $val->_id, FALSE, array( 'json' => TRUE, 'escape' => TRUE ) ) : $val->_title; }, iterator_to_array( $node->parents() ) ) ) )"}' {{if $togglePerm AND $node->can( $togglePerm ) AND count( $toggleIds )}}data-control="toggle" data-toggles="{expression="implode( ',', $toggleIds )"}"{{endif}} {{if $autoPopulate AND isset( $children[ $node->_id ] )}}data-childrenloaded="true"{{endif}}>
+						{{if $node->hasChildren( NULL, NULL, FALSE, $where )}}
+							<a href='#' data-action="getChildren" class='ipsSelectTree_toggle'></a>
+						{{endif}}
+						<span data-role="nodeTitle">{$node->_title}</span>
+					</div>
+					{{if $autoPopulate AND isset( $children[ $node->_id ] ) and get_class( $node ) == ltrim( $nodeClass, '\\' )}}
+						<div data-role="childWrapper">
+							{template="nodeCascade" app="core" group="forms" location="global" params="$children[ $node->_id ], FALSE, $permCheck, $subnodes, $togglePerm, $toggleIds, $disabledCallback, FALSE, $children, $nodeClass, $where, $disabledArray"}
+						</div>
+					{{endif}}
+				{{else}}
+					{{if $disabledCallback === NULL or call_user_func( $disabledCallback, $node ) !== NULL}}
+						<div class='ipsSelectTree_item ipsSelectTree_itemDisabled {{if $node->hasChildren( NULL, NULL, $subnodes, $where )}}ipsSelectTree_withChildren{{endif}} {{if $autoPopulate AND isset( $children[ $node->_id ] )}}ipsSelectTree_itemOpen{{endif}}' data-id="{$node->_id}" data-breadcrumb='{expression="json_encode( array_values( array_map( function( $val ){ return isset( $val::$titleLangPrefix ) ? \IPS\Member::loggedIn()->language()->addToStack( $val::$titleLangPrefix . $val->_id, FALSE, array( 'json' => TRUE, 'escape' => TRUE ) ) : $val->_title; }, iterator_to_array( $node->parents() ) ) ) )"}' {{if $autoPopulate AND isset( $children[ $node->_id ] )}}data-childrenloaded="true"{{endif}}>
+							{{if $node->hasChildren( NULL, NULL, $subnodes, $where )}}
+								<a href='#' data-action="getChildren" class='ipsSelectTree_toggle'></a>
+							{{endif}}
+							<span data-role="nodeTitle">{$node->_title}</span>
+						</div>
+						{{if $autoPopulate AND isset( $children[ $node->_id ] )}}
+							<div data-role="childWrapper">
+								{template="nodeCascade" app="core" group="forms" location="global" params="$children[ $node->_id ], FALSE, $permCheck, $subnodes, $togglePerm, $toggleIds, $disabledCallback, $autoPopulate, $children, $nodeClass, $where, $disabledArray"}
+							</div>
+						{{endif}}
+					{{endif}}
+				{{endif}}
+			</li>
+		{{endforeach}}
+		{{if $noParentNodesTitle and count( $noParentNodes )}}
+			<li>
+				<div class='ipsSelectTree_item ipsSelectTree_itemDisabled ipsSelectTree_withChildren {{if $autoPopulate}}ipsSelectTree_itemOpen{{endif}}' data-id="0" data-breadcrumb='{expression="json_encode( array() )"}' {{if $autoPopulate}}data-childrenloaded="true"{{endif}}>
+					<a href='#' data-action="getChildren" class='ipsSelectTree_toggle'></a>
+					<span data-role="nodeTitle">{lang="$noParentNodesTitle"}</span>
+				</div>
+				{{if $autoPopulate}}
+					<div data-role="childWrapper">
+						{template="nodeCascade" app="core" group="forms" location="global" params="$noParentNodes, FALSE, $permCheck, $subnodes, $togglePerm, $toggleIds, $disabledCallback, $autoPopulate, $children, $nodeClass, $where, $disabledArray"}
+					</div>
+				{{endif}}
+			</li>
+		{{endif}}
+	</ul>
+{{endif}}

@@ -1,0 +1,34 @@
+<ips:template parameters="$topic, $post" />
+<div class='ipsEmbedded'>
+	<div class='ipsEmbedded_headerArea'>
+		<h4 class='ipsType_reset ipsType_normal ipsTruncate ipsTruncate_line'><i class='fa fa-comments' data-ipsTooltip title='{lang="embed_topic"}'></i> &nbsp;<a href='{{if $post}}{$post->url()->setQueryString( 'do', ( \IPS\Request::i()->embedDo != 'findComment' ) ? \IPS\Request::i()->embedDo : null )}{{else}}{{if isset( \IPS\Request::i()->page ) AND \IPS\Request::i()->page > 1}}{$topic->url()->setQueryString( 'page', intval( \IPS\Request::i()->page ) )->setQueryString( 'do', ( \IPS\Request::i()->embedDo != 'findComment' ) ? \IPS\Request::i()->embedDo : null )}{{else}}{$topic->url()->setQueryString( 'do', ( \IPS\Request::i()->embedDo != 'findComment' ) ? \IPS\Request::i()->embedDo : null )}{{endif}}{{endif}}' title='{lang="view_this_topic"}' target='_top'>{$topic->title}</a></h4>
+	</div>
+
+	<div class='ipsEmbedded_content'>
+		<div class='ipsPhotoPanel ipsPhotoPanel_mini ipsClearfix ipsType_medium'>
+			{{if $post}}
+			{template="userPhoto" group="global" app="core" params="$post->author(), 'mini', NULL, '', FALSE"}
+			<div>
+				<span class='ipsType_light ipsType_small'>{lang="byline" sprintf="$post->author()->name"} {datetime="$post->mapped('date')"}</span>
+				<div data-ipsTruncate data-ipsTruncate-size='1 lines' data-ipsTruncate-type='remove' class='cTopicEmbeddedPreview'>
+					{$post->truncated( TRUE )|raw}
+				</div>
+			</div>
+			{{else}}
+			{template="userPhoto" group="global" app="core" params="$topic->author(), 'mini', NULL, '', FALSE"}
+			<div>
+				<span class='ipsType_light ipsType_small'>{lang="byline" sprintf="$topic->author()->name"} {datetime="$topic->mapped('date')"}</span>
+				<div data-ipsTruncate data-ipsTruncate-size='1 lines' data-ipsTruncate-type='remove' class='cTopicEmbeddedPreview'>
+					{$topic->truncated( TRUE )|raw}
+				</div>
+				<ul class='ipsList_inline ipsType_small ipsEmbedded_stats'>
+					{{if $topic->container()->allow_rating}}
+						<li>{template="rating" app="core" params="'small', $topic->averageRating()" group="global"}</li>
+					{{endif}}
+					<li><i class='fa fa-comment'></i> {lang="replies_number" pluralize="$topic->mapped('num_comments') - 1"}</li>
+				</ul>
+			</div>
+			{{endif}}
+		</div>
+	</div>
+</div>

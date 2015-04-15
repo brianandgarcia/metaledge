@@ -1,0 +1,20 @@
+html[dir="ltr"] #acpEnhancements .acpEnhancement_logo {
+	margin-left: 10px;
+}
+html[dir="rtl"] #acpEnhancements .acpEnhancement_logo {
+	margin-right: 10px;
+}
+
+/* TABLETS */
+@media screen and (max-width: 979px) {
+	#acpEnhancements .acpEnhancement_logo {
+		max-width: 50px;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+	#acpEnhancements .acpEnhancement_logo {
+		max-width: 30px;
+	}
+}

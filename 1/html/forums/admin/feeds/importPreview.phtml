@@ -1,0 +1,19 @@
+<ips:template parameters="$feed" />
+<form method="post">
+	<input type="hidden" name="continue" value="1">
+	<ol class='ipsDataList ipsClear'>
+		{{foreach $feed as $item}}
+			<li class="ipsDataItem">
+				<div class='ipsDataItem_main'>
+					<h3 class='ipsDataItem_title'>{$item['title']}</h3>
+					<div class='ipsDataItem_meta ipsType_light'>
+						{$item['date']}
+					</div>
+				</div>
+			</li>
+		{{endforeach}}
+	</ol>
+	<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+		<button type="submit" class="ipsButton ipsButton_primary">{lang="continue"}</button>
+	</div>
+</form>

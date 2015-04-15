@@ -1,0 +1,52 @@
+<ips:template parameters="$tab, $output, $canChangeEmail, $canChangePassword, $canChangeUsername, $canChangeSignature, $services" />
+{template="pageHeader" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('settings'), \IPS\Member::loggedIn()->language()->addToStack('settings_blurb')"}
+<div class='ipsTabs ipsTabs_withIcons ipsTabs_contained ipsClearfix' id='elSettingsTabs' data-ipsTabBar data-ipsTabBar-contentArea='#elProfileTabContent' data-ipsTabBar-stretch>
+	<a href='#elSettingsTabs' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+	<ul role='tablist' class='ipsList_reset'>
+		<li role='presentation'>
+			<a href='{url="app=core&module=system&controller=settings" seoTemplate="settings"}' role='tab' id='setting_overview' class='ipsTabs_item {{if $tab === 'overview'}}ipsTabs_activeItem{{endif}}' title="{lang="overview"}">
+				<i class='fa fa-tachometer'></i> {lang="overview"}
+			</a>
+		</li>
+		{{if $canChangeEmail}}
+			<li role='presentation'>
+				<a href='{url="app=core&module=system&controller=settings&area=email" seoTemplate="settings_email"}' id='setting_email' role='tab' class='ipsTabs_item {{if $tab === 'email'}}ipsTabs_activeItem{{endif}}' title="{lang="email_address"}">
+					<i class='fa fa-envelope-o'></i> {lang="email_address"}
+				</a>
+			</li>
+		{{endif}}
+		{{if $canChangePassword}}
+			<li role='presentation'>
+				<a href='{url="app=core&module=system&controller=settings&area=password" seoTemplate="settings_password"}' id='setting_password' role='tab' class='ipsTabs_item {{if $tab === 'password'}}ipsTabs_activeItem{{endif}}' title="{lang="password"}">
+					<i class='fa fa-lock'></i> {lang="password"}
+				</a>
+			</li>
+		{{endif}}
+		{{if $canChangeUsername}}
+			<li role='presentation'>
+				<a href='{url="app=core&module=system&controller=settings&area=username" seoTemplate="settings_username"}' id='setting_username' role='tab' class='ipsTabs_item {{if $tab === 'username'}}ipsTabs_activeItem{{endif}}' title="{lang="username"}">
+					<i class='fa fa-user'></i> {lang="username"}
+				</a>
+			</li>
+		{{endif}}
+		{{if $canChangeSignature}}
+			<li role='presentation'>
+				<a href='{url="app=core&module=system&controller=settings&area=signature" seoTemplate="settings_signature"}' id='setting_signature' role='tab' class='ipsTabs_item {{if $tab === 'signature'}}ipsTabs_activeItem{{endif}}' title="{lang="signature"}">
+					<i class='fa fa-pencil'></i> {lang="signature"}
+				</a>
+			</li>
+		{{endif}}
+		{{foreach $services as $k => $icon}}
+			<li role='presentation'>
+				<a href='{url="app=core&module=system&controller=settings&area=profilesync&service={$k}" seoTemplate="settings_{$k}"}' id='setting_profilesync_{$k}' role='tab' class='ipsTabs_item {{if $tab === "profilesync_{$k}"}}ipsTabs_activeItem{{endif}}' title="{lang="profilesync__{$k}"}">
+					<i class='fa fa-{$icon}'></i> {lang="profilesync__{$k}"}
+				</a>
+			</li>
+		{{endforeach}}
+	</ul>
+</div>
+<section id='elProfileTabContent' class='ipsTabs_contained ipsTabs_panels'>
+	<div id="ipsTabs_elSettingsTabs_setting_{$tab}_panel" class="ipsTabs_panel" aria-labelledby="setting_overview" aria-hidden="false">
+		{$output|raw}
+	</div>
+</section>

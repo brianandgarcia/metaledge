@@ -1,0 +1,56 @@
+<ips:template parameters="$poll, $url" />
+{{if !isset( \IPS\Request::i()->fetchPoll )}}
+<section class='ipsBox' data-controller='core.front.core.poll'>
+{{endif}}
+	<h2 class='ipsType_sectionTitle ipsType_reset'>
+		{lang="$poll->poll_question" wordbreak="true"}&nbsp;&nbsp;
+		<span class='ipsType_normal ipsType_light'>{lang="poll_num_votes" pluralize="$poll->votes"}</span>
+	</h2>
+	<div class='ipsPad ipsClearfix' data-role='pollContents'>
+		{{if $poll->canVote() and request._poll != 'results' and ( !$poll->getVote() or request._poll == 'form') and $pollForm = $poll->buildForm()}}
+			{$pollForm->customTemplate( array( \IPS\Theme::i()->getTemplate( 'global', 'core', 'global' ), 'pollForm' ), $url )|raw}
+		{{elseif !$poll->canVote() or $poll->getVote() or ( request._poll == 'results' and settings.allow_result_view )}}
+			<ol class='ipsList_reset cPollList'>
+				{{foreach $poll->choices as $questionId => $question}}
+					<li>
+						<h3 class='ipsType_sectionHead'>{$questionId}. {lang="$question['question']" wordbreak="true"}</h3>
+						<ul class='ipsList_reset cPollList_choices'>
+							{{foreach $question['choice'] as $k => $choice}}
+								<li class='ipsGrid ipsGrid_collapsePhone'>
+									<div class='ipsGrid_span4 ipsType_right ipsType_richText ipsType_break'>
+										{$choice|raw}
+									</div>
+									<div class='ipsGrid_span7'>
+										<span class='cPollVoteBar'>
+											<span style='width: {{if $poll->votes}}{expression="intval( ( $question['votes'][ $k ] / $poll->votes ) * 100 )"}{{else}}0{{endif}}%' data-votes='{{if $poll->votes}}{expression="round( ( $question['votes'][ $k ] / $poll->votes ) * 100, 2 )"}{{else}}0{{endif}}%' {{if $poll->votes && intval( ( $question['votes'][ $k ] / $poll->votes ) * 100 ) > 30}}class='cPollVoteBar_inside'{{endif}}></span>
+										</span>
+									</div>
+									<div class='ipsGrid_span1 ipsType_small'>	
+										{{if $poll->canSeeVoters() && $question['votes'][ $k ] > 0}}
+											<a href='{url="app=core&module=system&controller=poll&do=voters&id={$poll->pid}&question={$questionId}&option={$k}"}' title='{lang="view_voters"}' class='ipsType_blendLinks' data-ipsTooltip data-ipsDialog data-ipsDialog-size="narrow" data-ipsDialog-title="{$choice}">
+										{{else}}
+											<span class='ipsFaded'>
+										{{endif}}
+											<i class='fa fa-user'></i> {$question['votes'][ $k ]}
+										{{if $poll->canSeeVoters() && $question['votes'][ $k ] > 0}}
+											</a>
+										{{else}}
+											</span>
+										{{endif}}
+									</div>
+								</li>
+							{{endforeach}}
+						</ul>
+					</li>
+				{{endforeach}}
+			</ol>
+			{{if $poll->canVote() || !member.member_id}}
+				<hr class='ipsHr'>
+				{{if $poll->canVote()}}<a href="{$url->setQueryString( '_poll', 'form' )}" title='{lang="show_vote_options_title"}' class='ipsButton ipsButton_verySmall ipsButton_light' data-action='viewResults'><i class='fa fa-caret-left'></i> {lang="show_vote_options"}</a>{{endif}}
+				{{if !member.member_id}}{lang="poll_guest" htmlsprintf="\IPS\Http\Url::internal( 'app=core&module=system&controller=login', 'front', 'login' ), \IPS\Http\Url::internal( 'app=core&module=system&controller=register', 'front', 'register' )"}{{endif}}
+			{{endif}}
+		{{endif}}
+	</div>
+{{if !isset( \IPS\Request::i()->fetchPoll )}}
+</section>
+{{endif}}

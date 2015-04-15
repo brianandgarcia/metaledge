@@ -1,0 +1,61 @@
+<ips:template parameters="$headers, $rows, $langPrefix, $manageable=TRUE, $widths=array(), $checkAlls=array(), $checkAllRows" />
+<thead>
+	<tr>
+		{{foreach $headers as $header}}
+			<th class="ipsMatrixHeader ipsType_center" style="width: {$widths[ $header ]}%">
+				{lang="{$langPrefix}{$header}"}
+				{{if array_key_exists( $header, $checkAlls )}}
+					<br>
+					<input type="checkbox" role='checkbox' data-action="checkAll" name="__all[{$header}]" data-checkallheader="{$header}" {{if $checkAlls[ $header ]}}checked aria-checked='true'{{endif}}>
+				{{endif}}
+			</th>
+		{{endforeach}}
+		{{if $manageable}}
+			<th class='ipsTable_controls'>
+				<noscript>{lang="delete"}</noscript>
+			</th>
+		{{endif}}
+	</tr>
+</thead>
+{{foreach $rows as $rowId => $row}}
+	{{if is_string( $row )}}
+		<tr>
+			<th class="ipsMatrix_subHeader" colspan="{expression="count( $headers )"}">{$row|raw}</th>
+		</tr>
+	{{else}}
+		<tr data-matrixrowid="{$rowId}" role='row' {{if \IPS\Request::i()->type && \IPS\Request::i()->type == $rowId}}class='ipsMatrix_highlighted'{{endif}}>
+			{{foreach $headers as $header}}
+				{{if is_object( $row[ $header] )}}
+					<td role='gridcell' data-col='{$header}' data-title="{lang="{$langPrefix}{$header}"}" class="ipsType_center{{if $row[$header]->error}} ipsMatrix_error{{endif}}">
+						{$row[ $header ]->html()|raw}
+						{{if $row[$header]->error}}
+							<p class="ipsType_warning">{$row[$header]->error}</p>
+						{{endif}}
+					</td>
+				{{else}}
+					<td role='gridcell' class="ipsMatrix_rowTitle">
+						<strong>{{if $langPrefix === FALSE}}{$row[ $header ]|raw}{{else}}{lang="$row[ $header ]"}{{endif}}</strong>
+						{{if $checkAllRows}}
+							<br>
+							<small class="ipsJS_show">
+								<a href='#' data-action="checkRow" class='ipsButton ipsButton_light ipsButton_verySmall'><i class='fa fa-plus'></i></a> <a href='#' data-action="unCheckRow" class='ipsButton ipsButton_light ipsButton_verySmall'><i class='fa fa-minus'></i></a>
+							</small>
+						{{endif}}
+					</td>
+				{{endif}}
+			{{endforeach}}
+			{{if $manageable}}
+				<td role='gridcell' class="ipsTable_controls">
+					{{if mb_substr( $rowId, 0, 5 ) !== '_new_'}}
+						<span class="ipsJS_show">
+							{template="controlStrip" app="core" group="global" params="array( 'add' => array( 'icon' => 'times-circle', 'title' => 'delete', 'class' => 'matrixDelete' ) )"}
+						</span>
+						<noscript>
+							{template="checkbox" app="core" group="forms" location="global" params="$rowId . '_delete'"}
+						</noscript>
+					{{endif}}
+				</td>
+			{{endif}}
+		</tr>
+	{{endif}}
+{{endforeach}}

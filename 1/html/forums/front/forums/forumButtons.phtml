@@ -1,0 +1,15 @@
+<ips:template parameters="$forum" />
+{{if $forum->can('add')}}
+	<li class='ipsToolList_primaryAction'>
+		{{if $forum->forums_bitoptions['bw_enable_answers']}}
+			<a class="ipsButton ipsButton_medium ipsButton_important ipsButton_fullWidth" href="{$forum->url()->setQueryString( 'do', 'add' )}" title='{lang="ask_a_question_desc"}'>{lang="ask_a_question"}</a>
+		{{else}}
+			<a class="ipsButton ipsButton_medium ipsButton_important ipsButton_fullWidth" href="{$forum->url()->setQueryString( 'do', 'add' )}" title='{lang="start_new_topic_desc"}'>{lang="start_new_topic"}</a>
+		{{endif}}
+	</li>
+{{endif}}
+{{if $forum->topics AND \IPS\Member::loggedIn()->member_id}}
+	<li>
+		<a href="{$forum->url()->setQueryString( array( 'do' => 'markRead', 'fromForum' => 1 ) )->csrf()}" title='{lang="mark_forum_read_title"}' class='ipsButton ipsButton_medium ipsButton_fullWidth ipsButton_link' data-action='markForumRead'><i class="fa fa-check"></i> {lang="mark_forum_read"}</a>
+	</li>
+{{endif}}

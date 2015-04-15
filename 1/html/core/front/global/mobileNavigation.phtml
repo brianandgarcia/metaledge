@@ -1,0 +1,105 @@
+<ips:template parameters=" " />
+<div id='elMobileDrawer' class='ipsDrawer ipsHide'>
+	<div class='ipsDrawer_menu'>
+		<div class='ipsDrawer_content'>
+			{{if \IPS\Member::loggedIn()->member_id}}
+				<ul id='elUserNav_mobile' class='ipsList_inline signed_in ipsClearfix'>
+					<li class='cNotifications cUserNav_icon'>
+						<a href='#elMobNotifications_menu' id='elMobNotifications' data-ipsMenu data-ipsMenu-menuID='elFullNotifications_menu' data-ipsMenu-closeOnClick='false'>
+							<i class='fa fa-bell'></i> {{if member.notification_cnt}}<span class='ipsNotificationCount' data-notificationType='notify'>{member="notification_cnt"}</span>{{endif}}
+						</a>
+					</li>
+					{{if !\IPS\Member::loggedIn()->members_disable_pm and \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'messaging' ) )}}
+						<li class='cInbox cUserNav_icon'>
+							<a href='#elMobInbox_menu' id='elMobInbox' data-ipsMenu data-ipsMenu-menuID='elFullInbox_menu' data-ipsMenu-closeOnClick='false'>
+								<i class='fa fa-envelope'></i> {{if \IPS\Member::loggedIn()->msg_count_new}} <span class='ipsNotificationCount' data-notificationType='inbox'>{member="msg_count_new"}</span>{{endif}}
+							</a>
+						</li>
+					{{endif}}
+					{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'modcp' ) ) and \IPS\Member::loggedIn()->modPermission('can_view_reports')}}
+						<li class='cReports cUserNav_icon'>
+							<a href='#elMobReports_menu' id='elMobReports' data-ipsMenu data-ipsMenu-menuID='elFullReports_menu' data-ipsMenu-closeOnClick='false'>
+								<i class='fa fa-warning'></i> {{if \IPS\Member::loggedIn()->reportCount()}}<span class='ipsNotificationCount' data-notificationType='reports'>{member="reportCount()"}</span>{{endif}}
+							</a>
+						</li>
+					{{endif}}
+				</ul>
+			{{endif}}
+
+			<p class='ipsPad'>
+				{{if \IPS\Member::loggedIn()->member_id}}
+					<a href='{url="app=core&module=system&controller=login&do=logout" csrf="true"}' class='ipsButton ipsButton_light ipsButton_small ipsButton_fullWidth'>{lang="sign_out"}</a>
+				{{else}}
+					<a href='{url="app=core&module=system&controller=login" seoTemplate="login"}' class='ipsButton ipsButton_light ipsButton_small ipsButton_fullWidth'>{lang="sign_in"}</a><br>
+					{{if \IPS\Settings::i()->allow_reg}}
+						<a href='{url="app=core&module=system&controller=register" seoTemplate="register"}' id='elRegisterButton_mobile' class='ipsButton ipsButton_small ipsButton_fullWidth ipsButton_important'>{lang="sign_up"}</a>
+					{{endif}}
+				{{endif}}
+			</p>
+
+			<ul class='ipsDrawer_list'>
+				{{if \IPS\Member::loggedIn()->member_id}}
+					<li class='ipsDrawer_itemParent'>
+						<h4 class='ipsDrawer_title'><a href='#'>{lang="mobile_menu_account"}</a></h4>
+						<ul class='ipsDrawer_list'>
+							<li data-action="back"><a href='#'>{lang="mobile_menu_back"}</a></li>
+							<li><a href='{url="app=core&module=system&controller=settings" seoTemplate="settings"}' title='{lang="edit_account_settings"}'>{lang="menu_settings"}</a></li>
+							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members' ) )}}
+								<li><a href='{expression="\IPS\Member::loggedIn()->url()"}' title='{lang="view_my_profile"}'>{lang="menu_profile"}</a></li>
+							{{endif}}
+							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'messaging' ) )}}
+								<li><a href='{url="app=core&module=messaging&controller=messenger" seoTemplate="messaging"}' title='{lang="go_to_messenger"}'>{lang="menu_messages"}</a></li>
+							{{endif}}
+							<li><a href='{url="app=core&module=members&controller=ignore" seoTemplate="ignore"}'>{lang="menu_manage_ignore"}</a></li>
+							{{if ( \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'modcp' ) ) AND \IPS\Member::loggedIn()->modPermission() ) or ( \IPS\Member::loggedIn()->isAdmin() AND !\IPS\Settings::i()->security_remove_acp_link )}}
+								{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'modcp' ) ) AND \IPS\Member::loggedIn()->modPermission()}}
+									<li><a href='{url="app=core&module=modcp" seoTemplate="modcp"}'>{lang="menu_modcp"}</a></li>
+								{{endif}}
+								{{if \IPS\Member::loggedIn()->isAdmin() AND !\IPS\Settings::i()->security_remove_acp_link }}
+									<li><a href='{setting="base_url"}{expression="\IPS\CP_DIRECTORY"}' target='_blank'>{lang="menu_admincp"} <i class='fa fa-lock'></i></a></li>
+								{{endif}}
+							{{endif}}
+						</ul>
+					</li>
+				{{endif}}
+				{{if \IPS\Settings::i()->show_home_link}}
+					<li><a href='{setting="home_url"}'>{setting="home_name"}</a></li>
+				{{endif}}
+				{{foreach \IPS\Application::allExtensions( 'core', 'FrontNavigation' ) as $nav}}
+					{{if $nav->canView()}}
+						{{if $children = $nav->children()}}
+							<li class='ipsDrawer_itemParent'>
+								<h4 class='ipsDrawer_title'><a href='#'>{$nav->title()}</a></h4>
+								<ul class='ipsDrawer_list'>
+									{template="mobileNavigationChildren" app="core" group="global" params="$children"}
+								</ul>
+							</li>
+						{{else}}
+							<li><a href='{$nav->link()}' {{if $nav->active()}}class='active'{{endif}}>{$nav->title()}</a></li>
+						{{endif}}
+					{{endif}}
+				{{endforeach}}
+				<li class='ipsDrawer_itemParent'>
+					<h4 class='ipsDrawer_title'><a href='#'>{lang="mobile_menu_more"}</a></h4>
+					<ul class='ipsDrawer_list'>
+						<li data-action="back"><a href='#'>{lang="mobile_menu_back"}</a></li>
+						{{if \IPS\Member::loggedIn()->member_id}}
+							<li><a data-action="markSiteRead" data-controller="core.front.core.markRead" href='{url="app=core&module=system&controller=markread" seoTemplate="mark_site_as_read" csrf="true"}'>{lang="mark_site_read"}</a></li>
+						{{endif}}
+						<li><a href='{url="app=core&module=system&controller=activity" seoTemplate="activity"}'>{lang="activity_stream"}</a></li>
+						{{if \IPS\Settings::i()->gl_type != "none"}}
+							<li><a href='{{if \IPS\Settings::i()->gl_type == "internal"}}{url="app=core&module=system&controller=guidelines" seoTemplate="guidelines"}{{else}}{setting="gl_link"}{{endif}}'>{lang="guidelines"}</a></li>
+						{{endif}}
+						<li><a href='{url="app=core&module=members&controller=directory" seoTemplate="staffdirectory"}'>{lang="staff"}</a></li>
+						{{if \IPS\Settings::i()->profile_comments AND \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'status' ) )}}
+							<li><a href='{url="app=core&module=status&controller=feed" seoTemplate="status"}'>{lang="status_updates"}</a></li>
+						{{endif}}
+                        {{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'online' ) )}}
+							<li><a href='{url="app=core&module=online&controller=online" seoTemplate="online"}'>{lang="online_users"}</a></li>
+						{{endif}}
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

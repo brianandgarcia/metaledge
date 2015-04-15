@@ -1,0 +1,16 @@
+<ips:template parameters="$calendar, $calendars, $thisCalendar, $jump, $date, $featured" />
+
+{template="calendarHeader" group="browse" app="calendar" params="$calendars, $thisCalendar, $jump"}
+
+<div data-controller='calendar.front.browse.main' class='ipsSpacer_top'>
+{$calendar|raw}
+</div>
+
+<ul class="ipsToolList ipsToolList_horizontal ipsResponsive_showPhone ipsResponsive_block ipsClearfix ipsSpacer_top">
+	{{if ( $thisCalendar AND $thisCalendar->can('add') ) OR ( !$thisCalendar AND \IPS\calendar\Calendar::canOnAny('add') )}}
+		<li><a href='{url="app=calendar&module=calendar&controller=submit" seoTemplate="calendar_submit"}' class='ipsButton ipsButton_important ipsButton_normal ipsButton_fullWidth'>{lang="create_event"}</a></li>
+		<li><a href='#elCalendarJump' data-ipsMenu data-ipsMenu-menuID='elCalendarJump' data-ipsMenu-closeOnClick='false' class='ipsButton ipsButton_light ipsButton_fullWidth ipsButton_normal'>{lang="jump_to"} <i class='fa fa-caret-down'></i></a></li>
+	{{endif}}
+</ul>
+
+{template="calendarFeatured" group="browse" app="calendar" params="$featured, $date"}

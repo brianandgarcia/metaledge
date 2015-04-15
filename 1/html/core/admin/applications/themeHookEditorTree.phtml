@@ -1,0 +1,36 @@
+<ips:template parameters="$node" />
+{{if $node->nodeType === XML_TEXT_NODE or $node->nodeType === XML_CDATA_SECTION_NODE}}
+	{{if trim( $node->wholeText ) !== ''}}
+		<li><span data-unselectable>{$node->wholeText}</span></li>
+	{{endif}}
+{{elseif $node->nodeType === XML_COMMENT_NODE}}
+	<li><span data-unselectable>&lt;!-- ... --&gt;</span></li>
+{{elseif $node->nodeName === 'if' or $node->nodeName === 'foreach' or $node->nodeName === 'for'}}
+	<li>
+		<span data-unselectable>{\0{\0{$node->nodeName} {$node->attributes->getNamedItem('code')->nodeValue}\0}\0}</span>
+		{{if $node->hasChildNodes()}}
+			<ul>
+				{{foreach $node->childNodes as $child}}
+					{template="themeHookEditorTree" group="applications" params="$child"}
+				{{endforeach}}
+			</ul>
+		{{endif}}
+		<span data-unselectable>{\0{\0end{$node->nodeName}\0}\0}</span>
+	</li>
+{{else}}
+	<li data-selector="{expression="\IPS\core\modules\admin\applications\plugins::getSelector( $node )"}">
+		{{if $node->nodeName != 'ipscontent'}}
+			<span data-selectable>&lt;{expression="preg_replace( '/^(x_)?([a-z]+)(_x)?$/i', '$2', $node->nodeName )"}{{if $node->hasAttributes()}}{{for $i = 0; $i < $node->attributes->length; ++$i}} {$node->attributes->item( $i )->nodeName}="{$node->attributes->item( $i )->nodeValue}"{{endfor}}{{endif}}&gt;</span>
+		{{endif}}
+		{{if $node->hasChildNodes()}}
+			<ul>
+				{{foreach $node->childNodes as $child}}
+					{template="themeHookEditorTree" group="applications" params="$child"}
+				{{endforeach}}
+			</ul>
+		{{endif}}
+		{{if $node->nodeName != 'ipscontent'}}
+			<span data-selectable>&lt;/{expression="preg_replace( '/^(x_)?([a-z]+)(_x)?$/i', '$2', $node->nodeName )"}&gt;</span>
+		{{endif}}
+	</li>
+{{endif}}

@@ -1,0 +1,49 @@
+<ips:template parameters="$event" />
+
+<div class='ipsEmbedded ipsEmbedded_withImage'>
+	<div class='ipsEmbedded_headerArea'>
+		<h4 class='ipsType_reset ipsType_normal ipsTruncate ipsTruncate_line'><i class='fa fa-calendar' data-ipsTooltip title='{lang="embed_calendar_event"}'></i> &nbsp;<a href='{$event->url()->setQueryString( 'do', ( \IPS\Request::i()->embedDo != 'findComment' ) ? \IPS\Request::i()->embedDo : null )}' title='{lang="view_this_event" sprintf="$event->title"}' target='_top'>{$event->title}</a></h4>
+	</div>
+	<div class='ipsEmbedded_image cCalendarEmbed_calendar'>
+		<a href='{$event->url()}' target='_top'>
+			<time datetime='{$event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )->mysqlDatetime()}' class='ipsCalendarDate'>
+				<span class='ipsCalendarDate_month'>{$event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )->monthNameShort}</span>
+				<span class='ipsCalendarDate_date'>{$event->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )->mday}</span>
+			</time>
+		</a>
+	</div>
+	<div class='ipsEmbedded_content'>
+		<p class='ipsType_reset ipsType_medium'>
+			<time itemprop='startDate' content='{expression="$event->_start_date->format( 'Y-m-d' )"}'>
+				{$event->_start_date->dayName} {$event->_start_date->mday} {$event->_start_date->monthName} {$event->_start_date->year}{{if !$event->all_day}}, {$event->_start_date->localeTime( FALSE )}{{endif}}
+			</time>
+			{{if $event->_end_date}}
+				<br><em class='ipsType_light'>{lang="until"}</em>
+				<time itemprop='startDate' content='{expression="$event->_end_date->format( 'Y-m-d' )"}'>
+					{$event->_end_date->dayName} {$event->_end_date->mday} {$event->_end_date->monthName} {$event->_end_date->year}{{if !$event->all_day}}, {$event->_end_date->localeTime( FALSE )}{{endif}}
+				</time>
+			{{endif}}
+		</p>
+		<ul class='ipsList_inline ipsType_small ipsEmbedded_stats'>
+			{{if $event->rsvp}}
+				<li>
+					<i class='fa fa-user'></i> {lang="x_users_going" pluralize="count( $event->attendees( 1 ) )"}
+				</li>
+			{{endif}}
+			{{if $event->container()->allow_reviews}}
+				<li>
+					<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+						<meta itemprop='ratingValue' content='{$event->averageReviewRating()}'>
+						<meta itemprop='reviewCount' content='{$event->reviews}'>
+						{template="rating" group="global" location="front" app="core" params="'small', $event->averageReviewRating(), \IPS\Settings::i()->reviews_rating_out_of"}
+					</span>
+				</li>
+			{{endif}}
+			{{if $event->container()->allow_comments}}
+				<li>
+					<i class='fa fa-comment'></i> {lang="num_comments" pluralize="$event->comments"}</a>
+				</li>
+			{{endif}}
+		</ul>
+	</div>
+</div>

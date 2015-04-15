@@ -1,0 +1,10 @@
+<ips:template parameters="$item, $review" />
+{{if $review->isIgnored()}}
+	<div class='ipsComment ipsComment_ignored ipsPad_half ipsType_light'>
+		{lang="ignoring_content" sprintf="$review->author()->name"}
+	</div>
+{{else}}
+	<article itemscope="" itemtype="http://schema.org/Comment" id="{$review->_id}" class="ipsComment ipsComment_parent ipsClearfix ipsClear {{if $review->hidden()}}ipsModerated{{endif}}">
+		{template="review" group="global" app="core" params="$item, $review, $item::$formLangPrefix . 'review', $item::$application, $item::$module"}
+	</article>
+{{endif}}

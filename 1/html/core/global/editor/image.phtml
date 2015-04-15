@@ -1,0 +1,43 @@
+<ips:template parameters="$editorId, $width, $height, $maximumWidth, $maximumHeight, $border, $margin, $float, $link" />
+<div class="ipsPad ipsForm ipsForm_vertical" data-controller="core.global.editor.image" data-editorid='{$editorId}'>
+	<form method='get' action='#'>
+		<div class="ipsPad">
+			<div class="ipsFieldRow ipsFieldRow_primary">
+				<label class='ipsFieldRow_title'>{lang="image_size"}</label>
+				<input type="number" class="ipsField_short" value="{$width}" max="{$maximumWidth}" data-role="imageWidth"> &times; <input type="number" class="ipsField_short" value="{$height}" max="{$maximumHeight}" data-role="imageHeight"> {lang="px"}
+				<br>
+				<span class="ipsType_warning" data-role="imageSizeWarning"></span>
+			</div>
+			<div class="ipsFieldRow ipsFieldRow_primary">
+				<label class='ipsFieldRow_title'>{lang="image_border"}</label>
+				<input type="text" class="ipsField_tiny" value="{$border}" data-role="imageBorder"> px
+			</div>
+			<div class="ipsFieldRow ipsFieldRow_primary">
+				<label class='ipsFieldRow_title'>{lang="image_margin"}</label>
+				<input type="text" class="ipsField_tiny" value="{$margin}" data-role="imageMargin"> px
+			</div>
+			<div class="ipsFieldRow ipsFieldRow_primary">
+				<label class='ipsFieldRow_title'>{lang="image_align"}</label>
+				<ul class='ipsFieldRow_content ipsList_reset'>
+					<li class='ipsFieldRow_inlineCheckbox'>
+						<input type='radio' name="image_align" value="" id='image_align_none' data-role="imageAlign" {{if $float != 'left' and $float != 'right'}}checked{{endif}}> <label for='image_align_none'>{lang="none"}</label>
+					</li>
+					<li class='ipsFieldRow_inlineCheckbox'>
+						<input type='radio' name="image_align" value="left" id='image_align_left' data-role="imageAlign" {{if $float == 'left'}}checked{{endif}}> <label for='image_align_left'>{lang="image_align_left"}</label>
+					</li>
+					<li class='ipsFieldRow_inlineCheckbox'>
+						<input type='radio' name="image_align" value="right" id='image_align_right' data-role="imageAlign" {{if $float == 'right'}}checked{{endif}}> <label for='image_align_right'>{lang="image_align_right"}</label>
+					</li>
+				</ul>
+			</div>
+			<div class="ipsFieldRow ipsFieldRow_primary">
+				<label class='ipsFieldRow_title'>{lang="image_link"}</label>
+				<input type="text" class="" value="{$link}" data-role="imageLink">
+			</div>
+			<br>
+			<div class='ipsFieldRow'>
+				<button type='submit' class="ipsButton ipsButton_primary">{lang="update"}</button>
+			</div>
+		</div>
+	</form>
+</div>

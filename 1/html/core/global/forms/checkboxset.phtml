@@ -1,0 +1,20 @@
+<ips:template parameters="$name, $value, $required, $options, $multiple=FALSE, $class='', $disabled=FALSE, $toggles=array(), $id=NULL, $unlimited=NULL, $unlimitedLang='all', $unlimitedToggles=array(), $toggleOn=TRUE, $descriptions=array()" />
+{{if $multiple}}
+	<input type="hidden" name="{$name}[__EMPTY]" value="__EMPTY">
+{{endif}}
+<ul class="ipsField_fieldList">
+{{foreach $options as $k => $v}}
+	<li>
+		<input type="checkbox" name="{$name}[{$k}]" value="1" {{if in_array( $k, $value )}}checked{{endif}} {{if $disabled === TRUE or ( is_array( $disabled ) and in_array( $k, $disabled ) )}}disabled{{endif}} {{if isset( $toggles[ $k ] ) and !empty( $toggles[ $k ] )}}data-control="toggle" {{if $toggleOn === FALSE}}data-togglesOff{{else}}data-togglesOn{{endif}}="{expression="implode( ',', $toggles[ $k ] )"}"{{endif}} id="elCheckbox_{$name}_{$k}">
+		<div class='ipsField_fieldList_content'>
+			<label for='elCheckbox_{$name}_{$k}' id='elField_{$name}_label'>{$v|raw}</label>
+			{{if isset( $descriptions[ $k ] )}}
+				<br>
+				<span class='ipsFieldRow_desc'>
+					{$descriptions[ $k ]|raw}
+				</span>
+			{{endif}}
+		</div>
+	</li>
+{{endforeach}}
+</ul>

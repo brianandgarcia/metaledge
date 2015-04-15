@@ -1,0 +1,91 @@
+/* BOTH */
+@media screen and (max-width: 979px) {
+	#elUserReputation .ipsDataList .ipsDataItem_generic,
+	#elUserReputation .ipsDataList .ipsDataItem_main {
+		display: table-cell;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	html[dir="ltr"] .cSearchActivity .ipsDataItem_main {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .cSearchActivity .ipsDataItem_main {
+		margin-right: 0;
+	}
+
+		html[dir="ltr"] .cSearchActivity .cSearchActivity_info {
+			border-left: 0;
+			padding-left: 0;
+			margin-left: 0;
+		}
+		html[dir="rtl"] .cSearchActivity .cSearchActivity_info {
+			border-right: 0;
+			padding-right: 0;
+			margin-right: 0;
+		}
+
+	html[dir="ltr"] #elProfileInfoColumn {
+		padding-right: 0;
+	}
+	html[dir="rtl"] #elProfileInfoColumn {
+		padding-left: 0;
+	}
+
+	/* Header stuff */
+	#elProfileHeader, #elProfileHeader.cProfileHeaderMinimal {
+		padding-top: 15px !important;
+		height: 160px !important;
+	}
+
+		#elProfileHeader .ipsColumn {
+			padding: 0;
+		}
+
+		#elProfileHeader .ipsUserPhoto {
+			width: 60px;
+			height: 60px;
+			display: block;
+			margin: 0 auto;
+		}
+
+			#elProfileHeader .ipsUserPhoto > img {
+				width: 60px;
+				height: 60px;
+			}
+
+		#elProfileHeader h1 {
+			font-size: 30px;
+		}
+	
+	.cProfileHeader_name {
+		float: none;
+		text-align: center;
+	}
+
+	#elProfileStats {
+		height: auto;
+		padding-left: 12px;
+	}
+	html[dir="ltr"] #elProfileStats {
+		padding-left: 12px;
+	}
+	html[dir="rtl"] #elProfileStats {
+		padding-right: 12px;
+	}
+
+		#elProfileStats.cProfileHeaderContent {
+			display: none;
+		}
+
+	#elProfileStats > ul > li {
+		display: block;
+		margin-bottom: 10px;
+	}
+
+		#elProfileStats > ul:last-child > li {
+			border: 0;
+		}
+}

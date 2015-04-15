@@ -1,0 +1,5 @@
+/* ----- */
+
+.ipsWidget.ipsWidget_horizontal[data-blockid^="app_cms"]:not(.ipsBox) {
+	padding: 0px !important;
+}

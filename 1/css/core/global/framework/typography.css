@@ -1,0 +1,310 @@
+/* HEADINGS */
+/* ======================================================== */
+/* Page title: the large text shown at the top of pages */
+.ipsType_pageTitle {
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 1.2;
+	margin: 0;
+}
+
+	.ipsType_pageTitle.ipsType_largeTitle {
+		font-size: 27px;
+		letter-spacing: -1px;
+	}
+
+	.ipsType_pageTitle > .fa {
+		font-size: 18px;
+	}
+
+	.ipsType_pageTitle a {
+		color: inherit;
+	}
+
+/* ======================================================== */
+/* Section title: formerly known as main title, the bar separating sections */
+.ipsType_sectionTitle {
+	font-size: 15px;
+	font-weight: 400;
+	padding: 11px 15px 11px 15px;
+	margin-top: 0;
+	border-radius: 3px 3px 0 0;
+	background: {theme="section_title"};
+	color: {theme="section_title_font"};
+	-webkit-font-smoothing: antialiased;
+}
+	
+	a.ipsType_sectionTitle, .ipsType_sectionTitle a {
+		color: {theme="section_title_font"};
+	}
+
+	.ipsType_sectionTitle .ipsButton {
+		position: relative;
+		top: -5px;
+	}
+
+/* ======================================================== */
+/* Secondary title: a secondary version of above, for sub-sections */
+.ipsType_secondaryTitle {
+	font-size: 14px;
+	font-weight: 400;
+	padding: 10px 15px 10px 15px;
+	margin-top: 0;
+	border-radius: 3px 3px 0 0;
+	background: {theme="secondary_title"};
+	color: {theme="secondary_title_font"};
+}
+
+	a.ipsType_secondaryTitle, .ipsType_secondaryTitle a {
+		color: {theme="secondary_title_font"};
+	}
+
+/* ======================================================== */
+/* Section heading: a text-based heading for smaller sections */
+.ipsType_sectionHead {
+	font-size: 18px;
+	color: #333333;
+	line-height: 24px;
+	font-weight: 400;
+	display: inline-block;
+	margin: 0;
+}
+
+/* ======================================================== */
+/* Minor heading: used in miscellanious situations */
+.ipsType_minorHeading {
+	color: #868686;
+	text-transform: uppercase;
+	font-size: 11px;
+	margin: 0;
+}
+
+/* ======================================================== */
+/* ALIGNMENT */
+.ipsType_center {
+	text-align: center; 
+}
+
+.ipsType_left {
+	text-align: left; 
+}
+html[dir="rtl"] .ipsType_left {
+	text-align: right; 
+}
+
+.ipsType_right { 
+	text-align: right; 
+}
+html[dir="rtl"] .ipsType_right {
+	text-align: left; 
+}
+
+/* ======================================================== */
+/* MISC */
+.ipsType_bold {
+	font-weight: bold;
+}
+
+.ipsType_unbold {
+	font-weight: normal;
+}
+
+.ipsType_monospace {
+	font-family: monospace;
+}
+
+.ipsType_noBreak { 
+	white-space: nowrap !important; 
+}
+
+.ipsType_break {
+     word-break: break-word;
+     word-wrap: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+
+.ipsType_richText {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	line-height: 1.6;
+}
+
+/* Makes links go the color of surrounding text */
+a.ipsType_blendLinks, .ipsType_blendLinks a { 
+	color: inherit; 
+}
+
+.ipsType_reset {
+	margin: 0;
+}
+
+/* I LIKE SHOUTING */
+.ipsType_uppercase {
+	text-transform: uppercase;
+}
+
+/* Highlighted words (e.g. search results) */
+mark {
+    background: transparent;
+    color: #000 !important;
+    font-weight: bold !important;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
+}
+
+/* ======================================================== */
+/* SIZING */
+.ipsType_small {
+	font-size: 11px;
+}
+
+	.ipsType_small:not( .ipsType_richText ){
+		line-height: 16px;
+	}
+
+.ipsType_medium {
+	font-size: 13px;
+}
+	
+	.ipsType_medium:not( .ipsType_richText ){
+		line-height: 20px;
+	}
+
+.ipsType_normal {
+	font-size: 14px;
+}
+
+	.ipsType_normal:not( .ipsType_richText ){
+		line-height: 22px;
+	}
+
+.ipsType_large {
+	font-size: 16px;
+}
+
+	.ipsType_large:not( .ipsType_richText ){
+		line-height: 20px;
+	}
+
+.ipsType_veryLarge {
+	font-size: 44px;
+	line-height: 52px;
+	font-weight: 300;
+}
+
+.ipsType_huge {
+	font-size: 72px;
+	line-height: 80px;
+	font-weight: 300;
+}
+
+/* ======================================================== */
+/* COLORS */
+.ipsType_light {
+	color: {theme="text_light"};
+}
+
+.ipsType_warning, .ipsType_negative {
+	color: #a52638;
+}
+
+.ipsType_issue {
+	color: #d69625;
+}
+
+.ipsType_success, .ipsType_positive {
+	color: #4a7c20;
+}
+
+.ipsType_neutral {
+	color: #959595;
+}
+
+/* ======================================================== */
+/* RICH TEXT */
+.ipsType_richText p:first-child {
+	margin-top: 0;
+}
+
+.ipsType_richText p:last-child {
+	margin-bottom: 0;
+}
+
+.ipsType_richText img {
+	max-width: 100%;
+}
+
+/* ======================================================== */
+/* TRUNCATED TEXT */
+.ipsTruncate {
+	overflow: hidden;
+}
+
+	.ipsTruncate.ipsTruncate_line {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		display: block;
+		width: 100%;
+	}
+
+	a.ipsTruncate.ipsTruncate_line,
+	span.ipsTruncate.ipsTruncate_line {
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+.ipsTruncate > .ipsTruncate_more {
+	background: #fff;
+	display: inline-block;
+	height: 28px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	line-height: 28px;
+	cursor: pointer;
+}
+
+	.ipsTruncate > .ipsTruncate_more:before {
+		content: '';
+		display: block;
+		border-top: 3px solid #f0f0f0;
+		position: absolute;
+		top: 14px;
+		left: 0;
+		right: 0;
+		height: 14px;
+		z-index: 20;
+		{prefix="transition" value="0.3s all ease-in-out"}
+	}
+
+		.ipsTruncate > .ipsTruncate_more:hover:before {
+			border-top: 3px solid #cbcbcb;
+		}
+
+	.ipsTruncate > .ipsTruncate_more span {
+		position: relative;
+		display: inline-block;
+		margin: 0 auto;
+		background: #fff;
+		z-index: 40;
+		padding: 0 15px;
+	}
+
+	.ipsAreaBackground .ipsTruncate > .ipsTruncate_more,
+	.ipsAreaBackground .ipsTruncate > .ipsTruncate_more span {
+		background: {theme="area_background"};
+	}
+
+	.ipsAreaBackground_light .ipsTruncate > .ipsTruncate_more,
+	.ipsAreaBackground_light .ipsTruncate > .ipsTruncate_more span {
+		background: {theme="area_background_light"};
+	}
+
+	.ipsAreaBackground_reset .ipsTruncate > .ipsTruncate_more,
+	.ipsAreaBackground_reset .ipsTruncate > .ipsTruncate_more span {
+		background: {theme="area_background_reset"};
+	}

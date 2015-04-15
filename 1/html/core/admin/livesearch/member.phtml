@@ -1,0 +1,9 @@
+<ips:template parameters="$member" />
+<li class='ipsPhotoPanel ipsPhotoPanel_mini ipsPad_half ipsClearfix' data-role='result'>
+	<a href='{url="app=core&module=members&controller=members&do=edit&id="}{$member->member_id}' class='ipsPos_left'>{template="userPhoto" app="core" group="global" params="$member, 'mini'"}</a>
+	<div>
+		<h2 class='ipsType_sectionHead'><strong><a href='{url="app=core&module=members&controller=members&do=edit&id="}{$member->member_id}'>{$member->name}</a></strong></h2><br>
+		{expression="$member->group['name']" raw="true"} &middot; <span class='ipsType_light'>{expression="$member->member_posts"} {lang="posts"}</span>
+	</div>
+</li>
+

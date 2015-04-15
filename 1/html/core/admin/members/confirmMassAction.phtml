@@ -1,0 +1,13 @@
+<ips:template parameters="$count, $action, $group=NULL" />
+<div class='ipsMessage ipsMessage_warning'>
+	{{if $action === 'prune'}}
+		{lang="member_prune_confirm_msg" sprintf="$count"}
+	{{else}}
+		{lang="member_move_confirm_msg" sprintf="$count, $group->name"}
+	{{endif}}
+</div>
+{{if $action === 'prune'}}
+	<div class='ipsPos_center'><a class='ipsButton ipsButton_primary' href='{url="app=core&module=members&controller=members&do=doPrune"}'>{lang="continue"}</a></div>
+{{else}}
+	<div class='ipsPos_center'><a class='ipsButton ipsButton_primary' href='{url="app=core&module=members&controller=members&do=doMove"}'>{lang="continue"}</a></div>
+{{endif}}

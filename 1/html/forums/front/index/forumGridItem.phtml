@@ -1,0 +1,85 @@
+<ips:template parameters="$forum" />
+{{if $forum->can('view')}}
+	<div data-role='patchworkItem' class="ipsAreaBackground_reset ipsPad cForumGrid {{if \IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsDataItem_unread{{endif}} ipsClearfix" data-forumID="{$forum->_id}">
+
+		<div class='ipsPhotoPanel ipsPhotoPanel_mini ipsClearfix'>
+			<span class='ipsPos_left'>
+				{{if !$forum->redirect_on AND \IPS\Member::loggedIn()->member_id}}
+					<a href="{$forum->url()->setQueryString( 'do', 'markRead' )->csrf()}" data-action='markAsRead'>
+				{{endif}}
+					{{if $forum->icon}}
+						<img src="{$forum->icon}" class='ipsImage cForumGrid_icon'>
+					{{else}}
+						<span class='ipsItemStatus ipsItemStatus_large {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+							{{if $forum->redirect_on}}
+								<i class='fa fa-arrow-right'></i>
+							{{elseif $forum->forums_bitoptions['bw_enable_answers']}}
+								<i class='fa fa-question'></i>
+							{{elseif $forum->password}}
+								{{if $forum->loggedInMemberHasPasswordAccess()}}
+									<i class='fa fa-unlock'></i>
+								{{else}}
+									<i class='fa fa-lock'></i>
+								{{endif}}
+							{{else}}
+								<i class="fa fa-comments"></i>
+							{{endif}}
+						</span>
+					{{endif}}
+				{{if !$forum->redirect_on AND \IPS\Member::loggedIn()->member_id}}
+					</a>
+				{{endif}}
+			</span>
+			<div>
+				<h3 class='ipsType_reset ipsType_large'>
+					{{if $forum->password && !$forum->loggedInMemberHasPasswordAccess()}}
+						<a href="{$forum->url()->setQueryString( 'passForm', '1' )}" data-ipsDialog data-ipsDialog-size='narrow' data-ipsDialog-title='{lang="forum_requires_password"}'>{$forum->_title}</a>
+					{{else}}
+						<a href="{$forum->url()}">{$forum->_title}</a>
+					{{endif}}
+				</h3>
+				{{$count = \IPS\forums\Topic::contentCount( $forum, TRUE );}}
+				<p class='ipsType_light ipsType_reset'>{lang="posts_number" pluralize="$count"}
+			</div>
+		</div>
+		
+		{{if $forum->hasChildren()}}
+			<br>
+			<ul class="ipsList_inline">
+				<li><strong>{lang="subforums"}</strong></li>
+				{{foreach $forum->children() as $subforum}}
+					<li class="{{if \IPS\forums\Topic::containerUnread( $subforum )}}ipsDataItem_unread{{endif}}">
+						<a href="{$subforum->url()}">{$subforum->_title}</a>
+					</li>
+				{{endforeach}}
+			</ul>
+		{{endif}}
+
+		{{if $forum->description}}
+			<br>
+			<div class='ipsType_richText ipsType_medium'>{$forum->description|raw}</div>
+		{{endif}}
+		
+		<hr class='ipsHr'>
+
+		{{if !$forum->redirect_on}}
+			{{if $lastPost = $forum->lastPost()}}
+				<div class='ipsPhotoPanel ipsPhotoPanel_tiny'>
+					{template="userPhoto" app="core" group="global" params="$lastPost['author'], 'tiny'"}
+					<div>
+						<ul class='ipsList_reset'>
+							<li><a href="{$lastPost['topic_url']}" class='ipsType_break' title='{$lastPost['topic_title']}'>{truncate="$lastPost['topic_title']" length="30"}</a></li>
+							<li>{lang="byline_nodate" htmlsprintf="$lastPost['author']->link()"}, <span class='ipsType_light'>{datetime="$lastPost['date']"}<span></li>
+						</ul>
+					</div>
+				</div>
+			{{else}}
+				<p class='ipsType_light ipsType_reset'>{{if $forum->password}}{lang="no_forum_posts_password"}{{else}}{lang="no_forum_posts"}{{endif}}</p>
+			{{endif}}
+		{{else}}
+			<p class='ipsType_light ipsType_reset'>
+				{lang="redirect_hits" pluralize="$forum->redirect_hits"}
+			</p>
+		{{endif}}
+	</div>
+{{endif}}

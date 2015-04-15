@@ -1,0 +1,23 @@
+<ips:template parameters="$useMicrodata=TRUE" />
+<nav class='ipsBreadcrumb'>
+	<ul>
+		<li {{if $useMicrodata}}itemscope itemtype="http://data-vocabulary.org/Breadcrumb"{{endif}}>
+			<a href='{setting="base_url"}' {{if $useMicrodata}}itemprop="url"{{endif}}>
+				<span {{if $useMicrodata}}itemprop="title"{{endif}}><i class='fa fa-home'></i> {lang="home"}{{if count( \IPS\Output::i()->breadcrumb )}} <i class='fa fa-angle-right'></i>{{endif}}</span>
+			</a>
+		</li>
+		{{$i = 0;}}
+		{{foreach \IPS\Output::i()->breadcrumb as $k => $b}}
+			<li {{if $useMicrodata && $b[0] !== NULL}}itemscope itemtype="http://data-vocabulary.org/Breadcrumb"{{endif}}>
+				{{if $b[0] === NULL}}
+					{$b[1]}
+				{{else}}
+					<a href='{$b[0]}' {{if $useMicrodata}}itemprop="url"{{endif}}>
+						<span {{if $useMicrodata}}itemprop="title"{{endif}}>{$b[1]} {{if ( $i + 1 != count( \IPS\Output::i()->breadcrumb ) )}}<i class='fa fa-angle-right'></i>{{endif}}</span>
+					</a>
+				{{endif}}
+			</li>
+			{{$i++;}}
+		{{endforeach}}
+	</ul>
+</nav>

@@ -1,0 +1,103 @@
+#elRestrictions_content ul {
+	list-style: none;
+}
+	
+	#elRestrictions_content li {
+		margin-bottom: 5px;
+	}
+
+	#elRestrictions_content .acpRestrictions_disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+#elRestrictions_root {
+	margin: 0;
+	padding: 0;
+}
+	
+	/*#elRestrictions_root > li:nth-child( odd ) {
+		background: #f9f9f9;
+	}*/
+
+	#elRestrictions_root > li {
+		padding: 15px 15px 15px 30px;
+		border-bottom: 1px solid #f0f0f0;
+	}
+	html[dir="rtl"] #elRestrictions_root > li {
+		padding: 15px 30px 15px 15px;
+	}
+
+	#elRestrictions_root > li > ul > li {
+		margin-bottom: 10px;
+	}
+
+		#elRestrictions_root > li > ul > li:last-child {
+			margin-bottom: 0;
+		}
+
+[data-role='massToggle'], [data-role='toggle'] {
+	opacity: 0;
+	{prefix="transition" value="all 0.2s linear"}
+}
+
+.acpRestrictions_header h2,
+.acpRestrictions_subHeader h3 {
+	display: inline;
+	margin: 0;
+}
+
+html[dir="ltr"] .acpRestrictions_header + ul {
+	padding-left: 15px;
+}
+html[dir="rtl"] .acpRestrictions_header + ul {
+	padding-right: 15px;
+}
+
+.acpRestrictions_header > label {
+	font-size: 15px;
+}
+
+.acpRestrictions_subHeader {
+	font-weight: bold;
+	margin: 10px 0;
+}
+	
+	.acpRestrictions_subHeader h3 {
+		font-size: 14px;
+		cursor: pointer;
+	}
+
+	.acpRestrictions_subHeader:hover [data-role='massToggle'],
+	.acpRestrictions_header:hover [data-role='toggle'] {
+		opacity: 1;
+	}
+
+.acpRestrictions_subHeader h3:before {
+	display: inline-block;
+	font-family: 'FontAwesome';
+	font-size: 17px;
+}
+html[dir="ltr"] .acpRestrictions_subHeader h3:before {
+	content: '\f0da';
+	margin-right: 5px;
+}
+html[dir="rtl"] .acpRestrictions_subHeader h3:before {
+	content: '\f0d9';
+	margin-right: 5px;
+}
+
+html[dir="ltr"] .acpRestrictions_closed.acpRestrictions_subHeader h3:before {
+	content: '\f0da';
+}
+html[dir="rtl"] .acpRestrictions_closed.acpRestrictions_subHeader h3:before {
+	content: '\f0d9';
+}
+
+.acpRestrictions_open.acpRestrictions_subHeader h3:before {
+	content: '\f0d7';
+}
+
+.acpRestrictions_closed.acpRestrictions_subHeader + ul {
+	display: none;
+}

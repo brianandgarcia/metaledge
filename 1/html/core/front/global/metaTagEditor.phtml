@@ -1,0 +1,81 @@
+<ips:template parameters="" />
+
+<div id='elMetaTagEditor' class='ipsToolbox ipsPad ipsScrollbar' data-controller="core.front.system.metaTagEditor">
+	<h3 class='ipsToolbox_title ipsType_reset'>{lang="live_meta_tag_editor"}</h3>
+	<form accept-charset='utf-8' method='post' action="{url="app=core&module=system&controller=metatags&do=save"}" data-ipsForm>
+		<input type='hidden' name='meta_url' value='{expression="\IPS\Output::i()->metaTagsUrl"}'>
+		<input type="hidden" name="csrfKey" value="{expression="\IPS\Session::i()->csrfKey"}">
+
+		<h4 class='ipsToolbox_sectionTitle'>{lang="metatags_page_title"}</h4>
+		<input name='meta_tag_title' type='text' value="{expression="\IPS\Output::i()->metaTagsTitle"}">
+		<br><br>
+
+		<h4 class='ipsToolbox_sectionTitle'>{lang="meta_tags_blurb"}</h4>
+
+		<ul class='ipsList_reset' id='elMetaTagEditor_tags'>
+			<li class='ipsHide' data-role='metaTemplate'>
+				<ul class='ipsForm ipsForm_vertical'>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<select name='meta_tag_name[]' class='ipsField_fullWidth'>
+							<option value='keywords'>{lang="meta_keywords"}</option>
+							<option value='description'>{lang="meta_description"}</option>
+							<option value='robots'>{lang="meta_robots"}</option>
+							<option value='other'>{lang="meta_other"}</option>
+						</select>
+					</li>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<input name='meta_tag_name_other[]' type='text' value="" placeholder='{lang="metatags_name"}'>
+					</li>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<input name='meta_tag_content[]' type='text' value="" placeholder='{lang="metatags_content"}'>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<ul class='ipsForm ipsForm_vertical'>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<select name='meta_tag_name[]' class='ipsField_fullWidth'>
+							<option value='keywords'>{lang="meta_keywords"}</option>
+							<option value='description'>{lang="meta_description"}</option>
+							<option value='robots'>{lang="meta_robots"}</option>
+							<option value='other'>{lang="meta_other"}</option>
+						</select>
+					</li>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<input name='meta_tag_name_other[]' type='text' value="" placeholder='{lang="metatags_name"}'>
+					</li>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<input name='meta_tag_content[]' type='text' value="" placeholder='{lang="metatags_content"}'>
+					</li>
+				</ul>
+			</li>
+			{{foreach \IPS\Output::i()->metaTags as $name => $content}}
+				<li>
+					<ul class='ipsForm ipsForm_vertical'>
+						<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+							<select name='meta_tag_name[]'>
+								<option value='keywords' {{if $name == 'keywords'}}selected{{endif}}>{lang="meta_keywords"}</option>
+								<option value='description' {{if $name == 'description'}}selected{{endif}}>{lang="meta_description"}</option>
+								<option value='robots' {{if $name == 'robots'}}selected{{endif}}>{lang="meta_robots"}</option>
+								<option value='other' {{if !in_array( $name, array( 'keywords', 'description', 'robots' ) )}}selected{{endif}}>{lang="meta_other"}</option>
+							</select>
+						</li>
+						<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+							<input name='meta_tag_name_other[]' type='text' value="{{if !in_array( $name, array( 'keywords', 'description', 'robots' ) )}}{$name}{{endif}}" placeholder='{lang="metatags_name"}'>
+						</li>
+						<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+							<input name='meta_tag_content[]' type='text' value="{$content}" placeholder='{lang="metatags_content"}'>
+						</li>
+					</ul>
+				</li>
+			{{endforeach}}
+		</ul>
+		<br>
+		<a href='#' class='ipsJS_show ipsButton ipsButton_normal ipsButton_fullWidth ipsButton_verySmall' data-action='addMeta'><i class='fa fa-plus'></i> &nbsp;{lang="add_another_meta_tag"}</a>
+
+		<div class="ipsClearfix ipsPad ipsType_center" id='elMetaTagEditor_submit'>
+			<button class='ipsButton ipsButton_important' role='button' type='submit'>{lang="save"}</button>
+			<a href="{url="app=core&module=system&controller=metatags&do=end"}" class='ipsButton ipsButton_primary'>{lang="end_metatags"}</a>
+		</div>
+	</form>
+</div>

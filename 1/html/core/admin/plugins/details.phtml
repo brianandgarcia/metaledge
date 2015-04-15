@@ -1,0 +1,27 @@
+<ips:template parameters="$plugin" />
+<table class='ipsTable'>
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="plugin_name"}</strong>
+		</td>
+		<td class="field_field">
+			{$plugin->name}
+		</td>
+	</tr>
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="plugin_details_version"}</strong>
+		</td>
+		<td class="field_field">
+			{lang="plugin_version" sprintf="$plugin->version_human, $plugin->version_long"}
+		</td>
+	</tr>
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="plugin_author_details"}</strong>
+		</td>
+		<td class="field_field">
+			{$plugin->author}{{if $plugin->website}} <a href='{$plugin->website}' target='_blank'><i class="fa fa-external-link-square" title='{$plugin->website}'></i></a>{{endif}}
+		</td>
+	</tr>
+</table>

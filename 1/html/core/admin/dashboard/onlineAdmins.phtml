@@ -1,0 +1,20 @@
+<ips:template parameters="$admins" />
+{{if !empty( $admins )}}
+	<ul class='ipsDataList ipsDataList_reducedSpacing' >
+	{{foreach $admins as $admin }}
+		<li class='ipsDataItem' itemprop="itemListElement">
+			<div class='ipsDataItem_main'>
+				<h4 class='ipsDataItem_title'><a href='{$admin['user']->url()}' target='_blank'>{$admin['user']->name}</a></h4>
+				<p class='ipsDataItem_meta'>
+					{datetime="$admin['session']['session_running_time']"}
+				</p>
+			</div>
+			{{if $admin['user'] != \IPS\Member::loggedIn() and $admin['session']['session_location'] != "app=core&module=system&controller=login"}}
+				<div class='ipsDataItem_modCheck'>
+					<a href='{expression="preg_replace( '/adsess=([a-zA-Z0-9]+?)&/', 'adsess=' . session_id() . '&', preg_replace( '/csrfKey=([a-zA-Z0-9]+?)&/', '&', $admin['session']['session_url'] ) )"}'><i class='fa fa-arrow-right fa-2x'></i></a>
+				</div>
+			{{endif}}
+		</li>
+	{{endforeach}}
+	</ul>
+{{endif}}
