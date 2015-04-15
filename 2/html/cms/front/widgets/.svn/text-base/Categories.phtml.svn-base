@@ -1,0 +1,34 @@
+<ips:template parameters="$url, $currentCategory=NULL" />
+{{$catClass = '\IPS\cms\Categories' . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+{{$categories = $catClass::roots();}}
+{{if !empty( $categories )}}
+<div class='ipsBox'>
+	<h3 class='ipsWidget_title ipsType_reset'>{lang="categories"}</h3>
+	<div class='ipsSideMenu ipsAreaBackground_reset ipsPad_half'>
+		<ul class='ipsSideMenu_list'>
+			{{foreach $categories as $category}}
+				<li>
+					<a href="{$category->url()}" class='ipsSideMenu_item {{if $currentCategory && $currentCategory->id == $category->id}}{{endif}} ipsTruncate ipsTruncate_line'><span class='ipsBadge ipsBadge_style1 ipsPos_right'>{expression="\IPS\cms\Records::contentCount( $category )"}</span><strong class='ipsType_normal'>{$category->_title}</strong></a>
+					{{if $category->hasChildren()}}
+						<ul class="ipsSideMenu_list">
+							{{foreach $category->children() as $idx => $subcategory}}
+								<li>
+									{{if $idx >= 5}}
+										<a href='{$category->url()}' class='ipsSideMenu_item'><span class='ipsType_light ipsType_small'>{lang="and_x_more" sprintf="count( $category->children() ) - 5"}</span></a>
+										{{break;}}
+									{{else}}
+										<a href="{$subcategory->url()}" class='ipsSideMenu_item ipsTruncate ipsTruncate_line'><strong class='ipsPos_right ipsType_small'>{expression="\IPS\cms\Records::contentCount( $subcategory )"}</strong>{$subcategory->_title}</a>
+									{{endif}}
+								</li>
+							{{endforeach}}
+						</ul>
+					{{endif}}
+				</li>
+			{{endforeach}}
+		</ul>
+		<p class='ipsType_center'>
+			<a href='{$url->setQueryString('show','categories')}' class=''>{lang="cms_show_categories"} &nbsp;<i class='fa fa-caret-right'></i></a>
+		</p>
+	</div>
+</div>
+{{endif}}

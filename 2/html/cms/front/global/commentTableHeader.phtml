@@ -1,18 +1,21 @@
-<ips:template parameters="$comment, $status" />
-
-
-<div class='ipsDataList ipsAreaBackground_light ipsClearfix'>
-	<div class='ipsDataItem'>
-		<div class='ipsDataItem_icon'>
-			{template="userPhoto" group="global" app="core" params="$status->author()"}
-		</div>
-		<div class='ipsDataItem_main'>
-			<p class='ipsType_medium ipsType_light ipsType_blendLinks ipsType_reset'>
-				{lang="status_updated_by" htmlsprintf="$status->author()->link()"}
-			</p>
-			<div class='ipsType_richText ipsType_medium' data-ipsTruncate data-ipsTruncate-size='5 lines' data-ipsTruncate-type='remove'>
-				{$status->truncated()|raw}
-			</div>
-		</div>
-	</div>
+<ips:template parameters="$comment, $record" />
+{{$iposted = $record->container()->contentPostedIn();}}
+{{$idField = $record::$databaseColumnId;}}
+<div>
+	<h3 class='ipsType_sectionHead ipsType_break'>
+		{{if $record->unread()}}
+			<a href='{$record->url( 'getNewComment' )}' title='{lang="first_unread_post"}' data-ipsTooltip>
+				<span class='ipsItemStatus'><i class="fa {{if in_array( $record->$idField, $iposted )}}fa-star{{else}}fa-circle{{endif}}"></i></span>
+			</a>
+		{{else}}
+			{{if in_array( $record->$idField, $iposted )}}
+				<span class='ipsItemStatus ipsItemStatus_read ipsItemStatus_posted'><i class="fa fa-star"></i></span>
+			{{endif}}
+		{{endif}}
+		<a href='{$comment->url()}' title='{lang="view_this_topic" sprintf="$record->title"}'>{wordbreak="$record->_title"}</a>
+		{{if $record->container()->allow_rating}}
+			{template="rating" group="global" location="front" app="core" params="'large', $record->rating_hits ? ( $record->rating_total / $record->rating_hits ) : 0"}
+		{{endif}}
+	</h3>
+	<p class='ipsType_normal ipsType_light ipsType_blendLinks ipsType_reset'>{lang="in"} <a href='{$record->container()->url()}'>{$record->container()->_title}</a></p>
 </div>

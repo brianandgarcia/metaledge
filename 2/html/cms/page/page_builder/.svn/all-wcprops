@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/ips-suite/!svn/ver/9896/trunk/applications/cms/dev/html/page/page_builder
+END
+single_column.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6634/trunk/applications/cms/dev/html/page/page_builder/single_column.phtml
+END
+three_columns.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/9896/trunk/applications/cms/dev/html/page/page_builder/three_columns.phtml
+END
+two_columns.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/9896/trunk/applications/cms/dev/html/page/page_builder/two_columns.phtml
+END

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ips-suite/!svn/ver/9896/trunk/applications/cms/dev/html/database/display
+END
+recordEditLine.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/8105/trunk/applications/cms/dev/html/database/display/recordEditLine.phtml
+END
+record.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/9075/trunk/applications/cms/dev/html/database/display/record.phtml
+END
+review.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/7730/trunk/applications/cms/dev/html/database/display/review.phtml
+END
+comment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/8466/trunk/applications/cms/dev/html/database/display/comment.phtml
+END
+filtersAddComment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/7290/trunk/applications/cms/dev/html/database/display/filtersAddComment.phtml
+END
+reviewContainer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/6024/trunk/applications/cms/dev/html/database/display/reviewContainer.phtml
+END
+reviews.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/8418/trunk/applications/cms/dev/html/database/display/reviews.phtml
+END
+commentContainer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/7342/trunk/applications/cms/dev/html/database/display/commentContainer.phtml
+END
+comments.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9896/trunk/applications/cms/dev/html/database/display/comments.phtml
+END
+commentsAndReviewsTabs.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/ips-suite/!svn/ver/6024/trunk/applications/cms/dev/html/database/display/commentsAndReviewsTabs.phtml
+END

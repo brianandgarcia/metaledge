@@ -1,0 +1,14 @@
+<ips:template parameters="$page, $widgets" />
+<div>
+	<div class='ipsGrid ipsGrid_collapsePhone'>
+		<div class='ipsGrid_span4'>
+			{template="widgetContainer" group="pages" app="cms" params="'col1', $widgets, 'vertical'"}
+		</div>
+		<div class='ipsGrid_span4'>
+			{template="widgetContainer" group="pages" app="cms" params="'col2', $widgets, 'vertical'"}
+		</div>
+		<div class='ipsGrid_span4'>
+			{template="widgetContainer" group="pages" app="cms" params="'col3', $widgets, 'vertical'"}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,13 @@
+<ips:template parameters="$html, $title=NULL" />
+<!DOCTYPE html>
+<html lang="{expression="\IPS\Member::loggedIn()->language()->bcp47()"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
+	<head>
+		<title>{expression="output.getTitle( $title )"}</title>
+		{template="includeMeta" app="core" group="global" location="global" params=""}
+		{template="includeCSS" app="core" group="global" location="global" params=""}
+	</head>
+	<body class="ipsApp ipsApp_front ipsJS_none ipsClearfix ipsLayout_noBackground">
+		{$html|raw}
+		{template="includeJS" app="core" group="global" location="global" params=""}
+	</body>
+</html>

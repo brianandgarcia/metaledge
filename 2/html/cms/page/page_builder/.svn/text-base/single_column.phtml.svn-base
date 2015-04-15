@@ -1,0 +1,4 @@
+<ips:template parameters="$page, $widgets" />
+<div>
+	{template="widgetContainer" group="pages" app="cms" params="'col1', $widgets, 'horizontal'"}
+</div>

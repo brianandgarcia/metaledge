@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ips-suite/!svn/ver/9082/trunk/applications/cms/dev/html/database/listing
+END
+categoryFooter.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6901/trunk/applications/cms/dev/html/database/listing/categoryFooter.phtml
+END
+categoryTable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/9082/trunk/applications/cms/dev/html/database/listing/categoryTable.phtml
+END
+categoryHeader.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6901/trunk/applications/cms/dev/html/database/listing/categoryHeader.phtml
+END
+recordRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/7376/trunk/applications/cms/dev/html/database/listing/recordRow.phtml
+END
+filterMessage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/7862/trunk/applications/cms/dev/html/database/listing/filterMessage.phtml
+END

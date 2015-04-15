@@ -1,0 +1,6 @@
+<ips:template parameters="$rows" />
+<div>
+	{{foreach $rows as $line}}
+		<p>{$line|raw}</p>
+	{{endforeach}}
+</div>
