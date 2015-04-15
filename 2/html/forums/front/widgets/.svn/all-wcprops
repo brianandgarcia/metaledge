@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ips-suite/!svn/ver/9608/trunk/applications/forums/dev/html/front/widgets
+END
+hotTopics.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/9051/trunk/applications/forums/dev/html/front/widgets/hotTopics.phtml
+END
+latestTopics.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/9051/trunk/applications/forums/dev/html/front/widgets/latestTopics.phtml
+END
+featuredTopics.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/9051/trunk/applications/forums/dev/html/front/widgets/featuredTopics.phtml
+END
+topicFeed.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/9051/trunk/applications/forums/dev/html/front/widgets/topicFeed.phtml
+END
+forumStatistics.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/6457/trunk/applications/forums/dev/html/front/widgets/forumStatistics.phtml
+END
+postFeed.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9608/trunk/applications/forums/dev/html/front/widgets/postFeed.phtml
+END

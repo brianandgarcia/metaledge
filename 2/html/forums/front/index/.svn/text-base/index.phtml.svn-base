@@ -1,0 +1,38 @@
+<ips:template parameters="" />
+{template="pageHeader" group="global" app="core" params="\IPS\Member::loggedIn()->language()->addToStack('forums')"}
+
+{{if \IPS\Member::loggedIn()->member_id}}
+	<ul class="ipsToolList ipsToolList_horizontal ipsResponsive_hideDesktop ipsResponsive_block ipsClearfix">
+		{template="indexButtons" group="index" params=""}
+	</ul>
+{{endif}}
+
+<section>
+	<ol class='ipsList_reset cForumList' data-controller='core.global.core.table, forums.front.forum.forumList' data-baseURL=''>
+		{{foreach \IPS\forums\Forum::roots() as $category}}
+			{{if $category->can('view') && $category->hasChildren()}}
+			<li data-categoryID='{$category->_id}' class='cForumRow ipsBox ipsSpacer_bottom'>
+				<h2 class="ipsType_sectionTitle ipsType_reset ipsType_blendLinks cForumTitle">
+					<a href='#' class='ipsPos_right ipsJS_show cForumToggle' data-action='toggleCategory' data-ipsTooltip title='{lang="toggle_this_category"}'></a>
+					<a href='{$category->url()}'>{$category->_title}</a>
+				</h2>
+				{{if theme.forum_layout === 'grid'}}
+					<div class='ipsAreaBackground ipsPad' data-role="forums">
+						<div class='ipsGrid ipsGrid_collapsePhone' data-ipsGrid data-ipsGrid-minItemSize='300' data-ipsGrid-maxItemSize='400' data-ipsGrid-equalHeights='row'>
+							{{foreach $category->children() as $forum}}
+								{template="forumGridItem" group="index" app="forums" params="$forum"}
+							{{endforeach}}
+						</div>
+					</div>
+				{{else}}
+					<ol class="ipsDataList ipsDataList_large ipsDataList_zebra ipsAreaBackground_reset" data-role="forums">
+						{{foreach $category->children() as $forum}}
+							{template="forumRow" group="index" app="forums" params="$forum"}
+						{{endforeach}}
+					</ol>
+				{{endif}}
+			</li>
+			{{endif}}
+		{{endforeach}}
+	</ol>
+</section>

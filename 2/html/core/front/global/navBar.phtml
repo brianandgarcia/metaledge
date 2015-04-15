@@ -1,5 +1,5 @@
 <ips:template parameters=" " />
-<nav class='ipsLayout_container'>
+<nav>
 	<div class='ipsClearfix' id='elSearchNavContainer' data-controller='core.front.core.navBar'>
 		{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'search' ) ) AND !in_array('ipsLayout_minimal', \IPS\Output::i()->bodyClasses )}}
 			<div id='elSearch' class='ipsPos_right' data-controller='core.front.core.quickSearch' itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
