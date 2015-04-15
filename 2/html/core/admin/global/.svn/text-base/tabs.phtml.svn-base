@@ -1,0 +1,25 @@
+<ips:template parameters="$tabNames, $activeId, $defaultContent, $url, $tabParam='tab'" />
+<div class='acpBlock'>
+	<div class='ipsTabs ipsClearfix acpFormTabBar' id='elTabs_{expression="md5( $url )"}' data-ipsTabBar data-ipsTabBar-contentArea='#ipsTabs_content_{expression="md5( $url )"}' {{if \IPS\Request::i()->isAjax()}}data-ipsTabBar-updateURL='false'{{endif}}>
+		<a href='#elTabs_{expression="md5( $url )"}' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+		<ul role='tablist'>
+			{{foreach $tabNames as $i => $name}}
+				<li role='presentation'>
+					<a href='{$url->setQueryString( $tabParam, $i )}' id='{expression="md5( $url )"}_tab_{$i}' class="ipsTabs_item {{if $i == $activeId}}ipsTabs_activeItem{{endif}}" title='{lang="{$name}"}'>
+						{lang="$name"}
+						{{if \IPS\IN_DEV}}{template="searchKeywords" app="core" group="global" params="$url->setQueryString( 'tab', $i )->acpQueryString(), $name"}{{endif}}
+					</a>
+				</li>
+			{{endforeach}}
+		</ul>
+	</div>
+	<section id='ipsTabs_content_{expression="md5( $url )"}' class='acpFormTabContent'>
+		{{foreach $tabNames as $i => $name}}
+			{{if $i == $activeId}}
+				<div id='ipsTabs_elTabs_{expression="md5( $url )"}_{expression="md5( $url )"}_tab_{$i}_panel' class="ipsTabs_panel" aria-labelledby="{expression="md5( $url )"}_tab_{$i}" aria-hidden="false">
+					{$defaultContent|raw}
+				</div>
+			{{endif}}
+		{{endforeach}}
+	</section>
+</div>

@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/global
+END
+includeCSS.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9352/trunk/applications/core/dev/html/global/global/includeCSS.phtml
+END
+vineEmbed.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/4934/trunk/applications/core/dev/html/global/global/vineEmbed.phtml
+END
+textBlock.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/595/trunk/applications/core/dev/html/global/global/textBlock.phtml
+END
+wizard.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/794/trunk/applications/core/dev/html/global/global/wizard.phtml
+END
+chart.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/4481/trunk/applications/core/dev/html/global/global/chart.phtml
+END
+redirect.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/9223/trunk/applications/core/dev/html/global/global/redirect.phtml
+END
+prettyprint.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/2713/trunk/applications/core/dev/html/global/global/prettyprint.phtml
+END
+miniPagination.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4238/trunk/applications/core/dev/html/global/global/miniPagination.phtml
+END
+poll.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/6909/trunk/applications/core/dev/html/global/global/poll.phtml
+END
+dynamicChart.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/5117/trunk/applications/core/dev/html/global/global/dynamicChart.phtml
+END
+pollVoters.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/4951/trunk/applications/core/dev/html/global/global/pollVoters.phtml
+END
+truncatedUrl.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/1103/trunk/applications/core/dev/html/global/global/truncatedUrl.phtml
+END
+multipleRedirect.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/5653/trunk/applications/core/dev/html/global/global/multipleRedirect.phtml
+END
+advertisementImage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/global/advertisementImage.phtml
+END
+includeJS.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/8344/trunk/applications/core/dev/html/global/global/includeJS.phtml
+END
+message.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/262/trunk/applications/core/dev/html/global/global/message.phtml
+END
+pagination.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/4985/trunk/applications/core/dev/html/global/global/pagination.phtml
+END
+pollForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/8285/trunk/applications/core/dev/html/global/global/pollForm.phtml
+END
+lkeyWarning.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/8371/trunk/applications/core/dev/html/global/global/lkeyWarning.phtml
+END
+includeMeta.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/8850/trunk/applications/core/dev/html/global/global/includeMeta.phtml
+END

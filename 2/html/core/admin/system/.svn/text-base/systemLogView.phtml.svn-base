@@ -1,0 +1,9 @@
+<ips:template parameters="$title, $content" />
+
+<div class='acpBlock'>
+	<h2 class='acpBlock_title'>$title</h2>
+	<br>
+	<div class="ipsAreaBackground_light ipsPad">
+		<pre class='logview'>{$content}</pre>
+	</div>
+</div>

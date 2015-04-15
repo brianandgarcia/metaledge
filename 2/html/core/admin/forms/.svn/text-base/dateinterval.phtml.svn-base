@@ -1,0 +1,11 @@
+<ips:template parameters="$name, $value" />
+{lang="every"}
+<br>
+<ul class="ipsField_fieldList">
+	<li><input type="number" name="{$name}[y]" class="ipsField_short" value="{$value->y}" min="0" /> {lang="years"}</li>
+	<li><input type="number" name="{$name}[m]" class="ipsField_short" value="{$value->m}" min="0" /> {lang="months"}</li>
+	<li><input type="number" name="{$name}[d]" class="ipsField_short" value="{$value->d}" min="0" /> {lang="days"}</li>
+	<li><input type="number" name="{$name}[h]" class="ipsField_short" value="{$value->h}" min="0" /> {lang="hours"}</li>
+	<li><input type="number" name="{$name}[i]" class="ipsField_short" value="{$value->i}" min="0" /> {lang="minutes"}</li>
+	<li><input type="number" name="{$name}[s]" class="ipsField_short" value="{$value->s}" min="0" /> {lang="seconds"}</li>
+</ul>

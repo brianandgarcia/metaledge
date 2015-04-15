@@ -5,7 +5,7 @@
 		<ul class='ipsList_reset'>
 			{{if isset( \IPS\Output::i()->sidebar['widgets'][ $id ] )}}
 				{{foreach \IPS\Output::i()->sidebar['widgets'][ $id ] as $widget}}
-					<li class='ipsWidget ipsWidget_{$orientation} ipsBox{{if trim( (string) $widget ) === ''}} ipsWidgetHide ipsHide{{endif}}' data-blockID='{{if isset($widget->app)}}app_{$widget->app}_{{else}}plugin_{$widget->plugin}_{{endif}}{$widget->key}_{$widget->uniqueKey}'{{if $widget->configuration()}} data-blockConfig="true"{{endif}} data-blockTitle="{lang="block_{$widget->key}"}" data-controller='core.front.widgets.block'>{$widget|raw}</li>
+					<li class='ipsWidget ipsWidget_{$orientation} ipsBox{{if trim( (string) $widget ) === ''}} ipsWidgetHide ipsHide{{endif}}' data-blockID='{{if isset($widget->app) AND !empty($widget->app)}}app_{$widget->app}_{{else}}plugin_{$widget->plugin}_{{endif}}{$widget->key}_{$widget->uniqueKey}'{{if $widget->hasConfiguration()}} data-blockConfig="true"{{endif}} data-blockTitle="{lang="block_{$widget->key}"}" data-controller='core.front.widgets.block'>{$widget|raw}</li>
 				{{endforeach}}
 			{{endif}}
 		</ul>

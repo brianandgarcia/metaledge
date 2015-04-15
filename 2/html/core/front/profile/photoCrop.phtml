@@ -2,11 +2,11 @@
 
 <div data-controller='core.front.profile.cropper' id='elPhotoCropper' class='ipsAreaBackground_light ipsType_center ipsPad'>
 	<h3 class='ipsType_sectionHead'>{lang="photo_crop_title"}</h3>
-	<p class='ipsType_light ipsType_reset'>{lang="photo_crop_desc"}</p>
+	<p class='ipsType_light ipsType_reset'>{lang="photo_crop_instructions"}</p>
 	<br>
 
 	<div data-role='cropper'>
-		<img src="{$photo}" class="ipsImage" data-role='profilePhoto'>
+		<img src="{$photo}" data-role='profilePhoto'>
 	</div>
 
 	<input type='hidden' name='{$name}[0]' value='{$value[0]}' data-role='topLeftX'>

@@ -8,22 +8,10 @@
 </h3>
 <div class='ipsWidget_inner {{if $orientation == 'vertical'}}ipsPad{{endif}}'>
 	{{if $memberCount}}
-		<ul class='ipsList_inline ipsList_noSpacing'>
-			{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members' ) ) }}
-				{{foreach $members as $row}}
-					<li>
-						<a href="{url="app=core&module=members&controller=profile&id={$row['member_id']}" seoTemplate="profile" seoTitle="$row['seo_name']"}" data-ipsHover data-ipsHover-target='{url="app=core&module=members&controller=profile&id={$row['member_id']}&do=hovercard" seoTemplate="profile" seoTitle="$row['seo_name']"}' title="{lang="view_user_profile" sprintf="$row['member_name']"}">
-							{expression="\IPS\Member\Group::load( $row['member_group'] )->formatName( $row['member_name'] )" raw="true"}
-						</a>
-					</li>
-				{{endforeach}}
-			{{else}}
-				{{foreach $members as $row}}
-					<li>
-						{expression="\IPS\Member\Group::load( $row['member_group'] )->formatName( $row['member_name'] )" raw="true"}
-					</li>
-				{{endforeach}}
-			{{endif}}
+		<ul class='ipsList_inline ipsList_csv ipsList_noSpacing'>
+			{{foreach $members as $row}}
+				<li>{template="userLinkFromData" group="global" app="core" params="$row['member_id'], $row['member_name'], $row['seo_name'], $row['member_group']"}</li>
+			{{endforeach}}
 		</ul>
 		{{if $orientation == 'vertical' and $memberCount > 60}}
 			<p class='ipsType_medium ipsType_reset'>

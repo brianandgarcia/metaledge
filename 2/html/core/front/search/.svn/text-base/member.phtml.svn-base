@@ -1,0 +1,14 @@
+<ips:template parameters="$member" />
+<li class="ipsDataItem ipsClearfix">
+	<div class='ipsDataItem_icon ipsType_center'>
+		{template="userPhoto" group="global" params="$member, 'mini'"}
+	</div>
+	<div class='ipsDataItem_main'>
+		<h4 class='ipsDataItem_title ipsType_break ipsType_sectionHead'>
+			{$member->link()|raw}</a>
+		</h4>
+		<p class='ipsType_normal'>
+			{lang="joined"} {datetime="$member->joined"} &middot; {$member->groupName|raw}
+		</p>
+	</div>
+</li>

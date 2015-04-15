@@ -42,7 +42,7 @@
 				<a href='#elInviteMember{$conversation->id}_menu' id='elInviteMember{$conversation->id}' data-action='inviteUsers' title='{lang="invite_a_member"}' data-ipsMenu data-ipsMenu-appendTo="#elConvoMembers_{$conversation->id}" data-ipsMenu-closeOnClick='false' data-ipsTooltip class='ipsButton ipsButton_light ipsButton_narrow ipsButton_large'><i class='fa fa-plus'></i> <i class='fa fa-user'></i></a>
 				<div class='ipsMenu ipsMenu_wide ipsPad ipsHide' id='elInviteMember{$conversation->id}_menu'>
 					<form accept-charset='utf-8' action="{$conversation->url('addParticipant')}" method="post" data-role='addUser' data-conversation="{$conversation->id}">
-						<input type='text' class='ipsField_fullWidth' placeholder='{lang="messenger_invite_placeholder"}' name="member_names" data-ipsAutocomplete data-ipsAutocomplete-unique data-ipsAutocomplete-dataSource="{url="app=core&module=system&controller=ajax&do=findMember"}" data-ipsAutocomplete-queryParam='input' data-ipsAutocomplete-resultItemTemplate="core.autocomplete.memberItem"><br>
+						<input type='text' class='ipsField_fullWidth' placeholder='{lang="messenger_invite_placeholder"}' name="member_names" data-ipsAutocomplete data-ipsAutocomplete-unique data-ipsAutocomplete-dataSource="{url="app=core&module=system&controller=ajax&do=findMember"}" data-ipsAutocomplete-queryParam='input' data-ipsAutocomplete-resultItemTemplate="core.autocomplete.memberItem" data-ipsAutocomplete-minLength="3"><br>
 						<button class='ipsButton ipsButton_primary ipsButton_fullWidth'>{lang="invite"}</button>
 					</form>
 				</div>

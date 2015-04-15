@@ -28,7 +28,9 @@
 
 			<p class='ipsPad'>
 				{{if \IPS\Member::loggedIn()->member_id}}
-					<a href='{url="app=core&module=system&controller=login&do=logout" csrf="true"}' class='ipsButton ipsButton_light ipsButton_small ipsButton_fullWidth'>{lang="sign_out"}</a>
+					<a href='{url="app=core&module=system&controller=login&do=logout" csrf="true"}' class='ipsButton ipsButton_light ipsButton_small ipsButton_fullWidth'>
+						{{if isset( $_SESSION['logged_in_as_key'] )}}{lang="switch_to_account" sprintf="$_SESSION['logged_in_from']['name']"}{{else}}{lang="sign_out"}{{endif}}
+					</a>
 				{{else}}
 					<a href='{url="app=core&module=system&controller=login" seoTemplate="login"}' class='ipsButton ipsButton_light ipsButton_small ipsButton_fullWidth'>{lang="sign_in"}</a><br>
 					{{if \IPS\Settings::i()->allow_reg}}
@@ -44,13 +46,30 @@
 						<ul class='ipsDrawer_list'>
 							<li data-action="back"><a href='#'>{lang="mobile_menu_back"}</a></li>
 							<li><a href='{url="app=core&module=system&controller=settings" seoTemplate="settings"}' title='{lang="edit_account_settings"}'>{lang="menu_settings"}</a></li>
-							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members' ) )}}
-								<li><a href='{expression="\IPS\Member::loggedIn()->url()"}' title='{lang="view_my_profile"}'>{lang="menu_profile"}</a></li>
+							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members', 'front' ) )}}
+								<li><a href='{member="url()"}' title='{lang="view_my_profile"}'>{lang="menu_profile"}</a></li>
 							{{endif}}
 							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'messaging' ) )}}
-								<li><a href='{url="app=core&module=messaging&controller=messenger" seoTemplate="messaging"}' title='{lang="go_to_messenger"}'>{lang="menu_messages"}</a></li>
+								{{if \IPS\Member::loggedIn()->members_disable_pm AND \IPS\Member::loggedIn()->members_disable_pm != 2}}
+									<li><a href='{url="app=core&module=messaging&controller=messenger&do=enableMessenger" seoTemplate="messaging"}' title='{lang="go_to_messenger"}' data-confirm data-confirmMessage='{lang="messenger_disabled_msg"}'>{lang="menu_messages"}</a></li>
+								{{else}}
+									<li><a href='{url="app=core&module=messaging&controller=messenger" seoTemplate="messaging"}' title='{lang="go_to_messenger"}'>{lang="menu_messages"}</a></li>
+								{{endif}}
 							{{endif}}
-							<li><a href='{url="app=core&module=members&controller=ignore" seoTemplate="ignore"}'>{lang="menu_manage_ignore"}</a></li>
+							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members', 'front' ) )}}
+								{{$member = \IPS\Member::loggedIn();}}
+								<li><a href='{url="app=core&module=members&controller=profile&do=content&id=$member->member_id" base="front" seoTemplate="profile_content" seoTitle="$member->members_seo_name"}' title='{lang="userbar_my_content"}'>{lang="userbar_my_content"}</a></li>
+							{{endif}}
+							<li><a href='{url="app=core&module=system&controller=followed" seoTemplate="followed_content"}'>{lang="menu_followed_content"}</a></li>
+							{{if \IPS\Member::loggedIn()->group['g_attach_max'] != 0}}
+								<li><a href='{url="app=core&module=system&controller=attachments" seoTemplate="attachments"}'>{lang="my_attachments"}</a></li>
+							{{endif}}
+							<li id='elAccountSettingsLinkMobile'><a href='{url="app=core&module=system&controller=settings" seoTemplate="settings"}' title='{lang="edit_account_settings"}'>{lang="menu_settings"}</a></li>
+							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members' ) )}}
+			                    <li><a href='{expression="\IPS\Member::loggedIn()->url()->setQueryString( 'do', 'edit' )"}' data-ipsDialog data-ipsDialog-modal='true' data-ipsDialog-title='{lang="profile_edit"}'>{lang="profile_edit"}</a></li>
+							{{endif}}
+			                <li><a href='{url="app=core&module=members&controller=ignore" seoTemplate="ignore"}'>{lang="menu_manage_ignore"}</a></li>
+							<li><a href="{url="app=core&module=system&controller=notifications&do=options" seoTemplate="notifications_options"}">{lang="notification_options"}</a></li>
 							{{if ( \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'modcp' ) ) AND \IPS\Member::loggedIn()->modPermission() ) or ( \IPS\Member::loggedIn()->isAdmin() AND !\IPS\Settings::i()->security_remove_acp_link )}}
 								{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'modcp' ) ) AND \IPS\Member::loggedIn()->modPermission()}}
 									<li><a href='{url="app=core&module=modcp" seoTemplate="modcp"}'>{lang="menu_modcp"}</a></li>
@@ -65,7 +84,8 @@
 				{{if \IPS\Settings::i()->show_home_link}}
 					<li><a href='{setting="home_url"}'>{setting="home_name"}</a></li>
 				{{endif}}
-				{{foreach \IPS\Application::allExtensions( 'core', 'FrontNavigation' ) as $nav}}
+				{{$extensions = ( \IPS\Member::loggedIn()->language()->isrtl ) ? array_reverse( \IPS\Application::allExtensions( 'core', 'FrontNavigation' ) ) : \IPS\Application::allExtensions( 'core', 'FrontNavigation' );}}
+				{{foreach $extensions as $nav}}
 					{{if $nav->canView()}}
 						{{if $children = $nav->children()}}
 							<li class='ipsDrawer_itemParent'>
@@ -86,7 +106,7 @@
 						{{if \IPS\Member::loggedIn()->member_id}}
 							<li><a data-action="markSiteRead" data-controller="core.front.core.markRead" href='{url="app=core&module=system&controller=markread" seoTemplate="mark_site_as_read" csrf="true"}'>{lang="mark_site_read"}</a></li>
 						{{endif}}
-						<li><a href='{url="app=core&module=system&controller=activity" seoTemplate="activity"}'>{lang="activity_stream"}</a></li>
+						<li><a href='{url="app=core&module=activity&controller=activity" seoTemplate="activity"}'>{lang="activity_stream"}</a></li>
 						{{if \IPS\Settings::i()->gl_type != "none"}}
 							<li><a href='{{if \IPS\Settings::i()->gl_type == "internal"}}{url="app=core&module=system&controller=guidelines" seoTemplate="guidelines"}{{else}}{setting="gl_link"}{{endif}}'>{lang="guidelines"}</a></li>
 						{{endif}}

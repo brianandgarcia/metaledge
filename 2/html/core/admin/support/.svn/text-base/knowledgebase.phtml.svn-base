@@ -1,0 +1,16 @@
+<ips:template parameters="$id, $rows" />
+<div class="ipsPad">
+	<p>{lang="knowledgebase_blurb"}</p>
+	<ul class='ipsDataList'>
+		{{foreach $rows as $v}}
+			<li class="ipsDataItem">
+				<span class="ipsDataItem_generic">
+					<a href="{$v['link']}" target="_blank">{$v['title']}</a>
+				</span>
+			</li>
+		{{endforeach}}
+	</ul>
+</div>
+<div class="ipsAreaBackground ipsPad ipsType_center">
+	<a href="{url="app=core&module=support&controller=support&next={$id}&mr=0"}" class="ipsButton ipsButton_alternate" data-action="redirectContinue">{lang="still_need_help"}</a>
+</div>

@@ -1,0 +1,42 @@
+<ips:template parameters="$id, $action, $tabs, $hiddenValues, $actionButtons, $uploadField" />
+<form accept-charset='utf-8' action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}}>
+	<input type="hidden" name="{$id}_submitted" value="1">
+	{{foreach $hiddenValues as $k => $v}}
+		<input type="hidden" name="{$k}" value="{$v}">
+	{{endforeach}}
+	{{if $uploadField}}
+		<input type="hidden" name="MAX_FILE_SIZE" value="{$uploadField}">
+		<input type="hidden" name="plupload" value="{expression="md5( uniqid() )"}">
+	{{endif}}
+	<ul class='ipsForm ipsForm_vertical'>
+		{{foreach $tabs as $elements}}
+			{{foreach $elements as $element}}
+				<li class='ipsFieldRow ipsFieldRow_primary ipsFieldRow_fullWidth'>
+					{{if $element->name === 'auth'}}
+						{{if $element->options['_loginType'] === \IPS\Login::AUTH_TYPE_USERNAME + \IPS\Login::AUTH_TYPE_EMAIL}}
+							<label class='ipsFieldRow_label'>{lang="username_or_email"}</label>
+						{{elseif $element->options['_loginType'] === \IPS\Login::AUTH_TYPE_USERNAME}}
+							<label class='ipsFieldRow_label'>{lang="username"}</label>
+						{{else}}
+							<label class='ipsFieldRow_label'>{lang="email_address"}</label>
+						{{endif}}
+					{{else}}
+						<label class='ipsFieldRow_label'>{lang="$element->name"}</label>
+					{{endif}}
+					<div class='ipsFieldRow_content'>
+						{$element->html()|raw}
+						{{if $element->error}}
+							<p><span class="error">{lang="$element->error"}</span></p>
+						{{endif}}
+					</div>
+				</li>
+			{{endforeach}}
+		{{endforeach}}
+	</ul>
+	<br><br>
+	
+	<div class='ipsFieldRow_fullWidth'>
+		<button type='submit' class='ipsButton ipsButton_primary ipsButton_large'>{lang="login"}</button>
+	</div>
+	
+</form>

@@ -16,7 +16,7 @@
 				</li>
 				{{if $coverPhoto->editable}}
 					<li>
-						<a href='#elEditPhoto_menu' data-hideOnCoverEdit class='ipsButton ipsButton_overlaid' data-ipsMenu data-ipsMenu-appendTo='#elEventHeader' id='elEditPhoto' data-role='coverPhotoOptions'>
+						<a href='#elEditPhoto_menu' data-hideOnCoverEdit class='ipsButton ipsButton_overlaid' data-ipsMenu id='elEditPhoto' data-role='coverPhotoOptions'>
 							<i class='fa fa-picture-o'></i>&nbsp;<span class='ipsResponsive_hidePhone ipsResponsive_inline'>&nbsp;&nbsp;{lang="profile_edit_cover_photo_tab"} <i class='fa fa-caret-down'></i></span>
 						</a>
 						<ul class='ipsMenu ipsMenu_auto ipsHide' id='elEditPhoto_menu'>
@@ -39,9 +39,15 @@
 		{{endif}}
 		<div class='ipsColumns ipsColumns_collapsePhone' data-hideOnCoverEdit>
 			<div class='ipsColumn ipsColumn_fixed ipsColumn_narrow ipsPos_center' id='elProfilePhoto'>
-				<span class='ipsUserPhoto ipsUserPhoto_xlarge'>
-					<img src='{$member->photo}' alt=''>
-				</span>
+				{{if $member->pp_main_photo and ( mb_substr( $member->pp_photo_type, 0, 5 ) === 'sync-' or $member->pp_photo_type === 'custom' )}}
+					<a href="{$member->pp_main_photo}" data-ipsLightbox class='ipsUserPhoto ipsUserPhoto_xlarge'>					
+						<img src='{$member->photo}' alt=''>
+					</a>
+				{{else}}
+					<span class='ipsUserPhoto ipsUserPhoto_xlarge'>					
+						<img src='{$member->photo}' alt=''>
+					</span>
+				{{endif}}
 				{{if \IPS\Member::loggedIn()->modPermission('can_modify_profiles') or ( \IPS\Member::loggedIn()->member_id == $member->member_id and $member->group['g_edit_profile'] )}}
 					<a href='{url="app=core&module=members&controller=profile&do=editPhoto&id={$member->member_id}" base="front" seoTemplate="edit_profile_photo" seoTitle="$member->members_seo_name"}' class='ipsButton ipsButton_verySmall ipsButton_light ipsButton_narrow' data-action='editPhoto' data-ipsDialog data-ipsDialog-modal='true' data-ipsDialog-title='{lang="profile_edit_photo_tab"}' title='{lang="profile_edit_photo_tab"}' data-ipsTooltip><i class='fa fa-photo'></i></a>
 				{{endif}}
@@ -54,10 +60,11 @@
 				{{if \IPS\Member::loggedIn()->member_id != $member->member_id}}
 					<ul class='ipsList_inline ipsPad ipsResponsive_hidePhone ipsResponsive_block'>
 						{{if \IPS\Member::loggedIn()->member_id != $member->member_id and ( !$member->members_bitoptions['pp_setting_moderate_followers'] or \IPS\Member::loggedIn()->following( 'core', 'member', $member->member_id ) )}}
-							<li>{template="memberFollow" app="core" group="profile" params="'core', 'member', $member->member_id, $member->followers()->count( TRUE )"}</li>
+							{{$memberFollowers = $member->followers();}}
+							<li>{template="memberFollow" app="core" group="profile" params="'core', 'member', $member->member_id, ( $memberFollowers === NULL ) ? 0 : $memberFollowers->count( TRUE )"}</li>
 						{{endif}}
 						{{if \IPS\Member::loggedIn()->member_id && !$member->members_disable_pm and !\IPS\Member::loggedIn()->members_disable_pm}}
-							<li><a href='{url="app=core&module=messaging&controller=messenger&do=compose&to={$member->member_id}" seoTemplate="messenger_compose"}' data-ipsDialog data-ipsDialog-title='{lang="compose_new"}' data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="message_sent"}" class='ipsButton ipsButton_primary'><i class='fa fa-envelope'></i> <span class='ipsResponsive_showDesktop ipsResponsive_inline'>&nbsp; {lang="message_send"}</a></li>
+							<li><a href='{url="app=core&module=messaging&controller=messenger&do=compose&to={$member->member_id}" seoTemplate="messenger_compose"}' data-ipsDialog data-ipsDialog-title='{lang="compose_new"}' data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="message_sent"}" class='ipsButton ipsButton_primary'><i class='fa fa-envelope'></i> <span class='ipsResponsive_showDesktop ipsResponsive_inline'>&nbsp; {lang="message_send"}</span></a></li>
 						{{endif}}
 					</ul>
 				{{endif}}
@@ -76,11 +83,12 @@
 
 		{{if \IPS\Member::loggedIn()->member_id != $member->member_id and !$member->members_bitoptions['pp_setting_moderate_followers']}}
 			<div class='ipsGrid_span{{if $span == 1}}12{{elseif $span == 2}}6{{else}}4{{endif}}'>
-				{template="memberFollow" app="core" group="profile" params="'core', 'member', $member->member_id, $member->followers()->count( TRUE ), true"}
+				{{$memberFollowers = $member->followers();}}
+				{template="memberFollow" app="core" group="profile" params="'core', 'member', $member->member_id, ( $memberFollowers === NULL ) ? 0 : $memberFollowers->count( TRUE ), TRUE"}
 			</div>
 		{{endif}}
 		{{if \IPS\Member::loggedIn()->member_id != $member->member_id && \IPS\Member::loggedIn()->member_id && !$member->members_disable_pm and !\IPS\Member::loggedIn()->members_disable_pm}}
-			<a href='{url="app=core&module=messaging&controller=messenger&do=compose&to={$member->member_id}" seoTemplate="messenger_compose"}' data-ipsDialog data-ipsDialog-title='{lang="compose_new"}' data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="message_sent"}" class='ipsGrid_span{{if $span == 1}}12{{elseif $span == 2}}6{{else}}4{{endif}} ipsButton ipsButton_alternate ipsButton_small'><i class='
+			<a href='{url="app=core&module=messaging&controller=messenger&do=compose&to={$member->member_id}" seoTemplate="messenger_compose"}' data-ipsDialog data-ipsDialog-title='{lang="compose_new"}' data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="message_sent"}" data-ipsDialog-forceReload class='ipsGrid_span{{if $span == 1}}12{{elseif $span == 2}}6{{else}}4{{endif}} ipsButton ipsButton_alternate ipsButton_small'><i class='
 			fa fa-envelope'></i> <i class='fa fa-caret-right'></i></a>
 		{{endif}}
 		<div data-role='switchView' class='ipsGrid_span{{if $span == 1}}12{{elseif $span == 2}}6{{else}}4{{endif}}'>
@@ -95,12 +103,12 @@
 
 	<div id='elProfileStats' class='ipsClearfix'>
 		<div data-role='switchView' class='ipsResponsive_hidePhone ipsResponsive_block'>
-			<a href='{$member->url()}' class='ipsButton ipsButton_veryLight ipsButton_medium ipsPos_right {{if $small != true}}ipsHide{{endif}}' data-action="goToProfile" data-type='full' title="{lang="members_profile" sprintf="$member->name"}"><i class='fa fa-user'></i> &nbsp;{lang="profile_view_profile"}</a>
-			<a href="{url="app=core&module=members&controller=profile&do=edit&id={$member->member_id}" base="front" seoTemplate="profile_content" seoTitle="$member->members_seo_name"}" class='ipsButton ipsButton_light ipsButton_medium ipsPos_right {{if $small == true}}ipsHide{{endif}}' data-action="browseContent" data-type='full' title="{lang="members_content" sprintf="$member->name"}"><i class='fa fa-search'></i> &nbsp;{{if member.member_id === $member->member_id}}{lang="profile_browse_my_content"}{{else}}{lang="profile_browse_content"}{{endif}}</a>
+			<a href='{$member->url()}' class='ipsButton ipsButton_veryLight ipsButton_medium ipsPos_right {{if $small != true}}ipsHide{{endif}}' data-action="goToProfile" data-type='full' title="{lang="members_profile" sprintf="$member->name"}"><i class='fa fa-user'></i> <span class='ipsResponsive_showDesktop ipsResponsive_inline'>&nbsp;{lang="profile_view_profile"}</span></a>
+			<a href="{url="app=core&module=members&controller=profile&do=edit&id={$member->member_id}" base="front" seoTemplate="profile_content" seoTitle="$member->members_seo_name"}" class='ipsButton ipsButton_light ipsButton_medium ipsPos_right {{if $small == true}}ipsHide{{endif}}' data-action="browseContent" data-type='full' title="{lang="members_content" sprintf="$member->name"}"><i class='fa fa-search'></i> <span class='ipsResponsive_showDesktop ipsResponsive_inline'>&nbsp;{{if member.member_id === $member->member_id}}{lang="profile_browse_my_content"}{{else}}{lang="profile_browse_content"}{{endif}}</span></a>
 		</div>
 		<ul class='ipsList_inline ipsPos_left'>
 			<li>
-				<h4 class='ipsType_minorHeading'>{lang="members_posts"}</h4>
+				<h4 class='ipsType_minorHeading'>{lang="members_member_posts"}</h4>
 				{$member->member_posts}
 			</li>
 			<li>

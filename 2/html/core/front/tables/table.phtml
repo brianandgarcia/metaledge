@@ -31,7 +31,7 @@
 				</li>
 			</ul>
 		{{endif}}
-		
+
 		<ul class="ipsButtonRow ipsPos_right ipsClearfix">
 			{{if $table->showAdvancedSearch AND ( ( isset( $table->sortOptions ) and count( $table->sortOptions ) > 1 ) OR $table->advancedSearch )}}
 				<li>
@@ -69,7 +69,7 @@
 				</li>
 			{{endif}}
 		</ul>
-		
+
 		{{if $table->pages > 1}}
 			<div data-role="tablePagination">
 				{template="pagination" group="global" app="core" location="global" params="$table->baseUrl, $table->pages, $table->page, $table->limit, TRUE, $table->getPaginationKey()"}
@@ -97,7 +97,7 @@
 				{{endif}}
 			</div>
 		{{endif}}
-				
+
 	{{if $table->canModerate()}}
 			<div class="ipsAreaBackground ipsPad ipsClearfix" data-role="pageActionOptions">
 				<div class="ipsPos_right">
@@ -151,21 +151,18 @@
 						{{if $table->canModerate('split_merge')}}
 							<option value='merge' data-icon='level-up'>{lang="merge"}</option>
 						{{endif}}
-						{{if $table->canModerate('delete')}}
-							<option value='delete' data-icon='times-circle'>{lang="delete"}</option>
-						{{endif}}
 						{{if method_exists( $table, 'customActions' )}}
-						{{foreach $table->customActions() as $action}}
-							{{if is_array( $action['action'] ) }}
-								<optgroup label="{lang="$action['grouplabel']"}" data-icon='{$action['icon']}' data-action='{$action['groupaction']}'>
-									{{foreach $action['action'] as $_action}}
-										<option value='{$_action['action']}'>{lang="$_action['label']"}</option>
-									{{endforeach}}
-								</optgroup>
-							{{else}}
-								<option value='{$action['action']}' data-icon='{$action['icon']}'>{lang="$action['label']"}</option>
-							{{endif}}
-						{{endforeach}}
+							{{foreach $table->customActions() as $action}}
+								{{if is_array( $action['action'] ) }}
+									<optgroup label="{lang="$action['grouplabel']"}" data-icon='{$action['icon']}' data-action='{$action['groupaction']}'>
+										{{foreach $action['action'] as $_action}}
+											<option value='{$_action['action']}'>{lang="$_action['label']"}</option>
+										{{endforeach}}
+									</optgroup>
+								{{else}}
+									<option value='{$action['action']}' data-icon='{$action['icon']}'>{lang="$action['label']"}</option>
+								{{endif}}
+							{{endforeach}}
 						{{endif}}
 						{{if $table->savedActions}}
 							<optgroup label="{lang="saved_actions"}" data-icon='tasks' data-action='saved_actions'>
@@ -186,6 +183,9 @@
 								<option value='follow_anonymous'>{lang="follow_anonymous"}</option>
 							</optgroup>
 							<option value='unfollow' data-icon='times'>{lang="unfollow"}</option>
+						{{endif}}
+						{{if $table->canModerate('delete')}}
+							<option value='delete' data-icon='trash'>{lang="delete"}</option>
 						{{endif}}
 					</select>
 					<button type="submit" class="ipsButton ipsButton_alternate ipsButton_verySmall">{lang="submit"}</button>

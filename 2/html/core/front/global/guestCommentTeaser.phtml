@@ -1,6 +1,6 @@
 <ips:template parameters="$item, $login" />
 
-{{$ref = urlencode( $item->url() . '#replyForm' );}}
+{{$ref = base64_encode( $item->url() . '#replyForm' );}}
 {{if \IPS\Settings::i()->allow_reg}}
 	<div class='ipsType_center ipsPad'>
 		<h2 class='ipsType_pageTitle'>{lang="teaser_title_reg"}</h2>

@@ -1,0 +1,65 @@
+<ips:template parameters="$rows" />
+<div id='acpEnhancements' data-ipsKeyNav data-ipsKeyNav-observe='t r return'>
+	<h2 class='acpBlock_title'>{lang="enhancements_ips"}</h2>
+	<br>
+
+	{{foreach $rows[1] as $key => $data}}
+		<div class='ipsAreaBackground_light ipsPad' data-keyNavBlock>
+			{{if $data['icon'] != ""}}<img src='{resource="enhancements/{$data['icon']}" app="core" location="admin"}' class='acpEnhancement_logo ipsPos_right'>{{endif}}
+			<h3><strong>{lang="$data['title']"}</strong></h3>
+			{{if $data['description']}}
+				<p class='ipsType_medium'>
+					{lang="$data['description']"}
+				</p>
+			{{endif}}
+			<br>
+			<ul class='ipsList_inline'>
+				<li>
+					{{if $data['enabled'] == 1}}
+						<a href='{url="app=core&module=applications&controller=enhancements&do=enableToggle&id={$key}&status=0"}' class='ipsButton ipsButton_medium ipsButton_alternate' data-keyAction='t'>{lang="disable"}</a>
+					{{else}}
+						<a href='{url="app=core&module=applications&controller=enhancements&do=enableToggle&id={$key}&status=1"}' class='ipsButton ipsButton_medium ipsButton_alternate' data-keyAction='t'>{lang="enable"}</a>
+					{{endif}}
+				</li>
+				{{if $data['config']}}
+					<li>
+						<a href='{url="app=core&module=applications&controller=enhancements&do=edit&id={$key}"}'><i class='fa fa-pencil'></i>&nbsp; {lang="enhancements_configure"}</a>
+					</li>
+				{{endif}}
+			</ul>
+		</div>
+		<br>
+	{{endforeach}}
+
+	<br>
+	<h2 class='acpBlock_title'>{lang="enhancements_thirdparty"}</h2>
+	<br>
+
+	{{foreach $rows[0] as $key => $data}}
+		<div class='ipsAreaBackground_light ipsPad' data-keyNavBlock>
+			{{if $data['icon'] }}<img src='{resource="enhancements/{$data['icon']}" app="{$data['app']}" location="admin"}' class='acpEnhancement_logo ipsPos_right'>{{endif}}
+			<h3><strong>{lang="$data['title']"}</strong></h3>
+			{{if $data['description']}}
+				<p class='ipsType_medium'>
+					{lang="$data['description']"}
+				</p>
+			{{endif}}
+			<br>
+			<ul class='ipsList_inline'>
+				<li>
+					{{if $data['enabled'] == 1}}
+						<a href='{url="app=core&module=applications&controller=enhancements&do=enableToggle&id={$key}&status=0"}' class='ipsButton ipsButton_medium ipsButton_alternate' data-keyAction='t'>{lang="disable"}</a>
+					{{else}}
+						<a href='{url="app=core&module=applications&controller=enhancements&do=enableToggle&id={$key}&status=1"}' class='ipsButton ipsButton_medium ipsButton_alternate' data-keyAction='t'>{lang="enable"}</a>
+					{{endif}}
+				</li>
+				{{if $data['config']}}
+					<li>
+						<a href='{url="app=core&module=applications&controller=enhancements&do=edit&id={$key}"}'><i class='fa fa-pencil'></i>&nbsp; {lang="enhancements_configure"}</a>
+					</li>
+				{{endif}}
+			</ul>
+		</div>
+		<br>
+	{{endforeach}}
+</div>

@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/8814/trunk/applications/core/dev/html/front/search
+END
+contentReview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/8814/trunk/applications/core/dev/html/front/search/contentReview.phtml
+END
+contentComment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/8814/trunk/applications/core/dev/html/front/search/contentComment.phtml
+END
+advancedSearchForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/7861/trunk/applications/core/dev/html/front/search/advancedSearchForm.phtml
+END
+results.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/7257/trunk/applications/core/dev/html/front/search/results.phtml
+END
+search.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/7912/trunk/applications/core/dev/html/front/search/search.phtml
+END
+member.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/7767/trunk/applications/core/dev/html/front/search/member.phtml
+END
+globalSearchMenuOptions.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/ips-suite/!svn/ver/6312/trunk/applications/core/dev/html/front/search/globalSearchMenuOptions.phtml
+END
+filters.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/7861/trunk/applications/core/dev/html/front/search/filters.phtml
+END
+contentItem.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/7475/trunk/applications/core/dev/html/front/search/contentItem.phtml
+END
+resultStream.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/8572/trunk/applications/core/dev/html/front/search/resultStream.phtml
+END

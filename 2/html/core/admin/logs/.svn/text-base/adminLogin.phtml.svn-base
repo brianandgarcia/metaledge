@@ -1,0 +1,8 @@
+<ips:template parameters="$log, $request" />
+	<div class="ipsAreaBackground_light ipsPad">
+		<h3 class="ipsType_sectionHead ipsPad">{lang="adminloginlogs_general"}</h3>
+			{template="definitionTable" app="core" group="global" params="$log"}
+		<h3 class="ipsType_sectionHead ipsPad">{lang="adminloginlogs_request"}</h3>
+			{template="definitionTable" app="core" group="global" params="$request"}
+	</div>
+

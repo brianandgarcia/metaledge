@@ -4,20 +4,20 @@
 		<ul class='ipsDataList'>
 			<li class='ipsDataItem'>
 				<div class='ipsDataItem_main'>
-					<h4 class='ipsDataItem_title'><strong>{lang="username"}</strong></h4>
+					<h4 class='ipsDataItem_title'><strong>{lang="username"}</strong></h4><br>
 					{member="name"}
 				</div>
 			</li>
 			<li class='ipsDataItem'>
 				<div class='ipsDataItem_main'>
-					<h4 class='ipsDataItem_title'><strong>{lang="email_address"}</strong></h4>
+					<h4 class='ipsDataItem_title'><strong>{lang="email_address"}</strong></h4><br>
 					{member="email"}
 				</div>
 			</li>
 			{{if \IPS\Member::loggedIn()->members_pass_hash}}
 				<li class='ipsDataItem'>
 					<div class='ipsDataItem_main'>
-						<h4 class='ipsDataItem_title'><strong>{lang="password"}</strong></h4>
+						<h4 class='ipsDataItem_title'><strong>{lang="password"}</strong></h4><br>
 						********
 					</div>
 				</li>
@@ -26,11 +26,11 @@
 				<li class='ipsDataItem'>
 					<div class='ipsDataItem_main'>
 						{{if $service->connected()}}
-							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_positive'>{lang="enabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4>
+							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_positive'>{lang="enabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4><br>
 							Logged in as {$service->name()}<br>
 							<span class='ipsType_light'>{$service->settingsDesc()}</span>
 						{{else}}
-							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_negative'>{lang="disabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4>
+							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_negative'>{lang="disabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4><br>
 							<span class='ipsType_light'>{lang="profilesync_not_syncing"}</span>
 						{{endif}}
 					</div>

@@ -1,6 +1,6 @@
 <ips:template parameters="$member, $signature" />
 {{if !\IPS\Member::loggedIn()->isIgnoring( $member, 'signatures' )}}
-	<div data-role="memberSignature">
+	<div data-role="memberSignature" class='ipsResponsive_hidePhone'>
 		<hr class='ipsHr'>
 
 		{{if member.member_id}}
@@ -23,7 +23,7 @@
 			</div>
 		{{endif}}
 
-		<div class='ipsType_light ipsType_richText' data-controller='core.front.core.lightboxedImages'>
+		<div class='ipsType_light ipsType_richText'>
 			{$signature|raw}
 		</div>
 	</div>

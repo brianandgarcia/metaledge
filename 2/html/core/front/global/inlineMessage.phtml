@@ -10,7 +10,7 @@
 				{$message->post|raw}
 			</div>
 			<hr class='ipsHr'>
-			<a href='{$message->url()}' class='ipsButton ipsButton_primary ipsButton_small'>{lang="messenger_inline_button"}</a>{{if $message->canReport()}} &nbsp;&nbsp; <a href='{$message->url('report')}'><span class='ipsResponsive_showPhone ipsResponsive_inline'><i class='fa fa-flag'></i></span><span class='ipsResponsive_hidePhone ipsResponsive_inline'>{lang="report_post"}</span></a>{{endif}}
+			<a href='{$message->url()}' class='ipsButton ipsButton_primary ipsButton_small'>{lang="messenger_inline_button"}</a>{{if \IPS\Member::loggedIn()->msg_count_new > 1}} <a href='{url="app=core&module=messaging&controller=messenger" seoTemplate="messaging"}' class='ipsButton ipsButton_primary ipsButton_small'>{lang="messenger_inline_view_all"}</a>{{endif}}{{if $message->canReport()}} &nbsp;&nbsp; <a href='{$message->url('report')}'><span class='ipsResponsive_showPhone ipsResponsive_inline'><i class='fa fa-flag'></i></span><span class='ipsResponsive_hidePhone ipsResponsive_inline'>{lang="report_post"}</span></a>{{endif}}
 		</div>
 	</div>
 </div>

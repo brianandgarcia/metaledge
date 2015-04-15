@@ -1,0 +1,2 @@
+<ips:template parameters="$message, $classes=array(), $parse=TRUE" />
+<span class='{expression="implode( ' ', $classes )"}'>{{if $parse}}{lang="$message"}{{else}}{$message|raw}{{endif}}</span>

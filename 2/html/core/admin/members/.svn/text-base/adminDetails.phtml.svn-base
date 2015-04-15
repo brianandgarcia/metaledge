@@ -1,0 +1,43 @@
+<ips:template parameters="$details" />
+
+<div class='ipsColumns ipsPad'>
+	<div class='ipsColumn ipsColumn_narrow ipsResponsive_hidePhone'>
+		<div class='ipsPad ipsType_center'>
+			{template="userPhoto" app="core" group="global" params="\IPS\Member::loggedIn(), 'medium'"}
+		</div>
+	</div>
+	<div class='ipsColumn ipsColumn_fluid'>
+		<ul class='ipsDataList'>
+			<li class='ipsDataItem ipsClearfix '>
+				<div class='ipsDataItem_main'>
+					<strong class='ipsDataItem_title'>{lang="username"}</strong>
+					<p class='ipsType_reset'>
+						{$details['username']}
+					</p>
+				</div>
+			</li>
+			<li class='ipsDataItem ipsClearfix '>
+				<div class='ipsDataItem_main'>
+					<strong class='ipsDataItem_title'>{lang="email_address"}</strong>
+					<p class='ipsType_reset'>
+						{$details['email_address']}
+					</p>
+				</div>
+				<p class='ipsDataItem_generic ipsDataItem_size3'>
+					<a href='{url="app=core&module=members&controller=members&do=adminEmail"}' title='{lang="change_email_button"}' class='ipsButton ipsButton_small ipsButton_normal' data-ipsDialog data-ipsDialog-title='{lang="change_email_button"}'>{lang="change"}</a>
+				</p>
+			</li>
+			<li class='ipsDataItem ipsClearfix '>
+				<div class='ipsDataItem_main'>
+					<strong class='ipsDataItem_title'>{lang="password"}</strong>
+					<p class='ipsType_reset'>
+						<span class='ipsType_light'>{$details['password']}</span>
+					</p>
+				</div>
+				<p class='ipsDataItem_generic ipsDataItem_size3'>
+					<a href='{url="app=core&module=members&controller=members&do=adminPassword"}' title='{lang="change_password"}' class='ipsButton ipsButton_small ipsButton_normal' data-ipsDialog data-ipsDialog-title='{lang="change_password"}'>{lang="change"}</a>
+				</p>
+			</li>
+		</ul>
+	</div>
+</div>

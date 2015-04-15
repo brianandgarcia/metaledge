@@ -1,0 +1,49 @@
+<ips:template parameters="$buttons" />
+{{if !empty( $buttons )}}
+	<ul class="ipsList ipsList_inline">
+		{{foreach $buttons as $action}}
+			<li>
+				<a
+					{{if isset( $action['link'] )}}
+						href='{{if mb_substr( $action['link'], 0, 1 ) === '#' or preg_match( '/^[a-z]{3,5}:\/\/.*$/', $action['link'] )}}{$action['link']}{{else}}{url="{$action['link']}"}{{endif}}'
+					{{else}}
+						href='#'
+					{{endif}}
+					{{if isset( $action['menu'] )}}
+						data-ipsMenu
+						id='{{$id = md5( uniqid() );}}{$id}'
+					{{endif}}
+					class='ipsButton ipsButton_verySmall {{if isset( $action['color'] )}}{$action['color']}{{else}}ipsButton_normal{{endif}} {{if isset( $action['class'] )}}{$action['class']}{{endif}}'
+					{{if isset( $action['target'] )}}target="{$action['target']}"{{endif}}
+					{{if isset( $action['data'] )}}
+						{{foreach $action['data'] as $k => $v}}
+							data-{$k}="{$v}"
+						{{endforeach}}
+					{{endif}}
+				>
+					<i class='fa fa-{$action['icon']}'></i> &nbsp;&nbsp;<span data-role="title">{lang="$action['title']"}</span>{{if isset( $action['menu'] )}} <i class="fa fa-caret-down"></i>{{endif}}
+				</a>
+				{{if isset( $action['menu'] )}}
+					<div id='{$id}_menu' class='ipsMenu {{if isset( $action['menuClass'] )}}{$action['menuClass']}{{endif}} ipsHide'>
+						<ul>
+							{{foreach $action['menu'] as $item}}
+								{{if isset( $item['hr'] ) and $item['hr']}}
+									<li class='ipsMenu_sep'><hr></li>
+								{{else}}
+									<li class="ipsMenu_item {{if isset( $item['class'] )}}{$item['class']}{{endif}}" {{if isset( $item['data'] )}}{{foreach $item['data'] as $k => $v}}data-{$k}="{$v}"{{endforeach}}{{endif}}>
+										<a href="{$item['link']}">
+											{{if isset( $item['icon'] )}}
+												<i class='fa fa-{$item['icon']}'></i> &nbsp;&nbsp;
+											{{endif}}
+											<span data-role="title">{lang="$item['title']"}</span>
+										</a>
+									</li>
+								{{endif}}
+							{{endforeach}}
+						</ul>
+					</div>
+				{{endif}}
+			</li>
+		{{endforeach}}
+	</ul>
+{{endif}}

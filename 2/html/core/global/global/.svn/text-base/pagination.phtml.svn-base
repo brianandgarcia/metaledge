@@ -1,0 +1,38 @@
+<ips:template parameters="$baseUrl, $pages, $activePage=1, $perPage=25, $ajax=TRUE, $pageParam='page'" />
+{{if $activePage > 1 || $pages > 1}}
+	{{$uniqId = uniqid();}}
+	<ul class='ipsPagination' id='elPagination_{expression="md5($baseUrl)"}_{$uniqId}' data-pages='{$pages}' {{if $ajax}}data-ipsPagination {{if $pageParam != 'page'}}data-ipsPagination-pageParam='{$pageParam}'{{endif}} data-ipsPagination-pages="{$pages}" data-ipsPagination-perPage='{$perPage}'{{endif}}>
+		{{if $activePage != 1}}
+			<li class='ipsPagination_first'><a href='{$baseUrl->setQueryString( $pageParam, 1 )}' data-page='1' data-ipsTooltip title='{lang="first_page"}'><i class='fa fa-backward'></i></a></li>
+			<li class='ipsPagination_prev'><a href='{$baseUrl->setQueryString( $pageParam, $activePage - 1 )}' data-page='{expression="$activePage - 1"}'>{lang="prev"}</a></li>
+			{{foreach range( ( ( $activePage - 5 ) > 0 ) ? ( $activePage - 5 ) : 1, $activePage - 1 ) as $idx => $i}}
+				<li class='ipsPagination_page {{if $idx < 3}}ipsResponsive_hidePhone{{endif}}'><a href='{$baseUrl->setQueryString( $pageParam, $i )}' data-page='{$i}'>{$i}</a></li>
+			{{endforeach}}
+		{{endif}}
+		<li class='ipsPagination_page ipsPagination_active'><a href='{$baseUrl->setQueryString( $pageParam, $activePage )}' data-page='{$activePage}'>{$activePage}</a></li>
+		{{if $activePage != $pages}}
+			{{foreach range( $activePage + 1, ( ( $activePage + 5 ) > $pages ) ? $pages : ( $activePage + 5 ) ) as $idx => $i}}
+				<li class='ipsPagination_page {{if $idx > 1}}ipsResponsive_hidePhone{{endif}}'><a href='{$baseUrl->setQueryString( $pageParam, $i )}' data-page='{$i}'>{$i}</a></li>
+			{{endforeach}}
+			<li class='ipsPagination_next'><a href='{$baseUrl->setQueryString( $pageParam, $activePage + 1 )}' data-page='{expression="$activePage + 1"}'>{lang="next"}</a></li>
+			<li class='ipsPagination_last'><a href='{$baseUrl->setQueryString( $pageParam, $pages )}' data-page='{$pages}' data-ipsTooltip title='{lang="last_page"}'><i class='fa fa-forward'></i></a></li>
+		{{endif}}
+		{{if $pages > 1}}
+			<li class='ipsPagination_pageJump'>
+				<a href='#' data-ipsMenu data-ipsMenu-closeOnClick='false' data-ipsMenu-appendTo='#elPagination_{expression="md5($baseUrl)"}_{$uniqId}' id='elPagination_{expression="md5($baseUrl)"}_jump'>{lang="pagination" sprintf="$activePage, $pages"} &nbsp;<i class='fa fa-caret-down'></i></a>
+				<div class='ipsMenu ipsMenu_narrow ipsPad ipsHide' id='elPagination_{expression="md5($baseUrl)"}_jump_menu'>
+					<form accept-charset='utf-8' method='post' action='{$baseUrl->setQueryString( 'page', NULL )}' data-role="pageJump">
+						<ul class='ipsForm ipsForm_horizontal'>
+							<li class='ipsFieldRow'>
+								<input type='number' min='1' max='{$pages}' value="{$activePage}" placeholder='{lang="page_number"}' class='ipsField_fullWidth' name='{$pageParam}'>
+							</li>
+							<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+								<input type='submit' class='ipsButton_fullWidth ipsButton ipsButton_verySmall ipsButton_primary' value='{lang="go"}'>
+							</li>
+						</ul>
+					</form>
+				</div>
+			</li>
+		{{endif}}
+	</ul>
+{{endif}}

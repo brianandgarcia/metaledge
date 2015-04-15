@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/9223/trunk/applications/core/dev/html/admin/global
+END
+userLink.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/4354/trunk/applications/core/dev/html/admin/global/userLink.phtml
+END
+globalTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/9223/trunk/applications/core/dev/html/admin/global/globalTemplate.phtml
+END
+decision.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/5273/trunk/applications/core/dev/html/admin/global/decision.phtml
+END
+searchKeywords.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/8325/trunk/applications/core/dev/html/admin/global/searchKeywords.phtml
+END
+buttons.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/1183/trunk/applications/core/dev/html/admin/global/buttons.phtml
+END
+definitionTable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4928/trunk/applications/core/dev/html/admin/global/definitionTable.phtml
+END
+controlStrip.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/6827/trunk/applications/core/dev/html/admin/global/controlStrip.phtml
+END
+shortMessage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/924/trunk/applications/core/dev/html/admin/global/shortMessage.phtml
+END
+updatebadge.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/7471/trunk/applications/core/dev/html/admin/global/updatebadge.phtml
+END
+appmenu.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/6827/trunk/applications/core/dev/html/admin/global/appmenu.phtml
+END
+sidebar.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/496/trunk/applications/core/dev/html/admin/global/sidebar.phtml
+END
+blankTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/291/trunk/applications/core/dev/html/admin/global/blankTemplate.phtml
+END
+message.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/1681/trunk/applications/core/dev/html/admin/global/message.phtml
+END
+mobileNavigation.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/7565/trunk/applications/core/dev/html/admin/global/mobileNavigation.phtml
+END
+userPhoto.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/3149/trunk/applications/core/dev/html/admin/global/userPhoto.phtml
+END
+tabs.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/2987/trunk/applications/core/dev/html/admin/global/tabs.phtml
+END
+error.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/2372/trunk/applications/core/dev/html/admin/global/error.phtml
+END
+block.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/1999/trunk/applications/core/dev/html/admin/global/block.phtml
+END
+pageButtons.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/2670/trunk/applications/core/dev/html/admin/global/pageButtons.phtml
+END

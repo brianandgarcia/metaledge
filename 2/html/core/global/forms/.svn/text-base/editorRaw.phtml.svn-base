@@ -1,0 +1,9 @@
+<ips:template parameters="$name, $value, $options, $toolbars, $postKey, $uploadControl, $emoticons" />
+<div data-ipsEditor {{if $options['minimize'] !== NULL}}data-ipsEditor-minimized{{endif}} {{if $options['allButtons']}}data-ipsEditor-allbuttons='true'{{else}}data-ipsEditor-toolbars='{expression="json_encode( $toolbars )"}'{{endif}} data-ipsEditor-extraPlugins='{setting="ckeditor_extraPlugins"}' {{if $postKey}}data-ipsEditor-postKey="{$postKey}"{{endif}} {{if $options['autoSaveKey']}}data-ipsEditor-autoSaveKey="{$options['autoSaveKey']}"{{endif}} data-ipsEditor-skin="{expression="\IPS\IN_DEV ? 'ips' : \IPS\Theme::i()->editor_skin"}" data-ipsEditor-name="{$name}"{{if !$options['autoGrow']}} data-ipsEditor-autoGrow='false'{{endif}} data-ipsEditor-emoticons='{$emoticons}'>
+	<noscript>
+		<textarea name="{$name}_noscript" rows="15">{expression="\IPS\Helpers\Form\Editor::valueForNoJsFallback( $value )" raw="true"}</textarea>
+	</noscript>
+	<textarea name="{$name}" data-role='contentEditor' class="ipsHide">{$value|doubleencode}</textarea>
+	<div class='ipsComposeArea_dummy ipsHide' tabindex='1'><i class='{$options['minimizeIcon']}'></i> {lang="$options['minimize']"}</div>
+	{$uploadControl|raw}
+</div>

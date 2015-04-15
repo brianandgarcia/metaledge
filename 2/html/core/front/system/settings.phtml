@@ -36,10 +36,10 @@
 				</a>
 			</li>
 		{{endif}}
-		{{foreach $services as $k => $icon}}
+		{{foreach $services as $k => $class}}
 			<li role='presentation'>
 				<a href='{url="app=core&module=system&controller=settings&area=profilesync&service={$k}" seoTemplate="settings_{$k}"}' id='setting_profilesync_{$k}' role='tab' class='ipsTabs_item {{if $tab === "profilesync_{$k}"}}ipsTabs_activeItem{{endif}}' title="{lang="profilesync__{$k}"}">
-					<i class='fa fa-{$icon}'></i> {lang="profilesync__{$k}"}
+					<i class='fa fa-{$class::$icon}'></i> {lang="profilesync__{$k}"}
 				</a>
 			</li>
 		{{endforeach}}

@@ -8,13 +8,14 @@
 				&nbsp;&nbsp;<a href='#elFolderSettings_menu' id='elFolderSettings' data-ipsMenu data-ipsMenu-appendTo="#elMessageHeader"><i class='fa fa-cog'></i></a>
 				&nbsp;&nbsp;<a href='{url="app=core&module=messaging&controller=messenger&do=compose" seoTemplate="messenger_compose"}' data-ipsDialog data-ipsDialog-url='{url="app=core&module=messaging&controller=messenger&do=compose" seoTemplate="messenger_compose"}' data-ipsDialog-title='{lang="compose_new"}' class='ipsButton ipsButton_important ipsResponsive_hidePhone'>{lang="compose_new"}</a>
 				<a href='{url="app=core&module=messaging&controller=messenger&do=compose" seoTemplate="messenger_compose"}' data-action="composeNew" data-ipsDialog data-ipsDialog-url='{url="app=core&module=messaging&controller=messenger&do=compose" seoTemplate="messenger_compose"}' data-ipsDialog-title='{lang="compose_new"}' class='ipsButton ipsButton_primary ipsButton_verySmall ipsButton_narrow ipsPos_right ipsResponsive_showPhone ipsResponsive_block'>{lang="new"}</a>
-				&nbsp;&nbsp;<span data-role="loadingFolderAction" class='ipsType_light ipsType_normal' style='display: none'><img src='{resource="loaders/tiny_loading.gif" app="core" base="front"}' alt=''> &nbsp;{lang="loading"}</span>
+				&nbsp;&nbsp;<span data-role="loadingFolderAction" class='ipsType_light ipsType_normal' style='display: none'><i class='icon-spinner2 ipsLoading_tinyIcon'></i> &nbsp;{lang="loading"}</span>
 			</h1>
 			{{if \IPS\Member::loggedIn()->group['g_max_messages']}}
 				<div class='ipsGrid_span6 ipsResponsive_hidePhone'>
 					<div class='ipsPos_right ipsType_right' data-role="quotaTooltip" data-ipsTooltip data-ipsTooltip-label="{lang="messenger_quota" sprintf="\IPS\Member::loggedIn()->group['g_max_messages']" pluralize="array_sum( $counts )"}">
-						<span class="ipsAttachment_progress"><span data-role='quotaWidth' style='width: {expression="100 / \IPS\Member::loggedIn()->group['g_max_messages'] * array_sum( $counts )"}%'></span></span><br>
-						<span class='ipsType_light ipsResponsive_hidePhone'>{lang="messenger_quota_short" sprintf="100 / \IPS\Member::loggedIn()->group['g_max_messages'] * array_sum( $counts )"}</span>
+						{{$percent = 100 / \IPS\Member::loggedIn()->group['g_max_messages'] * array_sum( $counts );}}
+						<span class="ipsAttachment_progress"><span data-role='quotaWidth' style='width: {expression="$percent > 100 ? 100 : $percent"}%'></span></span><br>
+						<span class='ipsType_light ipsResponsive_hidePhone'>{lang="messenger_quota_short" sprintf="$percent"}</span>
 					</div>
 				</div>
 			{{endif}}
@@ -39,7 +40,7 @@
 		</ul>
 	</div>
 
-	<div class='ipsColumns ipsColumns_collapseTablet' data-ipsFilterBar data-ipsFilterBar-on='phone,tablet' data-ipsFilterBar-default='filterBar'>
+	<div class='ipsColumns ipsColumns_collapseTablet' data-ipsFilterBar data-ipsFilterBar-on='phone,tablet' data-ipsFilterBar-viewDefault='{{if \IPS\Request::i()->id}}filterContent{{else}}filterBar{{endif}}'>
 		<div class='ipsColumn ipsColumn_veryWide' data-role='filterBar'>
 			<div id='elMessageSidebar' class='ipsBox' data-controller='core.front.messages.list' data-folderID='{$folder}'
 				data-ipsInfScroll
@@ -78,11 +79,9 @@
 						{template="messageListRows" app="core" group="messaging" params="$conversations"}
 					</ol>
 				</div>
-				<noscript>
-					<div class='ipsAreaBackground_light ipsPad'>
-						{$pagination|raw}
-					</div>
-				</noscript>
+				<div class='ipsJS_hide ipsAreaBackground_light ipsPad'>
+					{$pagination|raw}
+				</div>
 				<div class='ipsAreaBackground ipsPad' id='elMessageSearch'>
 					<form accept-charset='utf-8' method='post' action="{url="app=core&module=messaging&controller=messenger" seoTemplate="messenger"}" data-role='messageSearch'>
 						<a href='#' data-action='messageSearchCancel' class='ipsHide'><i class='fa fa-times'></i></a>
@@ -105,6 +104,15 @@
 			</div>
 		</div>
 	</div>
+
+	{{if \IPS\Member::loggedIn()->group['g_max_messages']}}
+		<div class='ipsResponsive_showPhone ipsResponsive_block'>
+			<div class='ipsType_center' data-role="quotaTooltip">
+				<span class="ipsAttachment_progress"><span data-role='quotaWidth' style='width: {expression="100 / \IPS\Member::loggedIn()->group['g_max_messages'] * array_sum( $counts )"}%'></span></span><br>
+				<span class='ipsType_light ipsResponsive_showPhone ipsResponsive_inline'>{lang="messenger_quota_short" sprintf="100 / \IPS\Member::loggedIn()->group['g_max_messages'] * array_sum( $counts )"}</span>
+			</div>
+		</div>
+	{{endif}}
 
 	<div id='elFolderRename_content' style='display: none' data-controller="core.front.messages.folderDialog" data-type='rename'>
 		<form action='#' method='get'>

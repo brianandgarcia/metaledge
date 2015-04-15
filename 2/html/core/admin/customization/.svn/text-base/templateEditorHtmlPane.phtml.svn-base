@@ -1,0 +1,5 @@
+<ips:template parameters="$theme, $templateNames, $template, $current" />
+<div class='ipsTabs_panel' data-role="templatePanel" id='ipsTabs_elTemplateEditor_tabbar_tab_{$template['TemplateKey']}_panel' data-fileid="{$template['TemplateKey']}" data-app="{$current['app']}" data-location="{$current['location']}" data-group="{$current['group']}" data-name="{$current['template']}" data-type='templates' data-itemID='{$current['item_id']}' data-inherited-value="{$template['InheritedValue']}">
+	<input data-role="variables" type="text" name="variables_{$template['TemplateKey']}" class="ipsField_fullWidth" value='{$template['template_data']}' placeholder="{lang="skin_set_template_templatevars"}">
+	<textarea name="editor_{$template['TemplateKey']}" id="editor_{$template['TemplateKey']}" data-role="editor">{$template['template_content']}</textarea>
+</div>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/9223/trunk/applications/core/dev/html/admin/system
+END
+loginForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/1207/trunk/applications/core/dev/html/admin/system/loginForm.phtml
+END
+backgroundProcessesRunNow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/ips-suite/!svn/ver/7825/trunk/applications/core/dev/html/admin/system/backgroundProcessesRunNow.phtml
+END
+systemLogView.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/1291/trunk/applications/core/dev/html/admin/system/systemLogView.phtml
+END
+login.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/9223/trunk/applications/core/dev/html/admin/system/login.phtml
+END

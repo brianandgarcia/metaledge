@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/ips-suite/!svn/ver/7870/trunk/applications/core/dev/html/admin/logs
+END
+emailErrorBody.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/394/trunk/applications/core/dev/html/admin/logs/emailErrorBody.phtml
+END
+adminLogin.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/583/trunk/applications/core/dev/html/admin/logs/adminLogin.phtml
+END
+emailErrorLog.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/7870/trunk/applications/core/dev/html/admin/logs/emailErrorLog.phtml
+END

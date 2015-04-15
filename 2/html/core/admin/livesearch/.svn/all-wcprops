@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/ips-suite/!svn/ver/7767/trunk/applications/core/dev/html/admin/livesearch
+END
+generic.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/1150/trunk/applications/core/dev/html/admin/livesearch/generic.phtml
+END
+group.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/959/trunk/applications/core/dev/html/admin/livesearch/group.phtml
+END
+member.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/7767/trunk/applications/core/dev/html/admin/livesearch/member.phtml
+END

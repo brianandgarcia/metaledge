@@ -1,48 +1,21 @@
 <ips:template parameters="$member, $results, $pagination" />
 
-{{if $pagination}}
-	<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
-		{$pagination|raw}
-	</div>
-{{endif}}
-<ol class='ipsDataList ipsDataList_large cSearchActivity'>
-	{{foreach $results as $activity}}
-		{{$activityClass = get_class( $activity );}}
-		{{$activityParts = explode( '\\', $activityClass );}}
-		{{$application = $activityParts[1];}}
-
-		<li class='ipsDataItem'>
-			<div class='ipsDataItem_icon ipsPos_top ipsResponsive_hidePhone'>
-				{template="userPhoto" group="global" app="core" params="$activity->author(), 'tiny'"}
+<div data-baseurl="{url="app=core&module=members&controller=profile&do=content&id={$member->member_id}&page=1" seoTemplate="profile_content" seoTitle="$member->members_seo_name"}" data-resort="listResort" data-tableid="topics"> <!-- data-controller="core.global.core.table" -->
+	{{if $pagination}}
+		<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+			<div data-role="tablePagination">
+				{$pagination|raw}
 			</div>
-			<div class='ipsDataItem_main'>
-				<p class='ipsType_reset ipsType_break ipsContained ipsType_normal'>
-					<strong>
-						{{if $activity instanceof \IPS\Content\Comment or $activity instanceof \IPS\Content\Review}}
-							{{if $activity->isFirst()}}
-								{{$activityItemClass = $activity::$itemClass;}}
-								{lang="user_own_activity_item" sprintf="$activity->item()->author()->name, \IPS\Member::loggedIn()->language()->get( '__indefart_' . $activityItemClass::$title )"} <a href='{$activity->item()->container()->url()}'>{$activity->item()->container()->_title}</a>
-							{{else}}
-								{lang="user_own_activity_comment" sprintf="$activity->author()->name" htmlsprintf="'<a href=\'' . $activity->url() . '\'>' . \IPS\Member::loggedIn()->language()->get( '__indefart_' . $activity::$title ) . '</a>'"}: <a href='{$activity->item()->url()}'>{$activity->item()->mapped('title')}</a>
-							{{endif}}
-						{{else}}
-							{lang="user_own_activity_item" sprintf="$member->name, \IPS\Member::loggedIn()->language()->get( '__indefart_' . $activity::$title )"} <a href='{$activity->container()->url()}'>{$activity->container()->_title}</a>
-						{{endif}}
-					</strong>
-					&nbsp;&nbsp;
-					<span class='ipsType_light ipsType_noBreak'>{datetime="$activity->mapped('date')"}</span>
-				</p>
-				{{if ( $activity instanceof \IPS\Content\Comment or $activity instanceof \IPS\Content\Review ) and $activity->isFirst()}}
-					{template="snippet" group="global" app="$application" params="$activity->item()"}
-				{{else}}
-					{template="snippet" group="global" app="$application" params="$activity"}
-				{{endif}}
-			</div>
-		</li>
-	{{endforeach}}
-</ol>
-{{if $pagination}}
-	<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
-		{$pagination|raw}
-	</div>
-{{endif}}
+		</div>
+	{{endif}}
+	<ol class='ipsDataList ipsDataList_large cSearchActivity' data-role="tableRows" itemscope itemtype="http://schema.org/ItemList">
+		{{foreach $results as $activity}}
+			{$activity->activityStreamHtml()|raw}
+		{{endforeach}}
+	</ol>
+	{{if $pagination}}
+		<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+			{$pagination|raw}
+		</div>
+	{{endif}}
+</div>

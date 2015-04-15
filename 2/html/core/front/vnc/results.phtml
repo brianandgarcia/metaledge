@@ -1,5 +1,5 @@
 <ips:template parameters="$baseUrl, $table, $timePeriod, $interval, $start, $end" />
-<p class='ipsResponsive_showPhone ipsResponsive_block'>
+<p class='ipsResponsive_hideDesktop ipsResponsive_block'>
 	<a href='#' data-action='filterBarSwitch' data-switchTo='filterBar' class='ipsButton ipsButton_verySmall ipsButton_light'><i class='fa fa-caret-left'></i> <i class='fa fa-navicon'></i> &nbsp;{lang="vnc_filters"}</a>
 </p>
 
@@ -7,7 +7,7 @@
 	<header class='ipsAreaBackground_light ipsSpacer_bottom'>
 		<div class="ipsGrid ipsGrid_collapsePhone ipsPager" id='elVNCHeader_dateJump' data-role='vncPager'>
 			<div class="ipsGrid_span4 ipsType_left ipsPager_prev">
-				<a href="{$baseUrl->setQueryString( 'vncTime', \IPS\DateTime::ts( $start->getTimestamp() )->sub( $interval )->getTimestamp() )}" title="{lang="vnc_prev_{$timePeriod}"}" rel="prev" data-action="vncPager">
+				<a href="{$baseUrl->setQueryString( 'vncTime', \IPS\DateTime::ts( $start->getTimestamp(), TRUE )->sub( $interval )->getTimestamp() )}" title="{lang="vnc_prev_{$timePeriod}"}" rel="prev" data-action="vncPager">
 					<span class="ipsPager_type">{lang='vnc_prev_{$timePeriod}'}</span>
 					<span class="ipsPager_title ipsType_light">{expression="\IPS\DateTime::ts( $start->getTimestamp() )->sub( $interval )->strFormat( '%d %b' )"} - {$start->strFormat( '%d %b' )}</span>
 				</a>
@@ -18,9 +18,13 @@
 					<strong>{$start->strFormat( '%d %b' )} - {{if $end->diff( new \IPS\DateTime )->d == 0 AND $end->diff( new \IPS\DateTime )->m == 0}}{lang="vnc_today"}{{else}}{$end->strFormat( '%d %b' )}{{endif}}</strong>
 				</span>
 			</div>
-			{{if $end < new \IPS\DateTime }}
+			{{$scope = new \DateInterval( 'PT60M' );}}
+			{{$now = \IPS\DateTime::ts( \IPS\DateTime::create()->getTimestamp(), TRUE );}}
+
+			{{if $end < $now->sub( $scope )}}
+
 				<div class="ipsGrid_span4 ipsType_right ipsPager_next">
-					<a href="{$baseUrl->setQueryString( 'vncTime', \IPS\DateTime::ts( $end->getTimestamp() )->add( $interval )->getTimestamp() )}" title="{lang="vnc_next_{$timePeriod}"}" rel="next" data-action="vncPager">
+					<a href="{$baseUrl->setQueryString( 'vncTime', \IPS\DateTime::ts( $end->getTimestamp(), TRUE )->getTimestamp() )}" title="{lang="vnc_next_{$timePeriod}"}" rel="next" data-action="vncPager">
 						<span class="ipsPager_type">{lang='vnc_next_{$timePeriod}'}</span>
 						<span class="ipsPager_title ipsType_light">{$end->strFormat( '%d %b' )} - {expression="\IPS\DateTime::ts( $end->getTimestamp() )->add( $interval )->strFormat( '%d %b' )"}</span>
 					</a>

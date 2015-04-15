@@ -1,0 +1,4 @@
+<ips:template parameters="$title, $content, $margins=TRUE, $class='', $id=NULL, $showTitle=FALSE" />
+<div class='acpBlock {$class}' {{if $id !== NULL}}id="{$id}"{{endif}}>
+	{$content|raw}
+</div>

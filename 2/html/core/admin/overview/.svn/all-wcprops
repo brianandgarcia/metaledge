@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/9171/trunk/applications/core/dev/html/admin/overview
+END
+deltaUpgradeInstructions.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/ips-suite/!svn/ver/9171/trunk/applications/core/dev/html/admin/overview/deltaUpgradeInstructions.phtml
+END
+security.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/834/trunk/applications/core/dev/html/admin/overview/security.phtml
+END
+securityRenameAdmin.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/774/trunk/applications/core/dev/html/admin/overview/securityRenameAdmin.phtml
+END

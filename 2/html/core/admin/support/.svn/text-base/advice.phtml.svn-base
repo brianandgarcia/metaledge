@@ -1,0 +1,44 @@
+<ips:template parameters="$searchResults, $guides" />
+{{if count( $searchResults ) and count( $guides )}}
+	<div class="ipsPad ipsAreaBackground_light">
+		<div class="ipsColumns ipsColumns_collapsePhone">
+			<div class="ipsColumn ipsColumn_fluid">
+				<div class="ipsAreaBackground_reset">
+					<h2 class="ipsType_sectionTitle">{lang="support_search"}</h2>
+{{endif}}
+{{if count( $searchResults )}}
+<div class="ipsPad">
+	<p class="ipsType_normal">{lang="support_advice_results"}</p>
+	<ul class='ipsDataList'>
+		{{foreach $searchResults as $result}}
+			{$result|raw}
+		{{endforeach}}
+	</ul>
+</div>
+{{endif}}
+{{if count( $searchResults ) and count( $guides )}}
+				</div>
+			</div>
+			<div class="ipsColumn ipsColumn_fluid">
+				<div class="ipsAreaBackground_reset">
+					<h2 class="ipsType_sectionTitle">{lang="support_guides"}</h2>
+{{endif}}
+{{if count( $guides ) }}
+<div class="ipsPad">
+	<p class="ipsType_normal">{lang="support_guides_blurb"}</p>
+	<ul class='ipsDataList'>
+		{{foreach $guides as $result}}
+			<li class="ipsPad_half ipsClearfix"><a href="{$result['link']}" target="_blank">{$result['title']}</a></span></li>
+		{{endforeach}}
+	</ul>
+</div>
+{{endif}}
+{{if count( $searchResults ) and count( $guides )}}
+				</div>
+			</div>
+		</div>
+	</div>
+{{endif}}
+<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+	<a href="{url="app=core&module=support&controller=support&next=1"}" data-action="wizardLink" class="ipsButton ipsButton_primary">{lang="still_need_help"}</a>
+</div>

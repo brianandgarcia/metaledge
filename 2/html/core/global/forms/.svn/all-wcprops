@@ -1,0 +1,233 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/forms
+END
+radio.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/8976/trunk/applications/core/dev/html/global/forms/radio.phtml
+END
+editorRaw.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/4470/trunk/applications/core/dev/html/global/forms/editorRaw.phtml
+END
+checkboxset.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/8327/trunk/applications/core/dev/html/global/forms/checkboxset.phtml
+END
+colorDisplay.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/2713/trunk/applications/core/dev/html/global/forms/colorDisplay.phtml
+END
+matrix.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/6953/trunk/applications/core/dev/html/global/forms/matrix.phtml
+END
+codemirror.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/7305/trunk/applications/core/dev/html/global/forms/codemirror.phtml
+END
+numberRange.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/3861/trunk/applications/core/dev/html/global/forms/numberRange.phtml
+END
+rowDesc.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/8519/trunk/applications/core/dev/html/global/forms/rowDesc.phtml
+END
+textarea.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/global/forms/textarea.phtml
+END
+date.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/9608/trunk/applications/core/dev/html/global/forms/date.phtml
+END
+color.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/5667/trunk/applications/core/dev/html/global/forms/color.phtml
+END
+matrixRows.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/7097/trunk/applications/core/dev/html/global/forms/matrixRows.phtml
+END
+ftpDisplay.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/8855/trunk/applications/core/dev/html/global/forms/ftpDisplay.phtml
+END
+node.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/6740/trunk/applications/core/dev/html/global/forms/node.phtml
+END
+editor.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/3907/trunk/applications/core/dev/html/global/forms/editor.phtml
+END
+rowWarning.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/6248/trunk/applications/core/dev/html/global/forms/rowWarning.phtml
+END
+stack.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/6453/trunk/applications/core/dev/html/global/forms/stack.phtml
+END
+poll.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/8438/trunk/applications/core/dev/html/global/forms/poll.phtml
+END
+matrixNested.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/6953/trunk/applications/core/dev/html/global/forms/matrixNested.phtml
+END
+nodeAutocomplete.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/1190/trunk/applications/core/dev/html/global/forms/nodeAutocomplete.phtml
+END
+uploadDisplay.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/2713/trunk/applications/core/dev/html/global/forms/uploadDisplay.phtml
+END
+button.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/5489/trunk/applications/core/dev/html/global/forms/button.phtml
+END
+translatable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/7670/trunk/applications/core/dev/html/global/forms/translatable.phtml
+END
+editorAttachments.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/forms/editorAttachments.phtml
+END
+radioImages.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9146/trunk/applications/core/dev/html/global/forms/radioImages.phtml
+END
+rating.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/8637/trunk/applications/core/dev/html/global/forms/rating.phtml
+END
+text.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/forms/text.phtml
+END
+upload.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9106/trunk/applications/core/dev/html/global/forms/upload.phtml
+END
+uploadFile.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/9106/trunk/applications/core/dev/html/global/forms/uploadFile.phtml
+END
+editorAttachmentsPlaceholder.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/ips-suite/!svn/ver/7881/trunk/applications/core/dev/html/global/forms/editorAttachmentsPlaceholder.phtml
+END
+address.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/7512/trunk/applications/core/dev/html/global/forms/address.phtml
+END
+keyValue.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/3755/trunk/applications/core/dev/html/global/forms/keyValue.phtml
+END
+checkbox.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/9351/trunk/applications/core/dev/html/global/forms/checkbox.phtml
+END
+number.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9608/trunk/applications/core/dev/html/global/forms/number.phtml
+END
+editorAttachmentsMinimized.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/ips-suite/!svn/ver/7730/trunk/applications/core/dev/html/global/forms/editorAttachmentsMinimized.phtml
+END
+nodeCascade.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9112/trunk/applications/core/dev/html/global/forms/nodeCascade.phtml
+END
+ftp.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/ips-suite/!svn/ver/8309/trunk/applications/core/dev/html/global/forms/ftp.phtml
+END
+dateRange.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/1747/trunk/applications/core/dev/html/global/forms/dateRange.phtml
+END

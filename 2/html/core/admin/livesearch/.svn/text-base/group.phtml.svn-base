@@ -1,0 +1,5 @@
+<ips:template parameters="$group" />
+<li class='ipsPad_half ipsClearfix' data-role='result'>
+	<a href='{url="app=core&module=members&controller=groups&do=form&id="}{$group->g_id}' class='ipsPos_left'>{$group->name}</a>
+</li>
+

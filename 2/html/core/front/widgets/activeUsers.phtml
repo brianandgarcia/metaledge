@@ -15,13 +15,11 @@
 		<div class='ipsPad'>
 	{{endif}}
 	{{if $memberCount}}
-		<ul class='ipsList_inline ipsList_noSpacing'>
+		<ul class='ipsList_inline ipsList_csv ipsList_noSpacing'>
 			{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members' ) ) }}
 				{{foreach $members as $row}}
 					<li>
-						<a href="{url="app=core&module=members&controller=profile&id={$row['member_id']}" seoTemplate="profile" seoTitle="$row['seo_name']"}" data-ipsHover data-ipsHover-target='{url="app=core&module=members&controller=profile&id={$row['member_id']}&do=hovercard" seoTemplate="profile" seoTitle="$row['seo_name']"}' title="{lang="view_user_profile" sprintf="$row['member_name']"}">
-							{expression="\IPS\Member\Group::load( $row['member_group'] )->formatName( $row['member_name'] )" raw="true"}
-						</a>
+						<a href="{url="app=core&module=members&controller=profile&id={$row['member_id']}" seoTemplate="profile" seoTitle="$row['seo_name']"}" data-ipsHover data-ipsHover-target='{url="app=core&module=members&controller=profile&id={$row['member_id']}&do=hovercard" seoTemplate="profile" seoTitle="$row['seo_name']"}' title="{lang="view_user_profile" sprintf="$row['member_name']"}">{expression="\IPS\Member\Group::load( $row['member_group'] )->formatName( $row['member_name'] )" raw="true"}</a>
 					</li>
 				{{endforeach}}
 			{{else}}

@@ -1,0 +1,34 @@
+<ips:template parameters="$rows, $sidebar=NULL, $parse=TRUE" />
+{{if $sidebar !== NULL}}
+	<div class="ipsColumns">
+		<div class="ipsColumn ipsColumn_fluid">
+{{endif}}
+			<ul class='ipsDataList'>
+				{{foreach $rows as $k => $v}}
+					<li>
+						<span class="ipsDataItem_generic ipsDataItem_size6">
+							<strong class="title">
+								{{if $parse}}
+									{lang="$k"}
+								{{else}}
+									{$k}
+								{{endif}}
+							</strong>
+						</span>
+						<span class="ipsDataItem_generic">
+							{{if $v}}
+								{$v}
+							{{else}}
+								<em class="ipsType_light">{lang="unknown"}</em>
+							{{endif}}
+						</span>
+					</li>
+				{{endforeach}}
+			</ul>
+{{if $sidebar !== NULL}}
+		</div>
+		<div class="ipsColumn ipsColumn_fixed ipsColumn_veryWide">
+			{$sidebar|raw}
+		</div>
+	</div>
+{{endif}}

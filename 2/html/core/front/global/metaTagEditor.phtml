@@ -13,42 +13,6 @@
 		<h4 class='ipsToolbox_sectionTitle'>{lang="meta_tags_blurb"}</h4>
 
 		<ul class='ipsList_reset' id='elMetaTagEditor_tags'>
-			<li class='ipsHide' data-role='metaTemplate'>
-				<ul class='ipsForm ipsForm_vertical'>
-					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
-						<select name='meta_tag_name[]' class='ipsField_fullWidth'>
-							<option value='keywords'>{lang="meta_keywords"}</option>
-							<option value='description'>{lang="meta_description"}</option>
-							<option value='robots'>{lang="meta_robots"}</option>
-							<option value='other'>{lang="meta_other"}</option>
-						</select>
-					</li>
-					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
-						<input name='meta_tag_name_other[]' type='text' value="" placeholder='{lang="metatags_name"}'>
-					</li>
-					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
-						<input name='meta_tag_content[]' type='text' value="" placeholder='{lang="metatags_content"}'>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<ul class='ipsForm ipsForm_vertical'>
-					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
-						<select name='meta_tag_name[]' class='ipsField_fullWidth'>
-							<option value='keywords'>{lang="meta_keywords"}</option>
-							<option value='description'>{lang="meta_description"}</option>
-							<option value='robots'>{lang="meta_robots"}</option>
-							<option value='other'>{lang="meta_other"}</option>
-						</select>
-					</li>
-					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
-						<input name='meta_tag_name_other[]' type='text' value="" placeholder='{lang="metatags_name"}'>
-					</li>
-					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
-						<input name='meta_tag_content[]' type='text' value="" placeholder='{lang="metatags_content"}'>
-					</li>
-				</ul>
-			</li>
 			{{foreach \IPS\Output::i()->metaTags as $name => $content}}
 				<li>
 					<ul class='ipsForm ipsForm_vertical'>
@@ -69,6 +33,24 @@
 					</ul>
 				</li>
 			{{endforeach}}
+			<li class='ipsHide' data-role='metaTemplate'>
+				<ul class='ipsForm ipsForm_vertical'>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<select name='meta_tag_name[]' class='ipsField_fullWidth'>
+							<option value='keywords'>{lang="meta_keywords"}</option>
+							<option value='description'>{lang="meta_description"}</option>
+							<option value='robots'>{lang="meta_robots"}</option>
+							<option value='other'>{lang="meta_other"}</option>
+						</select>
+					</li>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<input name='meta_tag_name_other[]' type='text' value="" placeholder='{lang="metatags_name"}'>
+					</li>
+					<li class='ipsFieldRow ipsFieldRow_fullWidth'>
+						<input name='meta_tag_content[]' type='text' value="" placeholder='{lang="metatags_content"}'>
+					</li>
+				</ul>
+			</li>
 		</ul>
 		<br>
 		<a href='#' class='ipsJS_show ipsButton ipsButton_normal ipsButton_fullWidth ipsButton_verySmall' data-action='addMeta'><i class='fa fa-plus'></i> &nbsp;{lang="add_another_meta_tag"}</a>

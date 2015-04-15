@@ -9,6 +9,11 @@
 			{{endif}}
 
 			<div id='comment-{$row->$idField}_wrap' class='ipsComment_content ipsType_normal ipsClearfix'>
+				{{if $table->canModerate()}}
+					<div class='ipsDataItem_modCheck ipsPos_right'>
+						<input type="checkbox" name="moderate[{$row->$idField}]" value="1" data-role="moderation" data-actions="{{if $row->canSplit()}}split merge{{endif}} {{if $row->hidden() === -1 AND $row->canUnhide()}}unhide{{elseif $row->hidden() === 1 AND $row->canUnhide()}}approve{{elseif $row->canHide()}}hide{{endif}} {{if $row->canDelete()}}delete{{endif}}">
+					</div>
+				{{endif}}
 				<div class='ipsComment_header'>
 					{$row->contentTableHeader()|raw}
 				</div>

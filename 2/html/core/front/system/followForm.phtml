@@ -1,5 +1,5 @@
 <ips:template parameters="$id, $action, $elements, $hiddenValues, $actionButtons, $uploadField, $class='', $attributes=array(), $sidebar, $form=NULL" />
-<form data-controller='core.front.core.followForm' accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}} data-ipsForm >
+<form {{if \IPS\Request::i()->isAjax() }}data-controller='core.front.core.followForm'{{endif}} accept-charset='utf-8' class="ipsForm {$class}" action="{$action}" method="post" {{if $uploadField}}enctype="multipart/form-data"{{endif}} {{foreach $attributes as $k => $v}}{$k}="{$v}"{{endforeach}} data-ipsForm >
 	<input type="hidden" name="{$id}_submitted" value="1">
 	{{foreach $hiddenValues as $k => $v}}
 		<input type="hidden" name="{$k}" value="{$v}">

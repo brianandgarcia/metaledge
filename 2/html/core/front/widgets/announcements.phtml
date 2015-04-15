@@ -8,18 +8,17 @@
 					{template="userPhoto" group="global" app="core" params="\IPS\Member::load( $announcement->member_id ), 'tiny'"}
 					<div>
 						{{if $orientation == 'vertical'}}
-							<h4 class='ipsType_large ipsType_reset'><a href='{url="app=core&module=system&controller=announcement&id={$announcement->id}" seoTemplate="announcement" seoTitle="$announcement->seo_title"}'>{lang="$announcement->title" wordbreak="true"}</a></h4>
-							<span class='ipsType_light'>{datetime="$announcement->start" dateonly="true"}</span>
+							<h4 class='ipsType_large ipsType_reset'><a href='{url="app=core&module=system&controller=announcement&id={$announcement->id}" seoTemplate="announcement" seoTitle="$announcement->seo_title"}'>{wordbreak="$announcement->title"}</a></h4>
+							{{if $announcement->start}}<span class='ipsType_light'>{datetime="$announcement->start" dateonly="true"}</span>{{endif}}
 							<br><br>
 						{{else}}
 							<h4 class='ipsType_large ipsType_reset'>
-								<a href='{url="app=core&module=system&controller=announcement&id={$announcement->id}" seoTemplate="announcement" seoTitle="$announcement->seo_title"}'>{$announcement->title}</a> &nbsp;&nbsp;<span class='ipsType_light ipsType_medium ipsType_unbold'>{datetime="$announcement->start" dateonly="true"}</span>
+								<a href='{url="app=core&module=system&controller=announcement&id={$announcement->id}" seoTemplate="announcement" seoTitle="$announcement->seo_title"}'>{$announcement->title}</a>{{if $announcement->start}} &nbsp;&nbsp;<span class='ipsType_light ipsType_medium ipsType_unbold'>{datetime="$announcement->start" dateonly="true"}</span>{{endif}}
 							</h4>							
 						{{endif}}						
 						<div class='ipsType_medium ipsType_textBlock ipsType_richText' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='{{if $orientation == 'vertical'}}6 lines{{else}}2 lines{{endif}}'>
 							{$announcement->truncated( true )|raw}
 						</div>
-						<a href='{url="app=core&module=system&controller=announcement&id={$announcement->id}" seoTemplate="announcement" seoTitle="$announcement->seo_title"}'>{lang="read_more"}</a>
 					</div>
 				</li>
 			{{endforeach}}

@@ -2,7 +2,7 @@
 {{foreach $items as $item}}
 	{{if $item->canView()}}
 		{{if $children = $item->children()}}
-			{{$id = uniqid();}}
+			{{$id = md5( uniqid() . mt_rand() );}}
 			<li id='elNavigation_{$id}' class='ipsMenu_item ipsMenu_subItems'>
 				<a href='{$item->link()}'>
 					{$item->title()}

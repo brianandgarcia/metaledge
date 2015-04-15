@@ -2,14 +2,16 @@
 {{foreach $rows as $attachment}}
 	<div class='ipsDataItem ipsAttach ipsAttach_done'>
 		<div class='ipsDataItem_generic ipsDataItem_size3 ipsResponsive_hidePhone ipsResponsive_block ipsType_center'>
-			{{if $attachment['attach_is_image']}}
-				<a href="{$attachment['attach_location']}"><img src="{$attachment['attach_location']}" alt='' class='ipsImage ipsThumb_small' data-ipsLightbox data-ipsLightbox-group="myAttachments"></a>
-			{{else}}
-				<a href="{$attachment['attach_location']}" class="ipsType_blendLinks"><i class='fa fa-file ipsType_large'></i></a>
-			{{endif}}
+			<a href="{setting="base_url"}applications/core/interface/file/attachment.php?id={$attachment['attach_id']}">
+				{{if $attachment['attach_is_image']}}
+					<img src="{$attachment['attach_location']}" alt='' class='ipsImage ipsThumb_small' data-ipsLightbox data-ipsLightbox-group="myAttachments">
+				{{else}}
+					<i class='fa fa-file ipsType_large'></i>
+				{{endif}}
+			</a>
 		</div>
 		<div class='ipsDataItem_main'>
-			<h2 class='ipsDataItem_title ipsType_reset ipsType_medium ipsAttach_title'>{lang="$attachment['attach_file']" wordbreak="true"}</h2>
+			<h2 class='ipsDataItem_title ipsType_reset ipsType_medium ipsAttach_title ipsType_blendLinks'><a href="{setting="base_url"}applications/core/interface/file/attachment.php?id={$attachment['attach_id']}">{wordbreak="$attachment['attach_file']"}</a></h2>
 			<p class='ipsDataItem_meta ipsType_light'>
 				{filesize="$attachment['attach_filesize']"} &middot; {lang="my_attachment_uploaded" htmlsprintf="\IPS\DateTime::ts( $attachment['attach_date'] )->html()"}
 			</p>
@@ -20,10 +22,10 @@
 		<div class='ipsDataItem_stats ipsType_light'>
 			{{if !$attachment['attach_is_image']}}{lang="attach_hits_count" pluralize="$attachment['attach_hits']"}{{endif}}
 		</div>
-		{{if \IPS\Member::loggedIn()->group['gbw_delete_attachments']}}
+		{{if \IPS\Member::loggedIn()->group['gbw_delete_attachments'] or !count( \IPS\core\extensions\core\EditorMedia\Attachments::$locations[ $attachment['attach_id'] ] )}}
 			<div class='ipsDataItem_generic ipsDataItem_size3 ipsType_right ipsResponsive_noFloat'>
 				<li>
-					<a href='{url="app=core&module=system&controller=attachments&do=delete&id={$attachment['attach_id']}" seoTemplate="attachments" csrf="true"}' class='ipsButton ipsButton_verySmall ipsButton_light' data-ipsTooltip title='{lang="delete"}' data-action="deleteAttachment"><i class='fa fa-trash-o'></i></a>
+					<a href='{url="app=core&module=system&controller=attachments&do=delete&id={$attachment['attach_id']}" seoTemplate="attachments" csrf="true"}{{if count($rows) > 1}}&page={expression="\IPS\Request::i()->page"}{{elseif isset( \IPS\Request::i()->page ) AND \IPS\Request::i()->page > 1}}&page={expression="\IPS\Request::i()->page-1"}{{endif}}' class='ipsButton ipsButton_verySmall ipsButton_light' data-ipsTooltip title='{lang="delete"}' data-action="deleteAttachment"><i class='fa fa-trash-o'></i></a>
 				</li>
 			</div>	
 		{{endif}}	

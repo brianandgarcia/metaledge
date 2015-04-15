@@ -1,26 +1,33 @@
 <ips:template parameters="" />
 {{if ( \IPS\Settings::i()->site_online || \IPS\Member::loggedIn()->group['g_access_offline'] ) and ( \IPS\Dispatcher::i()->application instanceof \IPS\Application AND \IPS\Dispatcher::i()->application->canAccess() )}}
 <ul class='ipsList_inline ipsType_center' id="elFooterLinks">
-	{{if count( \IPS\Lang::languages() ) > 1}}
+
+	{{$languages = \IPS\Lang::getEnabledLanguages();}}
+	{{if count( $languages ) > 1}}
 		<li>
 			<a href='#elNavLang_menu' id='elNavLang' data-ipsMenu data-ipsMenu-above>{lang='language'} <i class='fa fa-caret-down'></i></a>
 			<ul id='elNavLang_menu' class='ipsMenu ipsMenu_selectable ipsHide'>
-			{{foreach \IPS\Lang::languages() as $id => $lang }}
+			{{foreach $languages as $id => $lang }}
 				<li class='ipsMenu_item{{if \IPS\Member::loggedIn()->language == $id || ( $lang->default && \IPS\Member::loggedIn()->language === 0 )}} ipsMenu_itemChecked{{endif}}'>
-					<a href='{url="app=core&module=system&controller=language&id=$id" csrf="true" seoTemplate="language"}'>{{if $lang->get__icon()}}<i class='{$lang->get__icon()}'></i> {{endif}}{$lang->title} {{if $lang->default}}{lang="default"}{{endif}}</a>
+					<form action="{url="app=core&module=system&controller=language" csrf="true" seoTemplate="language"}" method="post">
+					<button type='submit' name='id' value='{$id}' class='ipsButton ipsButton_link'>{{if $lang->get__icon()}}<i class='{$lang->get__icon()}'></i> {{endif}}{$lang->title} {{if $lang->default}}{lang="default"}{{endif}}</button>
+					</form>
 				</li>
 			{{endforeach}}
 			</ul>
 		</li>
 	{{endif}}
-	{{if count( \IPS\Theme::themes() ) > 1}}
+	{{$themes = \IPS\Theme::getThemesWithAccessPermission();}}
+	{{if count ( $themes ) > 1 }}
 		<li>
 			<a href='#elNavTheme_menu' id='elNavTheme' data-ipsMenu data-ipsMenu-above>{lang='skin'} <i class='fa fa-caret-down'></i></a>
 			<ul id='elNavTheme_menu' class='ipsMenu ipsMenu_selectable ipsHide'>
-			{{foreach \IPS\Theme::themes() as $id => $set }}
+			{{foreach $themes as $id => $set }}
 				{{if $set->canAccess()}}
 					<li class='ipsMenu_item{{if \IPS\Theme::i()->id == $id}} ipsMenu_itemChecked{{endif}}'>
-						<a href='{url="app=core&module=system&controller=theme&id=$id" csrf="true" seoTemplate="theme"}'>{lang="$set->_title"} {{if $set->is_default}}{lang="default"}{{endif}}</a>
+						<form action="{url="app=core&module=system&controller=theme" csrf="true" seoTemplate="theme"}" method="post">
+						<button type='submit' name='id' value='{$id}' class='ipsButton ipsButton_link'>{lang="$set->_title"} {{if $set->is_default}}{lang="default"}{{endif}}</button>
+						</form>
 					</li>
 				{{endif}}
 			{{endforeach}}
@@ -31,7 +38,7 @@
 		<li><a href='{{if \IPS\Settings::i()->privacy_type == "internal"}}{url="app=core&module=system&controller=privacy" seoTemplate="privacy"}{{else}}{setting="privacy_link"}{{endif}}'>{lang="privacy"}</a></li>
 	{{endif}}
 	{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'contact' ) ) and !( \IPS\Dispatcher::i()->application->directory == 'core' and \IPS\Dispatcher::i()->module->key == 'contact' )}}
-		<li><a href='{url="app=core&module=contact&controller=contact" seoTemplate="contact"}' data-ipsdialog data-ipsDialog-flashMessage='{lang="contact_sent_blurb"}' data-ipsDialog-remoteSubmit data-ipsdialog-title="{lang="contact"}">{lang='contact'}</a></li>
+		<li><a href='{url="app=core&module=contact&controller=contact" seoTemplate="contact"}' data-ipsdialog data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage='{lang="contact_sent_blurb"}' data-ipsdialog-title="{lang="contact"}">{lang='contact'}</a></li>
 	{{endif}}
 </ul>	
 {{if \IPS\Dispatcher::i()->application instanceof \IPS\Application AND \IPS\Dispatcher::i()->application->canManageWidgets()}}

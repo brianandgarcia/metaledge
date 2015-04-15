@@ -1,0 +1,9 @@
+<ips:template parameters="$online, $chart" />
+{{if count( $online ) > 0}}
+	{$chart|raw}
+{{else}}
+	<div class='ipsType_center ipsType_light ipsType_large'>
+		<i class='fa fa-group ipsType_huge'></i>
+		<br>{lang="no_online_users"}
+	</div>
+{{endif}}

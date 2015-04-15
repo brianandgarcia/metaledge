@@ -27,10 +27,12 @@
 			{{if \IPS\Member::loggedIn()->modPermission('mod_can_warn')}}
 				<li class='ipsMenu_item'><a href='{url="app=core&module=system&controller=warnings&do=warn&id={$report->author}&ref={$ref}" seoTemplate="warn_add" seoTitle="\IPS\Member::load( $report->author )->members_seo_name"}' data-ipsDialog data-ipsDialog-title="{lang="warn_member" sprintf="\IPS\Member::load( $report->author )->name"}" data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="warning_issued"}" data-role="warnUserDialog">{lang="warn_user"}</a></li>
 			{{endif}}
-			{{if \IPS\Member::load( $report->author )->members_bitoptions['bw_is_spammer']}}
-				<li class='ipsMenu_item' data-ipsMenuValue='spamFlagButton'><a data-action='ipsMenu_ping' href='{url="app=core&module=system&controller=moderation&id={$report->author}&s=0" seoTemplate="flag_as_spammer" seoTitle="\IPS\Member::load( $report->author )->members_seo_name" csrf="true"}' data-confirm data-confirmSubMessage="{lang="spam_unflag_confirm"}">{lang="spam_unflag"}</a></li>
-			{{else}}
-				<li class='ipsMenu_item' data-ipsMenuValue='spamFlagButton'><a data-action='ipsMenu_ping' href='{url="app=core&module=system&controller=moderation&id={$report->author}&s=1" seoTemplate="flag_as_spammer" seoTitle="\IPS\Member::load( $report->author )->members_seo_name" csrf="true"}' data-confirm>{lang="spam_flag"}</a></li>
+			{{if $report->author != \IPS\Member::loggedIn()->member_id}}
+				{{if \IPS\Member::load( $report->author )->members_bitoptions['bw_is_spammer']}}
+					<li class='ipsMenu_item' data-ipsMenuValue='spamUnFlagButton'><a href='{url="app=core&module=system&controller=moderation&id={$report->author}&s=0" seoTemplate="flag_as_spammer" seoTitle="\IPS\Member::load( $report->author )->members_seo_name" csrf="true"}'>{lang="spam_unflag"}</a></li>
+				{{else}}
+					<li class='ipsMenu_item' data-ipsMenuValue='spamFlagButton'><a href='{url="app=core&module=system&controller=moderation&id={$report->author}&s=1" seoTemplate="flag_as_spammer" seoTitle="\IPS\Member::load( $report->author )->members_seo_name" csrf="true"}'>{lang="spam_flag"}</a></li>
+				{{endif}}
 			{{endif}}
 			<li class="ipsMenu_item"><a href='{url="app=core&module=messaging&controller=messenger&do=compose&to={$report->author}" seoTemplate="messenger_compose"}' data-ipsDialog data-ipsDialog-title='{lang="compose_new"}' data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="message_sent"}">{lang="message_send"}</a></li>
 		</ul>
@@ -61,6 +63,10 @@
 					<div class='ipsType_center'>
 						<a href='{url="app=core&module=system&controller=warnings&id={$report->author}" seoTemplate="warn_list" seoTitle="\IPS\Member::load( $report->author )->members_seo_name"}' class=''><i class='fa fa-bars'></i> &nbsp;&nbsp;{lang="see_all_c"}</a>
 					</div>
+				{{else}}
+					<p class='ipsType_reset ipsType_light ipsType_medium'>
+						{lang="no_previous_warnings"}
+					</p>
 				{{endif}}
 			</div>
 		{{endif}}

@@ -3,6 +3,14 @@
 	<h3 class='ipsType_sectionHead'>{lang="members_followers" sprintf="$member->name"}</h3>
 	<br>
 {{endif}}
+{{if $followers !== NULL AND $followers->count( TRUE ) > 50}}
+	{{$url = \IPS\Http\Url::internal( "app=core&module=members&controller=profile&do=followers&id={$member->member_id}", 'front', 'profile_followers', $member->members_seo_name );}}
+	<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+		<div data-role="tablePagination">
+			{template="pagination" group="global" app="core" location="global" params="$url, ceil( $followers->count( TRUE ) / 50 ), \IPS\Request::i()->page ?: 1, 50"}
+		</div>
+	</div>
+{{endif}}
 <br>
 <ul class='ipsDataList'>
 	{{if count( $followers )}}
@@ -23,3 +31,11 @@
 		{{endforeach}}
 	{{endif}}
 </ul>
+{{if $followers !== NULL AND $followers->count( TRUE ) > 50}}
+	<br>
+	<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
+		<div data-role="tablePagination">
+			{template="pagination" group="global" app="core" location="global" params="$url, ceil( $followers->count( TRUE ) / 50 ), \IPS\Request::i()->page ?: 1, 50"}
+		</div>
+	</div>
+{{endif}}

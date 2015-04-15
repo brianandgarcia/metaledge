@@ -1,6 +1,6 @@
 <ips:template parameters="$html, $title=NULL" />
 <!DOCTYPE html>
-<html lang="{expression="mb_substr( \IPS\Member::loggedIn()->language()->short, 0, 2 )"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
+<html lang="{expression="\IPS\Member::loggedIn()->language()->bcp47()"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
 	<head>
 		<title>{expression="output.getTitle( $title )"}</title>
 		{template="includeMeta" app="core" group="global" location="global" params=""}

@@ -1,0 +1,9 @@
+<ips:template parameters="$id, $url" />
+<div class="ipsPad">
+	{lang="not_running_latest_version"}
+</div>
+<div class="ipsAreaBackground ipsPad ipsType_center">
+	<a href="{url="app=core&module=overview&controller=dashboard&do=upgrade"}" class="ipsButton ipsButton_primary">{lang="upgrade_now"}</a>
+	<a href="{$url}" target="_blank" class="ipsButton ipsButton_alternate">{lang="learn_more"}</a>
+	<a href="{url="app=core&module=support&controller=support&next={$id}&mr=0"}" class="ipsButton ipsButton_alternate" data-action="redirectContinue">{lang="continue_anyway"}</a>
+</div>

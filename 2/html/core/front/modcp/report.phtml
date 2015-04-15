@@ -11,7 +11,7 @@
 	{{endif}}
 {{endif}}
 <article class='ipsColumns ipsColumns_collapseTablet ipsClear ipsClearfix' data-controller="core.front.modcp.report">
-	<div class='ipsColumn ipsColumn_fluid ipsBox ipsPad' data-controller='core.front.core.comment' data-quoteData='{$quoteData}'>
+	<div class='ipsColumn ipsColumn_fluid' data-controller='core.front.core.comment' data-quoteData='{$quoteData}'>
 		{{if $comment}}
 			<div class="ipsClearfix" id='elReportComment'>
 				<h2 class="ipsType_sectionHead">
@@ -23,7 +23,11 @@
 				</a>
 				<br><br>
 				<div class='ipsPost' data-role='commentContent'>
-					<div data-ipsTruncate data-ipsTruncate-type="hide" data-ipsTruncate-size="#elReportPanel" class='ipsType_richText ipsType_medium ipsContained' data-controller='core.front.core.lightboxedImages'>{$comment->content()|raw}</div>
+					<div data-ipsTruncate data-ipsTruncate-type="hide" data-ipsTruncate-size="#elReportPanel">
+						<div class='ipsType_richText ipsType_normal ipsContained' data-controller='core.front.core.lightboxedImages'>
+							{$comment->content()|raw}
+						</div>
+					</div>
 				</div>
 				<hr class='ipsHr'>
 				<ul class='ipsList_inline' data-role="commentControls">
@@ -52,7 +56,11 @@
 				</a>
 				<br><br>
 				<div class='ipsPost' data-role='commentContent'>
-					<div data-ipsTruncate data-ipsTruncate-type="hide" data-ipsTruncate-size="#elReportPanel" class='ipsType_richText ipsType_medium ipsContained' data-controller='core.front.core.lightboxedImages'>{$item->content()|raw}</div>
+					<div data-ipsTruncate data-ipsTruncate-type="hide" data-ipsTruncate-size="#elReportPanel">
+						<div class='ipsType_richText ipsType_normal ipsContained' data-controller='core.front.core.lightboxedImages'>
+							{$item->content()|raw}
+						</div>
+					</div>
 				</div>
 				<hr class='ipsHr'>
 				<ul class='ipsList_inline' data-role="commentControls">
@@ -76,10 +84,17 @@
 	</div>
 	<aside class='ipsColumn ipsColumn_veryWide'>
 		<div id="elReportSidebar">
-			<a href='#elReportItem{$report->id}_menu' id='elReportItem{$report->id}' class='ipsButton ipsButton_primary ipsButton_large ipsButton_fullWidth' data-ipsMenu data-ipsMenu-closeOnClick data-ipsTooltip data-ipsTooltip-label="{lang="change_report_status"}">
-				<span class="cReportIcon"><i class='{{if $report->status == 1}}fa fa-flag{{elseif $report->status == 2}}fa fa-exclamation-triangle{{else}}fa fa-check-circle{{endif}}' data-role="ipsMenu_selectedIcon"></i></span> &nbsp;<span data-role="ipsMenu_selectedText">{lang="report_status_{$report->status}"}</span> &nbsp;<i class='fa fa-caret-down'></i>
-			</a>
-			{template="reportToggle" group="modcp" params="$report, '', FALSE"}
+			<div class='ipsAreaBackground ipsPad_half' id='elReportSidebar_toggle' data-controller='core.front.modcp.reportToggle'>
+				<div class='ipsPad_half ipsType_center ipsType_normal'>
+					<p class='ipsType_reset ipsType_large cReportSidebar_icon ipsSpacer_bottom ipsSpacer_half'><i class='{{if $report->status == 1}}fa fa-flag{{elseif $report->status == 2}}fa fa-exclamation-triangle{{else}}fa fa-check-circle{{endif}}' data-role='reportIcon'></i></p>
+					<strong>{lang="status"}:</strong> <span data-role="reportStatus">{lang="report_status_{$report->status}"}</span>
+				</div>
+
+				<a href='#elReportItem{$report->id}_menu' id='elReportItem{$report->id}' class='ipsButton ipsButton_primary ipsButton_small ipsButton_fullWidth' data-ipsMenu data-ipsMenu-closeOnClick data-ipsMenu-appendTo='#elReportSidebar_toggle' data-ipsMenu-selectable>
+					{lang="mark_report_as"} <i class='fa fa-caret-down'></i>
+				</a>
+				{template="reportToggle" group="modcp" params="$report, '', FALSE"}
+			</div>
 			<br>
 			<div id='elReportPanel' class='ipsBox'>
 				{template="reportPanel" group="modcp" params="$report,$comment,$ref"}
@@ -94,7 +109,7 @@
 			<a href="{url="app=core&module=modcp&controller=modcp&tab=reports&action=view&id={$prevReport['id']}" seoTemplate="modcp_report"}" title='{lang="previous_report"}' rel='prev'>
 				<span class='ipsPager_type'>{lang="previous_report"}</span>
 				{{if $prevItem}}
-					<span class='ipsPager_title ipsType_break'>{lang="$prevItem->mapped('title')" wordbreak="true"}</span>
+					<span class='ipsPager_title ipsType_break'>{wordbreak="$prevItem->mapped('title')"}</span>
 				{{else}}
 					<span class='ipsPager_title'><em class="ipsType_light">{lang="content_deleted"}</em></span>
 				{{endif}}
@@ -106,7 +121,7 @@
 			<a href="{url="app=core&module=modcp&controller=modcp&tab=reports&action=view&id={$nextReport['id']}" seoTemplate="modcp_report"}" title='{lang="next_report"}' rel='next'>
 				<span class='ipsPager_type'>{lang="next_report"}</span>
 				{{if $nextItem}}
-					<span class='ipsPager_title ipsType_break'>{lang="$nextItem->mapped('title')" wordbreak="true"}</span>
+					<span class='ipsPager_title ipsType_break'>{wordbreak="$nextItem->mapped('title')"}</span>
 				{{else}}
 					<span class='ipsPager_title'><em class="ipsType_light">{lang="content_deleted"}</em></span>
 				{{endif}}
@@ -115,48 +130,67 @@
 	</div>
 </nav>
 <section class='ipsBox'>
-	<h2 class="ipsType_sectionTitle ipsType_reset">{lang="report_user_reports" pluralize="count( $report->reports() )"}</h2>
-	<div data-role="commentFeed">
-		{{foreach $report->reports() as $r}}
-			<article itemscope itemtype="http://schema.org/Comment" id="elCommentMod_{$r['rid']}" class="ipsComment ipsComment_parent ipsClearfix ipsClear ">
-				<div class='ipsComment_content ipsType_medium'>
-					<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_mini'>
-						{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $r['report_by'] ), 'mini'"}
-						<div>
-							<h3 class='ipsComment_author ipsType_normal ipsType_blendLinks'>{member="link()" id="$r['report_by']" raw="true"}</h3>
-							<p class="ipsComment_meta ipsType_light ipsType_medium">
-								{lang="report_date_submitted"} {datetime="$r['date_reported']"}
-							</p>
-						</div>
+	<h2 class="ipsType_sectionTitle ipsType_reset">{lang="responses_to_report"}</h2>
+	<div data-controller="core.front.core.commentsWrapper" data-tabsId='elTabsReport'>
+		<div class="ipsTabs ipsTabs_contained ipsClearfix" id="elTabsReport" data-ipsTabBar data-ipstabbar-contentarea="#elReportComments">
+			<a href="#elTabs_report" data-action="expandTabs"><i class="fa fa-caret-down"></i></a>
+			<ul role="tablist">
+				<li role="presentation">
+					<a href="#" id="elUserReports" class="ipsTabs_item ipsTabs_activeItem" title="" aria-selected="true">
+						{lang="report_user_reports" pluralize="count( $report->reports() )"}
+					</a>
+				</li>
+				<li role="presentation">
+					<a href="#" id="elTabsReport_tab_mod_comments" class="ipsTabs_item" title="">
+						{lang="report_mod_comments" pluralize="count( $report->comments() )"}
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div id="elReportComments" class="ipsTabs_contained ipsTabs_panels">
+			<div id="ipsTabs_elTabsReport_elUserReports_panel" class="ipsTabs_panel" aria-labelledby="elUserReports" aria-hidden="false">
+				<div data-role="commentFeed">
+					{{foreach $report->reports() as $r}}
+						<article itemscope itemtype="http://schema.org/Comment" id="elCommentMod_{$r['rid']}" class="ipsComment ipsComment_parent ipsClearfix ipsClear ">
+							<div class='ipsComment_content ipsType_medium'>
+								<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_mini'>
+									{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $r['report_by'] ), 'mini'"}
+									<div>
+										<h3 class='ipsComment_author ipsType_normal ipsType_blendLinks'>{member="link()" id="$r['report_by']" raw="true"}</h3>
+										<p class="ipsComment_meta ipsType_light ipsType_medium">
+											{lang="report_date_submitted"} {datetime="$r['date_reported']"}
+										</p>
+									</div>
+								</div>
+								<div class='ipsPad'>
+									<div class="ipsType_normal ipsType_richText ipsType_break ipsContained" data-controller='core.front.core.lightboxedImages'>
+										{{if $r['report']}}
+											{$r['report']|raw}
+										{{else}}
+											<p><em class="ipsType_light">{lang="report_no_message"}</em></p>
+										{{endif}}
+									</div>
+								</div>
+							</div>
+						</article>
+					{{endforeach}}
+				</div>
+			</div>
+			<div id="ipsTabs_elTabsReport_elTabsReport_tab_mod_comments_panel" class="ipsTabs_panel" aria-labelledby="elTabsReport_tab_mod_comments" aria-hidden="false">
+				<div data-controller='core.front.core.commentFeed' data-commentsType='mod_comments' data-baseURL='{$report->url()}' {{if $report->isLastPage()}}data-lastPage{{endif}} data-feedID='report-{$report->id}'>
+					<div data-role='commentFeed' data-controller='core.front.core.moderation'>
+						<form action="{$report->url()->csrf()->setQueryString( 'action', 'multimodComment' )}" method="post" data-ipsPageAction data-role='moderationTools'>
+							{{foreach $report->comments() as $modcomment}}
+								{$modcomment->html()|raw}
+							{{endforeach}}
+							{template="commentMultimod" app="core" group="global" params="$report"}
+						</form>
 					</div>
-					<div class='ipsPad'>
-						<div class="ipsType_normal ipsType_richText ipsType_break ipsContained" data-controller='core.front.core.lightboxedImages'>
-							{{if $r['report']}}
-								{$r['report']|raw}
-							{{else}}
-								<p><em class="ipsType_light">{lang="report_no_message"}</em></p>
-							{{endif}}
-						</div>
+					<div data-role='replyArea' class='ipsAreaBackground ipsPad'>
+						{$report->commentForm()|raw}
 					</div>
 				</div>
-			</article>
-		{{endforeach}}
-	</ul>
-</section>
-	<br><br>
-<section class='ipsBox'>
-	<div data-controller='core.front.core.commentFeed' data-baseURL='{$report->url()}' {{if $report->isLastPage()}}data-lastPage{{endif}} data-feedID='report-{$report->id}'>
-		<h2 class="ipsType_sectionTitle ipsType_reset" data-role="comment_count" data-commentCountString="js_num_mod_comments">{lang="report_mod_comments" pluralize="count( $report->comments() )"}</h2>
-		<div data-role='commentFeed' data-controller='core.front.core.moderation'>
-			<form action="{$report->url()->setQueryString( 'action', 'multimodComment' )}" method="post" data-ipsPageAction data-role='moderationTools'>
-				{{foreach $report->comments() as $modcomment}}
-					{$modcomment->html()|raw}
-				{{endforeach}}
-				{template="commentMultimod" app="core" group="global" params="$report"}
-			</form>
-		</div>
-		<div data-role='replyArea' class='ipsPad_half'>
-			{$report->commentForm()|raw}
+			</div>
 		</div>
 	</div>
 </section>

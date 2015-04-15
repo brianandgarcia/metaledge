@@ -8,7 +8,7 @@
 				{template="userPhoto" app="core" group="global" params="$item->author(), 'tiny'"}
 			</div>
 			<div class='ipsDataItem_main'>
-				<a href="{$item->url()}" title='{lang="view_this" sprintf="$item->mapped('title')"}'>{lang="$item->mapped('title')" wordbreak="true"}</a><br>
+				<a href="{$item->url()}" title='{lang="view_this" sprintf="$item->mapped('title')"}'>{wordbreak="$item->mapped('title')"}</a><br>
 				<span class='ipsType_light ipsType_medium'>{lang="byline_nodate" htmlsprintf="$item->author()->link()"}</span><br>
 				{{if $item->mapped('content')}}
 					<div class='ipsType_richText ipsType_normal' data-ipsTruncate data-ipsTruncate-type="remove" data-ipsTruncate-size="2 lines">

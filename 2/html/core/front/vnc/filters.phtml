@@ -1,5 +1,5 @@
 <ips:template parameters="$baseUrl, $contentTypes, $nodeSelect, $nodeTitle" />
-<div class='ipsResponsive_showPhone ipsResponsive_block ipsClearfix ipsType_reset ipsPad_half'>
+<div class='ipsResponsive_hideDesktop ipsResponsive_block ipsClearfix ipsType_reset ipsPad_half'>
 	<h2 class='ipsType_sectionHead ipsPos_left'>Filters</h2>
 	<a href='#' data-action='filterBarSwitch' data-switchTo='filterContent' class='ipsPos_right ipsButton ipsButton_verySmall ipsButton_light'><i class='fa fa-navicon'></i> &nbsp;{lang="vnc_results"} <i class='fa fa-caret-right'></i></a>&nbsp;&nbsp;
 </div>
@@ -14,11 +14,13 @@
 				<a href='#elSearch_appFilter' class='ipsPad_double' data-action='openSideMenu'><i class='fa fa-bars'></i> &nbsp;{lang="vnc_content_type"}&nbsp;<i class='fa fa-caret-down'></i></a>
 			</h3>
 			<ul class='ipsSideMenu_list ipsSideMenu_withRadios ipsType_normal'>
-				<li class='ipsSideMenu_item {{if !\IPS\Request::i()->type}}ipsSideMenu_itemActive{{endif}}'>
-					<a href='{$baseUrl->stripQueryString( 'type' )->stripQueryString( 'nodes' )}' data-action="filterResults">
-						{lang="all_new_content"}
-					</a>
-				</li>
+				{{if count( $contentTypes ) > 1}}
+					<li class='ipsSideMenu_item {{if !\IPS\Request::i()->type}}ipsSideMenu_itemActive{{endif}}'>
+						<a href='{$baseUrl->stripQueryString( 'type' )->stripQueryString( 'nodes' )}' data-action="filterResults">
+							{lang="all_new_content"}
+						</a>
+					</li>
+				{{endif}}
 				{{foreach $contentTypes as $key => $class}}
 					<li class='ipsSideMenu_item {{if \IPS\Request::i()->type == $key}}ipsSideMenu_itemActive{{endif}}'>
 						<a href='{$baseUrl->setQueryString( array( 'type' => $key ) )->stripQueryString( 'nodes' )}' data-action="filterResults">

@@ -1,8 +1,8 @@
 <ips:template parameters="$row, $overview" />
-		<li class='ipsDataItem ipsClearfix {{if $row['map_has_unread']}}ipsDataItem_unread{{endif}} cMessage ipsCursor_pointer {{if $row['mt_id'] == \IPS\Request::i()->id}}cMessage_active ipsDataItem_selected{{endif}}' data-messageid='{$row['map_topic_id']}' data-keyNavBlock data-keyAction='return'>
+		<li class='ipsDataItem ipsClearfix {{if $row['map_has_unread']}}ipsDataItem_unread{{endif}} cMessage {{if !\IPS\Request::i()->overview}}ipsCursor_pointer{{endif}} {{if $row['mt_id'] == \IPS\Request::i()->id}}cMessage_active ipsDataItem_selected{{endif}}' data-messageid='{$row['map_topic_id']}' data-keyNavBlock data-keyAction='return'>
 			<div class='ipsDataItem_icon ipsType_center'>
 				<div>{{if $row['last_message']}}{template="userPhoto" app="core" group="global" params="$row['last_message']->author(), 'tiny'"}{{endif}}</div>
-				<strong class='cMessageParticipants' title='{lang="messenger_participants" pluralize="$row['mt_to_member_id'] ? ( $row['mt_to_count'] + 1 ) : $row['mt_to_count']"}'><i class='fa fa-user'></i> {{if $row['mt_to_member_id']}}{expression="$row['mt_to_count'] + 1"}{{else}}{$row['mt_to_count']}{{endif}}</strong>
+				<strong class='cMessageParticipants' title='{lang="messenger_participants" pluralize="$row['mt_to_count']"}'><i class='fa fa-user'></i> {$row['mt_to_count']}</strong>
 			</div>
 			<div class='ipsDataItem_main'>
 				<div class='ipsCommentCount ipsPos_right' title="{lang="messenger_message_count" pluralize="$row['mt_replies']"}" data-ipsTooltip>{number="$row['mt_replies']"}</div>
@@ -16,6 +16,6 @@
 				<div class='ipsDataItem_meta ipsType_break' data-ipsTruncate data-ipsTruncate-type="remove" data-ipsTruncate-size="1 lines">
 					{{if $row['last_message']}}{$row['last_message']->truncated( TRUE )|raw}{{endif}}
 				</div>
-				<span class='ipsType_light'>{lang="messenger_last_reply" sprintf="$row['last_message']->author()->name"}, {datetime="$row['mt_last_post_time']"}</span>
+				<span class='ipsType_light'>{lang="messenger_started_by" sprintf="\IPS\Member::load( $row['mt_starter_id'] )->name"}, {datetime="$row['mt_start_time']"}{{if $row['mt_start_time'] !== $row['mt_last_post_time']}}<br>{lang="messenger_last_reply" sprintf="$row['last_message']->author()->name"}, {datetime="$row['mt_last_post_time']"}{{endif}}</span>
 			</div>
 		</li>

@@ -18,7 +18,7 @@
 					</div>
 					<div class="ipsDataItem_stats ipsDataItem_statsLarge">
 						<span class="ipsDataItem_stats_number">{number="$stats['most_online']['count']"}</span><br>
-						<span class="ipsType_light ipsType_small">{datetime="$stats['most_online']['time']" norelative="true"}</span>
+						<span class="ipsType_light ipsType_small"><time>{$stats['most_online']['time']}</time></span>
 					</div>
 				</li>
 			</ul>
@@ -31,7 +31,7 @@
 					<div class='ipsWidget_latestItem'>
 						<strong class='ipsType_minorHeading'>{lang="stats_newest_member"}</strong><br>
 						<span class='ipsType_normal'>{$stats['last_registered']->link()|raw}</span><br>
-						<span class='ipsType_medium ipsType_light'>{lang="members_joined"} {datetime="$stats['last_registered']->joined" norelative="true"}</span>
+						<span class='ipsType_medium ipsType_light'>{lang="members_joined"} <time>{$stats['last_registered']->joined->getTimestamp()}</time></span>
 					</div>
 				</div>
 			{{endif}}
@@ -43,7 +43,7 @@
 				<span class='ipsType_light ipsType_medium'>{lang="stats_total_members"}</span>
 			</div>
 			<div class='ipsGrid_span4 ipsType_center'>
-				<span class='ipsType_large ipsWidget_statsCount' data-ipsTooltip title='{datetime="$stats['most_online']['time']" norelative="true"}'>{number="$stats['most_online']['count']"}</span><br>
+				<span class='ipsType_large ipsWidget_statsCount' data-ipsTooltip title='<time data-norelative="true">{$stats['most_online']['time']}</time>'>{number="$stats['most_online']['count']"}</span><br>
 				<span class='ipsType_light ipsType_medium'>{lang="stats_most_online"}</span>
 			</div>
 			<div class='ipsGrid_span4 ipsType_left ipsPhotoPanel ipsPhotoPanel_mini cNewestMember'>
@@ -51,7 +51,7 @@
 				<div>
 					<span class='ipsType_minorHeading'>{lang="stats_newest_member"}</span><br>
 					<span class='ipsType_normal'>{$stats['last_registered']->link()|raw}</span><br>
-					<span class='ipsType_small ipsType_light'>{lang="members_joined"} {datetime="$stats['last_registered']->joined" norelative="true"}</span>
+					<span class='ipsType_small ipsType_light'>{lang="members_joined"} <time>{$stats['last_registered']->joined->getTimestamp()}</time></span>
 				</div>
 			</div>
 		</div>

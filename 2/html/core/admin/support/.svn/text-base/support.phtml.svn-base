@@ -1,0 +1,62 @@
+<ips:template parameters="$wizard" />
+<div class="ipsColumns ipsColumns_collapsePhone">
+	<div class="ipsColumn ipsColumn_fluid">
+		{$wizard|raw}
+	</div>
+	<div class="ipsColumn ipsColumn_veryWide">
+		<h2 class="ipsType_sectionTitle">{lang="system_information"}</h2>
+		<div class="ipsOverflow">
+			<ul class='ipsDataList'>
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic ipsDataItem_size4">
+						<strong class="title">{lang="php_version"}</strong>
+					</span>
+					<span class="ipsDataItem_generic">
+						{expression="PHP_VERSION"}<br>
+						<a href="{url="app=core&module=support&controller=support&do=phpinfo"}" class="ipsType_small ipsType_light">phpinfo</a>
+					</span>
+				</li>
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic ipsDataItem_size4">
+						<strong class="title">{lang="mysql_version"}</strong>
+					</span>
+					<span class="ipsDataItem_generic">
+						{expression="\IPS\Db::i()->server_info"}
+						{{if \IPS\Member::loggedIn()->hasAcpRestriction( 'core', 'support', 'sql_toolbox' )}}
+							<br>
+							<a href="{url="app=core&module=support&controller=sql"}" class="ipsType_small ipsType_light">{lang="sql_toolbox"}</a>
+						{{endif}}
+					</span>
+				</li>
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic ipsDataItem_size4">
+						<strong class="title">{lang="server_path"}</strong>
+					</span>
+					<span class="ipsDataItem_generic ipsType_small">
+						{expression="\IPS\ROOT_PATH"}
+					</span>
+				</li>
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic ipsDataItem_size4">
+						<strong class="title">{lang="server_ip"}</strong>
+					</span>
+					<span class="ipsDataItem_generic">
+						{$_SERVER['SERVER_ADDR']}
+					</span>
+				</li>
+			</ul>
+		</div>
+		<br><br>
+		<h2 class="ipsType_sectionTitle">{lang="diagnostic_logs"}</h2>
+		<div class="ipsOverflow">
+			<ul class='ipsDataList'>
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic"><a href="{url="app=core&module=support&controller=errorLogs"}">{lang="error_logs"}</a></span>
+				</li>
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic"><a href="{url="app=core&module=support&controller=systemLogs"}">{lang="system_logs"}</a></span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

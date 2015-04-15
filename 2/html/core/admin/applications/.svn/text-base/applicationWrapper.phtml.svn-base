@@ -1,0 +1,5 @@
+<ips:template parameters="$tree, $lang" />
+<br />
+<br />
+<div class='acpBlock_title'>{lang="$lang"}</div>
+{$tree|raw}

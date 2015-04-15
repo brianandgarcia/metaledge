@@ -4,7 +4,7 @@
 	{{if count( $statuses ) > 0}}
 		<ul class='ipsDataList ipsPad_half'>
 			{{foreach $statuses as $status}}
-				<li class='ipsDataItem'>
+				<li class='ipsDataItem {{if $status->hidden()}} ipsModerated{{endif}}'>
 					<div class='ipsDataItem_icon ipsPos_top'>
 						{template="userPhoto" group="global" app="core" params="$status->author(), 'tiny'"}
 					</div>

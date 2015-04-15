@@ -9,18 +9,18 @@
 					{{endif}}
 				</div>
 				<div class='ipsDataItem_main'>
-					{{if $notification['data']['unread']}}
+					{{if !$notification['data']['unread']}}
 						<span class="ipsItemStatus ipsItemStatus_small ipsItemStatus_read">
 							<i class="fa fa-circle"></i>
 						</span>
 						<strong>
 					{{endif}}
 							<a href="{$notification['data']['url']}" class='ipsDataItem_title'>{$notification['data']['title']}</a>
-					{{if $notification['data']['unread']}}
+					{{if !$notification['data']['unread']}}
 						</strong>
 					{{endif}}
 					<br>
-					<span class="ipsType_light">{datetime="$notification['notification']->updated_time"}</span>
+					<span class="ipsType_light">{datetime="$notification['notification']->sent_time"}</span>
 				</div>
 			</li>
 			{{endif}}

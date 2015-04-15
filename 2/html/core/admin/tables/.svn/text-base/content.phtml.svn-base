@@ -1,0 +1,4 @@
+<ips:template parameters="$content" />
+<div data-ipsTruncate data-ipsTruncate-size="5 lines">
+	{$content|raw}
+</div>
