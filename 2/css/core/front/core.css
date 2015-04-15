@@ -202,8 +202,7 @@ html[dir="rtl"] .cUserHovercard .ipsRepBadge {
 		border: 1px dashed #5f95c7;
 	}
 
-.cWidgetContainer_managing li.ipsWidget[data-blockconfig="true"]
-{
+.cWidgetContainer_managing li.ipsWidget[data-blockconfig="true"] {
 	min-height: 100px;
 }
 .cSidebarBlock_managing {
@@ -355,14 +354,14 @@ html[dir="rtl"] #elSidebarManager {
 	}
 
 	#elSidebarManager .cSidebarManager_open:before {
-		content: '\\f0d7';
+		content: '\f0d7';
 	}
 
 	html[dir="ltr"] #elSidebarManager .cSidebarManager_closed:before {
-		content: '\\f0da';
+		content: '\f0da';
 	}
 	html[dir="rtl"] #elSidebarManager .cSidebarManager_closed:before {
-		content: '\\f0d9';
+		content: '\f0d9';
 	}
 
 #elSidebarManager_submit {

@@ -1,0 +1,61 @@
+/* BOTH */
+@media screen and (max-width: 979px) {
+
+	/* PHOTO PANELS */
+	.ipsPhotoPanel.ipsPhotoPanel_notTablet > .ipsUserPhoto {
+		display: none;
+	}
+
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_notTablet > div {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_notTablet > div {
+		margin-right: 0;
+	}
+	
+	/* TOOL LISTS */
+	.ipsToolList.ipsToolList_horizontal {
+		margin-bottom: 15px;
+	}
+
+	/* ACTIVE USERS */
+	.ipsActiveUsers_title {
+		display: block;
+		margin: 0;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+		
+	/* PHOTO PANELS */
+	.ipsPhotoPanel.ipsPhotoPanel_notPhone > .ipsUserPhoto,
+	.ipsPhotoPanel.ipsPhotoPanel_notTablet > .ipsUserPhoto {
+		display: none;
+	}
+
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_notPhone > div,
+	html[dir="ltr"] .ipsPhotoPanel.ipsPhotoPanel_notTablet > div {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_notPhone > div,
+	html[dir="rtl"] .ipsPhotoPanel.ipsPhotoPanel_notTablet > div {
+		margin-right: 0;
+	}
+	
+	/* TOOL LISTS */
+	html[dir="ltr"] .ipsToolList.ipsToolList_horizontal,
+	html[dir="rtl"] .ipsToolList.ipsToolList_horizontal {
+		display: block;
+	}
+
+		html[dir="ltr"] .ipsToolList.ipsToolList_horizontal > li,
+		html[dir="rtl"] .ipsToolList.ipsToolList_horizontal > li {
+			margin: 0 0 5px 0 !important;
+			float: none !important;
+		}
+
+	.ipsPad { padding: 7px; }
+	.ipsPad_double { padding: 14px; }
+
+}

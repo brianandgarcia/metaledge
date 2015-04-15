@@ -1,0 +1,217 @@
+/* DESKTOP */
+@media screen and (max-width: 1200px) { 
+	
+	/* Hides the photo and makes the column narrower */
+	.ipsDataItem_lastPoster {
+		min-width: 160px;
+	}
+
+	.ipsDataItem_lastPoster li:first-child {
+		display: none;
+	}
+
+		html[dir="ltr"] .ipsDataItem_lastPoster.ipsDataItem_withPhoto li {
+			margin: 0;
+		}
+		html[dir="rtl"] .ipsDataItem_lastPoster.ipsDataItem_withPhoto li {
+			margin: 0;
+		}
+}
+
+/* BOTH */
+@media screen and (max-width: 979px) {
+	
+	/* Reset data list styles */
+	.ipsDataList, .ipsDataItem, .ipsDataItem_main, .ipsDataItem_stats, .ipsDataItem_lastPoster,
+	.ipsDataItem_generic, .ipsDataitem_modCheck {
+		display: block !important;
+		padding: 0 !important;
+		width: auto;
+	}
+
+	/* Main item */
+	.ipsDataItem {
+		padding: 15px 10px 15px 10px  !important;
+	}
+
+		.ipsDataList.ipsDataList_reducedSpacing .ipsDataItem {
+			padding: 7px !important;
+		}
+
+	/* Icon */
+	.ipsDataItem_icon {
+		width: auto;
+		padding-top: 0;
+	}
+	html[dir="ltr"] .ipsDataItem_icon {
+		float: left;
+		padding-left: 0;
+	}
+	html[dir="rtl"] .ipsDataItem_icon {
+		float: right;
+		padding-right: 0;
+	}
+
+		.ipsDataList_large .ipsDataItem_icon {
+			min-width: 40px;
+		}
+
+			html[dir="ltr"] .ipsDataList_large .ipsDataItem_icon {
+				padding-right: 0;
+			}
+			html[dir="rtl"] .ipsDataList_large .ipsDataItem_icon {
+				padding-left: 0;
+			}
+
+		.ipsDataItem_icon br {
+			display: none;
+		}
+
+		html[dir="ltr"] .ipsDataItem_icon:not( .ipsResponsive_hidePhone ):not( .ipsResponsive_hideTablet ) + .ipsDataItem_main,
+		html[dir="ltr"] .ipsDataItem_icon:not( .ipsResponsive_hidePhone ):not( .ipsResponsive_hideTablet ) + .ipsDataItem_main + .ipsDataItem_stats {
+			margin-left: 45px;
+		}
+		html[dir="rtl"] .ipsDataItem_icon:not( .ipsResponsive_hidePhone ):not( .ipsResponsive_hideTablet ) + .ipsDataItem_main,
+		html[dir="rtl"] .ipsDataItem_icon:not( .ipsResponsive_hidePhone ):not( .ipsResponsive_hideTablet ) + .ipsDataItem_main + .ipsDataItem_stats {
+			margin-right: 45px;
+		}
+
+		html[dir="ltr"] .ipsDataItem.ipsDataItem_responsivePhoto .ipsDataItem_main {
+			margin-right: 50px;
+		}
+		html[dir="rtl"] .ipsDataItem.ipsDataItem_responsivePhoto .ipsDataItem_main {
+			margin-left: 50px;
+		}
+
+		.ipsDataItem_icon .ipsItemStatus.ipsItemStatus_large {
+			width: 26px;
+			height: 26px;
+			line-height: 26px;
+			font-size: 13px;
+			border-radius: 7px 2px 7px 2px;
+		}
+
+	/* Stats */
+	.ipsDataItem_stats {
+		display: block;
+		min-width: 0;
+		text-align: left;
+		margin-top: 5px;
+	}
+	html[dir="rtl"] .ipsDataItem_stats {
+		text-align: right;
+	}
+
+		.ipsDataItem_stats li, .ipsDataItem_stats dt, .ipsDataItem_stats dd {
+			display: inline;
+		}
+
+		html[dir="ltr"] .ipsDataItem_stats li {
+			margin-right: 10px;
+		}
+		html[dir="rtl"] .ipsDataItem_stats li {
+			margin-left: 10px;
+		}
+
+		.ipsDataItem_statsLarge .ipsDataItem_stats_number {
+			font-size: inherit;
+		}
+
+	html[dir="ltr"] .ipsDataItem_unread .ipsDataItem_main {
+		border-left: 0;
+	}
+	html[dir="rtl"] .ipsDataItem_unread .ipsDataItem_main {
+		border-right: 0;
+	}
+
+	/* Last poster */
+	.ipsDataItem_lastPoster {
+		display: none;
+		min-width: 0;
+		max-width: 100%;
+	}
+
+		.ipsDataItem_lastPoster.ipsDataItem_withPhoto {
+			display: block !important;
+			position: absolute;
+			top: 15px !important;
+		    padding: 0;
+		    width: 34px;
+			height: 34px;
+		}
+
+		html[dir="ltr"] .ipsDataItem_lastPoster.ipsDataItem_withPhoto {
+			right: 10px !important;
+		}
+		html[dir="rtl"] .ipsDataItem_lastPoster.ipsDataItem_withPhoto {
+			left: 10px !important;
+		}
+
+			.ipsDataItem_lastPoster.ipsDataItem_withPhoto .ipsUserPhoto {
+				margin: 0;
+			}
+
+			.ipsDataItem_lastPoster.ipsDataItem_withPhoto li {
+				display: none;
+				margin: 0;
+			}
+
+			.ipsDataItem_lastPoster.ipsDataItem_withPhoto li:first-child,
+			.ipsDataItem_lastPoster.ipsDataItem_withPhoto li:last-child {
+				display: block;
+			}
+
+			.ipsDataItem_lastPoster.ipsDataItem_withPhoto li:last-child time {
+				display: block;
+				width: 0;
+				overflow: hidden;
+			}
+
+			.ipsDataItem_lastPoster.ipsDataItem_withPhoto li:last-child time:after {
+				content: attr(data-short);
+				position: absolute;
+				top: 40px;
+				left: 0;
+				right: 0;
+				font-size: 11px;
+				text-align: center;
+				white-space: nowrap;
+			}
+
+			.ipsDataItem_lastPoster .ipsUserPhoto {
+				float: none;
+				display: block;
+			}
+
+	/* Mod check */
+	.ipsDataItem_modCheck {
+		position: absolute;
+		top: 36px;
+	}
+	html[dir="ltr"] .ipsDataItem_modCheck {
+		left: 10px;
+		padding: 0 10px 0 0;
+	}
+	html[dir="rtl"] .ipsDataItem_modCheck {
+		right: 10px;
+		padding: 0 0 0 10px;
+	}
+
+	.ipsDataItem_modCheck input[type="checkbox"],
+	.ipsDataItem:hover .ipsDataItem_modCheck input[type="checkbox"] {
+		opacity: 1;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	.ipsDataItem_subList li {
+		width: 100%;
+	}
+
+	.ipsDataItem_subList li:after {
+		content: '';
+	}
+
+}

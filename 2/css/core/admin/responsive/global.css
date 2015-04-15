@@ -1,4 +1,4 @@
-/* TABLETS */
+/* DESKTOP */
 @media screen and (max-width: 1200px) {
 
 	#acpAppMenu, #acpAppList > li {
@@ -22,41 +22,10 @@
 	}
 }
 
+/* TABLETS */
 @media screen and (max-width: 979px) {
-	html[dir="ltr"] #acpAppList > li > ul {
-		left: 60px;
-	}
-	html[dir="rtl"] #acpAppList > li > ul {
-		right: 60px;
-	}
-
-	#acpAppMenu, #acpAppList > li {
-		width: 60px !important;
-	}
-
-	#acpAppList .acpAppList_app {
+	#acpAppMenu {
 		display: none;
-	}
-
-	#acpAppList .acpAppList_icon {
-		font-size: 30px;
-	}
-
-	#acpAppList:not( .acpAppList_childHovering ) > li.acpAppList_active > a:after,
-	#acpAppList > li.acpAppList_hovering > a:after {
-		border-width: 7px;
-		margin-top: -7px;
-	}
-
-	html[dir="ltr"] #acpLiveSearch {
-		margin-right: 55px;
-		border-right: 2px solid rgba(255,255,255,0.15);
-		padding-right: 15px;
-	}
-	html[dir="rtl"] #acpLiveSearch {
-		margin-left: 55px;
-		border-left: 2px solid rgba(255,255,255,0.15);
-		padding-left: 15px;
 	}
 
 	html[dir="ltr"] #elAdminMobileNav {
@@ -74,7 +43,7 @@
 		display: none;
 		position: static;
 		background: #3a5a78;
-		margin: 0;
+		margin: 0 !important;
 		padding: 15px;
 	}
 
@@ -92,6 +61,7 @@
 			top: 120px;
 			bottom: 0;
 			overflow: auto;
+			position: absolute;
 		}
 		html[dir="ltr"] #acpLiveSearchResults {
 			left: 0;
@@ -102,6 +72,14 @@
 
 	#acpContent {
 		padding: 10px;
+	}
+
+	body.ipsApp.ipsApp_admin {
+		padding-top: 0;
+	}
+
+	.ipsApp.ipsApp_admin #ipsLayout_header {
+		position: static;
 	}
 
 	.ipsApp.ipsApp_admin #ipsLayout_header #elSiteTitle {

@@ -1,0 +1,76 @@
+/* BOTH */
+@media screen and (max-width: 979px) {
+	.ipsPagination.ipsPagination_mini a {
+		padding: 0 15px;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	.ipsPagination {
+		margin-bottom: 15px;
+	}
+	
+	.ipsPagination .ipsPagination_pageJump,
+	.ipsPagination:not( .ipsPagination_mini ) .ipsPagination_last,
+	.ipsPagination:not( .ipsPagination_mini ) .ipsPagination_first {
+		display: none;
+	}
+
+		.ipsPagination {
+			display: table;
+			width: 100%;
+			padding: 0;
+			font-weight: bold;
+		}
+
+		.ipsPagination .ipsPagination_prev,
+		.ipsPagination .ipsPagination_page,
+		.ipsPagination .ipsPagination_next {
+			display: table-cell;
+			text-align: center;
+		}
+
+		.ipsPagination .ipsPagination_next,
+		.ipsPagination .ipsPagination_prev {
+			width: 50px;
+		}
+
+		.ipsPagination .ipsPagination_prev a,
+		.ipsPagination .ipsPagination_page a,
+		.ipsPagination .ipsPagination_next a {
+			width: 95%;
+			margin: 0 auto;
+			display: inline-block;
+		}
+
+		.ipsPagination_mini .ipsPagination_page {
+			display: inline-block;
+		}
+
+	html[dir="ltr"] .ipsPager_next a {
+		padding-right: 35px;
+	}
+	html[dir="rtl"] .ipsPager_next a {
+		padding-left: 35px;
+	}
+
+	html[dir="ltr"] .ipsPager_prev a {
+		padding-left: 35px;
+	}
+	html[dir="rtl"] .ipsPager_prev a {
+		padding-right: 35px;
+	}
+	
+	.ipsPager a:after {
+		font-size: 32px;
+	}
+
+	/* Mini pagination */
+	.ipsPagination.ipsPagination_mini {
+		display: block !important;
+		margin: 5px 0 !important;
+		opacity: 1 !important;
+	}
+}

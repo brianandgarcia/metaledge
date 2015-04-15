@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/8945/trunk/applications/core/dev/css/admin/members
+END
+restrictions.css
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/8437/trunk/applications/core/dev/css/admin/members/restrictions.css
+END
+notifications.css
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/8945/trunk/applications/core/dev/css/admin/members/notifications.css
+END
+group.css
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/ips-suite/!svn/ver/6953/trunk/applications/core/dev/css/admin/members/group.css
+END
+member.css
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/5373/trunk/applications/core/dev/css/admin/members/member.css
+END

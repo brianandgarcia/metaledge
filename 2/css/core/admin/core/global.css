@@ -266,12 +266,18 @@ body:not( .cAdminHideMenu ) #elHideMenu [data-action='toggleOpen'] {
 	height: 32px;
 	line-height: 32px;
 	position: fixed;
-	left: 104px;
 	bottom: 0;
 	z-index: 6000;
 	background: #394248;
 	border-radius: 3px 0 0 0;
 }
+
+	html[dir="ltr"] #acpAppList #elHideMenu {
+		left: 104px;
+	}
+	html[dir="rtl"] #acpAppList #elHideMenu {
+		right: 104px;
+	}
 	
 	#acpAppList #elHideMenu a {
 		padding: 0 !important;
@@ -286,9 +292,15 @@ body:not( .cAdminHideMenu ) #elHideMenu [data-action='toggleOpen'] {
 	background: #262e33;
 	position: fixed;
 	bottom: 0;
-	padding: 7px 23px 7px 7px;
 	z-index: 5000;
 }
+	
+	html[dir="ltr"] #acpAppList #elReorderAppMenu {
+		padding: 7px 23px 7px 7px;
+	}
+	html[dir="rtl"] #acpAppList #elReorderAppMenu {
+		padding: 7px 7px 7px 23px;
+	}
 
 	#acpAppList #elReorderAppMenu a {
 		color: rgba(255,255,255,0.4);

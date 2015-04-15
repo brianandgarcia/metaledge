@@ -1,0 +1,28 @@
+/* PHONES */
+@media screen and (max-width: 767px) {
+	/*.ipsComment  {
+		padding: 0 7px;
+	}*/
+
+	html[dir="ltr"] .ipsComment_content,
+	html[dir="ltr"] .ipsComment_subComments .ipsComment_content {
+		margin-left: 0;
+	}
+	html[dir="ltr"] .ipsComment_content,
+	html[dir="ltr"] .ipsComment_subComments .ipsComment_content {
+		margin-right: 0;
+	}
+
+	html[dir="ltr"] .ipsComment_subComments {
+		margin-left: 15px;
+		padding: 15px 0 0 0;
+	}
+	html[dir="rtl"] .ipsComment_subComments {
+		margin-right: 15px;
+		padding: 15px 0 0 0;
+	}
+
+	.ipsComment_parent > .ipsComment > .ipsComment_content:before {
+		display: none;
+	}
+}

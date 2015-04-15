@@ -73,6 +73,7 @@ html[dir="rtl"] .ipsTree_controls {
 /* Stack styles */
 .ipsTree_rowData h4 {
 	margin: 0;
+	width: 100%;
 }
 
 .ipsTree_parent.ipsTree_row:not( .ipsTree_noToggle ):hover > div {
@@ -91,7 +92,7 @@ html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData {
 		font-weight: bold;
 		font-size: 14px;
 		position: relative;
-		/*display: inline-block;*/
+		display: inline-block;
 	}
 
 		.ipsJS_has .ipsTree_parent.ipsTree_row > .ipsTree_rowData h4 a {
@@ -101,7 +102,7 @@ html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData {
 	.ipsTree_parent.ipsTree_row > .ipsTree_rowData h4:before {
 		position: absolute;
 		top: 0;
-		content: '\\f04b';
+		content: '\f04b';
 		font-family: 'FontAwesome';
 		font-size: 11px;
 		text-align: center;
@@ -185,7 +186,7 @@ html[dir="rtl"] ol ol {
 	}
 
 	.mjs-nestedSortable-error:after {
-		content: '\\f071';
+		content: '\f071';
 		font-family: 'FontAwesome';
 		left: 10px;
 	}

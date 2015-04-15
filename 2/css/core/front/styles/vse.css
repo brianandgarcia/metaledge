@@ -198,7 +198,7 @@ html[dir="rtl"] #vseClassList li[data-styleID] a {
 	}
 
 	#vseClassList li[data-styleID] a:after {
-		content: "\\F105";
+		content: "\F105";
 		font-size: 14px;
 		font-family: "FontAwesome";
 		display: block;

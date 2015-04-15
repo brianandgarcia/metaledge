@@ -50,3 +50,7 @@ html[dir="rtl"] .ipsWidthHeight {
 a.matrixDelete {
 	cursor: pointer;
 }
+
+.cCopyNode + textarea.ipsField_fullWidth {
+	width: 90%;
+}

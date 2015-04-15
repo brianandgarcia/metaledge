@@ -19,6 +19,7 @@ body#elLogin {
 
 #elLogin_tabs {
 	background: #25282b;
+	padding: 0;
 }
 	
 	#elLogin_tabs ul a {

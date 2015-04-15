@@ -1,0 +1,347 @@
+/* Data lists: our bread and butter. Shows lists of items with associated information */
+/* ======================================================== */
+/* COLORS */
+.ipsApp .ipsDataItem_new, .ipsApp .ipsDataItem_success {
+	background-color: #f0f8f2;
+}
+
+.ipsApp .ipsDataItem_warning {
+	background-color: #f6f6e9;
+}
+
+.ipsApp .ipsDataItem_error {
+	background-color: #f7efef;
+}
+
+.ipsApp .ipsDataItem_info {
+	background-color: #edf5f7;
+}
+
+.ipsApp .ipsDataItem_selected {
+	background-color: {theme="selected"};
+}
+
+.ipsApp .ipsDataItem_status {
+	background-color: #f9f9f9;
+}
+
+/* Unread status */
+.ipsDataList_readStatus .ipsDataItem:not( .ipsDataItem_unread ):not( .ipsDataItem_selected ):not( .ipsModerated ) {
+	background: #f9f9f9;
+}
+
+/* Zebra striping */
+.ipsDataList.ipsDataList_zebra .ipsDataItem:not( .ipsDataItem_selected ):not( .ipsModerated ):nth-child(even) {
+	background: {theme="area_background_light"};
+}
+
+/* ======================================================== */
+/* LISTS & ITEMS */
+.ipsDataList {
+	width: 100%;
+	display: table;
+	table-layout: auto;
+	position: relative;
+	border-collapse: separate;
+	border-spacing: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ipsDataItem_fullWidth {
+	width: 100%;
+}
+
+.ipsDataItem_title {
+	font-size: 14px;
+	margin: 0 0 5px 0;
+	font-weight: 400;
+	display: inline-block;
+}
+
+	.ipsDataItem_unread .ipsDataItem_title {
+		font-weight: bold;
+	}
+
+/* Basic cell styles */
+.ipsDataItem_main, .ipsDataItem_stats, .ipsDataItem_lastPoster, .ipsDataItem_generic,
+.ipsDataItem_modCheck, .ipsDataItem_icon {
+	display: table-cell;
+	padding: 10px 10px;
+	vertical-align: middle;
+}
+
+/* Reduced spacing cells */
+.ipsDataList.ipsDataList_reducedSpacing .ipsDataItem_main, 
+.ipsDataList.ipsDataList_reducedSpacing .ipsDataItem_stats,
+.ipsDataList.ipsDataList_reducedSpacing .ipsDataItem_lastPoster,
+.ipsDataList.ipsDataList_reducedSpacing .ipsDataItem_generic {
+	display: table-cell;
+	padding: 10px 0;
+	vertical-align: top;
+}
+	
+	html[dir="ltr"] .ipsDataList.ipsDataList_reducedSpacing .ipsDataItem_icon + .ipsDataItem_main {
+		padding-left: 10px;
+	}
+	html[dir="rtl"] .ipsDataList.ipsDataList_reducedSpacing .ipsDataItem_icon + .ipsDataItem_main {
+		padding-right: 10px;
+	}
+
+.ipsDataList.ipsDataList_reducedSpacing .ipsDataItem_title {
+	margin: 0;
+	display: inline;
+}
+
+/* Large lists */
+.ipsDataList_large .ipsDataItem_main, 
+.ipsDataList_large .ipsDataItem_stats,
+.ipsDataList_large .ipsDataItem_lastPoster,
+.ipsDataList_large .ipsDataItem_generic {
+	padding: 15px 10px;
+}
+
+	.ipsDataList_large .ipsDataItem_icon {
+		padding: 15px 10px 15px 10px;
+		min-width: 55px;
+	}
+	html[dir="rtl"] .ipsDataList_large .ipsDataItem_icon {
+		padding: 15px 10px 15px 10px;
+	}
+
+	.ipsDataList_large .ipsDataItem {
+		border-bottom-width: 3px;
+	}
+
+/* Reassert some positioning styles */
+.ipsDataItem > .ipsPos_middle {
+	vertical-align: middle !important;
+}
+
+.ipsDataItem > .ipsPos_top {
+	vertical-align: top !important;
+}
+
+/* ======================================================== */
+/* ITEMS */
+.ipsDataItem { 
+	width: 100%;
+	position: relative;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: #f5f5f5;
+}
+
+	.ipsDataList:not( .ipsGrid ) .ipsDataItem:last-child {
+		border-bottom: 0;
+	}
+	
+/* ======================================================== */
+/* MOD CHECKBOXES */
+.ipsDataItem_modCheck input[type="checkbox"] {
+	opacity: 0;
+}
+
+	.ipsDataItem:hover .ipsDataItem_modCheck input[type="checkbox"] {
+		opacity: 0.6;
+	}
+
+	.ipsDataItem .ipsDataItem_modCheck:hover input[type="checkbox"],
+	.ipsDataItem .ipsDataItem_modCheck input[type="checkbox"]:checked {
+		opacity: 1;
+	}
+
+/* ======================================================== */
+/* MAIN COLUMN - fluid */
+.ipsDataItem_main {
+	width: 100%;
+	margin: 0;
+	vertical-align: top;
+}
+	
+	.ipsDataItem .ipsDataItem_main:only-child {
+		display: block !important;
+	}
+
+	.ipsDataItem .ipsDataItem_main .ipsTags {
+		margin-top: 7px;
+	}
+
+/* ======================================================== */
+/* STATS COLUMN */
+.ipsDataItem_stats {
+	width: 15%;
+	min-width: 150px;
+	text-align: right;
+	list-style: none;
+}
+html[dir="rtl"] .ipsDataItem_stats {
+	text-align: left;
+}
+
+	.ipsDataItem_stats dl {
+		margin: 0 0 5px 0;
+	}
+	
+	.ipsDataItem_statsLarge .ipsDataItem_stats_number {
+		font-size: 22px;
+		font-weight: 300;
+		line-height: 1.3;
+	}
+
+	.ipsDataItem_stats_hot {
+		background: #da621a;
+		color: #fff;
+		font-size: 12px;
+		font-weight: bold;
+		display: inline-block;
+		padding: 0 5px 0 5px;
+		position: relative;
+		vertical-align: middle;
+		border-radius: 2px;
+	}
+
+		.ipsDataItem_stats_hot:before {
+			content: attr(data-text);
+			text-transform: uppercase;
+			font-size: 9px;
+			color: #fff;
+			opacity: 0.6;
+			font-weight: bold;
+		}
+		html[dir="ltr"] .ipsDataItem_stats_hot:before {
+			margin-right: 5px;
+		}
+		html[dir="rtl"] .ipsDataItem_stats_hot:before {
+			margin-left: 5px;
+		}
+
+	html[dir="ltr"] .ipsDataItem_stats dt, .ipsDataItem_stats dd {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .ipsDataItem_stats dt, .ipsDataItem_stats dd {
+		margin-right: 0;
+	}
+
+/* ======================================================== */
+/* OTHER */
+.ipsDataItem_icon {
+	width: 25px;
+	min-width: 25px;
+}
+html[dir="ltr"] .ipsDataItem_icon {
+	padding-right: 0;
+}
+	html[dir="ltr"] .ipsDataList_large .ipsDataItem_icon {
+		padding-right: 10px;
+	}
+
+html[dir="rtl"] .ipsDataItem_icon {
+	padding-left: 0;
+}
+	html[dir="rtl"] .ipsDataList_large .ipsDataItem_icon {
+		padding-left: 10px;
+	}
+
+.ipsDataItem_icon_noPad {
+	padding: 0;
+}
+
+.ipsDataItem_category {
+	font-size: 20px;
+}
+
+.ipsDataItem_meta {
+	margin: 0;
+}
+
+/* ======================================================== */
+/* LAST POSTER */
+.ipsDataItem_lastPoster {
+	width: 24%;
+	max-width: 24%;
+	min-width: 270px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+	
+	html[dir="ltr"] .ipsDataItem_lastPoster.ipsDataItem_withPhoto li {
+		margin-left: 50px;
+	}
+	html[dir="rtl"] .ipsDataItem_lastPoster.ipsDataItem_withPhoto li {
+		margin-right: 50px;
+	}
+
+	.ipsDataItem_lastPoster .ipsUserPhoto {
+		display: block;
+		float: left;
+		margin: 1px 10px 0 -50px;
+	}
+	html[dir="rtl"] .ipsDataItem_lastPoster .ipsUserPhoto {
+		float: right;
+		margin: 1px -50px 0 10px;
+	}
+
+/* ======================================================== */
+/* GENERIC SIZING */
+.ipsDataItem_size1 { width: 50px; min-width: 50px; }
+.ipsDataItem_size2 { width: 75px; min-width: 75px; }
+.ipsDataItem_size3 { width: 100px; min-width: 100px; }
+.ipsDataItem_size4 { width: 125px; min-width: 125px; }
+.ipsDataItem_size5 { width: 150px; min-width: 150px; }
+.ipsDataItem_size6 { width: 175px; min-width: 175px; }
+.ipsDataItem_size7 { width: 200px; min-width: 200px; }
+.ipsDataItem_size8 { width: 225px; min-width: 225px; }
+.ipsDataItem_size9 { width: 250px; min-width: 250px; }
+
+/* ======================================================== */
+/* SUB LISTS */
+.ipsDataItem_subList {
+	margin: 5px 0 0;
+	background-repeat: no-repeat;
+	background-size: 13px 8px;
+	list-style: none;
+}
+html[dir="ltr"] .ipsDataItem_subList {
+	padding-left: 20px !important;
+	background-image: url( {resource="subitem_stem.png" app="core" location="front"} );
+	background-position: 3px 5px;
+}
+html[dir="rtl"] .ipsDataItem_subList {
+	padding-right: 20px !important;
+	background-image: url( {resource="subitem_stem_rtl.png" app="core" location="front"} );
+	background-position: right 3px top 5px;
+}
+	
+	.ipsDataItem_subList li {
+		margin-right: 5px !important;
+	}
+
+		.ipsDataItem_subList li.ipsDataItem_unread {
+			font-weight: bold;
+		}
+
+		.ipsDataItem_subList li a:after {
+			content: ',';
+		}
+
+		.ipsDataItem_subList li:last-child a:after {
+			content: '';
+		}
+
+	/* Sub results */
+	.ipsDataItem_subItem {
+		padding-bottom: 10px;
+	}
+	html[dir="ltr"] .ipsDataItem_subItem {
+		padding-left: 5%;
+	}
+	html[dir="rtl"] .ipsDataItem_subItem {
+		padding-right: 5%;
+	}
+
+		.ipsDataItem_subItem .ipsDataItem_icon {
+			font-size: 22px;
+		}
