@@ -1,0 +1,16 @@
+<ips:template parameters="$name, $value, $groups" />
+<div>
+	{lang="move_members_to"}
+	<select name="{$name}[0][0]" data-control="selectDisable">
+		<option value="-1" {{if $value[0][0] === -1}}selected="selected"{{endif}} data-disable="#group_promote_unit,#group_promote_type">{lang="group_promotion_dont"}</option>
+		{{foreach $groups as $id => $_group}}
+			<option value="{$id}" {{if $value[0][0] == $id}}selected="selected"{{endif}}>{$_group->name}</option>
+		{{endforeach}}
+	</select>
+	{lang="when_they_reach"}
+	<input type="number" id="group_promote_unit" name="{$name}[0][1]" value="{{if $value[0][1] != -1}}{$value[0][1]}{{endif}}" min="0" class="ipsField_tiny">
+	<select name="{$name}[1]" id="group_promote_type" class="ipsField_short">
+		<option value="0" {{if !$value[1]}}selected="selected"{{endif}}>{lang="approved_posts_comments"}</option>
+		<option value="1" {{if $value[1]}}selected="selected"{{endif}}>{lang="days_since_joining"}</option>
+	</select>
+</div>

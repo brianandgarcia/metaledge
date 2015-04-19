@@ -1,0 +1,48 @@
+<ips:template parameters="$editHistory, $comment" />
+{{if !\IPS\Request::i()->isAjax()}}
+<h1 class='ipsType_pageTitle'>{lang="edit_history_title"}</h1>
+{{endif}}
+<div class="ipsPad" data-role="commentFeed">
+	{{foreach $editHistory as $edit}}
+	<article class='ipsComment ipsComment_parent ipsClearfix ipsClear'>
+		<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_mini ipsPhotoPanel_notPhone'>
+			{template="userPhoto" app="core" group="global" params="\IPS\Member::load( $edit['member'] ), 'mini'"}
+			<div>
+				<h3 class='ipsComment_author ipsType_sectionHead'>
+					{expression="\IPS\Member::load( $edit['member'] )->link()" raw="true"}
+				</h3>
+				<p class='ipsComment_meta ipsType_light'>
+					{datetime="$edit['time']"}
+					{{if $edit['reason']}}
+					<br>
+					{$edit['reason']}
+					{{endif}}
+				</p>
+			</div>
+		</div>
+		<div class='ipsAreaBackground_reset ipsPad'>
+			<div class='ipsType_richText'>
+				{$edit['new']|raw}
+			</div>
+		</div>
+	</article>
+	{{endforeach}}
+	<article class='ipsComment ipsComment_parent ipsClearfix ipsClear'>
+		<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_mini ipsPhotoPanel_notPhone'>
+			{template="userPhoto" app="core" group="global" params="$comment->author(), 'mini'"}
+			<div>
+				<h3 class='ipsComment_author ipsType_sectionHead'>
+					{$comment->author()->link()|raw}
+				</h3>
+				<p class='ipsComment_meta ipsType_light'>
+					{datetime="$comment->mapped('date')"}
+				</p>
+			</div>
+		</div>
+		<div class='ipsAreaBackground_reset ipsPad'>
+			<div class='ipsType_richText'>
+				{$edit['old']|raw}
+			</div>
+		</div>
+	</article>
+</div>

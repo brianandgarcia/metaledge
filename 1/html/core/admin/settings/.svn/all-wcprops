@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/admin/settings
+END
+dataStoreChange.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/884/trunk/applications/core/dev/html/admin/settings/dataStoreChange.phtml
+END
+sphinxInstructions.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/admin/settings/sphinxInstructions.phtml
+END
+reputationLike.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/3496/trunk/applications/core/dev/html/admin/settings/reputationLike.phtml
+END
+reputationNormal.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/1800/trunk/applications/core/dev/html/admin/settings/reputationNormal.phtml
+END

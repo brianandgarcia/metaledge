@@ -1,0 +1,45 @@
+<ips:template parameters="$application, $lastUpgrade" />
+<table class='ipsTable'>
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="app_details_app_title"}</strong>
+		</td>
+		<td class="field_field">
+			{lang="__app_{$application->directory}"}
+		</td>
+	</tr>
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="app_details_app_version"}</strong>
+		</td>
+		<td class="field_field">
+			{lang="app_version_string" sprintf="$application->version, $application->long_version"}
+		</td>
+	</tr>
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="app_details_app_author"}</strong>
+		</td>
+		<td class="field_field">
+			{$application->author}{{if $application->website}} <a href='{$application->website}' target='_blank'><i class="fa fa-external-link-square" title='{$application->website}'></i></a>{{endif}}
+		</td>
+	</tr>
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="app_details_app_installed"}</strong>
+		</td>
+		<td class="field_field">
+			{datetime="$application->added"}
+		</td>
+	</tr>
+	{{if $lastUpgrade !== NULL}}
+	<tr>
+		<td class="field_title">
+			<strong class="title">{lang="app_details_app_updated"}</strong>
+		</td>
+		<td class="field_field">
+			{datetime="$lastUpgrade"}
+		</td>
+	</tr>
+	{{endif}}
+</table>

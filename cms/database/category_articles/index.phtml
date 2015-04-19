@@ -1,4 +1,4 @@
-<ips:template parameters="$database, $articles, $url, $pagination" original_group="category_articles" key="database_category_articles_index" />
+<ips:template parameters="$database, $articles, $url, $pagination" />
 <div class='ipsPageHeader ipsClearfix ipsSpacer_bottom'>
 	{{if $database->use_categories}}
 	<div class='ipsPos_right ipsResponsive_noFloat'>
@@ -12,8 +12,19 @@
 		</div>
 	{{endif}}
 </div>
+
+{{if $database->can('add') or \IPS\Member::loggedIn()->member_id}}
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both ipsResponsive_hidePhone">
+		{{if $database->can('add')}}
+			<li class='ipsToolList_primaryAction'>
+				<a class="ipsButton ipsButton_medium ipsButton_important ipsButton_fullWidth" {{if $database->use_categories}}data-ipsDialog="1" data-ipsDialog-size="narrow" data-ipsDialog-title="{lang="cms_select_category"}"{{endif}} href="{$url->setQueryString( array( 'do' => 'form', 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId ) )}">{lang="cms_add_new_record_button" sprintf="$database->recordWord( 1 )"}</a>
+			</li>
+		{{endif}}
+	</ul>
+{{endif}}
+
 <hr class='ipsHr'>
-<section class='ipsType_normal ipsType_richText ipsContained ipsType_break ipsSpacer_both'>
+<section class='ipsType_normal ipsSpacer_both'>
 	{{if count($articles)}}
 		{{foreach $articles as $id => $record}}
 			{template="entry" app="cms" location="database" group="category_articles" params="$record, $database"}

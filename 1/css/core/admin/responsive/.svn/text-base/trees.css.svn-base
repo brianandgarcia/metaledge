@@ -1,0 +1,21 @@
+@media screen and (max-width: 767px) {
+
+	html[dir="ltr"] .ipsTree .ipsTree {
+		margin-left: 3px;
+	}
+	html[dir="rtl"] .ipsTree .ipsTree {
+		margin-right: 3px;
+	}
+
+	.ipsTree .ipsTree_drag {
+		display: none;
+	}
+
+	html[dir="ltr"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData:before {
+		left: 8px;
+	}
+	html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData:before {
+		right: 8px;
+	}
+
+}

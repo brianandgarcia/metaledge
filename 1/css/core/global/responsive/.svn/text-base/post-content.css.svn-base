@@ -1,0 +1,12 @@
+/* PHONES */
+@media screen and (max-width: 767px) {
+	iframe[data-embedContent] {
+		max-width: 100%;
+	}
+	
+	/* There's no point making images open a lightbox on a phone since the image is already fullsize */
+	a.ipsAttachLink_image[data-ipsLightbox] {
+		pointer-events: none;
+		cursor: default;
+	}
+}

@@ -1,0 +1,51 @@
+<ips:template parameters="$name, $value, $pollData, $allowPollOnly" />
+<div data-controller='core.front.core.pollEditor' data-pollName='{$name}' data-showCounts='{{if member.modPermission('can_edit_poll_votes')}}true{{else}}false{{endif}}' data-maxQuestions="{expression="\IPS\Settings::i()->max_poll_questions"}" data-maxChoices="{expression="\IPS\Settings::i()->max_poll_choices"}" class='cPoll'>	
+	<noscript>
+		<hr class='ipsHr'>
+		<h2 class='ipsType_sectionHead'>{lang="poll"}</h2>
+		<p class='ipsType_reset ipsType_light'>{lang="poll_no_js"}</p>
+		<br>
+	</noscript>
+	<div class='ipsForm_vertical ipsForm_noLabels'>
+		<ul class='ipsList_reset ipsAreaBackground_light ipsBox ipsBox_transparent ipsPad'>
+			<li class='ipsFieldRow'>
+				<input type='text' class='ipsField_primary ipsField_fullWidth' placeholder='{lang="poll_title"}' name="{$name}[title]" maxlength="255" {{if $value}}value="{$value->poll_question}"{{endif}}>
+			</li>
+			{{if settings.poll_allow_public or (settings.ipb_poll_only and $allowPollOnly)}}
+				<li class='ipsFieldRow'>
+					<ul class='ipsFieldRow_content ipsList_reset'>
+						{{if settings.poll_allow_public}}
+							<li class='ipsFieldRow_inlineCheckbox'>
+								<input type="checkbox" name="{$name}[public]" id='elPoll_{$name}_public' {{if $value and $value->poll_view_voters}}checked{{endif}}> <label for='elPoll_{$name}_public'>{lang="make_votes_public"}</label>
+							</li>
+						{{endif}}
+						{{if settings.ipb_poll_only and $allowPollOnly}}
+							<li class='ipsFieldRow_inlineCheckbox'>
+								<input type="checkbox" name="{$name}[poll_only]" id='elPoll_{$name}_pollOnly' {{if $value and $value->poll_only}}checked{{endif}}> <label for='elPoll_{$name}_pollOnly'>{lang="poll_only_content"}</label>
+							</li>
+						{{endif}}
+					</ul>
+				</li>
+			{{endif}}
+		</ul>
+	</div>
+	<br> 
+
+	<section data-role='pollContainer'>
+
+	</section>
+
+	<a href='#' data-action='addQuestion' class='ipsButton ipsButton_medium ipsButton_alternate ipsJS_show' title='{lang="add_poll_question_title"}'><i class='fa fa-plus-circle'></i> {lang="add_poll_question"}</a>
+
+	<noscript>
+		{{foreach range( 1, settings.max_poll_questions ) as $i}}
+			{lang="question_no" sprintf="$i"} <input name="{$name}[questions][{$i}][title]" {{if $value and isset( $value->choices[ $i ] )}}value="{$value->choices[ $i ]['question']}"{{endif}}> <input type="checkbox" name="{$name}[questions][{$i}][multichoice]" {{if $value and isset( $value->choices[ $i ]['multi'] ) and $value->choices[ $i ]['multi']}}checked{{endif}}> {lang="multiple_choice"}
+			<br>
+			{{foreach range( 1, settings.max_poll_choices ) as $j}}
+				{$j}: <input name="{$name}[questions][{$i}][answers][{$j}][value]" {{if $value and isset( $value->choices[ $i ]['choice'][ $j ] )}}value="{$value->choices[ $i ]['choice'][ $j ]}"{{endif}}> {{if member.modPermission('can_edit_poll_votes')}}<input type="number" name="{$name}[questions][{$i}][answers][{$j}][count]" value="{{if $value and isset( $value->choices[ $i ]['votes'][ $j ] )}}{$value->choices[ $i ]['votes'][ $j ]}{{endif}}" min="0">{{endif}}
+				<br>
+			{{endforeach}}
+			<hr>
+		{{endforeach}}
+	</noscript>
+</div>

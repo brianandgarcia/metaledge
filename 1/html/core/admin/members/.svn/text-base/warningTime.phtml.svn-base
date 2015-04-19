@@ -1,0 +1,11 @@
+<ips:template parameters="$name, $value, $perm=FALSE" />
+{{if $perm}}{lang="for"}{{else}}{lang="after"}{{endif}}
+<input type="number" name="{$name}[0]" {{if $perm === FALSE or $value[0] != -1}}value="{$value[0]}"{{endif}} min="0" class="ipsField_short">
+<select name="{$name}[1]">
+	<option value="h" {{if $value[1] == 'h'}}selected="selected"{{endif}}>{lang="hours"}</option>
+	<option value="d" {{if $value[1] == 'd'}}selected="selected"{{endif}}>{lang="days"}</option>
+</select>
+{{if $perm}}
+	&nbsp; {lang="or"} &nbsp;
+	<input type="checkbox" data-control="unlimited" id='el{$name}_unlimited' {{if $value[0] == -1}}checked="checked"{{endif}} name="{$name}[3]"> <label for='el{$name}_unlimited' class='ipsField_unlimited'>{lang="indefinitely"}</label>
+{{endif}}

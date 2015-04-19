@@ -1,0 +1,4 @@
+<ips:template parameters="" />
+<div class='ipsType_medium ipsType_light ipsType_center'>
+	{lang="no_failed_connect_requests"}
+</div>

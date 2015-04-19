@@ -1,0 +1,32 @@
+<ips:template parameters="$editorId, $mediaSources, $currentMediaSource, $url, $results" />
+<div class="cMyMedia" data-controller='core.global.editor.mymedia, core.global.editor.insertable' data-editorid='{$editorId}'>
+	<div id="elEditor{$editorId}Attach" class="ipsColumns ipsColumns_collapsePhone"  data-ipsTabBar data-ipsTabBar-contentArea='#elEditor{$editorId}AttachTabContent' data-ipsTabBar-itemSelector=".ipsSideMenu_item" data-ipsTabBar-activeClass="ipsSideMenu_itemActive" data-ipsTabBar-updateURL="false">
+		{{if count ( $mediaSources ) > 1}}
+			<div class="ipsColumn ipsColumn_medium">
+				<div class="ipsSideMenu ipsPad" id='elAttachmentsMenu_{$editorId}' data-ipsSideMenu>
+					<h3 class='ipsSideMenu_mainTitle ipsAreaBackground_light ipsType_medium'>
+						<a href='#elAttachmentsMenu_{$editorId}' class='ipsPad_double' data-action='openSideMenu'><i class='fa fa-bars'></i> &nbsp;{lang="editor_attachment_location"}&nbsp;<i class='fa fa-caret-down'></i></a>
+					</h3>
+					<ul class="ipsSideMenu_list">
+						{{foreach $mediaSources as $k}}
+							<li>
+								<a href="{url="app=core&module=system&controller=editor&do=myMedia&tab={$k}&existing=1"}" id="elEditor{$editorId}AttachTabMedia{$k}" class="ipsSideMenu_item {{if $currentMediaSource == $k}}ipsSideMenu_itemActive{{endif}}">{lang="editorMedia_{$k}"}</a>
+							</li>
+						{{endforeach}}
+					</ul>
+				</div>
+			</div>
+		{{endif}}
+		<div class="ipsColumn ipsColumn_fluid">
+			<div id="elEditor{$editorId}AttachTabContent" data-role="myMediaContent" class='ipsPad'>
+				{$results|raw}
+			</div>
+		</div>
+	</div>
+	<div class='ipsPad ipsAreaBackground cMyMedia_controls'>
+		<ul class='ipsList_inline ipsType_right'>
+			<li><a href='#' data-action="clearAll" class='ipsButton ipsButton_verySmall ipsButton_veryLight ipsButton_disabled'>{lang="editor_clear_selection"}</a></li>
+			<li><a href='#' data-action="insertSelected" class='ipsButton ipsButton_verySmall ipsButton_normal ipsButton_disabled'>{lang="editor_image_upload_insert_selected"}</a></li>
+		</ul>
+	</div>
+</div>

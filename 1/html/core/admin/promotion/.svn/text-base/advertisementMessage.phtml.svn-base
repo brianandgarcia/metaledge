@@ -1,0 +1,14 @@
+<ips:template parameters="" />
+
+<div class='ipsAreaBackground_light ipsPad ipsPhotoPanel ipsPhotoPanel_small'>
+	<i class='fa fa-info-circle ipsType_veryLarge ipsPos_left'></i>
+	<div>
+		<h2 class='ipsType_sectionHead'>{lang="ad_promo_title"}</h2>
+		<p class='ipsType_normal ipsType_reset'>
+			{lang="ad_promo_msg"}
+		</p>
+		<br>
+		<a href='{url="product-nexus" ips="true"}' class='ipsButton ipsButton_primary'>{lang="more_information"}</a>
+	</div>
+</div>
+<br><br>

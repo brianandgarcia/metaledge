@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/5167/trunk/applications/cms/dev/html/admin/databases
+END
+manageDatabaseName.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/4961/trunk/applications/cms/dev/html/admin/databases/manageDatabaseName.phtml
+END
+downloadDialog.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/5167/trunk/applications/cms/dev/html/admin/databases/downloadDialog.phtml
+END
+fieldsWrapper.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4529/trunk/applications/cms/dev/html/admin/databases/fieldsWrapper.phtml
+END

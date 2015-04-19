@@ -1,0 +1,407 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/global
+END
+reputationLog.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/5273/trunk/applications/core/dev/html/front/global/reputationLog.phtml
+END
+loginPopup.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/4277/trunk/applications/core/dev/html/front/global/loginPopup.phtml
+END
+userLink.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/5314/trunk/applications/core/dev/html/front/global/userLink.phtml
+END
+cachingLog.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/7650/trunk/applications/core/dev/html/front/global/cachingLog.phtml
+END
+footer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/8926/trunk/applications/core/dev/html/front/global/footer.phtml
+END
+followButton.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/5112/trunk/applications/core/dev/html/front/global/followButton.phtml
+END
+sharelinks.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/6504/trunk/applications/core/dev/html/front/global/sharelinks.phtml
+END
+commentWarned.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/4653/trunk/applications/core/dev/html/front/global/commentWarned.phtml
+END
+userBar.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/8579/trunk/applications/core/dev/html/front/global/userBar.phtml
+END
+breadcrumb.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/7623/trunk/applications/core/dev/html/front/global/breadcrumb.phtml
+END
+reputationMini.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/8871/trunk/applications/core/dev/html/front/global/reputationMini.phtml
+END
+queryLog.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/7651/trunk/applications/core/dev/html/front/global/queryLog.phtml
+END
+reputationBadge.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/8744/trunk/applications/core/dev/html/front/global/reputationBadge.phtml
+END
+commentMultimod.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/9082/trunk/applications/core/dev/html/front/global/commentMultimod.phtml
+END
+blankTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/global/blankTemplate.phtml
+END
+genericBlock.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/4292/trunk/applications/core/dev/html/front/global/genericBlock.phtml
+END
+offlineMessage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/2220/trunk/applications/core/dev/html/front/global/offlineMessage.phtml
+END
+mobileNavigation.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/8692/trunk/applications/core/dev/html/front/global/mobileNavigation.phtml
+END
+box.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/ips-suite/!svn/ver/4651/trunk/applications/core/dev/html/front/global/box.phtml
+END
+userPhoto.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/9333/trunk/applications/core/dev/html/front/global/userPhoto.phtml
+END
+rssMenu.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/7445/trunk/applications/core/dev/html/front/global/rssMenu.phtml
+END
+buttons.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/1183/trunk/applications/core/dev/html/front/global/buttons.phtml
+END
+mobileNavBar.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/7996/trunk/applications/core/dev/html/front/global/mobileNavBar.phtml
+END
+review.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/8927/trunk/applications/core/dev/html/front/global/review.phtml
+END
+follow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/5112/trunk/applications/core/dev/html/front/global/follow.phtml
+END
+designersModeBuilding.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/9223/trunk/applications/core/dev/html/front/global/designersModeBuilding.phtml
+END
+navBar.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9608/trunk/applications/core/dev/html/front/global/navBar.phtml
+END
+reputationOthers.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/3680/trunk/applications/core/dev/html/front/global/reputationOthers.phtml
+END
+rating.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/2470/trunk/applications/core/dev/html/front/global/rating.phtml
+END
+customFieldsDisplay.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/global/customFieldsDisplay.phtml
+END
+commentsAndReviewsTabs.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/ips-suite/!svn/ver/5794/trunk/applications/core/dev/html/front/global/commentsAndReviewsTabs.phtml
+END
+prefix.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/4693/trunk/applications/core/dev/html/front/global/prefix.phtml
+END
+tags.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/4693/trunk/applications/core/dev/html/front/global/tags.phtml
+END
+logo.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/4653/trunk/applications/core/dev/html/front/global/logo.phtml
+END
+controlStrip.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/1183/trunk/applications/core/dev/html/front/global/controlStrip.phtml
+END
+findComment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/4730/trunk/applications/core/dev/html/front/global/findComment.phtml
+END
+viglink.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/1733/trunk/applications/core/dev/html/front/global/viglink.phtml
+END
+commentContainer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/7342/trunk/applications/core/dev/html/front/global/commentContainer.phtml
+END
+favico.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/7510/trunk/applications/core/dev/html/front/global/favico.phtml
+END
+guestCommentTeaser.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/9277/trunk/applications/core/dev/html/front/global/guestCommentTeaser.phtml
+END
+loginPopupForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/1827/trunk/applications/core/dev/html/front/global/loginPopupForm.phtml
+END
+thumbImage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/2046/trunk/applications/core/dev/html/front/global/thumbImage.phtml
+END
+commentTableHeader.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/4819/trunk/applications/core/dev/html/front/global/commentTableHeader.phtml
+END
+inlineMessage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/9234/trunk/applications/core/dev/html/front/global/inlineMessage.phtml
+END
+metaTagEditor.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/6481/trunk/applications/core/dev/html/front/global/metaTagEditor.phtml
+END
+tabs.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/6869/trunk/applications/core/dev/html/front/global/tabs.phtml
+END
+commentEditHistory.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/5857/trunk/applications/core/dev/html/front/global/commentEditHistory.phtml
+END
+reputation.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/4730/trunk/applications/core/dev/html/front/global/reputation.phtml
+END
+globalTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/global/globalTemplate.phtml
+END
+utilitiesMenu.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/9153/trunk/applications/core/dev/html/front/global/utilitiesMenu.phtml
+END
+mobileNavigationChildren.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/ips-suite/!svn/ver/6035/trunk/applications/core/dev/html/front/global/mobileNavigationChildren.phtml
+END
+signature.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/8947/trunk/applications/core/dev/html/front/global/signature.phtml
+END
+comment.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/7730/trunk/applications/core/dev/html/front/global/comment.phtml
+END
+reputationLogTable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/4951/trunk/applications/core/dev/html/front/global/reputationLogTable.phtml
+END
+reviewContainer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/8927/trunk/applications/core/dev/html/front/global/reviewContainer.phtml
+END
+itemIcon.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/4130/trunk/applications/core/dev/html/front/global/itemIcon.phtml
+END
+sidebar.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/7455/trunk/applications/core/dev/html/front/global/sidebar.phtml
+END
+acknowledgeWarning.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/3922/trunk/applications/core/dev/html/front/global/acknowledgeWarning.phtml
+END
+userLinkFromData.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/7810/trunk/applications/core/dev/html/front/global/userLinkFromData.phtml
+END
+commentEditLine.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/8105/trunk/applications/core/dev/html/front/global/commentEditLine.phtml
+END
+reviewHelpful.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/8215/trunk/applications/core/dev/html/front/global/reviewHelpful.phtml
+END
+navBarChildren.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/8431/trunk/applications/core/dev/html/front/global/navBarChildren.phtml
+END
+modBadges.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/462/trunk/applications/core/dev/html/front/global/modBadges.phtml
+END
+pageHeader.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/4770/trunk/applications/core/dev/html/front/global/pageHeader.phtml
+END
+widgetContainer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/8888/trunk/applications/core/dev/html/front/global/widgetContainer.phtml
+END
+coverPhoto.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/8471/trunk/applications/core/dev/html/front/global/coverPhoto.phtml
+END
+error.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/4378/trunk/applications/core/dev/html/front/global/error.phtml
+END

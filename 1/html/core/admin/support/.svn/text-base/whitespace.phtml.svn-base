@@ -1,0 +1,13 @@
+<ips:template parameters="$files, $id" />
+<div class="ipsPad">
+	{lang="some_of_your_files_have_whitespace"}
+	<ul>
+		{{foreach $files as $file}}
+			<li>{$file}</li>
+		{{endforeach}}
+	</ul>
+</div>
+<div class="ipsAreaBackground ipsPad ipsType_center">
+	<a href="{url="app=core&module=support&controller=support&next={$id}&mr=0"}" class="ipsButton ipsButton_primary" data-action="redirectContinue">{lang="problem_not_resolved"}</a>
+	<a href="{url="app=core&module=support&controller=support&mr=0"}&amp;next={expression="$id + 1"}" class="ipsButton ipsButton_alternate" data-action="redirectContinue">{lang="continue_anyway"}</a>
+</div>

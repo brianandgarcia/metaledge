@@ -1,0 +1,8 @@
+<ips:template parameters="$templates, $current" />
+<div class='ipsTabs_panel' data-role="templatePanel" id='ipsTabs_elTemplateEditor_tabbar_tab_{$current->key}_panel' data-fileid="{$current->key}" data-location="{$current->location}" data-group="{$current->group}" data-name="{$current->title}" data-type='{$current->type}' data-itemID='{$current->id}' data-inherited-value="{$current->_inherited}">
+	<input data-role="group" type="text" name="group_{$current->key}" class='ipsJS_hide' value="{$current->group}">
+	<input data-role="variables" type="text" name="variables_{$current->key}" class="ipsField_fullWidth" value='{$current->params}' placeholder="{lang="skin_set_template_templatevars"}">
+	<input data-role="title" type="text" name="title_{$current->key}" class="ipsJS_hide ipsField_fullWidth" value='{$current->title}' placeholder="{lang="content_template_editor_fields_title"}">
+	<textarea name="description_{$current->key}" class="ipsJS_hide" data-role="description">{$current->description}</textarea>
+	<textarea name="editor_{$current->key}" id="editor_{$current->key}" data-role="editor">{$current->content}</textarea>
+</div>

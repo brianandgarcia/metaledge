@@ -1,0 +1,13 @@
+<ips:template parameters="$name, $field, $type, $value" />
+<select name="{$name}[criteria_field]">
+	<option value='to'{{if $field == 'to' }} selected{{endif}}>{lang="ie_cf_to"}</option>
+	<option value='from'{{if $field == 'from' }} selected{{endif}}>{lang="ie_cf_from"}</option>
+	<option value='sbjt'{{if $field == 'sbjt' }} selected{{endif}}>{lang="ie_cf_sbjt"}</option>
+	<option value='body'{{if $field == 'body' }} selected{{endif}}>{lang="ie_cf_body"}</option>
+</select>
+<select name="{$name}[criteria_type]">
+	<option value='ctns'{{if $field == 'ctns' }} selected{{endif}}>{lang="ie_ct_ctns"}</option>
+	<option value='eqls'{{if $field == 'eqls' }} selected{{endif}}>{lang="ie_ct_eqls"}</option>
+	<option value='regx'{{if $field == 'regx' }} selected{{endif}}>{lang="ie_ct_regx"}</option>
+</select>
+<input type="text" name="{$name}[criteria_value]" value="{$value}" required>

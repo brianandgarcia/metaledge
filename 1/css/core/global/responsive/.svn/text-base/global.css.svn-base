@@ -1,0 +1,116 @@
+/* BOTH */
+@media screen and (max-width: 979px) {
+	
+	html[dir="ltr"] #elMobileNav {
+		text-align: right;
+	}
+	html[dir="rtl"] #elMobileNav {
+		text-align: left;
+	}
+
+		html[dir="ltr"] #elMobileNav li {
+			margin-right: 0;
+		}
+		html[dir="rtl"] #elMobileNav li {
+			margin-left: 0;
+		}
+
+		#elMobileNav li:not( #elMobileBreadcrumb ) a {
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			color: #fff;
+			text-align: center;
+			font-size: 26px;
+			margin: 0;
+			position: relative;
+			display: block;
+		}
+
+		#elMobileNav .ipsNotificationCount {
+			top: 6px;
+		}
+		html[dir="ltr"] #elMobileNav .ipsNotificationCount {
+			right: 6px;
+		}
+		html[dir="rtl"] #elMobileNav .ipsNotificationCount {
+			left: 6px;
+		}
+
+	#ipsLayout_mobileNav li a {
+		display: block;
+		color: #fff;
+		line-height: 52px;
+		padding: 0 20px;
+		font-size: 14px;
+	}
+
+	#ipsLayout_header > nav {
+		height: 0; /* Height set to 0 because mobile nav is in a separate element... */
+		padding: 0;
+	}
+
+	body.cSearchOpen #elHeaderNavigation {
+		top: -155px;
+	}
+
+	/* Search */
+	#elSearch {
+		display: none; /* ...and hide search elem by default... */
+	}
+
+		body.cSearchOpen #ipsLayout_header > nav {
+			height: 50px; /* ...but set to 50px height when search is showing, because that's in the header element */
+		}
+
+		body.cSearchOpen #elSearch {
+			display: block;
+			opacity: 1;
+			width: 94%;
+			margin: 12px 3%;
+			{prefix="transition" value="opacity 0.2s ease-out"}
+		}
+
+		body.cSearchOpen #elSearchFilter {
+			display: block;
+		}
+
+		body.cSearchOpen #elSearchField {
+			width: auto;
+		}
+		html[dir="ltr"] body.cSearchOpen #elSearchField {
+			left: 120px;
+		}
+		html[dir="rtl"] body.cSearchOpen #elSearchField {
+			right: 120px;
+		}
+
+	/* Code and pre need to wrap */
+	code, pre {
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	#elQueryLog, #elCachingLog {
+		display: none !important;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+	body {
+		font-size: 13px;
+	}
+	
+	#elFlashMessage {
+		width: 100%;
+	}
+	html[dir="ltr"] #elFlashMessage {
+		left: auto;
+		margin-left: 0;
+	}
+	html[dir="rtl"] #elFlashMessage {
+		right: auto;
+		margin-right: 0;
+	}
+}

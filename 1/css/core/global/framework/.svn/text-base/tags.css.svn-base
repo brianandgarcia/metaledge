@@ -1,0 +1,116 @@
+/* Tag lists & prefixes */
+.ipsTags_inline {
+	display: inline;
+}
+
+html[dir="ltr"] .ipsTags > li {
+	margin-right: 0;
+}
+html[dir="rtl"] .ipsTags > li {
+	margin-left: 0;
+}
+
+html[dir="ltr"] .ipsTags li:first-child a {
+	margin-left: 8px;
+}
+html[dir="rtl"] .ipsTags li:first-child a {
+	margin-right: 8px;
+}
+
+.ipsTags a, .ipsTag_prefix {
+	background: #b5b5b5;
+	color: #fff !important; /* important required to override title coloring */
+	font-size: 10px;
+	font-weight: bold;
+	vertical-align: middle;
+	line-height: 15px;
+	height: 16px;
+	padding: 0 7px;
+	margin: -3px 3px 0 8px;
+	display: inline-block;
+	position: relative;
+	letter-spacing: 0;
+}
+html[dir="rtl"] .ipsTags a, .ipsTag_prefix {
+	margin: -3px 8px 0 3px;
+}
+
+	.ipsTags a > span, .ipsTag_prefix > span {
+		display: inline-block;
+		max-width: 250px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+	
+	.ipsTags a:hover {
+		background: #707070;
+	}
+
+		html[dir="ltr"] .ipsTags a:hover:before {
+			border-color: transparent #707070 transparent transparent;
+		}
+		html[dir="rtl"] .ipsTags a:hover:before {
+			border-color: transparent transparent transparent #707070;
+		}
+		
+	.ipsTags a:before, .ipsTag_prefix:before {
+		content: '';
+		display: block;
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 8px 8px;
+		position: absolute;
+		top: 0;
+	}
+	html[dir="ltr"] .ipsTags a:before, .ipsTag_prefix:before {
+		border-color: transparent #b5b5b5 transparent transparent;
+		left: -16px;
+	}
+	html[dir="rtl"] .ipsTags a:before, .ipsTag_prefix:before {
+		border-color: transparent transparent transparent #b5b5b5;
+		right: -16px;
+	}
+
+	.ipsTags a:after, .ipsTag_prefix:after {
+		content: '';
+		display: block;
+		width: 4px;
+		height: 4px;
+		border-radius: 4px;
+		background: #fff;
+		position: absolute;
+		top: 6px;
+	}
+	html[dir="ltr"] .ipsTags a:after, .ipsTag_prefix:after {
+		left: -3px;
+	}
+	html[dir="rtl"] .ipsTags a:after, .ipsTag_prefix:after {
+		right: -3px;
+	}
+
+	/* Search results */
+	.ipsTags a mark, .ipsTag_prefix mark {
+		background: #fff !important;
+		border-bottom: none;
+	}
+
+/* Prefix: shown before titles on content items */
+.ipsTag_prefix {
+	background: {theme="prefix"};
+	color: #fff !important;
+}
+html[dir="ltr"] .ipsTag_prefix {
+	margin-left: 8px;
+}
+html[dir="rtl"] .ipsTag_prefix {
+	margin-right: 8px;
+}
+
+	html[dir="ltr"] .ipsTag_prefix:before {
+		border-color: transparent {theme="prefix"} transparent transparent;
+	}
+	html[dir="rtl"] .ipsTag_prefix:before {
+		border-color: transparent transparent transparent {theme="prefix"};
+	}

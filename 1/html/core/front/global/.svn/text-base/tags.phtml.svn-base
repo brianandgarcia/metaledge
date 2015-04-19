@@ -1,0 +1,42 @@
+<ips:template parameters="$tags, $showCondensed=FALSE, $hideResponsive=FALSE" />
+
+{{if count( $tags )}}
+	{{if $showCondensed}}
+		<ul class='ipsTags ipsTags_inline ipsList_inline {{if $hideResponsive}}ipsResponsive_hidePhone ipsResponsive_inline{{endif}}'>
+			{{foreach $tags as $idx => $tag}}
+				{{if $idx < 2}}
+					{{$urlEncodedTag = rawurlencode( $tag );}}
+					<li>
+						<a href="{url="app=core&module=search&controller=search&tags={$urlEncodedTag}" seoTemplate="search"}" title="{lang="find_tagged_content" sprintf="$tag"}"><span>{$tag}</span></a>
+					</li>
+				{{endif}}
+			{{endforeach}}
+			{{if count( $tags ) > 2}}
+				{{$id = uniqid();}}
+				<li class='ipsType_small'>
+					<span class='ipsType_light ipsCursor_pointer' data-ipsMenu id='elTags_{$id}'>{lang="and_x_more" sprintf="count( $tags ) - 2"} <i class='fa fa-caret-down ipsJS_show'></i></span>
+					<div class='ipsHide ipsMenu ipsMenu_normal ipsPad_half cTagPopup' id='elTags_{$id}_menu'>
+						<p class='ipsType_medium ipsType_reset ipsType_light'>{lang="tagged_with"}</p>
+						<ul class='ipsTags ipsList_inline'>
+							{{foreach $tags as $tag}}
+								{{$urlEncodedTag = rawurlencode( $tag );}}
+								<li>
+									<a href="{url="app=core&module=search&controller=search&tags={$urlEncodedTag}" seoTemplate="search"}" title="{lang="find_tagged_content" sprintf="$tag"}"><span>{$tag}</span></a>
+								</li>
+							{{endforeach}}
+						</ul>
+					</div>
+				</li>
+			{{endif}}
+		</ul>
+	{{else}}
+		<ul class='ipsTags ipsList_inline {{if $hideResponsive}}ipsResponsive_hidePhone ipsResponsive_inline{{endif}}'>
+			{{foreach $tags as $tag}}
+				{{$urlEncodedTag = rawurlencode( $tag );}}
+				<li>
+					<a href="{url="app=core&module=search&controller=search&tags={$urlEncodedTag}" seoTemplate="search"}" title="{lang="find_tagged_content" sprintf="$tag"}"><span>{$tag}</span></a>
+				</li>
+			{{endforeach}}
+		</ul>
+	{{endif}}
+{{endif}}

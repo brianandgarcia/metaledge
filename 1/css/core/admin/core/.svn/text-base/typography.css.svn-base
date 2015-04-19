@@ -1,0 +1,6 @@
+@media screen and (min-width: 767px) {
+	.ipsType_pageTitle {
+		font-weight: 300;
+		font-size: 30px;
+	}
+}

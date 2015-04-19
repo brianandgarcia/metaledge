@@ -1,0 +1,33 @@
+<ips:template parameters="$login" />
+<div id='elUserSignIn_menu' class='ipsMenu ipsMenu_auto ipsHide' data-controller='core.front.core.loginMenu'>
+	<div data-role="loginForm">
+		{{if count ( $login->forms( FALSE, TRUE ) ) > 1}}
+			<div class='ipsColumns ipsColumns_noSpacing'>
+				<div class='ipsColumn ipsColumn_wide' id='elUserSignIn_internal'>
+		{{endif}}
+		{{foreach $login->forms( FALSE, TRUE ) as $k => $form}}
+			{{if $k === '_standard'}}
+				{$form->customTemplate( array( \IPS\Theme::i()->getTemplate( 'global', 'core', 'front' ), 'loginPopupForm' ) )|raw}
+			{{endif}}
+		{{endforeach}}
+		{{if count ( $login->forms( FALSE, TRUE ) ) > 1}}
+				</div>
+				<div class='ipsColumn ipsColumn_wide'>
+					<div class='ipsPad' id='elUserSignIn_external'>
+						<div class='ipsAreaBackground_light ipsPad_half'>
+							<p class='ipsType_reset ipsType_small ipsType_center'><strong>{lang="sign_in_with_these"}</strong></p>
+							<br>
+							{{foreach $login->forms( FALSE, TRUE ) as $k => $form}}
+								{{if $k !== '_standard'}}
+									<div class='ipsPad_half ipsType_center'>
+										{$form|raw}
+									</div>
+								{{endif}}
+							{{endforeach}}
+						</div>
+					</div>
+				</div>
+			</div>
+		{{endif}}
+	</div>
+</div>

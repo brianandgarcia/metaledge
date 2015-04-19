@@ -1,0 +1,8 @@
+html[dir="ltr"] .cVNC_contentTitle {
+	border-left: 3px solid rgba(0,0,0,0.1);
+	padding-left: 10px;
+}
+html[dir="rtl"] .cVNC_contentTitle {
+	border-right: 3px solid rgba(0,0,0,0.1);
+	padding-right: 10px;
+}

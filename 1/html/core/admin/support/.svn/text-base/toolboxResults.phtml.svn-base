@@ -1,0 +1,5 @@
+<ips:template parameters="$form, $queries, $results" />
+{$form|raw}
+{{foreach $queries as $k => $query}}
+	{$results[ $k ]|raw}
+{{endforeach}}

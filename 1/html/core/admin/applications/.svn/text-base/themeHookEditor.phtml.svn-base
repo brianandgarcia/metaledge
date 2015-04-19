@@ -1,0 +1,32 @@
+<ips:template parameters="$bits, $hookData, $hookId, $template, $tabbedContent, $url" />
+<section class='ipsPad_half ipsAreaBackground' id='elSkinHookEditor' data-controller='core.admin.system.themeHookEditor'>
+	<div class="ipsColumns ipsColumns_collapsePhone">
+		<div class="ipsColumn ipsColumn_wide" data-role="themeHookSidebar">
+			<div class="cHookEditor_sidebar ipsSideMenu ipsScrollbar">
+				<ul class="ipsSideMenu_list">
+					{{foreach $bits as $k => $data}}
+						<li class="ipsSideMenu_item">
+							<a class="{{if $template == $k}}ipsSideMenu_itemActive cHookEditor_activeTemplate{{endif}}" href='{$url->setQueryString( 'do', 'editHook' )->setQueryString( 'template', $k )}' data-action="templateLink">
+								{$k}
+								{{if isset( $hookData[ $k ] ) AND count( $hookData[ $k ] )}}
+									<span class='ipsCommentCount ipsPos_right'>{expression="count( $hookData[ $k ] )"}</span>
+								{{endif}}
+							</a>
+						</li>
+					{{endforeach}}
+				</ul>
+			</div>
+		</div>
+		<div class="ipsColumn ipsColumn_fluid" data-role="themeHookWindow">
+			{{if $template }}
+				<div class='cHookEditor_content' data-template='{$template}'>
+					{$tabbedContent|raw}
+				</div>
+			{{else}}
+				<div class="ipsType_center ipsType_large ipsEmpty" data-role="themeHookWindowPlaceholder">
+					<i class="fa fa-cogs"></i>
+				</div>
+			{{endif}}
+		</div>
+	</div>
+</section>

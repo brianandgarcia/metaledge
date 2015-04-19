@@ -1,0 +1,31 @@
+<ips:template parameters="$photo, $headline, $status, $form, $service, $langKey, $syncingOn" />
+<div class='ipsPhotoPanel ipsPhotoPanel_mini ipsClearfix'>
+	<img src='{$photo}' alt='' class='ipsUserPhoto ipsUserPhoto_mini'>
+	<div>
+		<h2 class='ipsType_sectionHead'>{$headline}</h2>
+		{{if $status}}
+			<p class='ipsType_reset ipsType_light ipsType_normal' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='3 lines'>
+				{$status->content|raw}
+			</p>
+		{{endif}}
+	</div>
+</div>
+<br><hr class='ipsHr'>
+
+<div class='ipsGrid ipsGrid_collapsePhone'>
+	<div class='ipsGrid_span6'>
+		<h3 class='ipsType_sectionHead'>{lang="profilesync_options"}</h3>
+		<br><br>
+		{$form|raw}
+	</div>
+	<div class='ipsGrid_span6'>
+	
+		<div class='ipsAreaBackground ipsPad ipsType_normal'>
+			{lang="profilesync_sync_blurb"}<br>
+			<span class='ipsType_light'>{{if \IPS\Member::loggedIn()->profilesync_lastsync}}{lang="profilesync_last_sync" sprintf="\IPS\DateTime::ts( \IPS\Member::loggedIn()->profilesync_lastsync )->localeDate()"}{{else}}{lang="profilesync_not_synced"}{{endif}}</span>
+			<br><br>
+
+			{{if $syncingOn}}<a href='{url="app=core&module=system&controller=settings&area=profilesync&service={$service}&sync=1" seoTemplate="settings_{$service}"}' class='ipsButton ipsButton_normal ipsButton_small'>{lang="profilesync_sync"}</a> &nbsp;&nbsp;{lang="or"}&nbsp;&nbsp; {{endif}}<a href='{url="app=core&module=system&controller=settings&area=profilesync&service={$service}&disassociate=1" seoTemplate="settings_{$service}"}' class='ipsType_normal ipsType_warning'>{lang="profilesync_off" sprintf="\IPS\Member::loggedIn()->language()->addToStack( $langKey )"}</a>
+		</div>
+	</div>
+</div>

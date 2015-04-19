@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions
+END
+windows_upload.png
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/windows_upload.png
+END
+windows_ftp.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/windows_ftp.png
+END
+windows_extract.png
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/windows_extract.png
+END
+mac_upload1.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/mac_upload1.png
+END
+mac_upload2.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/mac_upload2.png
+END
+mac_extract.png
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/mac_extract.png
+END
+mac_ftp1.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/mac_ftp1.png
+END
+mac_ftp2.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/admin/upgradeinstructions/mac_ftp2.png
+END

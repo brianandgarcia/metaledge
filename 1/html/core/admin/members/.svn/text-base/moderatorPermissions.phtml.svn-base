@@ -1,0 +1,4 @@
+<ips:template parameters="$title, $content" />
+<div data-controller='core.admin.members.moderatorPermissions'>
+	{$content|raw}
+</div>

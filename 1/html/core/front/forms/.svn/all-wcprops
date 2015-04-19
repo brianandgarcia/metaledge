@@ -1,0 +1,113 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/ips-suite/!svn/ver/8418/trunk/applications/core/dev/html/front/forms
+END
+reviewTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/8418/trunk/applications/core/dev/html/front/forms/reviewTemplate.phtml
+END
+commentTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/3580/trunk/applications/core/dev/html/front/forms/commentTemplate.phtml
+END
+popupTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/4893/trunk/applications/core/dev/html/front/forms/popupTemplate.phtml
+END
+statusPopupTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/5746/trunk/applications/core/dev/html/front/forms/statusPopupTemplate.phtml
+END
+seperator.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/786/trunk/applications/core/dev/html/front/forms/seperator.phtml
+END
+reviewUnavailable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/5273/trunk/applications/core/dev/html/front/forms/reviewUnavailable.phtml
+END
+commentUnavailable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/5123/trunk/applications/core/dev/html/front/forms/commentUnavailable.phtml
+END
+uploadNoScript.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/793/trunk/applications/core/dev/html/front/forms/uploadNoScript.phtml
+END
+row.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/ips-suite/!svn/ver/6248/trunk/applications/core/dev/html/front/forms/row.phtml
+END
+template.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/4893/trunk/applications/core/dev/html/front/forms/template.phtml
+END
+select.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/7566/trunk/applications/core/dev/html/front/forms/select.phtml
+END
+statusTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/3544/trunk/applications/core/dev/html/front/forms/statusTemplate.phtml
+END
+ratingTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/1700/trunk/applications/core/dev/html/front/forms/ratingTemplate.phtml
+END
+message.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/2729/trunk/applications/core/dev/html/front/forms/message.phtml
+END
+emptyRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/3842/trunk/applications/core/dev/html/front/forms/emptyRow.phtml
+END
+createItemUnavailable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/2381/trunk/applications/core/dev/html/front/forms/createItemUnavailable.phtml
+END
+header.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/1536/trunk/applications/core/dev/html/front/forms/header.phtml
+END
+modQueueMessage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/3496/trunk/applications/core/dev/html/front/forms/modQueueMessage.phtml
+END

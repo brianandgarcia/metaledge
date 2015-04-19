@@ -1,0 +1,9 @@
+<ips:template parameters="$image, $name, $size='medium', $classes='', $lang='view_this', $url=''" />
+
+{{if $image}}
+	{{if $url}}<a href='{$url}' title='{lang="$lang" sprintf="$name"}'{{else}}<span{{endif}}  style='background-image: url( {$image} )' class='{$classes} ipsThumb ipsThumb_{$size} ipsThumb_bg'>
+		<img src='{$image}' alt=''>
+	{{if $url}}</a>{{else}}</span>{{endif}}
+{{else}}
+	{{if $url}}<a href='{$url}' title='{lang="$lang" sprintf="$name"}'{{else}}<span{{endif}} class='{$classes} ipsNoThumb ipsThumb ipsThumb_{$size}'>{{if $url}}</a>{{else}}</span>{{endif}}
+{{endif}} 

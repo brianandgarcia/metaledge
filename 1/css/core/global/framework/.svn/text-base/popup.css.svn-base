@@ -1,0 +1,510 @@
+/* Popups: various widgets that have popup windows. Dialogs, tooltips, hovercards, etc. */
+
+/* ======================================================== */
+/* Modal element - used to block out the screen under popup controls */
+.ipsModal {
+	background: rgba(30,30,30,0.4);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 15000;
+}
+
+/* ======================================================== */
+/* DIALOG WINDOWS */
+.ipsDialog {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 20000;
+	padding-bottom: 15px;
+}
+
+	.ipsDialog > * {
+		/* Attempt to stop some webkit oddities */
+		{prefix="transform" value="scale(1)"}
+	}
+
+	.ipsDialog.ipsDialog_fixed {
+		position: fixed;
+	}
+
+	.ipsDialog > div {
+		display: block;
+		width: 90%;
+		max-width: 1200px;
+		background: #fff;
+		margin: 3% auto 0 auto;
+		box-shadow: 0px 5px 55px rgba(0,0,0,0.4);
+	}
+
+		.ipsDialog.ipsDialog_fixed > div {
+			height: 90%;
+			max-height: 90%;	
+		}
+
+	.ipsDialog .ipsDialog_loading {
+		background-color: #fff;
+		height: 200px;
+	}
+
+	/* Sizes */
+	.ipsDialog.ipsDialog_narrow > div {
+		max-width: 500px;
+	}
+
+	.ipsDialog.ipsDialog_medium > div {
+		max-width: 850px;
+	}
+
+	.ipsDialog.ipsDialog_wide > div {
+		max-width: 1000px;
+	}
+
+	/* Dialog elements */
+	.ipsDialog_close {
+		position: absolute;
+		top: 0;
+		display: block;
+		color: #000;
+		width: 44px;
+		height: 44px;
+		line-height: 48px;
+		font-size: 34px;
+		font-weight: 300;
+		text-align: center;
+		z-index: 1000;
+		{prefix="transition" value="0.2s all linear"}
+	}
+	html[dir="ltr"] .ipsDialog_close {
+		right: 0;
+	}
+	html[dir="rtl"] .ipsDialog_close {
+		left: 0;
+	}
+
+	.ipsDialog_title {
+		color: #333;
+		font-size: 26px;
+		font-weight: 300;
+		text-align: left;
+		line-height: 1.2;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		margin: 0;
+		padding: 12px 15px 0 15px;
+	}
+	html[dir="rtl"] .ipsDialog_title {
+		text-align: right;
+	}
+		
+		.ipsDialog_title ~ .ipsHr {
+			margin: 12px 15px 0 15px;
+		}
+
+	.ipsDialog_fixed .ipsDialog_content {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		position: absolute;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-box-align: stretch;
+		-webkit-box-flex: 1;
+		-webkit-overflow-scrolling: touch;
+		overflow: auto;
+	}
+
+		.ipsDialog_fixed .ipsDialog_title ~ .ipsDialog_content {
+			top: 56px;
+		}
+
+	.ipsDialog_footer {
+		position: fixed;
+		bottom: 60px;
+		left: 0;
+		right: 0;
+	}
+
+/* ======================================================== */
+/* HOVERCARD */
+.ipsHovercard {
+	background: #fff;
+	border: 1px solid rgba(0,0,0,0.05);
+	box-shadow: 0px 5px 40px rgba(0,0,0,0.1), 0px 5px 20px rgba(0,0,0,0.1);
+	border-radius: 4px;
+	position: relative;
+}
+	
+	.ipsHovercard > div {
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	/* Hovercard stem */
+	.ipsHovercard:not( .ipsHovercard_noStem ) .ipsHovercard_stem {
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-width: 15px;
+		border-style: solid;
+		pointer-events: none !important;
+	}
+
+	.ipsHovercard.ipsHovercard_stemTop { margin-top: -15px; }
+	.ipsHovercard.ipsHovercard_stemBottom {	margin-top: 15px; }
+	.ipsHovercard.ipsHovercard_stemLeft { margin-left: -15px; }
+	.ipsHovercard.ipsHovercard_stemRight { margin-left: 15px; }
+	.ipsHovercard_stemLeft .ipsHovercard_stem { left: 15px; }
+	.ipsHovercard_stemRight .ipsHovercard_stem { right: 15px; }
+
+	.ipsHovercard_stemTop .ipsHovercard_stem {
+		top: 100%;
+		border-color: #fff transparent transparent transparent;
+	}
+
+	.ipsHovercard_stemBottom .ipsHovercard_stem {
+		bottom: 100%;
+		border-color: transparent transparent #fff transparent;
+	}
+
+	/* Hovercard elements */
+	.ipsHovercard_loading {
+		width: 30px;
+		height: 30px;
+		border-radius: 4px;
+		padding: 5px;
+		box-shadow: 0px 5px 40px rgba(0,0,0,0.4);
+		background-color: #fff;
+	}
+
+		.ipsHovercard_loading .ipsLoading_tinyIcon {
+			width: 20px;
+			height: 20px;
+			font-size: 20px;
+		}
+		
+		.ipsHovercard_loading:after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 0;
+			height: 0;
+			border-width: 5px;
+			border-style: solid;
+			border-color: #fff transparent transparent transparent;
+			left: 50%;
+			top: 100%;
+		}
+		html[dir="ltr"] .ipsHovercard_loading:after {
+			margin-left: -5px;
+		}
+		html[dir="rtl"] .ipsHovercard_loading:after {
+			margin-right: -5px;
+		}
+
+/* ======================================================== */
+/* TOOLTIPS */
+/* This is an ID because we always reuse the same element */
+.ipsTooltip {
+	background: #2a2a2a;
+	line-height: 26px;
+	font-size: 12px;
+	color: #fff;
+	position: absolute;
+	padding: 0 8px;
+	pointer-events: none;
+	border-radius: 2px;
+	{prefix="user-select" value="none"}
+}
+
+	body[data-dragging] .ipsTooltip {
+		display: none !important;
+	}
+
+	.ipsTooltip.ipsTooltip_top {
+		margin-top: -2px;
+	}
+
+	.ipsTooltip.ipsTooltip_bottom {
+		margin-top: 2px;
+	}
+
+	.ipsTooltip:after {
+		content: '';
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-width: 5px;
+		border-style: solid;
+		left: 50%;
+		margin-left: -5px;
+	}
+
+		.ipsTooltip.ipsTooltip_right:after {
+			left: auto;
+			right: 4px;
+			margin-left: 0;
+		}
+
+		.ipsTooltip.ipsTooltip_left:after {
+			left: 4px;
+			margin-left: 0;
+		}
+
+	.ipsTooltip.ipsTooltip_top:after {
+		border-color: #2a2a2a transparent transparent transparent;
+		bottom: -10px;
+	}
+
+	.ipsTooltip.ipsTooltip_bottom:after {
+		border-color: transparent transparent #2a2a2a transparent;
+		top: -10px;
+	}
+
+/* ======================================================== */
+/* PAGE ACTIONS */
+/* Page actions are used primarily for moderation, presenting a floating toolbar of actions for selected items */
+.ipsPageAction {
+	background: rgb(32,32,32);
+	background: -moz-linear-gradient(top, rgba(49,49,49,1) 0%, rgba(32,32,32,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(49,49,49,1)), color-stop(100%,rgba(32,32,32,1)));
+	background: -webkit-linear-gradient(top, rgba(49,49,49,1) 0%,rgba(32,32,32,1) 100%);
+	background: -o-linear-gradient(top, rgba(49,49,49,1) 0%,rgba(32,32,32,1) 100%);
+	background: -ms-linear-gradient(top, rgba(49,49,49,1) 0%,rgba(32,32,32,1) 100%);
+	background: linear-gradient(to bottom, rgba(49,49,49,1) 0%,rgba(32,32,32,1) 100%);
+	border: 1px solid rgba(0,0,0,0.4);
+	box-shadow: 0px 15px 110px rgba(0,0,0,0.2);
+	position: fixed;
+	left: 50%;
+	bottom: 10px;
+	border-radius: 5px;
+	z-index: 2000;
+	color: #cdcdcd;
+}
+
+	.ipsPageAction > ul[data-role='actionItems'] > li {
+		padding: 5px 10px;
+		margin: 0;
+		float: left;
+		border-right: 1px solid rgba(0,0,0,0.3);
+		min-width: 58px;
+		line-height: 29px;
+		text-align: center;
+	}
+	html[dir="rtl"] .ipsPageAction > ul[data-role='actionItems'] > li {
+		float: right;
+	}
+
+	.ipsPageAction > ul[data-role='actionItems'] > li:first-child {
+		background: #000;
+	}
+
+	.ipsPageAction > ul > li.ipsPageAction_active {
+		background: #000;
+	}
+
+		.ipsPageAction > ul > li.ipsPageAction_active .ipsPageAction_icon {
+			color: #fff;
+		}
+
+	.ipsPageAction .ipsPageAction_icon {
+		display: inline-block;
+		min-width: 26px;
+		line-height: 32px;
+		color: #d9d9d9;
+		font-size: 26px;
+		text-shadow: 0px 1px 2px #000;
+		border-radius: 2px;
+		vertical-align: middle;
+		text-align: center;
+	}
+
+	.ipsPageAction [data-role="actionMenu"]:hover, .ipsPageAction [data-role="actionButton"]:hover {
+		cursor: pointer;
+	}
+
+	.ipsPageAction [data-role="actionMenu"]:hover .ipsPageAction_icon, .ipsPageAction [data-role="actionButton"]:hover .ipsPageAction_icon {
+		color: #fff;
+	}
+
+	.ipsPageAction select {
+		padding: 5px 10px;
+	}
+
+/* ======================================================== */
+/* ALERT BOXES */
+/* Gives the user choices, like OK, Cancel etc. Replaces the ugly javascript alert() */
+.ipsAlert {
+	background: #fff;
+	padding: 30px;
+	width: 480px;
+	position: fixed;
+	top: 100px;
+	border-radius: 4px;
+	box-shadow: 0px 5px 55px rgba(0,0,0,0.4);
+}
+html[dir="ltr"] .ipsAlert {
+	left: 50%;
+	margin-left: -240px;
+}
+html[dir="rtl"] .ipsAlert {
+	right: 50%;
+	margin-right: -240px;
+}
+
+.ipsAlert_icon {
+	font-size: 60px;
+	float: left;
+}
+html[dir="rtl"] .ipsAlert_icon {
+	float: right;
+}
+
+html[dir="ltr"] .ipsAlert_icon + .ipsAlert_msg {
+	margin-left: 80px;
+}
+html[dir="rtl"] .ipsAlert_icon + .ipsAlert_msg {
+	margin-right: 80px;
+}
+
+.ipsAlert_msg {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+	.ipsAlert_msg > .ipsType_normal {
+		line-height: 18px;
+		margin-top: 7px;
+	}
+
+.ipsApp .ipsAlert_buttonRow {
+	margin-top: 25px;
+	margin-bottom: 0;
+}
+
+html[dir="ltr"] .ipsAlert_buttonRow li {
+	margin-right: 5px;
+}
+html[dir="rtl"] .ipsAlert_buttonRow li {
+	margin-left: 5px;
+}
+
+/* ======================================================== */
+/* jQuery UI Date Picker */
+/* Not strictly part of our framework, but used globally */
+
+.ui-datepicker {
+	background: white;
+	box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.58 );
+	width: 375px;
+	border-radius: 6px;
+}
+
+.ui-datepicker-header {
+	line-height: 36px;
+	font-size: 14px;
+	text-align: center;
+	background: #333;
+	color: #fff;
+	border-bottom: 1px solid #333;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+	position:absolute;
+	top: 10px;
+	cursor: pointer;
+}
+
+.ui-datepicker-prev:after, .ui-datepicker-next:after {
+	font-family: 'FontAwesome';
+	color: #fff;
+	display: block;
+	position: absolute;
+	top: -9px;
+	width: 20px;
+	height: 20px;
+}
+html[dir="ltr"] .ui-datepicker-prev:after, .ui-datepicker-next:after {
+	right: 9px;
+}
+html[dir="rtl"] .ui-datepicker-prev:after, .ui-datepicker-next:after {
+	left: 9px;
+}
+
+html[dir="ltr"] .ui-datepicker-next {
+	right: 9px;
+}
+html[dir="rtl"] .ui-datepicker-next {
+	left: 9px;
+}
+
+	html[dir="ltr"] .ui-datepicker-next:after {
+		content: '\f054';	
+	}
+	html[dir="rtl"] .ui-datepicker-next:after {
+		content: '\f053';	
+	}
+
+html[dir="ltr"] .ui-datepicker-prev {
+	left: 0px;
+}
+html[dir="rtl"] .ui-datepicker-prev {
+	right: 0px;
+}
+
+	html[dir="ltr"] .ui-datepicker-prev:after {
+		content: '\f053';
+	}
+	html[dir="rtl"] .ui-datepicker-prev:after {
+		content: '\f054';
+	}
+
+.ui-datepicker-next span, .ui-datepicker-prev span {
+	visibility: hidden;
+}
+
+.ui-datepicker table {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.ui-datepicker th {
+	padding: 4px 0;
+	background: #f5f5f5;
+}
+.ui-datepicker td, .ui-datepicker th {
+	text-align: center;
+}
+
+.ui-datepicker td a {
+	display: block;
+	width: 50px;
+	height: 100%;
+	padding: 5px 0px;
+}
+
+.ui-datepicker td a:hover, .ui-datepicker-current-day {
+	background-color: #dbdbdb;
+}
+
+.ui-datepicker-today {
+	background-color: #eaeaea;
+}
+
+	.ui-datepicker-title select, .ui-datepicker-title option {
+		color: #000;
+	}

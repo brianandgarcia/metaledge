@@ -1,4 +1,4 @@
-<ips:template parameters="$record, $database" original_group="category_articles" key="database_category_articles_entry" />
+<ips:template parameters="$record, $database" />
 <article class='cCmsCategoryFeaturedEntry {{if $record->hidden()}}ipsModerated{{endif}}'>
 	<header class='ipsPhotoPanel ipsPhotoPanel_notPhone ipsPhotoPanel_small ipsSpacer_bottom'>
 		{template="userPhoto" app="core" params="$record->author()" group="global"}
@@ -7,11 +7,11 @@
 				{{if $record->prefix()}}
 				{template="prefix" group="global" app="core" params="$record->prefix( TRUE ), $record->prefix()"}
 				{{endif}}
-				<a href="{$record->url()}" title='{lang="read_more_about" sprintf="$record->_title"}'>
+				<a href="{$record->url()}" title="{lang="read_more_about" sprintf="$record->_title"}">
 					{{if $record->unread()}}
 					<span class='ipsItemStatus' data-ipsTooltip title="{lang="cms_unread_record"}"><i class="fa fa-circle"></i></span>
 					{{endif}}
-					{lang="$record->_title" wordbreak="true"}
+					{wordbreak="$record->_title"}
 				</a>
 				{{if $record->mapped('pinned') || $record->mapped('featured') || $record->hidden() === -1 || $record->hidden() === 1}}
 				{{if $record->hidden() === -1}}
@@ -32,10 +32,18 @@
 			</p>
 		</div>
 	</header>
-
+	{{if count( $record->customFieldsForDisplay('listing') )}}
+		<div class='ipsDataItem_meta'>
+		{{foreach $record->customFieldsForDisplay('listing') as $fieldId => $fieldValue}}
+			{{if $fieldValue}}
+				{$fieldValue|raw}
+			{{endif}}
+		{{endforeach}}
+		</div>
+	{{endif}}
 	<section class='ipsType_normal ipsType_richText ipsType_break ipsSpacer_both' data-ipsTruncate data-ipsTruncate-size='7 lines' data-ipsTruncate-type='remove'>
 		{{if $record->record_image}}
-		<div class="ipsCms_record_image">
+		<div class="cCmsRecord_image">
 			<img class="ipsImage" src="{$record->record_image}">
 		</div>
 		{{endif}}
@@ -43,7 +51,7 @@
 		{$record->truncated()|raw}
 	</section>
 	{{if count( $record->tags() )}}
-	{template="tags" group="global" app="core" params="$record->tags()"}
+		{template="tags" group="global" app="core" params="$record->tags()"}
 	{{endif}}
 	<ul class='ipsList_inline'>
 		<li><strong><a href='{$record->url()}' title='{lang="read_more_about" sprintf="$record->name"}'>{lang="read_more"}</a></strong></li>

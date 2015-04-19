@@ -1,0 +1,13 @@
+<ips:template parameters="$blurb, $options" />
+
+<div class='ipsAreaBackground_light ipsPad ipsType_center'>
+	<div class='ipsType_large'><strong>{lang="$blurb"}</strong></div>
+	<br><br>
+	<ul class='ipsList_inline'>
+		{{foreach $options as $lang => $link}}
+			<li>
+				<a href="{$link}" title='{lang="$lang"}' class='ipsButton ipsButton_medium ipsButton_primary'>{lang="$lang"}</a>
+			</li>
+		{{endforeach}}
+	</ul>
+</div>

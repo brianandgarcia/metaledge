@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/ips-suite/!svn/ver/8355/trunk/applications/core/dev/css/admin/system
+END
+diff.css
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/ips-suite/!svn/ver/748/trunk/applications/core/dev/css/admin/system/diff.css
+END
+enhancements.css
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/5373/trunk/applications/core/dev/css/admin/system/enhancements.css
+END
+login.css
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/ips-suite/!svn/ver/8355/trunk/applications/core/dev/css/admin/system/login.css
+END
+systemlogs.css
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/1291/trunk/applications/core/dev/css/admin/system/systemlogs.css
+END
+plugins.css
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/5604/trunk/applications/core/dev/css/admin/system/plugins.css
+END
+dashboard.css
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/css/admin/system/dashboard.css
+END

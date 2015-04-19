@@ -1,6 +1,6 @@
-<ips:template parameters="$activeFilters, $category" original_group="listing" key="database_listing_filterMessage" />
+<ips:template parameters="$activeFilters, $category" />
 <div class='ipsMessage ipsMessage_general'>
-	<a href='{$category->url()->setQueryString( array( "do" => "clearFilters", 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId ) )}' class='ipsPos_right ipsButton ipsButton_normal ipsButton_verySmall'>{lang="cms_database_fitlered_clear"}</a>
+	<a href='{$category->url()->setQueryString( array( "do" => "clearFilters", 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId ) )}' class='ipsPos_right ipsButton ipsButton_veryLight ipsButton_verySmall'>{lang="cms_database_filtered_clear"}</a>
 	{lang="cms_database_filtered_by"}
 	{{foreach $activeFilters as $id => $data}}
 		{$data['field']->_title} ({$data['value']})

@@ -1,0 +1,20 @@
+/* ----- */
+#elPages_block_preview_wrapper {
+	background: transparent;
+	z-index: 1;
+}
+
+#elpages_block_preview {
+	width: 100%;
+	min-width: 450px;
+	min-height: 230px;
+	margin: 10px 0;
+	border: 1px solid rgba(0,0,0,0.1);
+	position: relative;
+	background-color: #fcfcfc;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 40px 40px;
+	background-image: none;
+	z-index: 0;
+}

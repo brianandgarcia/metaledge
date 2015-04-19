@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/browse
+END
+calendarMonth.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/browse/calendarMonth.phtml
+END
+calendarHeader.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/browse/calendarHeader.phtml
+END
+calendarStream.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/browse/calendarStream.phtml
+END
+calendarWeek.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/browse/calendarWeek.phtml
+END
+calendarDay.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/browse/calendarDay.phtml
+END
+calendarFeatured.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/4660/trunk/applications/calendar/dev/html/front/browse/calendarFeatured.phtml
+END
+dateJump.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/6536/trunk/applications/calendar/dev/html/front/browse/dateJump.phtml
+END
+calendarWrapper.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/4770/trunk/applications/calendar/dev/html/front/browse/calendarWrapper.phtml
+END

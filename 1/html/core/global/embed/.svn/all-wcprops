@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/embed
+END
+google.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/4995/trunk/applications/core/dev/html/global/embed/google.phtml
+END
+gfycat.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/embed/gfycat.phtml
+END
+link.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/9012/trunk/applications/core/dev/html/global/embed/link.phtml
+END
+embedUnavailable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/7759/trunk/applications/core/dev/html/global/embed/embedUnavailable.phtml
+END
+embedNoPermission.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/global/embed/embedNoPermission.phtml
+END
+iframe.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/global/embed/iframe.phtml
+END
+video.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/4995/trunk/applications/core/dev/html/global/embed/video.phtml
+END
+facebook.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/4995/trunk/applications/core/dev/html/global/embed/facebook.phtml
+END
+photo.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/4995/trunk/applications/core/dev/html/global/embed/photo.phtml
+END

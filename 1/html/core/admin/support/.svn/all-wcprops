@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/ips-suite/!svn/ver/9304/trunk/applications/core/dev/html/admin/support
+END
+whitespace.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/8419/trunk/applications/core/dev/html/admin/support/whitespace.phtml
+END
+support.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/6785/trunk/applications/core/dev/html/admin/support/support.phtml
+END
+tryNow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/3075/trunk/applications/core/dev/html/admin/support/tryNow.phtml
+END
+healthcheck.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/8269/trunk/applications/core/dev/html/admin/support/healthcheck.phtml
+END
+connectionChecker.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/5042/trunk/applications/core/dev/html/admin/support/connectionChecker.phtml
+END
+queryFormTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/3071/trunk/applications/core/dev/html/admin/support/queryFormTemplate.phtml
+END
+table.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/3071/trunk/applications/core/dev/html/admin/support/table.phtml
+END
+upgrade.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/7857/trunk/applications/core/dev/html/admin/support/upgrade.phtml
+END
+toolboxResults.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/3071/trunk/applications/core/dev/html/admin/support/toolboxResults.phtml
+END
+databaseChecker.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/9304/trunk/applications/core/dev/html/admin/support/databaseChecker.phtml
+END
+knowledgebase.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/5042/trunk/applications/core/dev/html/admin/support/knowledgebase.phtml
+END
+advice.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/6505/trunk/applications/core/dev/html/admin/support/advice.phtml
+END

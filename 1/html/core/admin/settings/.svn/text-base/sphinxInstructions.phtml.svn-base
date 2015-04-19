@@ -1,0 +1,22 @@
+<ips:template parameters="$configurationUrl, $error" />
+{{if $error}}
+	<p class="ipsMessage ipsMessage_error">{lang="$error"}</p>
+{{endif}}
+<div class="ipsPad">
+	<div class="ipsSpacer_bottom">
+		<h2 class="ipsType_sectionHead">{lang="sphinx_setup_step1_header"}</h2>
+		<p>{lang="sphinx_setup_step1_details" sprintf="$configurationUrl, $configurationUrl->setQueryString('do', 'manage')"}</p>
+	</div>
+	<div class="ipsSpacer_bottom">
+		<h2 class="ipsType_sectionHead">{lang="sphinx_setup_step2_header"}</h2>
+		<p>{lang="sphinx_setup_step2_details"}</p>
+	</div>
+	<div class="ipsSpacer_bottom">
+		<h2 class="ipsType_sectionHead">{lang="sphinx_setup_step2_header"}</h2>
+		<p>{lang="sphinx_setup_step3_details"}</p>
+	</div>
+</div>
+<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+	<a href="{$configurationUrl->setQueryString( array( 'do' => 'sphinxInstructions', 'check' => 1 ) )}" data-action="continue" class="ipsButton ipsButton_primary">{lang="sphinx_setup_go"}</a>
+	<a href="{url="app=core&module=support&controller=support&_new=1"}" class="ipsButton ipsButton_normal">{lang="get_support"}</a>
+</div>

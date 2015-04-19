@@ -1,0 +1,24 @@
+<ips:template parameters="$langKey, $element, $desc, $warning, $required=FALSE, $error=NULL, $prefix=NULL, $suffix=NULL, $id=NULL, $object=NULL, $form=NULL" />
+<li class='ipsFieldRow ipsPad_half {{if $object instanceof \IPS\Helpers\Form\YesNo}}ipsFieldRow_yesNo{{endif}} ipsClearfix {{if $object and isset( request.searchResult ) and ( request.searchResult === $object->name )}}ipsFieldRow_searchResult{{endif}}' {{if $id !== NULL}}id="{$id}"{{endif}}>
+	<div class='ipsFieldRow_title {{if $error}}ipsFieldRow_error{{endif}}'>
+		{$langKey|raw}
+		{{if $required}}<span class='ipsFieldRow_required'>{lang="required"}</span>{{endif}}
+		{{if \IPS\IN_DEV and $form and $object}}{template="searchKeywords" app="core" group="global" params="$form->action->setQueryString( array( 'do' => ( isset( $form->action->queryString['do'] ) and $form->action->queryString['do'] != 'form' ) ? $form->action->queryString['do'] : NULL, 'id' => NULL, 'searchResult' => $id ) )->acpQueryString(), $object->name"}{{endif}}
+	</div>
+	<div class='ipsFieldRow_content {{if $error}}ipsFieldRow_error{{endif}}'>
+		{{if $object and !( $object instanceof \IPS\Helpers\Form\Translatable ) and $form->copyButton}}
+			<a href="#" data-baseLink="{$form->copyButton->setQueryString( array( 'key' => $object->name ) )}" data-controller="core.admin.core.nodeCopySetting" data-field="{$object->name}" class='ipsJS_show ipsButton ipsButton_verySmall ipsButton_light ipsButton_narrow ipsFaded ipsFaded_more ipsFaded_withHover ipsPos_right cCopyNode' title='{lang="copy_value"}' data-ipsTooltip tabindex="999"><i class="fa fa-cog"></i> <i class='fa fa-caret-right'></i></a>
+		{{endif}}
+		{$prefix|raw}
+		{$element|raw}
+		{$suffix|raw}
+		{$desc|raw}
+		{$warning|raw}
+		<br>
+		{{if $error}}
+			<span class='ipsType_warning'><i class='fa fa-exclamation-circle'></i> {lang="$error"}</span>
+		{{else:}}
+			<span class='ipsType_warning'></span>
+		{{endif}}
+	</div>
+</li>

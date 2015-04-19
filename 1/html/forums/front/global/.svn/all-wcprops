@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/8249/trunk/applications/forums/dev/html/front/global
+END
+snippet.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/7836/trunk/applications/forums/dev/html/front/global/snippet.phtml
+END
+commentTableHeader.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/6909/trunk/applications/forums/dev/html/front/global/commentTableHeader.phtml
+END
+row.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/6909/trunk/applications/forums/dev/html/front/global/row.phtml
+END
+rows.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/4693/trunk/applications/forums/dev/html/front/global/rows.phtml
+END
+embedTopic.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/8249/trunk/applications/forums/dev/html/front/global/embedTopic.phtml
+END
+searchNoPermission.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/6565/trunk/applications/forums/dev/html/front/global/searchNoPermission.phtml
+END

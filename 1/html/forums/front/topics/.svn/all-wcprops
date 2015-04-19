@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/9896/trunk/applications/forums/dev/html/front/topics
+END
+topic.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/9896/trunk/applications/forums/dev/html/front/topics/topic.phtml
+END
+post.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9053/trunk/applications/forums/dev/html/front/topics/post.phtml
+END
+postContainer.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/8637/trunk/applications/forums/dev/html/front/topics/postContainer.phtml
+END
+postRating.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/8689/trunk/applications/forums/dev/html/front/topics/postRating.phtml
+END

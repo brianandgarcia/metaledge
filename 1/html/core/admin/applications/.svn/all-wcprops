@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/ips-suite/!svn/ver/9173/trunk/applications/core/dev/html/admin/applications
+END
+versionFormField.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/ips-suite/!svn/ver/4963/trunk/applications/core/dev/html/admin/applications/versionFormField.phtml
+END
+themeHookEditorTreeRoot.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/ips-suite/!svn/ver/595/trunk/applications/core/dev/html/admin/applications/themeHookEditorTreeRoot.phtml
+END
+codeHookEditor.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/4470/trunk/applications/core/dev/html/admin/applications/codeHookEditor.phtml
+END
+schemaConflict.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/315/trunk/applications/core/dev/html/admin/applications/schemaConflict.phtml
+END
+applicationWrapper.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/ips-suite/!svn/ver/7925/trunk/applications/core/dev/html/admin/applications/applicationWrapper.phtml
+END
+codeHookSidebar.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/1991/trunk/applications/core/dev/html/admin/applications/codeHookSidebar.phtml
+END
+details.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/1665/trunk/applications/core/dev/html/admin/applications/details.phtml
+END
+downloadDialog.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/495/trunk/applications/core/dev/html/admin/applications/downloadDialog.phtml
+END
+enhancements.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/html/admin/applications/enhancements.phtml
+END
+themeHookEditor.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/8329/trunk/applications/core/dev/html/admin/applications/themeHookEditor.phtml
+END
+themeHookEditorTree.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/ips-suite/!svn/ver/9173/trunk/applications/core/dev/html/admin/applications/themeHookEditorTree.phtml
+END

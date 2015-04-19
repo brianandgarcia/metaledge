@@ -1,0 +1,6 @@
+<ips:template parameters="$value, $log" />
+{$value|raw}
+{{if !empty($log['mlog_smtp_log']) }}
+<a data-ipsDialog data-ipsDialog-content="#errorLog-{$log['mlog_id']}" data-ipsDialog-title="{lang="emailerrorlog_logtitle"}" href='#errorLog-{$log['mlog_id']}'>{lang="view_full_smtp_log"}</a>
+<div class='ipsHide ipsAreaBackground ipsPad' id='errorLog-{$log['mlog_id']}'><pre>{$log['mlog_smtp_log']}</pre></div>
+{{endif}}

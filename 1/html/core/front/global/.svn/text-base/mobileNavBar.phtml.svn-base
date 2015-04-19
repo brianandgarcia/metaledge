@@ -1,0 +1,47 @@
+<ips:template parameters=" " />
+<ul id='elMobileNav' class='ipsList_inline ipsResponsive_hideDesktop ipsResponsive_block' data-controller='core.front.core.mobileNav'>
+	{{if count( \IPS\Output::i()->breadcrumb )}}
+		{{if count( \IPS\Output::i()->breadcrumb ) == 1}}
+			<li id='elMobileBreadcrumb'>
+				<a href='{setting="base_url"}'>
+					<span>{lang="home"}</span>
+				</a>
+			</li>
+		{{else}}
+			{{$i = 0;}}
+			{{foreach \IPS\Output::i()->breadcrumb as $k => $b}}
+				{{if $i + 2 == count( \IPS\Output::i()->breadcrumb )}}
+					<li id='elMobileBreadcrumb'>
+						<a href='{$b[0]}'>
+							<span>{$b[1]}</span>
+						</a>
+					</li>
+				{{endif}}
+				{{$i++;}}
+			{{endforeach}}
+		{{endif}}
+	{{endif}}
+	{{if \IPS\Member::loggedIn()->member_id and \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'search' ) )}}
+		<li><a href='{url="app=core&module=system&controller=vnc" seoTemplate="vnc"}'><i class='fa fa-star'></i></a></li>
+	{{endif}}
+	{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'search' ) )}}
+		<li class='ipsJS_show'>
+			<a href='{url="app=core&module=search&controller=search" seoTemplate="search"}' data-action="mobileSearch"><i class='fa fa-search'></i></a>
+		</li>
+	{{endif}}
+	<li data-ipsDrawer data-ipsDrawer-drawerElem='#elMobileDrawer'>
+		<a href='#'>
+			{{$total = \IPS\Member::loggedIn()->notification_cnt;}}
+			{{if !\IPS\Member::loggedIn()->members_disable_pm and \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'messaging' ) )}}
+				{{$total += \IPS\Member::loggedIn()->msg_count_new;}}
+			{{endif}}
+			{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'modcp' ) ) and \IPS\Member::loggedIn()->modPermission('can_view_reports')}}
+				{{$total += \IPS\Member::loggedIn()->reportCount();}}
+			{{endif}}
+			{{if $total}}
+				<span class='ipsNotificationCount' data-notificationType='total'>{$total}</span>
+			{{endif}}
+			<i class='fa fa-navicon'></i>
+		</a>
+	</li>
+</ul>

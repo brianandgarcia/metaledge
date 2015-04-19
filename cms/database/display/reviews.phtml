@@ -1,5 +1,5 @@
-<ips:template parameters="$record" original_group="display" key="database_display_reviews" />
-<div data-controller='core.front.core.commentFeed' data-commentsType='reviews' data-baseURL='{$record->url()}' {{if $record->isLastPage('reviews')}}data-lastPage{{endif}} data-feedID='file-{$record->id}-reviews'>
+<ips:template parameters="$record" />
+<div data-controller='core.front.core.commentFeed' data-commentsType='reviews' data-baseURL='{$record->url()}' {{if $record->isLastPage('reviews')}}data-lastPage{{endif}} data-feedID='records{$record::$customDatabaseId}-{$record->id}-reviews' id='reviews'>
 	{{if $record->canReview()}}
 		{{if $record->locked()}}
 			<strong class='ipsType_warning'><i class='fa fa-info-circle'></i> {lang="item_locked_can_review"}</strong>
@@ -21,6 +21,7 @@
 		{{endif}}
 	{{endif}}
 	{{if count( $record->reviews() )}}
+		<hr class='ipsHr'>
 		<div class="ipsClearfix ipsSpacer_both">
 			{{if $record->reviewPageCount() > 1}}
 				<div class="ipsPos_left ipsResponsive_noFloat">
@@ -41,10 +42,12 @@
 		
 		<div data-role='commentFeed' data-controller='core.front.core.moderation'>
 			<form action="{$record->url()->setQueryString( 'do', 'multimodReview' )}" method="post" data-ipsPageAction data-role='moderationTools'>
-				{{$reviewCount=0; $firstUnread = $record->firstUnreadReview();}}
+				{{$reviewCount=0; $timeLastRead = $record->timeLastRead(); $lined = FALSE;}}
 				{{foreach $record->reviews() as $review}}
-					{{if $reviewCount and $firstUnread and $firstUnread == $comment}}
-						<hr class="ipsCommentUnreadSeperator">
+					{{if !$lined and $timeLastRead and $timeLastRead->getTimestamp() < $review->mapped('date')}}
+						{{if $lined = TRUE and $reviewCount}}
+							<hr class="ipsCommentUnreadSeperator">
+						{{endif}}
 					{{endif}}
 					{{$reviewCount++;}}
 					{$review->html()|raw}

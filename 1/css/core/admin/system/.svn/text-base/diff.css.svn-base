@@ -1,0 +1,29 @@
+table.diff {
+	width: 100%;
+}
+
+table.diff td, table.diff th {
+	width: 50%;
+	max-width: 500px;
+	overflow-x: auto;
+}
+
+table.diff td {
+	padding: 10px;
+	vertical-align: top;
+	white-space: pre;
+	white-space: pre-wrap;
+	font-family: monospace;
+}
+
+.diffBlank {
+	content: '&nbsp;';
+}
+
+.diffDeleted {
+	background:rgb(255,224,224);
+}
+
+.diffInserted {
+	background:rgb(224,255,224);
+}

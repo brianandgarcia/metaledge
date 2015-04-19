@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ips-suite/!svn/ver/8540/trunk/applications/core/dev/html/admin/dashboard
+END
+registrations.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/1991/trunk/applications/core/dev/html/admin/dashboard/registrations.phtml
+END
+awaitingValidation.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/6389/trunk/applications/core/dev/html/admin/dashboard/awaitingValidation.phtml
+END
+failedLogins.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/5664/trunk/applications/core/dev/html/admin/dashboard/failedLogins.phtml
+END
+onlineAdmins.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/8540/trunk/applications/core/dev/html/admin/dashboard/onlineAdmins.phtml
+END
+adminnotes.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/7730/trunk/applications/core/dev/html/admin/dashboard/adminnotes.phtml
+END
+noConnectFailures.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/3628/trunk/applications/core/dev/html/admin/dashboard/noConnectFailures.phtml
+END
+noOnlineUsers.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/5273/trunk/applications/core/dev/html/admin/dashboard/noOnlineUsers.phtml
+END
+backgroundQueue.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/8301/trunk/applications/core/dev/html/admin/dashboard/backgroundQueue.phtml
+END
+connectFailures.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/1403/trunk/applications/core/dev/html/admin/dashboard/connectFailures.phtml
+END
+widgetWrapper.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/2604/trunk/applications/core/dev/html/admin/dashboard/widgetWrapper.phtml
+END
+onlineUsers.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/1991/trunk/applications/core/dev/html/admin/dashboard/onlineUsers.phtml
+END
+dashboard.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/7121/trunk/applications/core/dev/html/admin/dashboard/dashboard.phtml
+END
+ipsNews.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/6453/trunk/applications/core/dev/html/admin/dashboard/ipsNews.phtml
+END

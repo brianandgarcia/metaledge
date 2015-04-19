@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/modcp
+END
+memberManagementRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/4999/trunk/applications/core/dev/html/front/modcp/memberManagementRow.phtml
+END
+reportListOverview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6777/trunk/applications/core/dev/html/front/modcp/reportListOverview.phtml
+END
+recentWarningsTable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/4914/trunk/applications/core/dev/html/front/modcp/recentWarningsTable.phtml
+END
+approvalQueueHeader.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/7312/trunk/applications/core/dev/html/front/modcp/approvalQueueHeader.phtml
+END
+approvalQueueSplash.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/2665/trunk/applications/core/dev/html/front/modcp/approvalQueueSplash.phtml
+END
+recentWarningsRows.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/4914/trunk/applications/core/dev/html/front/modcp/recentWarningsRows.phtml
+END
+warnHovercard.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/modcp/warnHovercard.phtml
+END
+reportList.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/modcp/reportList.phtml
+END
+approvalQueueEmpty.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/2136/trunk/applications/core/dev/html/front/modcp/approvalQueueEmpty.phtml
+END
+approvalQueueItem.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/8600/trunk/applications/core/dev/html/front/modcp/approvalQueueItem.phtml
+END
+template.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/9608/trunk/applications/core/dev/html/front/modcp/template.phtml
+END
+report.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/modcp/report.phtml
+END
+reportToggle.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/3769/trunk/applications/core/dev/html/front/modcp/reportToggle.phtml
+END
+announcements.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/modcp/announcements.phtml
+END
+unapprovedContent.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/1467/trunk/applications/core/dev/html/front/modcp/unapprovedContent.phtml
+END
+commentsList.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/4981/trunk/applications/core/dev/html/front/modcp/commentsList.phtml
+END
+warningRevoke.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/modcp/warningRevoke.phtml
+END
+announcementRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/front/modcp/announcementRow.phtml
+END
+hiddenContent.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/1467/trunk/applications/core/dev/html/front/modcp/hiddenContent.phtml
+END
+warnActions.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/2381/trunk/applications/core/dev/html/front/modcp/warnActions.phtml
+END
+tableWrapper.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/6003/trunk/applications/core/dev/html/front/modcp/tableWrapper.phtml
+END
+approvalQueue.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/modcp/approvalQueue.phtml
+END
+iptools.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/6723/trunk/applications/core/dev/html/front/modcp/iptools.phtml
+END
+members.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/4843/trunk/applications/core/dev/html/front/modcp/members.phtml
+END
+warningRowPoints.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/467/trunk/applications/core/dev/html/front/modcp/warningRowPoints.phtml
+END
+reportPanel.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/9020/trunk/applications/core/dev/html/front/modcp/reportPanel.phtml
+END

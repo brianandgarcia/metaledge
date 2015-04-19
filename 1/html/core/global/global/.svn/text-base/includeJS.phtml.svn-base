@@ -1,0 +1,52 @@
+<ips:template parameters="" />
+{{if !\IPS\Request::i()->isAjax()}}
+	<script type='text/javascript'>
+		var ipsDebug = {{if ( \IPS\IN_DEV and \IPS\DEV_DEBUG_JS ) or \IPS\DEBUG_JS}}true{{else}}false{{endif}};		
+	{{if \IPS\IN_DEV}}
+		var CKEDITOR_BASEPATH = '{url="applications/core/dev/ckeditor/" base="none"}';
+	{{else}}
+		var CKEDITOR_BASEPATH = '{url="applications/core/interface/ckeditor/ckeditor/" base="none"}';
+	{{endif}}
+		var ipsSettings = {
+			{{if \IPS\Dispatcher::hasInstance() and \IPS\Dispatcher::i()->controllerLocation == 'admin'}}
+			adsess: "{expression="\IPS\Request::i()->adsess"}",
+			{{endif}}
+			{{if \IPS\COOKIE_DOMAIN !== NULL}}
+			cookie_domain: "{expression="\IPS\COOKIE_DOMAIN"}",
+			{{endif}}
+			{{if \IPS\COOKIE_PATH !== NULL}}
+			cookie_path: "{expression="\IPS\COOKIE_PATH"}",
+			{{endif}}
+			{{if \IPS\COOKIE_PREFIX !== NULL}}
+			cookie_prefix: "{expression="\IPS\COOKIE_PREFIX"}",
+			{{endif}}
+			{{if mb_substr( \IPS\Settings::i()->base_url, 0, 5 ) == 'https' AND !\IPS\COOKIE_BYPASS_SSLONLY}}
+			cookie_ssl: true,
+			{{else}}
+			cookie_ssl: false,
+			{{endif}}
+			imgURL: "{resource="./" location="front"}",
+			baseURL: "{setting="base_url"}",
+			jsURL: "{setting="base_url"}applications/core/interface/js/js.php",
+			csrfKey: "{expression="\IPS\Session::i()->csrfKey"}",
+			antiCache: "{expression="\IPS\SUITE_UNIQUE_KEY"}",
+			useCompiledFiles: {{if \IPS\IN_DEV}}false{{else}}true{{endif}},
+			links_external: {setting="links_external"}
+		};
+	</script>
+{{endif}}
+{{foreach array_unique( \IPS\Output::i()->jsFiles, SORT_STRING ) as $js}}
+{{$js = \IPS\Http\Url::external( $js );}}
+<script type='text/javascript' src='{{if $js->data['host'] == parse_url( \IPS\Settings::i()->base_url, PHP_URL_HOST )}}{expression="$js->setQueryString( 'v', \IPS\SUITE_UNIQUE_KEY )"}{{else}}{expression="$js"}{{endif}}' data-ips></script>
+{{endforeach}}
+{{foreach array_unique( \IPS\Output::i()->jsFilesAsync, SORT_STRING ) as $js}}
+<script type="text/javascript" src="{expression="\IPS\Http\Url::external( $js )->setQueryString( 'v', \IPS\SUITE_UNIQUE_KEY )"}" async="true"></script>
+{{endforeach}}
+{{if count( \IPS\Output::i()->jsVars ) || \IPS\Output::i()->headJs}}
+	<script type='text/javascript'>
+		{{foreach \IPS\Output::i()->jsVars as $k => $v}}
+			ips.setSetting( '{$k}', jQuery.parseJSON('{expression="json_encode( $v )" raw="true"}') );
+		{{endforeach}}
+		{expression="\IPS\Output::i()->headJs" raw="true"}
+	</script>
+{{endif}}

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/staffdirectory
+END
+layout_full.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/8637/trunk/applications/core/dev/html/front/staffdirectory/layout_full.phtml
+END
+layout_full_preview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/ips-suite/!svn/ver/1811/trunk/applications/core/dev/html/front/staffdirectory/layout_full_preview.phtml
+END
+layout_half.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/8637/trunk/applications/core/dev/html/front/staffdirectory/layout_half.phtml
+END
+layout_half_preview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/ips-suite/!svn/ver/1811/trunk/applications/core/dev/html/front/staffdirectory/layout_half_preview.phtml
+END
+layout_blocks.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/staffdirectory/layout_blocks.phtml
+END
+layout_blocks_preview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/ips-suite/!svn/ver/1811/trunk/applications/core/dev/html/front/staffdirectory/layout_blocks_preview.phtml
+END
+template.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/4976/trunk/applications/core/dev/html/front/staffdirectory/template.phtml
+END

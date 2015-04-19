@@ -1,0 +1,38 @@
+<ips:template parameters="$calendars, $thisCalendar, $jump" />
+
+<div class="ipsPageHeader ipsPad_half ipsClearfix ipsSpacer_bottom" id='elCalendarsHeader'>
+	{{if $thisCalendar}}
+		<div class='ipsPos_right ipsResponsive_noFloat'>
+			{template="follow" app="core" group="global" params="'calendar', 'calendar', $thisCalendar->id, \IPS\calendar\Event::containerFollowerCount( $thisCalendar )"}
+		</div>
+	{{endif}}
+	<span class="ipsType_pageTitle">
+		<a href='#elCalendars_menu' id='elCalendars' data-ipsMenu data-ipsMenu-appendTo="#elCalendarsHeader">{{if $thisCalendar}}{$thisCalendar->_title}{{else}}{lang="all_calendars"}{{endif}} &nbsp;<i class='fa fa-caret-down'></i></a>
+		&nbsp;&nbsp;<a href='#elCalendarSettings_menu' id='elCalendarSettings' data-ipsMenu data-ipsMenu-alignCenter data-ipsMenu-appendTo="#elCalendarsHeader"><i class='fa fa-cog'></i></a>
+		{{if ( $thisCalendar AND $thisCalendar->can('add') ) OR ( !$thisCalendar AND \IPS\calendar\Calendar::canOnAny('add') )}}
+			&nbsp;&nbsp;
+			{{if $thisCalendar}}
+				<a href='{url="app=calendar&module=calendar&controller=submit&calendar={$thisCalendar->id}" seoTemplate="calendar_submit"}' class='ipsButton ipsButton_important ipsButton_small ipsResponsive_hidePhone ipsResponsive_inlineBlock'>{lang="create_event"}</a>
+			{{else}}
+				<a href='{url="app=calendar&module=calendar&controller=submit" seoTemplate="calendar_submit"}' class='ipsButton ipsButton_important ipsButton_small ipsResponsive_hidePhone ipsResponsive_inlineBlock'>{lang="create_event"}</a>
+			{{endif}}
+		{{endif}}
+		<a href='#elCalendarJump' data-ipsMenu data-ipsMenu-menuID='elCalendarJump' data-ipsMenu-closeOnClick='false' class='ipsButton ipsButton_light ipsButton_small ipsResponsive_showDesktop ipsResponsive_inlineBlock'>{lang="jump_to"} <i class='fa fa-caret-down'></i></a>		
+	</span>
+</div>
+
+{$jump->customTemplate( array( \IPS\Theme::i()->getTemplate( 'browse' ), 'dateJump' ) )|raw}
+
+<ul class='ipsMenu ipsMenu_auto ipsHide' id='elCalendars_menu'>
+	<li class='ipsMenu_item'><a href='{url="app=calendar&module=calendar&controller=view" seoTemplate="calendar"}'><span class='cCalendarIcon cEvents_style_blank'></span> {lang="all_calendars"}</a></li>
+	{{foreach $calendars as $calendar}}
+		<li class='ipsMenu_item'><a href='{$calendar->url()}'><span class='cCalendarIcon cEvents_style{$calendar->id}'></span> {$calendar->_title}</a></li>
+	{{endforeach}}
+</ul>
+<ul class='ipsMenu ipsMenu_auto ipsHide' id='elCalendarSettings_menu'>
+	<li class='ipsMenu_title'>{{if $thisCalendar}}{lang="with_calendar" sprintf="$thisCalendar->_title"}{{else}}{lang="with_all_calendars"}{{endif}}</li>
+	<li class='ipsMenu_item'><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->id}&do=download" seoTemplate="calendar_calicaldownload" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&do=download" seoTemplate="calendar_icaldownload"}{{endif}}'><i class='fa fa-download'></i> {lang="download_webcal"}</a></li>
+	<li class='ipsMenu_item'><a href='{expression="str_replace( array( 'http://', 'https://' ), 'webcal://', $thisCalendar ? \IPS\Http\Url::internal( 'app=calendar&module=calendar&controller=view&id=' . $thisCalendar->id . '&do=download', 'front', 'calendar_calicaldownload', $thisCalendar->title_seo ) : \IPS\Http\Url::internal( 'app=calendar&module=calendar&controller=view&do=download', 'front', 'calendar_icaldownload' ) )"}'><i class='fa fa-calendar'></i> {lang="subscribe_webcal"}</a></li>
+</ul>
+
+<hr class='ipsHr'>

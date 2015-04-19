@@ -1,0 +1,35 @@
+<ips:template parameters="$table, $headers, $rows" />
+{{foreach $rows as $row}}
+	<article class='ipsComment ipsComment_parent ipsClearfix ipsClear'>
+		<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_mini ipsPhotoPanel_notPhone'>
+			{template="userPhoto" app="core" group="global" params="$row['revision_member_id'], 'mini'"}
+			<div>
+				<p class="ipsPos_right">
+					<a href="{$table->baseUrl->setQueryString( array( 'do' => 'revisionView', 'revision_id' => $row['revision_id'], 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId ) )}">{lang="content_revision_button_view"}</a>
+					&nbsp; <a data-confirm href="{$table->baseUrl->csrf()->setQueryString( array( 'do' => 'revisionDelete', 'revision_id' => $row['revision_id'], 'd' => \IPS\cms\Databases\Dispatcher::i()->databaseId, 'ajax' => \IPS\Request::i()->isAjax() ) )}">{lang="content_revision_button_delete"}</a>
+				</p>
+				<h3 class='ipsComment_author ipsType_sectionHead'>
+					{$row['revision_member_id']->link()|raw}
+				</h3>
+				<p class='ipsComment_meta ipsType_light'>
+					{$row['revision_date']}
+				</p>
+			</div>
+		</div>
+		<div class='ipsAreaBackground_reset ipsPad'>
+			<div class='ipsType_richText'>
+				{{$gotDiffs = FALSE;}}
+				{{foreach $row['revision_data'] as $key => $diff}}
+					{{if ! empty( $diff['diff'] )}}
+						{{$gotDiffs = TRUE;}}
+						<p><strong>{$diff['field']->_title}</strong></p>
+						{$diff['diff']|raw}
+					{{endif}}
+				{{endforeach}}
+				{{if ! $gotDiffs}}
+				<p class="ipsMessage ipsMessage_info">{lang="record_no_revision_data"}</p>
+				{{endif}}
+			</div>
+		</div>
+	</article>
+{{endforeach}}

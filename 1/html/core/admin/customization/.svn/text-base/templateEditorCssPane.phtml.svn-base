@@ -1,0 +1,6 @@
+<ips:template parameters="$theme, $templateNames, $template, $current" />
+<div data-role="templatePanel">
+	<div data-role="templatePanel" data-fileid="{$template['jsDataKey']}" data-app="{$current['app']}" data-location="{$current['location']}" data-group="{$current['group']}" data-name="{$current['template']}" data-type='css' data-itemID='{$current['item_id']}' data-inherited-value="{$template['InheritedValue']}">
+		<textarea  name="editor_{$template['jsDataKey']}" id="editor_{$template['jsDataKey']}" data-role="editor">{$template['css_content']}</textarea>
+	</div>
+</div>

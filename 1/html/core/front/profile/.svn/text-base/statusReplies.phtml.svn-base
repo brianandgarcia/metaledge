@@ -1,0 +1,11 @@
+<ips:template parameters="$status" />
+
+{{if $status->commentPageCount() > 1}}
+	{template="statusPagination" group="profile" location="front" app="core" params="$status->url(), $status->commentPageCount(), $status->replies, \IPS\Request::i()->page ? intval( \IPS\Request::i()->page ) : 1, \IPS\core\Statuses\status::$commentsPerPage, 'prev'"}
+{{endif}}
+{{foreach $status->comments() as $comment}}
+	{$comment->html()|raw}
+{{endforeach}}
+{{if $status->commentPageCount() > 1}}
+	{template="statusPagination" group="profile" location="front" app="core" params="$status->url(), $status->commentPageCount(), $status->replies, \IPS\Request::i()->page ? intval( \IPS\Request::i()->page ) : 1, \IPS\core\Statuses\status::$commentsPerPage, 'next'"}
+{{endif}}

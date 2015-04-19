@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/9896/trunk/applications/forums/dev/html/front/forums
+END
+forumDisplay.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/9896/trunk/applications/forums/dev/html/front/forums/forumDisplay.phtml
+END
+forumPasswordPopup.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/4770/trunk/applications/forums/dev/html/front/forums/forumPasswordPopup.phtml
+END
+questionRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/9024/trunk/applications/forums/dev/html/front/forums/questionRow.phtml
+END
+forumTable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/9082/trunk/applications/forums/dev/html/front/forums/forumTable.phtml
+END
+forumHome.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/3678/trunk/applications/forums/dev/html/front/forums/forumHome.phtml
+END
+popularQuestionRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/8637/trunk/applications/forums/dev/html/front/forums/popularQuestionRow.phtml
+END
+topicHover.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/5112/trunk/applications/forums/dev/html/front/forums/topicHover.phtml
+END
+topicRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/7667/trunk/applications/forums/dev/html/front/forums/topicRow.phtml
+END
+forumButtons.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/4914/trunk/applications/forums/dev/html/front/forums/forumButtons.phtml
+END
+forumSelector.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/2106/trunk/applications/forums/dev/html/front/forums/forumSelector.phtml
+END
+qaForum.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/8637/trunk/applications/forums/dev/html/front/forums/qaForum.phtml
+END

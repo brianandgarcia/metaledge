@@ -1,0 +1,21 @@
+<ips:template parameters="$item, $approveUrl, $skipUrl, $deleteUrl" />
+<div class="ipsBox ipsPad ipsClearfix ipsClear" data-ipsSticky>
+	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsPos_right" id="elApprovalToolbar">
+		<li>
+			<a href="{$approveUrl}" class="ipsButton ipsButton_medium ipsButton_fullWidth ipsButton_positive" data-action="approvalQueueNext">
+				<i class="fa fa-check"></i> {lang="approve"}
+			</a>
+		</li>
+		<li>
+			<a href="{$skipUrl}" class="ipsButton ipsButton_medium ipsButton_light ipsType_center ipsButton_fullWidth" data-action="approvalQueueNext">
+				{lang="skip_this_item"}
+			</a>
+		</li>
+		<li>
+			<a href="{$deleteUrl}" class="ipsButton ipsButton_medium ipsButton_fullWidth ipsButton_negative" data-action="approvalQueueNext">
+				<i class="fa fa-times"></i> {lang="delete"}
+			</a>
+		</li>			
+	</ul>
+</div>
+<br>

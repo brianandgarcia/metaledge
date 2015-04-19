@@ -1,0 +1,50 @@
+<ips:template parameters="$forms, $activeTab, $error, $icons" />
+<!DOCTYPE html>
+<html lang="{expression="\IPS\Member::loggedIn()->language()->bcp47()"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
+	<head>
+		<meta charset="utf-8">
+		<title>{lang="login"}</title>
+		{template="includeCSS" app="core" group="global" location="global" params=""}
+		{template="includeJS" app="core" group="global" location="global" params=""}
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	</head>
+	<body class='ipsApp ipsApp_admin' id='elLogin' data-controller="core.admin.core.app">
+		<div id='elLogin_box' data-controller="core.admin.system.login"{{if count($forms) == 1}} class='elLogin_single'{{endif}}>
+			<div class='ipsColumns'>
+				<div class='ipsColumn ipsColumn_fluid' id='elLogin_forms'>
+					<div class='ipsPad'>
+						<h1 class='ipsType_pageTitle'><i class='fa fa-lock'></i> {lang="acp_login"}</h1>
+						<br>
+						{{if $error}}
+							<div class='ipsMessage ipsMessage_error'>{lang="$error"}</div>
+						{{endif}}
+						<div id='elTabContent'>
+							{{foreach $forms as $key => $form}}
+								<div id='ipsTabs_elLogin_tabs_handler_{$key}_panel' class=" ipsTabs_panel {{if $key != $activeTab}}ipsHide{{endif}}">
+
+									{{if is_object( $form )}}
+										{$form->customTemplate( array( \IPS\Theme::i()->getTemplate( 'system' ), 'loginForm' ) )|raw}
+									{{else}}
+										{$form|raw}
+									{{endif}}
+
+								</div>
+							{{endforeach}}
+						</div>
+					</div>
+				</div>
+				{{if count( $forms ) > 1}}
+					<div class='ipsColumn ipsColumn_veryNarrow' id='elLogin_tabs' data-ipsTabBar data-ipsTabBar-contentArea='#elTabContent' data-ipsTabBar-itemSelector=".elLogin_tabsItem" data-ipsTabBar-activeClass="elLogin_tabsActive" role="tabbar">
+						<ul class='ipsList_reset'>
+							{{foreach $forms as $key => $form}}
+								<li role="presentation">
+									<a href='{url="app=core&module=system&controller=login&tab="}{$key}' role="tab" aria-label="{lang="login_{$key}"}" class='elLogin_tabsItem {{if $key == $activeTab}}elLogin_tabsActive{{endif}}' id='handler_{$key}'><i class='fa fa-{{if isset ( $icons[ $key ] )}}{$icons[ $key ]}{{else}}lock{{endif}}'></i></a>
+								</li>
+							{{endforeach}}
+						</ul>
+					</div>
+				{{endif}}
+			</div>
+		</div>
+	</body>
+</html>

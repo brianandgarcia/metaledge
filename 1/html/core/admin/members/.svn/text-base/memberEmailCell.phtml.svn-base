@@ -1,0 +1,4 @@
+<ips:template parameters="$content" />
+<div class='ipsType_break'>
+	{$content|raw}
+</div>

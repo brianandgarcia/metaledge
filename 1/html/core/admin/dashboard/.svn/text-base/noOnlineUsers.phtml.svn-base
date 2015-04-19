@@ -1,0 +1,6 @@
+<ips:template parameters="" />
+
+<div class='ipsType_large ipsEmpty'>
+	<i class='fa fa-group'></i>
+	<br>{lang="no_online_users"}
+</div>

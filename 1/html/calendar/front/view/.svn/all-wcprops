@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/view
+END
+attendees.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/6501/trunk/applications/calendar/dev/html/front/view/attendees.phtml
+END
+eventBlock.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/8334/trunk/applications/calendar/dev/html/front/view/eventBlock.phtml
+END
+rsvpControls.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/7865/trunk/applications/calendar/dev/html/front/view/rsvpControls.phtml
+END
+eventBlocks.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/5657/trunk/applications/calendar/dev/html/front/view/eventBlocks.phtml
+END
+reviews.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/8418/trunk/applications/calendar/dev/html/front/view/reviews.phtml
+END
+comments.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/9896/trunk/applications/calendar/dev/html/front/view/comments.phtml
+END
+coverPhotoOverlay.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/5629/trunk/applications/calendar/dev/html/front/view/coverPhotoOverlay.phtml
+END
+view.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/8338/trunk/applications/calendar/dev/html/front/view/view.phtml
+END
+eventSidebar.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/7276/trunk/applications/calendar/dev/html/front/view/eventSidebar.phtml
+END

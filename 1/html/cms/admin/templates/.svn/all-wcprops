@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/ips-suite/!svn/ver/9248/trunk/applications/cms/dev/html/admin/templates
+END
+addForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/4529/trunk/applications/cms/dev/html/admin/templates/addForm.phtml
+END
+templates.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/8301/trunk/applications/cms/dev/html/admin/templates/templates.phtml
+END
+menu.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9248/trunk/applications/cms/dev/html/admin/templates/menu.phtml
+END
+editor.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/4953/trunk/applications/cms/dev/html/admin/templates/editor.phtml
+END
+viewTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/5473/trunk/applications/cms/dev/html/admin/templates/viewTemplate.phtml
+END

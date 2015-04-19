@@ -1,0 +1,10 @@
+<ips:template parameters="$downloadUrl, $checkUrl, $error=FALSE" />
+<div class="ipsPad ipsType_center">
+	<p class="ipsType_large">{lang="datastore_change_blurb"}</p>
+	<div class="ipsPad">
+		<a href="{$downloadUrl}" class="ipsButton ipsButton_primary">{lang="datastore_change_download"}</a> <a href="{$checkUrl}" class="ipsButton ipsButton_normal">{lang="continue"}</a>
+	</div>
+	{{if $error}}
+		<p class="ipsType_warning">{lang="datastore_change_error"}</p>
+	{{endif}}
+</div>

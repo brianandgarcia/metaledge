@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/css/front/styles
+END
+statuses_responsive.css
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/css/front/styles/statuses_responsive.css
+END
+messaging_responsive.css
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/5364/trunk/applications/core/dev/css/front/styles/messaging_responsive.css
+END
+vse.css
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/ips-suite/!svn/ver/8437/trunk/applications/core/dev/css/front/styles/vse.css
+END
+caching_log.css
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/7608/trunk/applications/core/dev/css/front/styles/caching_log.css
+END
+profiles_responsive.css
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/5364/trunk/applications/core/dev/css/front/styles/profiles_responsive.css
+END
+modcp.css
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/ips-suite/!svn/ver/6466/trunk/applications/core/dev/css/front/styles/modcp.css
+END
+staff.css
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/css/front/styles/staff.css
+END
+meta_tags.css
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/5364/trunk/applications/core/dev/css/front/styles/meta_tags.css
+END
+search.css
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/ips-suite/!svn/ver/4843/trunk/applications/core/dev/css/front/styles/search.css
+END
+query_log.css
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/7981/trunk/applications/core/dev/css/front/styles/query_log.css
+END
+statuses.css
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/8689/trunk/applications/core/dev/css/front/styles/statuses.css
+END
+messaging.css
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/5364/trunk/applications/core/dev/css/front/styles/messaging.css
+END
+modcp_responsive.css
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/css/front/styles/modcp_responsive.css
+END
+staff_responsive.css
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/4951/trunk/applications/core/dev/css/front/styles/staff_responsive.css
+END
+search_responsive.css
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/5364/trunk/applications/core/dev/css/front/styles/search_responsive.css
+END
+profiles.css
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/9266/trunk/applications/core/dev/css/front/styles/profiles.css
+END
+vnc.css
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/ips-suite/!svn/ver/5364/trunk/applications/core/dev/css/front/styles/vnc.css
+END

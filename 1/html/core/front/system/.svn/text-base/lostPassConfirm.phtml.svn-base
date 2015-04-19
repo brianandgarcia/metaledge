@@ -1,0 +1,5 @@
+<ips:template parameters="" />
+{template="pageHeader" group="global" params="\IPS\Member::loggedIn()->language()->addToStack('lost_password')"}
+<div class='ipsLayout_contentSection'>
+	{lang="lost_pass_confirm"}
+</div>

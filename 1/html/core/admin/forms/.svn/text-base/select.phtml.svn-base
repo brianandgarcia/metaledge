@@ -1,0 +1,27 @@
+<ips:template parameters="$name, $value, $required, $options, $multiple=FALSE, $class='', $disabled=FALSE, $toggles=array(), $id=NULL, $unlimited=NULL, $unlimitedLang='all', $unlimitedToggles=array(), $toggleOn=TRUE, $userSuppliedInput='', $sort=FALSE, $parse=NULL" />
+{{if $multiple}}
+	<input type="hidden" name="{$name}" value="__EMPTY">
+{{endif}}
+<select name="{$name}" class="{$class}" {{if $multiple}}multiple{{endif}} {{if $required === TRUE}}required aria-required='true'{{endif}} {{if $disabled === TRUE}}disabled aria-disabled='true'{{endif}} {{if $id !== NULL}}id="elSelect_{$id}"{{endif}} {{if $sort}}data-sort{{endif}}>
+	{{foreach $options as $k => $v}}
+		{{if is_array( $v )}}
+			<optgroup label="{{if $parse === 'raw'}}{$k}{{else}}{lang="$k"}{{endif}}">
+				{{foreach $v as $_k => $_v}}
+					<option value='{$_k}' {{if ( !is_array( $value ) AND $value == $_k ) or ( is_array( $value ) and in_array( $_k, $value ) )}}selected{{endif}} {{if isset( $toggles[ $_k ] )}}data-control="toggle" data-toggles="{expression="implode( ',', $toggles[ $_k ] )"}" aria-controls="{expression="implode( ',', $toggles[ $_k ] )"}"{{endif}} {{if is_array($disabled) and in_array( $_k, $disabled )}}disabled{{endif}}>{$_v|raw}</option>
+				{{endforeach}}
+			</optgroup>
+		{{else}}
+			<option value='{$k}' {{if ( !is_array( $value ) AND $value == $k ) or ( is_array( $value ) and in_array( $k, $value ) ) or ( !empty( $userSuppliedInput ) and !in_array( $value, array_keys( $options ) ) and $k == $userSuppliedInput )}}selected{{endif}} {{if isset( $toggles[ $k ] )}}data-control="toggle" data-toggles="{expression="implode( ',', $toggles[ $k ] )"}"{{endif}} {{if is_array($disabled) and in_array( $k, $disabled )}}disabled{{endif}}>{$v|raw}</option>
+		{{endif}}
+	{{endforeach}}
+</select>
+{{if !empty( $userSuppliedInput )}}
+	<input type='text' name='{$userSuppliedInput}_{$name}' value="{{if !in_array( $value, array_keys( $options ) )}}{$value}{{endif}}" id='{$userSuppliedInput}_{$id}'>
+{{endif}}
+{{if $unlimited !== NULL}}
+	<br><br>
+	{lang="or"}
+	&nbsp;
+	<input type="checkbox" role='checkbox' data-control="unlimited{{if count($unlimitedToggles)}} toggle{{endif}}" name="{expression="trim( $name, '[]' )"}_unlimited" id='{expression="trim( $id ?: $name, '[]' )"}_unlimited' value="{$unlimited}" {{if $unlimited === $value}}checked aria-checked='true'{{endif}} {{if $disabled}}disabled aria-disabled='true'{{endif}} {{if count( $unlimitedToggles )}}{{if $toggleOn === FALSE}}data-togglesOff{{else}}data-togglesOn{{endif}}="{expression="implode( ',', $unlimitedToggles )"}" aria-controls="{expression="implode( ',', $unlimitedToggles )"}"{{endif}} aria-labelledby='{expression="trim( $id ?: $name, '[]' )"}_unlimited_label'>
+		<label for='{expression="trim( $id ?: $name, '[]' )"}_unlimited' id='{expression="trim( $id ?: $name, '[]' )"}_unlimited_label' class='ipsField_unlimited'>{lang="$unlimitedLang"}</label>
+{{endif}}

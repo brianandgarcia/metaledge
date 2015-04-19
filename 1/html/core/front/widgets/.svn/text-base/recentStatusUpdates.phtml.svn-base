@@ -1,0 +1,32 @@
+<ips:template parameters="$statuses" />
+<h3 class='ipsType_reset ipsWidget_title'>{lang="block_recentStatusUpdates"}</h3>
+<div class='ipsWidget_inner'>
+	{{if count( $statuses ) > 0}}
+		<ul class='ipsDataList ipsPad_half'>
+			{{foreach $statuses as $status}}
+				<li class='ipsDataItem {{if $status->hidden()}} ipsModerated{{endif}}'>
+					<div class='ipsDataItem_icon ipsPos_top'>
+						{template="userPhoto" group="global" app="core" params="$status->author(), 'tiny'"}
+					</div>
+					<div class='ipsDataItem_main ipsType_medium ipsType_break'>
+						<p class='ipsType_medium ipsType_reset'>
+							{{if $status->member_id != $status->author()->member_id}}
+								<strong class='ipsType_light'>{$status->author()->link()|raw}</strong> &nbsp;<i class='fa fa-angle-right'></i>&nbsp; <strong>{expression="\IPS\Member::load( $status->member_id )->link()" raw="true"}</strong>
+							{{else}}
+								<strong>{$status->author()->link()|raw}</strong>
+							{{endif}}
+						</p>
+						<div class='ipsContained' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='3 lines'>
+							{$status->truncated()|raw}
+						</div>
+						<span class='ipsType_light ipsType_small'><a href='{$status->url()}' class='ipsType_blendLinks'>{datetime="$status->date"}</a></span>
+					</div>
+				</li>
+			{{endforeach}}
+		</ul>
+	{{else}}
+		<div class='ipsPad'>
+			<p class='ipsType_reset'>{lang="no_recent_statuses"}</p>
+		</div>
+	{{endif}}
+</div>

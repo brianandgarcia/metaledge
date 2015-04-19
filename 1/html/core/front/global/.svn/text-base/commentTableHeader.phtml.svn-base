@@ -1,0 +1,18 @@
+<ips:template parameters="$comment, $status" />
+
+
+<div class='ipsDataList ipsAreaBackground_light ipsClearfix'>
+	<div class='ipsDataItem'>
+		<div class='ipsDataItem_icon'>
+			{template="userPhoto" group="global" app="core" params="$status->author()"}
+		</div>
+		<div class='ipsDataItem_main'>
+			<p class='ipsType_medium ipsType_light ipsType_blendLinks ipsType_reset'>
+				{lang="status_updated_by" htmlsprintf="$status->author()->link()"}
+			</p>
+			<div class='ipsType_richText ipsType_medium' data-ipsTruncate data-ipsTruncate-size='5 lines' data-ipsTruncate-type='remove'>
+				{$status->truncated()|raw}
+			</div>
+		</div>
+	</div>
+</div>

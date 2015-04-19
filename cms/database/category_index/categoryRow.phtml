@@ -1,6 +1,7 @@
-<ips:template parameters="$category" original_group="category_index" key="database_category_index_categoryRow" />
-{{$RecordsClass = '\\IPS\\cms\\Records' . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
+<ips:template parameters="$category" />
+{{$RecordsClass = $category::$contentItemClass;}}
 {{if $category->can('view')}}
+{{$lastPost = $category->lastPost();}}
 	<li class="ipsDataItem ipsDataItem_responsivePhoto {{if $RecordsClass::containerUnread( $category )}}ipsDataItem_unread{{endif}} ipsClearfix" data-categoryID="{$category->_id}">
 		<div class="ipsDataItem_icon ipsDataItem_category">
 			{{if \IPS\Member::loggedIn()->member_id}}<a href="{$category->url()->setQueryString( array( 'do' => 'markRead', 'c' => $category->_id ) )->csrf()}" data-action='markAsRead'>{{endif}}
@@ -9,7 +10,7 @@
 				</span>
 			{{if \IPS\Member::loggedIn()->member_id}}</a>{{endif}}
 		</div>
-		<div class="ipsDataItem_main">
+		<div class="ipsDataItem_main ipsPos_middle">
 			<h4 class="ipsDataItem_title ipsType_large">
 				<a href="{$category->url()}">{$category->_title}</a>
 			</h4>
@@ -26,19 +27,21 @@
 				<div class="ipsDataItem_meta ipsType_richText ipsType_light">{$category->_description|raw}</div>
 			{{endif}}
 		</div>
-		<dl class="ipsDataItem_stats ipsDataItem_statsLarge">
-			{{$count = $RecordsClass::contentCount( $category, FALSE );}}
-			<dt class="ipsDataItem_stats_number">{expression="\IPS\Member::loggedIn()->language()->formatNumber( $count )"}</dt>
-			<dd class="ipsDataItem_stats_type ipsType_light">{expression="\IPS\cms\Databases::load( $category->database_id )->recordWord( $count )"}</dd>
-		</dl>
+		{{if $lastPost}}
+			<dl class="ipsDataItem_stats ipsDataItem_statsLarge">
+				{{$count = $RecordsClass::contentCount( $category, FALSE );}}
+				<dt class="ipsDataItem_stats_number">{number="$count"}</dt>
+				<dd class="ipsDataItem_stats_type ipsType_light">{expression="\IPS\cms\Databases::load( $category->database_id )->recordWord( $count )"}</dd>
+			</dl>
+		{{endif}}
 		<ul class="ipsDataItem_lastPoster ipsDataItem_withPhoto">
-			{{if $lastPost = $category->lastPost()}}
+			{{if $lastPost}}
 				<li>{template="userPhoto" app="core" group="global" params="$lastPost['author'], 'tiny'"}</li>
 				<li><a href="{$lastPost['record_url']}" class='ipsType_break ipsContained' title='{$lastPost['record_title']}'>{truncate="$lastPost['record_title']" length="30"}</a></li>
 				<li>{lang="byline_nodate" htmlsprintf="$lastPost['author']->link()"}</li>
 				<li data-short="1 dy" class="ipsType_light"><a href='{$lastPost['record_url']->setQueryString( 'do', 'getLastComment' )}' title='{lang="get_last_post"}' class='ipsType_blendLinks'>{datetime="$lastPost['date']"}</a></li>
 			{{else}}
-				<li class='ipsType_light'>{lang="content_categories_index_no_records" sprintf="\IPS\cms\Databases::load( $category->database_id )->recordWord()"}</li>
+				<li class='ipsType_light ipsResponsive_showDesktop'>{lang="content_categories_index_no_records" sprintf="\IPS\cms\Databases::load( $category->database_id )->recordWord()"}</li>
 			{{endif}}
 		</ul>
 	</li>

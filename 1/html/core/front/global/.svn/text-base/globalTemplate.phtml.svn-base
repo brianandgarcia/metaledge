@@ -1,0 +1,72 @@
+<ips:template parameters="$title,$html,$location=array()" />
+<!DOCTYPE html>
+<html lang="{expression="\IPS\Member::loggedIn()->language()->bcp47()"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
+	<head>
+		<title>{expression="output.getTitle( $title )"}</title>
+		<!--[if lt IE 9]>
+			{{foreach \IPS\Theme::i()->css( 'extra/ie8.css', 'core' ) as $css}}<link rel="stylesheet" type="text/css" href="{$css}">{{endforeach}}
+		    <script src="{url="applications/core/interface/html5shiv/html5shiv.js" base="none"}"></script>
+		<![endif]-->
+		{template="includeMeta" app="core" group="global" location="global" params=""}
+		{template="includeCSS" app="core" group="global" location="global" params=""}
+		{template="includeJS" if="theme.js_include != 'footer'" app="core" group="global" location="global" params=""}
+		{template="favico" app="core" group="global" location="front" params=""}
+	</head>
+	<body class='ipsApp ipsApp_front ipsJS_none ipsClearfix{{foreach output.bodyClasses as $class}} {$class}{{endforeach}}' {{if output.globalControllers}}data-controller='{expression="implode( ',', output.globalControllers )"}'{{endif}} {{if isset( output.inlineMessage )}}data-message="{expression="output.inlineMessage"}"{{endif}} data-pageApp='{$location['app']}' data-pageLocation='front' data-pageModule='{$location['module']}' data-pageController='{$location['controller']}' itemscope itemtype="http://schema.org/WebSite">
+		<meta itemprop="url" content="{url="/"}">
+		<a href='#elContent' class='ipsHide' title='{lang="jump_to_content_desc"}' accesskey='m'>{lang="jump_to_content"}</a>
+		{template="offlineMessage" if="!settings.site_online && \IPS\Member::loggedIn()->group['g_access_offline']" app="core" group="global" params=""}
+		<div id='ipsLayout_header' class='ipsClearfix'>
+			{template="lkeyWarning" app="core" group="global" location="global" params=""}
+			{{if !in_array('ipsLayout_minimal', \IPS\Output::i()->bodyClasses )}}{template="mobileNavBar" app="core" group="global" params=""}{{endif}}
+			<header>
+				<div class='ipsLayout_container'>
+					{template="logo" app="core" group="global" params=""}
+					{{if !in_array('ipsLayout_minimal', \IPS\Output::i()->bodyClasses )}}{template="userBar" app="core" group="global" params=""}{{endif}}
+				</div>
+			</header>
+			{template="navBar" app="core" group="global" params=""}
+		</div>
+		<main role='main' id='ipsLayout_body' class='ipsLayout_container'>
+			<div id='ipsLayout_contentArea'>
+				<div id='elHeaderNavigation' class='ipsSubNavigation'>
+					{template="utilitiesMenu" app="core" group="global" params=""}
+					{template="breadcrumb" app="core" group="global" params="true"}
+				</div>
+				<div id='ipsLayout_contentWrapper'>
+					{template="sidebar" if="theme.sidebar_position == 'left'" app="core" group="global" params="'left'"}
+					<div id='ipsLayout_mainArea'>
+						<a id='elContent'></a>
+						{advertisement="ad_global_header"}
+						{template="acknowledgeWarning" if="\IPS\Member::loggedIn()->members_bitoptions['unacknowledged_warnings']" params="\IPS\Member::loggedIn()->warnings( 1, FALSE )" group="global" app="core"}
+						{template="widgetContainer" group="global" app="core" params="'header', 'horizontal'"}
+						{$html|raw}
+						{template="widgetContainer" group="global" app="core" params="'footer', 'horizontal'"}
+						{advertisement="ad_global_footer"}
+					</div>
+					{template="sidebar" if="theme.sidebar_position == 'right'" app="core" group="global" params="'right'"}
+				</div>
+				<div id='elFooterNavigation' class='ipsSubNavigation'>
+					{template="rssMenu" app="core" group="global" params=""}
+					{template="breadcrumb" app="core" group="global" params="false"}
+				</div>
+			</div>
+			{template="inlineMessage" if="member.msg_show_notification and $conversation = \IPS\core\Messenger\Conversation::latestUnreadConversation()" app="core" group="global" params="$conversation->comments( 1, NULL, 'date', 'desc' )"}
+		</main>
+		<footer id='ipsLayout_footer' class='ipsClearfix'>
+			<div class='ipsLayout_container'>
+				{template="footer" app="core" group="global" params=""}
+			</div>
+		</footer>
+		{{if !in_array('ipsLayout_minimal', \IPS\Output::i()->bodyClasses )}}{template="mobileNavigation" if="theme.responsive" app="core" group="global" params=""}{{endif}}
+		{template="includeJS" if="theme.js_include == 'footer'" app="core" group="global" location="global" params=""}
+		{{if settings.ipbseo_ga_enabled}}
+			{setting="ipseo_ga"}
+		{{endif}}
+		{template="viglink" if="settings.viglink_enabled" app="core" group="global" params=""}
+		{template="metaTagEditor" if="isset( $_SESSION['live_meta_tags'] ) and $_SESSION['live_meta_tags'] and member.isAdmin()" app="core" group="global" params=""}
+		<!--ipsQueryLog-->
+		<!--ipsCachingLog-->
+		{expression="output.endBodyCode" raw="true"}
+	</body>
+</html>

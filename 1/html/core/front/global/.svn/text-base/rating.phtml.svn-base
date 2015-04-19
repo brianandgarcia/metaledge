@@ -1,0 +1,8 @@
+<ips:template parameters="$size, $value, $max=5" />
+<ul class='ipsList_inline ipsClearfix ipsRating {{if $size}}ipsRating_{$size}{{endif}}'>
+	{{foreach range( 1, $max ) as $i}}
+		<li class='{{if $i <= $value}}ipsRating_on{{else}}ipsRating_off{{endif}}'>
+			<i class='fa fa-star'></i>
+		</li>
+	{{endforeach}}
+</ul>

@@ -1,0 +1,32 @@
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	.ipsApp_admin .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+		display: block;
+		background: #f5f5f5;
+		padding: 10px;
+		text-align: left;
+		margin: -7px -7px 10px -7px;
+		font-size: 15px;
+	}
+	html[dir="rtl"] .ipsApp_admin .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_title {
+		text-align: right;
+	}
+
+	.ipsFieldRow_section {
+		background: #707b81;
+		color: #fff;
+		font-weight: normal;
+		padding: 10px;
+		margin-top: 5px;
+		font-size: 16px;
+	}
+
+	.ipsApp_admin .ipsForm_horizontal .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
+		padding: 7px;
+	}
+
+	.ipsForm .ipsFieldRow {
+		margin-bottom: 0;
+	}
+}

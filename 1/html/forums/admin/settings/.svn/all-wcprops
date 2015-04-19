@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/ips-suite/!svn/ver/6758/trunk/applications/forums/dev/html/admin/settings
+END
+archiveRules.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/2023/trunk/applications/forums/dev/html/admin/settings/archiveRules.phtml
+END
+archiveRuleGtLt.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/6758/trunk/applications/forums/dev/html/admin/settings/archiveRuleGtLt.phtml
+END
+popularNow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/6342/trunk/applications/forums/dev/html/admin/settings/popularNow.phtml
+END
+archiveRuleTime.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/6342/trunk/applications/forums/dev/html/admin/settings/archiveRuleTime.phtml
+END

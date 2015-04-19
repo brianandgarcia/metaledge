@@ -1,6 +1,6 @@
-<ips:template parameters="$rows" original_group="display" key="database_display_filtersAddComment" />
-<p>
+<ips:template parameters="$rows" />
+<div>
 	{{foreach $rows as $line}}
 		<p>{$line|raw}</p>
 	{{endforeach}}
-</p>
+</div>

@@ -1,0 +1,6 @@
+<ips:template parameters="$topic, $lang, $link=NULL" />
+<li class="ipsDataItem">
+	<div class='ipsPad ipsType_center ipsType_light ipsType_large'>
+		{$lang}{{if $link}} <a href="{$link}">{lang="enter_password"}</a>{{endif}}
+	</div>
+</li>

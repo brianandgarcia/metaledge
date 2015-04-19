@@ -1,4 +1,4 @@
-<ips:template parameters="$category, $table, $activeFilters" original_group="listing" key="database_listing_categoryFooter" />
+<ips:template parameters="$category, $table, $activeFilters" />
 
 {{if ! \IPS\Request::i()->isAjax() AND ! isset( \IPS\Request::i()->advancedSearchForm ) AND $category->show_records}}
 	<ul class="ipsToolList ipsToolList_horizontal ipsClearfix ipsSpacer_both ipsResponsive_showPhone ipsResponsive_block">

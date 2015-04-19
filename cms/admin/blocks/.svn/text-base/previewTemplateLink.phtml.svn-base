@@ -1,0 +1,2 @@
+<ips:template parameters="$plugin" />
+<span data-role="viewTemplate" data-plugin="{$plugin}" class='ipsButton ipsButton_light ipsButton_verySmall'>{lang="cms_block_view_template"}</span>

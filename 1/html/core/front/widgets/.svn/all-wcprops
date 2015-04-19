@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/widgets
+END
+activeUsers.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/6493/trunk/applications/core/dev/html/front/widgets/activeUsers.phtml
+END
+announcements.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/7140/trunk/applications/core/dev/html/front/widgets/announcements.phtml
+END
+stats.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/9608/trunk/applications/core/dev/html/front/widgets/stats.phtml
+END
+formTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/4780/trunk/applications/core/dev/html/front/widgets/formTemplate.phtml
+END
+topContributors.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/4951/trunk/applications/core/dev/html/front/widgets/topContributors.phtml
+END
+topContributorRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/4951/trunk/applications/core/dev/html/front/widgets/topContributorRow.phtml
+END
+whosOnline.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/6494/trunk/applications/core/dev/html/front/widgets/whosOnline.phtml
+END
+blockList.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/widgets/blockList.phtml
+END
+recentStatusUpdates.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/widgets/recentStatusUpdates.phtml
+END
+relatedContent.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/6909/trunk/applications/core/dev/html/front/widgets/relatedContent.phtml
+END
+blankWidget.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/5792/trunk/applications/core/dev/html/front/widgets/blankWidget.phtml
+END

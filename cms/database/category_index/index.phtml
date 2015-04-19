@@ -1,9 +1,9 @@
-<ips:template parameters="$database, $categories, $url" original_group="category_index" key="database_category_index_index" />
+<ips:template parameters="$database, $categories, $url" />
 <div class='ipsPageHeader ipsClearfix ipsSpacer_bottom'>
 	{{if $database->cat_index_type == 1}}
-	<div class='ipsPos_right ipsResponsive_noFloat'>
-		<a href="{$url}" class="ipsButton ipsButton_medium ipsButton_fullWidth ipsButton_link"><i class="fa fa-star"></i> {lang="cms_show_featured" sprintf="$database->recordWord()"}</a>
-	</div>
+		<div class='ipsPos_right ipsResponsive_noFloat'>
+			<a href="{$url}" class="ipsButton ipsButton_medium ipsButton_fullWidth ipsButton_link"><i class="fa fa-star"></i> {lang="cms_show_featured" sprintf="$database->recordWord()"}</a>
+		</div>
 	{{endif}}
 	<h1 class='ipsType_pageTitle'>{$database->_title}</h1>
 	{{if $database->_description}}
@@ -12,9 +12,8 @@
 		</div>
 	{{endif}}
 </div>
-<hr class='ipsHr'>
-<section>
-	<ol class='ipsList_reset cForumList' data-controller='core.global.core.table, forums.front.forum.forumList' data-baseURL=''>
+<section class="ipsBox">
+	<ol class='ipsList_reset cCmsDatabase_index' data-controller='core.global.core.table, forums.front.forum.forumList' data-baseURL=''>
 		<li class='cForumRow'>
 			<h2 class="ipsType_sectionTitle ipsType_reset ipsType_blendLinks">
 				{lang="content_categories_title"}
@@ -22,11 +21,11 @@
 			{{if ! count($categories)}}
 				<div class="ipsBox ipsPad">{lang="cms_no_cats_to_show"}</div>
 			{{else}}
-				{{foreach $categories as $category}}
-					<ol class="ipsDataList ipsDataList_large ipsDataList_readStatus ipsAreaBackground_reset">
+				<ol class="ipsDataList ipsDataList_large ipsDataList_zebra ipsAreaBackground_reset">
+					{{foreach $categories as $category}}
 						{template="categoryRow" group="category_index" location="database" app="cms" params="$category"}
-					</ol>
-				{{endforeach}}
+					{{endforeach}}
+				</ol>
 			{{endif}}
 		</li>
 	</ol>

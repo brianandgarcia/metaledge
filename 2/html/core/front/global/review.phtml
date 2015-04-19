@@ -23,7 +23,6 @@
 				{{endif}}
 				{{if $review->hidden() !== 1 and $review instanceof \IPS\Content\ReportCenter and !\IPS\Member::loggedIn()->group['gbw_no_report'] }}
 					&middot; <a href='{$review->url('report')}' data-ipsDialog data-ipsDialog-remoteSubmit data-ipsDialog-size='medium' data-ipsDialog-flashMessage='{lang="report_submit_success"}' data-ipsDialog-title="{lang="report"}" data-action='reportComment' title='{lang="report"}'>{lang="report"}</a>
-					</li>
 				{{endif}}
 			</p>
 			<ul class='ipsList_inline ipsClearfix ipsRating ipsRating_large' itemprop='reviewRating' itemscope itemtype='http://schema.org/Rating'>

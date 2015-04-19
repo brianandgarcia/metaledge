@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/ips-suite/!svn/ver/9364/trunk/applications/calendar/dev/html/front/submit
+END
+submitPage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/4651/trunk/applications/calendar/dev/html/front/submit/submitPage.phtml
+END
+datesForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/9364/trunk/applications/calendar/dev/html/front/submit/datesForm.phtml
+END
+submitForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/4651/trunk/applications/calendar/dev/html/front/submit/submitForm.phtml
+END

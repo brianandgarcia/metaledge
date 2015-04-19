@@ -1,0 +1,38 @@
+<ips:template parameters="$member, $form, $canEdit, $canSeeIps" />
+
+<div class='ipsAreaBackground ipsPad ipsPhotoPanel ipsPhotoPanel_large ipsClearfix' id='elEditMemberHeader'>
+	<a href="{$member->url()}" class='ipsPos_left'><img src='{$member->photo}' class='ipsUserPhoto ipsUserPhoto_large'></a>
+	<div>
+		<ul class='ipsDataList ipsDataList_reducedSpacing ipsType_normal'>
+			<li class='ipsDataItem'>
+				<span class='ipsDataItem_generic ipsDataItem_size3'><strong>{lang="members_joined"}</strong></span>
+				<span class='ipsDataItem_generic'>{$member->joined->localeDate()} {{if $member->members_bitoptions['validating']}}<i class="fa fa-warning"></i> <span class="ipsType_light ipsType_small">{$member->validatingDescription()}</span>{{endif}}</span>
+			</li>
+			<li class='ipsDataItem'>
+				<span class='ipsDataItem_generic ipsDataItem_size3'><strong>{lang="members_ip_address"}</strong></span>
+				<span class='ipsDataItem_generic'>
+					{{if $canSeeIps}}
+						<a href="{url="app=core&module=members&controller=ip&ip={$member->ip_address}"}">{$member->ip_address}</a> <a href="{url="app=core&module=members&controller=members&do=ip&id={$member->member_id}"}" class="ipsType_light">({lang="see_all"})</a>
+					{{else}}
+						{$member->ip_address}
+					{{endif}}
+				</span>
+			</li>
+		</ul>
+	</div>
+	{{if $canEdit}}
+		<ul class="ipsControlStrip ipsType_noBreak ipsList_reset ipsPos_left" id='elEditPhoto'>
+			<li class='ipsControlStrip_button'>
+				<a href="{url="app=core&module=members&controller=members&do=photo&id={$member->member_id}"}" data-ipsDialog data-ipsDialog-title='{lang="edit"}' title="{lang="edit"}" data-ipsTooltip><i class='ipsControlStrip_icon fa fa-pencil'></i></a>
+			</li>
+			{{if $member->pp_photo_type === 'custom'}}
+				<li class='ipsControlStrip_button'>
+					<a href="{url="app=core&module=members&controller=members&do=photoResize&id={$member->member_id}"}" data-ipsDialog data-ipsDialog-title='{lang="member_photo_resize"}' title="{lang="member_photo_resize"}" data-ipsTooltip><i class='ipsControlStrip_icon fa fa-arrows-alt'></i></a>
+				</li>
+			{{endif}}
+		</ul>
+	{{endif}}
+</div>
+<br>
+
+{$form|raw}

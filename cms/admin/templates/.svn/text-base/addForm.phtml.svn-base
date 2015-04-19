@@ -1,0 +1,4 @@
+<ips:template parameters="$formHTML, $type" />
+<div data-controller='core.admin.templates.addForm' data-type='$type'>
+	{$formHTML|raw}
+</div>

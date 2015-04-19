@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/admin/promotion
+END
+activeBadge.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/4475/trunk/applications/core/dev/html/admin/promotion/activeBadge.phtml
+END
+advertisementMessage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/ips-suite/!svn/ver/4768/trunk/applications/core/dev/html/admin/promotion/advertisementMessage.phtml
+END
+advertisementIframePreview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/ips-suite/!svn/ver/1838/trunk/applications/core/dev/html/admin/promotion/advertisementIframePreview.phtml
+END
+imageMaximums.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/admin/promotion/imageMaximums.phtml
+END

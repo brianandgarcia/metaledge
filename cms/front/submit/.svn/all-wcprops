@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/ips-suite/!svn/ver/8250/trunk/applications/cms/dev/html/front/submit
+END
+topic.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/ips-suite/!svn/ver/6273/trunk/applications/cms/dev/html/front/submit/topic.phtml
+END
+createRecord.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/4529/trunk/applications/cms/dev/html/front/submit/createRecord.phtml
+END
+createRecordForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/8250/trunk/applications/cms/dev/html/front/submit/createRecordForm.phtml
+END

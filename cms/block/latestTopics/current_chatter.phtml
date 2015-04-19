@@ -14,7 +14,7 @@
 			{{endforeach}}
 		</ul>
 	</div>
-	<a href="{$topic->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$topic->title"}'>View All</a>
+	<a href="{$topics[0]->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$topics[0]->title"}'>View All</a>
 </div>
 {{endif}}
 	

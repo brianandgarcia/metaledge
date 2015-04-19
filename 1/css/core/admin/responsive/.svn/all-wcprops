@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ips-suite/!svn/ver/9146/trunk/applications/core/dev/css/admin/responsive
+END
+login.css
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/1795/trunk/applications/core/dev/css/admin/responsive/login.css
+END
+tabs.css
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/5373/trunk/applications/core/dev/css/admin/responsive/tabs.css
+END
+tables.css
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/1371/trunk/applications/core/dev/css/admin/responsive/tables.css
+END
+buttons.css
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/8818/trunk/applications/core/dev/css/admin/responsive/buttons.css
+END
+global.css
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/9146/trunk/applications/core/dev/css/admin/responsive/global.css
+END
+controlstrip.css
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/1371/trunk/applications/core/dev/css/admin/responsive/controlstrip.css
+END
+trees.css
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/5373/trunk/applications/core/dev/css/admin/responsive/trees.css
+END
+forms.css
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/5373/trunk/applications/core/dev/css/admin/responsive/forms.css
+END

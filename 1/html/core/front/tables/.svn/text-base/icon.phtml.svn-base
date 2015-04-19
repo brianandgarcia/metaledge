@@ -1,0 +1,2 @@
+<ips:template parameters="$class" />
+<i class='fa fa-{$class::$icon}'></i> {lang="$class::$title"}

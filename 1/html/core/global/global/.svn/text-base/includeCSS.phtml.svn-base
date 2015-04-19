@@ -1,0 +1,13 @@
+<ips:template parameters="" />
+{{foreach array_unique( \IPS\Output::i()->cssFiles, SORT_STRING ) as $file}}
+	<link rel='stylesheet' href='{expression="\IPS\Http\Url::external( $file )->setQueryString( 'v', \IPS\SUITE_UNIQUE_KEY )"}' media='all'>
+{{endforeach}}
+{{$customCss = \IPS\Theme::i()->css( 'custom.css', 'core', 'front' );}}
+{{foreach $customCss as $css}}
+<link rel='stylesheet' href='{expression="\IPS\Http\Url::external( $css )->setQueryString( 'v', \IPS\SUITE_UNIQUE_KEY )"}' media='all'>
+{{endforeach}}
+{{if \IPS\Output::i()->headCss}}
+<style type='text/css'>
+	{expression="\IPS\Output::i()->headCss" raw="true"}
+</style>
+{{endif}}

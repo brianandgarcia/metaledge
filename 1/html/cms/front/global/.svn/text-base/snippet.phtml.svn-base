@@ -1,0 +1,22 @@
+<ips:template parameters="$activity, $type='activity'" />
+<div class='cSearchActivity_info ipsContained'>
+	{{if in_array( 'IPS\cms\Records', class_parents( $activity ) )}}
+		{{if $type != 'search'}}<a href='{$activity->url()}' class='ipsType_normal ipsType_break'>{$activity->mapped('title')}</a>{{endif}}
+		<div class='ipsType_medium ipsType_richText ipsContained {{if $type != 'search'}}ipsSpacer_both{{else}}ipsSpacer_bottom{{endif}} ipsSpacer_half' data-ipsTruncate data-ipsTruncate-size='3 lines' data-ipsTruncate-type='remove'>
+			{$activity->truncated()|raw}
+		</div>
+		<ul class='ipsList_inline ipsType_light'>
+			<li>{lang="replies_number" pluralize="$activity->mapped('num_comments')"}</li>
+			<li>{lang="num_views_with_number" pluralize="$activity->mapped('views')"}</li>
+		</ul>
+	{{else}}
+		<div class='ipsType_medium ipsType_richText ipsContained ipsSpacer_bottom ipsSpacer_half' data-ipsTruncate data-ipsTruncate-size='3 lines' data-ipsTruncate-type='remove'>
+			{$activity->truncated()|raw}
+		</div>
+		{{if $type != 'search' and $activity instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
+			<ul class='ipsList_inline ipsType_light'>
+				<li>{template="reputationMini" group="global" app="core" params="$activity, '', NULL, TRUE"}</li>
+			</ul>
+		{{endif}}
+	{{endif}}
+</div>

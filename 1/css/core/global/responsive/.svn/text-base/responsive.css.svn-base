@@ -1,0 +1,170 @@
+/* Default responsive css is in framework css so that hidden items are hidden even when
+	responsiveness is disabled */
+
+/* DESKTOPS */
+@media screen and (min-width: 980px) {
+	.ipsResponsive_hideDesktop {
+		display: none !important;
+	}
+}
+
+/* TABLETS */
+@media screen and (min-width: 768px) and (max-width: 979px) {
+	/*.ipsResponsive_showTablet, .ipsResponsive_hideDesktop, .ipsResponsive_hidePhone,*/
+	.ipsResponsive_hideDesktop.ipsResponsive_inline,
+	.ipsResponsive_showTablet.ipsResponsive_inline {
+		display: inline !important;
+	}
+	.ipsResponsive_hideDesktop.ipsResponsive_inlineBlock,
+	.ipsResponsive_showTablet.ipsResponsive_inlineBlock {
+		display: inline-block !important;
+	}
+	.ipsResponsive_hideDesktop.ipsResponsive_block,
+	.ipsResponsive_showTablet.ipsResponsive_block {
+		display: block !important;
+	}
+
+	.ipsResponsive_hideTablet, .ipsResponsive_showDesktop, .ipsResponsive_showPhone,
+	.ipsResponsive_hideTablet.ipsResponsive_inline,
+	.ipsResponsive_hideTablet.ipsResponsive_inlineBlock,
+	.ipsResponsive_hideTablet.ipsResponsive_block,
+	.ipsResponsive_showDesktop.ipsResponsive_inline,
+	.ipsResponsive_showDesktop.ipsResponsive_inlineBlock,
+	.ipsResponsive_showDesktop.ipsResponsive_block {
+		display: none !important;
+	}
+}
+
+/* PHONES */
+@media screen and (max-width: 767px) {
+	.ipsResponsive_showPhone, .ipsResponsive_hideDesktop, .ipsResponsive_hideTablet,
+	.ipsResponsive_hideDesktop.ipsResponsive_inline,
+	.ipsResponsive_showPhone.ipsResponsive_inline {
+		display: inline !important;
+	}
+	.ipsResponsive_hideDesktop.ipsResponsive_block,
+	.ipsResponsive_showPhone.ipsResponsive_block {
+		display: block !important;
+	}
+	.ipsResponsive_hideDesktop.ipsResponsive_inlineBlock,
+	.ipsResponsive_showPhone.ipsResponsive_inlineBlock {
+		display: inline-block !important;
+	}
+	.ipsResponsive_hidePhone, .ipsResponsive_showDesktop, .ipsResponsive_showTablet,
+	.ipsResponsive_showDesktop.ipsResponsive_inline,
+	.ipsResponsive_showDesktop.ipsResponsive_inlineBlock,
+	.ipsResponsive_showDesktop.ipsResponsive_block,
+	.ipsResponsive_hidePhone.ipsResponsive_inline,
+	.ipsResponsive_hidePhone.ipsResponsive_inlineBlock,
+	.ipsResponsive_hidePhone.ipsResponsive_block {
+		display: none !important;
+	}
+}
+
+@media screen and (max-width: 979px) {
+	/* Prevent a floating element from floating on mobile devices */
+	.ipsResponsive_noFloat {
+		float: none !important;
+		margin-top: 5px;
+	}
+
+	#ipsLayout_header > header {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	#elSiteTitle {
+		font-size: 24px;
+	}
+
+	#elHeaderNavigation {
+		position: absolute;
+		top: -105px;
+		margin-top: 0 !important;
+		opacity: 1;
+		background: transparent;
+		/*float: left;
+		margin-top: 9px;*/
+	}
+
+	#ipsLayout_footer ul {
+		text-align: center;
+		width: 100%;
+	}
+
+	#elCopyright {
+		clear: both;
+		float: none;
+		text-align: center;
+	}
+
+	.ipsHeader_tabs {
+		display: none;
+	}
+
+	/* Turns the last-but-one breadcrumb item in a 'Back' button, like <[ Home ] */
+	.ipsApp .ipsSubNavigation .ipsBreadcrumb li, .ipsBreadcrumb li i {
+		display: none;
+	}
+
+	.ipsBreadcrumb li {
+		overflow: visible;
+	}
+
+#elMobileBreadcrumb {
+	top: 10px;
+	position: absolute;
+	background-color: #222;
+	height: 30px;
+	padding: 0 10px 0 8px;
+	font-size: 11px;
+    display: block;
+    text-align: center;
+    text-shadow: none;
+    line-height: 30px;
+    font-weight: 700;
+	min-width: 40px;
+}
+	html[dir="ltr"] #elMobileBreadcrumb {
+		left: 15px;
+		border-radius: 3px 6px 6px 3px;
+	}
+	html[dir="rtl"] #elMobileBreadcrumb {
+		right: 15px;
+		border-radius: 6px 3px 3px 6px;
+	}
+	
+	#elMobileBreadcrumb a {
+		font-size: 11px !important;
+		line-height: 30px !important;
+		display: inline-block;
+		white-space: nowrap;
+		max-width: 70px;
+		height: 30px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		word-break: normal;
+		color: #fff !important;
+	}
+
+	#elMobileBreadcrumb:before {
+		font-family: 'FontAwesome';
+		color: #222;
+		display: block;
+		position: absolute;
+		top: -1px;
+		font-size: 30px;
+		width: 13px;
+		overflow: hidden;
+		text-shadow: none;
+		{prefix="transform" value="scaleX(0.8)"}
+	}
+	html[dir="ltr"] #elMobileBreadcrumb:before {
+		content: '\f060';
+		left: -11px;
+	}
+	html[dir="rtl"] #elMobileBreadcrumb:before {
+		content: '\f061';
+		right: -11px;
+	}
+}

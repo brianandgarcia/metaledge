@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/ips-suite/!svn/ver/8052/trunk/applications/core/dev/resources/front/loaders
+END
+tiny_loading.gif
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/8052/trunk/applications/core/dev/resources/front/loaders/tiny_loading.gif
+END
+large_loading@2x.gif
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/front/loaders/large_loading@2x.gif
+END
+large_loading.gif
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/8052/trunk/applications/core/dev/resources/front/loaders/large_loading.gif
+END
+tiny_loading@2x.gif
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/7677/trunk/applications/core/dev/resources/front/loaders/tiny_loading@2x.gif
+END

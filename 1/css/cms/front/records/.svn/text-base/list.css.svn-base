@@ -1,0 +1,14 @@
+/* ----- */
+.cCmsListing .ipsDataItem_lastPoster {
+	padding: 10px 0;
+	vertical-align: top;
+}
+
+.cCmsRecord_row h4.ipsDataItem_title {
+	font-size: 14px !important;
+	display: inline;
+}
+
+.ipsDataItem_main span.ipsBadge.ipsPos_right {
+	margin-left: 4px;
+}

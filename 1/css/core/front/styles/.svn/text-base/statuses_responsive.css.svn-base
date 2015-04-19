@@ -1,0 +1,30 @@
+/* PHONES */
+@media screen and (max-width: 767px) {
+
+	.cStatusUpdates .ipsUserPhoto,
+	.cStatusUpdates .ipsComment.ipsComment_parent > .ipsComment_content:before {
+		display: none;
+	}
+
+	.cStatusUpdates .ipsLikeRep {
+		margin-bottom: 0;
+	}
+
+	html[dir="ltr"] .cStatusUpdates .ipsComment_subComments {
+		margin-left: 15px;
+	}
+	html[dir="rtl"] .cStatusUpdates .ipsComment_subComments {
+		margin-right: 15px;
+	}
+
+	html[dir="ltr"] .cStatusUpdates .ipsComment[data-role="replyComment"],
+	html[dir="ltr"] .cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComposeArea_editor,
+	html[dir="ltr"] .cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content {
+		margin-left: 0;
+	}
+	html[dir="rtl"] .cStatusUpdates .ipsComment[data-role="replyComment"],
+	html[dir="rtl"] .cStatusUpdates .ipsComment[data-role="replyComment"] .ipsComposeArea_editor,
+	html[dir="rtl"] .cStatusUpdates .ipsComment.ipsComment_hasChildren > .ipsComment_content {
+		margin-right: 0;
+	}
+}

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/ips-suite/!svn/ver/9066/trunk/applications/core/dev/html/global/editor
+END
+link.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/5026/trunk/applications/core/dev/html/global/editor/link.phtml
+END
+attachedFile.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/9066/trunk/applications/core/dev/html/global/editor/attachedFile.phtml
+END
+myMediaContent.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4130/trunk/applications/core/dev/html/global/editor/myMediaContent.phtml
+END
+attachedImage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/9012/trunk/applications/core/dev/html/global/editor/attachedImage.phtml
+END
+mentionRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/3592/trunk/applications/core/dev/html/global/editor/mentionRow.phtml
+END
+image.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/4871/trunk/applications/core/dev/html/global/editor/image.phtml
+END
+myMedia.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/4130/trunk/applications/core/dev/html/global/editor/myMedia.phtml
+END
+fakeFormTemplate.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/1919/trunk/applications/core/dev/html/global/editor/fakeFormTemplate.phtml
+END
+myMediaResults.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/3336/trunk/applications/core/dev/html/global/editor/myMediaResults.phtml
+END

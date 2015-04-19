@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/ips-suite/!svn/ver/9896/trunk/applications/cms/dev/html/admin/blocks
+END
+previewBlock.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9896/trunk/applications/cms/dev/html/admin/blocks/previewBlock.phtml
+END
+pluginSelector.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/4529/trunk/applications/cms/dev/html/admin/blocks/pluginSelector.phtml
+END
+previewTemplateLink.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/5473/trunk/applications/cms/dev/html/admin/blocks/previewTemplateLink.phtml
+END

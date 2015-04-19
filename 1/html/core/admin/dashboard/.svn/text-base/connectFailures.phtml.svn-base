@@ -1,0 +1,32 @@
+<ips:template parameters="$failures, $failureCount=0" />
+{lang="connect_failures_desc" pluralize="$failureCount"}<br><br>
+{{if !empty( $failures )}}
+	<ul class='ipsDataList ipsDataList_reducedSpacing' itemscope itemtype="http://schema.org/ItemList">
+	{{foreach $failures as $failure }}
+		<li class='ipsDataItem' itemprop="itemListElement">
+			<div class='ipsDataItem_main'>
+				<div class='ipsPos_right ipsTree_controls'>
+					<ul data-ipscontrolstrip class="ipsControlStrip ipsType_noBreak ipsList_reset">
+						<li class="ipsControlStrip_button">
+							<a href='{url="app=core&module=settings&controller=login&do=retryConnect&slave={$failure['slave']['slave_id']}"}' title='{lang="slave_try_again"}' data-ipsTooltip>
+								<i class='ipsControlStrip_icon fa fa-play-circle'></i>
+								<span class='ipsControlStrip_item'>{lang="slave_try_again"}</span>
+							</a>
+						</li>
+						<li class="ipsControlStrip_button">
+							<a href='{url="app=core&module=overview&controller=dashboard&deleteSlave={$failure['slave']['slave_id']}" csrf="1"}' title='{lang="remove_slave"}' data-confirm data-ipsTooltip data-confirmMessage="{lang="delete_slave_confirm"}">
+								<i class='ipsControlStrip_icon fa fa-times-circle'></i>
+								<span class='ipsControlStrip_item'>{lang="remove_slave"}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<h4 class='ipsDataItem_title'>{$failure['slave']['slave_url']}</h4>
+				<p class='ipsDataItem_meta'>
+					{$failure['count']} {lang="failed_logins_suffix"}
+				</p>
+			</div>
+		</li>
+	{{endforeach}}
+	</ul>
+{{endif}}

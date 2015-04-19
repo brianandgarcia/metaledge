@@ -1,0 +1,33 @@
+<ips:template parameters="$result, $pagination" />
+<br><br>
+<div class="ipsOverflow">
+	{{if $pagination}}
+		{$pagination|raw}
+		<br><br>
+	{{endif}}
+	<table class="ipsTable ipsTable_zebra" >
+		{{$headers = FALSE;}}
+		{{while ($row = $result->fetch_assoc() ):}}
+			{{if !$headers}}
+			<tr>
+				{{foreach $row as $k => $v}}
+					<th>{$k}</th>
+				{{endforeach}}
+			</tr>
+			{{$headers = TRUE; endif;}}
+			<tr>
+				{{foreach $row as $v}}
+					<td>
+						<div data-ipsTruncate data-ipsTruncate-size="2 lines">
+							{$v}
+						</div>
+					</td>
+				{{endforeach}}
+			</tr>
+		{{endwhile;}}
+	</table>
+	{{if $pagination}}
+		<br><br>
+		{$pagination|raw}
+	{{endif}}
+</div>

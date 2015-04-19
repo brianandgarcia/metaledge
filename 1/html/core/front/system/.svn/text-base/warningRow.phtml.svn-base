@@ -1,0 +1,34 @@
+<ips:template parameters="$table, $headers, $rows" />
+
+{{foreach $rows as $row}}
+	<li class="ipsDataItem {{if method_exists( $row, 'tableClass' ) && $row->tableClass()}}ipsDataItem_{$row->tableClass()}{{endif}} ">
+		<div class='ipsDataItem_icon ipsPos_middle'>
+			<a href="{url="app=core&module=system&controller=warnings&id={$row->member}&w={$row->id}" seoTemplate="warn_view" seoTitle="\IPS\Member::load( $row->member )->members_seo_name"}" data-ipsDialog data-ipsDialog-size='narrow' class="ipsType_blendLinks" data-ipsTooltip title='{lang="wan_action_points" pluralize="$row->points"}'>
+				<span class="ipsPoints">{$row->points}</span>
+			</a>
+		</div>
+		<div class='ipsDataItem_main'>
+			<h4 class='ipsDataItem_title'>				
+				<a href='{$row->url()}' title='{lang="view_announcement"}' {{if $row->tableHoverUrl}}data-ipsHover{{endif}}>
+					{{if $row->mapped('title')}}{$row->mapped('title')}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
+				</a>
+			</h4>
+            {{if $row->note_member}}
+                <div class='ipsDataItem_meta ipsType_richText ipsType_medium' data-ipsTruncate data-ipsTruncate-size='1 lines' data-ipsTruncate-type='remove'>
+                    {lang="warn_member_note"}: {$row->note_member|raw}
+                </div>
+            {{endif}}
+            {{if $row->note_mods and member.modPermission('mod_see_warn')}}
+                <div class='ipsDataItem_meta ipsType_richText ipsType_medium' data-ipsTruncate data-ipsTruncate-size='1 lines' data-ipsTruncate-type='remove'>
+                    {lang="warn_mod_note"}: {$row->note_mods|raw}
+                </div>
+            {{endif}}
+			<span class='ipsType_light'>{lang="warned_by" sprintf="\IPS\Member::load( $row->moderator )->name"}{datetime="$row->__get( $row::$databaseColumnMap['date'] )"} {{if $row->expire_date > 0}}<em><strong>({lang="warning_expires" sprintf="\IPS\DateTime::ts( $row->expire_date )"})</em></strong>{{endif}}</span>
+		</div>
+		{{if $table->canModerate()}}
+			<div class='ipsDataItem_modCheck ipsType_noBreak ipsPos_center'>
+				<input type='checkbox' data-role='moderation' name="moderate[{$row->id}]" data-actions="{expression="implode( ' ', $table->multimodActions( $row ) )"}" data-state='{{if !$row->active}}hidden{{endif}}'>
+			</div>
+		{{endif}}
+	</li>
+{{endforeach}}

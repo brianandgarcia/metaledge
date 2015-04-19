@@ -1,0 +1,8 @@
+<ips:template parameters="$log" />
+<div class='ipsAreaBackground ipsPad'>
+	<div>
+		<label>{lang="emailerrorlogs_mlog_from"}</label>
+		<strong>{$log['mlog_from']}</strong>
+	</div>
+	<pre>{$log['mlog_content']}</pre>
+</div>

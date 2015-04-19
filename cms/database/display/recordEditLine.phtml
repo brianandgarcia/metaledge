@@ -1,7 +1,7 @@
-<ips:template parameters="$record" original_group="display" key="database_display_recordEditLine" />
+<ips:template parameters="$record" />
 
 <span class='ipsType_reset ipsType_medium ipsType_light' data-excludequote>
-	<strong>{lang="date_edited" htmlsprintf="\IPS\DateTime::ts( $record->record_edit_time )->html(), htmlentities( $record->record_edit_member_name, ENT_QUOTES | \IPS\HTMLENTITIES, 'UTF-8', FALSE )"}</strong>
+	<strong>{lang="date_edited" htmlsprintf="\IPS\DateTime::ts( $record->record_edit_time )->html(FALSE), htmlentities( $record->record_edit_member_name, ENT_QUOTES | \IPS\HTMLENTITIES, 'UTF-8', FALSE )"}</strong>
 	{{if $record->edit_reason}}
 		<br>{$record->edit_reason}
 	{{endif}}

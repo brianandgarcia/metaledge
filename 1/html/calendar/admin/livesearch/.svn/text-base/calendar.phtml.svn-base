@@ -1,0 +1,5 @@
+<ips:template parameters="$calendar" />
+<li class='ipsPad_half ipsClearfix' data-role='result'>
+	<a href='{url="app=calendar&module=calendars&controller=calendars&do=form&id="}{$calendar->id}' class='ipsPos_left'>{$calendar->_title}</a>
+</li>
+

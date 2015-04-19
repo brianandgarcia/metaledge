@@ -1,0 +1,86 @@
+<ips:template parameters="$downloadUrl, $key" />
+<div data-controller="core.admin.dashboard.delta" data-url="$downloadUrl">
+	<div class="ipsType_center ipsSpacer_bottom">
+		<div class="ipsJS_show" data-role="normal">
+			<div role="prep">
+				<p class="ipsType_large">{lang="delta_update_preparing"}</p>
+				<div class="ipsProgressBar ipsProgressBar_animated"><div class="ipsProgressBar_progress" style="width:100%"></div></div>
+			</div>
+			<div role="downloading" class="ipsHide">
+				<div class="ipsType_large ipsSpacer_bottom">{lang="delta_update_downloading"}</div>
+			</div>
+		</div>
+		<div class="ipsJS_hide" data-role="fallback">
+			<p class="ipsType_large">{lang="delta_update_ready"}</p>
+			<a href="{$downloadUrl}" class="ipsButton ipsButton_primary">{lang="delta_update_download"}</a>
+		</div>
+	</div>
+	
+	<div class='ipsTabs ipsClearfix ipsJS_show acpFormTabBar' id='tabs_deltaUpgrade' data-ipsTabBar data-ipsTabBar-contentArea='#ipsTabs_content_deltaUpgrade'>
+		<a href='#tabs_deltaUpgrade' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
+		<ul role='tablist'>
+			<li role='presentation'>
+				<a href='#ipsTabs_tabs_deltaUpgrade_deltaUpgrade_tab_windows_panel' id='deltaUpgrade_tab_windows' class="ipsTabs_item ipsTabs_activeItem">
+					{lang="delta_upgrade_windows"}
+				</a>
+			</li>
+			<li role='presentation'>
+				<a href='#ipsTabs_tabs_deltaUpgrade_deltaUpgrade_tab_mac_panel' id='deltaUpgrade_tab_mac' class="ipsTabs_item">
+					{lang="delta_upgrade_mac"}
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div id='ipsTabs_content_deltaUpgrade' class='acpFormTabContent'>
+		<div id='ipsTabs_tabs_deltaUpgrade_deltaUpgrade_tab_windows_panel' class="ipsTabs_panel ipsPad" aria-labelledby="deltaUpgrade_tab_windows" aria-hidden="false">
+			<strong class="ipsType_large">{lang="delta_upgrade_step1"}</strong>
+			<p>{lang="delta_upgrade_exract_windows" sprintf="$key"}</p>
+			<img src="{resource="upgradeinstructions/windows_extract.png"}" class="ipsImage">
+			<br><br>
+			<strong class="ipsType_large">{lang="delta_upgrade_step2"}</strong>
+			<p>
+				{lang="delta_upgade_connect" sprintf="\IPS\ROOT_PATH"}<br>
+				<span class="ipsType_light ipsType_small"><i class="fa fa-info-circle"></i> {lang="delta_upgrade_filezilla"}</span>
+			</p>
+			<img src="{resource="upgradeinstructions/windows_ftp.png"}" class="ipsImage">
+			<br><br>
+			<strong class="ipsType_large">{lang="delta_upgrade_step3"}</strong>
+			<p>{lang="delta_upgrade_upload" sprintf="$key, \IPS\ROOT_PATH"}</p>
+			<img src="{resource="upgradeinstructions/windows_upload.png"}" class="ipsImage">
+		</div>
+		<div id='ipsTabs_tabs_deltaUpgrade_deltaUpgrade_tab_mac_panel' class="ipsTabs_panel ipsJS_show ipsPad" aria-labelledby="deltaUpgrade_tab_mac" aria-hidden="false">
+			<strong class="ipsType_large">{lang="delta_upgrade_step1"}</strong>
+			<p>{lang="delta_upgrade_exract_mac" sprintf="$key"}</p>
+			<img src="{resource="upgradeinstructions/mac_extract.png"}" class="ipsImage">
+			<br>
+			<strong class="ipsType_large">{lang="delta_upgrade_step2"}</strong>
+			<p>
+				{lang="delta_upgade_connect" sprintf="\IPS\ROOT_PATH"}<br>
+				<span class="ipsType_light ipsType_small"><i class="fa fa-info-circle"></i> {lang="delta_upgrade_transmit"}</span>
+			</p>
+			<div class="ipsGrid">
+				<div class="ipsGrid_span6">
+					<img src="{resource="upgradeinstructions/mac_ftp1.png"}" class="ipsImage">
+				</div>
+				<div class="ipsGrid_span6">
+					<img src="{resource="upgradeinstructions/mac_ftp2.png"}" class="ipsImage">
+				</div>
+			</div>
+			<strong class="ipsType_large">{lang="delta_upgrade_step3"}</strong>
+			<p>{lang="delta_upgrade_upload" sprintf="$key, \IPS\ROOT_PATH"}</p>
+			<div class="ipsGrid">
+				<div class="ipsGrid_span6">
+					<img src="{resource="upgradeinstructions/mac_upload1.png"}" class="ipsImage">
+				</div>
+				<div class="ipsGrid_span6">
+					<img src="{resource="upgradeinstructions/mac_upload2.png"}" class="ipsImage">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+		<a href="upgrade" data-action="continue" class="ipsButton ipsButton_primary">{lang="continue"}</a>
+		<a href="{url="app=core&module=support&controller=support&_new=1"}" class="ipsButton ipsButton_normal">{lang="get_support"}</a>
+	</div>
+</div>

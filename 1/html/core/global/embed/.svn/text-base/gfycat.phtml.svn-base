@@ -1,0 +1,2 @@
+<ips:template parameters="$key, $width, $height" />
+<div class="ipsEmbeddedOther"><iframe src="http://gfycat.com/ifr/{$key}" width="{$width}" height="{$height}"></iframe></div>

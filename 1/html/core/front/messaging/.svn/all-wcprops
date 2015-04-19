@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/messaging
+END
+participant.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/2919/trunk/applications/core/dev/html/front/messaging/participant.phtml
+END
+folderForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/1352/trunk/applications/core/dev/html/front/messaging/folderForm.phtml
+END
+messageList.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/4130/trunk/applications/core/dev/html/front/messaging/messageList.phtml
+END
+nomessage.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/1183/trunk/applications/core/dev/html/front/messaging/nomessage.phtml
+END
+messageListRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/9075/trunk/applications/core/dev/html/front/messaging/messageListRow.phtml
+END
+conversation.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/messaging/conversation.phtml
+END
+messageListRows.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/5606/trunk/applications/core/dev/html/front/messaging/messageListRows.phtml
+END
+template.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9022/trunk/applications/core/dev/html/front/messaging/template.phtml
+END

@@ -1,0 +1,22 @@
+<ips:template parameters="$items" />
+{{foreach $items as $item}}
+	{{if $item->canView()}}
+		{{if $children = $item->children()}}
+			{{$id = md5( uniqid() . mt_rand() );}}
+			<li id='elNavigation_{$id}' class='ipsMenu_item ipsMenu_subItems'>
+				<a href='{$item->link()}'>
+					{$item->title()}
+				</a>
+				<ul id='elNavigation_{$id}_menu' class='ipsMenu ipsMenu_auto ipsHide'>
+					{template="navBarChildren" app="core" group="global" params="$children"}
+				</ul>
+			</li>
+		{{else}}
+			<li class='ipsMenu_item'>
+				<a href='{$item->link()}'>
+					{$item->title()}
+				</a>
+			</li>
+		{{endif}}
+	{{endif}}
+{{endforeach}}

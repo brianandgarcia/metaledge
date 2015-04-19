@@ -1,0 +1,119 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/ips-suite/!svn/ver/9285/trunk/applications/core/dev/html/admin/members
+END
+groupCell.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/3888/trunk/applications/core/dev/html/admin/members/groupCell.phtml
+END
+memberSearchResult.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/1046/trunk/applications/core/dev/html/admin/members/memberSearchResult.phtml
+END
+adminDetails.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/1317/trunk/applications/core/dev/html/admin/members/adminDetails.phtml
+END
+viewDnameHistory.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6767/trunk/applications/core/dev/html/admin/members/viewDnameHistory.phtml
+END
+bulkMailPreview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/2302/trunk/applications/core/dev/html/admin/members/bulkMailPreview.phtml
+END
+groupPromotion.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4519/trunk/applications/core/dev/html/admin/members/groupPromotion.phtml
+END
+postingLimits.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/admin/members/postingLimits.phtml
+END
+changePassword.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/315/trunk/applications/core/dev/html/admin/members/changePassword.phtml
+END
+usernameChanges.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/admin/members/usernameChanges.phtml
+END
+memberValidatingCell.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/2330/trunk/applications/core/dev/html/admin/members/memberValidatingCell.phtml
+END
+acpRestrictions.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/admin/members/acpRestrictions.phtml
+END
+editMember.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/9285/trunk/applications/core/dev/html/admin/members/editMember.phtml
+END
+confirmMassAction.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/4994/trunk/applications/core/dev/html/admin/members/confirmMassAction.phtml
+END
+memberEmailCell.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/8750/trunk/applications/core/dev/html/admin/members/memberEmailCell.phtml
+END
+prefixSuffix.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/4519/trunk/applications/core/dev/html/admin/members/prefixSuffix.phtml
+END
+moderationLimits.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/admin/members/moderationLimits.phtml
+END
+signatureLimits.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/admin/members/signatureLimits.phtml
+END
+warningTime.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/6342/trunk/applications/core/dev/html/admin/members/warningTime.phtml
+END
+moderatorPermissions.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/1991/trunk/applications/core/dev/html/admin/members/moderatorPermissions.phtml
+END

@@ -1,0 +1,8 @@
+<ips:template parameters="$name, $color, $prefix, $suffix" />
+<span id="{$name}_color" class="{{if $prefix or $suffix}}ipsHide{{else}}ipsJS_show{{endif}}">
+	<input type="text" name="{$name}[color]" id="{$name}_color" value="{$color}" data-control='color' class='ipsField_short'> &nbsp; {lang="or"} &nbsp; <a href="#" data-clickshow="{$name}_html" data-clickhide="{$name}_color">{lang="use_html"}</a>
+</span>
+<span id="{$name}_html" class="{{if !$prefix and !$suffix}}ipsJS_hide{{endif}}">
+	<input type="text" name="{$name}[prefix]" id="{$name}_prefix" placeholder="&lt;strong&gt;" value="{$prefix}" class="ipsField_short"> {lang="g_title"} <input type="text" name="{$name}[suffix]" id="{$name}_suffix" placeholder="&lt;/strong&gt;" value="{$suffix}" class="ipsField_short">
+	<span class="no_js_hide"> &nbsp; {lang="or"} &nbsp; <a href="#" data-clickshow="{$name}_color" data-clickhide="{$name}_html" data-clickempty="{$name}_prefix,{$name}_suffix">{lang="use_color"}</a></span>
+</span>

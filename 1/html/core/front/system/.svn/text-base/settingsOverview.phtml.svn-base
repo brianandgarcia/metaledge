@@ -1,0 +1,53 @@
+<ips:template parameters="$services" />
+<div class='ipsColumns ipsColumns_collapsePhone'>
+	<div class='ipsColumn ipsColumn_fluid'>
+		<ul class='ipsDataList'>
+			<li class='ipsDataItem'>
+				<div class='ipsDataItem_main'>
+					<h4 class='ipsDataItem_title'><strong>{lang="username"}</strong></h4><br>
+					{member="name"}
+				</div>
+			</li>
+			<li class='ipsDataItem'>
+				<div class='ipsDataItem_main'>
+					<h4 class='ipsDataItem_title'><strong>{lang="email_address"}</strong></h4><br>
+					{member="email"}
+				</div>
+			</li>
+			{{if \IPS\Member::loggedIn()->members_pass_hash}}
+				<li class='ipsDataItem'>
+					<div class='ipsDataItem_main'>
+						<h4 class='ipsDataItem_title'><strong>{lang="password"}</strong></h4><br>
+						********
+					</div>
+				</li>
+			{{endif}}
+			{{foreach $services as $k => $service}}
+				<li class='ipsDataItem'>
+					<div class='ipsDataItem_main'>
+						{{if $service->connected()}}
+							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_positive'>{lang="enabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4><br>
+							Logged in as {$service->name()}<br>
+							<span class='ipsType_light'>{$service->settingsDesc()}</span>
+						{{else}}
+							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_negative'>{lang="disabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4><br>
+							<span class='ipsType_light'>{lang="profilesync_not_syncing"}</span>
+						{{endif}}
+					</div>
+				</li>
+			{{endforeach}}
+		</ul>
+	</div>
+	<div class='ipsColumn ipsColumn_wide ipsAreaBackground_light'>
+		<div class='ipsPad'>
+			{{$thisMemberID = \IPS\Member::loggedIn()->member_id;}}
+			<h3 class='ipsType_sectionHead'>{lang="other_settings"}</h3>
+			<br><br>
+			<ul class='ipsList ipsList_reset ipsType_medium'>
+				<li><a href='{url="app=core&module=system&controller=notifications&do=options" seoTemplate="notifications_options"}'>{lang="notification_options"}</a></li>
+				<li><a href='{expression="\IPS\Member::loggedIn()->url()->setQueryString( 'do', 'edit' )"}' data-ipsDialog data-ipsDialog-modal='true' data-ipsDialog-title='{lang="profile_edit"}'>{lang="profile_edit"}</a></li>
+				<li><a href='{url="app=core&module=members&controller=ignore" seoTemplate="ignore"}'>{lang="menu_manage_ignore"}</a></li>
+			</ul>
+		</div>
+	</div>
+</div>

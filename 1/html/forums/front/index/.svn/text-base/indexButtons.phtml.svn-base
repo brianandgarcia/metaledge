@@ -1,0 +1,5 @@
+<ips:template parameters="" />
+
+<li>
+	<a class="ipsButton ipsButton_large ipsButton_important ipsButton_fullWidth" href="{url="app=forums&module=forums&controller=forums&do=add"}" data-ipsDialog data-ipsDialog-size='narrow' data-ipsDialog-title='{lang="select_forum"}'>{lang="start_new_topic"}</a>
+</li>

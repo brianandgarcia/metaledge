@@ -1,0 +1,2 @@
+<ips:template parameters="$resource" />
+<a href="{$resource['resource_filename']}" target="_blank" data-ipsLightbox>{{if in_array( mb_substr( $resource['resource_filename'], mb_strrpos( $resource['resource_filename'], '.' ) + 1 ), \IPS\Image::$imageExtensions )}}<img src="{$resource['resource_filename']}" class="ipsImage" />{{else}}{$resource['resource_filename']}{{endif}}</a>

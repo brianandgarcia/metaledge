@@ -1,0 +1,5 @@
+<ips:template parameters="$url, $types, $currentAppModule, $currentType, $table" />
+<div class='ipsBox'>
+	<h2 class='ipsType_sectionTitle ipsType_reset'>{{if !$currentAppModule}}{lang="activity_stream"}{{else}}{lang="activity_stream_type" sprintf="\IPS\Member::loggedIn()->language()->addToStack( $types[ $currentAppModule ][ $currentType ]::$title . '_pl' )"}{{endif}}</h2>
+	{$table|raw}
+</div>

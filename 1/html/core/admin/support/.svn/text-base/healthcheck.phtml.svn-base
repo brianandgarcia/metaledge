@@ -1,0 +1,31 @@
+<ips:template parameters="$requirements" />
+{{foreach $requirements['requirements'] as $k => $_requirements}}
+	<div class="ipsSpacer_bottom">
+		<h2 class="ipsType_sectionHead">{lang="requirements_header" sprintf="$k"}</h2>
+		<ul class="ipsDataList ipsSpacer_top">
+			{{foreach $_requirements as $item}}
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic {{if $item['success']}}ipsType_success{{else}}ipsType_warning{{endif}}">
+						<i class="fa {{if $item['success']}}fa-check{{else}}fa-times{{endif}}"></i>
+						{$item['message']}
+					</span>
+				</li>
+			{{endforeach}}
+		</ul>
+	</div>
+{{endforeach}}
+{{if isset( $requirements['advice'] ) and count( $requirements['advice'] )}}
+	<div class="ipsSpacer_bottom">
+		<h2 class="ipsType_sectionHead">{lang="advice"}</h2>
+		<ul class="ipsDataList ipsSpacer_top">
+			{{foreach $requirements['advice'] as $item}}
+				<li class="ipsDataItem">
+					<span class="ipsDataItem_generic ipsType_light">
+						<i class="fa fa-info-circle"></i>
+						{$item}
+					</span>
+				</li>
+			{{endforeach}}
+		</ul>
+	</div>
+{{endif}}

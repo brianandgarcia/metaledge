@@ -1,0 +1,38 @@
+.ipsEmbedded .cCalendarEmbed_calendar {
+	background: #f5f5f5;
+}
+
+.ipsEmbedded .ipsCalendarDate {
+	width: 80px;
+	margin: 10px auto;
+	display: block;
+	border: 1px solid rgba(0,0,0,0.2);
+	background: #fafafa;
+	padding: 8px 0;
+	border-radius: 3px;
+	overflow: hidden;
+}
+	
+	.ipsEmbedded .ipsCalendarDate {
+		background: #fff;
+	}
+	
+	.ipsEmbedded .ipsCalendarDate > span {
+		display: block;
+		text-align: center;
+	}
+
+	.ipsEmbedded .ipsCalendarDate_month {
+		color: #a93848;
+		text-transform: uppercase;
+		font-size: 20px;
+		line-height: 1;
+		font-weight: 500;
+	}
+
+	.ipsEmbedded .ipsCalendarDate_date {
+		font-size: 40px;
+		line-height: 42px;
+		font-weight: 300;
+		color: #333;
+	}

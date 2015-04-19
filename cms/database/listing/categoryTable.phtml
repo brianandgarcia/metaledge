@@ -1,4 +1,4 @@
-<ips:template parameters="$table, $headers, $rows, $quickSearch" original_group="listing" key="database_listing_categoryTable" />
+<ips:template parameters="$table, $headers, $rows, $quickSearch" />
 <div class='ipsBox'  data-baseurl='{$table->baseUrl}' data-resort='{$table->resortKey}' data-controller='core.global.core.table{{if $table->canModerate()}},core.front.core.moderation{{endif}}'>
 	
 	{{if $table->title}}
@@ -72,11 +72,11 @@
 		<form action="{$table->baseUrl}" method="post" data-role='moderationTools' data-ipsPageAction>
 	{{endif}}
 			{{if ! count($rows)}}
-				<div class="ipsBox ipsPad">
+				<div class="ipsPad">
 					{lang="cms_no_records_to_show" sprintf="\IPS\cms\Databases::load( \IPS\cms\Databases\Dispatcher::i()->databaseId )->recordWord()"}
 				</div>
 			{{else}}
-				<ol class='ipsDataList ipsDataList_readStatus ipsClear cForumTopicTable {{foreach $table->classes as $class}}{$class} {{endforeach}}' id='elTable_{$table->uniqueId}' data-role="tableRows">
+				<ol class='ipsDataList ipsDataList_zebra ipsClear cCmsListing {{foreach $table->classes as $class}}{$class} {{endforeach}}' id='elTable_{$table->uniqueId}' data-role="tableRows">
 					{template="$table->rowsTemplate[1]" params="$table, $headers, $rows" object="$table->rowsTemplate[0]"}
 				</ol>
 			{{endif}}
@@ -134,7 +134,7 @@
 							<option value='merge' data-icon='level-up'>{lang="merge"}</option>
 						{{endif}}
 						{{if $table->canModerate('delete')}}
-							<option value='delete' data-icon='times-circle'>{lang="delete"}</option>
+							<option value='delete' data-icon='trash'>{lang="delete"}</option>
 						{{endif}}
 						{{if $table->canModerate('future_publish')}}
 							<option data-icon="arrow-circle-o-up" value='publish'>{lang="publish"}</option>

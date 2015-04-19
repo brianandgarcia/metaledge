@@ -1,0 +1,20 @@
+<ips:template parameters="$chart, $type, $options, $format=NULL" />
+<table class="ipsTable" data-ipsChart data-ipsChart-type="{$type}" data-ipsChart-extraOptions='{$options|raw}' {{if $format}}data-ipsChart-format='{$format}'{{endif}}>
+	<thead>
+		<tr>
+			{{foreach $chart->headers as $header => $type}}
+				<th data-colType="$type">{$header}</th>
+			{{endforeach}}
+		</tr>
+	</thead>
+	<tbody>
+		{{foreach $chart->rows as $row}}
+			<tr>
+				{{foreach $row as $value}}
+					<td>{$value}</td>
+				{{endforeach}}
+			</tr>
+		{{endforeach}}
+	</tbody>
+</table>
+<div></div>

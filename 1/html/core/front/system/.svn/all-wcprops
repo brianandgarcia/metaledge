@@ -1,0 +1,329 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/system
+END
+activity.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/6023/trunk/applications/core/dev/html/front/system/activity.phtml
+END
+settings.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/6937/trunk/applications/core/dev/html/front/system/settings.phtml
+END
+followedContent.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4910/trunk/applications/core/dev/html/front/system/followedContent.phtml
+END
+settingsProfileSyncLogin.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/system/settingsProfileSyncLogin.phtml
+END
+activityStreamResult.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/ips-suite/!svn/ver/8727/trunk/applications/core/dev/html/front/system/activityStreamResult.phtml
+END
+settingsEmail.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/9001/trunk/applications/core/dev/html/front/system/settingsEmail.phtml
+END
+lostPass.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/system/lostPass.phtml
+END
+login.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/9896/trunk/applications/core/dev/html/front/system/login.phtml
+END
+resetPass.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/system/resetPass.phtml
+END
+notifications.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/4770/trunk/applications/core/dev/html/front/system/notifications.phtml
+END
+settingsUsernameLimitReached.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/ips-suite/!svn/ver/3867/trunk/applications/core/dev/html/front/system/settingsUsernameLimitReached.phtml
+END
+followers.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/3598/trunk/applications/core/dev/html/front/system/followers.phtml
+END
+notificationsAjax.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/4951/trunk/applications/core/dev/html/front/system/notificationsAjax.phtml
+END
+privacy.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/6548/trunk/applications/core/dev/html/front/system/privacy.phtml
+END
+notValidated.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/2900/trunk/applications/core/dev/html/front/system/notValidated.phtml
+END
+notificationsTable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/4770/trunk/applications/core/dev/html/front/system/notificationsTable.phtml
+END
+offline.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/3655/trunk/applications/core/dev/html/front/system/offline.phtml
+END
+settingsPassword.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/9001/trunk/applications/core/dev/html/front/system/settingsPassword.phtml
+END
+ignore.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/system/ignore.phtml
+END
+notificationsRows.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/8841/trunk/applications/core/dev/html/front/system/notificationsRows.phtml
+END
+registerWrapper.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/1352/trunk/applications/core/dev/html/front/system/registerWrapper.phtml
+END
+lostPassConfirm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/system/lostPassConfirm.phtml
+END
+followersRows.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/7479/trunk/applications/core/dev/html/front/system/followersRows.phtml
+END
+notAdminValidated.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/system/notAdminValidated.phtml
+END
+unsubscribed.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/system/unsubscribed.phtml
+END
+terms.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/4661/trunk/applications/core/dev/html/front/system/terms.phtml
+END
+contact.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/system/contact.phtml
+END
+ignoreTable.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/system/ignoreTable.phtml
+END
+coppaConsent.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/5412/trunk/applications/core/dev/html/front/system/coppaConsent.phtml
+END
+loginForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/1190/trunk/applications/core/dev/html/front/system/loginForm.phtml
+END
+warningRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/6090/trunk/applications/core/dev/html/front/system/warningRow.phtml
+END
+settingsUsername.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/2328/trunk/applications/core/dev/html/front/system/settingsUsername.phtml
+END
+notCoppaValidated.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/system/notCoppaValidated.phtml
+END
+contactDone.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/ips-suite/!svn/ver/3333/trunk/applications/core/dev/html/front/system/contactDone.phtml
+END
+coppa.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/system/coppa.phtml
+END
+ignoreTableRows.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/2770/trunk/applications/core/dev/html/front/system/ignoreTableRows.phtml
+END
+ignoreForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/3682/trunk/applications/core/dev/html/front/system/ignoreForm.phtml
+END
+mergeSocialAccount.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/ips-suite/!svn/ver/9608/trunk/applications/core/dev/html/front/system/mergeSocialAccount.phtml
+END
+activityStream.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/6565/trunk/applications/core/dev/html/front/system/activityStream.phtml
+END
+ignoreEditForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/ips-suite/!svn/ver/2770/trunk/applications/core/dev/html/front/system/ignoreEditForm.phtml
+END
+settingsProfileSync.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/ips-suite/!svn/ver/4408/trunk/applications/core/dev/html/front/system/settingsProfileSync.phtml
+END
+myAttachments.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/ips-suite/!svn/ver/6543/trunk/applications/core/dev/html/front/system/myAttachments.phtml
+END
+activitySection.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/4802/trunk/applications/core/dev/html/front/system/activitySection.phtml
+END
+settingsSignature.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/ips-suite/!svn/ver/6719/trunk/applications/core/dev/html/front/system/settingsSignature.phtml
+END
+register.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/ips-suite/!svn/ver/6023/trunk/applications/core/dev/html/front/system/register.phtml
+END
+followedContentMemberRow.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/ips-suite/!svn/ver/4423/trunk/applications/core/dev/html/front/system/followedContentMemberRow.phtml
+END
+coppaForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/ips-suite/!svn/ver/1068/trunk/applications/core/dev/html/front/system/coppaForm.phtml
+END
+followForm.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/6846/trunk/applications/core/dev/html/front/system/followForm.phtml
+END
+settingsOverview.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/ips-suite/!svn/ver/9001/trunk/applications/core/dev/html/front/system/settingsOverview.phtml
+END
+guidelines.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/system/guidelines.phtml
+END
+completeProfile.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/ips-suite/!svn/ver/7870/trunk/applications/core/dev/html/front/system/completeProfile.phtml
+END
+notificationsSettings.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/ips-suite/!svn/ver/5062/trunk/applications/core/dev/html/front/system/notificationsSettings.phtml
+END
+announcement.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/ips-suite/!svn/ver/9093/trunk/applications/core/dev/html/front/system/announcement.phtml
+END
+followedContentSection.phtml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/ips-suite/!svn/ver/4492/trunk/applications/core/dev/html/front/system/followedContentSection.phtml
+END

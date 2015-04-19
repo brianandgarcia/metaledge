@@ -1,0 +1,57 @@
+<ips:template parameters="$current, $restrictions, $row" />
+<form accept-charset='utf-8' class="ipsForm_horizontal" action="{url="app=core&module=staff&controller=admin&do=save&id={$row['row_id']}&type={$row['row_id_type']}"}" method="post">
+	<div class='ipsTabs ipsClearfix ipsJS_show acpFormTabBar' id='elRestrictions_tab' data-ipsTabBar data-ipsTabBar-contentArea="#elRestrictions_content">
+		<ul role="tablist">
+			{{foreach $restrictions['applications'] as $appKey => $appId}}
+				<li role="presentation"><a class="ipsTabs_item {{if $appKey === 'core'}}ipsTabs_activeItem{{endif}}" id='{$appId}_tab_{$appKey}' href='#ipsTabs_elRestrictions_tab_{$appId}_tab_{$appKey}_panel'>{lang="__app_$appKey"}</a></li>
+			{{endforeach}}
+		</ul>
+	</div>
+	<div class='acpFormTabContent' id='elRestrictions_content'>
+		{{foreach $restrictions['applications'] as $appKey => $appId}}
+			<div id='ipsTabs_elRestrictions_tab_{$appId}_tab_{$appKey}_panel' class='ipsTabs_panel' aria-labelledby="{$appId}_tab_{$appKey}" aria-hidden="{{if $appKey === 'core'}}false{{else}}true{{endif}}">			
+				<div class='ipsPad' data-controller='core.admin.members.restrictions'>
+					<div class='ipsAreaBackground ipsPad acpAppRestrictions_header'>
+						<input type="checkbox" data-ipsToggle name="r[applications][]" id='elRestrict_{$appKey}' value="{$appKey}" {{if $current === '*' or ( isset( $current['applications'] ) and in_array( $appKey, $current['applications'] ) )}}checked="checked"{{endif}}> &nbsp;&nbsp;<label for='elRestrict_{$appKey}'><span class='ipsType_sectionHead'>{lang="acprestrictions_app" sprintf="\IPS\Member::loggedIn()->language()->addToStack('__app_' . $appKey )"}</span></label>
+					</div>
+					<br><br>
+
+					<ul id='elRestrictions_root_{$appId}_tab_{$appKey}' class='acpAppRestrictions_panel'>
+						{{if isset( $restrictions['modules'] ) AND isset( $restrictions['modules'][ $appId ] ) }}
+							{{foreach $restrictions['modules'][ $appId ] as $moduleKey => $moduleId}}
+								<li class='ipsPad'>
+									<div class="acpRestrictions_header">
+										<input type="checkbox" data-ipsToggle name="r[modules][]" id='elRestrict_{$appKey}_{$moduleKey}' value="{$moduleKey}" {{if $current === '*' or ( isset( $current['modules'] ) and in_array( $moduleKey, $current['modules'] ) )}}checked="checked"{{endif}}> <h2><label for='elRestrict_{$appKey}_{$moduleKey}'><strong>{lang="menu__{$appKey}_{$moduleKey}"}</strong></h2> &nbsp;&nbsp;<span data-role='toggle' class='ipsJS_show'><a href='#' data-action='expandAll'><strong>{lang="expand"}</strong></a> / <a href='#' data-action='collapseAll'><strong>{lang="collapse"}</strong></a></span></label>
+									</div>
+									{{if isset( $restrictions['items'][ $moduleId ] )}}
+										<ul class="acpRestrictions_panel">
+											{{foreach $restrictions['items'][ $moduleId ] as $title => $items}}
+												<li>
+													<div class="acpRestrictions_subHeader acpRestrictions_open ipsType_light">
+														<h3>{lang="r__{$title}"}</h3> &nbsp;&nbsp;<span data-role='massToggle' class='ipsJS_show'><a href='#' data-action='checkAll'>{lang="all"}</a> /  <a href='#' data-action='checkNone'>{lang="none"}</a></a>
+													</div>
+													<ul>
+														{{foreach $items as $k => $v}}
+															<li>
+																<div>
+																	<input type="checkbox" id='elRestrict_{$appKey}_{$moduleKey}_{$k}' data-ipsToggle name="r[items][{$appKey}][{$moduleKey}][]" value="{$k}" {{if $current === '*' or ( isset( $current['items'] ) and array_key_exists( $appKey, $current['items'] ) and array_key_exists( $moduleKey, $current['items'][ $appKey ] ) and in_array( $k, $current['items'][ $appKey ][ $moduleKey ] ) )}}checked="checked"{{endif}}> <label for='elRestrict_{$appKey}_{$moduleKey}_{$k}'>{lang="r__{$v}"}</label>
+																</div>
+															</li>
+														{{endforeach}}
+													</ul>
+												</li>
+											{{endforeach}}
+										</ul>
+									{{endif}}
+								</li>
+							{{endforeach}}
+						{{endif}}
+					</ul>		
+				</div>
+			</div>
+		{{endforeach}}
+	</div>
+	<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
+		<button class="ipsButton ipsButton_primary" role="button" type="submit">{lang="save"}</button>
+	</div>
+</form>

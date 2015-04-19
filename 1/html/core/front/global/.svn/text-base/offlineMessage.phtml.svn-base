@@ -1,0 +1,6 @@
+<ips:template parameters="" />
+
+<div id='elSiteOffline'>
+	<h2 class='ipsType_reset'><i class='fa fa-warning'></i> {lang="offline_message_title"}</h2>
+	<p class='ipsType_reset'>{lang="offline_message_desc"}</p>
+</div>
