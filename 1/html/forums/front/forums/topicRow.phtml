@@ -23,7 +23,7 @@
 					</div>
 					<div class='ipsDataItem_main'>
 						<h4 class='ipsDataItem_title ipsType_break'>
-							<em><a href='{$movedTo->url()}' title='{lang="go_to_new_location"}'>{wordbreak="$row->mapped('title')"}</a></em>
+							<em><a href='{$movedTo->url()}' title='{lang="go_to_new_location"}'>{lang="$row->mapped('title')" wordbreak="true"}</a></em>
 						</h4>
 						<div class='ipsDataItem_meta'>
 							<p class='ipsType_reset ipsType_light ipsType_blendLinks'>{lang="topic_moved_to" sprintf="$movedTo->container()->url(), $movedTo->container()->_title"}</p>
@@ -37,7 +37,7 @@
 				</li>
 			{{endif}}
 		{{else}}
-			<li class="ipsDataItem ipsDataItem_responsivePhoto {{if $row->unread()}}ipsDataItem_unread{{endif}} {{if method_exists( $row, 'tableClass' ) && $row->tableClass()}}ipsDataItem_{$row->tableClass()}{{endif}} {{if $row->hidden()}}ipsModerated{{endif}}" data-rowID='{$row->$idField}' itemscope itemtype="http://schema.org/Article">
+			<li class="ipsDataItem ipsDataItem_responsivePhoto {{if $row->unread()}}ipsDataItem_unread{{endif}} {{if method_exists( $row, 'tableClass' ) && $row->tableClass()}}ipsDataItem_{$row->tableClass()}{{endif}} {{if $row->hidden()}}ipsModerated{{endif}}" data-rowID='{$row->$idField}'>
 				{{if member.member_id}}
 					<div class='ipsDataItem_icon ipsPos_top'>
 						{{if $row->unread()}}
@@ -63,10 +63,8 @@
 							{template="prefix" group="global" app="core" params="$row->prefix( TRUE ), $row->prefix()"}
 						{{endif}}
 						
-						<a href='{$row->url()}' {{if $row->tableHoverUrl and $row->canView()}}data-ipsHover data-ipsHover-target='{$row->url()->setQueryString('preview', 1)}' data-ipsHover-timeout='1.5'{{endif}} itemprop="url">
-							<span itemprop="name">
-								{{if $row->mapped('title')}}{wordbreak="$row->mapped('title')"}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
-							</span>
+						<a href='{$row->url()}' {{if $row->tableHoverUrl and $row->canView()}}data-ipsHover data-ipsHover-target='{$row->url()->setQueryString('preview', 1)}' data-ipsHover-timeout='1.5'{{endif}}>
+							{{if $row->mapped('title')}}{lang="$row->mapped('title')" wordbreak="true"}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
 						</a>
 					</h4>
 					{{if $row->mapped('pinned') || $row->mapped('featured') || $row->hidden() === -1 || $row->hidden() === 1}}
@@ -88,10 +86,7 @@
 						{$row->commentPagination( array(), 'miniPagination' )|raw}
 					{{endif}}
 					<div class='ipsDataItem_meta ipsType_reset ipsType_light ipsType_blendLinks'>
-						<span itemprop="author" itemscope itemtype="http://schema.org/Person">
-							{lang="byline_itemprop" htmlsprintf="$row->author()->link()"}
-						</span>{datetime="$row->__get( $row::$databaseColumnMap['date'] )"}
-						<meta itemprop="dateCreated" content="{expression="\IPS\DateTime::create( $row->__get( $row::$databaseColumnMap['date'] ) )->rfc3339()"}">
+						{lang="byline" htmlsprintf="$row->author()->link()"}{datetime="$row->__get( $row::$databaseColumnMap['date'] )"}
 						{{if !in_array( \IPS\Dispatcher::i()->controller, array( 'forums', 'index' ) )}}
 							{lang="in"} <a href="{$row->container()->url()}">{$row->container()->_title}</a>
 						{{endif}}
@@ -104,7 +99,7 @@
 				<ul class='ipsDataItem_stats'>
 					{{foreach $row->stats(FALSE) as $k => $v}}
 						<li {{if $k == 'num_views'}}class='ipsType_light'{{elseif in_array( $k, $row->hotStats )}}class="ipsDataItem_stats_hot" data-text='{lang="hot_item"}' data-ipsTooltip title='{lang="hot_item_desc"}'{{endif}}>
-							<span class='ipsDataItem_stats_number' {{if $k == 'comments'}}itemprop='commentCount'{{endif}}>{number="$v"}</span>
+							<span class='ipsDataItem_stats_number'>{$v}</span>
 							<span class='ipsDataItem_stats_type'>{lang="forums_{$k}" pluralize="$v"}</span>
 							{{if $k == 'comments' && \IPS\forums\Topic::modPermission( 'unhide', NULL, $row->container() ) AND $row->topic_queuedposts}}
 								&nbsp;<a href='{$row->url()->setQueryString( 'queued_posts', 1 )}' class='ipsType_warning ipsType_small ipsPos_right ipsResponsive_noFloat' data-ipsTooltip title='{lang="queued_posts_badge" pluralize="$row->topic_queuedposts"}'><i class='fa fa-warning'></i> <strong>{$row->topic_queuedposts}</strong></a>

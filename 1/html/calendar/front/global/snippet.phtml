@@ -5,6 +5,7 @@
 {{else}}
 	{{$item = $activity;}}
 {{endif}}
+
 <div class='cSearchActivity_info ipsContained'>
 	<div class='ipsColumns'>
 		<div class='ipsColumn ipsColumn_veryNarrow'>
@@ -17,14 +18,14 @@
 		<div class='ipsColumn ipsColumn_fluid'>
 			{{if $activity instanceof \IPS\calendar\Event\Comment or $activity instanceof \IPS\calendar\Event\Review}}
 				{{if $activity instanceof \IPS\calendar\Event\Review}}
-					{template="rating" group="global" location="front" app="core" params="'large', $activity->mapped('rating'), \IPS\Settings::i()->reviews_rating_out_of"}
+					{template="rating" group="global" location="front" app="core" params="'large', $activity->mapped('rating')"}
 				{{endif}}
 				<div class='ipsType_medium ipsType_richText ipsContained {{if $activity instanceof \IPS\calendar\Event\Review}}ipsSpacer_both{{else}}ipsSpacer_bottom{{endif}} ipsSpacer_half' data-ipsTruncate data-ipsTruncate-size='3 lines' data-ipsTruncate-type='remove'>
 					{$activity->truncated()|raw}
 				</div>
 				<ul class='ipsList_inline ipsType_light'>
 					{{if $activity instanceof \IPS\calendar\Event\Review}}
-						<li>{lang="x_members_found_helpful" sprintf="$activity->mapped('votes_helpful'), \IPS\Member::loggedIn()->language()->pluralize( \IPS\Member::loggedIn()->language()->get( 'x_members' ), array( $activity->mapped('votes_total') ) )"}</li>
+						<li>{lang="x_members_found_helpful" sprintf="$activity->mapped('votes_helpful'), $activity->mapped('votes_total')"}</li>
 					{{endif}}
 					{{if $type != 'search' and $activity instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
 						<li>{template="reputationMini" group="global" app="core" params="$activity, '', NULL, TRUE"}</li>
@@ -53,7 +54,7 @@
 						<li>{lang="num_comments" pluralize="$activity->comments"}</li>
 					{{endif}}
 					{{if $item->container()->allow_reviews}}
-						<li>{lang="num_reviews" pluralize="$activity->reviews"} {{if $activity->reviews > 0}}&nbsp;&nbsp;{template="rating" group="global" location="front" app="core" params="'tiny', $item->rating, \IPS\Settings::i()->reviews_rating_out_of"}{{endif}}</li>
+						<li>{lang="num_reviews" pluralize="$activity->reviews"} {{if $activity->reviews > 0}}&nbsp;&nbsp;{template="rating" group="global" location="front" app="core" params="'tiny', $item->rating"}{{endif}}</li>
 					{{endif}}
 					{{if $type != 'search' and $item instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
 						<li>{template="reputationMini" group="global" app="core" params="$activity, '', NULL, TRUE"}</li>

@@ -36,7 +36,7 @@
 			<strong class='ipsComment_popularFlag' data-ipsTooltip title='{lang="this_is_a_popular_post"}'><i class='fa fa-star'></i></strong>
 		{{endif}}
 		
-		<div data-role='commentContent' itemprop='text' class='ipsType_normal ipsType_richText ipsContained' data-controller='core.front.core.lightboxedImages'>
+		<div data-role='commentContent' class='ipsType_normal ipsType_richText ipsContained' data-controller='core.front.core.lightboxedImages'>
 			{$comment->content()|raw}
 
 			{{if $comment->editLine()}}
@@ -53,7 +53,7 @@
 		<ul class='ipsComment_controls ipsClearfix' data-role="commentControls">
 			{{if $comment->hidden() === 1 && ( $comment->canUnhide() || $comment->canDelete() )}}
 				{{if $comment->canUnhide()}}
-					<li><a href='{$comment->url('unhide')->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_positive' data-action='approveComment'><i class='fa fa-check'></i> {lang="approve"}</a></li>
+					<li><a href='{$comment->url('unhide')->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_positive'><i class='fa fa-check'></i> {lang="approve"}</a></li>
 				{{endif}}
 				{{if $comment->canDelete()}}
 					<li><a href='{$comment->url('delete')->csrf()}' data-action='deleteComment' data-updateOnDelete="#commentCount" class='ipsButton ipsButton_verySmall ipsButton_negative'><i class='fa fa-times'></i> {lang="delete"}</a></li>
@@ -127,7 +127,7 @@
 			<hr class='ipsHr'>
 			<h5 class='ipsType_normal ipsType_reset'>{lang="link_to_post"}</h5>
 			<input type='text' value='{$comment->item()->url()->setQueryString( array( 'do' => 'findComment', 'comment' => $comment->$idField ) )}' class='ipsField_fullWidth'>
-			{{if !$comment->item()->container()->disable_sharelinks and count( $comment->sharelinks() )}}
+			{{if !$comment->item()->container()->disable_sharelinks}}
 				<h5 class='ipsType_normal ipsType_reset ipsSpacer_top'>{lang="share_externally"}</h5>
 				{template="sharelinks" group="global" app="core" params="$comment"}
 			{{endif}}

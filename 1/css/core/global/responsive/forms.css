@@ -4,7 +4,6 @@
 	.ipsApp .ipsForm_horizontal .ipsFieldRow > .ipsFieldRow_label {
 		float: none !important;
 		width: auto;
-		text-align: inherit !important;
 	}
 
 	html[dir="ltr"] .ipsApp .ipsForm_horizontal .ipsFieldRow:not( .ipsFieldRow_checkbox )  .ipsFieldRow_content,

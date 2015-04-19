@@ -1,33 +1,13 @@
 /* ----- */
 
-html[dir="ltr"] #elTemplateEditor_panelWrap,
-html[dir="ltr"] #elTemplateEditor_panelToolbar {
+#elTemplateEditor_panelWrap,
+#elTemplateEditor_panelToolbar {
 	margin-left: 15px;
-}
-html[dir="rtl"] #elTemplateEditor_panelWrap,
-html[dir="rtl"] #elTemplateEditor_panelToolbar {
-	margin-right: 15px;
 }
 
 #elTemplateEditor .ipsTabs {
-	background: #d6d6d6;
+	background: #f7f7f7;
 	padding: 0;
-}
-	
-	#elTemplateEditor .ipsTabs_item {
-		border: 0 !important;
-		text-overflow: clip !important;
-	}
-
-#elTemplateEditor [data-role="editor"],
-#elTemplateEditor .CodeMirror {
-	border-width: 0px !important;
-	border-radius: 0px !important;
-}
-
-#elTemplateEditor [data-role="editor"] {
-	font-family: monospace;
-	font-size: 13px;
 }
 
 #elTemplateEditor [data-role="templateToolbar"] {
@@ -51,7 +31,7 @@ html[dir="rtl"] #elTemplateEditor_panelToolbar {
 	width: 100%;
 	background-color: #fff;
 	position: absolute;
-	top: 38px;
+	top: 40px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -64,14 +44,8 @@ html[dir="rtl"] #elTemplateEditor_panelToolbar {
 #elTemplateEditor [data-action="closeTab"] {
 	font-size: 12px;
 	color: #b4b4b4;
+	margin: 0 -5px 0 3px;
 }
-	
-	html[dir="ltr"] #elTemplateEditor [data-action="closeTab"] {
-		margin: 0 -5px 0 3px;
-	}
-	html[dir="rtl"] #elTemplateEditor [data-action="closeTab"] {
-		margin: 0 3px 0 -5px;
-	}
 
 	#elTemplateEditor [data-action="closeTab"]:hover,
 	#elTemplateEditor [data-state="unsaved"] [data-action="closeTab"] {
@@ -100,7 +74,8 @@ html[dir="rtl"] #elTemplateEditor_panelToolbar {
 	color: #333;
 }
 
-.cTemplateList li {
+.cTemplateList li
+{
 	background-color: #ffffff;
 }
 
@@ -112,56 +87,37 @@ html[dir="rtl"] #elTemplateEditor_panelToolbar {
 .cTemplateList li.cTemplateList_inactiveBranch > a:before,
 .cTemplateList li.cTemplateList_activeBranch > a:before {
 	font-family: 'FontAwesome';
-	display: inline-block;	
+	display: inline-block;
+	margin-right: 7px;
 	line-height: 6px;
 	font-size: 14px;
 }
-	html[dir="ltr"] .cTemplateList li.cTemplateList_inactiveBranch > a:before,
-	html[dir="ltr"] .cTemplateList li.cTemplateList_activeBranch > a:before {
-		content: '\f0da';
-		margin-right: 7px;
-	}
-	html[dir="rtl"] .cTemplateList li.cTemplateList_inactiveBranch > a:before,
-	html[dir="rtl"] .cTemplateList li.cTemplateList_activeBranch > a:before {
-		content: '\f0d9';
-		margin-left: 7px;
+	.cTemplateList li.cTemplateList_inactiveBranch > a:before {
+		content: '\\f0da';
 	}
 
-	html[dir="ltr"] .cTemplateList li.cTemplateList_activeBranch > a:before,
-	html[dir="rtl"] .cTemplateList li.cTemplateList_activeBranch > a:before {
-		content: '\f0d7';
+	.cTemplateList li.cTemplateList_activeBranch > a:before {
+		content: '\\f0d7';
 	}
 
 .cTemplateList li.cTemplateList_inactiveBranch > ul {
 	display: none;
 }
 
-html[dir="ltr"] .cTemplateList li a {
+.cTemplateList li a {
 	padding-left: 15px;
 }
-html[dir="rtl"] .cTemplateList li a {
-	padding-right: 15px;
-}
 
-html[dir="ltr"] .cTemplateList li li a {
+.cTemplateList li li a {
 	padding-left: 30px;
 }
-html[dir="rtl"] .cTemplateList li li a {
-	padding-right: 30px;
-}
 
-	html[dir="ltr"] .cTemplateList li li li a {
+	.cTemplateList li li li a {
 		padding-left: 45px;
 	}
-	html[dir="rtl"] .cTemplateList li li li a {
-		padding-right: 45px;
-	}
 
-		html[dir="ltr"] .cTemplateList li li li li a {
+		.cTemplateList li li li li a {
 			padding-left: 70px;
-		}
-		html[dir="rtl"] .cTemplateList li li li li a {
-			padding-right: 70px;
 		}
 
 .cTemplateList li.cTemplateList_activeNode > a {
@@ -177,14 +133,8 @@ html[dir="rtl"] .cTemplateList li li a {
 a[data-inherited-value]:after {
 	position: absolute;
 	margin-top: 2px;
+	right: 5px;
 }
-
-	html[dir="ltr"] a[data-inherited-value]:after {
-		right: 5px;
-	}
-	html[dir="rtl"] a[data-inherited-value]:after {
-		left: 5px;
-	}
 
 li[class^="cTemplateState_"]:before {
 	display: inline-block;

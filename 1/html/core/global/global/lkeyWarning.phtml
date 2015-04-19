@@ -1,22 +1,12 @@
 <ips:template parameters="" />
-
 {{if $lkeyWarning = \IPS\Output::i()->licenseKeyWarning()}}
 	{{if $lkeyWarning == 'none'}}
 		<div class="ipsMessage ipsMessage_error" id='elLicenseKey'>
 			{lang="license_error_none"}
 		</div>
-	{{elseif $lkeyWarning == 'expired' && !isset( \IPS\Request::i()->cookie['licenseDismiss'] )}}
-		<div class="ipsMessage ipsMessage_general" id='elLicenseKey' data-controller='core.global.core.license'>
+	{{elseif $lkeyWarning == 'expired'}}
+		<div class="ipsMessage ipsMessage_warning" id='elLicenseKey'>
 			{lang="license_error_expired"}
-			<ul class='ipsList_inline'>
-				<li>
-					<a href='{url="renew_my_license" ips="true"}' class='ipsButton ipsButton_verySmall ipsButton_veryLight'>{lang="license_renew_now"}</a>
-				</li>
-				<li>
-					<a href='{url="app=core&module=settings&controller=licensekey&do=refresh" base="admin"}' class='ipsButton ipsButton_verySmall ipsButton_veryLight'>{lang="license_check_again"}</a>
-				</li>
-			</ul>
-			<a href='#' data-role='closeMessage' data-ipsTooltip title='{lang="license_dismiss"}'>&times;</a>
 		</div>
 	{{endif}}
 {{endif}}

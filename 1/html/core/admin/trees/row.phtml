@@ -1,5 +1,5 @@
-<ips:template parameters="$url,$id,$title,$hasChildren=FALSE,$buttons=array(),$description='',$icon=NULL,$draggablePosition=NULL,$root=FALSE,$toggleStatus=NULL,$locked=NULL,$badge=NULL,$titleHtml=FALSE,$descriptionHtml=FALSE,$acceptsChildren=TRUE" />
-<div class='ipsTree_row {{if !$root and $draggablePosition !== NULL}}ipsTree_sortable{{endif}} {{if $hasChildren}}ipsTree_parent{{endif}} {{if $root}}ipsTree_open ipsTree_noToggle ipsTree_root{{endif}} {{if $acceptsChildren}}ipsTree_acceptsChildren{{endif}}' data-nodeid='{$id}' data-keyNavBlock data-keyAction='right'>
+<ips:template parameters="$url,$id,$title,$hasChildren=FALSE,$buttons=array(),$description='',$icon=NULL,$draggablePosition=NULL,$root=FALSE,$toggleStatus=NULL,$locked=NULL,$badge=NULL,$titleHtml=FALSE,$descriptionHtml=FALSE" />
+<div class='ipsTree_row {{if !$root and $draggablePosition !== NULL}}ipsTree_sortable{{endif}} {{if $hasChildren}}ipsTree_parent{{endif}} {{if $root}}ipsTree_open{{endif}}' data-nodeid='{$id}' data-keyNavBlock data-keyAction='right'>
 	{{if !$root and $draggablePosition !== NULL}}
 		<div class='ipsTree_drag ipsDrag'>
 			<i class='ipsTree_dragHandle ipsDrag_dragHandle fa fa-bars ipsJS_show' data-ipsTooltip data-ipsTooltip-label='{lang="reorder"}'></i>
@@ -15,10 +15,10 @@
 			{{else}}
 				{{if is_array($toggleStatus) }}
 					<span class='ipsPos_right' data-ipsStatusToggle>
-						<a href='{$url->setQueryString( array( 'do' => 'enableToggle', 'status' => '0', 'id' => $id, 'root' => \IPS\Request::i()->root ) )}' {{if !$toggleStatus['status']}}class='ipsHide'{{endif}} data-ipsDialog-title="{lang="turn_offline"}" data-ipsDialog data-ipsTooltip data-state="enabled" title='{lang="node_disable_row"}'>
+						<a href='{$url->setQueryString( array( 'do' => 'enableToggle', 'status' => '0', 'id' => $id, 'root' => \IPS\Request::i()->root ) )}' {{if !$toggleStatus['status']}}class='ipsHide'{{endif}} data-ipsDialog-title="{lang="turn_offline"}" data-ipsDialog data-ipsTooltip data-state="enabled" title='{lang="node_disable_row" sprintf="$title"}'>
 							<span class='ipsBadge ipsBadge_positive'>{lang="$toggleStatus['enabled_lang']"}</span>
 						</a>
-						<a href='{$url->setQueryString( array( 'do' => 'enableToggle', 'status' => '1', 'id' => $id, 'root' => \IPS\Request::i()->root ) )}' {{if $toggleStatus['status']}}class='ipsHide'{{endif}} data-ipsDialog-title="{lang="turn_offline"}" data-ipsDialog data-ipsTooltip data-state="disabled" title='{lang="node_enable_row"}'>
+						<a href='{$url->setQueryString( array( 'do' => 'enableToggle', 'status' => '1', 'id' => $id, 'root' => \IPS\Request::i()->root ) )}' {{if $toggleStatus['status']}}class='ipsHide'{{endif}} data-ipsDialog-title="{lang="turn_offline"}" data-ipsDialog data-ipsTooltip data-state="disabled" title='{lang="node_enable_row" sprintf="$title"}'>
 							<span class='ipsBadge ipsBadge_{$toggleStatus['disabled_badge']}'>{lang="$toggleStatus['disabled_lang']"}</span>
 						</a>
 					</span>
@@ -59,9 +59,9 @@
 		</h4>
 		{{if $description}}
 			{{if !$descriptionHtml}}
-				<div class="ipsType_light">{$description}</div>
+				<span class="ipsType_light">{$description}</span>
 			{{else}}
-				<div class="ipsType_light">{$description|raw}</div>
+				<span class="ipsType_light">{$description|raw}</span>
 			{{endif}}
 		{{endif}}
 	</div>
@@ -69,6 +69,3 @@
 		{template="controlStrip" params="$buttons, $url" group="global" app="core"}
 	</div>
 </div>
-{{if !$hasChildren}}
-	<ol class='ipsTree ipsTree_node'></ol>
-{{endif}}

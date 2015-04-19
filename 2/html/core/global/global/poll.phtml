@@ -46,7 +46,7 @@
 			</ol>
 			{{if $poll->canVote() || !member.member_id}}
 				<hr class='ipsHr'>
-				{{if $poll->canVote()}}<a href="{$url->setQueryString( '_poll', 'form' )}" title='{lang="show_vote_options_title"}' class='ipsButton ipsButton_verySmall ipsButton_light' data-action='viewResults'><i class='fa fa-caret-left'></i> {lang="show_vote_options"}</a>{{endif}}
+				{{if $poll->canVote()}}<a href="{$url->setQueryString( '_poll', 'form' )}" title='{lang="show_vote_options"}' class='ipsButton ipsButton_verySmall ipsButton_light' data-action='viewResults'><i class='fa fa-caret-left'></i> {lang="show_vote_options"}</a>{{endif}}
 				{{if !member.member_id}}{lang="poll_guest" htmlsprintf="\IPS\Http\Url::internal( 'app=core&module=system&controller=login', 'front', 'login' ), \IPS\Http\Url::internal( 'app=core&module=system&controller=register', 'front', 'register' )"}{{endif}}
 			{{endif}}
 		{{endif}}

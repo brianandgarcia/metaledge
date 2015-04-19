@@ -9,11 +9,12 @@
 	<input type="hidden" name="t_name" value="{$current['template']}">
 	<input type="hidden" name="t_item_id" value="{$current['item_id']}">
 	
-	<h2 class='acpBlock_title acpBlock_titleDark acpBlock_titleSmall'>{lang="theme_editing_title" sprintf="$theme->name"}</h2>
 	<div class='ipsAreaBackground ipsPad' id='elTemplateEditor' data-controller='core.admin.templates.main' data-normalURL="{url="app=core&module=customization&controller=themes&id={$theme->_id}"}" data-ajaxURL="{url="app=core&module=customization&controller=ajax&id={$theme->_id}"}">
 		<div class='ipsColumns'>
 			<div class='ipsColumn ipsColumn_wide' data-role="fileList" data-controller='core.admin.templates.fileList'>
-				<input data-role="templateSearch" placeholder="{lang="search_templates"}" class="ipsJS_show">
+				<ul class='ipsList_inline ipsClearfix'>
+					<li><a href='#elTemplateEditor_newItemMenu_menu' id='elTemplateEditor_newItemMenu' class='ipsButton ipsButton_normal ipsButton_small' data-ipsMenu>{lang="theme_template_new"} &nbsp;<i class='fa fa-caret-down'></i></a></li>
+				</ul>
 				<ul id='elTemplateEditor_newItemMenu_menu' role='menu' class='ipsMenu ipsMenu_auto ipsMenu_withStem ipsHide'>
 					<li class='ipsMenu_item'><a role='menuitem' href='{url="app=core&module=customization&controller=themes&do=cssForm&id={$theme->_id}"}' data-ipsDialog data-ipsDialog-forceReload data-ipsDialog-title='{lang="theme_template_add_css"}'>{lang="theme_template_new_css"}</a></li>
 					<li class='ipsMenu_item'><a  role='menuitem' href='{url="app=core&module=customization&controller=themes&do=templateForm&id={$theme->_id}"}' data-ipsDialog data-ipsDialog-forceReload data-ipsDialog-title='{lang="theme_template_add_html"}'>{lang="theme_template_new_html"}</a></li>
@@ -26,9 +27,6 @@
 					<section id='elTemplateEditor_fileList'>
 						{template="templateEditorMenu" params="$theme, $templateNames, $current" app="core" location="admin" group="customization"}
 					</section>
-				</div>
-				<div class="ipsSpacer_top">
-					<a href='#elTemplateEditor_newItemMenu_menu' id='elTemplateEditor_newItemMenu' class='ipsButton ipsButton_normal ipsButton_small ipsButton_fullWidth' data-ipsMenu data-ipsMenu-above>{lang="theme_template_new"} &nbsp;<i class='fa fa-caret-down'></i></a></li>
 				</div>
 			</div>
 			<div class='ipsColumn ipsColumn_fluid'  data-controller='core.admin.templates.fileEditor'>
@@ -46,14 +44,14 @@
 					<li class='ipsPos_right {{if $current['type'] == 'templates'}}ipsHide{{endif}}'>
 						<a href='#' id='elTemplateEditor_attributes' class='ipsButton ipsButton_veryLight ipsButton_small' data-ipsDialog data-ipsDialog-title='{lang="theme_edit_css"}' data-ipsDialog-content="#elTemplateEditor_attributesDialog" data-ipsDialog-size='narrow'>{lang="theme_attributes"}</a>
 					</li>
-					<li class='ipsPos_right'>
-						<a href='{url="app=core&module=customization&controller=themes&do=deleteTemplate&t_type={$current['type']}&id={$theme->_id}&t_item_id={$current['item_id']}"}' class='ipsButton ipsButton_veryLight ipsButton_small {{if $template['InheritedValue'] == 'original'}}ipsButton_disabled{{endif}}' data-action="revert">{{if $template['InheritedValue'] == 'custom'}}{lang="delete"}{{else}}{lang="revert"}{{endif}}</a>
-					</li>
 					<li>
 						<button type='submit' class='ipsButton ipsButton_primary ipsButton_small' data-action="save">{lang="save"}</button>
-					</li>					
+					</li>
 					<li>
-						<span data-role='loading' class='ipsHide'><i class='icon-spinner2 ipsLoading_tinyIcon'></i> &nbsp;{lang="loading"}</span>
+						<a href='{url="app=core&module=customization&controller=themes&do=deleteTemplate&t_type={$current['type']}&id={$theme->_id}&t_item_id={$current['item_id']}"}' class='ipsButton ipsButton_alternate ipsButton_small {{if $template['InheritedValue'] == 'original'}}ipsButton_disabled{{endif}}' data-action="revert">{{if $template['InheritedValue'] == 'custom'}}{lang="delete"}{{else}}{lang="revert"}{{endif}}</a>
+					</li>
+					<li>
+						<span data-role='loading' class='ipsHide'><img src='{resource="tiny_loading.gif" app="core" base="front"}'> &nbsp;{lang="loading"}</span>
 					</li>
 				</ul>
 				<br>

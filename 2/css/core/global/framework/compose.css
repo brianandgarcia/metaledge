@@ -392,8 +392,9 @@ html[dir="rtl"] .ipsImageAttach {
 	height: 150px;
 	border: 1px solid rgba(0,0,0,0.1);
 	background-color: #fff;
-	background-size: cover;
-	background-position: top center;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
 	overflow: hidden;
 }
 

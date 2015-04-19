@@ -11,7 +11,7 @@
 						</div>
 						<div class='ipsDataItem_main'>
 							<div class="ipsCommentCount ipsPos_right {{if ( $record->record_comments ) === 0}}ipsFaded{{endif}}" data-ipsTooltip title='{lang="replies_number" pluralize="$record->record_comments"}'>{expression="$record->record_comments"}</div>
-							<a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$record->title"}' class='ipsDataItem_title ipsType_break'>{wordbreak="$record->_title"}</a><br>
+							<a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$record->title"}' class='ipsDataItem_title ipsType_break'>{lang="$record->_title" wordbreak="true"}</a><br>
 							<span class='ipsType_light ipsType_small'>{lang="byline_nodate" htmlsprintf="$record->author()->link()"} &middot; {datetime="$record->mapped('date')"}</span>
 						</div>
 					</li>
@@ -21,7 +21,7 @@
 	{{else}}
 		<div class='ipsWidget_inner'>
 			<ul class='ipsDataList'>
-				{template="recordRow" group="listing" location="database" app="cms" themeClass="IPS\cms\Theme" params="null, null, $records"}
+				{template="recordRow" group="listing" location="database" app="cms" params="null, null, $records"}
 			</ul>
 		</div>
 	{{endif}}

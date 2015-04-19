@@ -46,17 +46,17 @@
 		pointer-events: none;
 	}
 
-	.ipsApp select:not( [multiple] ):after {
+	.ipsApp select:after {
 		top: 0;
 		width: 30px;
 		height: 30px;
 		content: '';
 		display: block;
 	}
-	html[dir="ltr"] .ipsApp select:not( [multiple] ):after {
+	html[dir="ltr"] .ipsApp select:after {
 		right: 0;
 	}
-	html[dir="rtl"] .ipsApp select:not( [multiple] ):after {
+	html[dir="rtl"] .ipsApp select:after {
 		left: 0;
 	}
 
@@ -199,8 +199,7 @@ html[dir="rtl"] .ipsField_fieldList_content {
 .ipsApp .ipsForm_fullWidth .ipsFieldRow .ipsField_autocomplete,
 .ipsApp .ipsFieldRow_fullWidth .ipsSelectTree,
 .ipsApp .ipsForm_fullWidth .ipsFieldRow .ipsSelectTree,
-.ipsApp input.ipsField_fullWidth, .ipsApp textarea.ipsField_fullWidth,
-.ipsApp .ipsField_autocomplete.ipsField_fullWidth, .ipsApp select.ipsField_fullWidth {
+.ipsApp input.ipsField_fullWidth, .ipsApp textarea.ipsField_fullWidth, .ipsApp .ipsField_autocomplete.ipsField_fullWidth {
 	width: 100%;
 	max-width: 100% !important;
 }
@@ -220,11 +219,6 @@ html[dir="rtl"] .ipsField_fieldList_content {
 	margin-bottom: 5px;
 	display: inline-block;
 	padding-top: 5px;
-}
-
-.ipsFieldRow.ipsFieldRow_yesNo .ipsFieldRow_label,
-.ipsFieldRow.ipsFieldRow_yesNo .ipsFieldRow_title {
-	padding-top: 0;
 }
 
 .ipsApp .ipsField_primary,
@@ -467,6 +461,7 @@ html[dir="rtl"] .ipsApp input[type="tel"] {
  	border-color: #a6a6a6 #d9d9d9 #d9d9d9 #a6a6a6;
 	border-radius: 3px;
 	cursor: text;
+	direction: ltr;
 }
 html[dir="rtl"] .CodeMirror {
 	border-color: #a6a6a6 #a6a6a6 #d9d9d9 #d9d9d9;
@@ -477,8 +472,8 @@ html[dir="rtl"] .CodeMirror {
 .ipsApp input[type="month"].ipsField_short, .ipsApp input[type="time"].ipsField_short, .ipsApp input[type="week"].ipsField_short, 
 .ipsApp input[type="number"].ipsField_short, .ipsApp input[type="email"].ipsField_short, .ipsApp input[type="url"].ipsField_short,
 .ipsApp input[type="search"].ipsField_short, .ipsApp input[type="tel"].ipsField_short, .ipsApp input[type="color"].ipsField_short, .ipsApp select.ipsField_short {
-	width: 200px;
 	max-width: 200px;
+	width: auto;
 }
 
 .ipsApp textarea.ipsField_medium, .ipsApp input[type="text"].ipsField_medium, .ipsApp input[type="password"].ipsField_medium,
@@ -487,7 +482,7 @@ html[dir="rtl"] .CodeMirror {
 .ipsApp input[type="number"].ipsField_medium, .ipsApp input[type="email"].ipsField_medium, .ipsApp input[type="url"].ipsField_medium,
 .ipsApp input[type="search"].ipsField_medium, .ipsApp input[type="tel"].ipsField_medium, .ipsApp input[type="color"].ipsField_medium, .ipsApp select.ipsField_medium {
 	width: 270px;
-	max-width: 270px;
+	width: auto;
 }
 
 .ipsApp textarea.ipsField_tiny, .ipsApp input[type="text"].ipsField_tiny, .ipsApp input[type="password"].ipsField_tiny,
@@ -495,8 +490,8 @@ html[dir="rtl"] .CodeMirror {
 .ipsApp input[type="month"].ipsField_tiny, .ipsApp input[type="time"].ipsField_tiny, .ipsApp input[type="week"].ipsField_tiny, 
 .ipsApp input[type="number"].ipsField_tiny, .ipsApp input[type="email"].ipsField_tiny, .ipsApp input[type="url"].ipsField_tiny,
 .ipsApp input[type="search"].ipsField_tiny, .ipsApp input[type="tel"].ipsField_tiny, .ipsApp input[type="color"].ipsField_tiny, .ipsApp select.ipsField_tiny {
-	width: 60px;
 	max-width: 60px;
+	width: auto;
 }
 
 	.ipsApp select.ipsField_short, .ipsApp select.ipsField_medium, .ipsApp select.ipsField_tiny {
@@ -572,7 +567,7 @@ html[dir="rtl"] .CodeMirror {
 	}
 
 		.ipsFieldRow .ipsFieldRow_icon[data-icon="search"] {
-			content: "\f002";
+			content: "\\f002";
 		}
 
 	.ipsFieldRow.ipsFieldRow_primary .ipsFieldRow_icon:after {
@@ -592,13 +587,6 @@ html[dir="rtl"] .CodeMirror {
 	background-repeat: no-repeat;
 	background-position: right 5px center;
 }
-
-@media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-	.ipsApp .ipsField_loading {
-		background-image: url( {resource="loaders/tiny_loading@2x.gif" app="core" location="front"} );
-	}
-}
-
 html[dir="rtl"] .ipsApp .ipsField_loading {
 	background-position: left 5px center;
 }
@@ -623,7 +611,7 @@ html[dir="rtl"] .ipsApp .ipsField_loading {
 	border-color: #ba7b84;
 }
 
-.ipsApp input.ipsField_success, .ipsApp textarea.ipsField_success, .ipsFieldRow_success textarea, .ipsFieldRow_success input[type="text"], .ipsFieldRow_success input[type="password"],
+.ipsApp input.ipsField_success, .ipsFieldRow_success textarea, .ipsFieldRow_success input[type="text"], .ipsFieldRow_success input[type="password"],
 .ipsFieldRow_success input[type="datetime"], .ipsFieldRow_success input[type="datetime-local"],
 .ipsFieldRow_success input[type="date"], .ipsFieldRow_success input[type="month"], .ipsFieldRow_success input[type="time"],
 .ipsFieldRow_success input[type="week"], .ipsFieldRow_success input[type="number"], .ipsFieldRow_success input[type="email"],
@@ -715,7 +703,7 @@ input[type="checkbox"]:disabled + .ipsToggle {
 		}
 
 	.ipsToggle span:before {
-		content: '\f0c9';
+		content: '\\f0c9';
 		font-family: 'FontAwesome';
 		font-size: 10px;
 		line-height: 20px;
@@ -723,18 +711,18 @@ input[type="checkbox"]:disabled + .ipsToggle {
 		position: absolute;
 		width: 18px;
 		height: 18px;
-		top: -1px;
+		top: 0;
 		color: rgba(0,0,0,0.2);		
 	}
 	html[dir="ltr"] .ipsToggle span:before {
-		left: -13px;
+		left: -14px;
 	}
 	html[dir="rtl"] .ipsToggle span:before {
-		right: -13px;
+		right: -14px;
 	}
 
 	.ipsToggle span:after {
-		content: '\f00c';
+		content: '\\f00c';
 		font-family: 'FontAwesome';
 		font-size: 12px;
 		text-transform: uppercase;
@@ -753,7 +741,7 @@ input[type="checkbox"]:disabled + .ipsToggle {
 	}
 
 		.ipsToggle.ipsToggle_off span:after {
-			content: '\f00d';
+			content: '\\f00d';
 		}
 		html[dir="ltr"] .ipsToggle.ipsToggle_off span:after {
 			left: 10px;
@@ -811,7 +799,7 @@ html[dir="rtl"] .ipsField_yesNo li {
 	}
 
 		.ipsField_yesNo .ipsField_yesNo_yes label:after {
-			content: "\f00c";
+			content: "\\f00c";
 		}
 		html[dir="ltr"] .ipsField_yesNo .ipsField_yesNo_yes label:after {
 			margin-left: -9px;
@@ -825,7 +813,7 @@ html[dir="rtl"] .ipsField_yesNo li {
 			}
 
 		.ipsField_yesNo .ipsField_yesNo_no label:after {
-			content: "\f00d";
+			content: "\\f00d";
 		}
 		html[dir="ltr"] .ipsField_yesNo .ipsField_yesNo_no label:after {
 			margin-left: -7px;
@@ -909,7 +897,6 @@ html[dir="rtl"] .ipsField_translatable li .ipsFlag + span.ipsFlagLabel {
 .ipsField_stackItem {
 	margin-bottom: 5px;
 	position: relative;
-	padding-left: 32px;
 }
 
 .ipsField_stackItem .ipsField_stackDrag,
@@ -940,21 +927,21 @@ html[dir="rtl"] .ipsField_stackDelete {
 	left: 0;
 }
 
-.ipsField_stackItem input[type="text"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="url"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="tel"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="email"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="number"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="search"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="password"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="datetime"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="datetime-local"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="date"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="week"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="month"]:not(.ipsField_stackItemNoMargin),
-.ipsField_stackItem input[type="time"]:not(.ipsField_stackItemNoMargin) {
-	margin-left: -32px;
+.ipsField_stackItem input[type="text"],
+.ipsField_stackItem input[type="url"],
+.ipsField_stackItem input[type="tel"],
+.ipsField_stackItem input[type="email"],
+.ipsField_stackItem input[type="number"],
+.ipsField_stackItem input[type="search"],
+.ipsField_stackItem input[type="password"],
+.ipsField_stackItem input[type="datetime"],
+.ipsField_stackItem input[type="datetime-local"],
+.ipsField_stackItem input[type="date"],
+.ipsField_stackItem input[type="week"],
+.ipsField_stackItem input[type="month"],
+.ipsField_stackItem input[type="time"] {
 	padding-left: 32px;
+	padding-right: 32px;
 }
 
 	html[dir="ltr"] .ipsField_stackItem input:not([type="text"], [type="url"], [type="tel"], [type="email"], [type="number"], [type="search"], [type="password"],
@@ -1297,7 +1284,7 @@ html[dir="rtl"] .ipsSelectTree_nodes {
 					height: 19px;
 					position: absolute;
 					top: 0;
-					content: '\f04b';
+					content: '\\f04b';
 					font-family: 'FontAwesome';
 				}
 				html[dir="ltr"] .ipsSelectTree_nodes [data-role="nodeList"] li .ipsSelectTree_item > .ipsSelectTree_toggle:before {
@@ -1323,7 +1310,7 @@ html[dir="rtl"] .ipsSelectTree_nodes {
 }
 	
 	.ipsSelectTree_selected:after {
-		content: '\f00c';
+		content: '\\f00c';
 		font-family: 'FontAwesome';
 		position: absolute;
 		top: 7px;
@@ -1362,7 +1349,7 @@ html[dir="rtl"] .ipsSelectTree_nodes {
 	}
 
 	.ipsSelectTree_search:after {
-		content: '\f002';
+		content: '\\f002';
 		font-family: "FontAwesome";
 		position: absolute;
 		top: 7px;
@@ -1378,9 +1365,4 @@ html[dir="rtl"] .ipsSelectTree_nodes {
 .ipsForm_noLabels .ipsFieldRow_label, .ipsForm_noLabels .ipsFieldRow_title,
 .ipsForm_noLabels .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_label, .ipsForm_noLabels .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_title {
 	display: none;
-}
-
-input.ipsField_vle {
-	color: black;
-	font-weight: normal;
 }

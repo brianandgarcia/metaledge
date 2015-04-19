@@ -17,7 +17,6 @@
 		font-weight: 400;
 		position: relative;
 		color: #fff;
-		border-radius: 3px 3px 0 0;
 		background: {theme="widget_title_bar"};
 		-webkit-font-smoothing: antialiased;
 	}
@@ -39,7 +38,6 @@
 			font-size: 16px;
 			font-weight: 500;
 			margin-bottom: 10px;
-			border-radius: 3px 3px 0 0;
 		}
 
 	.ipsWidget.ipsWidget_vertical .ipsWidget_inner {
@@ -55,17 +53,14 @@
 			margin: 0 -5px -5px -5px;
 		}
 
-.ipsWidget_columns > [class*="ipsGrid"] {
-	margin-bottom: 0;
-	border-bottom: 0;
-}
-
 html[dir="ltr"] .ipsWidget_columns > [class*="ipsGrid"] {
 	border-right: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 0;
 	padding-right: 10px;
 }
 html[dir="rtl"] .ipsWidget_columns > [class*="ipsGrid"] {
 	border-left: 1px solid rgba(0,0,0,0.1);
+	margin-bottom: 0;
 	padding-left: 10px;
 }
 

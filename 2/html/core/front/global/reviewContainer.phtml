@@ -5,6 +5,7 @@
 	</div>
 {{else}}
 	<article itemscope="" itemtype="http://schema.org/Comment" id="{$review->_id}" class="ipsComment ipsComment_parent ipsClearfix ipsClear {{if $review->hidden()}}ipsModerated{{endif}}">
+		<a id="review-{$review->id}"></a>
 		{template="review" group="global" app="core" params="$item, $review, $item::$formLangPrefix . 'review', $item::$application, $item::$module"}
 	</article>
 {{endif}}

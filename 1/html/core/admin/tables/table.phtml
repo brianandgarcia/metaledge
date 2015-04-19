@@ -54,12 +54,12 @@
 							<a href='#elSortMenu_menu' id='elSortMenu' data-ipsMenu data-ipsMenu-activeClass='ipsButtonRow_active' data-ipsMenu-selectable="radio">{lang="sort_by"} <i class='fa fa-caret-down'></i></a>
 							<ul class='ipsMenu ipsMenu_auto ipsMenu_withStem ipsMenu_selectable ipsHide' id='elSortMenu_menu'>
 								{{foreach $headers as $k => $header}}
-									{{if $header !== '_buttons' && !in_array( $header, $table->noSort )}}
-										<li class='ipsMenu_item {{if $header == $table->sortBy}}ipsMenu_itemChecked{{endif}}' data-ipsMenuValue=$k>
-											{{if $header == $table->sortBy and $table->sortDirection == 'desc'}}
-												<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $header, 'sortdirection' => 'desc' ) )}'>
+									{{if $k !== '_buttons' && !in_array( $k, $table->noSort )}}
+										<li class='ipsMenu_item {{if $k == $table->sortBy}}ipsMenu_itemChecked{{endif}}' data-ipsMenuValue=$k>
+											{{if $k == $table->sortBy and $table->sortDirection == 'desc'}}
+												<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $k, 'sortdirection' => 'desc' ) )}'>
 											{{else}}
-												<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $header, 'sortdirection' => 'asc' ) )}'>
+												<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $k, 'sortdirection' => 'asc' ) )}'>
 											{{endif}}
 													{lang="{$table->langPrefix}{$header}"}
 												</a>
@@ -90,13 +90,13 @@
 			<thead>
 				<tr class='ipsAreaBackground'>
 					{{foreach $headers as $k => $header}}
-						{{if $header !== '_buttons'}}
-							<th class='{{if !in_array( $header, $table->noSort )}}ipsTable_sortable {{if $header == ( mb_strrpos( $table->sortBy, ',' ) !== FALSE ? trim( mb_substr( $table->sortBy, mb_strrpos( $table->sortBy, ',' ) + 1 ) ) : $table->sortBy )}}ipsTable_sortableActive ipsTable_sortable{{if $table->sortDirection == 'asc'}}Asc{{else}}Desc{{endif}} {{else}}ipsTable_sortableAsc{{endif}}{{endif}} {{if array_key_exists( $header, $table->classes )}}{$table->classes[ $header ]}{{endif}}' data-key="{$header}" {{if !in_array( $header, $table->noSort )}}data-action="tableSort" {{if $header == ( mb_strrpos( $table->sortBy, ',' ) !== FALSE ? trim( mb_substr( $table->sortBy, mb_strrpos( $table->sortBy, ',' ) + 1 ) ) : $table->sortBy )}}aria-sort="{{if $table->sortDirection == 'asc'}}ascending{{else}}descending{{endif}}"{{endif}}{{endif}} {{if isset( $table->widths[ $header ] )}}style="width: {$table->widths[ $header ]}%"{{endif}}>
-								{{if !in_array( $header, $table->noSort )}}
-									{{if $header == $table->sortBy and $table->sortDirection == 'desc'}}
-										<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $header, 'sortdirection' => 'asc' ) )}'>
+						{{if $k !== '_buttons'}}
+							<th class='{{if !in_array( $k, $table->noSort )}}ipsTable_sortable {{if $k == ( mb_strrpos( $table->sortBy, ',' ) !== FALSE ? trim( mb_substr( $table->sortBy, mb_strrpos( $table->sortBy, ',' ) + 1 ) ) : $table->sortBy )}}ipsTable_sortableActive ipsTable_sortable{{if $table->sortDirection == 'asc'}}Asc{{else}}Desc{{endif}} {{else}}ipsTable_sortableAsc{{endif}}{{endif}} {{if array_key_exists( $k, $table->classes )}}{$table->classes[ $k ]}{{endif}}' data-key="{$k}" {{if !in_array( $k, $table->noSort )}}data-action="tableSort" {{if $k == ( mb_strrpos( $table->sortBy, ',' ) !== FALSE ? trim( mb_substr( $table->sortBy, mb_strrpos( $table->sortBy, ',' ) + 1 ) ) : $table->sortBy )}}aria-sort="{{if $table->sortDirection == 'asc'}}ascending{{else}}descending{{endif}}"{{endif}}{{endif}} {{if isset( $table->widths[ $k ] )}}style="width: {$table->widths[ $k ]}%"{{endif}}>
+								{{if !in_array( $k, $table->noSort )}}
+									{{if $k == $table->sortBy and $table->sortDirection == 'desc'}}
+										<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $k, 'sortdirection' => 'asc' ) )}'>
 									{{else}}
-										<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $header, 'sortdirection' => 'desc' ) )}'>
+										<a href='{$table->baseUrl->setQueryString( array( 'filter' => $table->filter, 'sortby' => $k, 'sortdirection' => 'desc' ) )}'>
 									{{endif}}
 											{lang="{$table->langPrefix}{$header}"}
 											<span class='ipsTable_sortIcon'></span>
@@ -105,7 +105,7 @@
 									{lang="{$table->langPrefix}{$header}"}
 								{{endif}}
 							</th>
-						{{elseif $header === '_buttons'}}
+						{{elseif $k === '_buttons'}}
 							<th>&nbsp;</th>
 						{{endif}}
 					{{endforeach}}

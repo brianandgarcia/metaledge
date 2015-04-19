@@ -1,6 +1,6 @@
 <ips:template parameters="$url, $lang=NULL" />
 {{if \IPS\IN_DEV}}
-	<span id='acplsi_{expression="md5( $url )"}' data-ipsMenu data-ipsMenu-closeOnClick='false' data-ipsMenu-appendTo='.ipsDialog > div, #acpMainLayout' class='ipsCursor_pointer'>
+	<span id='acplsi_{expression="md5( $url )"}' data-ipsMenu data-ipsMenu-closeOnClick='false' class='ipsCursor_pointer'>
 		{{if isset( \IPS\Dispatcher::i()->searchKeywords[ $url ] )}}
 			<span class="ipsBadge ipsBadge_style1">
 				<i class="fa fa-search"></i> {expression="count( \IPS\Dispatcher::i()->searchKeywords[ $url ]['keywords'] )"}
@@ -59,7 +59,7 @@
 											<span class="ipsField_stackDrag ipsDrag" data-action='stackDrag'>
 												<i class='fa fa-bars ipsDrag_dragHandle'></i>
 											</span>
-											<span href='#' class="ipsField_stackDelete ipsCursor_pointer" data-action="stackDelete">
+											<span class="ipsField_stackDelete ipsCursor_pointer" data-action="stackDelete">
 												<i class='fa fa-times'></i>
 											</span>
 											<div data-ipsStack-wrapper><input type='text' data-role="keywords" value="{$word}"></div>
@@ -70,7 +70,7 @@
 										<span class="ipsField_stackDrag ipsDrag" data-action='stackDrag'>
 											<i class='fa fa-bars ipsDrag_dragHandle'></i>
 										</span>
-										<span href='#' class="ipsField_stackDelete ipsCursor_pointer" data-action="stackDelete">
+										<span class="ipsField_stackDelete ipsCursor_pointer" data-action="stackDelete">
 											<i class='fa fa-times'></i>
 										</span>
 										<div data-ipsStack-wrapper><input type='text' data-role="keywords"></div>

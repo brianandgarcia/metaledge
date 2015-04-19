@@ -1,0 +1,62 @@
+<ips:template parameters="$geolocation, $map" />
+<div class="ipsPad">
+	<div class="ipsColumns ipsColumns_collapsePhone">
+		<div class="ipsColumn ipsColumn_fluid">
+			<ul class='ipsDataList'>
+				<li>
+					<span class="ipsDataItem_generic ipsDataItem_size6">
+						<strong class="title">{lang="city"}</strong>
+					</span>
+					<span class="ipsDataItem_generic">
+						{{if $geolocation->city}}
+							{$geolocation->city}
+						{{else}}
+							<em class="ipsType_light">{lang="unknown"}</em>
+						{{endif}}
+					</span>
+				</li>
+				<li>
+					<span class="ipsDataItem_generic ipsDataItem_size6">
+						<strong class="title">{lang="region"}</strong>
+					</span>
+					<span class="ipsDataItem_generic">
+						{{if $geolocation->region}}
+							{$geolocation->region}
+						{{else}}
+							<em class="ipsType_light">{lang="unknown"}</em>
+						{{endif}}
+					</span>
+				</li>
+				<li>
+					<span class="ipsDataItem_generic ipsDataItem_size6">
+						<strong class="title">{lang="zip"}</strong>
+					</span>
+					<span class="ipsDataItem_generic">
+						{{if $geolocation->postalCode}}
+							{$geolocation->postalCode}
+						{{else}}
+							<em class="ipsType_light">{lang="unknown"}</em>
+						{{endif}}
+					</span>
+				</li>
+				<li>
+					<span class="ipsDataItem_generic ipsDataItem_size6">
+						<strong class="title">{lang="country"}</strong>
+					</span>
+					<span class="ipsDataItem_generic">
+						{{if $geolocation->country}}
+							{$geolocation->country}
+						{{else}}
+							<em class="ipsType_light">{lang="unknown"}</em>
+						{{endif}}
+					</span>
+				</li>
+			</ul>
+		</div>
+		<div class="ipsColumn ipsColumn_fixed ipsColumn_veryWide">
+			{$map|raw}
+		</div>
+	</div>
+	<hr class="ipsHr">
+	<span class="ipsType_light"><i class="fa fa-info-circle"></i> {lang="ip_geolocation_info"}</span>
+</div>

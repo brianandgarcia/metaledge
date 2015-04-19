@@ -1,17 +1,14 @@
 <ips:template parameters="$title,$html,$location=array()" />
 <!DOCTYPE html>
-<html lang="{expression="\IPS\Member::loggedIn()->language()->bcp47()"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
+<html lang="{expression="mb_substr( \IPS\Member::loggedIn()->language()->short, 0, 2 )"}" dir="{{if member.language()->isrtl}}rtl{{else}}ltr{{endif}}">
 	<head>
 		<meta charset="utf-8">
 		<title>{$title}</title>
-		<!--[if lt IE 9]>
-		    <script src="{url="applications/core/interface/html5shiv/html5shiv.js" base="none"}"></script>
-		<![endif]-->
 		{template="includeCSS" app="core" group="global" location="global" params=""}
 		{template="includeJS" app="core" group="global" location="global" params=""}
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-	<body data-baseurl="{setting="base_url"}" class='ipsApp ipsApp_admin ipsJS_none {{if isset( \IPS\Request::i()->cookie['hideAdminMenu'] )}}cAdminHideMenu{{endif}}' data-controller="{expression="implode( ',', \IPS\Output::i()->globalControllers )"}" {{if isset( output.inlineMessage )}}data-message="{expression="output.inlineMessage"}"{{endif}} data-pageApp='{$location['app']}' data-pageLocation='admin' data-pageModule='{$location['module']}' data-pageController='{$location['controller']}'>
+	<body data-baseurl="{setting="base_url"}" class='ipsApp ipsApp_admin ipsJS_none' data-controller="{expression="implode( ',', \IPS\Output::i()->globalControllers )"}" {{if isset( output.inlineMessage )}}data-message="{expression="output.inlineMessage"}"{{endif}} data-pageApp='{$location['app']}' data-pageLocation='admin' data-pageModule='{$location['module']}' data-pageController='{$location['controller']}'>
 		<a href='#content' id='acpJumpToContent'>{lang="jump_to_content"}</a>
 		<div id='ipsLayout_header' class='ipsClearfix' role='banner' data-controller='core.admin.core.mobileNav'>
 			<header>
@@ -24,7 +21,7 @@
 					</li>
 					<li><a href='../' target='_blank'><i class='fa fa-home'></i> {lang="site"}</a></li>
 				</ul>
-				<ul id='elAdminMobileNav' class='ipsList_inline ipsList_noSpacing ipsResponsive_hideDesktop ipsResponsive_block'>
+				<ul id='elMobileNav' class='ipsList_inline ipsResponsive_hideDesktop ipsResponsive_block'>
 					<li class='ipsJS_show'>
 						<a href='#' class='ipsResponsive_showPhone ipsResponsive_block' data-action="mobileSearch"><i class='fa fa-search'></i></a>
 					</li>
@@ -39,12 +36,11 @@
 		</div>
 		<ul id='elAdminUser_menu' class='ipsMenu ipsMenu_narrow ipsHide'>
 			<li class='ipsMenu_item'><a href='{url="app=core&module=members&controller=members&do=adminDetails"}' data-ipsDialog data-ipsDialog-url='{url="app=core&module=members&controller=members&do=adminDetails"}' data-ipsDialog-title='{lang="change_details"}' data-ipsDialog-size='narrow'><i class='fa fa-pencil'></i>&nbsp; {lang="change_details"}</a></li>
-			{{$languages = \IPS\Lang::getEnabledLanguages();}}
-			{{if count( $languages ) > 1}}
+			{{if count( \IPS\Lang::languages() ) > 1}}
 				<li class='ipsMenu_item ipsMenu_subItems'>
 					<a href='#elNavLang_menu' id='elNavLang'><i class='fa fa-globe'></i>&nbsp; {lang='acp_language'}</a>
 					<ul id='elNavLang_menu' class='ipsMenu ipsMenu_selectable ipsHide'>
-					{{foreach $languages as $id => $lang }}
+					{{foreach \IPS\Lang::languages() as $id => $lang }}
 						<li class='ipsMenu_item{{if \IPS\Member::loggedIn()->acp_language == $id || ( $lang->default && \IPS\Member::loggedIn()->acp_language === 0 )}} ipsMenu_itemChecked{{endif}}'>
 							<a href='{url="app=core&module=system&controller=language&id=$id" csrf="true"}'>{{if $lang->get__icon()}}<i class='{$lang->get__icon()}'></i> {{endif}}{$lang->title} {{if $lang->default}}{lang="default"}{{endif}}</a>
 						</li>
@@ -103,7 +99,7 @@
 								<a href="{expression="\IPS\Output::i()->editUrl"}" class="ipsType_medium" data-ipsDialog data-ipsDialog-title="{lang="edit"}"><i class="fa fa-pencil"></i></a>
 							{{endif}}
 							{{if \IPS\IN_DEV}}
-								{template="searchKeywords" group="global" app="core" params="'app=' . \IPS\Request::i()->app . '&module=' . \IPS\Request::i()->module . '&controller=' . \IPS\Request::i()->controller . ( ( isset( \IPS\Request::i()->do ) and \IPS\Request::i()->do != 'do' ) ? ( '&do=' . \IPS\Request::i()->do ) : '' ) . ( ( \IPS\Request::i()->controller == 'enhancements' and ( isset( \IPS\Request::i()->id ) ) ) ? ( '&id=' . \IPS\Request::i()->id ) : '' )"}
+								{template="searchKeywords" group="global" app="core" params="'app=' . \IPS\Request::i()->app . '&module=' . \IPS\Request::i()->module . '&controller=' . \IPS\Request::i()->controller . ( ( isset( \IPS\Request::i()->do ) and \IPS\Request::i()->do != 'do' ) ? ( '&do=' . \IPS\Request::i()->do ) : '' )"}
 							{{endif}}
 						</h1>
 					</div>
@@ -147,7 +143,7 @@
 						<ul class="ipsSideMenu_list">
 							{{foreach \IPS\Application::allExtensions( 'core', 'LiveSearch', TRUE, 'core', 'Settings' ) as $key => $extension}}
 								{{if $extension->hasAccess()}}
-									<li class="ipsSideMenu_item ipsSideMenu_itemDisabled" data-ipsMenuValue='{$key}'><a href="#">{lang="acp_search_title_{$key}"} <span data-role="resultCount" class='ipsSideMenu_itemCount ipsLoading ipsLoading_tiny ipsPad_top'>&nbsp;&nbsp;</span></a></li>
+									<li class="ipsSideMenu_item" data-ipsMenuValue='{$key}'><a href="#">{lang="acp_search_title_{$key}"} <span data-role="resultCount" class='ipsSideMenu_itemCount'>0</span></a></li>
 								{{endif}}
 							{{endforeach}}
 						</ul>

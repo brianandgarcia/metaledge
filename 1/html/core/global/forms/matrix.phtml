@@ -1,4 +1,4 @@
-<ips:template parameters="$id, $headers, $rows, $action, $hiddenValues, $actionButtons, $langPrefix, $widths=array(), $manageable=TRUE, $checkAlls=array(), $checkAllRows=FALSE, $classes=array(), $showTooltips=FALSE" />
+<ips:template parameters="$id, $headers, $rows, $action, $hiddenValues, $actionButtons, $langPrefix, $widths=array(), $manageable=TRUE, $checkAlls=array(), $checkAllRows" />
 <form accept-charset='utf-8' class="ipsForm" action="{$action}" method="post" data-ipsMatrix data-ipsMatrix-manageable='{{if $manageable}}true{{else}}false{{endif}}'>
 	<input type="hidden" name="{$id}_submitted" value="1">
 	{{foreach $hiddenValues as $k => $v}}
@@ -14,8 +14,8 @@
 			</div>
 		</div>
 	{{endif}}
-	<table class='ipsTable ipsMatrix ipsClear ipsTable_responsive {{if count( $classes )}}{expression="implode( ' ', $classes )"}{{endif}}' role='grid' data-matrixID='{$id}'>
-		{template="matrixRows" group="forms" location="global" app="core" params="$headers, $rows, $langPrefix, $manageable, $widths, $checkAlls, $checkAllRows, $showTooltips"}
+	<table class='ipsTable ipsMatrix ipsClear ipsTable_responsive' role='grid' data-matrixID='{$id}'>
+		{template="matrixRows" group="forms" location="global" app="core" params="$headers, $rows, $langPrefix, $manageable, $widths, $checkAlls, $checkAllRows"}
 	</table>	
 	<div class="ipsAreaBackground_light ipsClearfix ipsPad ipsType_center">
 		{{foreach $actionButtons as $button}}{$button|raw} {{endforeach}}

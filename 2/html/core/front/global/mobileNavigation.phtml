@@ -45,6 +45,7 @@
 						<h4 class='ipsDrawer_title'><a href='#'>{lang="mobile_menu_account"}</a></h4>
 						<ul class='ipsDrawer_list'>
 							<li data-action="back"><a href='#'>{lang="mobile_menu_back"}</a></li>
+							<li><a href='{url="app=core&module=system&controller=settings" seoTemplate="settings"}' title='{lang="edit_account_settings"}'>{lang="menu_settings"}</a></li>
 							{{if \IPS\Member::loggedIn()->canAccessModule( \IPS\Application\Module::get( 'core', 'members', 'front' ) )}}
 								<li><a href='{member="url()"}' title='{lang="view_my_profile"}'>{lang="menu_profile"}</a></li>
 							{{endif}}
@@ -79,6 +80,9 @@
 							{{endif}}
 						</ul>
 					</li>
+				{{endif}}
+				{{if \IPS\Settings::i()->show_home_link}}
+					<li><a href='{setting="home_url"}'>{setting="home_name"}</a></li>
 				{{endif}}
 				{{$extensions = ( \IPS\Member::loggedIn()->language()->isrtl ) ? array_reverse( \IPS\Application::allExtensions( 'core', 'FrontNavigation' ) ) : \IPS\Application::allExtensions( 'core', 'FrontNavigation' );}}
 				{{foreach $extensions as $nav}}

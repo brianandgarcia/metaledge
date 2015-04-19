@@ -5,10 +5,10 @@
 	}
 
 	.cTopicList .cBestAnswerIndicator {
-		width: 24px;
-		height: 24px;
-		line-height: 24px;
-		font-size: 14px;
+		width: 28px;
+		height: 28px;
+		line-height: 28px;
+		font-size: 15px;
 	}
 
 	.cTopicList .ipsDataItem_icon {
@@ -17,11 +17,11 @@
 
 	html[dir="ltr"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main, 
 	html[dir="ltr"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main + .ipsDataItem_stats {
-		margin-left: 30px !important;
+		margin-left: 30px;
 	}
 	html[dir="rtl"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main, 
 	html[dir="rtl"] .cTopicList .ipsDataItem_icon + .ipsDataItem_main + .ipsDataItem_stats {
-		margin-right: 30px !important;
+		margin-right: 30px;
 	}
 }
 
@@ -103,11 +103,11 @@
 
 		html[dir="ltr"] .cForumQuestions .cForumQuestion .ipsDataItem_modCheck,
 		html[dir="ltr"] .cForumQuestions .cForumQuestion .ipsDataItem_main + .cForumQuestion_stat {
-			margin-left: 30px;
+			margin-left: 40px;
 		}
 		html[dir="rtl"] .cForumQuestions .cForumQuestion .ipsDataItem_modCheck,
 		html[dir="rtl"] .cForumQuestions .cForumQuestion .ipsDataItem_main + .cForumQuestion_stat {
-			margin-right: 30px;
+			margin-right: 40px;
 		}
 
 			.cForumQuestions .cForumQuestion .cForumQuestion_stat + .ipsDataItem_modCheck {
@@ -115,10 +115,10 @@
 				top: 50px;
 			} 
 			html[dir="ltr"] .cForumQuestions .cForumQuestion .cForumQuestion_stat + .ipsDataItem_modCheck {
-				left: -15px;
+				left: -18px;
 			}
 			html[dir="rtl"] .cForumQuestions .cForumQuestion .cForumQuestion_stat + .ipsDataItem_modCheck {
-				right: -15px;
+				right: -18px;
 			}
 
 			html[dir="ltr"] .cForumQuestions .cForumQuestion .cForumQuestion_stat + .cForumQuestion_stat {

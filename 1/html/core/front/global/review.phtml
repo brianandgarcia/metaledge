@@ -1,5 +1,5 @@
 <ips:template parameters="$item, $review, $editorName, $app, $type" />
-<div id='review-{$review->id}_wrap' data-controller='core.front.core.comment' data-commentApp='{$app}' data-commentType='{$type}-review' data-commentID="{$review->id}" data-quoteData='{expression="json_encode( array('userid' => $review->author()->member_id, 'username' => $review->author()->name, 'timestamp' => $review->mapped('date'), 'contentapp' => $app, 'contenttype' => $type, 'contentid' => $item->id, 'contentcommentid' => $review->id) )"}' class='ipsComment_content ipsType_medium' itemprop='review' itemscope itemtype="http://schema.org/Review">
+<div id='review-{$review->id}' data-controller='core.front.core.comment' data-commentApp='{$app}' data-commentType='{$type}-review' data-commentID="{$review->id}" data-quoteData='{expression="json_encode( array('userid' => $review->author()->member_id, 'username' => $review->author()->name, 'timestamp' => $review->mapped('date'), 'contentapp' => $app, 'contenttype' => $type, 'contentid' => $item->id, 'contentcommentid' => $review->id) )"}' class='ipsComment_content ipsType_medium' itemprop='review' itemscope itemtype="http://schema.org/Review">
 	<div class='ipsComment_header ipsPhotoPanel ipsPhotoPanel_small ipsPhotoPanel_notPhone'>
 		{template="userPhoto" app="core" group="global" params="$review->author(), 'small', $review->warningRef(), 'ipsPos_left'"}
 		<div>
@@ -23,12 +23,13 @@
 				{{endif}}
 				{{if $review->hidden() !== 1 and $review instanceof \IPS\Content\ReportCenter and !\IPS\Member::loggedIn()->group['gbw_no_report'] }}
 					&middot; <a href='{$review->url('report')}' data-ipsDialog data-ipsDialog-remoteSubmit data-ipsDialog-size='medium' data-ipsDialog-flashMessage='{lang="report_submit_success"}' data-ipsDialog-title="{lang="report"}" data-action='reportComment' title='{lang="report"}'>{lang="report"}</a>
+					</li>
 				{{endif}}
 			</p>
 			<ul class='ipsList_inline ipsClearfix ipsRating ipsRating_large' itemprop='reviewRating' itemscope itemtype='http://schema.org/Rating'>
 				<meta itemprop='worstRating' content='1'>
-				<meta itemprop='bestRating' content='{expression="intval( \IPS\Settings::i()->reviews_rating_out_of )"}'>
-				{{foreach range( 1, intval( \IPS\Settings::i()->reviews_rating_out_of ) ) as $i}}
+				<meta itemprop='bestRating' content='5'>
+				{{foreach range( 1, 5 ) as $i}}
 					<li class='{{if $review->mapped('rating') >= $i}}ipsRating_on{{else}}ipsRating_off{{endif}}'>
 						{{if $review->mapped('rating') === $i}}<span itemprop='ratingValue' class='ipsHide'>{$i}</span>{{endif}}
 						<i class='fa fa-star'></i>
@@ -58,7 +59,7 @@
 				<ul class='ipsComment_controls ipsClearfix' data-role="commentControls">
 					{{if $review->hidden() === 1 && ( $review->canUnhide() || $review->canDelete() )}}
 						{{if $review->canUnhide()}}
-							<li><a href='{$review->url('unhide')->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_positive' data-action='approveComment'><i class='fa fa-check'></i> {lang="approve"}</a></li>
+							<li><a href='{$review->url('unhide')->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_positive'><i class='fa fa-check'></i> {lang="approve"}</a></li>
 						{{endif}}
 						{{if $review->canDelete()}}
 							<li><a href='{$review->url('delete')->csrf()}' data-confirm data-action='deleteComment' data-updateOnDelete="#commentCount" class='ipsButton ipsButton_verySmall ipsButton_negative'><i class='fa fa-times'></i> {lang="delete"}</a></li>
@@ -103,7 +104,7 @@
 						{{endif}}
 					{{endif}}
 					<li class='ipsHide' data-role='commentLoading'>
-						<i class='icon-spinner2 ipsLoading_tinyIcon'></i>
+						<img src='{resource="loaders/tiny_loading.gif" app="core" base="front"}' alt='{lang="loading"}'>
 					</li>
 				</ul>
 			{{endif}}

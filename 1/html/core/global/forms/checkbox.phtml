@@ -6,14 +6,9 @@
 		name='{$name}'
 		value='1'
 		id="check_{$id}"
-		{{if $value}}checked aria-checked='true'{{else}}aria-checked='false'{{endif}}
+		{{if $value}}checked aria-checked='true'{{endif}}
 		{{if $disabled}}disabled aria-disabled='true'{{endif}}
-		{{if !empty($togglesOn) OR !empty($togglesOff)}}
-			data-control="toggle"
-			{{if $fancyToggle}}
-				data-toggle-visibleCheck="#check_{$id}_wrapper"
-			{{endif}}
-		{{endif}}
+		{{if !empty($togglesOn) OR !empty($togglesOff)}}data-control="toggle"{{endif}}
 		{{if !empty($togglesOn)}} data-togglesOn="{expression="implode( ',', $togglesOn )"}" aria-controls="{expression="implode( ',', $togglesOn )"}"{{endif}}
 		{{if !empty($togglesOff)}} data-togglesOff="{expression="implode( ',', $togglesOff )"}" aria-controls="{expression="implode( ',', $togglesOff )"}"{{endif}}
 		{{if $fancyToggle}}

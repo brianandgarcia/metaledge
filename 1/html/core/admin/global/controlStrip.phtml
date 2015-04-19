@@ -1,5 +1,5 @@
-<ips:template parameters="$buttons, $otherClasses=NULL" />
-<ul class='ipsControlStrip ipsType_noBreak ipsList_reset {{if $otherClasses}}{$otherClasses}{{endif}}' data-ipsControlStrip>
+<ips:template parameters="$buttons" />
+<ul class='ipsControlStrip ipsType_noBreak ipsList_reset' data-ipsControlStrip>
 	{{foreach $buttons as $button}}
 		<li class='ipsControlStrip_button {{if isset( $button['hidden'] ) and $button['hidden']}}ipsJS_hide{{endif}}' {{if isset( $button['id'] )}}id="{$button['id']}"{{endif}}>
 			<a

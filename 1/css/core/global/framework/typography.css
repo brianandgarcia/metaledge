@@ -132,14 +132,6 @@ html[dir="rtl"] .ipsType_right {
 	line-height: 1.6;
 }
 
-	.ipsType_richText a {
-		text-decoration: underline;
-	}
-
-		.ipsType_richText .ipsForm a {
-			text-decoration: none;
-		}
-
 /* Makes links go the color of surrounding text */
 a.ipsType_blendLinks, .ipsType_blendLinks a { 
 	color: inherit; 
@@ -232,11 +224,11 @@ mark {
 
 /* ======================================================== */
 /* RICH TEXT */
-.ipsType_richText > p:first-child {
+.ipsType_richText p:first-child {
 	margin-top: 0;
 }
 
-.ipsType_richText > p:last-child {
+.ipsType_richText p:last-child {
 	margin-bottom: 0;
 }
 

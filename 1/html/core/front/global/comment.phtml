@@ -56,7 +56,7 @@
 		<ul class='ipsComment_controls ipsClearfix' data-role="commentControls">
 			{{if $comment->hidden() === 1 && ( $comment->canUnhide() || $comment->canDelete() )}}
 				{{if $comment->canUnhide()}}
-					<li><a href='{$comment->url('unhide')->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_positive' data-action='approveComment'><i class='fa fa-check'></i> {lang="approve"}</a></li>
+					<li><a href='{$comment->url('unhide')->csrf()}' class='ipsButton ipsButton_verySmall ipsButton_positive'><i class='fa fa-check'></i> {lang="approve"}</a></li>
 				{{endif}}
 				{{if $comment->canDelete()}}
 					<li><a href='{$comment->url('delete')->csrf()}' data-confirm data-action='deleteComment' data-updateOnDelete="#commentCount" class='ipsButton ipsButton_verySmall ipsButton_negative'><i class='fa fa-times'></i> {lang="delete"}</a></li>
@@ -116,7 +116,7 @@
 				{{endif}}
 			{{endif}}
 			<li class='ipsHide' data-role='commentLoading'>
-				<i class='icon-spinner2 ipsLoading_tinyIcon'></i>
+				<img src='{resource="loaders/tiny_loading.gif" app="core" base="front"}' alt='{lang="loading"}'>
 			</li>
 		</ul>
 	</div>

@@ -1,4 +1,2 @@
 <ips:template parameters="$url, $width=NULL, $height=NULL" />
-<div class='ipsEmbeddedOther'>
-	<iframe src="{$url|raw}" data-controller="core.front.core.autoSizeIframe"></iframe>
-</div>
+<iframe src="{$url|raw}" {{if $width}}width="{$width}"{{endif}} {{if $height}}height="{$height}"{{else}}data-controller="core.front.core.autoSizeIframe"{{endif}} frameborder="0"></iframe>

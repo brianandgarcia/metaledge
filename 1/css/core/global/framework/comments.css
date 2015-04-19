@@ -152,9 +152,6 @@ html[dir="rtl"] .ipsComment_subComments {
 	color: #adadad;
 	background: transparent;
 }
-.ipsComment.ipsComment_ignored:first-child {
-	margin-top: 15px;
-}
 html[dir="ltr"] .ipsComment.ipsComment_ignored {
 	padding-left: 75px;
 }
@@ -229,6 +226,18 @@ html[dir="rtl"] .ipsComment.ipsComment_popular .ipsComment_popularFlag {
 		right: 0;
 	}
 
+/*.ipsComment input[type="checkbox"][data-role="moderation"] {
+	opacity: 0;
+}
+
+	.ipsComment:hover input[type="checkbox"][data-role="moderation"] {
+		opacity: 0.6;
+	}
+	
+	.ipsComment:hover input[type="checkbox"][data-role="moderation"]:checked {
+		opacity: 1;
+	}*/
+
 .ipsCommentUnreadSeperator {
 	margin: 15px 0;
 	height: 0;
@@ -236,8 +245,4 @@ html[dir="rtl"] .ipsComment.ipsComment_popular .ipsComment_popularFlag {
 	border-width: 2px 0 0 0;
 	border-style: solid;
 	border-color: #417ba3;
-}
-
-.ipsType_richText .ipsPagination:first-child {
-	margin-bottom: 15px;
 }

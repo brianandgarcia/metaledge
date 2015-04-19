@@ -20,8 +20,6 @@
 	
 	.ipsFollow {
 		width: 100%;
-		display: table !important;
-		float: none !important;
 	}
 
 	.ipsFollow > a, .ipsFollow > span, .ipsFollow > a > span {
@@ -30,13 +28,6 @@
 
 	.ipsFollow > a:not( .ipsCommentCount ), .ipsFollow > span:not( .ipsCommentCount ), .ipsFollow > a > span:not( .ipsCommentCount ) {
 		width: 100%;
-	}
-
-	html[dir="ltr"] .ipsFollow > a:not( .ipsCommentCount ),
-	html[dir="ltr"] .ipsFollow > span:not( .ipsCommentCount ),
-	html[dir="ltr"] .ipsFollow > a > span:not( .ipsCommentCount ) {
-		left: 0;
-		padding-left: 0;
 	}
 
 	/*.ipsFollow,

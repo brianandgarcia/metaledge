@@ -27,7 +27,7 @@
 					<div class='ipsDataItem_main'>
 						{{if $service->connected()}}
 							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_positive'>{lang="enabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4><br>
-							Logged in as {$service->name()}<br>
+							{lang="profilesync_logged_in_as" sprintf="$service->name()"}<br>
 							<span class='ipsType_light'>{$service->settingsDesc()}</span>
 						{{else}}
 							<h4 class='ipsDataItem_title'><span class='ipsBadge ipsBadge_negative'>{lang="disabled"}</span> <strong>{lang="profilesync__{$k}"}</strong></h4><br>

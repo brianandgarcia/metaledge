@@ -17,15 +17,15 @@
 			<a href='#elAttendees{$tabId}' data-action='expandTabs'><i class='fa fa-caret-down'></i></a>
 			<ul role="tablist">
 				<li role="presentation">
-					<a href='#ipsTabs_elAttendees{$tabId}_elGoing_panel' id='elGoing' class='ipsTabs_item ipsTabs_activeItem ipsType_center' aria-selected='true'>{lang="rsvp_attendees"} {{if count($attendees[1])}}({expression="count($attendees[1])"}){{endif}}</a>
+					<a href='#ipsTabs_elAttendees{$tabId}_elGoing_panel' id='elGoing' class='ipsTabs_item ipsTabs_activeItem ipsType_center' aria-selected='true'>{lang="rsvp_attend_event"} {{if count($attendees[1])}}({expression="count($attendees[1])"}){{endif}}</a>
 				</li>
 				{{if $event->rsvp_limit == -1}}
 					<li role="presentation">
-						<a href='#ipsTabs_elAttendees{$tabId}_elMaybe_panel' id='elMaybe' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="rsvp_maybe_attendees"} {{if count($attendees[2])}}({expression="count($attendees[2])"}){{endif}}</a>
+						<a href='#ipsTabs_elAttendees{$tabId}_elMaybe_panel' id='elMaybe' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="rsvp_maybe_event"} {{if count($attendees[2])}}({expression="count($attendees[2])"}){{endif}}</a>
 					</li>	
 				{{endif}}	
 				<li role="presentation">
-					<a href='#ipsTabs_elAttendees{$tabId}_elNotGoing_panel' id='elNotGoing' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="rsvp_notgoing_attendees"} {{if count($attendees[0])}}({expression="count($attendees[0])"}){{endif}}</a>
+					<a href='#ipsTabs_elAttendees{$tabId}_elNotGoing_panel' id='elNotGoing' class='ipsTabs_item ipsType_center' aria-selected='false'>{lang="rsvp_notgoing_event"} {{if count($attendees[0])}}({expression="count($attendees[0])"}){{endif}}</a>
 				</li>
 			</ul>
 		</div>

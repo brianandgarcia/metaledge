@@ -10,24 +10,8 @@ html[dir="rtl"] #elTemplateEditor_panelToolbar {
 }
 
 #elTemplateEditor .ipsTabs {
-	background: #d6d6d6;
+	background: #f7f7f7;
 	padding: 0;
-}
-	
-	#elTemplateEditor .ipsTabs_item {
-		border: 0 !important;
-		text-overflow: clip !important;
-	}
-
-#elTemplateEditor [data-role="editor"],
-#elTemplateEditor .CodeMirror {
-	border-width: 0px !important;
-	border-radius: 0px !important;
-}
-
-#elTemplateEditor [data-role="editor"] {
-	font-family: monospace;
-	font-size: 13px;
 }
 
 #elTemplateEditor [data-role="templateToolbar"] {
@@ -44,14 +28,14 @@ html[dir="rtl"] #elTemplateEditor_panelToolbar {
 
 #elTemplateEditor_outerPanelWrap {
 	position: relative;
-	height: 633px;
+	height: 590px;
 }
 
 #elTemplateEditor [data-role="templatePanelWrap"] {
 	width: 100%;
 	background-color: #fff;
 	position: absolute;
-	top: 38px;
+	top: 40px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -75,17 +59,6 @@ html[dir="rtl"] #elTemplateEditor [data-action="closeTab"] {
 		color: #333;
 	}
 
-#elTemplateEditor input[data-role="templateSearch"] {
-	width: 100%;
- 	background-color: #ffffff;
- 	border: 1px solid #cccccc;
-	border-radius: 3px;
-	box-shadow: 0 2px 4px rgba(0,0,0,0.075) inset;
-	width: 100%;
-	max-width: 350px;
-	padding: 7px;
-}
-
 /* FILE LISTING STYLES */
 #elTemplateEditor_fileList {
 	height: 550px;
@@ -101,7 +74,6 @@ html[dir="rtl"] #elTemplateEditor [data-action="closeTab"] {
 	text-align: center;
 }
 
-
 .cTemplateList a {
 	padding: 5px 0;
 	display: block;
@@ -113,31 +85,23 @@ html[dir="rtl"] #elTemplateEditor [data-action="closeTab"] {
 .cTemplateList li.cTemplateList_activeBranch > a:before {
 	font-family: 'FontAwesome';
 	display: inline-block;
+	margin-right: 7px;
 	line-height: 6px;
 	font-size: 14px;
 }
-	html[dir="ltr"] .cTemplateList li.cTemplateList_inactiveBranch > a:before,
-	html[dir="ltr"] .cTemplateList li.cTemplateList_activeBranch > a:before {
-		content: '\f0da';
-		margin-right: 7px;
+	html[dir="ltr"] .cTemplateList li.cTemplateList_inactiveBranch > a:before {
+		content: '\\f0da';
 	}
-	html[dir="rtl"] .cTemplateList li.cTemplateList_inactiveBranch > a:before,
-	html[dir="rtl"] .cTemplateList li.cTemplateList_activeBranch > a:before {
-		content: '\f0d9';
-		margin-left: 7px;
+	html[dir="rtl"] .cTemplateList li.cTemplateList_inactiveBranch > a:before {
+		content: '\\f0d9';
 	}
 
-	html[dir="ltr"] .cTemplateList li.cTemplateList_activeBranch > a:before,
-	html[dir="rtl"] .cTemplateList li.cTemplateList_activeBranch > a:before {
-		content: '\f0d7';
+	.cTemplateList li.cTemplateList_activeBranch > a:before {
+		content: '\\f0d7';
 	}
 
 .cTemplateList li.cTemplateList_inactiveBranch > ul {
 	display: none;
-}
-
-.cTemplateList_highlight {
-	background: rgb(237, 245, 247);
 }
 
 html[dir="ltr"] .cTemplateList li a {

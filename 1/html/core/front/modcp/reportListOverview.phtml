@@ -14,7 +14,7 @@
 						</li>
 						{{foreach $row->stats() as $k => $v}}
 							<li>
-								<span class='ipsDataItem_stats_number'>{number="$v"}</span>
+								<span class='ipsDataItem_stats_number'>{$v}</span>
 								<span class='ipsDataItem_stats_type'>{lang="$k" pluralize="$v"}</span>
 							</li>
 						{{endforeach}}

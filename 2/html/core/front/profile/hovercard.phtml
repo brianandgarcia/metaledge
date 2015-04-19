@@ -59,7 +59,7 @@
 				<li><a href='{url="app=core&module=messaging&controller=messenger&do=compose&to={$member->member_id}" seoTemplate="messenger_compose"}' data-ipsDialog data-ipsDialog-title='{lang="compose_new"}' data-ipsDialog-remoteSubmit data-ipsDialog-flashMessage="{lang="message_sent"}" data-ipsDialog-forceReload><i class='fa fa-envelope'></i> {lang="message_send"}</a></li>
 			{{endif}}
 			{{if \IPS\Member::loggedIn()->member_id && $member->member_id != \IPS\Member::loggedIn()->member_id}}
-				<li><a href="{url="app=core&module=members&controller=ignore&id={$member->member_id}" seoTemplate="ignore"}"><i class='fa fa-times-circle'></i> {lang="add_ignore"}</a></li>
+				<li><a href="{url="app=core&module=members&controller=ignore&id={$member->member_id}" csrf="true" seoTemplate="ignore"}"><i class='fa fa-times-circle'></i> {lang="add_ignore"}</a></li>
 			{{endif}}
 			<li><a href="{url="app=core&module=members&controller=profile&do=edit&id={$member->member_id}" base="front" seoTemplate="profile_content" seoTitle="$member->members_seo_name"}"><i class='fa fa-search'></i> {lang="find_content"}</a></li>
 			{{if ( member.canWarn( $member ) || ( member.modPermission('can_flag_as_spammer') and !$member->modPermission() and !$member->isAdmin() ) ) and $member->member_id != member.member_id }}

@@ -8,8 +8,8 @@
 	<div class='ipsDataItem_main'>
 		<div class='ipsType_break ipsContained cSearchResultHighlight'>
 			<h4 class='ipsType_sectionHead ipsContained'>
-				<a href='{$review->url()}' class='ipsType_blendLinks'><span class='ipsType_light'>{lang="comment_on_item" sprintf="\IPS\Member::loggedIn()->language()->addToStack( $review::$title, TRUE, array( 'ucfirst' => TRUE ) )"}</span> {$review->item()->mapped('title')}</a>
-				{{if $container = $review->item()->containerWrapper( TRUE )}}
+				<a href='{$review->url()}' class='ipsType_blendLinks'><span class='ipsType_light'>{lang="$review::$title"} {lang="on"}</span> {$review->item()->mapped('title')}</a>
+				{{if $container = $review->item()->containerWrapper()}}
 					<span class="ipsType_medium">{lang="in"} <a href="{$container->url()}">{$container->_title}</a></span>
 				{{endif}}
 				{{if $review->hidden() or $review->item()->hidden()}}
@@ -22,7 +22,7 @@
 					</span>
 				{{endif}}
 			</h4>
-			<span class='ipsType_medium ipsType_light ipsType_blendLinks'>{lang="search_posted_by" sprintf="ucfirst( $review->indefiniteArticle() )" htmlsprintf="$review->author()->link()"} {datetime="$review->mapped('date')"}</span>
+			<span class='ipsType_medium ipsType_light ipsType_blendLinks'>{lang="search_posted_by" sprintf="ucfirst( \IPS\Member::loggedIn()->language()->get( '__indefart_' . $review::$title ) )" htmlsprintf="$review->author()->link()"} {datetime="$review->mapped('date')"}</span>
 		</div>
 		<div class="cSearchResultHighlight">
 			{{$app = $review::$application;}}

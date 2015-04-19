@@ -84,25 +84,3 @@ html[dir="rtl"] .ipsControlStrip li:last-child a {
 .ipsTable tr:hover .ipsControlStrip a, .ipsTree_row:hover .ipsControlStrip a {
 	opacity: 1;
 }
-
-/* Show text option */
-.ipsControlStrip.ipsControlStrip_showText a {
-	width: auto;
-	padding: 0 7px;
-}
-
-.ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_icon {
-	vertical-align: middle;
-}
-
-.ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_item {
-	display: inline-block;
-	font-size: 12px;
-}
-
-html[dir="ltr"] .ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_item {
-	margin-left: 3px;
-}
-html[dir="rtl"] .ipsControlStrip.ipsControlStrip_showText .ipsControlStrip_item {
-	margin-right: 3px;
-}

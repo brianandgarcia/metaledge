@@ -79,10 +79,6 @@ html[dir="rtl"] i.fa[class$="-backward"] {
 	-webkit-font-smoothing: antialiased;
 }
 
-#elLogo img {
-	max-width: 100%;
-}
-
 #elSearchNavContainer, #elMobileNav {
 	background: {theme="main_nav"};
 }
@@ -92,19 +88,17 @@ html[dir="rtl"] i.fa[class$="-backward"] {
 		padding: 0;
 	}
 
-	#ipsLayout_mainNav > li {
+	#ipsLayout_mainNav li {
 		display: inline-block;
-		float: left;
 		line-height: 46px;
 	}
 
-		#ipsLayout_header nav ul li.ipsHide {
+		#ipsLayout_header > nav ul li.ipsHide {
 			display: none;
 		}
 	
-	#ipsLayout_mainNav > li > a {
+	#ipsLayout_mainNav a {
 		display: block;
-		position: relative;
 		font-size: 13px;
 		color: #fff;
 		text-decoration: none;
@@ -112,18 +106,7 @@ html[dir="rtl"] i.fa[class$="-backward"] {
 		text-shadow: 0px -1px 0px rgba(0,0,0,0.4);
 	}
 
-		#ipsLayout_mainNav > li > a .ipsNotificationCount {
-			top: -3px;
-		}
-
-			html[dir="ltr"] #ipsLayout_mainNav > li > a .ipsNotificationCount {
-				right: -3px;
-			}
-			html[dir="rtl"] #ipsLayout_mainNav > li > a .ipsNotificationCount {
-				left: -3px;
-			}
-
-		#ipsLayout_header nav a.ipsNavActive {
+		#ipsLayout_header > nav a.active {
 			color: #fff;
 			text-shadow: 0px 1px 0px rgba(0,0,0,0.4);
 			background: rgba(0,0,0,0.3);
@@ -131,21 +114,17 @@ html[dir="rtl"] i.fa[class$="-backward"] {
 			opacity: 1;
 		}
 
-			#ipsLayout_header nav a.ipsNavActive.ipsNavActive_menu {
-				background: rgba(0,0,0,0.5);
-			}
-
-#ipsLayout_header header {
+#ipsLayout_header > header {
 	padding: 10px 0 125px 0;
 	margin-bottom: -115px;
 	background-color: {theme="header"};
 }
 	
-#ipsLayout_mainNav > li > a {
+#ipsLayout_mainNav a {
 	opacity: 0.6;
 }
 
-	#ipsLayout_mainNav > li > a:hover {
+	#ipsLayout_mainNav a:hover {
 		opacity: 1;
 		color: #fff;
 	}
@@ -216,11 +195,11 @@ html[dir="rtl"] #elAjaxLoading {
 
 .ipsBreadcrumb li {
 	max-width: 500px;
-	height: 15px;
+	height: 14px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	vertical-align: bottom;
+	vertical-align: middle;
 }
 
 #elHeaderSubLinks a, .ipsBreadcrumb > ul a {
@@ -298,15 +277,15 @@ html[dir="rtl"] #elAjaxLoading {
 	font-size: 13px;
 	position: absolute;
 	top: 0px;
-	width: 130px;
+	width: 145px;
 	line-height: 28px;
 	height: 28px;
 }
 html[dir="ltr"] #elSearch input[type="search"] {
-	right: 30px;
+	right: 15px;
 }
 html[dir="rtl"] #elSearch input[type="search"] {
-	left: 30px;
+	left: 15px;
 }
 
 #elSearch #elSearchFilter {
@@ -556,11 +535,11 @@ html[dir="rtl"] .ipsDrawer_menu {
 	padding: 10px 30px;
 }
 	html[dir="ltr"] .ipsDrawer_itemParent > h4:after {
-		content: "\f105";
+		content: "\\f105";
 		right: 14px;
 	}
 	html[dir="rtl"] .ipsDrawer_itemParent > h4:after {
-		content: "\f104";
+		content: "\\f104";
 		left: 14px;
 	}
 
@@ -593,11 +572,11 @@ html[dir="rtl"] .ipsDrawer_list [data-action="back"] a {
 }
 
 	html[dir="ltr"] .ipsDrawer_list [data-action="back"] a:before {
-		content: "\f104";
+		content: "\\f104";
 		left: 14px;
 	}
 	html[dir="rtl"] .ipsDrawer_list [data-action="back"] a:before {
-		content: "\f105";
+		content: "\\f105";
 		right: 14px;
 	}
 
@@ -646,6 +625,28 @@ html[dir="rtl"] .ipsDrawer_list [data-action="back"] a {
 	html[dir="rtl"] .ipsApp .ipsDataItem_subList {
 		background-image: url( {resource="subitem_stem_rtl@2x.png" app="core" location="front"} );
 	}
+
+	.ipsApp .ipsLoading, .ipsApp .ipsTabs_loadingContent, .ipsApp [data-embedContent] {
+		background-image: url( {resource="loaders/large_loading@2x.gif" app="core" location="front"} );
+	}
+
+	.ipsApp .ipsLoading.ipsLoading_dark {
+		background-image: url( {resource="loaders/large_loading_dark@2x.gif" app="core" location="front"} );
+	}
+
+	.ipsApp .ipsLoading.ipsLoading_tiny,
+	.ipsApp .ipsField_loading {
+		background-image: url( {resource="loaders/tiny_loading@2x.gif" app="core" location="front"} );
+	}
+
+	.ipsApp .ipsLoading.ipsLoading_small {
+		background-image: url( {resource="loaders/small_loading@2x.gif" app="core" location="front"} );	
+	}
+
+	.ipsApp .ipsLoading.ipsLoading_small.ipsLoading_dark,
+	.ipsApp .ipsLoading.ipsLoading_tiny.ipsLoading_dark {
+		background-image: url( {resource="loaders/small_loading_dark@2x.gif" app="core" location="front"} );
+	}
 }
 
 /* Redirector */
@@ -691,26 +692,10 @@ html[dir="rtl"] .ipsDrawer_list [data-action="back"] a {
 #elLicenseKey {
 	margin: 0;
 	border-radius: 0;
-	font-size: 14px;
-	padding-right: 40px;
+	padding: 30px 40px;
+	font-size: 18px;
 }
-	
-	#elLicenseKey .ipsList_inline {
-		margin-top: 15px;
-	}
-	
-	#elLicenseKey [data-role="closeMessage"] {
-		display: inline-block;
-		background: rgba(0,0,0,0.6);
-		width: 30px;
-		height: 30px;
-		border-radius: 30px;
-		line-height: 28px;
-		text-align: center;
-		color: #fff;
-		border-bottom: 0;
-		font-size: 18px;
-		position: absolute;
-		right: 15px;
-		top: 15px;
+
+	#elLicenseKey:before {
+		top: 30px;
 	}

@@ -24,7 +24,7 @@
 				{{if $topic->isQuestion()}}
 					<strong class='ipsType_light'>{lang="question_title"}:</strong>
 				{{endif}}
-				{wordbreak="$topic->mapped('title')"}
+				{lang="$topic->mapped('title')" wordbreak="true"}
 			</a>
 			{{if $topic->mapped('pinned') || $topic->mapped('featured') || $topic->hidden() === -1 || $topic->hidden() === 1}}
 				<span>
@@ -70,7 +70,7 @@
 			{{foreach $topic->stats(FALSE) as $k => $v}}
 				{{if $k == 'comments'}}
 					<li>
-						<span class='ipsDataItem_stats_number'>{number="$v"}</span>
+						<span class='ipsDataItem_stats_number'>{$v}</span>
 						<span class='ipsDataItem_stats_type'>{lang="answers_no_number" pluralize="$v"}</span>
 					</li>
 				{{endif}}
@@ -78,7 +78,7 @@
 		{{else}}
 			{{foreach $topic->stats(FALSE) as $k => $v}}
 				<li {{if in_array( $k, $topic->hotStats )}}class="ipsDataItem_stats_hot" data-text='{lang="hot_item"}' data-ipsTooltip title='{lang="hot_item_desc"}'{{endif}}>
-					<span class='ipsDataItem_stats_number'>{number="$v"}</span>
+					<span class='ipsDataItem_stats_number'>{$v}</span>
 					<span class='ipsDataItem_stats_type'>{lang="forums_{$k}" pluralize="$v"}</span>
 				</li>
 			{{endforeach}}

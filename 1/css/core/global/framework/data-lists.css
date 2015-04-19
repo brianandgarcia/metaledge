@@ -26,12 +26,12 @@
 }
 
 /* Unread status */
-.ipsDataList_readStatus .ipsDataItem:not( .ipsDataItem_unread ):not( .ipsDataItem_selected ):not( .ipsModerated ) {
+.ipsDataList_readStatus .ipsDataItem:not( .ipsDataItem_unread ):not( .ipsDataItem_selected ) {
 	background: #f9f9f9;
 }
 
 /* Zebra striping */
-.ipsDataList.ipsDataList_zebra .ipsDataItem:not( .ipsDataItem_selected ):not( .ipsModerated ):nth-child(even) {
+.ipsDataList.ipsDataList_zebra .ipsDataItem:not( .ipsDataItem_selected ):nth-child(even) {
 	background: {theme="area_background_light"};
 }
 
@@ -103,11 +103,11 @@
 }
 
 	.ipsDataList_large .ipsDataItem_icon {
-		padding: 15px 10px 15px 10px;
-		min-width: 55px;
+		padding: 15px 0 15px 10px;
+		min-width: 40px;
 	}
 	html[dir="rtl"] .ipsDataList_large .ipsDataItem_icon {
-		padding: 15px 10px 15px 10px;
+		padding: 15px 10px 15px 0;
 	}
 
 	.ipsDataList_large .ipsDataItem {
@@ -233,20 +233,13 @@ html[dir="rtl"] .ipsDataItem_stats {
 html[dir="ltr"] .ipsDataItem_icon {
 	padding-right: 0;
 }
-	html[dir="ltr"] .ipsDataList_large .ipsDataItem_icon {
-		padding-right: 10px;
-	}
-
 html[dir="rtl"] .ipsDataItem_icon {
 	padding-left: 0;
 }
-	html[dir="rtl"] .ipsDataList_large .ipsDataItem_icon {
-		padding-left: 10px;
-	}
 
-.ipsDataItem_icon_noPad {
-	padding: 0;
-}
+	.ipsDataItem_icon_noPad {
+		padding: 0;
+	}
 
 .ipsDataItem_category {
 	font-size: 20px;

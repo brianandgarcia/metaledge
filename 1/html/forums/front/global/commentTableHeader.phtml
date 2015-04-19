@@ -12,7 +12,7 @@
 				<span class='ipsItemStatus ipsItemStatus_read ipsItemStatus_posted'><i class="fa fa-star"></i></span>
 			{{endif}}
 		{{endif}}
-		<a href='{$comment->url()}' title='{lang="view_this_topic" sprintf="$topic->title"}'>{wordbreak="$topic->title"}</a>
+		<a href='{$comment->url()}' title='{lang="view_this_topic" sprintf="$topic->title"}'>{lang="$topic->title" wordbreak="true"}</a>
 		{{if $topic->container()->allow_rating}}
 			{template="rating" group="global" location="front" app="core" params="'large', $topic->rating_hits ? ( $topic->rating_total / $topic->rating_hits ) : 0"}
 		{{endif}}

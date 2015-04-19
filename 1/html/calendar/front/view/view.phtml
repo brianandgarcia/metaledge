@@ -14,7 +14,7 @@
 						<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
 							<meta itemprop='ratingValue' content='{$event->averageReviewRating()}'>
 							<meta itemprop='reviewCount' content='{$event->reviews}'>
-							{template="rating" group="global" location="front" app="core" params="'large', $event->averageReviewRating(), \IPS\Settings::i()->reviews_rating_out_of"}&nbsp;&nbsp; <span class='ipsType_medium ipsType_light'>({lang="num_reviews" pluralize="$event->reviews"})</span>
+							{template="rating" group="global" location="front" app="core" params="'large', $event->averageReviewRating()"}&nbsp;&nbsp; <span class='ipsType_medium ipsType_light'>({lang="num_reviews" pluralize="$event->reviews"})</span>
 						</span>
 					{{endif}}
 				</div>
@@ -23,19 +23,16 @@
 	</header>
 
 	<section>
-		{{if $event->hidden() === 1 and $event->canUnhide()}}
-		<div class="ipsMessage ipsMessage_warning ipsSpacer_top">
-			<p class="ipsType_reset">{lang="event_pending_approval"}</p>
-			<ul class='ipsList_inline ipsSpacer_top'>
-				<li><a href="{$event->url()->csrf()->setQueryString( array( 'do' => 'moderate', 'action' => 'unhide' ) )}" class="ipsButton ipsButton_positive ipsButton_verySmall" title='{lang="approve_title_event"}'><i class="fa fa-check"></i> {lang="approve"}</a></li>
-				{{if $event->canDelete()}}
-				<li><a href='{$event->url()->csrf()->setQueryString( array( 'do' => 'moderate', 'action' => 'delete' ) )}' data-confirm  title='{lang="event_delete_title"}' class='ipsButton ipsButton_negative ipsButton_verySmall'><i class='fa fa-times'></i> {lang="delete"}</a></li>
-				{{endif}}
-			</ul>
+		<div class='ipsPos_right'>
+			{{if $event->hidden() === 1 and $event->canUnhide()}}
+				<div class="ipsMessage ipsMessage_error ipsSpacer_bottom">
+					<p class="ipsType_reset ipsType_normal ipsSpacer_bottom">{lang="event_pending_approval"}</p>
+					<a href="{$event->url()->csrf()->setQueryString( array( 'do' => 'moderate', 'action' => 'unhide' ) )}" class="ipsButton ipsButton_veryLight" title='{lang="approve_title"}'><i class="fa fa-check-circle"></i> {lang="approve"}</a>
+				</div>
+			{{endif}}			
 		</div>
-		{{endif}}
 
-		{{if $event->rsvp || $event->map( 270, 270 ) }}
+		{{if $event->rsvp }}
 			<div class='ipsColumns ipsColumns_collapsePhone'>
 				<aside class='ipsColumn ipsColumn_wide'>
 					<div class='ipsAreaBackground_light'>
@@ -145,20 +142,20 @@
 				
 			</div>
 		{{endif}}
-
-		{{if count( $event->shareLinks() )}}
-			<div class='ipsSpacer_both'>
-				{template="sharelinks" app="core" group="global" params="$event"}
-			</div>
-		{{endif}}
 	</section>
 
 	{{if $commentsAndReviews}}
-		<br>
+		<br><br>
 		{{if $event->container()->allow_reviews && $event->container()->allow_comments}}
 			<a id="replies"></a>
 			<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="user_feedback"}</h2>
 		{{endif}}
 		{$commentsAndReviews|raw}
+	{{endif}}
+
+	{{if count( $event->shareLinks() )}}
+		<div class='ipsSpacer_both ipsSpacer_double'>
+			{template="sharelinks" app="core" group="global" params="$event"}
+		</div>
 	{{endif}}
 </div>

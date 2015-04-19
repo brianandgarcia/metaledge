@@ -6,26 +6,13 @@
 		<div class='ipsPad_half ipsWidget_inner'>
 			<ul class='ipsDataList ipsDataList_reducedSpacing'>
 				{{foreach $topics as $topic}}
-					<li class='ipsDataItem{{if $topic->unread()}} ipsDataItem_unread{{endif}}{{if $topic->hidden()}} ipsModerated{{endif}}'>
+					<li class='ipsDataItem'>
 						<div class='ipsDataItem_icon ipsPos_top'>
 							{template="userPhoto" group="global" app="core" params="$topic->author(), 'tiny'"}
 						</div>
 						<div class='ipsDataItem_main'>
 							<div class="ipsCommentCount ipsPos_right {{if ( $topic->posts - 1 ) === 0}}ipsFaded{{endif}}" data-ipsTooltip title='{lang="replies_number" pluralize="$topic->posts - 1"}'>{expression="$topic->posts - 1"}</div>
-							<a href="{$topic->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$topic->title"}' class='ipsDataItem_title ipsType_break'>{wordbreak="$topic->title"}</a>
-							{{if $topic->mapped('featured') || $topic->hidden() === -1 || $topic->hidden() === 1}}
-								<span>
-									{{if $topic->hidden() === -1}}
-										<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{$topic->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
-									{{elseif $topic->hidden() === 1}}
-										<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>
-									{{endif}}
-									{{if $topic->mapped('featured')}}
-										<span class="ipsBadge ipsBadge_icon ipsBadge_small ipsBadge_positive" data-ipsTooltip title='{lang="featured"}'><i class='fa fa-star'></i></span>
-									{{endif}}
-								</span>
-							{{endif}}
-							<br>
+							<a href="{$topic->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$topic->title"}' class='ipsDataItem_title ipsType_break'>{lang="$topic->title" wordbreak="true"}</a><br>
 							<span class='ipsType_light ipsType_small'>{lang="byline_nodate" htmlsprintf="$topic->author()->link()"} &middot; {datetime="$topic->mapped('date')"}</span>
 						</div>
 					</li>

@@ -1,6 +1,6 @@
 <ips:template parameters="$id, $file, $name=NULL, $editor=FALSE, $showAsImages=FALSE, $link=NULL" />
 {{if $showAsImages}}
-	<div class='ipsGrid_span3 ipsAttach ipsImageAttach ipsPad_half ipsAreaBackground_light {{if $editor}}ipsAttach_done{{endif}}' data-role='file' data-fileid="{$id}" {{if $link}}data-filelink="{$link}"{{endif}}>
+	<div class='ipsGrid_span3 ipsAttach ipsImageAttach ipsPad_half ipsAreaBackground_light {{if $editor}}ipsAttach_done{{endif}}' data-role='file' data-fileid="{$id}" data-fileurl="{$file}" {{if $link}}data-filelink="{$link}"{{endif}}>
 		<ul class='ipsList_inline ipsImageAttach_controls'>
 			{{if $editor}}
 				<li><a href='#' data-action='selectFile' class='ipsAttach_selection' data-ipsTooltip title='{lang="form_upload_insert_one"}'><i class='fa fa-check'></i></a></li>
@@ -21,11 +21,11 @@
 				<div class='ipsNoThumb'></div>
 			</div>
 		{{endif}}		
-		<h2 class='ipsType_reset ipsAttach_title ipsType_medium ipsTruncate ipsTruncate_line ipsType_break' data-role='title'>{wordbreak="$file->originalFilename"}</h2>
+		<h2 class='ipsType_reset ipsAttach_title ipsType_medium ipsTruncate ipsTruncate_line ipsType_break' data-role='title'>{lang="$file->originalFilename" wordbreak="true"}</h2>
 		<p class='ipsType_light'><span data-role='status'>{filesize="$file->filesize()"}</span></p>
 	</div>
 {{else}}
-	<div class='ipsDataItem ipsAttach {{if $editor}}ipsAttach_done{{endif}}' {{if $file->attachmentThumbnailUrl}}data-thumbnailurl="{$file->attachmentThumbnailUrl}"{{endif}} data-role='file' data-fileid="{$id}" data-fullsizeurl="{$file}" {{if $link}}data-filelink="{$link}"{{endif}} data-isImage="{$file->isImage()}">
+	<div class='ipsDataItem ipsAttach {{if $editor}}ipsAttach_done{{endif}}' {{if $file->attachmentThumbnailUrl}}data-thumbnailurl="{$file->attachmentThumbnailUrl}"{{endif}} data-role='file' data-fileid="{$id}" data-fileurl="{$file}" {{if $link}}data-filelink="{$link}"{{endif}} data-isImage="{$file->isImage()}">
 		<div class='ipsDataItem_generic ipsDataItem_size3 ipsResponsive_hidePhone ipsResponsive_block ipsType_center' data-action='selectFile'>
 			{{if in_array( mb_strtolower( mb_substr( $file->filename, mb_strrpos( $file->filename, '.' ) + 1 ) ), \IPS\Image::$imageExtensions )}}
 				<img src="{{if $file->attachmentThumbnailUrl}}{$file->attachmentThumbnailUrl}{{else}}{$file}{{endif}}" alt='' class='ipsImage ipsThumb_small'>
@@ -34,7 +34,7 @@
 			{{endif}}
 		</div>
 		<div class='ipsDataItem_main' data-action='selectFile'>
-			<h2 class='ipsDataItem_title ipsType_reset ipsType_medium ipsAttach_title ipsType_break' data-role='title'>{wordbreak="$file->originalFilename"}</h2>
+			<h2 class='ipsDataItem_title ipsType_reset ipsType_medium ipsAttach_title ipsType_break' data-role='title'>{lang="$file->originalFilename" wordbreak="true"}</h2>
 			<p class='ipsDataItem_meta ipsType_light'>
 				{filesize="$file->filesize()"}
 			</p>

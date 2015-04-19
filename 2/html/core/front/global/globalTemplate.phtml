@@ -28,7 +28,7 @@
 		  s.parentNode.insertBefore(bh, s);
 		  })(document, 'script');
 		</script>
-
+      
 	</head>
 	<body class='ipsApp ipsApp_front ipsJS_none ipsClearfix{{foreach output.bodyClasses as $class}} {$class}{{endforeach}}' {{if output.globalControllers}}data-controller='{expression="implode( ',', output.globalControllers )"}'{{endif}} {{if isset( output.inlineMessage )}}data-message="{expression="output.inlineMessage"}"{{endif}} data-pageApp='{$location['app']}' data-pageLocation='front' data-pageModule='{$location['module']}' data-pageController='{$location['controller']}' itemscope itemtype="http://schema.org/WebSite">
 		<meta itemprop="url" content="{url="/"}">
@@ -47,9 +47,9 @@
 		</div>
 		<main role='main' id='ipsLayout_body'>
 			<div id='ipsLayout_contentArea'>
-				<div id='elHeaderNavigation' class='ipsSubNavigation'>
-					{template="utilitiesMenu" app="core" group="global" params=""}
-					{template="breadcrumb" app="core" group="global" params="true"}
+				<div id='elHeaderNavigation' class='ipsSubNavigation ipsLayout_container'>
+					<!-- {template="utilitiesMenu" app="core" group="global" params=""} -->
+					{template="breadcrumb" app="core" group="global" params=""}
 				</div>
 				<div id='ipsLayout_contentWrapper'>
 					{template="sidebar" if="theme.sidebar_position == 'left'" app="core" group="global" params="'left'"}
@@ -65,9 +65,9 @@
 					{template="sidebar" if="theme.sidebar_position == 'right'" app="core" group="global" params="'right'"}
 				</div>
 				<div class="ipsLayout_container">
-				<div id='elFooterNavigation' class='ipsSubNavigation'>
-					{template="rssMenu" app="core" group="global" params=""}
-					{template="breadcrumb" app="core" group="global" params="false"}
+					<div id='elFooterNavigation' class='ipsSubNavigation'>
+						{template="rssMenu" app="core" group="global" params=""}
+						{template="breadcrumb" app="core" group="global" params=""}
 					</div>
 				</div>
 			</div>
@@ -86,7 +86,6 @@
 		{template="viglink" if="settings.viglink_enabled" app="core" group="global" params=""}
 		{template="metaTagEditor" if="isset( $_SESSION['live_meta_tags'] ) and $_SESSION['live_meta_tags'] and member.isAdmin()" app="core" group="global" params=""}
 		<!--ipsQueryLog-->
-		<!--ipsCachingLog-->
 		{expression="output.endBodyCode" raw="true"}
 
 		<script>

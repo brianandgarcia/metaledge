@@ -5,7 +5,7 @@
 .ipsBox {
 	border-width: 1px;
 	border-style: solid;
-	border-color: #f2f2f2;
+	border-color: #e9e9e9;
 	border-radius: 3px;
 }
 
@@ -67,10 +67,6 @@
 	background: {theme="area_background_dark"};
 	color: #fff;
 }
-
-	.ipsAreaBackground_dark a {
-		color: #fff;
-	}
 
 .ipsAreaBackground_positive {
 	background: #5f7a47;
@@ -225,7 +221,6 @@ html[dir="rtl"] .ipsPhotoPanel > .ipsUserPhoto {
 /* IMAGES & THUMBNAILS */
 .ipsImage {
 	max-width: 100%; /* makes them responsive */
-	height: auto;
 	max-height: 100%;
 }
 
@@ -304,7 +299,7 @@ html[dir="rtl"] .ipsPhotoPanel > .ipsUserPhoto {
 }
 
 	.ipsNoThumb:after {
-		content: '\f030';
+		content: '\\f030';
 		font-family: 'FontAwesome';
 		font-size: 30px;
 		color: rgba(255,255,255,0.075);
@@ -317,15 +312,15 @@ html[dir="rtl"] .ipsPhotoPanel > .ipsUserPhoto {
 	}
 
 	.ipsNoThumb_video:after {
-		content: '\f008';
+		content: '\\f008';
 	}
 
 	.ipsNoThumb_product:after {
-		content: '\f1b2';
+		content: '\\f1b2';
 	}
 
 	.ipsNoThumb_gift:after {
-		content: '\f06b';
+		content: '\\f06b';
 	}
 
 /* Aims to fix responsiveness in Firefox & IE */
@@ -361,63 +356,60 @@ hr.ipsHr {
 
 /* ======================================================== */
 /* LOADING THROBBERS */
-@-webkit-keyframes spinner {
-  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); }
-}
-@keyframes spinner {
-  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(359deg); transform: rotate(359deg); }
-}
-
+/* High-res versions are specified in global.css */
 .ipsLoading {
-	position: relative;
+	background-image: url( {resource="loaders/large_loading.gif" app="core" location="front"} );
+	background-repeat: no-repeat !important;
+	background-position: center center !important;
+	background-size: 40px 40px !important;
 }
 
-.ipsLoading:before {
-	font-family: 'icomoon';
-	content: '\e97b';
-	display: block;
-	color: #444;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -25px;
-	margin-left: -25px;
-	font-size: 50px;
-	line-height: 1 !important;
-}
+	.ipsLoading.ipsLoading_dark {
+		background-image: url( {resource="loaders/large_loading_dark.gif" app="core" location="front"} );
+	}
+	
+	.ipsLoading.ipsLoading_small {
+		background-image: url( {resource="loaders/small_loading.gif" app="core" location="front"} );
+		background-size: 20px 20px !important;
+	}
 
-.ipsLoading:not( .ipsLoading_noAnim ):before {
-	-webkit-animation: spinner 0.75s infinite linear;
-	animation: spinner 0.75s infinite linear;
-}
+		.ipsLoading.ipsLoading_small.ipsLoading_dark {
+			background-image: url( {resource="loaders/small_loading_dark.gif" app="core" location="front"} );
+		}
 
-.ipsLoading.ipsLoading_small:before {
-	font-size: 23px;
-	margin-top: -12px;
-	margin-left: -12px;
-	color: #222;
-}
+	.ipsLoading.ipsLoading_tiny {
+		background-image: url( {resource="loaders/tiny_loading.gif" app="core" location="front"} );
+		background-size: 14px 14px !important;
+	}
 
-.ipsLoading.ipsLoading_tiny:before {
-	font-size: 16px;
-	margin-top: -8px;
-	margin-left: -8px;
-	color: #222;
-}
+		.ipsLoading.ipsLoading_tiny.ipsLoading_dark {
+			background-image: url( {resource="loaders/small_loading_dark.gif" app="core" location="front"} );
+		}
 
-.ipsLoading.ipsLoading_dark:before {
-	color: #fff;
-}
+	.ipsLoading_image {
+		display: inline-block;
+		background-color: transparent;
+		vertical-align: middle;
+	}
 
-/* Tiny spinner used in an <i> tag */
-.ipsLoading_tinyIcon {
-	width: 16px;
-	height: 16px;
-	font-size: 17px;
-	display: inline-block;
-}
+		.ipsLoading.ipsLoading_image {
+			width: 40px;
+			height: 40px;
+		}
+
+		.ipsLoading.ipsLoading_small.ipsLoading_image {
+			width: 20px;
+			height: 20px;
+		}
+
+		.ipsLoading.ipsLoading_tiny.ipsLoading_image {
+			width: 14px;
+			height: 14px;
+		}
+
+	.ipsLoading_contain {
+		background-size: contain;
+	}
 
 /* ======================================================== */
 /* POSITIONING, CLEARING, HIDING */
@@ -425,7 +417,6 @@ hr.ipsHr {
 .ipsPad_double, .ipsApp ul.ipsPad_double, .ipsApp ol.ipsPad_double { padding: 30px; }
 .ipsPad_half, .ipsApp ul.ipsPad_half, .ipsApp ol.ipsPad_half { padding: 7px; }
 .ipsPad_top { padding-top: 7px; }
-.ipsPad_bottom { padding-bottom: 7px;}
 
 .ipsPos_left { float: left; }
 html[dir="rtl"] .ipsPos_left { float: right; }
@@ -437,7 +428,7 @@ html[dir="rtl"] .ipsPos_right { float: left; }
 
 .ipsClear {	clear: both; }
 
-.ipsClearfix:after {
+.ipsClearfix::after {
 	visibility: hidden;
 	display: block;
 	font-size: 0;
@@ -527,24 +518,13 @@ html[dir="rtl"] .ipsList_inline > li {
 		margin-right: 15px;
 	}
 
-.ipsList_inline.ipsList_csv li a:after {
-	content: ',';
-}
-
-.ipsList_inline.ipsList_csv li:last-child a:after {
-	content: '';
-}
-
 .ipsList_bullets {
 	list-style-type: disc;
-	margin: 0 0 0 26px;
+	margin: 0 0 0 16px;
 	padding: 0;
 }
 html[dir="rtl"] .ipsList_bullets {
-	margin: 0 26px 0 0;
-}
-.ipsList_bullets.ipsList_numbers {
-	list-style-type: decimal;
+	margin: 0 16px 0 0;
 }
 
 .ipsShareIcon {
@@ -659,10 +639,6 @@ html[dir="rtl"] .ipsList_bullets {
 		min-width: 200px;
 	}
 
-	.ipsToolList.ipsToolList_horizontal > li.ipsPos_right {
-		min-width: 150px;
-	}
-
 /* ======================================================== */
 /* MODERATION STYLES */
 .ipsModerated {
@@ -773,13 +749,12 @@ html[dir="rtl"] .ipsList_bullets {
 	text-align: center;
 	line-height: 15px;
 	color: #333;
-	margin-bottom: 3px;
 }
 html[dir="ltr"] .ipsCommentCount {
-	margin-left: 10px;
+	margin-left: 6px;
 }
 html[dir="rtl"] .ipsCommentCount {
-	margin-right: 10px;
+	margin-right: 6px;
 }
 
 	.ipsCommentCount strong {
@@ -792,20 +767,20 @@ html[dir="rtl"] .ipsCommentCount {
 	.ipsCommentCount:after {
 		position: absolute;
 		top: 50%;
-		margin-top: -7px;
+		margin-top: -8px;
 		content: "";
 		display: block;
 		width: 0;
 		height: 0;
-		border-width: 7px 5px;
+		border-width: 8px 6px;
 		border-style: solid;
 	}
 	html[dir="ltr"] .ipsCommentCount:after {
-		right: 100%;
+		left: -11px;
 		border-color: transparent #ececec transparent transparent;
 	}
 	html[dir="rtl"] .ipsCommentCount:after {
-		left: 100%;
+		right: -11px;
 		border-color: transparent transparent transparent #ececec;
 	}
 
@@ -836,7 +811,6 @@ html[dir="rtl"] .ipsCommentCount {
 	line-height: 18px;
 	padding: 0 6px;
 	border-radius: 8px;
-	z-index: 2;
 }
 html[dir="ltr"] .ipsApp .ipsNotificationCount {
 	right: -10px;
@@ -1247,8 +1221,6 @@ html[dir="rtl"] #ipsMultiQuoter {
 	position: relative;
 	white-space: nowrap;
 	line-height: 26px;
-    padding-left: 0;
-    text-indent: 3px;
 }
 html[dir="rtl"] .ipsProgressBar_progress {
 	float: right;

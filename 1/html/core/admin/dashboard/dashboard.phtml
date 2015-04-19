@@ -1,4 +1,4 @@
-<ips:template parameters="$update, $cols, $blocks, $info, $bulletins, $warnings" />
+<ips:template parameters="$update, $cols, $blocks, $info, $bulletins" />
 
 <div data-controller='core.admin.dashboard.main'>
 
@@ -29,21 +29,6 @@
 			</div>
 			<br>
 		{{endforeach}}
-	{{endif}}
-
-	{{if count($warnings)}}
-	<div id='acpWarnings'>
-		{{foreach $warnings as $warning}}
-		<div class='ipsAreaBackground_light ipsPad ipsPhotoPanel ipsPhotoPanel_small ipsPhotoPanel_notPhone'>
-			<i class='fa fa-warning ipsPos_left ipsResponsive_hidePhone'></i>
-			<div>
-				<h2 class='ipsType_sectionHead'><strong>{$warning['title']}</strong></h2>
-				<div class='ipsType_normal ipsType_reset'>{$warning['description']|raw}</div>
-			</div>
-		</div>
-		<br>
-		{{endforeach}}
-	</div>
 	{{endif}}
 	
 	{{$unusedBlocks = 0;}}

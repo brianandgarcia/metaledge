@@ -11,10 +11,10 @@ html[dir="rtl"] .ipsForm_horizontal .ipsFieldRow:not( .ipsFieldRow_checkbox ) .i
 }
 
 html[dir="ltr"] .ipsForm_vertical .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
-	margin-left: 1;
+	margin-left: 0px;
 }
 html[dir="rtl"] .ipsForm_vertical .ipsFieldRow:not( .ipsFieldRow_checkbox ) .ipsFieldRow_content {
-	margin-right: 1;
+	margin-right: 0px;
 }
 
 .ipsWidthHeight {
@@ -49,8 +49,4 @@ html[dir="rtl"] .ipsWidthHeight {
 
 a.matrixDelete {
 	cursor: pointer;
-}
-
-.cCopyNode + textarea.ipsField_fullWidth {
-	width: 90%;
 }

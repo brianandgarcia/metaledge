@@ -1,4 +1,4 @@
-/* DESKTOP */
+/* TABLETS */
 @media screen and (max-width: 1200px) {
 
 	#acpAppMenu, #acpAppList > li {
@@ -16,23 +16,43 @@
 		#acpAppList > li:hover > ul {
 			box-shadow: 0px -2px 36px rgba(0,0,0,0.2);
 		}
-
-	#acpAppList #elHideMenu {
-		display: none !important;
-	}
 }
 
-/* TABLETS */
 @media screen and (max-width: 979px) {
-	#acpAppMenu {
+	html[dir="ltr"] #acpAppList > li > ul {
+		left: 60px;
+	}
+	html[dir="rtl"] #acpAppList > li > ul {
+		right: 60px;
+	}
+
+	#acpAppMenu, #acpAppList > li {
+		width: 60px !important;
+	}
+
+	#acpAppList .acpAppList_app {
 		display: none;
 	}
 
-	html[dir="ltr"] #elAdminMobileNav {
-		right: 0;
+	#acpAppList .acpAppList_icon {
+		font-size: 30px;
 	}
-	html[dir="rtl"] #elAdminMobileNav {
-		left: 0;
+
+	#acpAppList:not( .acpAppList_childHovering ) > li.acpAppList_active > a:after,
+	#acpAppList > li.acpAppList_hovering > a:after {
+		border-width: 7px;
+		margin-top: -7px;
+	}
+
+	html[dir="ltr"] #acpLiveSearch {
+		margin-right: 55px;
+		border-right: 2px solid rgba(255,255,255,0.15);
+		padding-right: 15px;
+	}
+	html[dir="rtl"] #acpLiveSearch {
+		margin-left: 55px;
+		border-left: 2px solid rgba(255,255,255,0.15);
+		padding-left: 15px;
 	}
 }
 
@@ -43,7 +63,7 @@
 		display: none;
 		position: static;
 		background: #3a5a78;
-		margin: 0 !important;
+		margin: 0;
 		padding: 15px;
 	}
 
@@ -61,7 +81,6 @@
 			top: 120px;
 			bottom: 0;
 			overflow: auto;
-			position: absolute;
 		}
 		html[dir="ltr"] #acpLiveSearchResults {
 			left: 0;
@@ -72,14 +91,6 @@
 
 	#acpContent {
 		padding: 10px;
-	}
-
-	body.ipsApp.ipsApp_admin {
-		padding-top: 0;
-	}
-
-	.ipsApp.ipsApp_admin #ipsLayout_header {
-		position: static;
 	}
 
 	.ipsApp.ipsApp_admin #ipsLayout_header #elSiteTitle {

@@ -1,5 +1,5 @@
 <ips:template parameters="$collection, $input, $category, $page, $database, $record" />
-<div class="ipsJS_show" data-controller='cms.front.records.form' data-ipsTitleField="content_field_{$database->field_title}">
+<div class="ipsHide ipsPad_top" data-controller='cms.front.records.form' data-ipsTitleField="content_field_{$database->field_title}">
 	{{if $collection['record_static_furl']->error}}
 	<p class='ipsType_warning'><i class='fa fa-exclamation-circle'></i> {lang="$collection['record_static_furl']->error"}</p>
 	{{endif}}

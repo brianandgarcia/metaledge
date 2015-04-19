@@ -2,7 +2,7 @@
 
 <div class='ipsGrid ipsGrid_collapsePhone ipsPager cCalendarNav ipsSpacer_bottom' data-ipsSticky data-ipsSticky-disableIn='phone'>
 	<div class='ipsGrid_span3 ipsType_left ipsPager_prev'>
-		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$yesterday->year}&m={$yesterday->mon}&d={$yesterday->mday}" seoTemplate="calendar_calday" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$yesterday->year}&m={$yesterday->mon}&d={$yesterday->mday}" seoTemplate="calendar_day"}{{endif}}" title='{lang="cal_month_day" sprintf="$yesterday->monthName, $yesterday->mday, $yesterday->year"}' rel='prev' data-action='changeView'>
+		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$yesterday->year}&m={$yesterday->mon}&d={$yesterday->mday}" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$yesterday->year}&m={$yesterday->mon}&d={$yesterday->mday}" seoTemplate="calendar_day"}{{endif}}" title='{lang="cal_month_day" sprintf="$yesterday->monthName, $yesterday->mday, $yesterday->year"}' rel='prev' data-action='changeView'>
 			<span class='ipsPager_type ipsType_normal'>{lang="prev_day"}</span>
 			<span class='ipsPager_title ipsType_light'>{lang="cal_month_day" sprintf="$yesterday->monthName, $yesterday->mday, $yesterday->year"}</span>
 		</a>
@@ -10,14 +10,14 @@
 	<div class='ipsGrid_span6 ipsType_center ipsPad cCalendarNav' data-role='calendarNav'>
 		<h1 class='ipsType_pageTitle ipsType_center'>{lang="cal_month_day" sprintf="$date->monthName, $date->mday, $date->year"}</h1>
 		<ul class='ipsButton_split ipsType_noBreak'>
-			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=month&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calmonth" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=month&y={$date->year}&m={$date->mon}" seoTemplate="calendar_month"}{{endif}}' title='{lang="cal_month_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="month"}</a></li>
-			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=week&id={$thisCalendar->_id}&w={$date->year}-{$date->mon}-{$date->mday}" seoTemplate="calendar_calweek" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=week&w={$date->year}-{$date->mon}-{$date->mday}" seoTemplate="calendar_week"}{{endif}}' title='{lang="cal_week_title" sprintf="$date->firstDayOfWeek('monthNameShort'), $date->firstDayOfWeek('mday'), $date->firstDayOfWeek('year'), $date->lastDayOfWeek('monthNameShort'),	$date->lastDayOfWeek('mday'), $date->lastDayOfWeek('year')"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="week"}</a></li>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=month&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calmonth" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=month&y={$date->year}&m={$date->mon}" seoTemplate="calendar_month"}{{endif}}' title='{lang="cal_month_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="month"}</a></li>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=week&id={$thisCalendar->_id}&w={$date->year}-{$date->mon}-{$date->mday}" seoTemplate="calendar_calweek" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=week&w={$date->year}-{$date->mon}-{$date->mday}" seoTemplate="calendar_week"}{{endif}}' title='{lang="cal_week_title" sprintf="$date->firstDayOfWeek('monthNameShort'), $date->firstDayOfWeek('mday'), $date->firstDayOfWeek('year'), $date->lastDayOfWeek('monthNameShort'),	$date->lastDayOfWeek('mday'), $date->lastDayOfWeek('year')"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="week"}</a></li>
 			<li><a href='#' class='ipsButton ipsButton_primary ipsButton_verySmall' title='{lang="cal_month_day" sprintf="$date->monthName, $date->mday, $date->year"}' data-action='changeView'>{lang="day"}</a></li>
-			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=stream&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calstream" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=stream&y={$date->year}&m={$date->mon}" seoTemplate="calendar_stream"}{{endif}}' title='{lang="cal_month_stream_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'><span class='ipsResponsive_hidePhone ipsResponsive_inline'>{lang="event_stream"}</span><span class='ipsResponsive_showPhone ipsResponsive_inline'>{lang="event_stream_short"}</span></a></li>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=stream&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calstream" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=stream&y={$date->year}&m={$date->mon}" seoTemplate="calendar_stream"}{{endif}}' title='{lang="cal_month_stream_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'><span class='ipsResponsive_hidePhone ipsResponsive_inline'>{lang="event_stream"}</span><span class='ipsResponsive_showPhone ipsResponsive_inline'>{lang="event_stream_short"}</span></a></li>
 		</ul>
 	</div>
 	<div class='ipsGrid_span3 ipsType_right ipsPager_next'>
-		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$tomorrow->year}&m={$tomorrow->mon}&d={$tomorrow->mday}" seoTemplate="calendar_calday" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$tomorrow->year}&m={$tomorrow->mon}&d={$tomorrow->mday}" seoTemplate="calendar_day"}{{endif}}" title='{lang="cal_month_day" sprintf="$tomorrow->monthName, $tomorrow->mday, $tomorrow->year"}' rel='next' data-action='changeView'>
+		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$tomorrow->year}&m={$tomorrow->mon}&d={$tomorrow->mday}" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$tomorrow->year}&m={$tomorrow->mon}&d={$tomorrow->mday}" seoTemplate="calendar_day"}{{endif}}" title='{lang="cal_month_day" sprintf="$tomorrow->monthName, $tomorrow->mday, $tomorrow->year"}' rel='next' data-action='changeView'>
 			<span class='ipsPager_type ipsType_normal'>{lang="next_day"}</span>
 			<span class='ipsPager_title ipsType_light'>{lang="cal_month_day" sprintf="$tomorrow->monthName, $tomorrow->mday, $tomorrow->year"}</span>
 		</a>
@@ -25,7 +25,7 @@
 </div>
 
 {{if count( $birthdays )}}
-<div class='ipsColumns ipsColumns_collapseTablet'>
+<div class='ipsColumns'>
 	<div class='ipsColumn ipsColumn_fluid'>
 {{endif}}
 <h2 class='ipsType_sectionTitle ipsType_reset'>{lang="events_happening_today"}</h2>
@@ -88,13 +88,12 @@
 			<h2 class='ipsType_sectionTitle ipsType_reset'>{lang="birthdays_today" pluralize="count( $birthday )"}</h2>
 			<ul class='ipsDataList ipsDataList_reducedSpacing'>
 				{{foreach $birthday AS $member}}
-					<li class='ipsDataItem ipsClearfix'>
-						<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny ipsClearfix'>
+					<li class='ipsDataItem'>
+						<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny'>
 							{template="userPhoto" app="core" group="global" params="$member, 'tiny'"}
 							<div>
-								{$member->link()|raw}
-								{{if $member->bday_year}}<br>
-								{lang="member_age" sprintf="$member->age( $date )"}{{endif}}
+								{$member->link()|raw}<br>
+								{lang="member_age" sprintf="$member->age"}
 							</div>
 						</div>
 					</li>

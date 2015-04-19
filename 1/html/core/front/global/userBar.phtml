@@ -6,7 +6,7 @@
 				<a href='#elCreateNew_menu' id='elCreateNew' data-ipsTooltip data-ipsMenu title='{lang="create_menu_title"}'>
 					<strong><i class='fa fa-plus'></i> &nbsp;{lang="create_menu"}</strong> <i class='fa fa-caret-down'></i>
 				</a>
-				<div id='elCreateNew_menu' class='ipsMenu ipsMenu_auto ipsHide'>
+				<div id='elCreateNew_menu' class='ipsMenu ipsMenu_narrow ipsHide'>
 					<ul>
 						{{foreach \IPS\Member::loggedIn()->createMenu() as $k => $url}}
 							<li class="ipsMenu_item">
@@ -27,7 +27,7 @@
 			<li class='elUserNav_sep'></li>
 		{{endif}}
 		<li class='cNotifications cUserNav_icon'>
-			<a href='{url="app=core&module=system&controller=notifications" seoTemplate="notifications"}' id='elFullNotifications' data-ipsTooltip title='{lang="userbar_notifications"}' data-ipsMenu data-ipsMenu-closeOnClick='false'>
+			<a href='{url="app=core&module=system&controller=notifications"}' id='elFullNotifications' data-ipsTooltip title='{lang="userbar_notifications"}' data-ipsMenu data-ipsMenu-closeOnClick='false'>
 				<i class='fa fa-bell'></i> {{if member.notification_cnt}}<span class='ipsNotificationCount' data-notificationType='notify'>{member="notification_cnt"}</span>{{endif}}
 			</a>
 			<div id='elFullNotifications_menu' class='ipsMenu ipsMenu_wide ipsHide'>
@@ -39,7 +39,7 @@
 					<ol class='ipsDataList ipsDataList_readStatus' data-role='notifyList' data-ipsKeyNav data-ipsKeyNav-observe='return' id='elNotifyContent'></ol>
 				</div>
 				<div class='ipsMenu_footerBar ipsType_center'>
-					<a href='{url="app=core&module=system&controller=notifications" seoTemplate="notifications"}'><i class='fa fa-bars'></i> {lang="see_all_notifications"}</a>
+					<a href='{url="app=core&module=system&controller=notifications"}'><i class='fa fa-bars'></i> {lang="see_all_notifications"}</a>
 				</div>
 			</div>
 		</li>
@@ -128,10 +128,10 @@
 {{else}}
 	<ul id='elUserNav' class='ipsList_inline cSignedOut ipsClearfix ipsResponsive_hidePhone ipsResponsive_block'>
 		<li id='elSignInLink'>
-			<a href='{url="app=core&module=system&controller=login" seoTemplate="login" protocol="\IPS\Settings::i()->logins_over_https"}' data-ipsMenu-closeOnClick="false" data-ipsMenu id='elUserSignIn'>
+			<a href='{url="app=core&module=system&controller=login" seoTemplate="login"}' data-ipsMenu-closeOnClick="false" data-ipsMenu id='elUserSignIn'>
 				{lang="sign_in"} &nbsp;<i class='fa fa-caret-down'></i>
 			</a>
-			{template="loginPopup" app="core" group="global" params="new \IPS\Login( \IPS\Http\Url::internal( 'app=core&module=system&controller=login', 'front', 'login', NULL, \IPS\Settings::i()->logins_over_https ) )"}
+			{template="loginPopup" app="core" group="global" params="new \IPS\Login( \IPS\Http\Url::internal( 'app=core&module=system&controller=login', 'front', 'login', NULL, ( \IPS\Settings::i()->logins_over_https ) ? TRUE : FALSE ) )"}
 		</li>
 		{{if \IPS\Settings::i()->allow_reg}}
 			<li>

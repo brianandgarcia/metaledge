@@ -1,5 +1,5 @@
 <ips:template parameters="$name, $value, $multiple, $url, $title, $roots, $zeroVal, $noJs, $permCheck, $subnodes, $togglePerm=NULL, $toggleIds=array(), $disabledCallback=NULL, $zeroValTogglesOn=array(), $zeroValTogglesOff=array(), $autoPopulate=FALSE, $children=NULL, $nodeClass=NULL, $where=NULL, $disabledArray=array(), $noParentNodesTitle=NULL, $noParentNodes=array()" />
-<div class='ipsSelectTree ipsJS_show' data-name='{$name}' data-ipsSelectTree data-ipsSelectTree-url="{$url}" {{if $multiple}}data-ipsSelectTree-multiple{{endif}} data-ipsSelectTree-selected='{$value|raw}'>
+<div class='ipsSelectTree ipsJS_show' data-name='{$name}' data-ipsSelectTree data-ipsSelectTree-url="{$url}" {{if $multiple}}data-ipsSelectTree-multiple{{endif}} data-ipsSelectTree-selected="{$value}">
 	<input type="hidden" name="{$name}" value="" data-role="nodeValue">
 	<div class='ipsSelectTree_value ipsSelectTree_placeholder'></div>
 	<span class='ipsSelectTree_expand'><i class='fa fa-chevron-down'></i></span>

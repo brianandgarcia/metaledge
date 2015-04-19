@@ -1,5 +1,5 @@
 <ips:template parameters="$event" />
-<div data-controller='core.front.core.commentFeed' data-baseURL='{$event->url()}' {{if $event->isLastPage('reviews')}}data-lastPage{{endif}} data-feedID='event-{$event->id}-reviews' id='reviews'>
+<div data-controller='core.front.core.commentFeed' data-baseURL='{$event->url()}' {{if $event->isLastPage('reviews')}}data-lastPage{{endif}} data-feedID='event-{$event->id}-reviews'>
 	{{if $event->canReview()}}
 		{{if $event->locked()}}
 			<strong class='ipsType_warning'><i class='fa fa-info-circle'></i> {lang="item_locked_can_review"}</strong>
@@ -15,7 +15,6 @@
 		{{endif}}
 	{{endif}}
 	{{if count( $event->reviews() )}}
-		<hr class='ipsHr'>
 		<div class="ipsClearfix">
 			{{if $event->reviewPageCount() > 1}}
 				<div class="ipsPos_left">
@@ -36,12 +35,10 @@
 		<br>
 		<div data-role='commentFeed' data-controller='core.front.core.moderation'>
 			<form action="{$event->url()->setQueryString( 'do', 'multimodReview' )}" method="post" data-ipsPageAction data-role='moderationTools'>
-				{{$reviewCount=0; $timeLastRead = $event->timeLastRead(); $lined = FALSE;}}
+				{{$reviewCount=0; $firstUnread = $event->firstUnreadReview();}}
 				{{foreach $event->reviews() as $review}}
-					{{if !$lined and $timeLastRead and $timeLastRead->getTimestamp() < $review->mapped('date')}}
-						{{if $lined = TRUE and $reviewCount}}
-							<hr class="ipsCommentUnreadSeperator">
-						{{endif}}
+					{{if $reviewCount and $firstUnread and $firstUnread == $comment}}
+						<hr class="ipsCommentUnreadSeperator">
 					{{endif}}
 					{{$reviewCount++;}}
 					{$review->html()|raw}

@@ -1,10 +1,10 @@
-<ips:template parameters="$rows, $uniqid, $root=false" />
+<ips:template parameters="$rows, $uniqid, $sortData=array(), $root=false" />
 {{if count( $rows )}}
-	<ol class='ipsTree ipsTree_node'>
+	<ul class='ipsTree ipsTree_node'>
 		{{foreach $rows as $id => $row}}
-			<li id="sortable-{$uniqid}_{$id}" data-role="node" class='mjs-nestedSortable-collapsed'>
+			<li id="sortable-{$uniqid}_{$id}" data-role="node" {{if isset( $sortData[ $id ] )}}data-sorttype='{$sortData[ $id ]['key']}' data-sortconnect='{$sortData[ $id ]['target']}'{{endif}}>
 				{$row|raw}
 			</li>
 		{{endforeach}}	
-	</ol>
+	</ul>
 {{endif}}

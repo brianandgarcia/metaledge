@@ -54,7 +54,7 @@
 
 	{{if count( $event->attendees( \IPS\calendar\Event::RSVP_MAYBE ) ) }}
 		<div></div>
-		<h3>{lang="rsvp_maybe_attendees"}</h3>
+		<h3>{lang="rsvp_maybe_event"}</h3>
 		<ul>
 			{{foreach $event->attendees( \IPS\calendar\Event::RSVP_MAYBE ) as $attendee }}
 				<li>{$attendee->name}</li>
@@ -64,7 +64,7 @@
 
 	{{if count( $event->attendees( \IPS\calendar\Event::RSVP_NO ) ) }}
 		<div></div>
-		<h3>{lang="rsvp_notgoing_attendees"}</h3>
+		<h3>{lang="rsvp_notgoing_event"}</h3>
 		<ul>
 			{{foreach $event->attendees( \IPS\calendar\Event::RSVP_NO ) as $attendee }}
 				<li>{$attendee->name}</li>

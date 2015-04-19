@@ -6,10 +6,8 @@
 				{expression="\IPS\Output::i()->sidebar['contextual']" raw="true"}
 			</aside>
 		{{endif}}
-		{{if isset(\IPS\Output::i()->sidebar['widgets']['sidebar']) and count( \IPS\Output::i()->sidebar['widgets']['sidebar'] ) and ( \IPS\core\Advertisement::loadByLocation( 'ad_sidebar' ) ) }}
-			{advertisement="ad_sidebar"}
-			<br><br>
-		{{endif}}
 		{template="widgetContainer" group="global" app="core" params="'sidebar', 'vertical'"}
+		<br><br>
+		{advertisement="ad_sidebar"}
 	</div>
 {{endif}}

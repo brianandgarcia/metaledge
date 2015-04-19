@@ -1,6 +1,5 @@
 <ips:template parameters="$forum, $isSubForum=FALSE, $table=NULL" />
 {{if $forum->can('view')}}
-{{$lastPost = $forum->lastPost();}}
 	<li class="ipsDataItem ipsDataItem_responsivePhoto {{if \IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsDataItem_unread{{endif}} ipsClearfix" data-forumID="{$forum->_id}">
 		<div class="ipsDataItem_icon ipsDataItem_category">
 			{{if !$forum->redirect_on}}
@@ -9,27 +8,21 @@
 				{{if $forum->icon}}
 					<img src="{$forum->icon}" class='ipsItemStatus ipsItemStatus_custom {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
 				{{else}}
-					{{if $forum->redirect_on}}
-						<span class='ipsItemStatus ipsItemStatus_large cForumIcon_redirect {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+					<span class='ipsItemStatus ipsItemStatus_large {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+						{{if $forum->redirect_on}}
 							<i class='fa fa-arrow-right'></i>
-						</span>
-					{{elseif $forum->forums_bitoptions['bw_enable_answers']}}
-						<span class='ipsItemStatus ipsItemStatus_large cForumIcon_answers {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+						{{elseif $forum->forums_bitoptions['bw_enable_answers']}}
 							<i class='fa fa-question'></i>
-						</span>
-					{{elseif $forum->password}}
-						<span class='ipsItemStatus ipsItemStatus_large cForumIcon_password {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+						{{elseif $forum->password}}
 							{{if $forum->loggedInMemberHasPasswordAccess()}}
 								<i class='fa fa-unlock'></i>
 							{{else}}
 								<i class='fa fa-lock'></i>
 							{{endif}}
-						</span>
-					{{else}}
-						<span class='ipsItemStatus ipsItemStatus_large cForumIcon_normal {{if !\IPS\forums\Topic::containerUnread( $forum ) && !$forum->redirect_on}}ipsItemStatus_read{{endif}}'>
+						{{else}}
 							<i class="fa fa-comments"></i>
-						</span>
-					{{endif}}
+						{{endif}}
+					</span>
 				{{endif}}
 			{{if !$forum->redirect_on and \IPS\forums\Topic::containerUnread( $forum ) AND \IPS\Member::loggedIn()->member_id}}
 			</a>
@@ -43,14 +36,19 @@
 					<a href="{$forum->url()}">{$forum->_title}</a>
 				{{endif}}
 				{{if $forum->redirect_on}}
-					&nbsp;&nbsp;<span class='ipsType_light ipsType_medium'>({lang="redirect_hits" pluralize="$forum->redirect_hits"})</span>
+					&nbsp;&nbsp;<span class='ipsType_light ipsType_medium'>({lang="redirect_hits" pluralize="\IPS\Member::loggedIn()->language()->formatNumber( $forum->redirect_hits )"})</span>
 				{{endif}}
 			</h4>
 			{{if $forum->hasChildren()}}
 				<ul class="ipsDataItem_subList ipsList_inline">
 					{{foreach $forum->children() as $subforum}}
 						<li class="{{if \IPS\forums\Topic::containerUnread( $subforum )}}ipsDataItem_unread{{endif}}">
-							<a href="{$subforum->url()}">{{if \IPS\forums\Topic::containerUnread( $subforum )}}<span class='ipsItemStatus ipsItemStatus_tiny {{if !\IPS\forums\Topic::containerUnread( $subforum ) && !$subforum->redirect_on}}ipsItemStatus_read{{endif}}'><i class="fa fa-circle"></i></span>&nbsp;{{endif}}{$subforum->_title}</a>
+							{{if \IPS\forums\Topic::containerUnread( $subforum )}}
+								<span class='ipsItemStatus ipsItemStatus_tiny {{if !\IPS\forums\Topic::containerUnread( $subforum ) && !$subforum->redirect_on}}ipsItemStatus_read{{endif}}'> 
+									<i class="fa fa-circle"></i>
+								</span>
+							{{endif}}
+							<a href="{$subforum->url()}">{$subforum->_title}</a>
 						</li>
 					{{endforeach}}
 				</ul>
@@ -61,13 +59,11 @@
 		</div>
 		{{if !$forum->redirect_on}}
 			<div class="ipsDataItem_stats ipsDataItem_statsLarge">
-				{{if $lastPost}}
-					<dl>
-						{{$count = \IPS\forums\Topic::contentCount( $forum, TRUE );}}
-						<dt class="ipsDataItem_stats_number">{number="$count"}</dt>
-						<dd class="ipsDataItem_stats_type ipsType_light">{lang="posts_no_number" pluralize="$count"}</dd>
-					</dl>
-				{{endif}}
+				<dl>
+					{{$count = \IPS\forums\Topic::contentCount( $forum, TRUE );}}
+					<dt class="ipsDataItem_stats_number">{expression="\IPS\Member::loggedIn()->language()->formatNumber( $count )"}</dt>
+					<dd class="ipsDataItem_stats_type ipsType_light">{lang="posts_no_number" pluralize="$count"}</dd>
+				</dl>
 				{{if \IPS\forums\Topic::modPermission( 'unhide', NULL, $forum ) AND ( $forum->queued_topics OR $forum->queued_posts )}}
 					<strong class='ipsType_warning ipsType_medium'>
 						<i class='fa fa-warning'></i>
@@ -82,11 +78,11 @@
 						{{else}}
 							<span class='ipsType_light'>0</span>
 						{{endif}}
-					</strong>
+					</strong>					
 				{{endif}}
 			</div>
 			<ul class="ipsDataItem_lastPoster ipsDataItem_withPhoto">
-				{{if $lastPost}}
+				{{if $lastPost = $forum->lastPost()}}
 					<li>{template="userPhoto" app="core" group="global" params="$lastPost['author'], 'tiny'"}</li>
 					<li><a href="{$lastPost['topic_url']->setQueryString( 'do', 'getNewComment' )}" class='ipsType_break ipsContained' title='{$lastPost['topic_title']}'>{truncate="$lastPost['topic_title']" length="30"}</a></li>
 					<li>{lang="byline_nodate" htmlsprintf="$lastPost['author']->link()"}</li>

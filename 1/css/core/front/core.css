@@ -202,7 +202,8 @@ html[dir="rtl"] .cUserHovercard .ipsRepBadge {
 		border: 1px dashed #5f95c7;
 	}
 
-.cWidgetContainer_managing li.ipsWidget[data-blockconfig="true"] {
+.cWidgetContainer_managing li.ipsWidget[data-blockconfig="true"]
+{
 	min-height: 100px;
 }
 .cSidebarBlock_managing {
@@ -251,7 +252,7 @@ html[dir="rtl"] .cUserHovercard .ipsRepBadge {
 	html[dir="ltr"] .cSidebarBlock_managing h4 {
 		left: 9px;
 	}
-	html[dir="rtl"] .cSidebarBlock_managing h4 {
+	html[dir="rtl"] .cSidebarBlock_managing [data-action="removeBlock"] {
 		right: 9px;
 	}
 
@@ -354,14 +355,14 @@ html[dir="rtl"] #elSidebarManager {
 	}
 
 	#elSidebarManager .cSidebarManager_open:before {
-		content: '\f0d7';
+		content: '\\f0d7';
 	}
 
 	html[dir="ltr"] #elSidebarManager .cSidebarManager_closed:before {
-		content: '\f0da';
+		content: '\\f0da';
 	}
 	html[dir="rtl"] #elSidebarManager .cSidebarManager_closed:before {
-		content: '\f0d9';
+		content: '\\f0d9';
 	}
 
 #elSidebarManager_submit {
@@ -375,7 +376,7 @@ html[dir="ltr"] #elSidebarManager_submit {
 	left: 0;
 }
 html[dir="rtl"] #elSidebarManager_submit {
-	right: 0 !important;
+	right: 0;
 }
 
 .cSidebarManager_block {
@@ -496,11 +497,9 @@ html[dir="rtl"] .cPollChoices [data-role="choiceRow"] {
 	}
 
 		.cPollVoteBar > span.cPollVoteBar_inside:after {
+			right: 5px;
 			color: #fff;
 			text-align: right;
-		}
-		html[dir="ltr"] .cPollVoteBar > span.cPollVoteBar_inside:after {
-			right: 5px;
 		}
 		html[dir="rtl"] .cPollVoteBar > span.cPollVoteBar_inside:after {
 			text-align: left;

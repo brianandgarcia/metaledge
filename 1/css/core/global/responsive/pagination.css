@@ -66,11 +66,4 @@
 	.ipsPager a:after {
 		font-size: 32px;
 	}
-
-	/* Mini pagination */
-	.ipsPagination.ipsPagination_mini {
-		display: block !important;
-		margin: 5px 0 !important;
-		opacity: 1 !important;
-	}
 }

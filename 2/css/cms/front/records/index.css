@@ -1,7 +1,8 @@
 /* ----- */
-
-
-
-.ipsCms_database_index h4.ipsDataItem_title {
+.cCmsDatabase_index h4.ipsDataItem_title {
 	font-size: 16px;
+}
+
+.cCmsDatabase_index .ipsDataItem_main {
+	vertical-align: middle;
 }

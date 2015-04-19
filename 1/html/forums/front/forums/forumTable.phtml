@@ -1,10 +1,9 @@
 <ips:template parameters="$table, $headers, $rows, $quickSearch" />
 <div class='ipsBox' data-baseurl='{$table->baseUrl}' data-resort='{$table->resortKey}' data-tableID='topics' data-controller='core.global.core.table{{if $table->canModerate()}},core.front.core.moderation{{endif}}'>
 	{{if $table->title}}
-		<h2 class='ipsType_sectionTitle {{if !$table->container()->forums_bitoptions['bw_enable_answers']}}ipsType_medium{{endif}} ipsType_reset ipsClear'>{$table->title}</h2>
+		<h2 class='ipsType_sectionTitle ipsType_medium ipsType_reset ipsClear'>{$table->title}</h2>
 	{{endif}}
 
-	{{if $table->count > 0}}
 	<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
 		{{if $table->canModerate()}}
 			<ul class="ipsButtonRow ipsPos_right ipsClearfix">
@@ -29,7 +28,7 @@
 		{{endif}}
 
 		<ul class="ipsButtonRow ipsPos_right ipsClearfix">
-			{{if isset( $table->sortOptions ) and !empty( $table->sortOptions ) }}
+			{{if isset( $table->sortOptions ) and !empty( $table->sortOptions )}}
 				<li>
 					<a href="#elSortByMenu_menu" id="elSortByMenu_{$table->uniqueId}" data-role='sortButton' data-ipsMenu data-ipsMenu-activeClass="ipsButtonRow_active" data-ipsMenu-selectable="radio">{lang="sort_by"} <i class="fa fa-caret-down"></i></a>
 					<ul class="ipsMenu ipsMenu_auto ipsMenu_withStem ipsMenu_selectable ipsHide" id="elSortByMenu_{$table->uniqueId}_menu">
@@ -68,7 +67,7 @@
 			</div>
 		{{endif}}
 	</div>
-	{{endif}}
+
 	{{if $table->canModerate()}}
 		<form action="{$table->baseUrl}" method="post" data-role='moderationTools' data-ipsPageAction>
 	{{endif}}
@@ -145,7 +144,7 @@
 							<option value='merge' data-icon='level-up'>{lang="merge"}</option>
 						{{endif}}
 						{{if $table->canModerate('delete')}}
-							<option value='delete' data-icon='trash'>{lang="delete"}</option>
+							<option value='delete' data-icon='times-circle'>{lang="delete"}</option>
 						{{endif}}
 						{{if $table->savedActions}}
 							<optgroup label="{lang="saved_actions"}" data-icon='tasks' data-action='saved_actions'>

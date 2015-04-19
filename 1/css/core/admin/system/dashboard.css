@@ -129,9 +129,3 @@ html[dir="rtl"] .acpWidget_sidebar {
 	font-size: 44px;
 	line-height: 40px;
 }
-
-/* Warnings */
-#acpWarnings i.fa-warning {
-	font-size: 44px;
-	line-height: 40px;
-}

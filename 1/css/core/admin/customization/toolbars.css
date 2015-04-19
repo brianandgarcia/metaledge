@@ -1,5 +1,5 @@
 .editor_dummy {
-	border: rgb(204, 204, 204) 1px solid;
+	border: rgb(204, 204, 204) 1px solid !important;
 	margin: auto;
 }
 .editor_dummy_desktop {
@@ -22,9 +22,9 @@ html[dir="rtl"] .editor_dummy .dummy_toolbars li {
 	float: right;
 }
 .editor_dummy .dummy_toolbar {
-	height: 40px;
+	/*height: 40px;
 	margin: 0;
-	padding: 0;
+	padding: 0;*/
 	clear: both;
 }
 .editor_dummy #dummy_contents {

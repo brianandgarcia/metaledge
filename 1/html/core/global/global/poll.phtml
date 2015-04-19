@@ -3,7 +3,7 @@
 <section class='ipsBox' data-controller='core.front.core.poll'>
 {{endif}}
 	<h2 class='ipsType_sectionTitle ipsType_reset'>
-		{wordbreak="$poll->poll_question"}&nbsp;&nbsp;
+		{lang="$poll->poll_question" wordbreak="true"}&nbsp;&nbsp;
 		<span class='ipsType_normal ipsType_light'>{lang="poll_num_votes" pluralize="$poll->votes"}</span>
 	</h2>
 	<div class='ipsPad ipsClearfix' data-role='pollContents'>
@@ -13,7 +13,7 @@
 			<ol class='ipsList_reset cPollList'>
 				{{foreach $poll->choices as $questionId => $question}}
 					<li>
-						<h3 class='ipsType_sectionHead'>{$questionId}. {wordbreak="$question['question']"}</h3>
+						<h3 class='ipsType_sectionHead'>{$questionId}. {lang="$question['question']" wordbreak="true"}</h3>
 						<ul class='ipsList_reset cPollList_choices'>
 							{{foreach $question['choice'] as $k => $choice}}
 								<li class='ipsGrid ipsGrid_collapsePhone'>
@@ -25,7 +25,7 @@
 											<span style='width: {{if $poll->votes}}{expression="intval( ( $question['votes'][ $k ] / $poll->votes ) * 100 )"}{{else}}0{{endif}}%' data-votes='{{if $poll->votes}}{expression="round( ( $question['votes'][ $k ] / $poll->votes ) * 100, 2 )"}{{else}}0{{endif}}%' {{if $poll->votes && intval( ( $question['votes'][ $k ] / $poll->votes ) * 100 ) > 30}}class='cPollVoteBar_inside'{{endif}}></span>
 										</span>
 									</div>
-									<div class='ipsGrid_span1 ipsType_small'>
+									<div class='ipsGrid_span1 ipsType_small'>	
 										{{if $poll->canSeeVoters() && $question['votes'][ $k ] > 0}}
 											<a href='{url="app=core&module=system&controller=poll&do=voters&id={$poll->pid}&question={$questionId}&option={$k}"}' title='{lang="view_voters"}' class='ipsType_blendLinks' data-ipsTooltip data-ipsDialog data-ipsDialog-size="narrow" data-ipsDialog-title="{$choice}">
 										{{else}}

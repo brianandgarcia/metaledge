@@ -10,11 +10,11 @@
 	{{endif}}
 	size="5"
 	{{if $required === TRUE}}aria-required='true'{{endif}}
-	{{if $unlimited !== NULL and $value === $unlimited}}
+	{{if $unlimited !== NULL and $value === (int) $unlimited}}
 		value=""
 		data-jsdisable="true"
 	{{else}}
-		value="{expression="number_format( $value, $decimals === true ? mb_strlen( mb_substr( $value, mb_strpos( $value, '.' ) + 1 ) ) : $decimals, '.', '' )"}"
+		value="{$value}"
 	{{endif}}
 	class="ipsField_short"
 	{{if $min !== NULL}}
@@ -26,7 +26,7 @@
 	{{if $step !== NULL}}
 		step="{$step}"
 	{{endif}}
-	{{if $decimals === true}}data-decimals-any{{else}}data-decimals="{$decimals}"{{endif}}
+	data-decimals="{$decimals}"
 	data-decpoint="{expression="\IPS\Member::loggedIn()->language()->locale['decimal_point']"}"
 	data-thousandsseparator="{expression="\IPS\Member::loggedIn()->language()->locale['thousands_sep']"}"
 	{{if $disabled}}disabled aria-disabled='true'{{endif}}
@@ -42,11 +42,9 @@
 {{endif}}
 {{if $unlimited !== NULL}}
 	&nbsp;
-	<div class="ipsFieldRow_inlineCheckbox">
-		{lang="or"}
-		&nbsp;
-		<input type="checkbox" role='checkbox' data-control="unlimited{{if count($toggles)}} toggle{{endif}}" name="{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}" id='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}-unlimitedCheck' value="{$unlimited}" {{if $unlimited === $value}}checked aria-checked='true'{{endif}} {{if $disabled}}disabled aria-disabled='true'{{endif}} {{if count($toggles)}}{{if $toggleOn === FALSE}}data-togglesOff{{else}}data-togglesOn{{endif}}="{expression="implode( ',', $toggles )"}"{{endif}} aria-labelledby='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}_label'> <label for='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}-unlimitedCheck' id='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}_label' class='ipsField_unlimited'>{lang="$unlimitedLang"}</label>
-	</div>
+	{lang="or"}
+	&nbsp;
+	<input type="checkbox" role='checkbox' data-control="unlimited{{if count($toggles)}} toggle{{endif}}" name="{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}" id='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}-unlimitedCheck' value="{$unlimited}" {{if $unlimited === $value}}checked aria-checked='true'{{endif}} {{if $disabled}}disabled aria-disabled='true'{{endif}} {{if count($toggles)}}{{if $toggleOn === FALSE}}data-togglesOff{{else}}data-togglesOn{{endif}}="{expression="implode( ',', $toggles )"}"{{endif}} aria-labelledby='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}_label'> <label for='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}-unlimitedCheck' id='{expression="preg_replace( '/\[(.+?)\]/', '[$1_unlimited]', $name, 1 )"}_label' class='ipsField_unlimited'>{lang="$unlimitedLang"}</label>
 {{endif}}
 {{if is_array( $suffix ) and isset( $suffix['postUnlimited'] )}}
 	&nbsp;&nbsp;&nbsp;{$suffix['postUnlimited']|raw}

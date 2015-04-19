@@ -8,9 +8,17 @@
 	
 	<h3 class='ipsType_sectionHead'>
 		{{if $licenseData['cloud']}}
-			{lang="license_name_cloud"}
+			{{if $licenseData['edition']}}
+				{lang="license_name_cloud_edition" sprintf="$licenseData['edition']"}
+			{{else}}
+				{lang="license_name_cloud"}
+			{{endif}}
 		{{else}}
-			{lang="license_name_license"}
+			{{if $licenseData['edition']}}
+				{lang="license_name_license_edition" sprintf="$licenseData['edition']"}
+			{{else}}
+				{lang="license_name_license"}
+			{{endif}}
 		{{endif}}
 		<br>
 		{expression="substr_replace( $licenseData['key'], '**********', -10 )"}

@@ -3,9 +3,7 @@
 	<div class=''>
 		<br>
 		<h1 class='ipsType_reset ipsType_veryLarge ipsType_center'>{lang='sign_in_short'}</h1>
-		{{if \IPS\Settings::i()->allow_reg}}
-			<p class='ipsType_large ipsType_center ipsType_light'>{lang="dont_have_an_account"} <a href='{url="app=core&module=system&controller=register" seoTemplate="register"}'>{lang="sign_up"}</a>.</p>
-		{{endif}}
+		<p class='ipsType_large ipsType_center ipsType_light'>{lang="dont_have_an_account"} <a href='{url="app=core&module=system&controller=register" seoTemplate="register"}'>{lang="sign_up"}</a>.</p>
 		<br>
 {{endif}}
 
@@ -27,9 +25,7 @@
 			<div class='ipsColumn ipsColumn_veryWide ipsBox'>
 				<div class='ipsPad'>
 					<h2 class='ipsType_sectionHead'>{lang='sign_in_faster'}</h2>
-					{{if count ( $forms ) > 2}}
-						<p class='ipsType_normal ipsType_reset ipsType_light'>{lang='sign_in_connect'}</p>
-					{{endif}}
+					<p class='ipsType_normal ipsType_reset ipsType_light'>{lang='sign_in_connect'}</p>
 					<br>
 					{{foreach $forms as $k => $form}}
 						{{if $k !== '_standard'}}

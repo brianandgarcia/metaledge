@@ -1,32 +1,4 @@
-.cTranslateTable_field {
-	position: relative;
-}
-	
-	.cTranslateTable_field a[data-action] {
-		display: none;
-		position: absolute;
-		height: 22px;
-		bottom: -22px;
-		z-index: 4000;
-		line-height: 20px;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
-	}
-
-		.cTranslateTable_field_focus textarea ~ a[data-action] {
-			display: block;
-		}
-
-		.cTranslateTable_field a[data-action="saveWords"] {
-			right: 0;
-		}
-
-		.cTranslateTable_field a[data-action="revertWords"] {
-			right: 55px;
-		}
-
 .cTranslateTable textarea {
 	height: 100%;
 	min-height: 50px;
-	min-width: 300px;
 }

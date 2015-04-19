@@ -14,7 +14,7 @@
 {{endif}}
 
 <a id='comment-{$comment->$idField}'></a>
-<article itemscope {{if $item->isQuestion()}}itemprop="suggestedAnswer {{if $comment->post_bwoptions['best_answer']}}acceptedAnswer{{endif}}" itemtype="http://schema.org/Answer"{{else}}itemtype="http://schema.org/Comment"{{endif}} id='elComment_{$comment->$idField}' class='cPost ipsBox {{if $otherClasses}}{$otherClasses}{{endif}} ipsComment {{if settings.reputation_highlight and $comment->reputation() >= settings.reputation_highlight}}ipsComment_popular{{endif}} ipsComment_parent ipsClearfix ipsClear ipsColumns ipsColumns_noSpacing ipsColumns_collapsePhone {{if $comment->isIgnored()}}ipsHide{{endif}} {{if $comment->hidden()}}ipsModerated{{endif}}'>
+<article itemscope {{if $item->isQuestion() && !$comment->new_topic}}itemprop="suggestedAnswer {{if $comment->post_bwoptions['best_answer']}}acceptedAnswer{{endif}}" itemtype="http://schema.org/Answer"{{else}}itemtype="http://schema.org/Comment"{{endif}} id='elComment_{$comment->$idField}' class='cPost ipsBox {{if $otherClasses}}{$otherClasses}{{endif}} ipsComment {{if settings.reputation_highlight and $comment->reputation() >= settings.reputation_highlight}}ipsComment_popular{{endif}} ipsComment_parent ipsClearfix ipsClear ipsColumns ipsColumns_noSpacing ipsColumns_collapsePhone {{if $comment->isIgnored()}}ipsHide{{endif}} {{if $comment->hidden()}}ipsModerated{{endif}}'>
 	{{if $item->isQuestion() and !$comment->new_topic}}
 		{template="postRating" group="topics" app="forums" params="$item, $comment, $votes"}
 	{{endif}}

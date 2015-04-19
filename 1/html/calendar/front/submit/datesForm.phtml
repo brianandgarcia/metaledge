@@ -10,7 +10,7 @@
 			<div class='ipsPad'>
 				<div class='cCalendarSubmit_field'>
 					<i class='fa fa-calendar'></i>
-					<input type="date" data-summaryControl name="event_dates[start_date]" value="{{if $value['start_date'] instanceof \IPS\DateTime}}{$value['start_date']->format('Y-m-d')}{{else}}{$value['start_date']}{{endif}}" data-preferredFormat="{{if $value['start_date'] instanceof \IPS\DateTime}}{$value['start_date']->fullYearLocaleDate()}{{else}}{$value['start_date']}{{endif}}" required aria-required='true' class="ipsField_short" data-control="date" placeholder='{expression="mb_strtoupper( str_replace( 'y', 'yy', \IPS\Member::loggedIn()->language()->preferredDateFormat() ) )"}'>
+					<input type="date" data-summaryControl name="event_dates[start_date]" value="{{if $value['start_date'] instanceof \IPS\DateTime}}{$value['start_date']->format('Y-m-d')}{{else}}{$value['start_date']}{{endif}}" data-preferredFormat="{{if $value['start_date'] instanceof \IPS\DateTime}}{$value['start_date']->localeDate()}{{else}}{$value['start_date']}{{endif}}" required aria-required='true' class="ipsField_short" data-control="date" placeholder='{expression="mb_strtoupper( str_replace( 'y', 'yy', \IPS\Member::loggedIn()->language()->preferredDateFormat() ) )"}'>
 				</div>
 				<div class='cCalendarSubmit_field' id='start_time_wrap'>
 					<i class='fa fa-clock-o'></i>
@@ -35,7 +35,7 @@
 			<div class='ipsPad'>
 				<div class='cCalendarSubmit_field' id='event_end_date_wrap'>
 					<i class='fa fa-calendar'></i>
-					<input type="date" name="event_dates[end_date]" value="{{if $value['end_date'] instanceof \IPS\DateTime}}{$value['end_date']->format('Y-m-d')}{{else}}{$value['end_date']}{{endif}}" data-preferredFormat="{{if $value['end_date'] instanceof \IPS\DateTime}}{$value['end_date']->fullYearLocaleDate()}{{else}}{{if $value['start_date'] instanceof \IPS\DateTime}}{$value['start_date']->fullYearLocaleDate()}{{else}}{$value['end_date']}{{endif}}{{endif}}" class="ipsField_short" data-control="date" id="event_end_date" placeholder='{expression="mb_strtoupper( str_replace( 'y', 'yy', \IPS\Member::loggedIn()->language()->preferredDateFormat() ) )"}'>
+					<input type="date" name="event_dates[end_date]" value="{{if $value['end_date'] instanceof \IPS\DateTime}}{$value['end_date']->format('Y-m-d')}{{else}}{$value['end_date']}{{endif}}" data-preferredFormat="{{if $value['end_date'] instanceof \IPS\DateTime}}{$value['end_date']->localeDate()}{{else}}{$value['end_date']}{{endif}}" class="ipsField_short" data-control="date" id="event_end_date">
 				</div>
 				<div class='cCalendarSubmit_field' id='end_time_wrap'>
 					<i class='fa fa-clock-o'></i>
@@ -93,10 +93,10 @@
 				<label class='ipsFieldRow_label' for=''>{lang="event_rpm_repeatevery"}</label>
 				<div class='ipsFieldRow_content'>
 					{template="select" group="forms" app="core" location="front" params="'event_dates[event_repeat_freq]', $value['event_repeat_freq'], FALSE, array_combine( range( 1, 30 ), range( 1, 30 ) ), FALSE, '', FALSE, array(), 'event_repeat_freq'"}
-					<span id='repeatFreqPer_day' {{if $value['event_repeats'] and $value['event_repeats'] != 'daily'}}style="display:none"{{endif}}>{lang="event_rpm_repeatevery_day"}</span>
-					<span id='repeatFreqPer_week' {{if $value['event_repeats'] != 'weekly'}}style="display:none"{{endif}}>{lang="event_rpm_repeatevery_week"}</span>
-					<span id='repeatFreqPer_month' {{if $value['event_repeats'] != 'monthly'}}style="display:none"{{endif}}>{lang="event_rpm_repeatevery_month"}</span>
-					<span id='repeatFreqPer_year' {{if $value['event_repeats'] != 'yearly'}}style="display:none"{{endif}}>{lang="event_rpm_repeatevery_year"}</span>
+					<span id='repeatFreqPer_day'>{lang="event_rpm_repeatevery_day"}</span>
+					<span id='repeatFreqPer_week'>{lang="event_rpm_repeatevery_week"}</span>
+					<span id='repeatFreqPer_month'>{lang="event_rpm_repeatevery_month"}</span>
+					<span id='repeatFreqPer_year'>{lang="event_rpm_repeatevery_year"}</span>
 				</div>
 			</li>
 			<li class='ipsFieldRow' id='elRepeatOn'>

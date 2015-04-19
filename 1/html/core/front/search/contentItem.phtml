@@ -6,15 +6,13 @@
 		<i class="fa fa-{$item::$icon} ipsType_large ipsType_light" title="{lang="$item::$title"}" data-ipsTooltip></i>
 	</div>
 	<div class='ipsDataItem_main'>
-		<div class='ipsType_break ipsContained'>
+		<div class='ipsType_break ipsContained cSearchResultHighlight'>
 			<h4 class='ipsType_sectionHead ipsContained'>
 				{{if $item->prefix()}}
 					{template="prefix" group="global" app="core" params="$item->prefix( TRUE ), $item->prefix()"}
 				{{endif}}
-				<span class="cSearchResultHighlight">
-					<a href='{$item->url()}' class='ipsType_blendLinks'>{$item->mapped('title')}</a>
-				</span>
-				{{if $container = $item->containerWrapper( TRUE )}}
+				<a href='{$item->url()}' class='ipsType_blendLinks'>{$item->mapped('title')}</a>
+				{{if $container = $item->containerWrapper()}}
 					<span class="ipsType_medium">{lang="in"} <a href="{$container->url()}">{$container->_title}</a></span>
 				{{endif}}
 				{{if $item->mapped('pinned') || $item->mapped('featured') || $item->hidden() === -1 || $item->hidden() === 1}}
@@ -37,7 +35,7 @@
 				{template="tags" group="global" app="core" params="$item->tags(), true, true"}
 				<br>
 			{{endif}}
-			<span class='ipsType_medium ipsType_light ipsType_blendLinks'>{lang="search_posted_by" htmlsprintf="$item->author()->link()"} {datetime="$item->mapped('date')"}</span>
+			<span class='ipsType_medium ipsType_light ipsType_blendLinks'>{lang="search_posted_by" sprintf="ucfirst( \IPS\Member::loggedIn()->language()->get( '__indefart_' . $item::$title ) )" htmlsprintf="$item->author()->link()"} {datetime="$item->mapped('date')"}</span>
 		</div>
 		<div class="cSearchResultHighlight">
 			{{$app = $item::$application;}}

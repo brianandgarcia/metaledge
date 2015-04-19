@@ -2,42 +2,28 @@
 
 <div class='ipsGrid ipsGrid_collapsePhone ipsPager cCalendarNav ipsSpacer_bottom' data-ipsSticky data-ipsSticky-disableIn='phone'>
 	<div class='ipsGrid_span3 ipsType_left ipsPager_prev'>
-		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=week&id={$thisCalendar->_id}&w={$lastWeek->year}-{$lastWeek->mon}-{$lastWeek->mday}" seoTemplate="calendar_calweek" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=week&w={$lastWeek->year}-{$lastWeek->mon}-{$lastWeek->mday}" seoTemplate="calendar_week"}{{endif}}" title='{lang="cal_week_title" sprintf="$lastWeek->firstDayOfWeek('monthNameShort'), $lastWeek->firstDayOfWeek('mday'), $lastWeek->firstDayOfWeek('year'), $lastWeek->lastDayOfWeek('monthNameShort'), $lastWeek->lastDayOfWeek('mday'), $lastWeek->lastDayOfWeek('year')"}' rel='prev' data-action='changeView'>
+		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=week&id={$thisCalendar->_id}&w={$lastWeek->year}-{$lastWeek->mon}-{$lastWeek->mday}" seoTemplate="calendar_calweek" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=week&w={$lastWeek->year}-{$lastWeek->mon}-{$lastWeek->mday}" seoTemplate="calendar_week"}{{endif}}" title='{lang="cal_week_title" sprintf="$lastWeek->firstDayOfWeek('monthNameShort'), $lastWeek->firstDayOfWeek('mday'), $lastWeek->firstDayOfWeek('year'), $lastWeek->lastDayOfWeek('monthNameShort'), $lastWeek->lastDayOfWeek('mday'), $lastWeek->lastDayOfWeek('year')"}' rel='prev' data-action='changeView'>
 			<span class='ipsPager_type ipsType_normal'>{lang="previous_week"}</span>
-			<span class='ipsPager_title ipsType_light'>
-				<span class='ipsResponsive_inline ipsResponsive_hidePhone'>
-					{lang="cal_week_title" sprintf="$lastWeek->firstDayOfWeek('monthNameShort'), $lastWeek->firstDayOfWeek('mday'), $lastWeek->firstDayOfWeek('year'), $lastWeek->lastDayOfWeek('monthNameShort'), $lastWeek->lastDayOfWeek('mday'), $lastWeek->lastDayOfWeek('year')"}
-				</span>
-				<span class='ipsResponsive_inline ipsResponsive_showPhone'>
-					{lang="cal_week_title_wb" sprintf="$lastWeek->firstDayOfWeek('monthNameShort'), $lastWeek->firstDayOfWeek('mday'), $lastWeek->firstDayOfWeek('year')"}
-				</span>
-			</span>
+			<span class='ipsPager_title ipsType_light'>{lang="cal_week_title" sprintf="$lastWeek->firstDayOfWeek('monthNameShort'), $lastWeek->firstDayOfWeek('mday'), $lastWeek->firstDayOfWeek('year'), $lastWeek->lastDayOfWeek('monthNameShort'), $lastWeek->lastDayOfWeek('mday'), $lastWeek->lastDayOfWeek('year')"}</span>
 		</a>
 	</div>
 	<div class='ipsGrid_span6 ipsType_center ipsPad' data-role='calendarNav'>
 		<h1 class='ipsType_pageTitle ipsType_center'>{lang="cal_week_title" sprintf="$date->firstDayOfWeek('monthNameShort'), $date->firstDayOfWeek('mday'), $date->firstDayOfWeek('year'), $date->lastDayOfWeek('monthNameShort'), $date->lastDayOfWeek('mday'), $date->lastDayOfWeek('year')"}</h1>
 		<ul class='ipsButton_split ipsType_noBreak'>
-			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=month&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calmonth" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=month&y={$date->year}&m={$date->mon}" seoTemplate="calendar_month"}{{endif}}' title='{lang="cal_month_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="month"}</a></li>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=month&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calmonth" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=month&y={$date->year}&m={$date->mon}" seoTemplate="calendar_month"}{{endif}}' title='{lang="cal_month_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="month"}</a></li>
 			<li><a href='#' class='ipsButton ipsButton_primary ipsButton_verySmall' title='{lang="cal_week_title" sprintf="$date->firstDayOfWeek('monthNameShort'), $date->firstDayOfWeek('mday'), $date->firstDayOfWeek('year'), $date->lastDayOfWeek('monthNameShort'), $date->lastDayOfWeek('mday'), $date->lastDayOfWeek('year')"}' data-action='changeView'>{lang="week"}</a></li>
 			{{if in_array( $today, $days )}}
-				<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=day&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}&d={$today->mday}" seoTemplate="calendar_calday" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=day&y={$date->year}&m={$date->mon}&d={$today->mday}" seoTemplate="calendar_day"}{{endif}}' title='{lang="cal_month_day" sprintf="$date->monthName, $today->mday, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="day"}</a></li>
+				<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=day&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}&d={$today->mday}" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=day&y={$date->year}&m={$date->mon}&d={$today->mday}" seoTemplate="calendar_day"}{{endif}}' title='{lang="cal_month_day" sprintf="$date->monthName, $today->mday, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="day"}</a></li>
 			{{else}}
-				<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=day&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}&d=1" seoTemplate="calendar_calday" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=day&y={$date->year}&m={$date->mon}&d=1" seoTemplate="calendar_day"}{{endif}}' title='{lang="cal_month_day" sprintf="$date->monthName, $date->mday, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="day"}</a></li>
+				<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=day&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}&d=1" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=day&y={$date->year}&m={$date->mon}&d=1" seoTemplate="calendar_day"}{{endif}}' title='{lang="cal_month_day" sprintf="$date->monthName, $date->mday, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'>{lang="day"}</a></li>
 			{{endif}}
-			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=stream&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calstream" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=stream&y={$date->year}&m={$date->mon}" seoTemplate="calendar_stream"}{{endif}}' title='{lang="cal_month_stream_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'><span class='ipsResponsive_hidePhone ipsResponsive_inline'>{lang="event_stream"}</span><span class='ipsResponsive_showPhone ipsResponsive_inline'>{lang="event_stream_short"}</span></a></li>
+			<li><a href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=stream&id={$thisCalendar->_id}&y={$date->year}&m={$date->mon}" seoTemplate="calendar_calstream" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=stream&y={$date->year}&m={$date->mon}" seoTemplate="calendar_stream"}{{endif}}' title='{lang="cal_month_stream_title" sprintf="$date->monthName, $date->year"}' class='ipsButton ipsButton_light ipsButton_verySmall' data-action='changeView'><span class='ipsResponsive_hidePhone ipsResponsive_inline'>{lang="event_stream"}</span><span class='ipsResponsive_showPhone ipsResponsive_inline'>{lang="event_stream_short"}</span></a></li>
 		</ul>
 	</div>
 	<div class='ipsGrid_span3 ipsType_right ipsPager_next'>
-		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=week&id={$thisCalendar->_id}&w={$nextWeek->year}-{$nextWeek->mon}-{$nextWeek->mday}" seoTemplate="calendar_calweek" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=week&w={$nextWeek->year}-{$nextWeek->mon}-{$nextWeek->mday}" seoTemplate="calendar_week"}{{endif}}" title='{lang="cal_week_title" sprintf="$nextWeek->firstDayOfWeek('monthNameShort'), $nextWeek->firstDayOfWeek('mday'), $nextWeek->firstDayOfWeek('year'), $nextWeek->lastDayOfWeek('monthNameShort'), $nextWeek->lastDayOfWeek('mday'), $nextWeek->lastDayOfWeek('year')"}' rel='next' data-action='changeView'>
+		<a href="{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&view=week&id={$thisCalendar->_id}&w={$nextWeek->year}-{$nextWeek->mon}-{$nextWeek->mday}" seoTemplate="calendar_calweek" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&view=week&w={$nextWeek->year}-{$nextWeek->mon}-{$nextWeek->mday}" seoTemplate="calendar_week"}{{endif}}" title='{lang="cal_week_title" sprintf="$nextWeek->firstDayOfWeek('monthNameShort'), $nextWeek->firstDayOfWeek('mday'), $nextWeek->firstDayOfWeek('year'), $nextWeek->lastDayOfWeek('monthNameShort'), $nextWeek->lastDayOfWeek('mday'), $nextWeek->lastDayOfWeek('year')"}' rel='next' data-action='changeView'>
 			<span class='ipsPager_type ipsType_normal'>{lang="next_week"}</span>
-			<span class='ipsPager_title ipsType_light'>
-				<span class='ipsResponsive_inline ipsResponsive_hidePhone'>
-					{lang="cal_week_title" sprintf="$nextWeek->firstDayOfWeek('monthNameShort'), $nextWeek->firstDayOfWeek('mday'), $nextWeek->firstDayOfWeek('year'), $nextWeek->lastDayOfWeek('monthNameShort'), $nextWeek->lastDayOfWeek('mday'), $nextWeek->lastDayOfWeek('year')"}
-				</span>
-				<span class='ipsResponsive_inline ipsResponsive_showPhone'>
-					{lang="cal_week_title_wb" sprintf="$nextWeek->firstDayOfWeek('monthNameShort'), $nextWeek->firstDayOfWeek('mday'), $nextWeek->firstDayOfWeek('year')"}
-				</span>
-			</span>
+			<span class='ipsPager_title ipsType_light'>{lang="cal_week_title" sprintf="$nextWeek->firstDayOfWeek('monthNameShort'), $nextWeek->firstDayOfWeek('mday'), $nextWeek->firstDayOfWeek('year'), $nextWeek->lastDayOfWeek('monthNameShort'), $nextWeek->lastDayOfWeek('mday'), $nextWeek->lastDayOfWeek('year')"}</span>
 		</a>
 	</div>
 </div>
@@ -48,7 +34,7 @@
 		<li class='ipsColumns ipsColumns_collapsePhone ipsBox'>
 			<div class='ipsColumn ipsColumn_wide ipsAreaBackground_light cCalendarWeek_day {{if $today->year == $day->year AND $today->mon == $day->mon AND $today->mday == $day->mday}} cCalendar_today{{endif}}'>
 				<div class='ipsPad'>
-					<h2 class='ipsType_sectionHead'><strong><a class='ipsType_blendLinks' href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_calday" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_day"}{{endif}}'>{$day->dayName}</a></strong></h2>
+					<h2 class='ipsType_sectionHead'><strong><a class='ipsType_blendLinks' href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_day"}{{endif}}'>{$day->dayName}</a></strong></h2>
 					<p class='ipsType_reset ipsType_light ipsType_uppercase'>{lang="cal_month_day" sprintf="$day->monthName, $day->mday, $day->year"}</p>
 				</div>
 			</div>
@@ -60,8 +46,8 @@
 								<li class='cEvents_ranged'>
 									<ul class='cEvents'>
 										{{foreach $events[ $day->year . '-' . $day->mon . '-' . $day->mday ]['ranged'] as $event }}
-											<li class='cEvents_event cEvents_style{$event->calendar_id}{{if $event->nextOccurrence( $day, 'startDate' ) AND $event->nextOccurrence( $day, 'startDate' )->mysqlDatetime( FALSE ) == $day->mysqlDatetime( FALSE ) }}{{$startDates[ $event->id ] = $day->mysqlDatetime( FALSE );}} cEvents_first{{endif}}{{if $event->nextOccurrence( $day ?: $event->nextOccurrence( $day, 'startDate' ), 'endDate' ) AND $event->nextOccurrence( $day ?: $event->nextOccurrence( $day, 'startDate' ), 'endDate' )->mysqlDatetime( FALSE ) == $day->mysqlDatetime( FALSE ) }} cEvents_last{{endif}}'>
-												<a href='{$event->url()}' data-ipsHover data-ipsHover-target='{$event->url('hovercard')->setQuerystring( 'sd', isset( $startDates[ $event->id ] ) ? $startDates[ $event->id ] : $day->mysqlDatetime( FALSE ) )}'>{$event->title}{{if $event->hidden() === 1}} <i class='fa fa-warning'></i>{{endif}}</a>
+											<li class='cEvents_event cEvents_style{$event->calendar_id}{{if $event->nextOccurrence( $day, 'startDate' ) AND $event->nextOccurrence( $day, 'startDate' )->mysqlDatetime( FALSE ) == $day->mysqlDatetime( FALSE ) }}{{$startDates[ $event->id ] = $day->mysqlDatetime( FALSE );}} cEvents_first{{endif}}{{if $event->nextOccurrence( $event->nextOccurrence( $day, 'startDate' ) ?: $day, 'endDate' ) AND $event->nextOccurrence( $event->nextOccurrence( $day, 'startDate' ) ?: $day, 'endDate' )->mysqlDatetime( FALSE ) == $day->mysqlDatetime( FALSE ) }} cEvents_last{{endif}}'>
+												<a href='{$event->url()}' data-ipsHover data-ipsHover-target='{$event->url('hovercard')->setQuerystring( 'sd', isset( $startDates[ $event->id ] ) ? $startDates[ $event->id ] : $day->mysqlDatetime( FALSE ) )}'>{$event->title}</a>
 											</li>
 										{{endforeach}}
 									</ul>
@@ -72,7 +58,7 @@
 									<ul class='cEvents'>
 										{{foreach $events[ $day->year . '-' . $day->mon . '-' . $day->mday ]['single'] as $event }}
 											<li class='cEvents_event cEvents_style{$event->calendar_id}'>
-												<a href='{$event->url()}' data-ipsHover data-ipsHover-target='{$event->url('hovercard')->setQuerystring( 'sd', $day->year . '-' . $day->mon . '-' . $day->mday )}'>{$event->title}{{if $event->hidden() === 1}} <i class='fa fa-warning'></i>{{endif}}</a>
+												<a href='{$event->url()}' data-ipsHover data-ipsHover-target='{$event->url('hovercard')->setQuerystring( 'sd', $day->year . '-' . $day->mon . '-' . $day->mday )}'>{$event->title}</a>
 											</li>
 										{{endforeach}}
 									</ul>
@@ -83,7 +69,7 @@
 						<span class='ipsType_light ipsType_medium'>{lang="no_events_today"}</span>
 					{{endif}}
 					{{if isset( $birthdays[ $day->mon . $day->mday ] ) AND count( $birthdays[ $day->mon . $day->mday ] ) }}
-						<p class='cCalendar_birthdays ipsType_light'><a class='ipsType_blendLinks' href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_calday" seoTitle="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_day"}{{endif}}'>{lang="birthdays_today" pluralize="count($birthdays[ $day->mon . $day->mday ])"}</a></p>
+						<p class='cCalendar_birthdays ipsType_light'><a class='ipsType_blendLinks' href='{{if $thisCalendar}}{url="app=calendar&module=calendar&controller=view&id={$thisCalendar->_id}&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_calday" seoTitles="$thisCalendar->title_seo"}{{else}}{url="app=calendar&module=calendar&controller=view&y={$day->year}&m={$day->mon}&d={$day->mday}" seoTemplate="calendar_day"}{{endif}}'>{lang="birthdays_today" pluralize="count($birthdays[ $day->mon . $day->mday ])"}</a></p>
 					{{endif}}
 				</div>
 			</div>

@@ -176,9 +176,6 @@ blockquote.ipsQuote {
 	clear: both;
 	padding-top: 35px;
 }
-blockquote.ipsQuote p {
-	padding-right: 8px;
-}
 .ipsJS_none blockquote.ipsQuote {
 	padding-top: 12px;
 }
@@ -196,7 +193,7 @@ html[dir="rtl"] blockquote.ipsQuote {
 }
 
 	blockquote.ipsQuote:after {
-		content: "\00a0";
+		content: "\\00a0";
 		display: block;
 		overflow: hidden;
 		height: 0;
@@ -210,21 +207,19 @@ blockquote.ipsQuote div.ipsQuote_citation {
 	font-weight: bold;
 	font-size: 13px;
 	display: block;
-	margin-top: -35px;
-	margin-bottom: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 html[dir="ltr"] blockquote.ipsQuote div.ipsQuote_citation {
-	margin-left: -15px;
-	margin-right: 0;
+	left: 0;
 }
-html[dir="rtl"] blockquote.ipsQuote div.ipsQuote_citation {
-	margin-right: -15px;
-	margin-left: 0;
+html[dir="ltr"] blockquote.ipsQuote div.ipsQuote_citation {
+	right: 0;
 }
 
 blockquote.ipsQuote div.ipsQuote_citation a {
 	color: #222;
-	text-decoration: none;
 }
 
 blockquote.ipsQuote div.ipsQuote_citation .fa {
@@ -253,36 +248,26 @@ html[dir="rtl"] blockquote.ipsQuote blockquote.ipsQuote {
 }
 
 .ipsQuote_citation.ipsQuote_closed [data-action='toggleQuote']:before {
-	content: "\f138";
+	content: "\\f138";
 }
 html[dir="rtl"] .ipsQuote_citation.ipsQuote_closed [data-action='toggleQuote']:before {
-	content: "\f137";
+	content: "\\f137";
 }
 
 .ipsQuote_citation.ipsQuote_open [data-action='toggleQuote']:before {
-	content: "\f13a";
+	content: "\\f13a";
 	color: #bdbdbd;
 }
 
-.ipsJS_has [data-role="contentPageBreak"] {
-	display: none;
-}
-
-/* ======================================================== */
-/* EMBEDDABLES - Internal Embeds							*/
-/* These styles are used for the iframes when a user posts  */
-/* a link to another piece of content on the suite (for		*/
-/* example, a topic)										*/
-/* ======================================================== */
-
+/* Embedded content */
 iframe[data-embedContent] {
 	width: 100%;
-	min-height: 165px;
+	min-height: 130px;
 	margin: 10px 0;
 	border: 1px solid rgba(0,0,0,0.1);
 	position: relative;
 	background-color: #fcfcfc;
-	background-image: url( {resource="loaders/large_loading@2x.gif" app="core" location="front"} );
+	background-image: url( {resource="loaders/large_loading.gif" app="core" location="front"} );
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 40px 40px;
@@ -356,21 +341,12 @@ iframe[data-embedContent] {
 		font-size: 12px;
 		color: rgba(0,0,0,0.3);
 	}
-
-/* ======================================================== */
-/* EMBEDDABLES - oEmbed Videos								*/
-/* These styles are used for embedded links to oEmbed		*/
-/* services that identify themselves as videos (for example	*/
-/* YouTube, Vimeo and Hulu)									*/
-/* ======================================================== */
-
+	
 .ipsEmbeddedVideo {
 	float: none;
     clear: both;
-	width: 100%;
-	overflow: auto;
-	position: relative;
-	/* This allows videos to resize responsively */
+    width: 100%;
+    position: relative;
     padding-bottom: 56.25%;
     padding-top: 25px;
 }
@@ -381,24 +357,4 @@ iframe[data-embedContent] {
     left: 0;
     width: 100%;
     height: 100%;
-}
-
-.ipsQuote .ipsEmbeddedVideo {
-	width: 98%;
-	margin-bottom: 15px;
-}
-
-/* ======================================================== */
-/* EMBEDDABLES - oEmbed Misc								*/
-/* These styles are used for embedded links to oEmbed		*/
-/* services that are not videos or photos (for example		*/
-/* Twitter and Instagram)									*/
-/* ======================================================== */
-
-.ipsEmbeddedOther iframe {
-	float: none;
-	clear: both;
-	width: 100%;
-	position: relative;
-	border: none;
 }

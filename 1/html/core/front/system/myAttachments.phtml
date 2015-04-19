@@ -34,7 +34,7 @@
 						</li>
 						{{if \IPS\Member::loggedIn()->group['gbw_delete_attachments']}}
 							<li>
-								<a href='{url="app=core&module=system&controller=attachments&do=delete&id={$id}" seoTemplate="attachments" csrf="true"}' class='ipsButton ipsButton_verySmall ipsButton_light' data-ipsTooltip title='{lang="delete"}' data-action="deleteAttachment" ><i class='fa fa-trash-o'></i></a>
+								<a href='{url="app=core&module=system&controller=attachments&do=delete&id={$id}" seoTemplate="attachments" csrf="true"}' class='ipsButton ipsButton_verySmall ipsButton_light' data-ipsTooltip title='{lang="delete"}'><i class='fa fa-trash-o'></i></a>
 							</li>
 						{{endif}}
 					</ul>

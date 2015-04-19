@@ -1,4 +1,4 @@
-<ips:template parameters="$event, $date, $truncate=FALSE, $map=array( 300, 200 ), $revertToFirst=FALSE" />
+<ips:template parameters="$event, $date, $truncate=FALSE, $map=array( 300, 200 )" />
 {{$coverPhoto = $event->coverPhoto();}}
 <div class='cCalendarBlock ipsAreaBackground_reset ipsBox'>
 	<div class='ipsPageHead_special ipsCoverPhoto' data-controller='core.front.core.coverPhoto' data-coverOffset='{$coverPhoto->offset}'>
@@ -12,25 +12,21 @@
 				<img src='{$event->author()->photo}' class="ipsUserPhoto ipsUserPhoto_mini" alt=''>
 			</div>
 			<div class='ipsColumn ipsColumn_fluid'>
-				<h2 class='ipsType_pageTitle'><a href='{$event->url()}' title='{$event->title}'>{truncate="$event->title" length="18"}{{if $event->hidden() === 1}} <span class="ipsBadge ipsBadge_icon ipsBadge_warning" data-ipsTooltip title='{lang="pending_approval"}'><i class='fa fa-warning'></i></span>{{endif}}</a></h2>
+				<h2 class='ipsType_pageTitle'><a href='{$event->url()}' title='{$event->title}'>{truncate="$event->title" length="26"}</a></h2>
 			</div>
 		</div>
 	</div>
 	<br>
 	<div class='ipsPad ipsClearfix'>
 		<h3 class='ipsType_reset'>
-			{{$startDate = $event->nextOccurrence( $date, 'startDate' );}}
-			{{if $revertToFirst AND $startDate->mon > $date->mon}}
-				{{$startDate = $event->nextOccurrence( \IPS\calendar\Date::getDate( $date->year, $date->mon, 1 ), 'startDate' );}}
-			{{endif}}
-			{{if $startDate}}
-				{$startDate->calendarDate()}{{if !$event->all_day}} {$startDate->localeTime( FALSE )} {{endif}}
-				{{if $event->_end_date AND $event->nextOccurrence( $startDate ?: $date, 'endDate' ) }}
-					- {$event->nextOccurrence( $startDate ?: $date, 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $startDate ?: $date, 'endDate' )->localeTime( FALSE )}{{endif}}
+			{{if $event->nextOccurrence( $date, 'startDate' )}}
+				{$event->nextOccurrence( $date, 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $date, 'startDate' )->localeTime( FALSE )} {{endif}}
+				{{if $event->nextOccurrence( $event->nextOccurrence( $date, 'startDate' ) ?: $date, 'endDate' ) }}
+					- {$event->nextOccurrence( $event->nextOccurrence( $date, 'startDate' ) ?: $date, 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $event->nextOccurrence( $date, 'startDate' ) ?: $date, 'endDate' )->localeTime( FALSE )}{{endif}}
 				{{endif}}
 			{{else}}
 				{$event->lastOccurrence( 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'startDate' )->localeTime( FALSE )} {{endif}}
-				{{if $event->_end_date AND $event->lastOccurrence( 'endDate' ) }}
+				{{if $event->lastOccurrence( 'endDate' ) }}
 					- {$event->lastOccurrence( 'endDate' )->calendarDate()}{{if !$event->all_day}} {$event->lastOccurrence( 'endDate' )->localeTime( FALSE )}{{endif}}
 				{{endif}}
 			{{endif}}

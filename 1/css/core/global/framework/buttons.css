@@ -64,11 +64,6 @@
 	color: #fff;
 }
 
-.ipsApp .ipsButton_intermediate {
-	background: #d67814;
-	color: #fff;
-}
-
 .ipsApp .ipsButton_negative {
 	background: #a72f35;
 	color: #fff;
@@ -124,7 +119,7 @@
 .ipsApp .ipsButton_link {
 	background: transparent;
 	color: inherit;
-	border: 0;
+	border: 1px solid transparent;
 	font-weight: normal;
 }
 
@@ -351,23 +346,22 @@ html[dir="rtl"] .ipsButtonBar .ipsButtonRow {
 		}
 
 			html[dir="ltr"] .ipsButtonRow li:last-child > a, .ipsButtonRow li:last-child > span {
-				margin-left: 0;
-				border-top-left-radius: 2px;
-				border-bottom-left-radius: 2px;
-			}
-			html[dir="ltr"] .ipsButtonRow li:first-child > a, .ipsButtonRow li:first-child > span {
-				border-top-right-radius: 2px;
-				border-bottom-right-radius: 2px;
-			}
-
-			html[dir="rtl"] .ipsButtonRow li:last-child > a, .ipsButtonRow li:last-child > span {
 				margin-right: 0;
 				border-top-right-radius: 2px;
 				border-bottom-right-radius: 2px;
 			}
-			html[dir="rtl"] .ipsButtonRow li:first-child > a, .ipsButtonRow li:first-child > span {
+			html[dir="ltr"] .ipsButtonRow li:first-child > a, .ipsButtonRow li:first-child > span {
 				border-top-left-radius: 2px;
 				border-bottom-left-radius: 2px;
+			}
+			html[dir="rtl"] .ipsButtonRow li:last-child > a, .ipsButtonRow li:last-child > span {
+				margin-left: 0;
+				border-top-left-radius: 2px;
+				border-bottom-left-radius: 2px;
+			}
+			html[dir="rtl"] .ipsButtonRow li:first-child > a, .ipsButtonRow li:first-child > span {
+				border-top-right-radius: 2px;
+				border-bottom-right-radius: 2px;
 			}
 
 			.ipsButtonRow li > a.ipsButtonRow_active {

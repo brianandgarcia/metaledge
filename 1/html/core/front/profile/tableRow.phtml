@@ -9,7 +9,7 @@
 			<h3 class='ipsType_sectionHead'>{$loadedMember->link()|raw}</h3> {{if $loadedMember->isOnline()}}<i class="fa fa-circle ipsOnlineStatus_online" data-ipsTooltip title='{lang="online_now" sprintf="$member->name"}'></i>{{endif}}<br>
 			<span class='ipsType_normal'>{expression="\IPS\Member\Group::load( $member->member_group_id )->formattedName" raw="true"}</span>
 			<ul class='ipsList_inline ipsType_light'>
-				<li><strong>{lang="members_member_posts"}: {$loadedMember->member_posts}</strong></li>
+				<li><strong>{lang="member_posts" pluralize="$loadedMember->member_posts"}</strong></li>
 				<li>{lang="members_joined"} {datetime="$loadedMember->joined"}</li>
 				{{if $loadedMember->last_activity}}
 					<li>{lang="members_last_visit"} {datetime="$loadedMember->last_activity"}</li>

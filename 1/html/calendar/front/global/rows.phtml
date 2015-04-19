@@ -26,7 +26,7 @@
 					{{endif}}
 					
 					<a href='{$row->url()}' class='ipsType_break' {{if $row->tableHoverUrl}}data-ipsHover{{endif}}>
-						{{if $row->mapped('title')}}{wordbreak="$row->mapped('title')"}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
+						{{if $row->mapped('title')}}{lang="$row->mapped('title')" wordbreak="true"}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
 					</a>
 
 					{{if $row->mapped('pinned') || $row->mapped('featured') || $row->hidden() === -1 || $row->hidden() === 1}}
@@ -44,7 +44,20 @@
 					{{endif}}
 				</h4>
 				<div class='ipsDataItem_meta ipsType_light ipsType_blendLinks'>
-					{$row->eventBlurb()|raw}
+					{lang="on"} 
+					{{if $row->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )}}
+						{$row->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )->calendarDate()}{{if !$row->all_day}} {$row->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' )->localeTime( FALSE )} {{endif}}
+						{{if $row->nextOccurrence( $row->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' ) ?: \IPS\calendar\Date::getDate(), 'endDate' ) }}
+							- {$row->nextOccurrence( $row->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' ) ?: \IPS\calendar\Date::getDate(), 'endDate' )->calendarDate()}{{if !$row->all_day}} {$row->nextOccurrence( $row->nextOccurrence( \IPS\calendar\Date::getDate(), 'startDate' ) ?: \IPS\calendar\Date::getDate(), 'endDate' )->localeTime( FALSE )}{{endif}}
+						{{endif}}
+					{{else}}
+						{$row->lastOccurrence( 'startDate' )->calendarDate()}{{if !$row->all_day}} {$row->lastOccurrence( 'startDate' )->localeTime( FALSE )} {{endif}}
+						{{if $row->lastOccurrence( 'endDate' ) }}
+							- {$row->lastOccurrence( 'endDate' )->calendarDate()}{{if !$row->all_day}} {$row->lastOccurrence( 'endDate' )->localeTime( FALSE )}{{endif}}
+						{{endif}}
+					{{endif}}
+
+					{lang="in"} <a href="{$row->container()->url()}">{$row->container()->_title}</a>
 				</div>
 
 				{{if $row->rsvp}}

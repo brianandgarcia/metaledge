@@ -29,7 +29,7 @@
 						<a href='{url="app=core&module=system&controller=ignore&do=edit&id={$r['ignore_ignore_id']}"}' data-ipsDialog data-ipsDialog-remoteSubmit data-ipsDialog-size='narrow' data-ipsDialog-title='{lang="edit_ignore_for" sprintf="\IPS\Member::load( $r['ignore_ignore_id'] )->name"}'>{lang="change_ignored_content"}</a>
 					</li>
 					<li class='ipsMenu_item' data-ipsMenuValue='remove'>
-						<a href='{url="app=core&module=system&controller=ignore&do=remove&id={$r['ignore_ignore_id']}"}'>{lang="stop_ignoring_user"}</a>
+						<a href='{url="app=core&module=system&controller=ignore&do=remove&id={$r['ignore_ignore_id']}" csrf="true"}'>{lang="stop_ignoring_user"}</a>
 					</li>
 				</ul>
 			</div>

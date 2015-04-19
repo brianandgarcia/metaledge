@@ -18,7 +18,7 @@
 						{{if $event->container()->allow_comments && $orientation == 'vertical'}}
 							<div class="ipsCommentCount ipsPos_right {{if $event->comments === 0}}ipsFaded{{endif}}" data-ipsTooltip title='{lang="replies_number" pluralize="$event->comments"}'>{expression="$event->comments"}</div>
 						{{endif}}
-						{{if $event->unread()}}<span class="ipsItemStatus ipsItemStatus_tiny"><i class="fa fa-circle"></i></span> <strong>{{endif}}<a href="{$event->url()}" title='{lang="view_this_event" sprintf="$event->title"}'>{wordbreak="$event->title"}</a>{{if $event->unread()}}</strong>{{endif}}<br>
+						{{if $event->unread()}}<span class="ipsItemStatus ipsItemStatus_tiny"><i class="fa fa-circle"></i></span> <strong>{{endif}}<a href="{$event->url()}" title='{lang="view_this_event" sprintf="$event->title"}'>{lang="$event->title" wordbreak="true"}</a>{{if $event->unread()}}</strong>{{endif}}<br>
 						<strong class='ipsType_small'>
 							{{if $event->nextOccurrence( $today, 'startDate' )}}
 								{$event->nextOccurrence( $today, 'startDate' )->calendarDate()}{{if !$event->all_day}} {$event->nextOccurrence( $today, 'startDate' )->localeTime( FALSE )} {{endif}}

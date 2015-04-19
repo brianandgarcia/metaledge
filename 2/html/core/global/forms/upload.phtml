@@ -28,7 +28,7 @@
 	</noscript>
 	{{if $value}}
 		{{foreach $value as $id => $file}}
-			<input type="hidden" name="{$name}_existing[{$id}]" value="">
+			<input type="hidden" name="{$name}_existing[{$id}]" value="{$file->tempId}">
 		{{endforeach}}
 	{{endif}}
 	<div id="{$name}_drop_{expression="md5( uniqid() )"}"

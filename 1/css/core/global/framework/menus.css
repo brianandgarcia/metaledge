@@ -118,11 +118,11 @@ html[dir="rtl"] .ipsMenu_subItems > a {
 		top: 9px;
 	}
 	html[dir="ltr"] .ipsMenu_subItems > a:after {
-		content: '\f0da';
+		content: '\\f0da';
 		right: 9px;
 	}
 	html[dir="rtl"] .ipsMenu_subItems > a:after {
-		content: '\f0d9';
+		content: '\\f0d9';
 		left: 9px;
 	}
 
@@ -233,19 +233,18 @@ html[dir="rtl"] .ipsMenu_subItems > a {
 	font-weight: bold;
 	border-radius: 2px;
 }
-html[dir="ltr"] .ipsMenu_itemCount, html[dir="ltr"] .ipsSideMenu_itemCount {
+html[dir="ltr"] .ipsMenu_itemCount, .ipsSideMenu_itemCount {
 	float: right;
-	margin-right: -5px;
+	margin-right: -10px;
 	margin-left: 5px;
 }
-html[dir="rtl"] .ipsMenu_itemCount, html[dir="rtl"] .ipsSideMenu_itemCount {
+html[dir="rtl"] .ipsMenu_itemCount, .ipsSideMenu_itemCount {
 	float: left;
-	margin-left: -5px;
+	margin-left: -10px;
 	margin-right: 5px;
 }
 	
-	.ipsMenu_item:not( .ipsMenu_itemClicked ) a:hover .ipsMenu_itemCount,
-	.ipsMenu_item:not( .ipsMenu_itemClicked ) button:hover .ipsMenu_itemCount {
+	.ipsMenu_item:not( .ipsMenu_itemClicked ) a:hover .ipsMenu_itemCount {
 		background: #fff;
 	}
 
@@ -254,23 +253,16 @@ html[dir="rtl"] .ipsMenu_itemCount, html[dir="rtl"] .ipsSideMenu_itemCount {
 		color: #fff;
 	}
 
-		.ipsSideMenu_itemActive .ipsSideMenu_itemCount.ipsSideMenu_clearCount {
-			background: transparent;
-		}
-
 /* Selectable items for menus */
-html[dir="ltr"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a,
-html[dir="ltr"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) button {
+html[dir="ltr"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a {
 	padding-left: 30px;
 }
-html[dir="rtl"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a,
-html[dir="rtl"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) button {
+html[dir="rtl"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a {
 	padding-right: 30px;
 }
 
-	.ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a:before,
-	.ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) button:before {
-		content: '\f10c';
+	.ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a:before {
+		content: '\\f10c';
 		font-size: 14px;
 		position: absolute;
 		font-family: 'FontAwesome';
@@ -278,38 +270,23 @@ html[dir="rtl"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) 
 		color: rgba(0,0,0,0.05);
 	}
 	
-	html[dir="ltr"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a:before,
-	html[dir="ltr"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) button:before {
+	html[dir="ltr"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a:before {
 		left: 0;
 		padding-left: 10px;
 	}
-	html[dir="rtl"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a:before,
-	html[dir="rtl"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) button:before {
+	html[dir="rtl"] .ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ) a:before {
 		right: 0;
 		padding-right: 10px;
 	}
 
-	.ipsMenu_selectable .ipsMenu_item.ipsMenu_itemChecked a,
-	.ipsMenu_selectable .ipsMenu_item.ipsMenu_itemChecked button {
+	.ipsMenu_selectable .ipsMenu_item.ipsMenu_itemChecked a {
 		font-weight: bold;
 	}
 
-		.ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ).ipsMenu_itemChecked a:before,
-		.ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ).ipsMenu_itemChecked button:before {
-			content: '\f00c';
+		.ipsMenu_selectable .ipsMenu_item:not( .ipsMenu_itemNonSelect ).ipsMenu_itemChecked a:before {
+			content: '\\f00c';
 			color: inherit;
 		}
-
-	.ipsMenu_selectable button {
-		width: 100%;
-	}
-
-	html[dir="ltr"] .ipsMenu_selectable button {
-		text-align: left;
-	}
-	html[dir="rtl"] .ipsMenu_selectable button {
-		text-align: right;
-	}
 
 /* ======================================================== */
 /* AUTOCOMPLETE MENUS */
@@ -378,7 +355,7 @@ html[dir="rtl"] .ipsSideMenu_title {
 
 		.ipsSideMenu_withChecks .ipsSideMenu_item a:after, .ipsSideMenu_withChecks a.ipsSideMenu_item:after,
 		.ipsSideMenu_withRadios .ipsSideMenu_item a:after, .ipsSideMenu_withRadios a.ipsSideMenu_item:after {
-			content: '\f10c';
+			content: '\\f10c';
 			font-family: 'FontAwesome';
 			width: 20px;
 			height: 20px;
@@ -401,7 +378,7 @@ html[dir="rtl"] .ipsSideMenu_title {
 		}
 
 			.ipsSideMenu_withChecks .ipsSideMenu_item a:after, .ipsSideMenu_withChecks a.ipsSideMenu_item:after {
-				content: '\f096';
+				content: '\\f096';
 			}
 
 .ipsSideMenu_list {
@@ -421,7 +398,7 @@ html[dir="rtl"] .ipsSideMenu_title {
 
 	.ipsSideMenu_withChecks .ipsSideMenu_itemActive a:after, .ipsSideMenu_withChecks a.ipsSideMenu_itemActive:after,
 	.ipsSideMenu_withRadios .ipsSideMenu_itemActive a:after, .ipsSideMenu_withRadios a.ipsSideMenu_itemActive:after {
-		content: '\f00c';
+		content: '\\f00c';
 		color: #fff;
 	}
 

@@ -34,12 +34,12 @@
 					<li class='ipsPos_right'>
 						<a href='#' id='elTemplateEditor_variables' class='ipsButton ipsButton_veryLight ipsButton_small' data-ipsDialog data-ipsDialog-title='{lang="content_template_editor_fields_title"}' data-ipsDialog-content="#elTemplateEditor_attributesDialog" data-ipsDialog-size='narrow'>{lang="theme_attributes"}</a>
 					</li>
-					<li class='ipsPos_right'>
-						<a href='{url="app=cms&module=pages&controller=templates&do=deleteTemplate&t_location={$current->location}&t_id={$current->id}"}' class='ipsButton ipsButton_veryLight ipsButton_small {{if $current->user_edited == 'original'}}ipsButton_disabled{{endif}}' data-action="revert">{{if ! $current->user_edited}}{lang="delete"}{{else}}{lang="revert"}{{endif}}</a>
-					</li>
 					<li>
 						<button type='submit' class='ipsButton ipsButton_primary ipsButton_small' data-action="save">{lang="save"}</button>
-					</li>					
+					</li>
+					<li>
+						<a href='{url="app=cms&module=pages&controller=templates&do=deleteTemplate&t_location={$current->location}&t_id={$current->id}"}' class='ipsButton ipsButton_alternate ipsButton_small {{if $current->user_edited == 'original'}}ipsButton_disabled{{endif}}' data-action="revert">{{if ! $current->user_edited}}{lang="delete"}{{else}}{lang="revert"}{{endif}}</a>
+					</li>
 					<li>
 						<span data-role='loading' class='ipsHide'><i class='icon-spinner2 ipsLoading_tinyIcon'></i>  &nbsp;{lang="loading"}</span>
 					</li>

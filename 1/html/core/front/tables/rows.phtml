@@ -15,7 +15,7 @@
 					</div>
 					<div class='ipsDataItem_main'>
 						<h4 class='ipsDataItem_title ipsType_break'>
-							<em><a href='{$movedTo->url()}' title='{lang="go_to_new_location"}'>{wordbreak="$row->mapped('title')"}</a></em>
+							<em><a href='{$movedTo->url()}' title='{lang="go_to_new_location"}'>{lang="$row->mapped('title')" wordbreak="true"}</a></em>
 						</h4>
 						<div class='ipsDataItem_meta'>
 							<p class='ipsType_reset ipsType_light ipsType_blendLinks'>{lang="moved_to" sprintf="$movedTo->container()->url(), $movedTo->container()->_title"}</p>
@@ -40,11 +40,7 @@
 							{{endif}}
 						</a>
 					{{else}}
-						{{if $row->containerWrapper() AND in_array( $row->$idField, $row->containerWrapper()->contentPostedIn( null, $rowIds ) )}}
-							<span class='ipsItemStatus ipsItemStatus_read ipsItemStatus_posted'><i class="fa fa-star"></i></span>
-						{{else}}
-							&nbsp;
-						{{endif}}
+						&nbsp;
 					{{endif}}
 				</div>
 				<div class='ipsDataItem_main'>
@@ -58,7 +54,7 @@
 						{{endif}}
 						
 						<a href='{$row->url()}' {{if $row->tableHoverUrl and $row->canView()}}data-ipsHover data-ipsHover-target='{$row->url()->setQueryString('preview', 1)}'data-ipsHover{{endif}}>
-							{{if $row->mapped('title')}}{wordbreak="$row->mapped('title')"}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
+							{{if $row->mapped('title')}}{lang="$row->mapped('title')" wordbreak="true"}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
 						</a>
 
 						{{if $row->mapped('pinned') || $row->mapped('featured') || $row->hidden() === -1 || $row->hidden() === 1}}
@@ -85,7 +81,7 @@
 							{$row->tableDescription()|raw}
 						{{else}}
 							{lang="byline" sprintf="$row->author()->name"}{datetime="$row->__get( $row::$databaseColumnMap['date'] )"}
-							{{if in_array( \IPS\Request::i()->controller, array( 'search', 'vnc' ) )}}
+							{{if \IPS\Request::i()->controller == 'search'}}
 								{lang="in"} <a href="{$row->container()->url()}">{$row->container()->_title}</a>
 							{{endif}}
 						{{endif}}
@@ -98,7 +94,7 @@
 				<ul class='ipsDataItem_stats'>
 					{{foreach $row->stats() as $k => $v}}
 						<li {{if in_array( $k, $row->hotStats )}}class="ipsDataItem_stats_hot" data-text='{lang="hot_item"}' data-ipsTooltip title='{lang="hot_item_desc"}'{{endif}}>
-							<span class='ipsDataItem_stats_number'>{number="$v"}</span>
+							<span class='ipsDataItem_stats_number'>{$v}</span>
 							<span class='ipsDataItem_stats_type'>{lang="$k" pluralize="$v"}</span>
 						</li>
 					{{endforeach}}
@@ -113,9 +109,9 @@
 					</li>
 					<li>
 						{{if $row->mapped('num_comments')}}
-							{$row->lastCommenter()->link()|raw}
+							{lang="byline_nodate" htmlsprintf="$row->lastCommenter()->link()"}
 						{{else}}
-							{$row->author()->link()|raw}
+							{lang="byline_nodate" htmlsprintf="$row->author()->link()"}
 						{{endif}}
 					</li>
 					<li class="ipsType_light">

@@ -6,7 +6,38 @@
 {{endif}}
 <ol class='ipsDataList ipsDataList_large cSearchActivity'>
 	{{foreach $results as $activity}}
-		{$activity->activityStreamHtml()|raw}
+		{{$activityClass = get_class( $activity );}}
+		{{$activityParts = explode( '\\', $activityClass );}}
+		{{$application = $activityParts[1];}}
+
+		<li class='ipsDataItem'>
+			<div class='ipsDataItem_icon ipsPos_top ipsResponsive_hidePhone'>
+				{template="userPhoto" group="global" app="core" params="$activity->author(), 'tiny'"}
+			</div>
+			<div class='ipsDataItem_main'>
+				<p class='ipsType_reset ipsType_break ipsContained ipsType_normal'>
+					<strong class='ipsType_normal'>
+						{{if $activity instanceof \IPS\Content\Comment or $activity instanceof \IPS\Content\Review}}
+							{{if $activity->isFirst()}}
+								{{$activityItemClass = $activity::$itemClass;}}
+								{lang="user_own_activity_item" sprintf="$activity->item()->author()->name, \IPS\Member::loggedIn()->language()->get( '__indefart_' . $activityItemClass::$title )"} <a href='{$activity->item()->container()->url()}'>{$activity->item()->container()->_title}</a>
+							{{else}}
+								{lang="user_own_activity_comment" sprintf="$activity->author()->name" htmlsprintf="'<a href=\'' . $activity->url() . '\'>' . \IPS\Member::loggedIn()->language()->get( '__indefart_' . $activity::$title ) . '</a>'"} <a href='{$activity->item()->url()}'>{$activity->item()->mapped('title')}</a>
+							{{endif}}
+						{{else}}
+							{lang="user_own_activity_item" sprintf="$activity->author()->name, \IPS\Member::loggedIn()->language()->get( '__indefart_' . $activity::$title )"} <a href='{$activity->container()->url()}'>{$activity->container()->_title}</a>
+						{{endif}}
+					</strong>
+					&nbsp;&nbsp;
+					<span class='ipsType_light ipsType_noBreak'>{datetime="$activity->mapped('date')"}</span>
+				</p>
+				{{if ( $activity instanceof \IPS\Content\Comment or $activity instanceof \IPS\Content\Review ) and $activity->isFirst()}}
+					{template="snippet" group="global" app="$application" params="$activity->item()"}
+				{{else}}
+					{template="snippet" group="global" app="$application" params="$activity"}
+				{{endif}}
+			</div>
+		</li>
 	{{endforeach}}
 </ol>
 {{if $pagination}}

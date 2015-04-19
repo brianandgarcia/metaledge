@@ -22,10 +22,6 @@ html[dir="rtl"] .ipsTable th {
 	vertical-align: middle;
 }
 
-	.ipsTable th.ipsPos_top, .ipsTable td.ipsPos_top {
-		vertical-align: top;
-	}
-
 .ipsTable td {
 	padding: 7px;
 	border-bottom: 1px solid rgba(0,0,0,0.01);
@@ -105,11 +101,11 @@ html[dir="rtl"] .ipsTable_sortIcon {
 }
 
 .ipsTable_sortable.ipsTable_sortableDesc .ipsTable_sortIcon:after {
-	content: '\f0d7';
+	content: '\\f0d7';
 }
 
 .ipsTable_sortable.ipsTable_sortableAsc .ipsTable_sortIcon:after {
-	content: '\f0d8';
+	content: '\\f0d8';
 }
 
 .ipsTable_sortable.ipsTable_sortableActive {

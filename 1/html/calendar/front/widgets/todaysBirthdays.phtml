@@ -7,11 +7,11 @@
 				<ol class='ipsDataList ipsDataList_reducedSpacing'>
 					{{foreach $members as $member}}
 						<li class='ipsDataItem'>
-							<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny ipsClearfix'>
+							<div class='ipsDataItem_main ipsPhotoPanel ipsPhotoPanel_tiny'>
 								{template="userPhoto" app="core" group="global" params="$member, 'tiny'"}
 								<div>
 									{$member->link()|raw}
-									{{if $member->bday_year}}<br><span class='ipsType_light'>{lang="member_age" sprintf="$member->age()"}</span>{{endif}}
+									{{if $member->bday_year}}<br><span class='ipsType_light'>{lang="member_age" sprintf="$member->age"}</span>{{endif}}
 								</div>
 							</div>
 						</li>
@@ -23,10 +23,11 @@
 		</div>
 	{{else}}
 		{{if !empty($members) }}
-			<ol class='ipsList_inline ipsList_noSpacing'>
+			<ol class='ipsList_inline'>
 				{{foreach $members as $idx => $member}}
 					<li>
-						{$member->link()|raw} {{if $member->bday_year}} <span class='ipsType_light'>{lang="member_age" sprintf="$member->age()"}</span>{{endif}}{{if $idx != count( $members ) - 1}},{{endif}}
+						{$member->link()|raw} {{if $member->bday_year}} <span class='ipsType_light'>{lang="member_age" sprintf="$member->age"}</span>{{endif}}
+						{{if $idx != count( $members ) - 1}},{{endif}}
 					</li>
 				{{endforeach}}
 			</ol>

@@ -1,4 +1,4 @@
-.ipsTree, .ipsTree ol {
+.ipsTree {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -9,10 +9,6 @@
 	width: 100%;
 }
 
-	.ipsTree_row + form > .ipsTree_rows {
-		padding-left: 15px;
-	}
-
 .ipsTree_row > div {
 	display: table-cell;
 }
@@ -22,17 +18,13 @@
 }
 
 html[dir="ltr"] .ipsTree_loadingRow {
+	background: #fff url( {resource="tiny_loading.gif" location="admin" app="core"} ) no-repeat 5px 10px;
 	padding: 10px 10px 10px 30px;
 }
-	html[dir="ltr"] .ipsTree_loadingRow:before {
-		left: 15px;
-	}
 html[dir="rtl"] .ipsTree_loadingRow {
+	background: #fff url( {resource="tiny_loading.gif" location="admin" app="core"} ) no-repeat right 5px top 10px;
 	padding: 10px 30px 10px 10px;
 }
-	html[dir="rtl"] .ipsTree_loadingRow:before {
-		right: 15px;
-	}
 
 /* Cell types */
 .ipsTree_drag {
@@ -73,10 +65,9 @@ html[dir="rtl"] .ipsTree_controls {
 /* Stack styles */
 .ipsTree_rowData h4 {
 	margin: 0;
-	width: 100%;
 }
 
-.ipsTree_parent.ipsTree_row:not( .ipsTree_noToggle ):hover > div {
+.ipsTree_parent.ipsTree_row:hover > div {
 	background: rgba(0,0,0,0.03);
 	cursor: pointer;
 }
@@ -102,7 +93,7 @@ html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData {
 	.ipsTree_parent.ipsTree_row > .ipsTree_rowData h4:before {
 		position: absolute;
 		top: 0;
-		content: '\f04b';
+		content: '\\f04b';
 		font-family: 'FontAwesome';
 		font-size: 11px;
 		text-align: center;
@@ -142,57 +133,19 @@ html[dir="rtl"] .ipsTree_parent.ipsTree_row > .ipsTree_rowData {
 	border-bottom: 1px solid #e5e5e5;
 }
 
-	.ipsTree_row.ipsTree_draggingInto {
-		background: #cfcfcf;
-	}
-
-.ipsTree_row + ol .ipsTree_row {
+.ipsTree_row + [data-role="nodeWrapper"] > .ipsTree .ipsTree_row {
 	background: #fafafa;
 	border-bottom: 1px solid #ececec;
 }
 
-.ipsTree_row + ol .ipsTree_row + ol .ipsTree_row {
+.ipsTree_row + [data-role="nodeWrapper"] > .ipsTree .ipsTree_row + [data-role="nodeWrapper"] > .ipsTree .ipsTree_row {
 	background: #fff;
 	border-bottom: 1px solid #f4f4f4;
 }
 
-html[dir="ltr"] ol ol {
+html[dir="ltr"] .ipsTree .ipsTree {
 	margin-left: 15px;
 }
-html[dir="rtl"] ol ol {
+html[dir="rtl"] .ipsTree .ipsTree {
 	margin-right: 15px;
-}
-
-/* Nested sortable classes */
-.mjs-nestedSortable-error {
-	border: 1px solid #e85959 !important;
-	background: #f3d9d9 !important;
-	min-height: 48px !important;
-	position: relative;
-}
-
-	.mjs-nestedSortable-error:before,
-	.mjs-nestedSortable-error:after {
-		display: block;
-		position: absolute;
-		line-height: 48px;
-		font-size: 11px;
-		color: #e85959;
-	}
-
-	.mjs-nestedSortable-error:before {
-		content: attr(data-error);
-		left: 30px;
-	}
-
-	.mjs-nestedSortable-error:after {
-		content: '\f071';
-		font-family: 'FontAwesome';
-		left: 10px;
-	}
-
-.sortable-placeholder {
-	border: 1px solid #59aee8;
-	background: #d9e8f3;
-	min-height: 48px;
 }

@@ -23,7 +23,6 @@
 				<div class="ipsAreaBackground_reset">
 					<h2 class="ipsType_sectionTitle">{lang="support_guides"}</h2>
 {{endif}}
-{{if count( $guides ) }}
 <div class="ipsPad">
 	<p class="ipsType_normal">{lang="support_guides_blurb"}</p>
 	<ul class='ipsDataList'>
@@ -32,7 +31,6 @@
 		{{endforeach}}
 	</ul>
 </div>
-{{endif}}
 {{if count( $searchResults ) and count( $guides )}}
 				</div>
 			</div>

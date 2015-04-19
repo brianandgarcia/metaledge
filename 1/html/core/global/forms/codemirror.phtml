@@ -7,7 +7,7 @@
 	<textarea
 	name="{$name}"
 	id='elCodemirror_{{if $id}}{$id}{{else}}{$name}{{endif}}'
-	value="{expression="htmlentities( $value, \IPS\HTMLENTITIES, 'UTF-8', TRUE )"}"
+	value="{$value}"
 	class="ipsField_fullWidth {$class}"
 	{{if $maxlength !== NULL}}maxlength="{$maxlength}"{{endif}}
 	{{if $required === TRUE}}aria-required='true'{{endif}}

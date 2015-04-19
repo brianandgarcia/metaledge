@@ -11,9 +11,9 @@
 								{template="userPhoto" app="core" group="global" params="$review->author(), 'tiny'"}
 							</div>
 							<div class='ipsDataItem_main ipsType_break'>
-								<a href="{$review->item()->url()}" title='{lang="view_this_event" sprintf="$review->item()->title"}'>{wordbreak="$review->item()->title"}</a><br>
+								<a href="{$review->item()->url()}" title='{lang="view_this_event" sprintf="$review->item()->title"}'>{lang="$review->item()->title" wordbreak="true"}</a><br>
 								<span class='ipsType_light ipsType_medium'>{lang="byline_nodate" htmlsprintf="$review->author()->link()"}</span><br>
-								{template="rating" group="global" location="front" app="core" params="'small', $review->rating, \IPS\Settings::i()->reviews_rating_out_of"} &nbsp;&nbsp;
+								{template="rating" group="global" location="front" app="core" params="'small', $review->rating"} &nbsp;&nbsp;
 								<span class='ipsType_small ipsType_reset'><time datetime="{$review->mapped('date')}" itemprop="dtreviewed">{datetime="$review->mapped('date')" norelative="true"}</time></span>
 							</div>
 						</li>
@@ -32,10 +32,10 @@
 							{template="userPhoto" app="core" group="global" params="$review->author(), 'tiny'"}
 						</div>
 						<div class='ipsDataItem_main ipsType_break'>
-							<a href="{$review->item()->url()}" title='{lang="view_this_event" sprintf="$review->item()->title"}'>{wordbreak="$review->item()->title"}</a><br>
+							<a href="{$review->item()->url()}" title='{lang="view_this_event" sprintf="$review->item()->title"}'>{lang="$review->item()->title" wordbreak="true"}</a><br>
 							<span class='ipsType_light ipsType_medium'>{lang="byline_nodate" htmlsprintf="$review->author()->link()"}</span>, <span class='ipsType_small ipsType_reset ipsType_light'><time datetime="{$review->mapped('date')}" itemprop="dtreviewed">{datetime="$review->mapped('date')" norelative="true"}</time></span><br>
 							<div class='ipsType_medium ipsType_richText' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='2 lines'>
-								{template="rating" group="global" location="front" app="core" params="'small', $review->rating, \IPS\Settings::i()->reviews_rating_out_of"} &nbsp;&nbsp; {$review->truncated()|raw}
+								{template="rating" group="global" location="front" app="core" params="'small', $review->rating"} &nbsp;&nbsp; {$review->truncated()|raw}
 							</div>
 						</div>
 					</li>

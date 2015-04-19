@@ -8,15 +8,11 @@
 		<ol class='ipsList_reset cPollList cPollList_questions'>
 			{{foreach $collection as $idx => $input}}
 				<li class='ipsFieldRow ipsFieldRow_noLabel'>
-					<h3 class='ipsType_sectionHead'>{$idx}. {wordbreak="$input->label"}</h3>
+					<h3 class='ipsType_sectionHead'>{$idx}. {lang="$input->label" wordbreak="true"}</h3>
 					{{if !$input->options['multiple']}}
 						{template="radio" app="core" location="global" group="forms" params="$input->name, $input->value, $input->required, $input->options['options'], $input->options['disabled'], '', $input->options['disabled']"}
 					{{else}}
 						{template="checkboxset" app="core" location="global" group="forms" params="$input->name, $input->value, $input->required, $input->options['options'], $input->options['disabled'], $input->options['toggles'], isset( $input->options['descriptions'] ) ? $input->options['descriptions'] : NULL, $input->options['userSuppliedInput']"}
-					{{endif}}
-					{{if $input->error}}
-						<br>
-						<span class="ipsType_warning">{lang="$input->error"}</span>
 					{{endif}}
 				</li>
 			{{endforeach}}
@@ -27,6 +23,6 @@
 		{{foreach $actionButtons as $button}}
 			<li>{$button|raw}</li>
 		{{endforeach}}
-        <li><a class='ipsButton ipsButton_link' title='{lang="show_results_title"}' href="{$url->setQueryString( '_poll', 'results' )}" {{if !settings.allow_result_view}}data-viewResults-confirm="{lang="warn_allow_result_view"}"{{endif}} data-action='viewResults'>{lang="show_results"}</a></li>
+        <li><a class='ipsButton ipsButton_link' title='{lang="show_results_title"}' href="{$url->setQueryString( '_poll', 'results' )}" {{if !settings.allow_result_view}}data-confirm data-confirmSubMessage="{lang="warn_allow_result_view"}"{{endif}} data-action='viewResults'>{lang="show_results"}</a></li>
 	</ul>
 </form>

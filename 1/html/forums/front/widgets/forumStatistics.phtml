@@ -3,24 +3,24 @@
 <div class='ipsWidget_inner'>
 	{{if $orientation == 'vertical'}}
 		<div class='ipsPad_half'>
-			<ul class='ipsDataList'>
-				<li class='ipsDataItem'>
-					<div class='ipsDataItem_main ipsPos_middle'>
+			<table class='ipsDataList'>
+				<tr class='ipsDataItem'>
+					<td class='ipsDataItem_main ipsPos_middle'>
 						<strong>{lang="total_topics"}</strong>
-					</div>
-					<div class='ipsDataItem_stats ipsDataItem_statsLarge'>
+					</td>
+					<td class='ipsDataItem_stats ipsDataItem_statsLarge'>
 						<span class='ipsDataItem_stats_number'>{number="$stats['total_topics']"}</span>
-					</div>
-				</li>
-				<li class='ipsDataItem'>
-					<div class='ipsDataItem_main ipsPos_middle'>
+					</td>
+				</tr>
+				<tr class='ipsDataItem'>
+					<td class='ipsDataItem_main ipsPos_middle'>
 						<strong>{lang="total_posts"}</strong>
-					</div>
-					<div class='ipsDataItem_stats ipsDataItem_statsLarge'>
+					</td>
+					<td class='ipsDataItem_stats ipsDataItem_statsLarge'>
 						<span class='ipsDataItem_stats_number'>{number="$stats['total_posts']"}</span>
-					</div>
-				</li>
-			</ul>
+					</td>
+				</tr>
+			</table>
 		</div>
 	{{else}}
 		<div class='ipsGrid ipsGrid_collapsePhone ipsWidget_stats'>

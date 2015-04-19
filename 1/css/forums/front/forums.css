@@ -8,31 +8,10 @@
 
 .cForumGrid {
 	min-height: 230px !important;
-	margin-bottom: 15px;
-	position: relative;
-	padding-bottom: 80px !important;
-	border: 1px solid rgba(0,0,0,0.1);
 }
 
 	.cForumGrid .cForumGrid_icon {
 		max-width: 40px;
-	}
-
-	.cForumGrid .cForumGrid_info {
-		position: absolute;
-		bottom: 15px;
-		left: 15px;
-		right: 15px;
-	}
-
-	.cForumGrid_unread .cForumGrid_title {
-		font-weight: bold;
-		line-height: 1.1;
-	}
-
-	.cForumGrid .cForumGrid_forumInfo {
-		min-height: 70px;
-		border-bottom: 1px solid rgba(0,0,0,0.05);
 	}
 
 .cForumTopicTable .ipsDataItem_title,
@@ -65,16 +44,16 @@
 	}
 
 	.cForumToggle:after {
-		content: "\f078";
+		content: "\\f078";
 		font-family: "FontAwesome";
 		font-size: 18px;
 	}
 
 	.cForumRow_hidden .cForumToggle:after {
-		content: "\f053";
+		content: "\\f053";
 	}
 	html[dir="rtl"] .cForumRow_hidden .cForumToggle:after {
-		content: "\f054";
+		content: "\\f054";
 	}
 
 html[dir="ltr"] .cTopicList .ipsDataItem_icon {
@@ -114,11 +93,6 @@ html[dir="rtl"] .cTopicList .ipsDataItem_icon {
 	width: 65px;
 	padding: 15px 15px 0 15px !important;
 }
-
-	.cRatingColumn.cRatingColumn_question {
-		padding-top: 0 !important;
-	}
-
 html[dir="ltr"] .cRatingColumn {
 	border-right: 1px solid rgba(0,0,0,0.1);
 }
@@ -157,14 +131,7 @@ html[dir="rtl"] .cRatingColumn {
 	font-size: 60px;
 	line-height: 10px;
 	position: relative;
-	display: block;
-	overflow: hidden;
 }	
-
-	.cAnswerRate.cAnswerRate_up {
-		margin-bottom: 10px;
-	}
-
 html[dir="ltr"] .cAnswerRate {
 	left: 1px;
 }
@@ -177,13 +144,6 @@ html[dir="rtl"] .cAnswerRate {
 		color: {theme="text_color"};
 	}
 
-		span.cAnswerRate:not( .ipsType_positive ):not( .ipsType_negative ),
-		span.cAnswerRate:hover:not( .ipsType_positive ):not( .ipsType_negative ) {
-			color: {theme="text_light"};
-			opacity: 0.5;
-			cursor: not-allowed;
-		}
-
 		.cAnswerRate.ipsType_positive:hover {
 			color: #4a7c20;
 		}
@@ -194,10 +154,6 @@ html[dir="rtl"] .cAnswerRate {
 
 	.cAnswerRate > .fa {
 		line-height: 30px;
-	}
-
-	span.cAnswerRate.cAnswerRate_noPermission {
-		opacity: 0.25 !important;
 	}
 
 .cAnswerRating {
@@ -219,7 +175,7 @@ html[dir="rtl"] .cAnswerRate {
 	position: relative;
 	background: #4a7c20;
 	border-radius: 36px;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 }
 	
 	.ipsDataList .cBestAnswerIndicator {
@@ -240,14 +196,13 @@ html[dir="rtl"] .cAnswerRate {
 	}
 
 		a.cBestAnswerIndicator:not( .cBestAnswerIndicator_off ):hover i.fa:before {
-			content: '\f00d';
+			content: '\\f00d';
 			color: #fff;
 		}
 
 /* POST WRAPPER STYLES */
 
-.cPost.ipsModerated,
-.cPost.ipsModerated .cAuthorPane {
+.cPost.ipsModerated {
 	background: {theme="moderated"};
 }
 
@@ -305,21 +260,12 @@ html[dir="rtl"] .cPost .ipsComment_content {
 
 	.cAuthorPane_author {
 		display: block;
-		/* http://community.invisionpower.com/4bugtrack/infopane-display-name-split-r1164/ */
-		/*word-break: break-all;*/
-		line-height: 1.1;
-		word-wrap: initial;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		-moz-hyphens: initial;
+		word-break: break-all;
+		line-height: 1;
 	}
 
 	.cAuthorPane_info .ipsRepBadge {
 		font-size: inherit;
-	}
-
-	.cAuthorPane .cAuthorGroupIcon {
-		max-width: 100%;
 	}
 
 .ipsApp .cTopic [data-role="commentFeed"] > .ipsComment:first-child {
@@ -423,7 +369,7 @@ html[dir="rtl"] .cCreateTopic_date i {
 	}
 
 	.cPost.ipsComment .cAuthorPane_author {
-		line-height: 1.1;
+		line-height: 1;
 	}
 
 		.cPost.ipsComment .cAuthorPane_author > a 	{

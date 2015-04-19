@@ -1,8 +1,8 @@
 <ips:template parameters="$content, $extraClass='', $forceType=NULL, $countOnly=FALSE" />
-
 {{if $content instanceof \IPS\Content\Reputation and settings.reputation_enabled}}
 	<div data-controller='core.front.core.reputation' class='ipsRep_mini {{if $extraClass}}{$extraClass}{{endif}}'>
 		{{if settings.reputation_point_types == 'like'}}
+			{{if $content->canGiveReputation( 1 ) || $content->canGiveReputation( -1 ) || $content->likeBlurb() || ( $countOnly && member.group['gbw_view_reps'] )}}
 			<div class='ipsLikeRep'>
 				{{if member.group['gbw_view_reps']}}
 					<a href='{$content->url( 'showRep' )}' data-ipsDialog data-ipsDialog-size='narrow' data-ipsDialog-title='{lang="like_log_title"}' data-ipsTooltip class='ipsReputation_count {{if intval( $content->reputation() ) === 0}}ipsType_light{{else}}ipsType_blendLinks{{endif}}'><i class='fa fa-heart ipsType_small'></i> {$content->reputation()}</a>
@@ -14,8 +14,12 @@
 				{{endif}}
 				{{if $content->canGiveReputation( -1 ) && !$countOnly}}
 					&nbsp;&nbsp;<a href='{$content->url( 'rep' )->setQueryString( 'rep', -1 )->setQueryString( 'mini', 1 )}' data-action="giveReputation">{lang="unlike"}</a>
+					{{endif}}
+					{{if $content->likeBlurb()}}
+						<!--<span class='ipsLike_contents ipsType_medium'></span>-->
 				{{endif}}
 			</div>
+			{{endif}}
 		{{else}}
 			<div class='ipsLikeRep'>
 				{{if $content->canGiveReputation( 1 ) && !$countOnly}}

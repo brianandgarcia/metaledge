@@ -18,7 +18,7 @@
 					<a href='{$event->url('rsvp')->setQueryString( 'action', 'yes' )}' class='ipsButton ipsButton_important ipsButton_fullWidth'>{lang="rsvp_attend_event"}</a>
 				</li>
 				<li>
-					<a href='{$event->url('rsvp')->setQueryString( 'action', 'no' )}' class='ipsButton ipsButton_veryLight ipsButton_fullWidth ipsButton_verySmall'>{lang="rsvp_notgoing_event"}</a>
+					<a href='{$event->url('rsvp')->setQueryString( 'action', 'leave' )}' class='ipsButton ipsButton_veryLight ipsButton_fullWidth ipsButton_verySmall'>{lang="rsvp_notgoing_event"}</a>
 				</li>
 			{{else}}
 				<li class='ipsType_center'>
@@ -32,7 +32,7 @@
 		{{if $event->rsvp_limit > 0 AND count($attendees[1]) >= $event->rsvp_limit}}
 			<div class='ipsMessage ipsMessage_info'>{lang="rsvp_limit_reached"}</div>
 		{{else}}
-			{{if $event->rsvp_limit > 0}}<div class='ipsMessage ipsMessage_info'>{lang="rsvp_limit_info" pluralize="count($attendees[1])" sprintf="$event->rsvp_limit"}</div>{{endif}}
+			{{if $event->rsvp_limit > 0}}<div class='ipsMessage ipsMessage_info'>{lang="rsvp_limit_info" sprintf="count($attendees[1]), $event->rsvp_limit"}</div>{{endif}}
 			<a href='{$event->url('rsvp')->setQueryString( 'action', 'yes' )}' class='ipsButton ipsButton_important ipsButton_fullWidth'>{lang="rsvp_attend_event"}</a>
 			<br>
 			<div class='ipsGrid'>

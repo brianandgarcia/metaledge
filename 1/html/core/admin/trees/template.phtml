@@ -1,4 +1,4 @@
-<ips:template parameters="$url,$title,$root,$rootParent,$rows,$rootButtons=array(),$lockParents=FALSE,$protectRoots=FALSE,$searchable=FALSE" />
+<ips:template parameters="$url,$title,$root,$rootParent,$rows,$rootButtons=array(),$sortData=array(),$searchable=FALSE" />
 
 {{if $rootButtons}}
 	<div class='ipsClearfix'>
@@ -25,16 +25,17 @@
 	</div>
 </div>
 {{endif}}
-<div class='ipsTree_wrapper' data-ipsTree {{if $lockParents}}data-ipsTree-lockParents{{endif}} {{if $protectRoots}}data-ipsTree-protectRoots{{endif}} data-ipsTree-url='{{if request.root}}{$url->setQueryString( array( 'root' => \IPS\Request::i()->root ) )}{{else}}{$url}{{endif}}' data-ipsTree-searchable='#tree_search'>
+
+<div class='ipsTree_wrapper' data-ipsTree data-ipsTree-url='{{if request.root}}{$url->setQueryString( array( 'root' => \IPS\Request::i()->root ) )}{{else}}{$url}{{endif}}' data-ipsTree-searchable='#tree_search' data-ipsKeyNav data-ipsKeyNav-observe='e return d left right'>
 	{$root|raw}
 	{{if empty( $rows )}}
 		<div class='ipsType_light ipsPad'>
 			{lang="no_results"}
 		</div>
 	{{else}}
-		<form accept-charset='utf-8' action="{$url->setQueryString( array( 'root' => \IPS\Request::i()->root ?: 0, 'do' => 'reorder' ) )}" method="post" data-role="treeListing">
+		<form accept-charset='utf-8' action="{$url->setQueryString( array( 'root' => \IPS\Request::i()->root ?: 0, 'tree' => 'reorder' ) )}" method="post" data-role="treeListing">
 			<div class='ipsTree_rows'>
-				{template="rows" group="trees" app="core" params="$rows, md5(uniqid()), true"}
+				{template="rows" group="trees" app="core" params="$rows, md5(uniqid()), $sortData, true"}
 			</div>
 			<noscript>
 				<div class='ipsBlock_actionbar clearfix'>

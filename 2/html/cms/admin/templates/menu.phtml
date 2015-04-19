@@ -1,5 +1,5 @@
 <ips:template parameters="$templates, $current, $request" />
-<ul class='cTemplateList ipsList_reset' data-type='{$current->type}'>
+<ul class='cTemplateList ipsList_reset'>
 	{{foreach $templates as $type => $data}}
 	<li {{if $type == $request['t_location']}}class="cTemplateList_activeBranch"{{else}}class="cTemplateList_inactiveBranch"{{endif}} data-node="top" data-location="{$type}">
 		<a href='{url="app=cms&module=pages&controller=templates&t_location={$type}"}' data-action="toggleBranch">{lang="content_template_type_{$type}"}</a>
@@ -11,7 +11,7 @@
 						<ul class='ipsList_reset'>
 							{{foreach $childTemplates as $key => $child}}
 								<li {{if $request['t_key'] == $child->key && !\IPS\Request::i()->isAjax()}}class="cTemplateList_activeNode"{{endif}}>
-									<a data-type="{$child->type}" data-location="{$child->location}" href='{url="app=cms&module=pages&controller=templates&t_location={$child->location}&t_group={$child->group}&t_key={$child->key}"}' data-action="openFile" data-group="{$child->group}" data-name="{$child->title}" data-inherited-value="$child->_inherited" data-key="{$child->key}" data-itemID="{$child->id}">{$child->title}</a>
+									<a data-type="{$child->type}" data-location="{$child->location}" href='{url="app=cms&module=pages&controller=templates&t_location={$child->location}&t_group={$child->group}&t_key={$child->key}"}' data-action="openFile" data-group="{$child->group}" data-name="{$child->title}" data-inherited-value="$child->_inherited" data-key="{$child->key}" data-itemID="{$child->id}">{lang="$child->title"}</a>
 								</li>
 							{{endforeach}}
 						</ul>

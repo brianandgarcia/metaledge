@@ -1,10 +1,8 @@
 <ips:template parameters="$item, $comment, $votes=array()" />
 {{$idField = $comment::$databaseColumnId;}}
 <div class='cRatingColumn {{if $comment->post_bwoptions['best_answer']}}cRatingColumn_on{{else}}ipsAreaBackground_light{{endif}} {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === 1}}cRatingColumn_up{{elseif isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === -1}}cRatingColumn_down{{endif}} ipsColumn ipsColumn_narrow ipsType_center' data-controller='forums.front.topic.answers'>
-	<meta itemprop="upvoteCount" content="{$comment->post_field_int}">
-	
+
 	<ul class='ipsList_reset'>
-	{{if !$item->isArchived() }}
 		{{if $comment->post_bwoptions['best_answer'] or $item->canSetBestAnswer()}}
 			<li>
 				{{if $item->canSetBestAnswer() and !$comment->post_bwoptions['best_answer']}}
@@ -24,14 +22,11 @@
 				<a href='{$item->url()->setQueryString( array( 'do' => 'rateAnswer', 'answer' => $comment->pid, 'rating' => 1 ) )->csrf()}' class='{{if !$comment->canVote(1)}}ipsHide{{endif}} cAnswerRate cAnswerRate_up {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === 1}}ipsType_positive{{endif}}' title='{lang="vote_answer_up"}' data-ipsTooltip><i class='fa fa-caret-up'></i></a>
 				<span class='{{if $comment->canVote(1)}}ipsHide{{endif}} cAnswerRate cAnswerRate_up {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === 1}}ipsType_positive{{endif}}'><i class='fa fa-caret-up'></i></span>
 			</li>
-		{{else}}
-			<li>
-				<span class='cAnswerRate cAnswerRate_up cAnswerRate_noPermission' {{if !\IPS\Member::loggedIn()->member_id}}data-ipsTooltip title='{lang="sign_in_rate_answer"}'{{endif}}><i class='fa fa-caret-up'></i></span>
-			</li>
 		{{endif}}
 
 			<li>
-				<span title="{lang="votes_no_number" pluralize="$comment->post_field_int"}" data-role="voteCount" data-voteCount="{$comment->post_field_int}" class='cAnswerRating {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === 1}}ipsType_positive{{elseif isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === -1}}ipsType_negative{{endif}}'>{$comment->post_field_int}</span>
+				<span data-role="voteCount" data-voteCount="{$comment->post_field_int}" class='cAnswerRating {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === 1}}ipsType_positive{{elseif isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === -1}}ipsType_negative{{endif}}'>{$comment->post_field_int}</span>
+				<span class='ipsType_light'>votes</span>
 			</li>
 
 		{{if $comment->canVote() && \IPS\Settings::i()->forums_answers_downvote}}
@@ -39,18 +34,6 @@
 				<a href='{$item->url()->setQueryString( array( 'do' => 'rateAnswer', 'answer' => $comment->pid, 'rating' => -1 ) )->csrf()}' class='{{if !$comment->canVote(-1)}}ipsHide{{endif}} cAnswerRate cAnswerRate_down {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === -1}}ipsType_negative{{endif}}' title='{lang="vote_answer_down"}' data-ipsTooltip><i class='fa fa-caret-down'></i></a>
 				<span class='{{if $comment->canVote(-1)}}ipsHide{{endif}} cAnswerRate cAnswerRate_down {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === -1}}ipsType_negative{{endif}}'><i class='fa fa-caret-down'></i></span>
 			</li>
-		{{elseif \IPS\Settings::i()->forums_answers_downvote}}
-			<li>
-				<span class='cAnswerRate cAnswerRate_down cAnswerRate_noPermission' {{if !\IPS\Member::loggedIn()->member_id}}data-ipsTooltip title='{lang="sign_in_rate_answer"}'{{endif}}><i class='fa fa-caret-down'></i></span>
-			</li>
 		{{endif}}
-	{{else}}
-		{{if isset($comment->post_field_int) }}
-			<li>
-				<span title="{lang="votes_no_number" pluralize="$comment->post_field_int"}" data-role="voteCount" data-voteCount="{$comment->post_field_int}" class='cAnswerRating {{if isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === 1}}ipsType_positive{{elseif isset( $votes[ $comment->$idField ] ) && $votes[ $comment->$idField ] === -1}}ipsType_negative{{endif}}'>{$comment->post_field_int}</span>
-			</li>
-		{{endif}}
-	{{endif}}
 	</ul>
-
 </div>

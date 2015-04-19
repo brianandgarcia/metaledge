@@ -10,6 +10,10 @@
 {{endif}}
 
 {{if $topic->isQuestion()}}
+	<div itemscope itemtype="http://schema.org/Question">
+{{endif}}
+
+{{if $topic->isQuestion()}}
 	<div class='ipsColumns'>
 		<div class='cRatingColumn cRatingColumn_question ipsColumn ipsColumn_narrow ipsType_center'>
 			<ul class='ipsList_reset'>
@@ -37,6 +41,7 @@
 					</li>
 				{{endif}}
 			</ul>
+			<meta itemprop="upvoteCount" content="{expression="intval( $topic->question_rating )"}">
 		</div>
 		<div class='ipsColumn ipsColumn_fluid'>
 {{endif}}
@@ -53,7 +58,11 @@
 				{{if $topic->prefix()}}
 					{template="prefix" group="global" app="core" params="$topic->prefix( TRUE ), $topic->prefix()"}
 				{{endif}}	
-				{wordbreak="$topic->title"}
+				{{if $topic->isQuestion()}}
+					<span itemprop="name">{wordbreak="$topic->title"}</span>
+				{{else}}
+					{wordbreak="$topic->title"}
+				{{endif}}
 				{{if $topic->mapped('pinned') || $topic->mapped('featured') || $topic->hidden() === -1 || $topic->hidden() === 1}}
 					{{if $topic->hidden() === -1}}
 						<span class="ipsBadge ipsBadge_icon ipsBadge_warning" data-ipsTooltip title='{$topic->hiddenBlurb()}'><i class='fa fa-eye-slash'></i></span>
@@ -194,7 +203,7 @@
 		{template="postContainer" group="topics" app="forums" params="$topic, $question, $votes, 'cPostQuestion'"}
 		
 		<div class='ipsBox ipsSpacer_top'>
-			<h2 class='ipsType_sectionTitle ipsType_reset ipsType_medium'>{lang="answer_count" pluralize="( $topic->posts ) ? $topic->posts - 1 : 0"}</h2>
+			<h2 class='ipsType_sectionTitle ipsType_reset ipsType_medium'><meta itemprop="answerCount" content="{expression="$topic->posts - 1"}">{lang="answer_count" pluralize="( $topic->posts ) ? $topic->posts - 1 : 0"}</h2>
 			<div class="ipsButtonBar ipsPad_half ipsClearfix ipsClear">
 				<ul class="ipsPos_right ipsButtonRow ipsClearfix">
 					<li>
@@ -280,6 +289,10 @@
 		</div>
 	{{endif}}
 </div>
+
+{{if $topic->isQuestion()}}
+	</div>
+{{endif}}
 
 <div class='ipsGrid ipsGrid_collapsePhone ipsPager ipsClearfix ipsSpacer_top'>
 	<div class="ipsGrid_span6 ipsType_left ipsPager_prev">

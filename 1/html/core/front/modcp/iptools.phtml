@@ -1,4 +1,10 @@
-<ips:template parameters="$form" />
-<div class='ipsAreaBackground ipsPad ipsFieldRow ipsFieldRow_primary ipsBox ipsBox_transparent' id='elModCPIPTools'>
-	{$form|raw}
-</div>
+<ips:template parameters="$form, $ip=NULL" />
+{{if $form}}
+	<div class='ipsAreaBackground ipsPad ipsFieldRow ipsFieldRow_primary ipsBox ipsBox_transparent' id='elModCPIPTools'>
+		{$form|raw}
+	</div>
+{{endif}}
+{{if $ip instanceof \IPS\Ip}}
+	{{if $form}}<br>{{endif}}
+	{$ip|raw}
+{{endif}}

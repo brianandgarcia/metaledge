@@ -1,5 +1,6 @@
 /* BOTH */
 @media screen and (max-width: 979px) {
+
 	/* Submit screen */
 	.cCalendarSubmit_field {
 		width: 100%;
@@ -14,14 +15,6 @@
 	.cCalendar th span,
 	.ipsButton.cCalendar_miniAddEvent {
 		display: none;
-	}
-
-	/* Day view */
-	.cCalendarDay .cCalendarDay_hour > h2 {
-		text-align: left;
-		padding: 10px;
-		font-size: 22px;
-		line-height: 22px;
 	}
 }
 
@@ -46,28 +39,18 @@
 		}
 
 			#elDateGrid_arrow .fa:before {
-				content: '\f107';
+				content: '\\f107';
 			}
 
 	/* Calendar header */
-	#elCalendarsHeader .ipsType_pageTitle {
-		display: block;
-		margin-top: 10px;
-	}
-
 	.cCalendarNav .ipsType_pageTitle {
 		font-size: 20px;
-		margin-top: 0;
 	}
 
 	.cCalendarNav [data-role='calendarNav'] {
 		margin-top: -140px;
 	}
 
-	.cCalendarNav .ipsPager_prev a, 
-	.cCalendarNav .ipsPager_next a {
-		display: inline-block;
-	}
 
 	.cCalendarNav .ipsPager_prev {
 		margin-top: 70px;
@@ -78,7 +61,7 @@
 	}
 
 	.cCalendarNav .ipsPager_next {
-		margin-top: -67px;
+		margin-top: -70px;
 		float: right;
 	}
 	html[dir="rtl"] .cCalendarNav .ipsPager_next {
@@ -89,7 +72,7 @@
 	.cCalendar td {
 		height: 40px;
 		border: 0;
-		padding: 0px;
+		padding: 5px;
 		border-bottom: 1px solid rgba(0,0,0,0.04);
 	}
 
@@ -119,9 +102,8 @@
 		display: block;
 		text-align: center;
 		margin: 1px auto;
-		height: 40px;
-		width: 100%;
-		padding:4px;
+		height: 30px;
+		width: 30px;
 		line-height: 26px;
 		font-size: 12px;
 		border-radius: 15px;
@@ -204,6 +186,6 @@
 	}
 
 	#elEventHeader_details time p .fa-arrow-circle-right:before{
-		content:"\f0ab";
+		content:"\\f0ab";
 	}
 }

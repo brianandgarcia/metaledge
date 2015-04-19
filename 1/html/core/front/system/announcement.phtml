@@ -8,11 +8,8 @@
 	{template="userPhoto" app="core" group="global" params="$announcement->author(), 'tiny'"}
 	<div>
 		<p class='ipsType_reset ipsType_large ipsType_blendLinks'>
-			{lang="byline_nodate" htmlsprintf="$announcement->author()->link()"}
-            {{if $announcement->start}}
-                <br>
-                <span class='ipsType_light ipsType_medium'>{datetime="$announcement->start" dateonly="true"}</span>
-            {{endif}}
+			{lang="byline_nodate" htmlsprintf="$announcement->author()->link()"}<br>
+			<span class='ipsType_light ipsType_medium'>{datetime="$announcement->start" dateonly="true"}</span>
 		</p>
 	</div>
 </div>
@@ -21,7 +18,7 @@
 <article class='ipsBox ipsPad'>
 	<section class='ipsType_richText ipsType_normal'>
 		{$announcement->mapped( 'content' )|raw}
-		{{if \IPS\Member::loggedIn()->modPermission('can_manage_announcements') and ( $announcement->canEdit() or $announcement->canDelete() )}}
+		{{if $announcement->canEdit() or $announcement->canDelete()}}
 			<hr class='ipsHr'>
 			<a href='#elAnnouncementActions_menu' id='elAnnouncementActions' class='ipsButton ipsButton_light ipsButton_verySmall' data-ipsMenu>{lang="announce_actions"} <i class='fa fa-caret-down'></i></a>
 			<ul id='elAnnouncementActions_menu' class='ipsMenu ipsMenu_auto ipsHide'>
