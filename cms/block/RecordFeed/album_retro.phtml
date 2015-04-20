@@ -1,5 +1,11 @@
 <ips:template parameters="$database, $records, $orientation='vertical'" original_group="RecordFeed" key="block_RecordFeed_album_retro" />
 {{if !empty( $records ) }}
+{{$iter = 0;}}
+<!---
+skin note: need to modify in copy of template if wanting to show it on a different comment than last
+OR the number of items shown differs due to configuration
+-->
+{{$limitOrPos = 8;}}
 	{{foreach $records as $record}}
 		<div class='ipsGrid'>
 			<div class='metalEdge_album-retro-feed Metalitem Metalitem-large'>
@@ -23,7 +29,7 @@
 							<div class='ipsType_textBlock ipsType_richText' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='10 lines'>
 								{$post->truncated( true )|raw}
 							</div>
-							{{if $last->_id == $post->_id }}
+							{{if ++$iter === $limitOrPos}}
 								<!-- I am the last post -->
 								<div class="reply-buttons">
 									<a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}">Reply</a>
@@ -37,4 +43,5 @@
 			</div>
 		</div>
 	{{endforeach}}
+        
 {{endif}}

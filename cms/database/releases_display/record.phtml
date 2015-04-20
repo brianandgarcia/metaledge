@@ -6,6 +6,10 @@
 		{{$formattedFields[ $fieldId ] = $fieldValue;}}
 	{{endforeach}}
 {{endif}}
+{{$fieldsByKey = array();}}
+{{foreach $FieldsClass::data('view', NULL, $FieldsClass::FIELD_SKIP_TITLE_CONTENT) as $field}}
+       {{$fieldsByKey[$field->key] = 'field_' . $field->id;}}
+{{endforeach}}
 <div class="ipsGrid metalEdge_review">
 	<div class="ipsGrid_span9">
       <div class="ipsGrid metalEdge_header">
@@ -35,15 +39,15 @@
                {{endif}}
 
                <!-- All the players! -->
-               {{if $record->customFieldDisplayByKey('url-spotify')}}
+               {{if $record->$fieldsByKey['url-spotify']}}
                   <a class="spotify ipsButton ipsButton_light ipsButton_small" href="{$record->customFieldDisplayByKey('url-spotify', 'listing')|raw}">Spotify</a>
                {{endif}}
 
-               {{if $record->customFieldDisplayByKey('url-youtube')}}
+               {{if $record->$fieldsByKey['url-youtube']}}
                  <a class="youtube ipsButton ipsButton_light ipsButton_small" href="{$record->customFieldDisplayByKey('url-youtube', 'listing')|raw}">YouTube</a>
                {{endif}}
 
-               {{if $record->customFieldDisplayByKey('url-soundcloud')}}
+               {{if $record->$fieldsByKey['url-soundcloud']}}
                   <a class="soundcloud ipsButton ipsButton_light ipsButton_small" href="{$record->customFieldDisplayByKey('url-soundcloud', 'listing')|raw}">Soundcloud</a>
                {{endif}}
 

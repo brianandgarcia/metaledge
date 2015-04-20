@@ -8,7 +8,7 @@
 			</div>
 			<br>
 			<a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$record->title"}' class='ipsDataItem_title metalEdge_largeTitle ipsType_break' data-ipsTruncate data-ipsTruncate-type='remove' data-ipsTruncate-size='2 lines'>{lang="$record->_title" wordbreak="true"}</a>
-			<br><span class='feature4Block_info'>{lang="byline_nodate" htmlsprintf="$record->author()->link()"} &middot; {datetime="$record->mapped('date')"}</span>
+			<br><span class='feature4Block_info'>{lang="byline_nodate" htmlsprintf="$record->author()->link()"} &middot; {datetime="$record->mapped('date')"} &middot; <a href='{$record->url()}#comments' title='{lang="view_comments"}'><i class='fa fa-comment'></i> {lang="num_comments" pluralize="$record->record_comments"}</a></span>
 		</div>
 	{{endforeach}}
 		<div class="metalEdge_feature4Block_ad ipsGrid_span4 metalEdge_box ipsPad">
