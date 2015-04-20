@@ -2,6 +2,10 @@
 {{$RecordsClass = '\\IPS\\cms\\Records' . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
 {{$FieldsClass  = '\\IPS\\cms\\Fields'  . \IPS\cms\Databases\Dispatcher::i()->databaseId;}}
 {{$formattedFields = array();}}
+{{$fieldsByKey = array();}}
+{{foreach $FieldsClass::data('view', NULL, $FieldsClass::FIELD_SKIP_TITLE_CONTENT) as $field}}
+{{$fieldsByKey[$field->key] = 'field_' . $field->id;}}
+{{endforeach}}
 {{foreach $rows as $row}}
 	{{if $customFields = $FieldsClass::display( $row->fieldValues(), 'listing' ) and count( $customFields )}}
 		{{foreach $customFields as $fieldId => $fieldValue}}
@@ -28,22 +32,22 @@
 				{{endif}}-->
 
 				<!-- All the players! -->
-               {{if $row->customFieldDisplayByKey('url-spotify')}}
+               {{if $row->$fieldsByKey['url-spotify']}}
                   <a class="spotify ipsButton ipsButton_light ipsButton_small" href="{$row->customFieldDisplayByKey('url-spotify', 'listing')|raw}">Spotify</a>
                {{endif}}
 
-               {{if $row->customFieldDisplayByKey('url-youtube')}}
+               {{if $row->$fieldsByKey['url-youtube']}}
                  <a class="youtube ipsButton ipsButton_light ipsButton_small" href="{$row->customFieldDisplayByKey('url-youtube', 'listing')|raw}">YouTube</a>
                {{endif}}
 
-               {{if $row->customFieldDisplayByKey('url-soundcloud')}}
+               {{if $row->$fieldsByKey['url-soundcloud']}}
                   <a class="soundcloud ipsButton ipsButton_light ipsButton_small" href="{$row->customFieldDisplayByKey('url-soundcloud', 'listing')|raw}">Soundcloud</a>
                {{endif}}
 
 			</div>
 
-			<span class='ipsType_medium ipsType_light'>{$row->customFieldDisplayByKey('artist')|raw}</span>
-			<h4 class='ipsDataItem_title ipsType_break'>
+			<span class='ipsPos_left ipsPad_half ipsType_medium ipsType_light'>{$row->customFieldDisplayByKey('artist')|raw}</span>
+			<h4 class='ipsPos_left ipsPad_half ipsDataItem_title ipsType_break'>
 				<a href='{$row->url()}'>
 					{{if $row->_title}}{$row->_title}{{else}}<em class="ipsType_light">{lang="content_deleted"}</em>{{endif}}
 				</a>
