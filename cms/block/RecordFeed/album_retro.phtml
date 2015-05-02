@@ -12,9 +12,9 @@ OR the number of items shown differs due to configuration
 				<div class='ipsPos_left metalEdge_album ipsPad'>
 					<h3>{lang="$record->_title" wordbreak="true"}</h3>
 					 <a href="{$record->url()->setQueryString( 'do', 'getLastComment' )}" title='{lang="view_this_topic" sprintf="$record->title"}' class='ipsDataItem_title ipsType_break'>{$record->customFieldDisplayByKey('album-retrospective-album')|raw}</a>
-					 {{if $record->record_image}}
+					 {{if $record->customFieldDisplayByKey('featured-image')}}
 	                  <div class="ipsCms_record_image">
-	                      <img class="ipsImage" src="{$record->record_image}">
+	                      <img class="ipsImage" src="{$record->customFieldDisplayByKey('featured-image')|raw}">
 	                  </div>
 					  {{endif}}
 					  <br>

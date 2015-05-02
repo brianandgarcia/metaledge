@@ -403,6 +403,5 @@ border-top: 13px solid #ddd4d3;
   z-index: 1000;
 }
 
-#ipsLayout_header nav a.active {
-  background: transparent;
-}
+.cCmsDatabase_features .metalEdge_features_dblock a { text-decoration: none; }
+.cCmsDatabase_features .metalEdge_features_dblock .ipsImage { max-height: 200px; }
