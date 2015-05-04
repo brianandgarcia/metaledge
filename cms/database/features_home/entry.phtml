@@ -18,7 +18,7 @@
 				</a>
 			</h2>
 			<p class='ipsType_light ipsType_reset author'>
-				{lang="cms_byline" htmlsprintf="$record->author()->link(), $record->container()->url(), $record->container()->_title"}
+				{lang="byline_nodate" htmlsprintf="$record->author()->link()"} &middot; {datetime="$record->mapped('date')"} &middot; <a href='{$record->url()}#replies' title='{lang="view_comments"}'><i class='fa fa-comment'></i> {lang="num_comments" pluralize="$record->record_comments"}</a>
 				<!-- <a href='{$record->url()}#comments' title='{lang="view_comments"}'><i class='fa fa-comment'></i> {lang="num_comments" pluralize="$record->record_comments"}</a> -->
 			</p>
 		</div>
