@@ -272,5 +272,8 @@ hr.ipsHr {
 [data-pagecontroller="login"] .cCommunityHome {
     margin-top: 0;
 }
-/* Calendar */
+
+#ipsLayout_header nav a.ipsNavActive {
+    background: transparent;
+}
 

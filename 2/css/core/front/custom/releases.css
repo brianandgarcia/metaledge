@@ -1,4 +1,4 @@
-/** Reviews table **/
+f/** Reviews table **/
 .metalEdge_reviews .metalEdge_buttons
 {
   padding-top: 10px;
@@ -314,4 +314,8 @@
 
 .ipsButton.ipsButton_small.soundcloud {
   color: #fd8300;
+}
+
+.ipsCms_recordRow .ipsDataItem_main {
+  text-align: left;
 }
